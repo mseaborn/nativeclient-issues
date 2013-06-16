@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUHQ347eCl7ImA9WhRTFE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2415</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I am trying out sel_ldr on the 32-bit version of Windows Server 2008 (R1), running on Amazon EC2.  Specifically, the VM image is:
+
+  Microsoft Windows Server 2008 Base (AMI Id: ami-67b5790e)
+  Microsoft Windows 2008 R1 SP2 Datacenter edition and 32-bit architecture.
+  Root Device Size: 30 GB
+
+Running sel_ldr fails with the following error:
+
+$ ./sel_ldr.exe hello_world.nexe 
+[3460,3356:21:48:00.669000] NaClTimeInternalInit: timeBeginPeriod(1)
+[3460,3356:21:48:00.669000] Unix epoch start is  11644473600000ms in Windows epoch time
+[3460,3356:21:48:00.683000] Native Client module will be loaded at base address 0x0000000002000000
+Error while loading &amp;quot;hello_world.nexe&amp;quot;: Insufficient memory to load file
+Using the wrong type of nexe (nacl-x86-32 on an x86-64 or vice versa)
+or a corrupt nexe file may be responsible for this error.
+
+It is not failing to reserve address space for the sandbox.  If I turn up the log level, I get these errors:
+
+[892,3120:21:56:37.085000] Replacing gap between static text and (ro)data with s
+hareable memory
+[892,3120:21:56:37.085000] NaClMakeDynamicTextShared: shm_vaddr_base = 000265a0
+[892,3120:21:56:37.085000] NaClMakeDynamicTextShared: shm_vaddr_base = 00030000
+[892,3120:21:56:37.085000] shm_upper_bound = 10020000
+[892,3120:21:56:37.085000] NaClMakeDynamicTextShared: dynamic_text_size = fff000
+0
+[892,3120:21:56:37.087000] NaClMakeDynamicTextShared: shm creation for text fail
+ed
+
+It is failing when creating the shared memory object for the dynamic code area.
+</ns0:content><ns0:updated>2011-11-04T18:43:52.000Z</ns0:updated><ns0:published>2011-11-03T22:04:25.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:state>closed</ns2:state><ns0:title>"Insufficient memory to load file" on x86-32 Windows Server 2008</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2415/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2415" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2415" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-11-04T18:43:52.000Z</ns2:closedDate><ns2:id>2415</ns2:id></ns0:entry>

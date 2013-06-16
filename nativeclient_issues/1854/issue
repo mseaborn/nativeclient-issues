@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCSX47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1854</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">SRPC logging verbosity is lazily initialized from an environment variable without any locking. This can result in lost logging messages.
+
+==8643== WARNING: Possible data race during read of size 4 at 0xB11060004: {{{
+==8643==    T2 (L{}):
+==8643==     #0  NaClSrpcLog src/shared/srpc/rpc_log.c:43
+==8643==     #1  NaClSrpcClientCtor src/shared/srpc/nacl_srpc.c:125
+==8643==     #2  main tests/unittests/shared/srpc/simple_srpc_test.c:124
+==8643==   Concurrent write(s) happened at (OR AFTER) these points:
+==8643==    T3 (L{}):
+==8643==     #0  NaClSrpcLog src/shared/srpc/rpc_log.c:44
+==8643==     #1  NaClSrpcServerLoop src/shared/srpc/rpc_server_loop.c:23
+==8643==     #2  serviceThread tests/unittests/shared/srpc/simple_srpc_test.c:56
+==8643==     #3  tsan_start_thread src/untrusted/valgrind/valgrind_interceptors.c:429
+==8643==     #4  start_thread /mnt/data/b/build/slave/lucid64-glibc/build/native_client/tools/SRC/glibc/nptl/pthread_create.c:299
+==8643==   Location 0xB11060004 is 4 bytes inside a block starting at 0xB11060000 of size 65536 allocated by T2 from heap:
+==8643==     #0  mmap /mnt/data/build/slave/full_linux_build/build/tsan/ts_valgrind_intercepts.c:454
+==8643==     #1  NaClHostDescMap src/shared/platform/linux/nacl_host_desc.c:145
+==8643==     #2  NaClDescIoDescMap src/trusted/desc/nacl_desc_io.c:172
+==8643==     #3  NaClCommonSysMmapIntern src/trusted/service_runtime/nacl_syscall_common.c:1505
+==8643==     #4  NaClCommonSysMmap src/trusted/service_runtime/nacl_syscall_common.c:1678
+==8643==     #5  NaClSysMmap scons-out/dbg-linux-x86-64/gen/native_client/src/trusted/service_runtime/nacl_syscall_handlers.c:171
+==8643==     #6  NaClSysMmapDecoder scons-out/dbg-linux-x86-64/gen/native_client/src/trusted/service_runtime/nacl_syscall_handlers.c:824
+==8643==     #7  NaClSyscallCSegHook src/trusted/service_runtime/nacl_syscall_hook.c:147
+==8643==     #8  (no symbols) scons-out/dbg-linux-x86-64/staging/sel_ldr
+==8643==     #9  (no symbols) 
+==8643==    Race verifier data: 0xB01035CB0,0xB01035E80
+==8643== }}}
+</ns0:content><ns0:updated>2011-07-29T00:12:48.000Z</ns0:updated><ns0:published>2011-05-26T11:54:12.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Data race in SRPC logging</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1854/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1854" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1854" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1854</ns2:id></ns0:entry>

@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUUGSH47eCl7ImA9WxJSFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/84</ns0:id><ns0:author>
+			<ns0:name>RalfPhil...@gmail.com</ns0:name><ns0:uri>/u/111849852743023259607/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? v0.1 (2009-04-23)
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+On what operating system? Linux / OSX on an Intel Core 2 Duo (Unibody
+MacBook). This issue is hardware specific!
+What browser are you using? Mozilla Firefox 3.0.1
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Run browser
+2. Visit page containing malicious NaCl code
+3. Use X.509 client side certificates in another tab/window
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Expected output: No cryptographic keying can be material can be recovered.
+
+Real world: Since the Native Client allows access to the RDTSC instruction,
+very efficient side channel attacks such as cache-timing or branch
+prediction attacks are possible. In fact, most browser implementation of
+cryptographic algorithms are not hardened against local trace-drive
+side-channel attacks (Browsers using OpenSSL 0.9.8e and above are an
+exception, MacOS X 10.5.6 however still 0.9.7l). Also, it is very hard to
+defend against some of these attacks. Especially the simple branch
+prediction attacks pioneered by Aciimez and Schindler are very hard to
+defend against (Nate Lawson has a recent blog entry on that topic though:
+http://rdist.root.org/2009/04/20/preventing-branch-prediction-timing-attacks/).
+A demo will be attached to this bug in the next 12 hours.
+</ns0:content><ns0:updated>2009-05-06T20:53:49.000Z</ns0:updated><ns0:published>2009-05-05T14:54:59.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:owner>
+			<ns2:uri>/u/108782782163151845439/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>[security-contest-submission] Native Client allows effective side-channel attacks against browser</ns0:title><ns2:label>Type-Other</ns2:label><ns2:label>Pri-3</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/84/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=84" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/84" rel="self" type="application/atom+xml" /><ns2:stars>4</ns2:stars><ns2:closedDate>2009-05-06T20:53:49.000Z</ns2:closedDate><ns2:id>84</ns2:id></ns0:entry>

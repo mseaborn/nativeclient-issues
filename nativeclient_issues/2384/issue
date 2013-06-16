@@ -1,0 +1,64 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EEQ347eCl7ImA9WhdaFU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2384</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+r7019
+
+Linux 11.10 x86-64
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Consider this source file:
+
+$ cat ~/mutex.cc
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;pthread.h&amp;gt;
+
+int main(int argc, char* argv[]) {
+  pthread_mutex_t mutex;
+  pthread_mutex_init(&amp;amp;mutex, NULL);
+  std::cout &amp;lt;&amp;lt; &amp;quot;Hello World!&amp;quot;;
+  return 0;
+}
+
+2. Compile it statically with glibc toolchain:
+
+toolchain/linux_x86/bin/x86_64-nacl-g++ -o mutex.nexe ~/mutex.cc -lpthread  -Wl,-T,ldscripts/elf64_nacl.x.static -g -static
+
+3. Try to execute:
+
+$  ./scons-out/dbg-linux-x86-64/staging/sel_ldr -- ./mutex.nexe
+[5276,3733288800:00:36:12.804583] Entered NaClMakeDispatchThunk
+[5276,3733288800:00:36:12.804633] NaCl_page_alloc_randomized: 0x4c1daa7a
+[5276,3733288800:00:36:12.804647] NaCl_page_alloc_randomized: hint 0x4c1daa7a0000
+[5276,3733288800:00:36:12.804654] NaClMakeDispatchThunk: got addr 0x4c1daa7a0000
+Segmentation fault
+
+The untrusted stack trace is:
+
+#0  0x00007ff400000000 in ?? ()
+#1  0x00007ff4000ae840 in __gthread_once (__func=&amp;lt;optimized out&amp;gt;, __once=&amp;lt;optimized out&amp;gt;)
+    at /b/build/slave/lucid64-glibc/build/native_client/tools/BUILD/build-full-gcc-x86_64-nacl/x86_64-nacl/libstdc++-v3/include/x86_64-nacl/bits/gthr-default.h:716
+#2  get_static_mutex () at /b/build/slave/lucid64-glibc/build/native_client/tools/SRC/gcc/libstdc++-v3/libsupc++/guard.cc:64
+#3  mutex_wrapper (this=&amp;lt;optimized out&amp;gt;) at /b/build/slave/lucid64-glibc/build/native_client/tools/SRC/gcc/libstdc++-v3/libsupc++/guard.cc:73
+#4  __cxxabiv1::__cxa_guard_release (g=0x204208) at /b/build/slave/lucid64-glibc/build/native_client/tools/SRC/gcc/libstdc++-v3/libsupc++/guard.cc:391
+#5  0x00007ff40002da20 in __mutex (this=&amp;lt;optimized out&amp;gt;) at /b/build/slave/lucid64-glibc/build/native_client/tools/BUILD/build-full-gcc-x86_64-nacl/x86_64-nacl/libstdc++-v3/include/ext/concurrence.h:153
+#6  (anonymous namespace)::get_locale_mutex () at /b/build/slave/lucid64-glibc/build/native_client/tools/SRC/gcc/libstdc++-v3/src/locale_init.cc:38
+#7  0x00007ff400030a20 in moneypunct (__cache=&amp;lt;optimized out&amp;gt;, this=&amp;lt;optimized out&amp;gt;, __refs=&amp;lt;optimized out&amp;gt;)
+    at /b/build/slave/lucid64-glibc/build/native_client/tools/BUILD/build-full-gcc-x86_64-nacl/x86_64-nacl/libstdc++-v3/include/bits/locale_facets_nonio.h:962
+#8  std::locale::_Impl::_Impl (this=0x202ddc, __refs=&amp;lt;optimized out&amp;gt;) at /b/build/slave/lucid64-glibc/build/native_client/tools/SRC/gcc/libstdc++-v3/src/locale_init.cc:425
+#9  0x00007ff400020320 in main (argc=32756, argv=0x29880) at /home/krasin/mutex.cc:6
+#10 0x00007ff400020380 in __static_initialization_and_destruction_0 (__initialize_p=32756, __priority=131968) at /home/krasin/mutex.cc:9
+#11 0x00007ff4001a2660 in __gcc_personality_v0 (version=&amp;lt;optimized out&amp;gt;, actions=&amp;lt;optimized out&amp;gt;, exception_class=&amp;lt;optimized out&amp;gt;, ue_header=0x213e0, context=0x29880)
+    at /b/build/slave/lucid64-glibc/build/native_client/tools/SRC/gcc/libgcc/../gcc/unwind-c.c:230
+#12 0x00007ff4000deaa0 in __libc_start_main (main=&amp;lt;optimized out&amp;gt;, argc=&amp;lt;optimized out&amp;gt;, ubp_av=&amp;lt;optimized out&amp;gt;, init=0xdf180, fini=0xdf0e0, rtld_fini=0, stack_end=&amp;lt;optimized out&amp;gt;) at libc-start.c:160
+#13 0x00007ff4000200c0 in _init ()
+#14 0x0000000000000000 in ?? ()
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-10-25T09:40:02.000Z</ns0:updated><ns0:published>2011-10-25T07:37:02.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/101568905635420902229/</ns2:uri><ns2:username>amis...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>statically linked program crash on mutex init (glibc only)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2384/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2384" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2384" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>2384</ns2:id></ns0:entry>

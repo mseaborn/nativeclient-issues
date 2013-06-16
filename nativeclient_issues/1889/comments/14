@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEYGQX47eCl7ImA9WhdREkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1889/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=6279
+
+------------------------------------------------------------------------
+r6279 | jvoung@google.com | Mon Aug 01 16:37:47 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/nacl.scons?r1=6279&amp;r2=6278&amp;pathrev=6279
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=6279&amp;r2=6278&amp;pathrev=6279
+
+Try building a separate x86-64 IRT for pnacl for now.
+- Also add a use of the -mtls-use-call option in scons in case anyone wants
+  to try to build the 32 bit IRT w/ pnacl, or the arm version.
+
+Part 2 of: http://codereview.chromium.org/7537032/
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1889
+TEST= ./scons run_ppapi_test_example_browser_test bitcode=1 platform=x86-64 irt=1
+
+Review URL: http://codereview.chromium.org/7540028
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-08-01T23:42:00.000Z</ns0:updated><ns0:published>2011-08-01T23:42:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1889#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1889/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE8CR347eCl7ImA9WhZbGUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1949/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5791
+
+------------------------------------------------------------------------
+r5791 | bsy@google.com | Fri Jun 24 14:55:21 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=5791&amp;r2=5790&amp;pathrev=5791
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=5791&amp;r2=5790&amp;pathrev=5791
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/manifest_name_service_proxy/manifest_proxy.c?r1=5791&amp;r2=5790&amp;pathrev=5791
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=5791&amp;r2=5790&amp;pathrev=5791
+
+fix a race condition in reverse channel startup.
+
+reverse channel initialization state is now a 3 state state variable
+rather than a binary flag.  after reverse_setup RPC to send the
+connection capability to the plugin is invoked, it goes into an
+in-progress state, and when the first reverse RPC connection is made
+the reverse channel initialization state becomes fully initialized.
+the service thread spawner can detect when initialization is
+in-progress and wait for the reverse channel is fully initialized
+before constructing the manifest proxy object.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1949
+TEST= None
+Review URL: http://codereview.chromium.org/7240020
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-06-24T22:01:06.000Z</ns0:updated><ns0:published>2011-06-24T22:01:06.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1949#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1949/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

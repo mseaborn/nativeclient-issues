@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMCR347eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/672/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2878
+
+------------------------------------------------------------------------
+r2878 | mseaborn@chromium.org | Tue Aug 03 01:06:11 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser/nacl.scons?r1=2878&amp;r2=2877&amp;pathrev=2878
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/srpc_client.h?r1=2878&amp;r2=2877&amp;pathrev=2878
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser/fake_browser_test.cc?r1=2878&amp;r2=2877&amp;pathrev=2878
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/srpc_client.cc?r1=2878&amp;r2=2877&amp;pathrev=2878
+
+Plugin: Fix crash when subprocess does not respond to SRPC init
+
+Don't try to destroy the NaClSrpcChannel if it was not initialised to
+start with.
+
+The test needs to add WindowInvoke() because the plugin now tries to
+call window.alert() during the test.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=672
+TEST=run_fake_browser_test
+
+Review URL: http://codereview.chromium.org/3063017
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:54:26.000Z</ns0:updated><ns0:published>2011-01-21T22:54:26.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=672#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/672/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

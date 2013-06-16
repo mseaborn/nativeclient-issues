@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0ICRn47eCl7ImA9WxNaEUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/142/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bradnelson@google.com</ns0:name><ns0:uri>/u/bradnelson@google.com/</ns0:uri></ns0:author><ns0:content type="html">Current status (from khim's emai):
+
+Builds on Linux, but does not pass tests (since we have no loader yet), does not work 
+on Windows at all (build stops without any explanation and without sane error 
+messages) - don't know why (I don't have a Windows system to test). Will investigate 
+today.
+ 
+To build 32-bit version you need to issue 'make SDKLOC=&lt;whatever&gt;' command in 
+tools subdirectory. Command to build 64bit tools is more complex:
+$ make 'BINUTILS_VERSION=2.20 GCC_VERSION=4.4.2 CROSSARCH=nacl64 
+SDKLOC=&lt;whatever&gt;' BUILD/stamp-binutils BUILD/stamp-pregcc BUILD/stamp-
+newlib nc_threads BUILD/stamp-gcc
+
+But it'll need GCC 4.4.2 in svn. I've tried to put it there yesterday 
+(http://codereview.chromium.org/438001/show) but got strange authorization 
+errors. Can you please put these three files in SVN (grab them from ftp.gnu.org) ?
+
+
+Oh - and before we'll try to build NaCl64 please make sure GMP and MPFR libraries 
+are installed on all build systems! Starting from GCC 4.3 they are hard requirements, 
+not an option like before:
+
+Building GCC requires GMP 4.1+ and MPFR 2.3.2+.</ns0:content><ns0:updated>2009-11-25T20:06:07.000Z</ns0:updated><ns0:published>2009-11-25T20:06:07.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>k...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 1 by bradnelson@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=142#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/142/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

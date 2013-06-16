@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A08MQ347eCl7ImA9WhRSFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2443/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Attached is a small test program which demonstrates the problem on the ARM panda board.  It typically fails with:
+
+$ ./arm_double_mapping 
+...
+calling func at 0x404a4f40 (offset 3f40)
+calling func at 0x404a4f80 (offset 3f80)
+calling func at 0x404a4fc0 (offset 3fc0)
+calling func at 0x404a5000 (offset 4000)
+Trace/breakpoint trap
+
+$ uname -a
+Linux localhost 3.0.0-1203-omap4 #8-Ubuntu SMP PREEMPT Tue Aug 23 13:25:47 UTC 2011 armv7l armv7l armv7l GNU/Linux
+</ns0:content><ns0:updated>2011-11-16T21:44:42.000Z</ns0:updated><ns0:published>2011-11-16T21:44:42.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2443#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2443/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

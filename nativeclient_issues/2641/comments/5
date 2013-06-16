@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYDRX47eCl7ImA9WhVSGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2641/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">I can reproduce the issue with the attached IRT, using the SDK example "input_event" (easier to build than dosbox).  The very first mouse event crashes the module.
+
+However, I tried a fresh build of the arm IRT from the NaCl repo using the following revs:
+
+ "pnacl_toolchain_version": "7898"
+ "chrome_rev": "125604"
+ nacl rev 8027
+
+and it worked okay.  I can do as many mouse events and keyboard events as I like.
+
+I did a bit of diffing with the block of code you pasted above and most of the code is similar.
+
+* register allocation, instruction scheduling are identical (they become totally different with the fprintfs)
+
+However, a few of the stack offsets and one of the movw/movt constants is different in my version.  I'll try another build of tomorrow to double check.</ns0:content><ns0:updated>2012-03-16T02:49:34.000Z</ns0:updated><ns0:published>2012-03-16T02:49:34.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2641#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2641/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

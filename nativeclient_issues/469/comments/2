@@ -1,0 +1,107 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0QBSX47eCl7ImA9WxFQGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/469/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">This seems like a potentially reasonable change to make, but I think
+it would be useful to go through the pros and cons of different
+approaches.  The "should" in the original post suggests that there is
+a well-known and agreed-upon policy for dependencies between NaCl and
+Chromium, but as far as know, that is not the case.  If there is no
+policy, I would label this as an Enhancement rather than a Defect.
+
+The problem: We want to organise the dependencies between NaCl and
+Chromium such that we can evolve the dependencies with minimum pain,
+given the constraint that the two live in separate repositories.  The
+two aren't changed in lockstep; we can't do an atomic commit across
+both.
+
+The choices we have are:
+
+ * Run-time dependency injection vs. link-time dependency injection.
+   (The latter might not traditionally be considered dependency injection;
+   it is more implicit, but a static or dynamic linker will do similar
+   things to an explicit run-time dependency injection system.)
+
+ * Which module's header files contain the type declaration for a
+   depended-on function.
+
+   The type declaration might take the form of a function prototype
+   (for link-time injection) or appear in a function argument or
+   struct member (for run-time injection).
+
+   The declaration can be
+    1) in Chromium (as now)
+    2) in NaCl (as proposed by Gregory, I think)
+    3) in both, or
+    4) in a third module (e.g. a new libsandbox)
+
+   This choice is a problem peculiar to C.  If the type is declared in
+   both modules (3), we don't get a type check -- except, that is, if
+   it is a non-inlined C++ function or method, in which case a
+   mismatch would cause a link-time error because the mangled names
+   wouldn't match.
+
+Example:  Suppose we are using run-time injection.  Suppose we start
+out with NaCl depending on the following function from Chromium:
+  funcptr1_t func1;
+It turns out we need to change this interface (e.g. add a new
+parameter), and so we want to switch to a new function:
+  funcptr2_t func2;
+
+Let's consider the different ways we could pass the function pointers
+from Chromium to NaCl.
+
+
+a) Multiple "register" functions; type declarations are in NaCl headers.
+
+e.g. NaCl starts off by providing:
+  typedef int funcptr1_t(args...);
+  void NaClRegisterFunc1(funcptr1_t func1);
+
+To switch to func2, we could do 5 commits:
+ * Change NaCl to add NaClRegisterFunc2(funcptr2_t func2)
+   - but NaCl would not yet use the registered value.
+ * Change Chromium to call the NaClRegisterFunc2() as well as
+   NaClRegisterFunc1().
+ * Change NaCl to use the func2 value instead of func1.
+ * Cleanup: Change Chromium not to call NaClRegisterFunc1().
+ * Cleanup: Change NaCl not to provide NaClRegisterFunc1().
+
+Alternatively, we could do 3 commits:
+ * Change NaCl to add NaClRegisterFunc2(funcptr2_t func2).
+   NaCl would use func2 if it was registered but fall back to using
+   func1.  This is problematic because it's tricky to test the
+   fallback behaviour.
+ * Change Chromium to call NaClRegisterFunc2() instead of
+   NaClRegisterFunc1().
+ * Cleanup: Change NaCl to remove NaClRegisterFunc1() and remove the
+   fallback behaviour.
+
+
+b) One "register" function that takes a struct, dict or array.  Type
+declarations are either in the Chromium headers or in a third set of
+headers (e.g. a hypothetical libsandbox).
+
+e.g. libsandbox provides:
+  typedef int funcptr1_t(args...);
+  struct SandboxFuncs {
+    funcptr1_t func1; ...
+  };
+and NaCl provides
+  void NaClRegisterSandboxFuncs(struct SandboxFuncs *funcs);
+
+To switch to func2, we can do 3 commits:
+ * Change Chromium/libsandbox to add func2 to struct SandboxFuncs.
+ * Change NaCl to use the func2 value instead of func1.
+ * Cleanup: Change Chromium/libsandbox not to provide func1.
+
+
+To me, (b) seems cleaner and more convenient.  The changeover can be
+done in 3 commits.  In contrast, for (a), the changeover must be done
+either in 5 commits, or in 3 commits at the expense of writing awkward
+and hard-to-test fallback code.
+
+(b) is basically how NPAPI works.  By using a struct, my example
+provides API but not ABI compatibility.  But it's easy to add ABI
+compatibility by using, say, a mapping from strings instead of a
+struct.  I've heard that Pepper/NPAPI is being changed to do exactly
+that.
+</ns0:content><ns0:updated>2010-05-14T11:09:18.000Z</ns0:updated><ns0:published>2010-05-14T11:09:18.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=469#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/469/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

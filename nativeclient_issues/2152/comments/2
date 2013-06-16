@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0cHSX47eCl7ImA9WhdQFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2152/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 57e585fd84163ad7dc7da9e1356e0cd2ed4fc4dc
+ Email: pdox@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Add -r (-relocatable) support to pnacl-ld.
+
+R=jvoung,mcgrathr
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2152
+Review URL: http://codereview.chromium.org/7658003
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6427 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	tools/llvm/driver/pnacl-ld.py</ns0:content><ns0:updated>2011-08-16T00:37:18.000Z</ns0:updated><ns0:published>2011-08-16T00:37:18.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2152#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2152/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

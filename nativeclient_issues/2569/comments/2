@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0UEQ347eCl7ImA9WhRUGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2569/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I wrote a model checker in Python for checking the thread suspension logic.  The code is here: https://github.com/mseaborn/nacl-model-check
+
+It found the following deadlock:
+
+...
+A: ResumeThread(B)
+    B: lock: acquired
+    B: get state
+A: change state back
+A: wake(B) -&gt; False
+    B: wait (unlocks)
+DEADLOCK: B
+
+where:
+ * A is the thread doing the mmap() syscall (and so NaClUntrustedThreadsSuspend() and NaClUntrustedThreadsResume());
+ * B is the thread hosting untrusted code which calls NaClAppThreadSetSuspendState().
+
+In retrospect, the mistake is obvious. :-)  Thread B sees the NACL_APP_THREAD_SUSPENDING flag and assumes it is *about* to suspend, when in reality it recently *finished* suspending.  Thread B waits on the condvar, but only after missing the wakeup.
+
+There are two possible simple fixes here:
+
+1) Move NaClUntrustedThreadsResume()'s assignment to natp-&gt;suspend_state so that it's before the ResumeThread() call instead of after.  (But if SuspendThread(B) returns before B is suspended, B can still miss the wakeup and deadlock.)
+
+2) Wrap NaClUntrustedThreadsResume()'s logic in NaClXMutexLock()/NaClXMutexUnlock().  (But if SuspendThread(B) returns before B is suspended, the two threads can deadlock, because B can be suspended while holding the mutex that A is trying to claim.)
+
+Another possibility is to remove the use of locks and use atomic operations instead.  I only used a lock because NaClXCondVarWait() requires one to unlock.
+</ns0:content><ns0:updated>2012-01-31T05:53:22.000Z</ns0:updated><ns0:published>2012-01-31T05:53:22.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2569#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2569/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

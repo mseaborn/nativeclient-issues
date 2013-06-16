@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEQEQ347eCl7ImA9WhdVFEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2234/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">The reason that the inbrowser tests were flaky is due to the following:
+
+ - the plugin could only detect service runtime crashes synchronously.  that is, it relies on synchronous error reporting when IPCs occur, e.g., when the plugin needs to set up its communication channel to the untrusted nexe for the ppapi proxy, etc.
+
+ - the in-browser tests crashes asynchronously.  in particular, when i added the handshake for DSO initialization / decoupled startup, the in-browser tests crashed *after* the StartupInitializationComplete reverse service RPC upcall.
+
+consider what happens when the scheduler delays the nexe's execution, so that the crash happens after the ppapi proxy handshake is done.  the test driver JavaScript code doesn't do anything to initiate any I/O with the nexe -- it is just waiting for the crash event.  the plugin isn't going to initiate any other I/O either.  this means that even though all the communication channels are kaput, the plugin wouldn't notice and won't generate a crash event.
+
+the pending CL(s) add a channel closed callback to the reverse channel.  when the reverse RPC channel closes as a side effect of the service runtime process exiting, the reverse service threads notices right away.  previously they just exited.  now they will invoke a ReportCrash method in the ReverseInterface that the plugin provides to the ReverseService object.  this will perform CallOnMainThread etc to cause the plugin to generate the crash event.</ns0:content><ns0:updated>2011-09-19T21:05:02.000Z</ns0:updated><ns0:published>2011-09-19T21:05:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2234#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2234/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

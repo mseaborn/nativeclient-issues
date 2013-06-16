@@ -1,0 +1,49 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0YAQH47eCl7ImA9WhVREUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2669/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Brad Nelson rebooted the build slave and the problem seems to have gone away.  Maybe there was something running in the background -- we didn't look very closely.
+
+Here are the timings from the logs:
+
+$ perl -e 'foreach $i (2000..2080) { system("wget http://build.chromium.org/p/client.nacl/builders/lucid-32-bare-glibc-opt/builds/$i/steps/small_tests/logs/stdio") }'
+$ grep -h 'run_many_threads_sequential_test.*ms' build.chromium.org/p/client.nacl/builders/lucid-32-bare-glibc-opt/builds/*/steps/small_tests/logs/stdio
+[       OK ] nacl_glibc.run_many_threads_sequential_test (730 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (770 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (710 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (750 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (730 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (1080 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (530 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (1040 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (520 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (570 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (530 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (530 ms)
+[  FAILED  ] nacl_glibc.run_many_threads_sequential_test (117220 ms)
+[  FAILED  ] nacl_glibc.run_many_threads_sequential_test (118450 ms)
+[  FAILED  ] nacl_glibc.run_many_threads_sequential_test (118730 ms)
+[  FAILED  ] nacl_glibc.run_many_threads_sequential_test (100540 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (64780 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (82810 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (82390 ms)
+[  FAILED  ] nacl_glibc.run_many_threads_sequential_test (118940 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (82960 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (60800 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (58290 ms)
+...
+[  FAILED  ] nacl_glibc.run_many_threads_sequential_test (118370 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (61020 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (59970 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (64459 ms)
+[  FAILED  ] nacl_glibc.run_many_threads_sequential_test (118520 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (9750 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (68270 ms)
+[  FAILED  ] nacl_glibc.run_many_threads_sequential_test (119020 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (5180 ms)
+[  FAILED  ] nacl_glibc.run_many_threads_sequential_test (118420 ms)
+[  FAILED  ] nacl_glibc.run_many_threads_sequential_test (119080 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (82600 ms)
+&lt;build slave restarted here&gt;
+[       OK ] nacl_glibc.run_many_threads_sequential_test (560 ms)
+[       OK ] nacl_glibc.run_many_threads_sequential_test (570 ms)
+</ns0:content><ns0:updated>2012-03-19T20:32:21.000Z</ns0:updated><ns0:published>2012-03-19T20:32:21.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>bradnelson@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 6 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2669#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2669/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

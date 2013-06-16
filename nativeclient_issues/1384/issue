@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UDRH47eCl7ImA9Wx9bFEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1384</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+For Windows users, running project_templates\init_project.py requires directly using python to run this script.  Conversely, Linux and Mac users can just execute init_project.py directly since it starts with #!/usr/bin/python.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+For everything else in the SDK, we provide a batch file (.cmd) that wraps around the execution of either make.exe or any other tool that the user may want that would otherwise require cygwin.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+To be consistent, we should provide a 'init_project.cmd' file in the Windows SDK that makes it so a Windows user can run this script without needed a cygwin environment setup.</ns0:content><ns0:updated>2011-02-22T22:54:35.000Z</ns0:updated><ns0:published>2011-02-03T17:31:52.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:state>closed</ns2:state><ns0:title>Add init_project.cmd for Windows developers</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Milestone-Baltic-Sea-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1384/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1384" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1384" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-02-22T22:54:35.000Z</ns2:closedDate><ns2:id>1384</ns2:id></ns0:entry>

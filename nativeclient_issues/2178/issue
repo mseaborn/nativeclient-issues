@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QBQn47eCl7ImA9WhdXEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2178</ns0:id><ns0:author>
+			<ns0:name>assafRa...@gmail.com</ns0:name><ns0:uri>/u/100260242131676702826/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? native_client_sdk_0_5_1031
+On what operating system? Windows7 64 (but I think that any OS will reproduce this)
+What browser are you using? Google Chrome 14.0.835.94 beta-m
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Install Google Chrome 14.0.835.94 beta-m
+2. Open this page: http://goo.gl/7V5q5
+3. The &amp;quot;Event Log will&amp;quot; show: &amp;quot;loadstart&amp;quot;, then &amp;quot;progress: Computing... (0 of 0 bytes)&amp;quot;
+3. The next log message (after a long time) will be &amp;quot;progress: 100% (22253391 of 22253391 bytes)&amp;quot;
+
+&lt;b&gt;What is the expected output?&lt;/b&gt;
+I excepted a more detailed progress report on this 20 MB nexe.
+
+&lt;b&gt;What do you see instead?&lt;/b&gt;
+No progress report, the user may have to wait a long time without any progress info.
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+This is your load_progress example from the SDK.
+I just replaced the nexe files with bigger nexe files (20 MB) - to demonstrate the issue.
+
+</ns0:content><ns0:updated>2011-08-23T14:55:53.000Z</ns0:updated><ns0:published>2011-08-23T13:03:34.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:state>closed</ns2:state><ns0:title>The nexe load progress doesn't work - only shows the 0% and 100% of the progress</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2178/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2178" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2178" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-23T14:55:53.000Z</ns2:closedDate><ns2:id>2178</ns2:id><ns2:mergedInto>
+			<ns2:id>93834</ns2:id><ns2:project>chromium</ns2:project></ns2:mergedInto></ns0:entry>

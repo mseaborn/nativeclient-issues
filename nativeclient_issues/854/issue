@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYCQ347eCl7ImA9WhRaGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/854</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I need to get the google_nacl_platform library to build against
+nacl-glibc, but there is one remaining build failure, in
+src/shared/platform/linux/nacl_thread.c.  It depends on
+PTHREAD_STACK_MIN but that is not getting #defined.
+
+PTHREAD_STACK_MIN is supposed to be defined by &amp;lt;limits.h&amp;gt;, indirectly.
+
+(It is actually defined in &amp;lt;bits/local_lim.h&amp;gt;, #included by
+&amp;lt;bits/posix1_lim.h&amp;gt;, in turn #included by &amp;lt;limits.h&amp;gt; only if
+_POSIX_SOURCE is defined or _POSIX_C_SOURCE &amp;gt;= 1.)
+
+However, glibc's &amp;lt;limits.h&amp;gt; is getting overridden by a gcc-provided
+&amp;lt;limits.h&amp;gt;.
+
+Normally gcc's &amp;lt;limits.h&amp;gt; has a footer tacked on that does
+&amp;quot;#include_next &amp;lt;limits.h&amp;gt;&amp;quot;, which picks up glibc's version of the
+header.  (This is because some of the definitions are provided by the
+compiler, some by libc.)  The footer comes from limity.h in gcc's
+source tree.
+
+However, our build of gcc is not including this footer.
+
+The logic that adds the footer is in gcc/gcc/Makefile.in.  See
+LIMITS_H_TEST.  gcc adds the footer if it thinks libc provides its own
+&amp;lt;limits.h&amp;gt;.
+
+However, the directory gcc checks for limits.h is
+$(SYSTEM_HEADER_DIR), defined as $(CROSS_SYSTEM_HEADER_DIR) by
+configure.ac, which is defined as '$(gcc_tooldir)/sys-include'.  But
+glibc's limits.h is *actually* in '$(gcc_tooldir)/include'.
+
+Why is gcc looking in &amp;quot;sys-include&amp;quot; rather than &amp;quot;include&amp;quot;?  This
+appears to apply only to cross-compilation, which is odd.
+
+Googling for &amp;quot;sys-include&amp;quot; turns up an isolated complaint
+(http://gcc.gnu.org/ml/gcc-bugs/2001-06/msg00152.html,
+&amp;quot;Cross-GCC/sys-include bug&amp;quot;) but not much else in the way of
+explanation.
+
+PNaCl's tools/llvm/utman.sh creates &amp;quot;sys-include&amp;quot; as a symlink to
+&amp;quot;include&amp;quot;, presumably as a workaround for this.
+
+I suppose I'll do the same, unless anyone has a better idea about the
+story behind &amp;quot;sys-include&amp;quot;?
+</ns0:content><ns0:updated>2012-02-21T17:09:22.000Z</ns0:updated><ns0:published>2010-08-26T20:01:34.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Fix nacl-glibc's &lt;limits.h&gt; to get PTHREAD_STACK_MIN</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/854/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=854" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/854" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>854</ns2:id></ns0:entry>

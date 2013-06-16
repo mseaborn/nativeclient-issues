@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0UFQX47eCl7ImA9WhdQFEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1838/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: a523dd97ae9994ef5c42e3e6ac949635b822d472
+ Email: mcgrathr@chromium.org@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Clean up IRT thread creation and exit
+
+Allocate the IRT-private TLS area for a new thread before creating it, so
+we can fail gracefully.  Call destructors and free that area at thread
+exit, so we don't leak.  Use private malloc rather than sbrk for initial
+thread's TLS area.  Let malloc fail as gracefully as possible.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1838
+TEST= trybots
+
+R=mseaborn@chromium.org
+
+Review URL: http://codereview.chromium.org/7590016
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6423 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	src/untrusted/irt/irt_malloc.c
+A	src/untrusted/irt/irt_private.h
+M	src/untrusted/irt/irt_private_tls.c
+M	src/untrusted/irt/irt_thread.c
+M	src/untrusted/pthread/nacl.scons
+M	src/untrusted/pthread/nc_init_private.c
+M	tests/threads/nacl.scons</ns0:content><ns0:updated>2011-08-15T20:46:50.000Z</ns0:updated><ns0:published>2011-08-15T20:46:50.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1838#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1838/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

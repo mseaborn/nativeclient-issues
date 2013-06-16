@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkAESH47eCl7ImA9WhRREEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2460/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7270
+
+------------------------------------------------------------------------
+r7270 | noelallen@google.com | Wed Nov 23 09:47:06 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/DEPS?r1=7270&amp;r2=7269&amp;pathrev=7270
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pyauto_nacl/surfaway.py?r1=7270&amp;r2=7269&amp;pathrev=7270
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pyauto_nacl/surfaway_async.py?r1=7270&amp;r2=7269&amp;pathrev=7270
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pyauto_nacl/multiple_nexes.py?r1=7270&amp;r2=7269&amp;pathrev=7270
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pyauto_nacl/nacl.scons?r1=7270&amp;r2=7269&amp;pathrev=7270
+
+Remove references to test_case.html and ppapi_tests_XXX.nexe which
+are now only run in the Chrome ui_tests.  Also bump deps to verify.
+Once deps was bumped this appears to cause a regression in the
+progress_events test probably due to the DEPS bump.
+
+See bug: http://code.google.com/p/nativeclient/issues/detail?id=2460 
+TBR= jasonwkim@google.com
+Review URL: http://codereview.chromium.org/8680014
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-11-23T17:51:49.000Z</ns0:updated><ns0:published>2011-11-23T17:51:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2460#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2460/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

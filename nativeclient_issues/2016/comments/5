@@ -1,0 +1,44 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYGRX47eCl7ImA9WhdSEkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2016/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>pol...@google.com</ns0:name><ns0:uri>/u/101953680983947802512/</ns0:uri></ns0:author><ns0:content type="html">End of the log:
+
+PPAPI_PROXY_BROWSER: PPP_Messaging::HandleMessage: instance=1277735237
+PPAPI_PROXY_PLUGIN : PPB_GetInterface('PPB_Var;1.0')
+PPAPI_PROXY_PLUGIN : PPB_GetInterface('PPB_Var;1.0'): 0x18002c00
+PPAPI_PROXY_BROWSER: PPB_GetInterface('PPB_Var;1.0'): 0x7f3077fcfc40
+PPAPI_PROXY_PLUGIN : PPB_GetInterface('PPB_Var;1.0'): No error
+PPAPI_PROXY_PLUGIN : PPB_Var::VarFromUtf8: data='StartPlayback'
+PPAPI_PROXY_PLUGIN : PPB_Var::VarFromUtf8: as_id=1
+PPAPI_PROXY_PLUGIN : PPB_GetInterface('PPB_Var;1.0')
+PPAPI_PROXY_PLUGIN : PPB_GetInterface('PPB_Var;1.0'): 0x18002c00
+PPAPI_PROXY_PLUGIN : PPB_Var::VarToUtf8: as_id=1
+PPAPI_PROXY_PLUGIN : PPB_Var::VarToUtf8: data='StartPlayback'
+PPAPI_PROXY_PLUGIN : PPB_Audio::StartPlayback: audio_resource=226
+PPAPI_PROXY_PLUGIN : PluginAudio::StartAudioThread
+PPAPI_PROXY_BROWSER: PPB_Audio::StartPlayback: resource=226
+PPAPI_PROXY_BROWSER: GetAudioInterface
+PPAPI_PROXY_BROWSER: PPB_Audio::StartPlayback: pp_success=1
+PPAPI_PROXY_PLUGIN : PPB_Audio::StartPlayback: No error
+PPAPI_PROXY_PLUGIN : PPB_Core::IsMainThread
+PPAPI_PROXY_BROWSER: PPB_Core::CallOnMainThread_main: delay_in_milliseconds=1000
+PPAPI_PROXY_PLUGIN : PPB_Core::CallOnMainThread: No error
+PPAPI_PROXY_PLUGIN : PPB_Var::VarToUtf8: as_id=1
+PPAPI_PROXY_PLUGIN : PPB_Var::VarToUtf8: data='StartPlayback'
+PPAPI_PROXY_PLUGIN : PPB_Var::Release: var=PPB_Var(StartPlayback)
+PPAPI_PROXY_PLUGIN : PPP_Instance::HandleMessage
+PPAPI_PROXY_BROWSER: PPP_Messaging::HandleMessage: No error
+7434f7e0: PluginPpapi::DidChangeView (this=0x7f307895eb00)
+PPAPI_PROXY_BROWSER: PPP_Instance::DidChangeView: instance=1277735237
+PPAPI_PROXY_PLUGIN : PPP_Instance::DidChangeView
+PPAPI_PROXY_BROWSER: PPP_Instance::DidChangeView: No error
+7434f7e0: PluginPpapi::~PluginPpapi (this=0x7f307895eb00, scriptable_handle=0x7f3078997db8)
+7434f7e0: PluginPpapi::ShutdownProxy (ppapi_proxy=0x7f30787ebe70)
+PPAPI_PROXY_BROWSER: PPP_Instance::DidDestroy: instance=1277735237
+PPAPI_PROXY_PLUGIN : PPB_Core::ReleaseResource: resource=222
+PPAPI_PROXY_PLUGIN : PPB_Core::ReleaseResource: not tracked locally
+PPAPI_PROXY_BROWSER: PPB_Core::ReleaseResource: resource=222
+PPAPI_PROXY_PLUGIN : PPB_Core::ReleaseResource: No error
+PPAPI_PROXY_PLUGIN : PPB_Core::ReleaseResource: resource=226
+PPAPI_PROXY_PLUGIN : PluginAudio::~PluginAudio
+PPAPI_PROXY_PLUGIN : PluginAudio::StopAudioThread
+</ns0:content><ns0:updated>2011-07-21T02:42:04.000Z</ns0:updated><ns0:published>2011-07-21T02:42:04.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by pol...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2016#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2016/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

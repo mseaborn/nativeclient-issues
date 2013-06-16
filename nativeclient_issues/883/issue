@@ -1,0 +1,52 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE4DQH47eCl7ImA9Wx9UGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/883</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">Code to reproduce:
+================================
+static __thread char var;
+
+extern void bar(char c);
+
+foo() {
+    bar(var);
+}
+================================
+
+Steps to reproduce:
+shell&amp;gt; nacl64-gcc -fPIC -O0 -c tst.c
+shell&amp;gt; objdump -r tst.o | grep var
+0000000000000007 R_X86_64_TPOFF32  var
+
+
+Currently a modified version of the Local Exec TLS model is used in nacl64. This
+means the assumption that all accessed TLS areas are allocated before control
+reaches the program start (which is true for statically linked exutables). The
+model differs from the standard x86-64 ABI in the part of getting the thread
+pointer (tls_get nacl syscall is used for that).
+
+the code sequence is:
+    movq $var@TPOFF, %rdi
+    call __tls_get_addr
+
+__tls_get_addr is implemented in src/untrusted/stubs/tls_x86_64.c
+
+The patch that introduced GCC support is:
+http://codereview.chromium.org/501075/diff/1002/1003
+
+In the PIC mode the GCC generates the sequence:
+    movq $var@TPOFF, %rdi
+    call __tls_get_addr@PLT
+
+This makes the linker complain when a shared object is linked (even for static
+thread local variables) because the above assumption does not hold.
+
+The native x86_64 GCC uses the Local Dynamic TLS model (even for non-static
+variables, I don't know why):
+leaq    var@TLSGD(%rip), %rdi
+call    __tls_get_addr@PLT
+
+It should be fairly easy to generate this Local Dynamic sequence with nacl64-gcc.
+
+P.S.: this issue glibc build (when compiling string/strerror_l.c, inet/inet_ntoa.c)
+</ns0:content><ns0:updated>2011-02-17T22:49:31.000Z</ns0:updated><ns0:published>2010-09-15T10:30:16.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>nacl64-gcc -fPIC generates R_X86_64_TPOFF32 relocation incompatible with DSO linking.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Milestone-Baltic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/883/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=883" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/883" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2010-10-15T10:23:13.000Z</ns2:closedDate><ns2:id>883</ns2:id></ns0:entry>

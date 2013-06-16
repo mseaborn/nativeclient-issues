@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEGSX47eCl7ImA9WhZWGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1830/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mcgra...@chromium.org</ns0:name><ns0:uri>/u/109286297231979736865/</ns0:uri></ns0:author><ns0:content type="html">Not host specific, also seen on linux with 5337 (current DEPS version).
+
+See below, there are multiple suspect issues here.  There are two RW segments instead of one.  Neither the code nor rodata segments are aligned.
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz  MemSiz   Flg Align
+  LOAD           0x000120 0x01000120 0x01000120 0x0005e0 0x0005e0 R E 0x10000
+  LOAD           0x000700 0x11000700 0x11000700 0x000318 0x000318 R   0x10000
+  LOAD           0x000a18 0x11010a18 0x11010a18 0x000128 0x000128 RW  0x10000
+  LOAD           0x010000 0x11020000 0x11020000 0x000000 0x000020 RW  0x10000
+  DYNAMIC        0x000a2c 0x11010a2c 0x11010a2c 0x0000e8 0x0000e8 RW  0x4
+  GNU_STACK      0x000000 0x00000000 0x00000000 0x000000 0x000000 RW  0x4
+  TLS            0x000000 0x00000000 0x00000000 0x000000 0x000000 R   0x4
+</ns0:content><ns0:updated>2011-05-20T00:17:08.000Z</ns0:updated><ns0:published>2011-05-20T00:17:08.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>mseaborn@chromium.org</ns2:ccUpdate></ns2:updates><ns0:title>Comment 2 by mcgra...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1830#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1830/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

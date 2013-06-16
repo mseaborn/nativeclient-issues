@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU8FQX47eCl7ImA9WhZWGUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1796</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">On my Mac laptop (running OS X 10.5), chrome_browser_tests is unreliable, especially if I run it with &amp;quot;-j8&amp;quot;.  Usually multiple tests will hang, with the NaCl browser plugin failing to start the nexe.  The JavaScript console will say &amp;quot;NaCl module load failed: SRPC connection failure.&amp;quot;
+
+Here's what happens when it fails:
+
+ 1) The NaCl browser plugin does imc_connect() which apparently succeeds and returns an IMC connection.  It sends the initial SRPC message with imc_sendmsg(), but on reading the reply with imc_recvmsg() it gets EOF.
+ 2) The untrusted code does imc_accept() which apparently succeeds and returns an IMC connection.  It goes into a loop to do imc_recvmsg() repeatedly, but the first call returns EOF.
+
+The cause of this is hinted at in an old comment in native_client/src/shared/imc/osx/nacl_imc.cc:
+
+    // In OS X, after a process closes one end of a socket pair which has been
+    // transferred to the other process, the socket the remote process has
+    // received is treated as if it is closed, and read() returns immediately
+    // with zero if there is no data while it can still receive incoming data.
+    // To amend this behavior, we do not close transferred socket pair handles
+    // until both ends are closed
+
+This seems to be a bug in OS X's garbage collector for socket FDs.  In this case, socket FDs are getting GC'd while they are still live.
+
+(Background:  Unix domain sockets require a garbage collector that can handle cycles, because it's possible that the only reference to a socket FD is from a message inside the queue of another socket FD.)
+
+We have noticed that chrome_browser_tests is more likely to fail on the Mac buildbot when using the IRT than when not using the IRT.  This is probably because using the IRT causes sel_ldr to take longer to start up (to initialise the dynamic code area), so there is a larger window in which the socket could get GC'd before untrusted code imc_accept()s the connection.
+
+Attached are two test programs that seem to reproduce the problem in the non-concurrent case:
+
+  unix_socket_loss.c (trusted code)
+    Linux:          prints &amp;quot;got=5 data=hello - PASS&amp;quot;
+    Mac OS X 10.5:  prints &amp;quot;got=0 data= - FAIL&amp;quot;
+    Mac OS X 10.6:  prints &amp;quot;got=0 data= - FAIL&amp;quot;
+
+  imc_socket_loss.c (untrusted code)
+    Linux:          prints &amp;quot;got=5 data=hello - PASS&amp;quot;
+    Mac OS X 10.5:  prints &amp;quot;imc_recvmsg: Not owner&amp;quot;
+    Mac OS X 10.6:  prints &amp;quot;imc_sendmsg: I/O error&amp;quot;
+</ns0:content><ns0:updated>2011-05-20T18:56:50.000Z</ns0:updated><ns0:published>2011-05-10T23:45:36.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/shess@chromium.org/</ns2:uri><ns2:username>shess@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>IMC: Concurrent imc_connect()/imc_accept() is unreliable on Mac</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>PlatformDifference</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns2:label>HostOSBug</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1796/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1796" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1796" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>1739</ns2:id></ns2:blocking><ns2:closedDate>2011-05-20T18:56:50.000Z</ns2:closedDate><ns2:id>1796</ns2:id></ns0:entry>

@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUcGSX47eCl7ImA9WhVTEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2595/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">For the short term we would need the following:
+    Update the scons files to generate a .lib which will be placed into the toolchain tarball.  See libppapi_cpp in the appropriate nacl.scons file ppapi directory to see how that gets added.
+    Add any needed header files to the toolchain.  This will require a list of new headers that need to go into the toolchain to support this.  Ideally this will be none.  If you must add a new header(s), please send me the list and I can update src/native_client_sdk/src/build/build_sdk.py appropriately in the Chrome repo.
+    Roll deps in Chrome
+    Then verify it can be build outside the scons environment (without a -I../../native_client)
+
+</ns0:content><ns0:updated>2012-02-23T18:50:28.000Z</ns0:updated><ns0:published>2012-02-23T18:50:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by noelal...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2595#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2595/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcCSH47eCl7ImA9Wx9aEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1495/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>myriac...@gmail.com</ns0:name><ns0:uri>/u/112082128194607343681/</ns0:uri></ns0:author><ns0:content type="html">Two more thoughts I had on this:
+
+1. This affects all transitions from untrusted code to trusted.  The AddVectoredExceptionHandler bug in Windows is just an interesting case.
+2. This can still be insecure even if fixed in the Native Client.  If a native Windows DLL made by some other party gets loaded into Chromium's address space and establishes a vectored handler without awareness of the direction flag issue, it can be the target of exploitation, regardless of what the Native Client does.
+3. Prohibiting the "std" and "popf" instructions in sandboxed programs would mean that the "memmove" implementation will need to change, which is annoying.</ns0:content><ns0:updated>2011-03-04T00:54:29.000Z</ns0:updated><ns0:published>2011-03-04T00:54:29.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by myriac...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1495#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1495/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

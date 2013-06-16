@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkQHQX47eCl7ImA9WhdbEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1631</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">cat &amp;gt;1.c
+int main(void) {
+  return 0;
+}
+^D
+
+nacl64-g++ -o 1.o -c 1.c
+nacl64-g++ -o 1 -static -T ldscripts/elf64_nacl.x.static 1.o
+
+libstdc++.a(eh_globals.o): In function `__cxa_get_globals_fast':
+/mnt/data/b/build/slave/lucid64-glibc/build/native_client/tools/BUILD/build-full-gcc-nacl64/nacl64/libstdc++-v3/libsupc++/../../../../../SRC/gcc/libstdc++-v3/libsupc++/eh_globals.cc:59: undefined reference to `__tls_get_addr'
+/home/testuser/root/nacl-sdk/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib64/libstdc++.a(eh_globals.o): In function `__cxa_get_globals':
+/mnt/data/b/build/slave/lucid64-glibc/build/native_client/tools/BUILD/build-full-gcc-nacl64/nacl64/libstdc++-v3/libsupc++/../../../../../SRC/gcc/libstdc++-v3/libsupc++/eh_globals.cc:63: undefined reference to `__tls_get_addr'
+collect2: ld returned 1 exit status
+</ns0:content><ns0:updated>2011-10-07T20:45:30.000Z</ns0:updated><ns0:published>2011-04-08T08:39:20.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100177598732114324016/</ns2:uri><ns2:username>mcgra...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Static linking with libstdc++ broken in GLibC toolchain r4798</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Mstone-16</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1631/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1631" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1631" rel="self" type="application/atom+xml" /><ns2:stars>4</ns2:stars><ns2:closedDate>2011-10-07T20:45:30.000Z</ns2:closedDate><ns2:id>1631</ns2:id></ns0:entry>

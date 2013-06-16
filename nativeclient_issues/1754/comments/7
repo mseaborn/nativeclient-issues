@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8CSX47eCl7ImA9WhZXFkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1754/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5181
+
+------------------------------------------------------------------------
+r5181 | robertm@google.com | Thu May 05 09:58:33 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/utman.sh?r1=5181&amp;r2=5180&amp;pathrev=5181
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/driver.py?r1=5181&amp;r2=5180&amp;pathrev=5181
+
+Add experimental functionionality to driver to build bitcode libraries as a single bitcode file. Also make the extra sdk lib validator tolerate those new libs.
+
+The feature is disabled by default. 
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1754
+
+TEST= utman.sh all; utman.sh test-all
+Review URL: http://codereview.chromium.org/6915005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-05T17:01:08.000Z</ns0:updated><ns0:published>2011-05-05T17:01:08.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1754#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1754/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

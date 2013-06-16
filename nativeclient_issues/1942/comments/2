@@ -1,0 +1,78 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk4ERn47eCl7ImA9WhZaEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1942/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5812
+
+------------------------------------------------------------------------
+r5812 | elijahtaylor@google.com | Mon Jun 27 12:56:25 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/mandel/mandel_tiled.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/plugin_async_messaging/async_message_test.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/debug_stub/debug_browser_test.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_file_system/ppapi_file_system.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_gles_book/ppapi_gles_book_mip_map_2d.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/ppapi_bad_no_ppp_instance.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/debug_stub/nacl.scons?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_example_font/ppapi_example_font.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_proxy/basic_object.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/ppapi_bad.html?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_gles_book/ppapi_gles_book_simple_texture_2d.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/progress_events/ppapi_progress_events.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/manifest/manifest_top.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pnacl_client_translator/llc_manifest.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_gles_book/ppapi_gles_book_simple_vertex_shader.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/nameservice/srpc_nameservice.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/ppapi_bad_manifest_bad_files.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_gles_book/ppapi_gles_book_hello_triangle.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_gles_book/ppapi_gles_book_simple_texture_cubemap.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pnacl_client_translator/ld_manifest.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_proxy/user_main.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/manifest/manifest_subdir.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/manifest.cc?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppb_graphics2d/ppapi_ppb_graphics2d.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppb_core/ppapi_ppb_core.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/earth/earth_c.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_example_audio/ppapi_example_audio.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc_hw/srpc_hw.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_tests/test_case.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/manifest.h?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/nacl.scons?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_example_2d/ppapi_example_2d.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/browser_startup_time/browser_startup_time.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_test_example/ppapi_test_example.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_messaging/ppapi_messaging.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_geturl/ppapi_geturl.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_example_post_message/ppapi_example_post_message.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/dynamic_code_loading/dynamic_modify_test.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/srpc_nrd_server.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/ppapi_bad_doesnotexist.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/ppapi_bad_crossorigin.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/ppapi_bad_ppp_initialize.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/ppapi_bad_ppp_instance_didcreate.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/ppapi_bad_manifest_uses_nexes.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812 (from /trunk/src/native_client/tests/ppapi_browser/bad/ppapi_bad_doesnotexist.nmf revision 5806)
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/cat.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/srpc_nrd_client.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/ppapi_bad_magic.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/earth/earth_cc.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_ppb_scrollbar/ppapi_ppb_scrollbar.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_gles_book/ppapi_gles_book_texture_wrap.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_example_gles2/ppapi_example_gles2.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_proxy/event_example.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/srpc_test.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/imc_shm_mmap/imc_shm_mmap_test.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc_hw/srpc_hw_data.html?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_gles_book/ppapi_gles_book_stencil_test.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/dynamic_code_loading/dynamic_load_test.nmf?r1=5812&amp;r2=5811&amp;pathrev=5812
+
+Implement manifest v1.0 spec
+
+http://www.chromium.org/nativeclient/design-documents/nacl-manifest-specification
+
+Notably this does nothing more than validate against the new schema.  Specifically it doesn't add any new functionality for the 'interpreter' or 'files' sections, they can't be looked up yet, they have no users.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1942
+TEST= run_ppapi_bad_browser_test
+
+Review URL: http://codereview.chromium.org/7238001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-06-27T20:01:47.000Z</ns0:updated><ns0:published>2011-06-27T20:01:47.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1942#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1942/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

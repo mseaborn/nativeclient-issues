@@ -1,0 +1,72 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck8FRH47eCl7ImA9WhdRGU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2127/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=6375
+
+------------------------------------------------------------------------
+r6375 | bsy@google.com | Tue Aug 09 15:56:42 PDT 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/srpc/nacl_srpc_ppapi_plugin_internal.c?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/reverse_service/reverse_service.cc?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/nameservice/srpc_nameservice_test.c?r1=6375&amp;r2=6374&amp;pathrev=6375
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/srpc/nacl_srpc_ppapi_plugin_internal.h?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/srpc/accept_threaded.c?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/nameservice/srpc_nameservice_test.html?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/manifest_file/srpc_manifest_file_test.html?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/srpc/accept.c?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/plugin_async_messaging/nacl.scons?r1=6375&amp;r2=6374&amp;pathrev=6375
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_kern_services.c?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/signal_handler/nacl.scons?r1=6375&amp;r2=6374&amp;pathrev=6375
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/srpc/nacl_srpc_ppapi_plugin_init.c?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/plugin/plugin.cc?r1=6375&amp;r2=6374&amp;pathrev=6375
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_kern_services.h?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/plugin/plugin.h?r1=6375&amp;r2=6374&amp;pathrev=6375
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/manifest_file/pm_pre_init_manifest_file_test.cc?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/signal_handler/crash_in_syscall.c?r1=6375&amp;r2=6374&amp;pathrev=6375
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/include/sys/nacl_kern_rpc.h?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/signal_handler/crash_test.c?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/inbrowser_crash_test/nacl.scons?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/browser_dynamic_library/nacl.scons?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/plugin_async_messaging/async_message_test.c?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/plugin/service_runtime.h?r1=6375&amp;r2=6374&amp;pathrev=6375
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/manifest_file/pm_pre_init_manifest_file_test.html?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/srpc/nacl.scons?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/reverse_service/reverse_service.h?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/plugin/service_runtime.cc?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=6375&amp;r2=6374&amp;pathrev=6375
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/manifest_file/pm_pre_init_manifest_file.nmf?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/nameservice/pm_nameservice_test.html?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/manifest_file/nacl.scons?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/manifest_file/pm_manifest_file_test.html?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/reverse_service/reverse_control_rpc.h?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/manifest_name_service_proxy/manifest_proxy.c?r1=6375&amp;r2=6374&amp;pathrev=6375
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_standard.py?r1=6375&amp;r2=6374&amp;pathrev=6375
+
+enable manifest file access before pepper initialization.
+
+add initialization completion rpc via nacl kernel service, so that the
+plugin's main thread that starts the nacl module does not immediately
+attempt to make the low-level srpc and js proxying setup.  instead,
+the nacl application's main thread is decoupled and running
+independently of the plugin's main thread -- so that the nacl app
+could, for example, do file I/O with descriptors for files named in
+the manifest.  when all this is done, the nacl app makes the
+initialization-done rpc to tell the plugin that the main thread for
+the nacl app is ready to become tightly coupled to the plugin's main
+thread, i.e, to become blocked waiting for pepper upcall events.  this
+permits ld.so to do initial shared library loading, before the nacl
+app thread turns into a reactive event handler.
+
+disables dynamic_library_browser_tests and the buildbot Step for them,
+since they use an API that will go away and is broken by this CL.  a
+subsequent cleanup CL is needed to remove plugin support for the old
+way of file loading.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2127
+Review URL: http://codereview.chromium.org/7600017
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-08-09T23:00:15.000Z</ns0:updated><ns0:published>2011-08-09T23:00:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2127#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2127/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

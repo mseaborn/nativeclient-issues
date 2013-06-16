@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYAQn47eCl7ImA9WhVVFUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2531</ns0:id><ns0:author>
+			<ns0:name>jo...@unity3d.com</ns0:name><ns0:uri>/u/116362082051371563851/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+
+pepper_16
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+
+Chrome 16.0.912.75
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+
+Mac OS X 10.7.2
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+
+Chrome 16.0.912.75
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+
+Open and Run this app as an unpacked Chrome extension:
+http://files.unity3d.com/jonas/test_rendering_bug.zip
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+See attached screenshots. Correct.png shows the rendering output as it looks like on NVidia GPUs, and when running the scene on Radeon cards outside of NaCl. wrong.png shows how it looks in NaCl on Radeon cards on Mac OS X.
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+Unfortunately, I am unable to find out which particular shader is causing this, as I don't have a radeon card to repro it myself. However, I have multiple reports of this bug from users and our QA team.</ns0:content><ns0:updated>2012-05-09T18:29:03.000Z</ns0:updated><ns0:published>2012-01-10T16:07:54.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/110174592293525866339/</ns2:uri><ns2:username>jbau...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/kbr@chromium.org/</ns2:uri><ns2:username>kbr@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101919841667397351009/</ns2:uri><ns2:username>g...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110757419470386671319/</ns2:uri><ns2:username>apatr...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/zmo@chromium.org/</ns2:uri><ns2:username>zmo@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Rendering is incorrect on Radeon GPUs on Mac OS X</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Component-Pepper</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2531/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2531" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2531" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2531</ns2:id></ns0:entry>

@@ -1,0 +1,63 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0YGR347eCl7ImA9WhRSFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2398</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">$ cat once.c 
+#include &amp;lt;pthread.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+
+pthread_once_t once1 = PTHREAD_ONCE_INIT;
+pthread_once_t once2 = PTHREAD_ONCE_INIT;
+
+void init2(void);
+
+void init1(void)
+{
+  write (1, &amp;quot;in init1\n&amp;quot;, 9);
+  pthread_once (&amp;amp;once2, init2);
+}
+
+void init2(void)
+{
+  write (1, &amp;quot;in init2\n&amp;quot;, 9);
+}
+
+main() {
+  pthread_once (&amp;amp;once1, init1);
+  return 0;
+}
+$ gcc once.c -lpthread
+$ ./a.out 
+in init1
+in init2
+$ &amp;quot;$TOOLCHAIN&amp;quot;/bin/x86_64-nacl-gcc once.c -lpthread
+.../bin/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/lib/../lib64/libgcc_s.so: warning: warning: pthread_cancel is not implemented and will always fail
+$ /path/to/scons-out/dbg-linux-x86-64/staging/sel_ldr -Q -a -- &amp;quot;$TOOLCHAIN&amp;quot;/x86_64-nacl/lib/runnable-ld.so --library-path &amp;quot;$TOOLCHAIN&amp;quot;/x86_64-nacl/lib ./a.out 
+PLATFORM QUALIFICATION DISABLED BY -Q - Native Client's sandbox will be unreliable!
+DEBUG MODE ENABLED (bypass acl)
+[21464,1772300096:17:52:59.327990] BYPASSING ALL ACL CHECKS
+[21464,1772300096:17:52:59.384946] Entered NaClMakeDispatchThunk
+[21464,1772300096:17:52:59.384962] NaCl_page_alloc_randomized: 0xb1cf52db
+[21464,1772300096:17:52:59.384968] NaCl_page_alloc_randomized: hint 0x31cf52db0000
+[21464,1772300096:17:52:59.384976] NaClMakeDispatchThunk: got addr 0x31cf52db0000
+[21464,1772226304:17:52:59.386879] munmap: rounded length to 0x10000
+[21464,1772226304:17:52:59.386925] invalid mmap flags 04022, ignoring extraneous bits
+[21464,1772226304:17:52:59.386954] invalid mmap flags 04022, ignoring extraneous bits
+[21464,1772226304:17:52:59.387044] NaClHostDescOpen: open returned -1, errno 2
+[21464,1772226304:17:52:59.420970] munmap: rounded length to 0x20000
+[21464,1772226304:17:52:59.420999] invalid mmap flags 04022, ignoring extraneous bits
+[21464,1772226304:17:52:59.421015] invalid mmap flags 04022, ignoring extraneous bits
+[21464,1772226304:17:52:59.437703] munmap: rounded length to 0x10000
+[21464,1772226304:17:52:59.437732] invalid mmap flags 04022, ignoring extraneous bits
+[21464,1772226304:17:52:59.437747] invalid mmap flags 04022, ignoring extraneous bits
+[21464,1772226304:17:52:59.910502] munmap: rounded length to 0x1b0000
+[21464,1772226304:17:52:59.910581] invalid mmap flags 04022, ignoring extraneous bits
+[21464,1772226304:17:52:59.910604] invalid mmap flags 04022, ignoring extraneous bits
+in init1
+
+
+/* and hangs forever waiting in __nacl_futex_wait */
+P.S.: found when running google protobufs in Native Client, happens in constructors</ns0:content><ns0:updated>2011-11-18T18:32:06.000Z</ns0:updated><ns0:published>2011-10-27T13:57:12.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100177598732114324016/</ns2:uri><ns2:username>mcgra...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pthread_once hangs forever when invoked from pthread_once with a _different_ once_control</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-17</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2398/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2398" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2398" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-11-18T18:32:06.000Z</ns2:closedDate><ns2:id>2398</ns2:id></ns0:entry>

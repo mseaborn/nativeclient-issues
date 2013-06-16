@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEIGRn47eCl7ImA9WxVTEkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/15/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>cal...@yandex.ru</ns0:name><ns0:uri>/u/113318358410288246897/</ns0:uri></ns0:author><ns0:content type="html">This particular case. I see the default setting, when the name of the system drive
+may be different.
+If you choose to install it, you can change the name directory, and then the registry
+will not help, in the case of portable.
+	
+These are small problems.Simply do not have instructions, and a message to whom it
+will help.
+For example flash player, for my system disk is more complicated task - unable to
+identify, only with a flash drive.But Flash has a solution.
+Thanks!</ns0:content><ns0:updated>2008-12-26T10:15:27.000Z</ns0:updated><ns0:published>2008-12-26T10:15:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by cal...@yandex.ru</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=15#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/15/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

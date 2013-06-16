@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0YBQn47eCl7ImA9WhRQFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2380</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">Looking at the output bellow we see that crti_x86_32.S failed to compile.
+
+69&amp;gt;    nacl-gcc ../../../..\native_client\build\Release\obj\nacl_dynacode_private_lib\newlib-x86-32\nacl_dynacode_private_lib\dyncode_private.o
+69&amp;gt;    nacl-ar ../../../..\native_client\build\Release\obj\global_intermediate\tc_newlib\lib32\libnacl_dyncode_private.a
+43&amp;gt;/x86_64-nacl-ld: crti.o: No such file: No such file or directory
+43&amp;gt;collect2: ld returned 1 exit status
+
+
+7&amp;gt;src/untrusted/stubs/crti_x86_32.S: Assembler messages:
+7&amp;gt;src/untrusted/stubs/crti_x86_32.S:17: Error: suffix or operands invalid for `push'
+7&amp;gt;src/untrusted/stubs/crti_x86_32.S:35: Error: suffix or operands invalid for `push'
+7&amp;gt;Err 1: nacl-gcc ..\native_client\build\Release\obj\global_intermediate\tc_newlib\lib32\crti.o
+
+However, this was actually caused by:
+ ..\native_client\toolchain\win_x86_newlib\x86_64-nacl\bin\gcc -c src\untrusted\stubs\crti_x86_32.S -o ..\native_client\build\Release\obj\global_intermediate\tc_newlib\lib32\crti.o -std=gnu99 -m64 ....
+
+On Windows, we need to build both 32 and 64 bit versions of our targets since the untrusted code architecture must match the architecture of the OS.  However in this case we want to build two different ctri_x86_XXX.S files as ctri.o depending on the architecture.
+</ns0:content><ns0:updated>2011-12-10T01:05:53.000Z</ns0:updated><ns0:published>2011-10-21T16:51:01.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>GYP build on windows incorrectly builds 64 bit version of 32 bit target</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-</ns2:label><ns2:label>OS-</ns2:label><ns2:label>Arch-</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2380/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2380" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2380" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-12-10T01:05:53.000Z</ns2:closedDate><ns2:id>2380</ns2:id></ns0:entry>

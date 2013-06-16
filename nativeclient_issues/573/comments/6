@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkAGRX47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/573/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3357
+
+------------------------------------------------------------------------
+r3357 | mseaborn@chromium.org | Fri Sep 24 07:59:30 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/tools/validator_tools/build.scons?r1=3357&amp;r2=3356&amp;pathrev=3357
+
+Fix build failure when using targetplatform=arm on an x86 system
+
+Test TARGET_* instead of BUILD_*.
+
+This fixes a Buildbot failure introduced by r3354.  This happened
+because the trybots only test ARM with "platform=arm", whereas the
+Buildbots test an x86/ARM hybrid.
+
+The failure message was:
+
+scons: ***[scons-out/dbg-linux-x86-32-to-arm/obj/src/tools/validator_tools/
+ncval_stubout] Exception : Can't find library 'ncvalidate'.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=573
+TEST="./scons --mode=dbg-linux targetplatform=arm ncval_stubout"
+  should instead say "Do not know how to make target `ncval_stubout'"
+
+Review URL: http://codereview.chromium.org/3472011
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:58:44.000Z</ns0:updated><ns0:published>2011-01-21T22:58:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=573#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/573/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

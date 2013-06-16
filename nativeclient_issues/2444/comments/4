@@ -1,0 +1,122 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEEQ347eCl7ImA9WhRSFE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2444/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">This is the output from glibc/stdlib/tst-strtoll.c (x86-64):
+
+krasin@krasin:/usr/local/google/home/krasin/nacl-strtoll/native_client/tools/SRC/glibc/stdlib$ /tmp/tst-strtoll 
+DEBUG MODE ENABLED (bypass acl)
+[4131,339576640:16:14:11.404996] BYPASSING ALL ACL CHECKS
+strtoll("123", , 0) test 0	OK
+strtoll("+123", , 0) test 1	OK
+strtoll("  123", , 0) test 2	OK
+strtoll(" 123 ", , 0) test 3	OK
+strtoll("   -17", , 0) test 4	BAD
+  returns 4294967279, expected -17
+strtoll("0123", , 0) test 5	OK
+strtoll("0123a", , 0) test 6	OK
+strtoll("01239", , 0) test 7	OK
+strtoll("0x123", , 0) test 8	OK
+strtoll("-0x123", , 0) test 9	BAD
+  returns 4294967005, expected -291
+strtoll("0x0xc", , 0) test 10	OK
+strtoll(" +0x123fg", , 0) test 11	OK
+strtoll("123", , 16) test 12	OK
+strtoll("0x123", , 16) test 13	OK
+strtoll("123", , 8) test 14	OK
+strtoll("0123", , 8) test 15	OK
+strtoll("0123", , 10) test 16	OK
+strtoll("0x123", , 10) test 17	OK
+strtoll("abcd", , 16) test 18	OK
+strtoll("AbCd", , 16) test 19	OK
+strtoll("0xABCD", , 16) test 20	OK
+strtoll("0Xabcd", , 16) test 21	OK
+strtoll("0xyz", , 35) test 22	OK
+strtoll("yz!", , 36) test 23	OK
+strtoll("-yz", , 36) test 24	BAD
+  returns 4294966037, expected -1259
+strtoll("GhI4", , 20) test 25	OK
+strtoll("99000000001", , 0) test 26	BAD
+  returns 2147483647, expected 99000000001
+  errno 34 (Numerical result out of range)  instead of 0 (Success)
+strtoll("9223372036854775807", , 0) test 27	BAD
+  returns 2147483647, expected 9223372036854775807
+  errno 34 (Numerical result out of range)  instead of 0 (Success)
+strtoll("9223372036854775808", , 0) test 28	BAD
+  returns 2147483647, expected 9223372036854775807
+strtoll("922337203685477580777", , 0) test 29	BAD
+  returns 2147483647, expected 9223372036854775807
+strtoll("9223372036854775810", , 0) test 30	BAD
+  returns 2147483647, expected 9223372036854775807
+strtoll("-2147483648", , 0) test 31	BAD
+  returns 2147483648, expected -2147483648
+strtoll("-9223372036854775808", , 0) test 32	BAD
+  returns 2147483648, expected -9223372036854775808
+  errno 34 (Numerical result out of range)  instead of 0 (Success)
+strtoll("-9223372036854775809", , 0) test 33	BAD
+  returns 2147483648, expected -9223372036854775808
+strtoll("0x112233445566778899z", , 16) test 34	BAD
+  returns 2147483647, expected 9223372036854775807
+strtoll("0xFFFFFFFFFFFF00FF", , 0) test 35	BAD
+  returns 2147483647, expected 9223372036854775807
+strtoull("  0", , 0) test 37	OK
+strtoull("0xffffffffg", , 0) test 38	OK
+strtoull("0xffffffffffffffffg", , 0) test 39	BAD
+  returns 4294967295, expected 18446744073709551615
+  errno 34 (Numerical result out of range) instead of 0 (Success)
+strtoull("-0xfedcba987654321", , 0) test 40	BAD
+  returns 4294967295, expected 17298946664678735071
+  errno 34 (Numerical result out of range) instead of 0 (Success)
+strtoull("0xf1f2f3f4f5f6f7f8f9", , 0) test 41	BAD
+  returns 4294967295, expected 18446744073709551615
+strtoull("-0x123456789abcdef01", , 0) test 42	BAD
+  returns 4294967295, expected 18446744073709551615
+
+The same thing for x86-32:
+
+krasin@krasin:/usr/local/google/home/krasin/nacl-strtoll/native_client/tools/SRC/glibc/stdlib$ /tmp/tst-strtoll 
+DEBUG MODE ENABLED (bypass acl)
+[4329,4147144416:16:16:09.665923] BYPASSING ALL ACL CHECKS
+strtoll("123", , 0) test 0	OK
+strtoll("+123", , 0) test 1	OK
+strtoll("  123", , 0) test 2	OK
+strtoll(" 123 ", , 0) test 3	OK
+strtoll("   -17", , 0) test 4	OK
+strtoll("0123", , 0) test 5	OK
+strtoll("0123a", , 0) test 6	OK
+strtoll("01239", , 0) test 7	OK
+strtoll("0x123", , 0) test 8	OK
+strtoll("-0x123", , 0) test 9	OK
+strtoll("0x0xc", , 0) test 10	OK
+strtoll(" +0x123fg", , 0) test 11	OK
+strtoll("123", , 16) test 12	OK
+strtoll("0x123", , 16) test 13	OK
+strtoll("123", , 8) test 14	OK
+strtoll("0123", , 8) test 15	OK
+strtoll("0123", , 10) test 16	OK
+strtoll("0x123", , 10) test 17	OK
+strtoll("abcd", , 16) test 18	OK
+strtoll("AbCd", , 16) test 19	OK
+strtoll("0xABCD", , 16) test 20	OK
+strtoll("0Xabcd", , 16) test 21	OK
+strtoll("0xyz", , 35) test 22	OK
+strtoll("yz!", , 36) test 23	OK
+strtoll("-yz", , 36) test 24	OK
+strtoll("GhI4", , 20) test 25	OK
+strtoll("99000000001", , 0) test 26	OK
+strtoll("9223372036854775807", , 0) test 27	OK
+strtoll("9223372036854775808", , 0) test 28	OK
+strtoll("922337203685477580777", , 0) test 29	OK
+strtoll("9223372036854775810", , 0) test 30	OK
+strtoll("-2147483648", , 0) test 31	OK
+strtoll("-9223372036854775808", , 0) test 32	OK
+strtoll("-9223372036854775809", , 0) test 33	OK
+strtoll("0x112233445566778899z", , 16) test 34	OK
+strtoll("0xFFFFFFFFFFFF00FF", , 0) test 35	OK
+strtoull("  0", , 0) test 37	OK
+strtoull("0xffffffffg", , 0) test 38	OK
+strtoull("0xffffffffffffffffg", , 0) test 39	OK
+strtoull("-0xfedcba987654321", , 0) test 40	OK
+strtoull("0xf1f2f3f4f5f6f7f8f9", , 0) test 41	OK
+strtoull("-0x123456789abcdef01", , 0) test 42	OK
+
+
+</ns0:content><ns0:updated>2011-11-16T00:16:42.000Z</ns0:updated><ns0:published>2011-11-16T00:16:42.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2444#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2444/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

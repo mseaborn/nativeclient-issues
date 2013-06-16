@@ -1,0 +1,51 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHRH47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1301</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">i have been bashing my head against the following problem for the last week when rebuilding the toolchain.  the gcc toolchain build installs ../third_party/npapi/bindings/npruntime.h into a TC-specific directory and then patches it (slightly).  this patch is intended to affect only the TC version of the header file, but because of InstallUsingLink, the original, subversion-managed copy of npruntime.h is also changed.  this means that trusted builds that include that file will break.
+
+the code responsible for installing via linking is here:  site_scons/site_tools/component_setup.py
+
+it contains
+
+def InstallUsingLink(target, source, env):
+  &amp;quot;&amp;quot;&amp;quot;Install function for environment which uses link in preference to copy.
+
+  Args:
+    target: Destintion filename
+    source: Source filename
+    env: Environment
+
+  Returns:
+    Return code from SCons Node link function.
+  &amp;quot;&amp;quot;&amp;quot;
+
+  # Use link function for Install() and InstallAs(), since it's much much
+  # faster than copying.  This is ok for the way we build clients, where we're
+  # installing to a build output directory and not to a permanent location such
+  # as /usr/bin.
+  # Need to force the target and source to be lists of nodes
+  return SCons.Node.FS.LinkFunc([env.Entry(target)], [env.Entry(source)], env)
+
+and
+
+  # Cover part of the environment
+  env.Replace(
+      # Add a reference to our python executable, so subprocesses can find and
+      # invoke python.
+      PYTHON = env.File(sys.executable),
+
+      # Get the absolute path to the directory containing main.scons (or
+      # SConstruct).  This should be used in place of the SCons variable '#',
+      # since '#' is not always replaced (for example, when being used to set
+      # an environment variable).
+      MAIN_DIR = env.Dir('#').abspath,
+      # Supply deprecated SCONSTRUCT_DIR for legacy suport
+      # TODO: remove legacy support once everyone has switched over.
+      SCONSTRUCT_DIR = env.Dir('#').abspath,
+
+      # Use install function above, which uses links in preference to copying.
+      INSTALL = InstallUsingLink,
+  )
+
+according to svn blame, this appears to be very old, pre-repository switch.  is there a reason why we decided that this optimization was really needed?  i propose getting rid of this.
+</ns0:content><ns0:updated>2011-07-29T00:12:15.000Z</ns0:updated><ns0:published>2011-01-10T22:41:57.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>InstallUsingLink and TC builds trashing non-TC files</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1301/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1301" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1301" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1301</ns2:id></ns0:entry>

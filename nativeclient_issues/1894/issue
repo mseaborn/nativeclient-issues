@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UMQH47eCl7ImA9WhZUGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1894</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Run the xp-newlib-opt build bot, roughly between versions 5540 and 5571 (or later)
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+The 'chrome_browser_tests using GYP' testing phase should pass.  Instead, it gives and error similar to the following, about half the time:
+
+E:\b\build\slave\xp-newlib-opt\build\third_party\python_26\python.exe E:\b\build\slave\xp-newlib-opt\build\native_client\tools\command_tester.py --name E:\b\build\slave\xp-newlib-opt\build\native_client\scons-out\nacl-x86-32/test_results/ppapi_ppb_graphics2d_browser_test.out --report E:\b\build\slave\xp-newlib-opt\build\native_client\scons-out\nacl-x86-32/test_results/ppapi_ppb_graphics2d_browser_test.out --time_warning 1800 --time_error 18000 --perf_env_description x86-32_nnacl_newlib_static_irt --capture_output 0 E:\b\build\slave\xp-newlib-opt\build\third_party\python_26\python.exe E:\b\build\slave\xp-newlib-opt\build\native_client\tools\browser_tester\browser_tester.py --browser_path E:\b\build\slave\xp-newlib-opt\build\native_client\chromebinaries\windows_x86-32\chrome.exe --url ppapi_ppb_graphics2d.html --timeout 20 --ppapi_plugin E:\b\build\slave\xp-newlib-opt\build\native_client\build\Release\ppGoogleNaClPlugin.dll --sel_ldr E:\b\build\slave\xp-newlib-opt\build\native_client\build\Release\sel_ldr.exe --irt_library E:\b\build\slave\xp-newlib-opt\build\native_client\scons-out\nacl_irt-x86-32\staging\irt.nexe --file E:\b\build\slave\xp-newlib-opt\build\native_client\scons-out\nacl-x86-32\obj\tests\ppapi_browser\ppb_graphics2d\ppapi_ppb_graphics2d_x86-32.nexe --file E:\b\build\slave\xp-newlib-opt\build\native_client\tests\ppapi_browser\ppb_graphics2d\ppapi_ppb_graphics2d.nmf --file E:\b\build\slave\xp-newlib-opt\build\native_client\tests\ppapi_browser\ppb_graphics2d\ppapi_ppb_graphics2d.html --enable_experimental_js
+ENV: TMP=e:\temp PROMPT=$P$G COMSPEC=C:\WINDOWS\system32\cmd.exe TEMP=e:\temp NACL_IRT_LIBRARY=E:\b\build\slave\xp-newlib-opt\build\native_client\scons-out\nacl_irt-x86-32\staging\irt.nexe NACL_SEL_LDR=E:\b\build\slave\xp-newlib-opt\build\native_client\build\Release\sel_ldr.exe SYSTEMDRIVE=C: PATHEXT=.COM;.EXE;.BAT;.CMD CYGWIN=nodosfilewarning  PATH=E:\b\build\slave\xp-newlib-opt\build\native_client\toolchain\win_x86_newlib\bin;C:\WINDOWS\System32 SYSTEMROOT=C:\WINDOWS NACL_ENABLE_EXPERIMENTAL_JAVASCRIPT_APIS=1
+LAUNCHING: E:\b\build\slave\xp-newlib-opt\build\native_client\chromebinaries\windows_x86-32\chrome.exe --disable-web-resources --disable-preconnect --no-first-run --no-default-browser-check --enable-logging --log-level=1 --safebrowsing-disable-auto-update --user-data-dir=e:\temp\browserprofile_othybd --register-pepper-plugins=E:\b\build\slave\xp-newlib-opt\build\native_client\build\Release\ppGoogleNaClPlugin.dll;application/x-nacl --no-sandbox http://127.0.0.1:4045/ppapi_ppb_graphics2d.html
+[1400:6012:1884399968:ERROR:external_registry_extension_loader_win.cc(100)] Missing value path for key Software\Google\Chrome\Extensions\jfmjfhklogoienhpfnppmbcbjfjnkonk .
+PID 1400
+[ 20032 ms] |||| 
+[ 20032 ms] |||| [SERVER_ERROR] Did not hear from the browser for 20.0 seconds
+KILLING the browser
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-06-13T17:14:41.000Z</ns0:updated><ns0:published>2011-06-07T16:50:53.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Bot flakiness on XP during 'chrome_browser_tests using GYP' test due to browser hang</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1894/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1894" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1894" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-06-13T17:14:41.000Z</ns2:closedDate><ns2:id>1894</ns2:id></ns0:entry>

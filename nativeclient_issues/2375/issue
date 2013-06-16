@@ -1,0 +1,55 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QHR347eCl7ImA9WhRQFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2375</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">This Chrome CL makes it impossible to roll Chrome DEPS into NaCl:
+http://codereview.chromium.org/8346011/
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Edit native_client/DEPS and set 
+&amp;quot;chromebinaries_rev&amp;quot;: &amp;quot;106379&amp;quot;,
+&amp;quot;chrome_rev&amp;quot;: &amp;quot;106379&amp;quot;,
+
+2. Run gclient sync
+3. gclient runhooks --force
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+It's expected that sync and runhooks would succeed. This does not happen, because of missing third_party/mesa dependency. This dependency is not needed and it's possible to mock it.
+
+Even if third_party/mesa issue is solved, I see the following gyp error:
+
+________ running '/usr/bin/python native_client/build/gyp_nacl' in '/usr/local/google/home/krasin/nacl'
+Updating projects from gyp files...
+Traceback (most recent call last):
+  File &amp;quot;native_client/build/gyp_nacl&amp;quot;, line 39, in &amp;lt;module&amp;gt;
+    sys.exit(gyp.main(args))
+  File &amp;quot;native_client/build/../../tools/gyp/pylib/gyp/__init__.py&amp;quot;, line 464, in main
+    options.circular_check)
+  File &amp;quot;native_client/build/../../tools/gyp/pylib/gyp/__init__.py&amp;quot;, line 101, in Load
+    depth, generator_input_info, check, circular_check)
+  File &amp;quot;native_client/build/../../tools/gyp/pylib/gyp/input.py&amp;quot;, line 2265, in Load
+    depth, check)
+  File &amp;quot;native_client/build/../../tools/gyp/pylib/gyp/input.py&amp;quot;, line 435, in LoadTargetBuildFile
+    includes, depth, check)
+  File &amp;quot;native_client/build/../../tools/gyp/pylib/gyp/input.py&amp;quot;, line 435, in LoadTargetBuildFile
+    includes, depth, check)
+  File &amp;quot;native_client/build/../../tools/gyp/pylib/gyp/input.py&amp;quot;, line 435, in LoadTargetBuildFile
+    includes, depth, check)
+  File &amp;quot;native_client/build/../../tools/gyp/pylib/gyp/input.py&amp;quot;, line 389, in LoadTargetBuildFile
+    build_file_path)
+  File &amp;quot;native_client/build/../../tools/gyp/pylib/gyp/input.py&amp;quot;, line 1005, in ProcessVariablesAndConditionsInDict
+    build_file, key)
+  File &amp;quot;native_client/build/../../tools/gyp/pylib/gyp/input.py&amp;quot;, line 986, in ProcessVariablesAndConditionsInDict
+    ProcessConditionsInDict(the_dict, is_late, variables, build_file)
+  File &amp;quot;native_client/build/../../tools/gyp/pylib/gyp/input.py&amp;quot;, line 844, in ProcessConditionsInDict
+    if eval(ast_code, {'__builtins__': None}, variables):
+  File &amp;quot;&amp;lt;string&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt;
+NameError: name 'os_posix' is not defined while evaluating condition 'os_posix == 1 and OS != &amp;quot;mac&amp;quot;' in ppapi/ppapi.gyp while loading dependencies of ppapi/native_client/src/shared/ppapi_proxy/ppapi_proxy.gyp while loading dependencies of ppapi/native_client/src/trusted/plugin/plugin.gyp while loading dependencies of native_client/build/all.gyp while trying to load native_client/build/all.gyp
+Error: Command /usr/bin/python native_client/build/gyp_nacl returned non-zero exit status 1 in /usr/local/google/home/krasin/nacl
+
+These are the changes I had to make to ppapi.gyp to make it work:
+http://codereview.chromium.org/8354027/diff/2001/ppapi/ppapi.gyp
+
+</ns0:content><ns0:updated>2011-12-10T01:08:56.000Z</ns0:updated><ns0:published>2011-10-20T01:30:48.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PPAPI gyp is broken</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Mstone-17</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2375/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2375" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2375" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-12-10T01:08:56.000Z</ns2:closedDate><ns2:id>2375</ns2:id></ns0:entry>

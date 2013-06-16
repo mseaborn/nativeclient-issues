@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUIARH47eCl7ImA9Wx9bEUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1464</ns0:id><ns0:author>
+			<ns0:name>vladi...@neoaxisgroup.com</ns0:name><ns0:uri>/u/112736656195063058191/</ns0:uri></ns0:author><ns0:content type="html">Hello!
+
+A few words about my system.
+SDK version: from repository.
+OS: Ubuntu 10.10
+Browser: Mozilla Firefox 3.6.13
+
+How to use fopen() (and etc) in Nacl?
+
+I'm adding fopen() in &amp;quot;srpc_hw&amp;quot; example, but this function return 0, when I'm trying to open file or when I'm trying to create file.
+
+May be files must locate in special folder? May be anything else?
+
+Thanks for your answers!</ns0:content><ns0:updated>2011-02-19T19:25:45.000Z</ns0:updated><ns0:published>2011-02-19T18:23:36.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:state>closed</ns2:state><ns0:title>fopen() in browser</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1464/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1464" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1464" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-02-19T19:25:45.000Z</ns2:closedDate><ns2:id>1464</ns2:id></ns0:entry>

@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0YEQX47eCl7ImA9WxBaE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/255/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">[22155,2961147344:16:44:23.111677] NaClAllocateSpace(*, 0x0000000100000000 bytes).
+[22155,2961147344:16:44:23.112077]                      Ask: 0000001600000000
+[22155,2961147344:16:44:23.112291]            orig memory at 00002b48b0e1c000
+[22155,2961147344:16:44:23.112499]            Freeing front: 00002b48b0e1c000, 
+000000004f1e4000
+[22155,2961147344:16:44:23.112723]             Freeing tail: 00002b5e00000000, 
+00000000b0e1c000
+[22155,2961147344:16:44:23.112939]           Aligned memory: 00002b4900000000
+[22155,2961147344:16:44:23.113144] NaClAllocateSpace: addr space at 
+0x00002b5300000000
+[22155,2961147344:16:44:23.123913] 00002b530002039b: 0f 12                                        
+undefined; *NACL Disallows!*
+ERROR: Illegal native client instruction
+[22155,2961147344:16:44:23.127486] VALIDATION FAILED.
+
+And this is "2039b:       0f 12 c1                movhlps %xmm1,%xmm0".</ns0:content><ns0:updated>2010-03-23T15:45:00.000Z</ns0:updated><ns0:published>2010-03-23T15:45:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by k...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=255#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/255/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQCSH47eCl7ImA9WhdVFU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/565</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+All NaCl modules must be statically linked.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+There is a litany of reasons why DSOs are a good idea; I won't enumerate them here. 
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+DSO support using ELF &amp;quot;shared objects&amp;quot; .so
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+NaCl modules can refer to and use code in a separate .so eliminating the requirement for static 
+linking.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+Faster app startup, more flexibility for use of GPL code, allows ABI boundary at library interface.
+
+</ns0:content><ns0:updated>2011-09-20T16:49:29.000Z</ns0:updated><ns0:published>2010-06-04T21:24:55.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Dynamic Shared Object support in Native Client</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>CoreRuntime</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>MStone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/565/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=565" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/565" rel="self" type="application/atom+xml" /><ns2:stars>16</ns2:stars><ns2:blockedOn>
+			<ns2:id>156</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>263</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>558</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>564</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>583</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>585</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>596</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>597</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>598</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>601</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>607</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>615</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>616</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>617</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>649</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>660</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>700</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>940</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1690</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1778</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2210</ns2:id></ns2:blockedOn><ns2:blocking>
+			<ns2:id>1210</ns2:id></ns2:blocking><ns2:closedDate>2011-09-20T16:49:29.000Z</ns2:closedDate><ns2:id>565</ns2:id></ns0:entry>

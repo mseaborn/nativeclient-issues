@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkYHRX47eCl7ImA9WhdRE0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1997/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=6288
+
+------------------------------------------------------------------------
+r6288 | kschimpf@google.com | Tue Aug 02 11:30:42 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_decode_tables.h?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_inst_state.h?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_inst_state_statics.c?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_iter_internal.h?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_inst_state_tests.cc?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_protect_base.c?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_iter.c?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncopcode_desc.c?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/gen/nc_opcode_table_64.h?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/gen/nc_opcode_table_32.h?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncdis_decode_tables.c?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_utils.c?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_compress.h?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncopcode_desc.h?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncvalidator_registry.c?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_utils.h?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncenuminsts.c?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_inst_trans.c?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncdis_segments.c?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_memory_protect.c?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncenuminsts.h?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncdecode_tablegen.c?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_inst_trans.h?r1=6288&amp;r2=6287&amp;pathrev=6288
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_decode_tables_types.h?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncop_exps.c?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_illegal.c?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_inst_state.c?r1=6288&amp;r2=6287&amp;pathrev=6288
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncop_exps.h?r1=6288&amp;r2=6287&amp;pathrev=6288
+
+Change the decoder tables to  use (16-bit) array offsets, rather than
+(64-bit) pointers. Compresses the x86-64 validator tables by approximately
+120k (approximately a 60% drop in table size for the decoder).
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1997
+Review URL: http://codereview.chromium.org/7477053
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-08-02T18:35:34.000Z</ns0:updated><ns0:published>2011-08-02T18:35:34.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1997#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1997/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

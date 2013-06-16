@@ -1,0 +1,8 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUMRH47eCl7ImA9WhdXGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/367/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">I wasn't thinking of developers seeing errors. I agree they can look at the console.
+
+I am thinking of a scenario where a large number of users are seeing failures, due not to a problem with the NaCl module, but more with some detail of their machine setup. Examples of things we might see that developers might not are NX being turned off (saw this with a test engineer yesterday), or something analogous to the address space congestion problems we have hopefully fixed.
+
+Erik your thoughts?</ns0:content><ns0:updated>2011-09-01T00:34:45.000Z</ns0:updated><ns0:published>2011-09-01T00:34:45.000Z</ns0:published><ns2:updates>
+			<ns2:status>Available</ns2:status><ns2:ownerUpdate>erik...@chromium.org</ns2:ownerUpdate></ns2:updates><ns0:title>Comment 9 by bradc...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=367#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/367/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

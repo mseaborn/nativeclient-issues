@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkAGQH47eCl7ImA9Wx5WEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/870/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>elijahtaylor@google.com</ns0:name><ns0:uri>/u/elijahtaylor@google.com/</ns0:uri></ns0:author><ns0:content type="html">This is not exactly the same reproduction as I'm using, but the results look the same.  In my case it seems like less of a race condition, it happens every time I create a third thread from my embedded mono runtime.  It could be that with the way my program works that I'm in some newlib/system call reliably when the third managed thread is created.
+
+If I change
+   _impure_ptr = &amp;impure_data;
+to
+  _impure_ptr = &amp;global_impure_data;
+in newlib/libc/reent/impure.c
+
+It seems to fix my ability to printf, but at the point the third thread is created, it looks like I'm stuck in some syscall on one thread which prevents parking, so something could still be getting messed up, just not the stdio locks.
+
+</ns0:content><ns0:updated>2010-09-21T00:25:21.000Z</ns0:updated><ns0:published>2010-09-21T00:25:21.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by elijahtaylor@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=870#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/870/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

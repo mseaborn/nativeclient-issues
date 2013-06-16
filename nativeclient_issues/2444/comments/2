@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0EGRn47eCl7ImA9WhRSE0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2444/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">I have extended the test program:
+#include &lt;errno.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+int main(void) {
+  char* str = "-5}   = IndexMod";
+  long long vall = strtoll(str, 0, 10);
+  if (errno != 0) {
+    printf("strtoll: %s", strerror(errno));
+  }
+  printf("long long: %lld\n", vall);
+  long val = strtol(str, 0, 10);
+  printf("long: %ld\n", val);
+}
+
+The output (on x86-64):
+
+$ ./lala.nexe 
+DEBUG MODE ENABLED (bypass acl)
+[29018,3680343872:17:09:07.409951] BYPASSING ALL ACL CHECKS
+long long: 4294967291
+long: -5
+
+the interesting point is that 4294967291 is 0xfffffffb. errno is 0, as you can see.</ns0:content><ns0:updated>2011-11-15T01:13:47.000Z</ns0:updated><ns0:published>2011-11-15T01:13:47.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2444#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2444/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

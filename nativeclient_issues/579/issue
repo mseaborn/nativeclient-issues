@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHQ347eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/579</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Issue 206 introduces a signal handler that attempts to determine
+whether a fault was caused by trusted or untrusted code, in order to
+decide whether to report the fault via Breakpad.
+
+It is possible for untrusted code to cause a segfault that looks like
+the fault of trusted code.  It can pass an unreadable address into a
+syscall that reads memory.
+
+Example:
+
+#include &amp;lt;assert.h&amp;gt;
+#include &amp;lt;errno.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;sys/mman.h&amp;gt;
+#include &amp;lt;sys/nacl_syscalls.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+
+int main() {
+  int rc;
+  /* Allocate an address that is definitely unreadable. */
+  void *mapped = mmap(NULL, 0x10000, PROT_NONE,
+                      MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+  assert(mapped != MAP_FAILED);
+  printf(&amp;quot;About to perform a syscall that should fault...\n&amp;quot;);
+  fflush(stdout);
+  rc = imc_sendmsg(0, mapped, 0);
+  printf(&amp;quot;Syscall returned unexpectedly without faulting: rc=%i, errno=%i\n&amp;quot;,
+         rc, errno);
+  return 1;
+}
+
+
+$ nacl sel_ldr syscall_fault.nexe 
+About to perform a syscall that should fault...
+** Fault in NaCl trusted code
+
+
+Note that this works for imc_sendmsg() but not for write(), because
+the latter passes the address straight on to Linux's write() syscall,
+which returns EFAULT.
+</ns0:content><ns0:updated>2011-07-29T00:12:12.000Z</ns0:updated><ns0:published>2010-06-09T01:54:30.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Untrusted code can cause faults in syscalls to be blamed on trusted code</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Usability</ns2:label><ns2:label>FaultHandler</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/579/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=579" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/579" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>579</ns2:id></ns0:entry>

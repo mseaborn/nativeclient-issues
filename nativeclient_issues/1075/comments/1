@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIASH47eCl7ImA9Wx5UFkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1075/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">This is a fun one!  The problem happens because __nacl_futex_init()
+gets called twice.  It's called from _dl_init(), but this also gets
+called from dl-open.c, apparently when dlopen()ing a library.  So
+_dl_init() was the wrong place to put this.
+
+pthread_exit() is implemented in terms of thread cancellation, which
+uses libgcc_s's unwind support.  And to get libgcc_s, libpthread
+dlopen()s it.
+
+So __nacl_futex_init() resets the list of waiters, so when it's time
+to do FUTEX_WAKE to wake up the parent, there is no waiter for the
+memory location.
+
+It's lucky that __nacl_futex_init() does "INIT_LIST_HEAD
+(&amp;waiters_list)" -- even though this is redundant because the
+LIST_HEAD decl earlier does this too -- as well as mutex_create(),
+because a mutex_create() on its own would have led to heisenbugs: the
+mutual exclusion on the waiter list would not be reliable in a small
+set of cases.
+
+Hooray for printf() debugging!  (Or in this case, write() debugging.)
+</ns0:content><ns0:updated>2010-10-21T18:59:09.000Z</ns0:updated><ns0:published>2010-10-21T18:59:09.000Z</ns0:published><ns2:updates>
+			<ns2:status>Started</ns2:status><ns2:ownerUpdate>mseab...@chromium.org</ns2:ownerUpdate></ns2:updates><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1075#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1075/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

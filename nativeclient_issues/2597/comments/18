@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUBRX47eCl7ImA9WhVSFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/18</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7990
+
+------------------------------------------------------------------------
+r7990 | pasko@google.com | Sat Mar 10 23:49:46 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/general-purpose-instructions.def?r1=7990&amp;r2=7989&amp;pathrev=7990
+
+validator_ragel: forbid data16 on control transfer
+
+As written in the old validator:
+
+We special case the 66 prefix on direct conditional jumps, by explicitly
+disallowing 16-bit direct jumps. This is done partly because some versions
+(within x86-64) are not supported in such cases. However, NaCl also doesn't want
+to allow 16-bit direct jumps.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2597
+TEST=direct-call-16
+
+Review URL: https://chromiumcodereview.appspot.com/9565009
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-03-11T07:50:54.000Z</ns0:updated><ns0:published>2012-03-11T07:50:54.000Z</ns0:published><ns2:updates /><ns0:title>Comment 18 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c18" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/18" rel="self" type="application/atom+xml" /></ns0:entry>

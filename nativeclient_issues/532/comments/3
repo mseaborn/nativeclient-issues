@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08CSH47eCl7ImA9WxFVEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/532/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>msn...@google.com</ns0:name><ns0:uri>/u/105190905030319373792/</ns0:uri></ns0:author><ns0:content type="html">I'm trying to build the text-to-speech demo as 64-bit.  I'm getting another, almost-identical validator failure.  In this case, the build instructions for the .nexe are really complex.  (Create a G4 client, build there, do an install from there to somewhere else, edit a bunch of files, do another build, ...)  But here is the offending instruction.  They are coming from file ./tts_service_nacl/objs_nacl/pico/picokdt.o if we ever want to go back to this particular source:
+
+[21561,1094592848:13:55:30.662399] 000000000004766e: 66 0f be                               invalid
+ERROR: Opcode sequence doesn't define a valid x86 instruction
+[21561,1094592848:13:55:30.662821] VALIDATION FAILED.
+
+% objdump -d tts_service.nexe | grep 4766e
+   4766e:	66 0f be cb          	movsbw %bl,%cx
+
+% objdump -d ./objs_nacl/pico/picokdt.o
+     32e:	66 0f be cb          	movsbw %bl,%cx
+</ns0:content><ns0:updated>2010-06-10T21:37:49.000Z</ns0:updated><ns0:published>2010-06-10T21:37:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by msn...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=532#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/532/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,34 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUYMSH47eCl7ImA9WhdVFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2273</ns0:id><ns0:author>
+			<ns0:name>dsprin...@chromium.org</ns0:name><ns0:uri>/u/101571556652463395731/</ns0:uri></ns0:author><ns0:content type="html">When running a valgrind test on the naclsdk-linux trybot, I get this error:
+
+
+Running ['/mnt/data/b/build/slave/naclsdk-linux/build/src/scons-out/sdk_installer/test_sdk_bundle/third_party/valgrind/memcheck.sh', '/mnt/data/b/build/slave/naclsdk-linux/build/src/scons-out/sdk_installer/test_sdk_bundle/toolchain/linux_x86_newlib/bin/sel_ldr_x86_64', '-B', '/mnt/data/b/build/slave/naclsdk-linux/build/src/scons-out/sdk_installer/test_sdk_bundle/toolchain/linux_x86_newlib/runtime/irt_core_x86_64.nexe', '-Q', '/mnt/data/b/build/slave/naclsdk-linux/build/src/scons-out/sdk_installer/test_sdk_bundle/true.nexe']
+
+StdErr for ['/mnt/data/b/build/slave/naclsdk-linux/build/src/scons-out/sdk_installer/test_sdk_bundle/third_party/valgrind/memcheck.sh', '/mnt/data/b/build/slave/naclsdk-linux/build/src/scons-out/sdk_installer/test_sdk_bundle/toolchain/linux_x86_newlib/bin/sel_ldr_x86_64', '-B', '/mnt/data/b/build/slave/naclsdk-linux/build/src/scons-out/sdk_installer/test_sdk_bundle/toolchain/linux_x86_newlib/runtime/irt_core_x86_64.nexe', '-Q', '/mnt/data/b/build/slave/naclsdk-linux/build/src/scons-out/sdk_installer/test_sdk_bundle/true.nexe']:
+==11596== Memcheck, a memory error detector
+==11596== Copyright (C) 2002-2010, and GNU GPL'd, by Julian Seward et al.
+==11596== Using Valgrind-3.7.0.SVN and LibVEX; rerun with -h for copyright info
+==11596== Command: /mnt/data/b/build/slave/naclsdk-linux/build/src/scons-out/sdk_installer/test_sdk_bundle/toolchain/linux_x86_newlib/bin/sel_ldr_x86_64 -B /mnt/data/b/build/slave/naclsdk-linux/build/src/scons-out/sdk_installer/test_sdk_bundle/toolchain/linux_x86_newlib/runtime/irt_core_x86_64.nexe -Q /mnt/data/b/build/slave/naclsdk-linux/build/src/scons-out/sdk_installer/test_sdk_bundle/true.nexe
+==11596== 
+
+valgrind:  Fatal error at startup: a function redirection
+valgrind:  which is mandatory for this platform-tool combination
+valgrind:  cannot be set up.  Details of the redirection are:
+valgrind:  
+valgrind:  A must-be-redirected function
+valgrind:  whose name matches the pattern:      strlen
+valgrind:  in an object with soname matching:   ld-linux-x86-64.so.2
+valgrind:  was not found whilst processing
+valgrind:  symbols from the object with soname: ld-linux-x86-64.so.2
+valgrind:  
+valgrind:  Possible fixes: (1, short term): install glibc's debuginfo
+valgrind:  package on this machine.  (2, longer term): ask the packagers
+valgrind:  for your Linux distribution to please in future ship a non-
+valgrind:  stripped ld.so (or whatever the dynamic linker .so is called)
+valgrind:  that exports the above-named function using the standard
+valgrind:  calling conventions for this platform.
+valgrind:  
+valgrind:  Cannot continue -- exiting now.  Sorry.
+</ns0:content><ns0:updated>2011-09-21T23:19:49.000Z</ns0:updated><ns0:published>2011-09-21T19:17:03.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Please add glibc-dbg to Linux trybots.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2273/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2273" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2273" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-09-21T23:19:49.000Z</ns2:closedDate><ns2:id>2273</ns2:id></ns0:entry>

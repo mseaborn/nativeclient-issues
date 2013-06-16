@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIHQn47eCl7ImA9WhRaGUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1731</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK + runtime are you using?
+
+nacl svn r4993, probably since r4970
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. try to build 252.eon:
+
+For example, with
+
+tools/llvm/utman.sh test-spec ~/cpu2000-redhat64-ia32/ SetupNaclX8632Opt 252.eon
+
+tools/llvm/utman.sh test-spec ~/cpu2000-redhat64-ia32/ SetupNaclX8664Opt 252.eon
+
+2. get error:
+
+/mnt/data/b/build/slave/lucid64-spec-x86/build/native_client/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib64/libstdc++.a(eh_globals.o): In function `__cxa_get_globals_fast':
+/mnt/data/b/build/slave/lucid64-glibc/build/native_client/tools/BUILD/build-full-gcc-nacl64/nacl64/libstdc++-v3/libsupc++/../../../../../SRC/gcc/libstdc++-v3/libsupc++/eh_globals.cc:59: undefined reference to `__tls_get_addr'
+/mnt/data/b/build/slave/lucid64-spec-x86/build/native_client/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib64/libstdc++.a(eh_globals.o): In function `__cxa_get_globals':
+/mnt/data/b/build/slave/lucid64-glibc/build/native_client/tools/BUILD/build-full-gcc-nacl64/nacl64/libstdc++-v3/libsupc++/../../../../../SRC/gcc/libstdc++-v3/libsupc++/eh_globals.cc:63: undefined reference to `__tls_get_addr'
+collect2: ld returned 1 exit status
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Compiles and runs.
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+Example build log:
+
+http://build.chromium.org/p/client.nacl/builders/lucid64-spec-x86/builds/1102/steps/SetupNaclX8664Opt/logs/stdio
+
+</ns0:content><ns0:updated>2012-02-22T22:42:13.000Z</ns0:updated><ns0:published>2011-04-25T22:50:46.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>nacl gcc + glibc fails to build 252.eon  (w/ -static?)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1731/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1731" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1731" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>1731</ns2:id></ns0:entry>

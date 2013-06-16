@@ -1,0 +1,61 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUGQn47eCl7ImA9Wx5VFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/960/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">OK, this bug is a strange beast.
+
+There are 2 questions:
+1. why .got.plt resides in the wrong segment (ro instead of rw)?
+2. why .got.plt is there at all?
+
+Answer 1:
+
+Easy, linker script is wrong.
+Patching it in a way that moves .got.plt after the .data makes Valgrind happy.
+
+Side question: why that worked before?
+Just because there was no .got.plt before, see answer 2.
+
+Answer 2:
+
+.got.plt section appears because several library object files have _GLOBAL_OFFSET_TABLE_ symbol.
+
+_GLOBAL_OFFSET_TABLE_ occurs when we have access to thread-local variable, the easiest test reproduces that:
+
+eaeltsin@eaeltsin:~/work/gcc/got_plt$ cat t2.c
+__thread int x;
+void foo() {
+  x = 0;
+}
+
+eaeltsin@eaeltsin:~/work/gcc/got_plt$ ./nacl64-gcc -c -static t2.c
+
+eaeltsin@eaeltsin:~/work/gcc/got_plt$ objdump -t t2.o
+...
+0000000000000000         *UND*	0000000000000000 __nacl_read_tp
+0000000000000000         *UND*	0000000000000000 _GLOBAL_OFFSET_TABLE_
+
+eaeltsin@eaeltsin:~/work/gcc/got_plt$ objdump -dr t2.o
+...
+  22:	41 c7 84 07 00 00 00 	movl   $0x0,0x0(%r15,%rax,1)
+  29:	00 00 00 00 00 
+			26: R_X86_64_TPOFF32	x
+
+So, the reason is R_X86_64_TPOFF32 relocation that instructs the linker to create the global offset table.
+
+Side question: why there was no R_X86_64_TPOFF32 before?
+Just because the TLS access model was forced to LOCAL_EXEC.
+
+Forcing TLS access model to LOCAL_EXEC restricts our world to one statically linked binary that never calls dlopen. This is generally wrong, thus I disabled that restriction when refactoring TLS access for x86_64. The result is that TLS access now is initially generated according to INITIAL_EXEC TLS model, which involves R_X86_64_TPOFF32.
+
+For a statically linked binary, linker rewrites INITAL_EXEC to LOCAL_EXEC, thus R_X86_64_TPOFF32 disappears. Bad stuff is that .got.plt remains, however, it is actually ignored.
+
+Side note: I see very fresh changes in bfd upstream (last one a week ago) for preventing creation of .got.plt when it is actually not used.
+
+Resolution:
+
+- To make valgrind happy, we have to fix our newlib linker script (low pri?);
+- We have to check the same case for glibc (however, we don't link statically with glibc, so this is also low or med pri);
+- We have to migrate to even more fresh binutils (even lower pri?);
+
+I'm lowering the overall pri of this bug for now.
+</ns0:content><ns0:updated>2010-10-07T12:57:03.000Z</ns0:updated><ns0:published>2010-10-07T12:57:03.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Pri-2</ns2:label><ns2:label>Pri-3</ns2:label><ns2:ccUpdate>k...@google.com</ns2:ccUpdate><ns2:ccUpdate>mseab...@chromium.org</ns2:ccUpdate><ns2:ccUpdate>pa...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 1 by eaelt...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=960#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/960/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,72 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcBSX47eCl7ImA9Wx5bFkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1095/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">Here is how to see what native x86_64 compiler does:
+
+$ cat t2.c
+int foo __attribute__ ((visibility ("hidden"))) = 123;
+int* bar = &amp;foo;
+
+Here we need a relocation to initialize "bar". Relocation points to "foo", which is hidden and thus should not go to the dynamic symbol table.
+
+$ gcc -fPIC -c t2.c
+$ objdump -t t2.o
+...
+0000000000000000 g     O .data	0000000000000004 .hidden foo
+...
+$ objdump -r t2.o
+...
+0000000000000000 R_X86_64_64       foo
+
+In the object file, we see the relocation we expected. It writes address of "foo" to the beginning of the .data section.
+
+$ gcc -fPIC -shared -nostdlib -nostartfiles t2.o
+$ objdump -R a.out
+...
+0000000000201000 R_X86_64_RELATIVE  *ABS*+0x0000000000201000
+...
+$ objdump -h a.out
+...
+  8 .data         00000010  0000000000201000  0000000000201000  00001000  2**3
+...
+
+When creating the shared object, R_X86_64_64 relocation to "foo" is rewritten to R_X86_64_RELATIVE relocation with the absolute offset of "foo", which is the beginning of the .data section.
+
+Now repeating these steps with x86_64 nacl gcc:
+
+$ nacl64-gcc -fPIC -c t2.c
+$ objdump -r t2.o
+...
+0000000000000000 R_X86_64_32       foo
+
+Note that due to ILP32 model, relocation is now R_X86_64_32.
+
+$ nacl64-gcc -fPIC -shared -nostdlib -nostartfiles  t2.o
+$ objdump -R a.out
+...
+0000000010400004 R_X86_64_32       .data+0x0000000010400000
+$ objdump -h a.out
+...
+  6 .data         00000008  0000000010400000  0000000010400000  00600000  2**2
+...
+
+Note that relocation is still R_X86_64_32, obviously there is no 32-bit version of R_X86_64_RELATIVE. Relocation can't use local symbol, so it is now rewritten to use section symbol, namely .data.
+
+Note the addend - in fact "foo" is located at offset 0 from .data, but the addend is 0x10400000, which actually is the offset of .data itself - so the addend is wrong.
+
+As I noted before, binutils seem to do this intentionally for ld.so, but in our particular case this does not work, and we don't see corresponding ld.so code. So, relinking with fixed binutils:
+
+$ nacl64-gcc  -fPIC -shared -nostdlib -nostartfiles  t2.o
+$ objdump -R a.out
+...
+0000000010400004 R_X86_64_32       .data
+
+Now the relocation has correct addend of 0, and this works.
+
+
+I'm submitting this binutils fix, but still want to learn the reasons for creating wrong addends, thus keeping this issue.
+
+
+
+
+</ns0:content><ns0:updated>2010-11-02T11:07:38.000Z</ns0:updated><ns0:published>2010-11-02T11:07:38.000Z</ns0:published><ns2:updates>
+			<ns2:ownerUpdate>eaelt...@google.com</ns2:ownerUpdate></ns2:updates><ns0:title>Comment 3 by eaelt...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1095#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1095/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

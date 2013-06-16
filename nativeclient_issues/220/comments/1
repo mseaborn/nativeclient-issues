@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk4GR347eCl7ImA9WxBSEE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/220/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">Some info
+
+&gt;cmp -l /home/robertm/fib_array.nexe.good /home/robertm/fib_array.nexe.bad
+    39   0  20
+
+/usr/local/crosstool-trusted/qemu-arm -cpu cortex-a8 -L
+/usr/local/crosstool-trusted/arm-2009q3/arm-none-linux-gnueabi/libc
+/home/robertm/gclient-nacl1/native_client/scons-out/opt-linux-arm/staging/sel_ldr -I
+-d -f /home/robertm/fib_array.nexe.bad
+DEBUG MODE ENABLED
+[6627,1879982080:22:36:34.081886] BYPASSING ALL ACL CHECKS
+[6627,1879982080:22:36:34.110654] bad tdb alignment tdb 618a0 idx 0
+[6627,1879982080:22:36:34.111036] this is expected at startup
+qemu: SIGSEGV pc=0x602c86d1 address=4000000e w=1 oldset=0x00000000
+qemu: uncaught target signal 11 (Segmentation fault) - exiting
+
+
+&gt;/usr/local/crosstool-trusted/qemu-arm -cpu cortex-a8 -L
+/usr/local/crosstool-trusted/arm-2009q3/arm-none-linux-gnueabi/libc
+/home/robertm/gclient-nacl1/native_client/scons-out/opt-linux-arm/staging/sel_ldr -I
+-d -f /home/robertm/fib_array.nexe.good
+DEBUG MODE ENABLED
+[6510,1879982080:22:35:56.012460] BYPASSING ALL ACL CHECKS
+[6510,1879982080:22:35:56.049879] bad tdb alignment tdb 618a0 idx 0
+[6510,1879982080:22:35:56.050235] this is expected at startup
+0&gt; [6510,1074680576:22:35:58.553844] Exit syscall handler: 0
+
+
+</ns0:content><ns0:updated>2009-12-16T23:08:46.000Z</ns0:updated><ns0:published>2009-12-16T23:08:46.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=220#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/220/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

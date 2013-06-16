@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEMBRX47eCl7ImA9WhZUEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1876/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The timings have gone from this, before:
+
+win7-64-bare-newlib-opt:
+RESULT browser_startup_time.out: MakeDynText_x86-64_nnacl_newlib_static_irt= 16.000000 millisecs
+RESULT browser_startup_time.out: AllocAddrSpace_x86-64_nnacl_newlib_static_irt= 1079.000000 millisecs
+RESULT browser_startup_time.out: ValidateImg_x86-64_nnacl_newlib_static_irt= 30.000000 millisecs
+RESULT browser_startup_time.out: DynRegionValidate_x86-64_nnacl_newlib_static_irt= 132.000000 millisecs
+RESULT browser_startup_time.out: Total_x86-64_nnacl_newlib_static_irt= 1360.000000 millisecs
+
+to this, after:
+
+win7-64-bare-newlib-opt:
+RESULT browser_startup_time.out: MakeDynText_x86-64_nnacl_newlib_static_irt= 16.000000 millisecs
+RESULT browser_startup_time.out: AllocAddrSpace_x86-64_nnacl_newlib_static_irt= 106.000000 millisecs
+RESULT browser_startup_time.out: ValidateImg_x86-64_nnacl_newlib_static_irt= 30.000000 millisecs
+RESULT browser_startup_time.out: DynRegionValidate_x86-64_nnacl_newlib_static_irt= 132.000000 millisecs
+RESULT browser_startup_time.out: Total_x86-64_nnacl_newlib_static_irt= 396.000000 millisecs
+
+This is a big improvement, but still pretty poor compared with the Linux timings:
+
+lucid-64-newlib-opt:
+RESULT browser_startup_time.out: MakeDynText_x86-64_nnacl_newlib_static_irt= 1.979000 millisecs
+RESULT browser_startup_time.out: AllocAddrSpace_x86-64_nnacl_newlib_static_irt= 0.037000 millisecs
+RESULT browser_startup_time.out: ValidateImg_x86-64_nnacl_newlib_static_irt= 30.470000 millisecs
+RESULT browser_startup_time.out: DynRegionValidate_x86-64_nnacl_newlib_static_irt= 133.995000 millisecs
+RESULT browser_startup_time.out: Total_x86-64_nnacl_newlib_static_irt= 236.000000 millisecs
+
+
+Furthermore, small_tests is now a lot faster:
+
+win7-64-bare-newlib-opt:
+before:  small_tests [small_tests] [323 seconds]
+after:   small_tests [small_tests] [127 seconds]
+
+lucid-64-newlib-opt:
+small_tests64 [small_tests64] [60 seconds]
+</ns0:content><ns0:updated>2011-06-03T20:20:54.000Z</ns0:updated><ns0:published>2011-06-03T20:20:54.000Z</ns0:published><ns2:updates>
+			<ns2:status>Fixed</ns2:status></ns2:updates><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1876#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1876/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

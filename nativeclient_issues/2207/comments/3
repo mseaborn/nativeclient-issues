@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU4HQ347eCl7ImA9WhdXFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2207/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>pdox%goo...@gtempaccount.com</ns0:name><ns0:uri>/u/104735739662288482898/</ns0:uri></ns0:author><ns0:content type="html">Ivan,
+
+I think this is straight-forward. "Byval" is a way for the front-end to encode target-specific lowering information to the backend. If you look at how the front-ends (Clang &amp; llvm-gcc) decide to use byval, you'll see they pick depending on the architecture and calling convention.
+
+I don't think there's any reason for us to support byval. We can always omit byval, and let the backend decide how to pass the argument.</ns0:content><ns0:updated>2011-08-30T00:25:32.000Z</ns0:updated><ns0:published>2011-08-30T00:25:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by pdox%goo...@gtempaccount.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2207#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2207/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

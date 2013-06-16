@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEMBQ347eCl7ImA9Wx5WEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/879</ns0:id><ns0:author>
+			<ns0:name>msn...@google.com</ns0:name><ns0:uri>/u/105190905030319373792/</ns0:uri></ns0:author><ns0:content type="html">Our Mac integration bot is broken and there is a weird error message for it from the script src/build/gyp_chromium (which runs during the &amp;quot;update&amp;quot; phase).  This happened when a new library, &amp;quot;nacl_base&amp;quot;, was added.  Every reference to &amp;quot;nacl_base&amp;quot; in all .gyp files works just fine *except* for the two references inside src/trusted/service_runtime/service_runtime.gyp.  If I comment out both references to &amp;quot;nacl_base&amp;quot;, leaving all other references to &amp;quot;nacl_base&amp;quot; intact, src/build/gyp_chromium works fine.  If I comment in either of the two references to &amp;quot;nacl_base&amp;quot; in service_runtime.gyp, I get this error:
+
+% /usr/bin/python src/build/gyp_chromium 
+Updating projects from gyp files...
+Traceback (most recent call last):
+  File &amp;quot;src/build/gyp_chromium&amp;quot;, line 97, in &amp;lt;module&amp;gt;
+    sys.exit(gyp.main(args))
+  File &amp;quot;src/tools/gyp/pylib/gyp/__init__.py&amp;quot;, line 454, in main
+    generator.GenerateOutput(flat_list, targets, data, params)
+  File &amp;quot;src/tools/gyp/pylib/gyp/generator/xcode.py&amp;quot;, line 1145, in GenerateOutput
+    xcode_target_to_target_dict)
+  File &amp;quot;src/tools/gyp/pylib/gyp/generator/xcode.py&amp;quot;, line 392, in Finalize2
+    self.project_file.EnsureNoIDCollisions()
+  File &amp;quot;src/tools/gyp/pylib/gyp/xcodeproj_file.py&amp;quot;, line 460, in EnsureNoIDCollisions
+    str(other._properties), self._properties['rootObject'].Name())
+KeyError: 'Duplicate ID CA4760E243A1EC04490D6157, objects &amp;quot;{\'children\': [&amp;lt;PBXReferenceProxy \'libnacl_base.a\' at 0x103e1ddd0&amp;gt;], \'name\': \'Products\', \'sourceTree\': \'&amp;lt;group&amp;gt;\'}&amp;quot; and &amp;quot;{\'children\': [&amp;lt;PBXReferenceProxy \'libbase_i18n.a\' at 0x10277f110&amp;gt;, &amp;lt;PBXReferenceProxy \'base_unittests\' at 0x103e023d0&amp;gt;, &amp;lt;PBXReferenceProxy \'libtest_support_base.a\' at 0x103e02350&amp;gt;, &amp;lt;PBXReferenceProxy \'libtest_support_perf.a\' at 0x10277f090&amp;gt;, &amp;lt;PBXReferenceProxy \'libbase.a\' at 0x10277cfd0&amp;gt;], \'name\': \'Products\', \'sourceTree\': \'&amp;lt;group&amp;gt;\'}&amp;quot; in &amp;quot;chrome&amp;quot;'
+
+This only fails on the Mac.  I looked in the gyp_chromium Python script and found a line adding &amp;quot;--no-circular-check&amp;quot; to all platforms except Mac.  Since this failure occurs on Mac only, that looked like a smoking gun so I went ahead and added &amp;quot;--no-circular-check&amp;quot; to the Mac, but that had no effect; gyp_chromium still fails.
+</ns0:content><ns0:updated>2010-09-20T23:47:32.000Z</ns0:updated><ns0:published>2010-09-10T22:51:57.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105190905030319373792/</ns2:uri><ns2:username>msn...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Mac build fails during Chrome src/build/gyp_chromium stage</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Mac</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/879/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=879" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/879" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-09-20T23:47:32.000Z</ns2:closedDate><ns2:id>879</ns2:id></ns0:entry>

@@ -1,0 +1,56 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQCR347eCl7ImA9WhVSEko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2584</ns0:id><ns0:author>
+			<ns0:name>olo...@google.com</ns0:name><ns0:uri>/u/113921375080395685545/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? pepper_17
+On what operating system? Gubuntu
+What browser are you using? N/A
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. This simple program
+typedef unsigned char uint8;
+typedef unsigned int uint32;
+
+typedef struct _BRUSHDATA
+{
+        uint32 colour_code;
+        uint32 data_size;
+        uint8 *data;
+}
+BRUSHDATA;
+
+static BRUSHDATA g_brushcache[2][64];
+#define NUM_ELEMENTS(array) (sizeof(array) / sizeof(array[0]))
+
+/* Retrieve brush from cache */
+BRUSHDATA *
+cache_get_brush_data(uint8 colour_code, uint8 idx)
+{
+        colour_code = colour_code == 1 ? 0 : 1;
+        if (idx &amp;lt; NUM_ELEMENTS(g_brushcache[0]))
+        {
+                return &amp;amp;g_brushcache[colour_code][idx];
+        }
+        return 0;
+}
+
+if being compiled with -O2 and -fPI, like this
+/local/src/naclports/nacl_sdk/pepper_17/toolchain/linux_x86/bin/x86_64-nacl-gcc -O2 -m64 a.c -c -fPIC
+crashes compiler:
+a.c: In function &#8216;cache_get_brush_data&#8217;:
+a.c:25: error: unrecognizable insn:
+(insn 57 30 32 3 a.c:22 (set (reg:SI 0 ax [76])
+        (subreg:SI (plus:DI (plus:DI (mult:DI (reg:DI 4 si [67])
+                        (const_int 4 [0x4]))
+                    (reg:DI 0 ax [74]))
+                (symbol_ref:DI (&amp;quot;g_brushcache&amp;quot;))) 0)) -1 (nil))
+a.c:25: internal compiler error: in extract_insn, at recog.c:2048
+
+
+What is the expected output? Program shall compile. Either removing -fPIC or -O2 hides the problem
+
+What do you see instead? Compiler crash.
+
+
+</ns0:content><ns0:updated>2012-03-09T06:09:26.000Z</ns0:updated><ns0:published>2012-02-09T12:09:26.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>64-bit compiler crash</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2584/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2584" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2584" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:id>2584</ns2:id></ns0:entry>

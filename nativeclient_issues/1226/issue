@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMEQn47eCl7ImA9WhdSEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1226</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">On x86_64, initial stack prepared for the nacl process contains 64-bit argument count, while all other entries are 32-bit (as expected for ILP32).
+
+We didn't try to fix this, as there are several assembly code pieces in glibc and other places that handle argc with push/pop, which is 64-bit only on x86_64.
+
+Probably this has to be fixed at some point.
+</ns0:content><ns0:updated>2011-07-19T21:20:03.000Z</ns0:updated><ns0:published>2010-12-07T13:35:31.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>On x86_64, argc inside initial stack is 64-bit, while it should be 32-bit</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>ProcessArgsInit</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1226/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1226" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1226" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-19T21:20:03.000Z</ns2:closedDate><ns2:id>1226</ns2:id></ns0:entry>

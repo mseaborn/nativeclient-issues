@@ -1,0 +1,56 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE8NRn47eCl7ImA9WhZTE0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1520/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">I started looking into how the bitcode files that get generated while building libgcc_eh differ between the archs.
+x86-64 is quite different but this may not mean much since the frontend believes that pointers are 64bit.
+So below I am mostly looking at arm vs x86-32.
+
+FILE: unwind-dw2.c
+
+Some structs are different
+==========================
+arm:
+// defined in unwind-dw2.c
+%struct._Unwind_Context = type { [17 x i8*], i8*, i8*, i8*, %struct.dwarf_eh_bases, i32, i32, i32, [17 x i8] }
+// defined unwind.h                             ^^^^^                                                             ^^^^^^^
+%struct._Unwind_Exception = type { i64, void (i32, %struct._Unwind_Exception*)*, i32, i32, [8 x i32] }
+%struct.frame_state = type { i8*, i8*, i32, i32, [17 x i32], i16, i16, [17 x i8] }
+%struct.frame_state_reg_info = type { [17 x %struct.anon], %struct.frame_state_reg_info* }
+@dwarf_reg_size_table = internal unnamed_addr global [17 x i8] zeroinitializer
+x86:
+%struct._Unwind_Context = type { [18 x i8*], i8*, i8*, i8*, %struct.dwarf_eh_bases, i32, i32, i32, [18 x i8] }      //
+%struct._Unwind_Exception = type { i64, void (i32, %struct._Unwind_Exception*)*, i32, i32, [8 x i32], [2 x i32] }   // PROBABLY HARMLESS
+                                                                                                       
+%struct.frame_state = type { i8*, i8*, i32, i32, [18 x i32], i16, i16, [18 x i8] }
+%struct.frame_state_reg_info = type { [18 x %struct.anon], %struct.frame_state_reg_info* }
+@dwarf_reg_size_table = internal unnamed_addr global [18 x i8] zeroinitializer
+
+Note: 17 vs 17 difference comes from this MACRO:
+DWARF_FRAME_REGISTERS
+we can probably fudge this for our three known arch but it is not clear how this works on say itanium
+
+differences in  _Unwind_PNaClSetResult1/2
+==========================================
+The constants (guarded by #ifdef) used here must become bitcode intrinsics to make this portable
+
+differences in   _Unwind_SetSpColumn
+=====================================
+this uses __builtin_dwarf_sp_column which needs to become llvm intrinsic
+
+there are more builtins some are already llvm intrinsics 
+
+ SIGNAL_FRAME_BIT seems to differ
+==================================
+probably can be fudges as well
+
+alignment differences
+======================
+e.g.   
+%111 = alloca %struct.frame_state_reg_info, align 4  vs  %111 = alloca %struct.frame_state_reg_info, align 1
+or
+ %15 = load i32* %3, align 4,(arm)   vs  %15 = load i32* %3, align 8, (X86-32)
+
+
+struct frame_state saved[] seems to have different signedness 
+===============================================================
+</ns0:content><ns0:updated>2011-03-17T21:21:37.000Z</ns0:updated><ns0:published>2011-03-17T21:21:37.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>jvo...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 6 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1520#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1520/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

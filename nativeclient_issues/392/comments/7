@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8AQn47eCl7ImA9Wx9SE00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/392/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">http://codereview.chromium.org/5525002/ is harvesting some of the low hanging fruit
+
+One of the problems seems to be that  llvm tools tend to link with
+(too) many llvm libs.
+As a consequence, the  llc  binaries (with and without sandboxing) and
+the new mc binary are close to 20MB.
+Especially for llc we need to look into making this slimmer since it
+goes on the device.
+
+The size of the toolchain also affected the trybots - so this is now a priority zero issue</ns0:content><ns0:updated>2010-12-02T16:54:03.000Z</ns0:updated><ns0:published>2010-12-02T16:54:03.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Pri-1</ns2:label><ns2:label>Pri-0</ns2:label></ns2:updates><ns0:title>Comment 7 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=392#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/392/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

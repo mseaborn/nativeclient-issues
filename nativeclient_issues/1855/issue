@@ -1,0 +1,58 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QDSX47eCl7ImA9WhdbEEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1855</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">Below is a dump from an ad-hoc shared lib generated for ARM.
+In the part for the memset/memcopy intrinsics it looks like the intel nop &amp;quot;0x90&amp;quot;
+is used for padding rather then an arm nop.
+
+objdump-arm -d libsimple1.arm.so | m
+ 
+ libsimple1.arm.so:     file format elf32-littlearm
+ 
+ Disassembly of section .text:
+ 
+ 00010000 &amp;lt;hello&amp;gt;:
+    10000:       e3070fec        .word   0xe3070fec
+    10004:       e3400001        .word   0xe3400001
+    10008:       e3081060        .word   0xe3081060
+    1000c:       e08f0000        .word   0xe08f0000
+    10010:       e3401001        .word   0xe3401001
+    10014:       e08f1001        .word   0xe08f1001
+    10018:       e5900000        .word   0xe5900000
+    1001c:       e0800001        .word   0xe0800001
+    10020:       e3cee000        .word   0xe3cee000
+    10024:       e12fff1e        .word   0xe12fff1e
+    10028:       e320f000        .word   0xe320f000
+    1002c:       e320f000        .word   0xe320f000
+ 
+ 00010030 &amp;lt;fortytwo&amp;gt;:
+    10030:       e3a0002a        mov     r0, #42 ; 0x2a
+    10034:       e3cee000        bic     lr, lr, #0      ; 0x0
+    10038:       e12fff1e        bx      lr
+    1003c:       e320f000        nop     {0}
+ 
+ 00010040 &amp;lt;memset&amp;gt;:
+    10040:       e3520000        .word   0xe3520000
+    10044:       03cee000        .word   0x03cee000
+    10048:       012fff1e        .word   0x012fff1e
+    1004c:       e1a03000        .word   0xe1a03000
+    10050:       e3c33000        .word   0xe3c33000
+    10054:       e5c31000        .word   0xe5c31000
+    10058:       e2833001        .word   0xe2833001
+    1005c:       e2522001        .word   0xe2522001
+    10060:       1afffffa        .word   0x1afffffa
+    10064:       e3cee000        .word   0xe3cee000
+    10068:       e12fff1e        .word   0xe12fff1e
+    1006c:       e320f000        .word   0xe320f000   &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; good nop
+    10070:       90909090        .word   0x90909090   &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;  bad nop
+    10074:       90909090        .word   0x90909090
+    10078:       90909090        .word   0x90909090
+    1007c:       90909090        .word   0x90909090
+
+
+
+
+
+</ns0:content><ns0:updated>2011-10-07T18:16:18.000Z</ns0:updated><ns0:published>2011-05-26T16:35:23.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>pnacl shared linking sometimes uses wrong padding for ARM</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>SharedLibrary</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1855/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1855" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1855" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1855</ns2:id></ns0:entry>

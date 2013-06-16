@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0YASX47eCl7ImA9WhRUGEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2570</ns0:id><ns0:author>
+			<ns0:name>turkey...@gmail.com</ns0:name><ns0:uri>/u/104785035893907984325/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? pepper_17
+On what operating system? Win7 64
+What browser are you using? Chrome 16.0.912.77 m
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Using httpd in samples/ load a nexe once
+2. Delete the nexe just loaded, replace it with a different one
+3. Shift+F5, notice that the first (deleted) nexe is loaded again, the replacement is ignored
+
+&lt;b&gt;What is the expected output?&lt;/b&gt;
+
+  The new nexe is loaded
+
+&lt;b&gt;What do you see instead?&lt;/b&gt;
+
+  The old (cached?) nexe is reloaded, even though I deleted it, and use Shift+F5 to force reload.
+
+
+Please provide any additional information below and attach any relevant source files.
+
+  If I rename the nmf, that file is refreshed (and appears missing), but the nexe seems to refuse to reload no matter what I do. It's as if the nexe's are exempt/separate from the usual browser cache.
+  This makes debugging impossible, since I can't ever run a new build without renaming the nexe, and updating the nmf to point to a new nexe accordingly, effectively forcing it to reload the nexe through a new name.</ns0:content><ns0:updated>2012-01-29T23:52:28.000Z</ns0:updated><ns0:published>2012-01-29T23:52:28.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>Shift+F5 refuses to reload my nexe, always runs cached version.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2570/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2570" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2570" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2570</ns2:id></ns0:entry>

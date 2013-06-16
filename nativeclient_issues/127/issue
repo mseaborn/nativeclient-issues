@@ -1,0 +1,8 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0YFQ347eCl7ImA9Wx5WGU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/127</ns0:id><ns0:author>
+			<ns0:name>n...@chromium.org</ns0:name><ns0:uri>/u/106271410774109105738/</ns0:uri></ns0:author><ns0:content type="html">Chrome Sandbox is a separate bug -- see 
+http://code.google.com/p/chromium/issues/detail?id=26781
+
+We need an OSX sandbox for NaCl, on browsers besides Chrome.  Have a .sb
+version, need to tighten it up by eliminating certain mach opens.</ns0:content><ns0:updated>2010-10-01T12:11:52.000Z</ns0:updated><ns0:published>2009-11-19T15:29:27.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Complete OSX sandbox for Firefox, Safari NaCl</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Mac</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/127/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=127" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/127" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2010-10-01T12:11:52.000Z</ns2:closedDate><ns2:id>127</ns2:id></ns0:entry>

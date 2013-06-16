@@ -1,0 +1,44 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkIHRn47eCl7ImA9WhRSE0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2400</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+r7038
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+http://build.chromium.org/p/client.nacl/builders/lucid-64-newlib-dbg/builds/1554/steps/chrome_browser_tests/logs/stdio
+http://build.chromium.org/p/client.nacl/builders/lucid-64-newlib-opt/builds/1551/steps/chrome_browser_tests/logs/stdio
+http://build.chromium.org/p/client.nacl/builders/lucid_64-newlib-dbg-clang/builds/263/steps/chrome_browser_tests/logs/stdio
+
+So, it looks to be specific to Linux x86-64.
+
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+Chrome r107636
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+
+./scons platform=x86-64 run_pm_nameservice_chrome_browser_test
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Expected: PASS
+Real: sometimes it hangs
+
+Other exit_tests have the similar behavior.
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-11-15T22:02:17.000Z</ns0:updated><ns0:published>2011-10-28T01:25:01.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/115650099802223885833/</ns2:uri><ns2:username>jabdelma...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100177598732114324016/</ns2:uri><ns2:username>mcgra...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Chrome (sometimes) hangs on Linux x86-64</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Mstone-17</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2400/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2400" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2400" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>2394</ns2:id></ns2:blockedOn><ns2:id>2400</ns2:id></ns0:entry>

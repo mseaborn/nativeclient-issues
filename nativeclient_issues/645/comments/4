@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUGQH47eCl7ImA9WxFUFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/645/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">&gt; This is a case of the validator prohibiting an instruction because
+&gt; it's "suspicious," not because it's inherently unsafe.  We've seen
+&gt; two cases now of people porting software that contains int3s.  In
+&gt; both cases, it was in some assert-style debug code, so it could have
+&gt; simply stayed in rather than requiring more patches: the code was
+&gt; designed to blow up.
+
+Note that we now have "stubout mode" which can replace disallowed
+instructions with HLTs.  I can turn this into a command line tool if
+others would find that useful for porting.
+
+&gt; This is rooted in my suspicion that int3 is not a security risk on
+&gt; x86-32 (the report also mentions x86-64, but that isn't what we
+&gt; discussed in person).  On Linux, it kills the process (safe).  I
+&gt; will check with the local Windows gurus for details there.
+
+I'd like to make sure that it always kills the process and doesn't,
+say, fire up Visual Studio if it's installed.
+</ns0:content><ns0:updated>2010-06-25T15:03:41.000Z</ns0:updated><ns0:published>2010-06-25T15:03:41.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=645#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/645/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

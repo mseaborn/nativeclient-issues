@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIDRH47eCl7ImA9WxFWEE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/339/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">&gt; This has an interesting side effect: rather than coercing
+&gt; out-of-bounds addresses into the sandbox, we simply "blunt" the
+&gt; instructions that consume them, eliminating their side effects.
+&gt; Since in general, NaCl does not guarantee any particular semantics
+&gt; for incorrect code (beyond it not escaping the sandbox), this is
+&gt; probably okay.  (Even predicated indirect jumps falling through
+&gt; isn't an SFI problem, since we don't pack data after them etc.)
+
+Are you going to apply the TST-sandbox to indirect jumps as well as
+stores?
+
+It would be nice to have a compiler option to add an instruction that
+faults if the TST fails, for debugging purposes.  So we'd have:
+
+  tst rAddr, #DATA_MASK      // Set Z if all bits in DATA_MASK are 0
+  streq rVal, [rAddr]        // Store only if rAddr is sandboxed
+  bkptne 0x7777              // Fault
+
+  tst rAddr, #CONTROL_MASK
+  moveq pc, rAddr
+  bkpt 0x7777                // No "ne" conditional needed
+
+(Might it make sense to use different breakpoint values?)
+
+I'd be concerned that if the code falls through when the jump target
+is unaligned or out of range, it could behave very unpredictably and
+be hard to debug.
+</ns0:content><ns0:updated>2010-05-28T09:06:15.000Z</ns0:updated><ns0:published>2010-05-28T09:06:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=339#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/339/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

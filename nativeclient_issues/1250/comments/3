@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMFSX47eCl7ImA9WhZSE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1250/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4644
+
+------------------------------------------------------------------------
+r4644 | ncbray@google.com | Mon Mar 28 10:42:11 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_init.py?r1=4644&amp;r2=4643&amp;pathrev=4644
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/scons?r1=4644&amp;r2=4643&amp;pathrev=4644
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/component_builders.py?r1=4644&amp;r2=4643&amp;pathrev=4644
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=4644&amp;r2=4643&amp;pathrev=4644
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/DEPS?r1=4644&amp;r2=4643&amp;pathrev=4644
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/scons.bat?r1=4644&amp;r2=4643&amp;pathrev=4644
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/target_platform_windows.py?r1=4644&amp;r2=4643&amp;pathrev=4644
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/treemappers.py?r1=4644&amp;r2=4643&amp;pathrev=4644
+
+Updated NaCl's build system to use SCons 2.0.1.
+
+Speed of full build is about the same, null build times improved ~8%.
+The main purpose of this update is to make future changes to our build system
+easier.
+
+There is a good chance this CL will (temporarily) break our integration bot.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1250
+TEST= run scons
+
+Review URL: http://codereview.chromium.org/6711086
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-03-28T17:46:58.000Z</ns0:updated><ns0:published>2011-03-28T17:46:58.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1250#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1250/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

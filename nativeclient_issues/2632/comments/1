@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EMQH47eCl7ImA9WhVTGUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2632/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7956
+
+------------------------------------------------------------------------
+r7956 | bsy@google.com | Mon Mar 05 16:59:06 PST 2012
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pagesize/nacl.scons?r1=7956&amp;r2=7955&amp;pathrev=7956
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/nacl_syscall_impl.c?r1=7956&amp;r2=7955&amp;pathrev=7956
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=7956&amp;r2=7955&amp;pathrev=7956
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pagesize/pagesize_test.c?r1=7956&amp;r2=7955&amp;pathrev=7956
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/linux/nacl_syscall_impl.c?r1=7956&amp;r2=7955&amp;pathrev=7956
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pagesize?r1=7956&amp;r2=7955&amp;pathrev=7956
+
+check page alignment of mmap return results.  randomized allocations/deallocs.
+
+the test outputs its seed, then randomly allocs/deallocs chunks of
+memory using mmap/munmap to fragment the address space.  the sizes used
+are also random.
+
+the iteration parameters are chosen so that this can be a quick test,
+but it can also be set high so that this can be used as a stress test.
+however, there is no check to see if we've used up (and totally
+fragmented) the address space, so the test could fail with this as a
+false positive when the test parameters are set too high.
+
+TEST= run_pagesize_test
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2632
+Review URL: https://chromiumcodereview.appspot.com/9564043
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-03-06T01:01:21.000Z</ns0:updated><ns0:published>2012-03-06T01:01:21.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2632#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2632/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

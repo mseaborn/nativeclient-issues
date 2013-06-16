@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IHR347eCl7ImA9WhVVF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2776</ns0:id><ns0:author>
+			<ns0:name>bmcqu...@google.com</ns0:name><ns0:uri>/u/116111176870124899127/</ns0:uri></ns0:author><ns0:content type="html">We're pushing our Page Speed NaCL extension to users, and getting occasional reports of the &amp;quot;ServiceRuntime: command channel creation failed&amp;quot; error from the field.
+
+You can see one such example here:
+http://code.google.com/p/page-speed/issues/detail?id=684
+
+The user seems to imply that this happens for them on every web page (not a transient issue). You can see from the string of loading messages in the bug report that they got through complete loading of the module three times but ended up in this failure state each time. We clear the log of loaded messages on successful loading of the module so seeing this string appear 3x means the user failed to load the module three times in a row.
+
+We had another report of this issue as well:
+http://code.google.com/p/page-speed/issues/detail?id=682
+
+We can try to connect you with these users if it would help to try to debug this in the field.</ns0:content><ns0:updated>2012-05-11T21:25:36.000Z</ns0:updated><ns0:published>2012-05-11T15:26:09.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>Users reporting "ServiceRuntime: command channel creation failed" error</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Pri-1</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2776/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2776" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2776" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:blockedOn>
+			<ns2:id>2464</ns2:id></ns2:blockedOn><ns2:id>2776</ns2:id></ns0:entry>

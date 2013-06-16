@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUFQn47eCl7ImA9WhVQEEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2120</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">shell&amp;gt; cat tst-getline.c 
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+
+main() {
+  char* text = NULL;
+  size_t len;
+  int res;
+
+  FILE* f = fdopen(0, &amp;quot;r&amp;quot;);
+  printf(&amp;quot;before getline\n&amp;quot;);
+  fflush(stdout);
+  res = getline(&amp;amp;text, &amp;amp;len, f);
+  printf(&amp;quot;after getline\n&amp;quot;);  fflush(stdout);
+  if (text) {
+    free(text);
+  }
+
+  return res == 0 ? -1 : 0;
+}
+shell&amp;gt; $TOOLCHAIN/bin/x86_64-nacl-gcc tst-getline.c
+shell&amp;gt; scons-out/dbg-linux-x86-64/staging/sel_ldr -a -- $TOOLCHAIN/x86_64-nacl/lib/runnable-ld.so --library-path $TOOLCHAIN/x86_64-nacl/lib $PWD/a.out
+DEBUG MODE ENABLED (bypass acl)
+[6528,4147250896:18:55:58.457607] BYPASSING ALL ACL CHECKS
+[6528,4147096432:18:55:58.504315] munmap: rounded length to 0x10000
+[6528,4147096432:18:55:58.504343] invalid mmap flags 04022, ignoring extraneous bits
+[6528,4147096432:18:55:58.504370] invalid mmap flags 04022, ignoring extraneous bits
+[6528,4147096432:18:55:58.504449] NaClHostDescOpen: open returned -1, errno 2
+[6528,4147096432:18:55:58.518117] munmap: rounded length to 0x10000
+[6528,4147096432:18:55:58.518150] invalid mmap flags 04022, ignoring extraneous bits
+[6528,4147096432:18:55:58.518172] invalid mmap flags 04022, ignoring extraneous bits
+[6528,4147096432:18:55:58.765760] munmap: rounded length to 0x1a0000
+[6528,4147096432:18:55:58.765897] invalid mmap flags 04022, ignoring extraneous bits
+[6528,4147096432:18:55:58.765919] invalid mmap flags 04022, ignoring extraneous bits
+before getline
+Segmentation fault
+
+same behavior detected with ferror().  Other functions are likely affected.</ns0:content><ns0:updated>2012-03-29T21:56:53.000Z</ns0:updated><ns0:published>2011-08-01T15:03:37.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>nacl-glibc: FILE* operations fail after fdopen</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>CoreRuntime</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2120/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2120" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2120" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>2120</ns2:id></ns0:entry>

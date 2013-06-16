@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYNR347eCl7ImA9WhZbGU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1883/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>wad@chromium.org</ns0:name><ns0:uri>/u/wad@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Hi Ivan,
+
+Sorry for the slowness!  I have the posted patch which Roland and others have reviewed.  I was going to take Roland's feedback and post a new patch for a /dev/anonshm device that will provide remappable pages.  I will try to do it early next week, but if you have some time, here's the starter patch with Roland's feedback at the end:
+
+   http://gerrit.chromium.org/gerrit/#change,2341
+
+I don't think there is really much work -- especially if we start with VM_NORESERVE then look into more advanced change after we've sent it upstream for feedback.  (We need it at least in process before we'll land it in the CrOS kernel -- even if it turns out only we end up using it/keeping it for NaCL).
+
+Thanks!</ns0:content><ns0:updated>2011-06-24T16:33:16.000Z</ns0:updated><ns0:published>2011-06-24T16:33:16.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by wad@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1883#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1883/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

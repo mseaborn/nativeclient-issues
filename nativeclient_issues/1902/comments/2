@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkMNRX47eCl7ImA9WhZUFk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1902/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">Some more background information on this (from memory):
+
+The splitting of structs is usually done by the gcc frontend. 
+Gcc does not know much about registers at this point so it will actually change
+the signature of function, e.g. 
+foo(struct_by_val) will become foo(struct_by_val_piece1, struct_by_val_piece2)
+
+Different frontends (arm, x86-32, etc.) use different policies for this and pnacl had to pick one. We choose not to use any of these frontend transformations and as a result no structs are passed in regs.
+(c.f. https://sites.google.com/a/google.com/nativeclient/project-pnacl/pnacl-a)
+
+To gain compatibility with nacl-gcc we either have to drop the transformation from nacl-gcc
+or teach the pnacl (X86-64) backend how to split struct passed by value.
+
+
+
+ 
+</ns0:content><ns0:updated>2011-06-09T14:08:14.000Z</ns0:updated><ns0:published>2011-06-09T14:08:14.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1902#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1902/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

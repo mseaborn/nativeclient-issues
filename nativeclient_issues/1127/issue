@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0AMQ347eCl7ImA9Wx9bEEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1127</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">While  x86-32/64 now have working exception handling support, ARM is lacking behind.
+
+This is a brain dump of the status quo and possible sketch of what needs to happen.
+
+
+ARM has its own unwind interface defined in 
+llvm-gcc-4.2/gcc/config/arm/unwind-arm.h
+It is close to the standard interface in 
+llvm-gcc/llvm-gcc-4.2/gcc/unwind-generic.h
+but contains some extra stuff to presumably reduce exception overhead.
+
+PNaCl has de-emphasized fast exceptions over a scheme that is more generic.
+Hence we force the generic header files even for ARM, c.f. our local changes to lvm-gcc-4.2/gcc/config/arm/t-bpabi and llvm-gcc-4.2/gcc/config/arm/t-symbian
+
+A first step would be to re-enable the arm code for unwinding in gcc/config/arm/pr-support.c and making it compatible with gcc/unwind-generic.h (as opposed to gcc/config/arm/unwind-arm.h)
+
+The goal is to get this test to work: tests/toolchain/unwind_trace.cc
+
+The tricky part here is that the generic unwind interface uses dwarf style
+tables emitted into the .eh_frame section by llc - it is not clear whether the ARM backend is currently emitting compatible tables.
+(NOTE: you can dump those tables via objdump -W)
+
+Once unwinding works again for ARM we can address the exception handling
+part. In the best case the code in llvm-gcc-4.2/libstdc++-v3/libsupc++/
+would just start to work.
+The C++ exception handling machinery uses another set of tables called
+&amp;quot;language specific data (lsda)&amp;quot; to dispatch exceptions to handlers/
+landing-pads.
+These tables are also emitted by llc and need to be compatible with the generic case.
+</ns0:content><ns0:updated>2011-02-18T17:56:22.000Z</ns0:updated><ns0:published>2010-10-29T14:24:16.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pnacl arm does not have proper unwind and exception handling support</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Milestone-Caviar</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1127/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1127" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1127" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-02-18T17:56:22.000Z</ns2:closedDate><ns2:id>1127</ns2:id></ns0:entry>

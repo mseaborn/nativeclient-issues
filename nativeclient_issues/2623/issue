@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EFQn47eCl7ImA9WhVTFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2623</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I'm trying to update nacl_revision in Chromium from r7866 to r7895 (see http://codereview.chromium.org/9477019/), but one test fails on Windows: ppapi_bad_native_test fails with nacl-glibc (but not nacl-newlib).
+
+This test failed twice on the trybots, and I can reproduce it locally too.
+
+Here's the output.  It appears the stderr output message, expected by the golden ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad_native_glibc.stderr, is going missing:
+
+
+...
+[  2900 ms] |||| [SHUTDOWN] 1 passed, 0 failed, 0 errors
+KILLING the browser
+[       OK ] nacl_glibc.run_ppapi_bad_native_test (484 ms)
+ActionFunc([&amp;quot;scons-out\nacl-x86-64-glibc\test_results\ppapi_bad_native_test.out&amp;quot;], [&amp;quot;tools\command_tester.py&amp;quot;, &amp;quot;tools\browser_tester\browser_tester.py&amp;quot;, &amp;quot;E:\b\build\slave\win\build\src\build\Release\chrome.exe&amp;quot;, &amp;quot;E:\b\build\slave\win\build\src\ppapi\native_client\tests\ppapi_browser\bad\ppapi_bad_native_glibc.html&amp;quot;, &amp;quot;tools\browser_tester\browserdata\nacltest.js&amp;quot;, &amp;quot;scons-out\nacl-x86-64-glibc\staging\partly_invalid.nexe&amp;quot;, &amp;quot;scons-out\nacl-x86-64-glibc\staging\partly_invalid.nmf&amp;quot;])
+======================================================================
+Error E:\b\build\slave\win\build\src\native_client\scons-out\nacl-x86-64-glibc/test_results/ppapi_bad_native_test.log diff found
+======================================================================
+@@ -1,1 +1,0 @@
+
+-['/lib/main.nexe: error while loading shared libraries: /lib/main.nexe: failed to load code from shared object: Invalid argument']
+======================================================================
+Potential New Golden Output
+======================================================================
+scons: *** [scons-out\nacl-x86-64-glibc\test_results\ppapi_bad_native_test.out] Error 1
+...
+run_ppapi_bad_native_test (scons-out\nacl-x86-64-glibc\test_results\ppapi_bad_native_test.out) failed: Error 1
+</ns0:content><ns0:updated>2012-03-02T02:33:33.000Z</ns0:updated><ns0:published>2012-02-29T15:44:50.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/jam@chromium.org/</ns2:uri><ns2:username>jam@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>run_ppapi_bad_native_test broken in NaCl-in-Chromium on Windows</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>OS-Windows</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2623/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2623" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2623" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-03-02T02:33:33.000Z</ns2:closedDate><ns2:id>2623</ns2:id></ns0:entry>

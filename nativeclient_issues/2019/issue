@@ -1,0 +1,59 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEMNR347eCl7ImA9WhRaE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2019</ns0:id><ns0:author>
+			<ns0:name>jasonw...@google.com</ns0:name><ns0:uri>/u/110605953789916471800/</ns0:uri></ns0:author><ns0:content type="html">NaCl rev 6027
+linux x86_64 host
+
+./buildbot/buildbot_pnacl1.sh   browser-tests &amp;quot;arm x86-32 x86-64&amp;quot; &amp;quot;--verbose --mode=opt-host,nacl -j1&amp;quot; 
+
+passes the test but with -j8
+
+Test /usr/local/google/Work/0GitNaCl/native_client/scons-out/nacl-x86-32-pnacl/test_results/srpc_hw_data_browser_test.out took 0.360000 secs
+srpc_hw_data_browser_test.out: PASSED
+Test /usr/local/google/Work/0GitNaCl/native_client/scons-out/nacl-x86-32-pnacl/test_results/srpc_hw_fd_browser_test.out took 0.350000 secs
+srpc_hw_fd_browser_test.out: PASSED
+Test /usr/local/google/Work/0GitNaCl/native_client/scons-out/nacl-x86-32-pnacl/test_results/srpc_basic_chrome_browser_test.out took 0.550000 secs
+srpc_basic_chrome_browser_test.out: PASSED
+[ 20996 ms] |||| 
+[ 20996 ms] |||| [SERVER_ERROR] Did not hear from the browser for 20.0 seconds
+KILLING the browser
+Test /usr/local/google/Work/0GitNaCl/native_client/scons-out/nacl-x86-32-pnacl/test_results/ppapi_ppp_instance_browser_test.out took 0.440000 secs
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+ppapi_ppp_instance_browser_test.out: FAILED
+scons: *** [scons-out/nacl-x86-32-pnacl/test_results/ppapi_ppp_instance_browser_test.out] Error 255
+scons: building terminated because of errors.
+
+**********************************************************************
+COMMAND EXECUTION REPORT
+**********************************************************************
+  32 command_tester.py
+   2 doSizeCheck
+   3 gcc
+   3 nacl64-gcc
+   3 pnacl-gcc
+   3 set
+
+**********************************************************************
+ENVIRONMENT USAGE REPORT
+**********************************************************************
+  38  nacl-x86-32-pnacl
+   4  nacl_irt-x86-32
+   4  opt-linux-x86-32
+
+**********************************************************************
+ERROR REPORT: 1 failures
+**********************************************************************
+
+scons-out/nacl-x86-32-pnacl/test_results/ppapi_ppp_instance_browser_test.out failed: Error 255
+
++ handle-error
++ RETCODE=1
++ echo @@@STEP_FAILURE@@@
+@@@STEP_FAILURE@@@
++ '[' 1 == 1 ']'
++ echo 'FAIL_FAST enabled'
+FAIL_FAST enabled
++ exit 1
+</ns0:content><ns0:updated>2012-02-15T20:08:16.000Z</ns0:updated><ns0:published>2011-07-13T21:12:16.000Z</ns0:published><ns2:status>Moved</ns2:status><ns2:cc>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>ppp_instance_browser_test fails under linux when the test is run with a concurrency &gt;1 (say ~8 or so)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>MigrateToChromium</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>Mstone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2019/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2019" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2019" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2012-02-15T20:08:16.000Z</ns2:closedDate><ns2:id>2019</ns2:id></ns0:entry>

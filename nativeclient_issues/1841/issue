@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkcNQ347eCl7ImA9WhdSGEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1841</ns0:id><ns0:author>
+			<ns0:name>ncb...@google.com</ns0:name><ns0:uri>/u/100032148147647801554/</ns0:uri></ns0:author><ns0:content type="html">Currently NaCl does not run any tests on Chrome's waterfall.
+
+Enabling tests has three requirements:
+
+1) the tests must be stable and not flake out.
+
+2) the tests must be resilient against compile errors.  These types of errors prevent us from any tests.  Running partial SDK on the Chrome bots increases the likelihood of compile errors, for example.
+
+3) there must be a mechanism for disabling broken tests.  If a PPAPI interface is changed, any test that depends on it will fail until integration problems are resolved.  </ns0:content><ns0:updated>2011-07-28T18:34:52.000Z</ns0:updated><ns0:published>2011-05-23T23:07:18.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>NaCl's tests should be run on the Chrome waterfall</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1841/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1841" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1841" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-28T18:25:58.000Z</ns2:closedDate><ns2:id>1841</ns2:id></ns0:entry>

@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0MDRX47eCl7ImA9WxBSEEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/195</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">Currently, the ARM build and tests disable validation of nexes by default.  
+This dates back to the days when the validator was young and immature, and 
+when the equally young toolchain produced some sequences that were known to 
+be invalid.
+
+We think we've got all these issues fixed, so we should turn on the 
+validator for everything.  If we have any remaining bugs in the toolchain 
+(or validator) this should help flush them out.
+
+This is likely to involve
+- Removing the -d (debug) and -I (ignore ABI violations) switches from all 
+ARM targets -- both at the top level and in the tests/ build files.
+- Fixing any issues that result (e.g. failing to set ELF headers correctly 
+in the toolchain).
+- Some number of unforeseen test breakages that these settings were hiding!</ns0:content><ns0:updated>2009-12-17T23:11:14.000Z</ns0:updated><ns0:published>2009-12-07T20:39:38.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>ARM validator should be on, by default, for everything</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Milestone-ARM-Toolchain-Alpha</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/195/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=195" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/195" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>138</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>196</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>199</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>210</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>212</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>213</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>214</ns2:id></ns2:blockedOn><ns2:closedDate>2009-12-17T23:11:14.000Z</ns2:closedDate><ns2:id>195</ns2:id></ns0:entry>

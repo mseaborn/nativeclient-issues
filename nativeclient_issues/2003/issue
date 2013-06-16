@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkEAQX47eCl7ImA9WhdXEEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2003</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">For x86 tools, we are currently using target alias nacl for i686 and nacl64 for x86_64. Thus the tools are named like: nacl64-gcc, nacl-as, etc.
+
+These target aliases are &amp;quot;wrong&amp;quot; - they are not consistent with what is usually used for gnu tools. If we introduce more architectures that support nacl, we probably can&#8217;t suggest a consistent target naming scheme that keeps the existing aliases.
+
+We need to use &amp;quot;better&amp;quot; names.
+
+Full canonical triplet for i686 is i686-pc-nacl. Full canonical triplet for x86_64 is x86_64-pc-nacl. I don't see direct benefits of using full triplets, so the plan is to use abbreviated target aliases, i686-nacl and x86_64-nacl.
+
+Here are examples of old and new tools names:
+nacl-gcc -&amp;gt; i686-nacl-gcc
+nacl64-gcc -&amp;gt; x86_64-nacl-gcc
+</ns0:content><ns0:updated>2011-08-23T10:17:20.000Z</ns0:updated><ns0:published>2011-07-12T13:56:23.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Rename x86 nacl tools</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2003/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2003" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2003" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-08-23T10:17:20.000Z</ns2:closedDate><ns2:id>2003</ns2:id></ns0:entry>

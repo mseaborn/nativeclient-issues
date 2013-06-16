@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkENSH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/852/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3268
+
+------------------------------------------------------------------------
+r3268 | mseaborn@chromium.org | Mon Sep 13 04:09:57 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/btarget_test.py?r1=3268&amp;r2=3267&amp;pathrev=3268
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/dirtree.py?r1=3268&amp;r2=3267&amp;pathrev=3268
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/btarget.py?r1=3268&amp;r2=3267&amp;pathrev=3268
+
+Modular build: Change HashTree() to use the tree snapshot abstraction
+
+This will make it possible to ignore .git/.svn directories when
+hashing output trees, in a later change.
+
+We change ListFiles() to use tree snapshots, and extend snapshots to
+support symlinks.
+
+Move HashFile() to dirtree.py because that is where it is now used.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=852
+TEST=python test_all.py
+
+Review URL: http://codereview.chromium.org/3295028
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:58:19.000Z</ns0:updated><ns0:published>2011-01-21T22:58:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=852#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/852/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

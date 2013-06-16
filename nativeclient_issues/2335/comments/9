@@ -1,0 +1,6 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUAFQ347eCl7ImA9WhdUGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2335/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>mcgra...@chromium.org</ns0:name><ns0:uri>/u/109286297231979736865/</ns0:uri></ns0:author><ns0:content type="html">The nacl/* files you've listed are not in the toolchain tarballs.
+They are in the SDK, installed via scons install_headers.
+nacl_startup.h and nacl_dyncode.h are public interfaces.
+The others should probably all be kept out of the SDK (as should various libraries we now install there).  But I think that is a separate issue from the one you've filed here.</ns0:content><ns0:updated>2011-10-05T23:35:12.000Z</ns0:updated><ns0:published>2011-10-05T23:35:12.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by mcgra...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2335#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2335/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

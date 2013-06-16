@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQHRn47eCl7ImA9WhVRGEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2692</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">In practice I expect very few developers to want to build x86-64 code with x87 floating point. In my case I'm trying to build a test.
+
+What version of the SDK are you using? pepper_17
+What version of the runtime are you using? pepper_17
+On what operating system? Linux
+What browser are you using? Chrome
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+n/a
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Compile this program with: x86_64-nacl-gcc -mfpmath=387 -m64 ff_hello_world_x87.c -o ff.nexe
+    #include &amp;lt;stdio.h&amp;gt;
+
+    int main(int argc, char* argv[]) {
+      if (argc &amp;lt; 2.0) printf(&amp;quot;Hello, World!\n&amp;quot;);
+      return 0;
+    }
+2. It fails with two undefined symbols: __floatsidf and __ltdf2
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+Compile should succeed and produce a working nexe.
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+Both the newlib and GLIBC toolchains product the same failure.
+Grepping I found now library exporting ltdf2 in the toolchain.
+
+Perhaps there is a missing librarys someplace?</ns0:content><ns0:updated>2012-03-27T18:35:37.000Z</ns0:updated><ns0:published>2012-03-26T16:03:48.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>gcc -mfpmath=387 -m64 references undefined symbols</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Component-Newlib</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2692/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2692" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2692" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2692</ns2:id></ns0:entry>

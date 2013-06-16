@@ -1,0 +1,59 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUHR347eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/901/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4091
+
+------------------------------------------------------------------------
+r4091 | polina@google.com | Fri Jan 07 13:48:26 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_audio.cc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/trusted/srpcgen/ppb_rpc.h?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_example_2d/ppapi_example_2d.html?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_callback.h?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_upcall.cc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/completion_callback.srpc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/untrusted/srpcgen/ppb_rpc.h?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppb_core.srpc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/trusted/srpcgen/upcall.h?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/upcall.srpc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/trusted/srpcgen/ppp_rpc.h?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_core.cc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppb_rpc_client.cc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/untrusted/srpcgen/ppp_rpc.h?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_ppp_instance.cc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_graphics_2d.cc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppb_rpc_server.cc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_core.cc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/nacl.scons?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppp_rpc_client.cc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_ppp.cc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/untrusted/srpcgen/upcall.h?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_globals.cc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_upcall.h?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppb_graphics_2d.srpc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppp_rpc_server.cc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_callback.cc?r1=4091&amp;r2=4090&amp;pathrev=4091 (from /trunk/src/native_client/src/shared/ppapi_proxy/plugin_upcall.cc revision 4062)
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/upcall_client.cc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_graphics_2d.cc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_callback.h?r1=4091&amp;r2=4090&amp;pathrev=4091 (from /trunk/src/native_client/src/shared/ppapi_proxy/plugin_upcall.cc revision 4062)
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/upcall_server.cc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_upcall.cc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_callback.cc?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_upcall.h?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_ppp.h?r1=4091&amp;r2=4090&amp;pathrev=4091
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_globals.h?r1=4091&amp;r2=4090&amp;pathrev=4091
+
+ppapi_proxy: Support asynchronous PPB_ calls on the main thread only for now. Implement 2D Flush.
+
+- On the browser side, add GetMainChannel helpers and abstract out remote callback invocation setup behind a new function MakeRemoteCompletionCallback().
+- On the plugin side, add the callback code to plugin_callback.h/cc, usable from any of the interface proxy functions. No locking is necessary at this point as we are not supporting background threads. 
+- Implement PPB_Grahics2D::Flush on the main thread.
+- Mark all the upcall code as experimental and unused.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=901
+TESTED=tests/ppapi_example_2d
+
+Review URL: http://codereview.chromium.org/6090005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:23:56.000Z</ns0:updated><ns0:published>2011-01-21T23:23:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=901#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/901/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEMGQX47eCl7ImA9WhZaEkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1957</ns0:id><ns0:author>
+			<ns0:name>elijahtaylor@google.com</ns0:name><ns0:uri>/u/elijahtaylor@google.com/</ns0:uri></ns0:author><ns0:content type="html">Below is stdout from 3 consecutive runs (r5833, r5832, r5831 in order), in which the time to run takes 195, 40, and 5 seconds respectively.  I'm disabling the test on dbg arm only for the moment, it's still covered by opt which is not as erratic.
+
+
+
+======================================================================
+running ['scons-out/dbg-linux-arm/staging/sel_ldr', '--', 'scons-out/nacl-arm-pnacl/obj/tests/egyptian_cotton/egyptian_cotton.nexe', '-n', '7000']
+======================================================================
+scons-out/dbg-linux-arm/staging/sel_ldr -- scons-out/nacl-arm-pnacl/obj/tests/egyptian_cotton/egyptian_cotton.nexe -n 7000
+Test /b/build/slave/pnacl-arm-hw-dbg/build/native_client/scons-out/nacl-arm-pnacl/test_results/egyptian_cotton_test.out took 195.040000 secs
+ERROR: should have taken less than 100.000000 secs
+egyptian_cotton_test.out: FAILED
+scons: *** [scons-out/nacl-arm-pnacl/test_results/egyptian_cotton_test.out] Error 255
+
+======================================================================
+running ['scons-out/dbg-linux-arm/staging/sel_ldr', '--', 'scons-out/nacl-arm-pnacl/obj/tests/egyptian_cotton/egyptian_cotton.nexe', '-n', '7000']
+======================================================================
+scons-out/dbg-linux-arm/staging/sel_ldr -- scons-out/nacl-arm-pnacl/obj/tests/egyptian_cotton/egyptian_cotton.nexe -n 7000
+Test /b/build/slave/pnacl-arm-hw-dbg/build/native_client/scons-out/nacl-arm-pnacl/test_results/egyptian_cotton_test.out took 40.770000 secs
+WARNING: should have taken less than 10.000000 secs
+egyptian_cotton_test.out: PASSED
+
+======================================================================
+running ['scons-out/dbg-linux-arm/staging/sel_ldr', '--', 'scons-out/nacl-arm-pnacl/obj/tests/egyptian_cotton/egyptian_cotton.nexe', '-n', '7000']
+======================================================================
+scons-out/dbg-linux-arm/staging/sel_ldr -- scons-out/nacl-arm-pnacl/obj/tests/egyptian_cotton/egyptian_cotton.nexe -n 7000
+Test /b/build/slave/pnacl-arm-hw-dbg/build/native_client/scons-out/nacl-arm-pnacl/test_results/egyptian_cotton_test.out took 5.670000 secs
+egyptian_cotton_test.out: PASSED</ns0:content><ns0:updated>2011-06-28T20:20:20.000Z</ns0:updated><ns0:published>2011-06-28T17:06:01.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/elijahtaylor@google.com/</ns2:uri><ns2:username>elijahtaylor@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>egyptian_cotton does not take a predictable amount of time on arm hw dbg</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1957/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1957" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1957" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-06-28T20:20:20.000Z</ns2:closedDate><ns2:id>1957</ns2:id></ns0:entry>

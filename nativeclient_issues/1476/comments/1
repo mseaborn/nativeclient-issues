@@ -1,0 +1,41 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0cFRH47eCl7ImA9Wx9bFkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1476/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4412
+
+------------------------------------------------------------------------
+r4412 | mseaborn@chromium.org | Fri Feb 25 17:47:49 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_init.py?r1=4412&amp;r2=4411&amp;pathrev=4412
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/seven_zip.py?r1=4412&amp;r2=4411&amp;pathrev=4412
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/directx_9_0_c.py?r1=4412&amp;r2=4411&amp;pathrev=4412
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/directx_9_18_944_0_partial.py?r1=4412&amp;r2=4411&amp;pathrev=4412
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/gather_inputs.py?r1=4412&amp;r2=4411&amp;pathrev=4412
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/component_setup.py?r1=4412&amp;r2=4411&amp;pathrev=4412
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/distcc.py?r1=4412&amp;r2=4411&amp;pathrev=4412
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/component_targets_xml.py?r1=4412&amp;r2=4411&amp;pathrev=4412
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/replace_strings.py?r1=4412&amp;r2=4411&amp;pathrev=4412
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/visual_studio_solution.py?r1=4412&amp;r2=4411&amp;pathrev=4412
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/code_signing.py?r1=4412&amp;r2=4411&amp;pathrev=4412
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/component_targets_msvs.py?r1=4412&amp;r2=4411&amp;pathrev=4412
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/concat_source.py?r1=4412&amp;r2=4411&amp;pathrev=4412
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/collada_dom.py?r1=4412&amp;r2=4411&amp;pathrev=4412
+
+Scons: Remove various unused site_scons/site_tools/* files
+
+These files originally came from the "Software Construction Toolkit"
+(http://code.google.com/p/swtoolkit/, a.k.a. "Hammer", a.k.a. "SW
+Toolkit"), which was forked into the NaCl source tree ages ago.
+
+SW Toolkit is not really maintained as a public open source project.
+There used to be code dumps published into a public SVN repo.
+
+Our copy has diverged and there is little point in syncing it, so we
+may as well simplify it.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1476
+TEST=trybots
+
+Review URL: http://codereview.chromium.org/6588016
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-02-26T01:50:15.000Z</ns0:updated><ns0:published>2011-02-26T01:50:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1476#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1476/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

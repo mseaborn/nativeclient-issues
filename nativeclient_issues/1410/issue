@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08GR347eCl7ImA9Wx9bEEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1410</ns0:id><ns0:author>
+			<ns0:name>dsprin...@google.com</ns0:name><ns0:uri>/u/112723007196297768207/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? 719
+On what operating system?  Windows 7
+What browser are you using?  N/A
+
+1. d/l the SDK and install it to (say) C:\
+2. Using the Windows &amp;quot;finder&amp;quot; (&amp;quot;Explorer?&amp;quot;), drag-move the installed dir somewhere else.  For example, drag c:\native_client_sdk_0_1_719_0 to c:\Users\andy\NACL
+3. cd c:\Users\andy\NACL\native_client_sdk_0_719_1_0\examples\hello_world
+4. make clean
+5. make
+
+You will see:
+
+
+../../toolchain/win_x86/bin/nacl-g++ -Wall -Wno-long-long -pthread -Werror -m32 -I../.. -O2 -c -o hello_world_x86_32.o hello_world.cc
+../../toolchain/win_x86/bin/nacl-g++ -Wall -Wno-long-long -pthread -Werror -m32 -I../.. -O2 -c -o helper_functions_x86_32.o helper_functions.cc
+../../toolchain/win_x86/bin/nacl-g++ hello_world_x86_32.o helper_functions_x86_32.o -lppruntime -lppapi_cpp -lgoogle_nacl_platform -lgio -lpthread -lsrpc  -m32 -o hello_world_x86_32.nexe
+nacl64-ld: skipping incompatible /libexec/../lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/libppruntime.a when searching for -lppruntime
+nacl64-ld: skipping incompatible /nacl64/lib/libppruntime.a when searching for -lppruntime
+nacl64-ld: cannot find -lppruntime
+collect2: ld returned 1 exit status
+make: *** [hello_world_x86_32.nexe] Error 1
+
+If you do NOT move the directory, there are no make errors.</ns0:content><ns0:updated>2011-02-18T23:30:26.000Z</ns0:updated><ns0:published>2011-02-10T18:44:26.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:state>closed</ns2:state><ns0:title>Drag-move of native_client_sdk_... causes make errors.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Milestone-Baltic-Sea-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1410/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1410" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1410" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-02-18T23:30:26.000Z</ns2:closedDate><ns2:id>1410</ns2:id></ns0:entry>

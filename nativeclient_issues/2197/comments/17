@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkUBRX47eCl7ImA9WhRQE00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2197/comments/full/17</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7384
+
+------------------------------------------------------------------------
+r7384 | dschuff@google.com | Wed Dec 07 16:27:49 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_selector.py?r1=7384&amp;r2=7383&amp;pathrev=7384
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/DEPS?r1=7384&amp;r2=7383&amp;pathrev=7384
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/scripts/parse_llvm_testsuite_report.py?r1=7384&amp;r2=7383&amp;pathrev=7384
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/toolchain_config.py?r1=7384&amp;r2=7383&amp;pathrev=7384
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/scripts/llvm-test-suite.sh?r1=7384&amp;r2=7383&amp;pathrev=7384
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_pnacl_toolchain_tests.sh?r1=7384&amp;r2=7383&amp;pathrev=7384
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/run.py?r1=7384&amp;r2=7383&amp;pathrev=7384
+
+Buildbot script for running LLVM test-suite and torture tests,
+pnacl/DEPS update to bring in the testsuite TEST files,
+Update to run.py and toolchain tester to work with the bootstrap loader and qemu
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2197
+TEST=this is a test
+
+Review URL: http://codereview.chromium.org/8855008
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-12-08T00:30:54.000Z</ns0:updated><ns0:published>2011-12-08T00:30:54.000Z</ns0:published><ns2:updates /><ns0:title>Comment 17 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2197#c17" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2197/comments/full/17" rel="self" type="application/atom+xml" /></ns0:entry>

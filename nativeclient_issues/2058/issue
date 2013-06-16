@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUMHSH47eCl7ImA9WhdRGUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2058</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">See patch:
+  http://codereview.chromium.org/7455003/
+
+After applying this patch, run the test with:
+  ./scons irt=0 run_post_msg_thread_chrome_browser_test
+
+You will see that calls to 'write' work correctly, however calls to fprintf + fflush, do not cause the output to show up.
+
+Examination of the data at ((int *) stderr)[x], shows that the stderr pointed to by the main thread looks legal, but the one pointed to by the new threads is filled with zeros.
+
+Interestingly enough, a simple sel_ldr test that does the same thing
+by spawning threads and calling both write and fprintf works fine, and the FILE structure looks very similar to the main thread one.
+
+So far we have manifested this on Linux both 32 and 64.  It is unknown how it behaves on other platforms.
+
+The problem seems to be consistent so it does not appear racy so far.  However a related issue may be:
+http://code.google.com/p/nativeclient/issues/detail?id=870
+</ns0:content><ns0:updated>2011-08-10T11:57:19.000Z</ns0:updated><ns0:published>2011-07-20T00:12:06.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101571556652463395731/</ns2:uri><ns2:username>dsprin...@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>FILE* stdout and stderr are invalid on IRT=0, newlib</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2058/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2058" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2058" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-08-10T11:57:19.000Z</ns2:closedDate><ns2:id>2058</ns2:id></ns0:entry>

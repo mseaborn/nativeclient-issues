@@ -1,0 +1,124 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkAFQH47eCl7ImA9WhRQEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2263</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">Pyauto tests are failing regularly, especially multi-tab.
+
+...
+---&amp;gt; pyauto multiple_nexes: Loading tab 4... done!
+---&amp;gt; pyauto multiple_nexes: All nexes loaded.
+---&amp;gt; pyauto multiple_nexes: Verifying tab  0... done!
+---&amp;gt; pyauto multiple_nexes: Verifying tab  1... done!
+---&amp;gt; pyauto multiple_nexes: Verifying tab  2... done!
+---&amp;gt; pyauto multiple_nexes: Verifying tab  3... done!
+---&amp;gt; pyauto multiple_nexes: Verifying tab  4... done!
+---&amp;gt; pyauto multiple_nexes: All nexes verified.
+---&amp;gt; pyauto multiple_nexes: Surf back on tab  0... done!
+---&amp;gt; pyauto multiple_nexes: Surf back on tab  1... done!
+---&amp;gt; pyauto multiple_nexes: Surf back on tab  2... done!
+---&amp;gt; pyauto multiple_nexes: Surf back on tab  3... done!
+---&amp;gt; pyauto multiple_nexes: Surf back on tab  4... done!
+---&amp;gt; pyauto multiple_nexes: Tab 0 running test_case.html?mode=nacl&amp;amp;testcase=Scrollbar featuring 1 nexes.
+---&amp;gt; pyauto multiple_nexes: Tab 1 running test_case.html?mode=nacl&amp;amp;testcase=Graphics2D featuring 1 nexes.
+[14777,2164967184:17:34:27.895036] Entered NaClMakeDispatchThunk
+[14777,2164967184:17:34:27.895140] NaCl_page_alloc_randomized: 0x859ae560
+[14777,2164967184:17:34:27.895147] NaCl_page_alloc_randomized: hint 0x59ae5600000
+[14777,2164967184:17:34:27.895154] NaClMakeDispatchThunk: got addr 0x59ae5600000
+---&amp;gt; pyauto multiple_nexes: Tab 2 running ppapi_ppb_core.html featuring 1 nexes.
+[14766,198694672:17:34:28.455503] PluginReverseInterface::StartupInitializationComplete
+[14766,198694672:17:34:28.455648] PluginReverseInterface::StartupInitializationComplete: invoking CB
+[14789,2430285584:17:34:28.798485] Entered NaClMakeDispatchThunk
+[14789,2430285584:17:34:28.798591] NaCl_page_alloc_randomized: 0x52a8f0a5
+[14789,2430285584:17:34:28.798598] NaCl_page_alloc_randomized: hint 0x52a8f0a50000
+[14789,2430285584:17:34:28.798606] NaClMakeDispatchThunk: got addr 0x52a8f0a50000
+[14798,1357289232:17:34:28.805493] Entered NaClMakeDispatchThunk
+[14798,1357289232:17:34:28.805561] NaCl_page_alloc_randomized: 0x3609fe2c
+[14798,1357289232:17:34:28.805568] NaCl_page_alloc_randomized: hint 0x3609fe2c0000
+[14798,1357289232:17:34:28.805575] NaClMakeDispatchThunk: got addr 0x3609fe2c0000
+[14782,4244457232:17:34:29.359052] PluginReverseInterface::StartupInitializationComplete
+[14782,4244457232:17:34:29.359233] PluginReverseInterface::StartupInitializationComplete: invoking CB
+[14772,198694672:17:34:29.381039] PluginReverseInterface::StartupInitializationComplete
+[14772,198694672:17:34:29.381175] PluginReverseInterface::StartupInitializationComplete: invoking CB
+---&amp;gt; pyauto multiple_nexes: Tab 3 running test_case.html?mode=nacl&amp;amp;testcase=Memory featuring 1 nexes.
+[14845,3977783056:17:34:32.130116] Entered NaClMakeDispatchThunk
+[14845,3977783056:17:34:32.130208] NaCl_page_alloc_randomized: 0xdff95340
+[14845,3977783056:17:34:32.130214] NaCl_page_alloc_randomized: hint 0x5ff953400000
+[14845,3977783056:17:34:32.130221] NaClMakeDispatchThunk: got addr 0x5ff953400000
+[14794,198694672:17:34:32.670587] PluginReverseInterface::StartupInitializationComplete
+[14794,198694672:17:34:32.670769] PluginReverseInterface::StartupInitializationComplete: invoking CB
+---&amp;gt; pyauto multiple_nexes: Tab 4 running test_case.html?mode=nacl&amp;amp;testcase=Scrollbar featuring 1 nexes.
+---&amp;gt; pyauto multiple_nexes: Tab 5 running earth_c.html featuring 1 nexes.
+---&amp;gt; pyauto multiple_nexes: Loading tab 0... done!
+---&amp;gt; pyauto multiple_nexes: Loading tab 1... done!
+---&amp;gt; pyauto multiple_nexes: Loading tab 2... done!
+---&amp;gt; pyauto multiple_nexes: Loading tab 3... done!
+---&amp;gt; pyauto multiple_nexes: Loading tab 4...[14863,4175456016:17:35:33.933392] Entered NaClMakeDispatchThunk
+[14863,4175456016:17:35:33.933522] NaCl_page_alloc_randomized: 0xa9a3c09d
+[14863,4175456016:17:35:33.933529] NaCl_page_alloc_randomized: hint 0x29a3c09d0000
+[14863,4175456016:17:35:33.933538] NaClMakeDispatchThunk: got addr 0x29a3c09d0000
+[14870,3430057744:17:35:34.298917] Entered NaClMakeDispatchThunk
+[14870,3430057744:17:35:34.299019] NaCl_page_alloc_randomized: 0xe1d19e26
+[14870,3430057744:17:35:34.299026] NaCl_page_alloc_randomized: hint 0x61d19e260000
+[14870,3430057744:17:35:34.299033] NaClMakeDispatchThunk: got addr 0x61d19e260000
+[14841,198694672:17:35:34.498640] PluginReverseInterface::StartupInitializationComplete
+[14841,198694672:17:35:34.498819] PluginReverseInterface::StartupInitializationComplete: invoking CB
+ done!
+---&amp;gt; pyauto multiple_nexes: Loading tab 5...[14859,198649616:17:35:34.845204] PluginReverseInterface::StartupInitializationComplete
+[14859,198649616:17:35:34.845398] PluginReverseInterface::StartupInitializationComplete: invoking CB
+ done!
+---&amp;gt; pyauto multiple_nexes: All nexes loaded.
+---&amp;gt; pyauto multiple_nexes: Verifying tab  0... done!
+---&amp;gt; pyauto multiple_nexes: Verifying tab  1... done!
+---&amp;gt; pyauto multiple_nexes: Verifying tab  2... done!
+---&amp;gt; pyauto multiple_nexes: Verifying tab  3... done!
+---&amp;gt; pyauto multiple_nexes: Verifying tab  4... done!
+---&amp;gt; pyauto multiple_nexes: Verifying tab  5... done!
+---&amp;gt; pyauto multiple_nexes: All nexes verified.
+---&amp;gt; pyauto multiple_nexes: Surf back on tab  0... done!
+---&amp;gt; pyauto multiple_nexes: Surf back on tab  1... done!
+---&amp;gt; pyauto multiple_nexes: Surf back on tab  2... done!
+---&amp;gt; pyauto multiple_nexes: Surf back on tab  3... done!
+---&amp;gt; pyauto multiple_nexes: Surf back on tab  4... done!
+---&amp;gt; pyauto multiple_nexes: Surf back on tab  5... done!
+---&amp;gt; pyauto multiple_nexes: Tab 0 running ppapi_ppb_core.html featuring 1 nexes.
+---&amp;gt; pyauto multiple_nexes: Tab 1 running ppapi_ppb_file_system.html featuring 1 nexes.
+---&amp;gt; pyauto multiple_nexes: Tab 2 running ppapi_example_post_message.html featuring 1 nexes.
+---&amp;gt; pyauto multiple_nexes: Tab 3 running ppapi_example_post_message.html featuring 1 nexes.
+---&amp;gt; pyauto multiple_nexes: Tab 4 running ppapi_example_font.html featuring 1 nexes.
+---&amp;gt; pyauto multiple_nexes: Tab 5 running ppapi_ppb_graphics2d.html featuring 1 nexes.
+---&amp;gt; pyauto multiple_nexes: Loading tab 0...chrome/test/pyautolib/pyautolib.cc:344: Failure
+Value of: browser_proxy-&amp;gt;SendJSONRequest(request, timeout, &amp;amp;response)
+  Actual: false
+Expected: true
+[      ERROR ] multiple_nexes.NaClTest.testLoadNexesInMultipleTabs
+
+======================================================================
+ERROR: multiple_nexes.NaClTest.testLoadNexesInMultipleTabs: &amp;quot;Load nexes in multiple tabs and surf away from all of them.&amp;quot;
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File &amp;quot;/mnt/data/build/slave/lucid-64-newlib-dbg/build/native_client/tests/pyauto_nacl/multiple_nexes.py&amp;quot;, line 97, in testLoadNexesInMultipleTabs
+    nacl_utils.WaitForNexeLoad(self, tab_index=i)
+  File &amp;quot;/mnt/data/build/slave/lucid-64-newlib-dbg/build/native_client/tests/pyauto_nacl/nacl_utils.py&amp;quot;, line 54, in WaitForNexeLoad
+    expect_retval=1, timeout=90),
+  File &amp;quot;/mnt/data/build/slave/lucid-64-newlib-dbg/build/native_client/tests/pyauto_nacl/../../../chrome/test/pyautolib/pyauto.py&amp;quot;, line 629, in WaitUntil
+    retval = function(*args)
+  File &amp;quot;/mnt/data/build/slave/lucid-64-newlib-dbg/build/native_client/tests/pyauto_nacl/nacl_utils.py&amp;quot;, line 53, in &amp;lt;lambda&amp;gt;
+    browser.FindInPage('[SHUTDOWN]', tab_index=tab_index)['match_count'],
+  File &amp;quot;/mnt/data/build/slave/lucid-64-newlib-dbg/build/native_client/tests/pyauto_nacl/../../../chrome/test/pyautolib/pyauto.py&amp;quot;, line 2389, in FindInPage
+    return self._GetResultFromJSONRequest(cmd_dict, windex=windex)
+  File &amp;quot;/mnt/data/build/slave/lucid-64-newlib-dbg/build/native_client/tests/pyauto_nacl/../../../chrome/test/pyautolib/pyauto.py&amp;quot;, line 745, in _GetResultFromJSONRequest
+    'Perhaps the browser crashed.' % cmd_dict)
+JSONInterfaceError: Automation call {'match_case': False, 'tab_index': 0, 'search_string': '[SHUTDOWN]', 'command': 'FindInPage', 'forward': True, 'find_next': False} received empty response.  Perhaps the browser crashed.
+
+----------------------------------------------------------------------
+Ran 2 tests in 458.469s
+
+FAILED (errors=1)
+Tests can be disabled by editing /mnt/data/build/slave/lucid-64-newlib-dbg/build/native_client/tests/pyauto_nacl/PYAUTO_TESTS. Ref: http://dev.chromium.org/developers/testing/pyauto
+
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+[  FAILED  ] nacl.run_pyauto_multiple_nexes_test (414570 ms)
+</ns0:content><ns0:updated>2011-12-05T21:31:51.000Z</ns0:updated><ns0:published>2011-09-17T01:08:35.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/nirnimesh@google.com/</ns2:uri><ns2:username>nirnimesh@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>pyauto flakeyness (was pyauto failure for multi-tab)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-17</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2263/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2263" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2263" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2263</ns2:id></ns0:entry>

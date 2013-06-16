@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QCRX47eCl7ImA9WhVQGUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/37</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8202
+
+------------------------------------------------------------------------
+r8202 | khim@google.com | Mon Apr 09 12:19:23 PDT 2012
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/generated/validator-x86_64.c?r1=8202&amp;r2=8201&amp;pathrev=8202
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder-x86_32.rl?r1=8202&amp;r2=8201&amp;pathrev=8202
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/generated/validator-x86_32.c?r1=8202&amp;r2=8201&amp;pathrev=8202
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder-x86_64.rl?r1=8202&amp;r2=8201&amp;pathrev=8202
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/generated/decoder-x86_32-instruction-consts.c?r1=8202&amp;r2=8201&amp;pathrev=8202
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/generated/decoder-x86_64-instruction-consts.c?r1=8202&amp;r2=8201&amp;pathrev=8202
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder.h?r1=8202&amp;r2=8201&amp;pathrev=8202
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator-test.c?r1=8202&amp;r2=8201&amp;pathrev=8202
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/build.scons?r1=8202&amp;r2=8201&amp;pathrev=8202
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=8202&amp;r2=8201&amp;pathrev=8202
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/generated/decoder-x86_64.c?r1=8202&amp;r2=8201&amp;pathrev=8202
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator-x86_32.rl?r1=8202&amp;r2=8201&amp;pathrev=8202
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/generated/decoder-x86_32.c?r1=8202&amp;r2=8201&amp;pathrev=8202
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator-x86_64.rl?r1=8202&amp;r2=8201&amp;pathrev=8202
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/Makefile?r1=8202&amp;r2=8201&amp;pathrev=8202
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/gen-dfa.cc?r1=8202&amp;r2=8201&amp;pathrev=8202
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder-test.c?r1=8202&amp;r2=8201&amp;pathrev=8202
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/generated/validator-x86_64-instruction-consts.c?r1=8202&amp;r2=8201&amp;pathrev=8202
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator.h?r1=8202&amp;r2=8201&amp;pathrev=8202
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/generated?r1=8202&amp;r2=8201&amp;pathrev=8202
+
+Add ragel decoder/validator to SCONS
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2597
+TEST=scons decoder-test validator-test ; ls -al scons-out/*/staging
+Review URL: https://chromiumcodereview.appspot.com/9968039
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-04-09T19:22:44.000Z</ns0:updated><ns0:published>2012-04-09T19:22:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 37 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c37" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/37" rel="self" type="application/atom+xml" /></ns0:entry>

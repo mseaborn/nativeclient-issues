@@ -1,0 +1,53 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0IDSH47eCl7ImA9WhdXEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1648</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">The following code is miscompiled by llc-arm
+
+int f(long a){
+  return (--a &amp;gt; 0);
+}
+
+int main(){
+ if(f(0x80000000L)==0)
+    abort();
+  exit(0);
+}
+===================================
+Here is what the arm backend generates for f() without opts:
+=====================================
+f:
+	sfi_nop_if_at_bundle_end
+
+	sub	sp, sp, #12
+	sfi_data_mask sp, 
+
+	str	r0, [sp, #8]
+	subs	r0, r0, #1      &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; subtraction
+	str	r0, [sp, #8]
+	mov	r0, #0  
+	movgt	r0, #1          &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; use of the status reg
+	str	r0, [sp, #4]
+	str	r0, [sp]
+	ldr	r0, [sp, #4]
+	sfi_nop_if_at_bundle_end
+
+	add	sp, sp, #12
+	sfi_data_mask sp, 
+
+	sfi_return_preamble lr, 
+
+	bx	lr
+
+=============================
+The problem is that &amp;quot;--a&amp;quot; causes an overflow
+which cause the status regs to be inappropriate for the &amp;quot;gt&amp;quot; modifier.
+We really need to re-test (e.g. &amp;quot;cmp r0, #0 &amp;quot;) r0 before
+&amp;quot;movgt	r0, #1&amp;quot;
+
+
+
+</ns0:content><ns0:updated>2011-08-23T21:39:39.000Z</ns0:updated><ns0:published>2011-04-12T21:29:08.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>llc miscompile for arm: integer over/underflow</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1648/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1648" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1648" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>1895</ns2:id></ns2:blockedOn><ns2:closedDate>2011-08-23T21:39:39.000Z</ns2:closedDate><ns2:id>1648</ns2:id></ns0:entry>

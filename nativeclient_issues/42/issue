@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AARX47eCl7ImA9WxVaE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/42</ns0:id><ns0:author>
+			<ns0:name>Adventur...@gmail.com</ns0:name><ns0:uri>/u/106108640776747647693/</ns0:uri></ns0:author><ns0:content type="html">Team CJETM
+Affected OS: OSX, Linux, Windows
+Affected Browser: Firefox
+******************************
+ By supplying a negative integer to the getmsg() method an unhandled exception occurs on line 584 
+of npapi_plugin/srpc/srpc_client.cc in the function MarshallInput(). The negative value is passed to 
+the 'new' operator where it is cast as unsigned and wraps to a large number that malloc cannot 
+allocate. In our POC the C++ runtime throws an exception and firefox exits. Please see attached Tar 
+for Code and more Details.
+</ns0:content><ns0:updated>2009-04-10T17:49:04.000Z</ns0:updated><ns0:published>2009-03-03T17:33:49.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/110254776827258378715/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108782782163151845439/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110254776827258378715/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>unhandled exception occurs on line 584 of npapi_plugin/srpc/srpc_client.cc in the function MarshallInput() </ns0:title><ns2:label>Security-Contest</ns2:label><ns2:label>Type-Defect</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/42/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=42" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/42" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2009-04-10T17:49:04.000Z</ns2:closedDate><ns2:id>42</ns2:id></ns0:entry>

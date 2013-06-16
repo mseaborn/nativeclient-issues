@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0cFSX47eCl7ImA9Wx9aEEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1416</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? 0.1.721.0
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+On what operating system? Ubuntu Linux 10.4 32-bit Desktop edition
+What browser are you using? Chrome 10.0.648.45 Beta
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Install SDK
+2. Install Chrome (using .deb package)
+3. cd examples &amp;amp;&amp;amp; chmod +x httpd.py &amp;amp;&amp;amp; ./httpd.py
+4. In Chrome, go to about:flags and enable Native Client, then close the browser
+5. Open the browser again from the command line using the --no-sandbox option
+6. Browse to http://localhost:5103 and attempt to run any example
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+These steps should correctly run the examples. 
+
+Instead, I see these two problems:
+1. The command-line output of the chrome browser gives this error:
+ERROR:native_library_linux.cc(32)] dlopen failed when trying to open default_plugin: default_plugin: cannot open shared object file: No such file or directory
+renderer_main.cc(285) Running without renderer sandbox
+
+2. The output from httpd.py shows that the .nexe files are never loaded.
+
+</ns0:content><ns0:updated>2011-03-02T15:16:58.000Z</ns0:updated><ns0:published>2011-02-11T18:57:34.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Unable to run SDK examples from 32-bit Linux</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Milestone-Baltic-Algae</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1416/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1416" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1416" rel="self" type="application/atom+xml" /><ns2:stars>6</ns2:stars><ns2:closedDate>2011-03-02T15:16:58.000Z</ns2:closedDate><ns2:id>1416</ns2:id></ns0:entry>

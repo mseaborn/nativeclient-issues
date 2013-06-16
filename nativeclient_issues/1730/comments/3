@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkUBQn47eCl7ImA9WhZQF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1730/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5021
+
+------------------------------------------------------------------------
+r5021 | mcgrathr@chromium.org | Mon Apr 25 16:25:36 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/gdb_rsp/abi.cc?r1=5021&amp;r2=5020&amp;pathrev=5021
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/debug_stub/debugger_test.c?r1=5021&amp;r2=5020&amp;pathrev=5021
+
+Fix debugger stub not to skip first instruction byte on x86
+
+This works around issue 1730 but is not really a proper fix for it.
+
+Firstly, we modify the debug_stub_test so that it notices when its
+argc/argv are completely bogus, which is the status quo.
+
+Second, we change the debug stub to use HLT rather than INT3 as the
+breakpoint instruction.  The stub directly choosing a breakpoint is only
+used in the case of the breakpoint inserted at the entry point to catch
+the program at startup.  For this, nothing really cares what kind of
+exception is cited, so it being a general protection fault exception
+rather than a breakpoint trap exception doesn't matter.
+
+A better fix would be to make the stub recognize when a breakpoint it
+has inserted itself has been hit, and back the PC up by one byte.
+There is some concern that perhaps the Windows trap handler does this
+adjustment itself, so that needs to be looked into.  If it's the case
+that it does, then this is probably also a problem for GDB talking to
+a Windows-based debug stub, since GDB will not expect the PC to be
+adjusted this way (it's not what the hardware itself does).
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1730
+TEST=modified debug_stub test fails without workaround, works with it
+
+R=mseaborn@chromium.org,mlinck@google.com
+
+Review URL: http://codereview.chromium.org/6883141
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-25T23:30:53.000Z</ns0:updated><ns0:published>2011-04-25T23:30:53.000Z</ns0:published><ns2:updates>
+			<ns2:summary>debug stub causes first insn of program to be skipped, fouling x86-64 argc/argv/envp</ns2:summary></ns2:updates><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1730#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1730/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

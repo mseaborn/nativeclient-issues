@@ -1,0 +1,49 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEAAR347eCl7ImA9WhRaE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2571</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The x86-32 validator allows the AVX instructions 'xrstor' and 'xsaveopt' because it confuses them with 'lfence' and 'mfence' respectively:
+
+$ cat xsave.S
+lfence
+mfence
+xrstor (%edi)
+.ascii &amp;quot;\x0f\xae\x37&amp;quot; // xsaveopt (%edi) - assembler does not support this yet
+
+$ nacl x86_64-nacl-gcc -m32 xsave.S -o xsave -nostdlib
+
+$ nacl ncval xsave
+Validated xsave
+*** xsave is safe ***
+
+$ nacl ncdis xsave
+Info: processing xsaveInfo: section 0 sh_addr 0 offset 0 flags 0
+Info: section 1 sh_addr 20000 offset 10000 flags 6
+Info: parsing section 1
+ 20000:	0f ae e8            	lfence %ebp
+ 20003:	0f ae f0            	mfence %esi
+ 20006:	0f ae 2f            	lfence [%edi]
+ 20009:	0f ae 37            	mfence [%edi]
+...
+
+The cause is that they are specified as follows in src/trusted/validator/x86/ncval_seg_sfi/generator/ncdecode_table.c:
+
+   EncodeModRMOp(GROUP15, 5, NACLi_SSE2, &amp;quot;lfence&amp;quot;);
+   EncodeModRMOp(GROUP15, 6, NACLi_SSE2, &amp;quot;mfence&amp;quot;);
+
+For comparison, the x86-64 validator does not have this problem.  It correctly decodes these bytes as follows:
+
+$ nacl64 ncdis xsave
+...
+0000000000020000: 0f ae e8                                     lfence
+0000000000020003: 0f ae f0                                     mfence
+0000000000020006: 0f ae 2f                                     invalid
+0000000000020009: 0f ae 37                                     invalid
+...
+
+I don't think this bug creates any security problems.  I don't think these instructions can be used to save/restore sensitive registers.
+
+We're not supposed to be allowing access to any AVX instructions, since we don't support AVX yet, but this bug allows reading AVX registers.  This would have been a potential information leak, except that the NaCl syscall path clears AVX registers before entering untrusted code (since issue 2238).
+
+I found this issue by comparing the set of instructions that the current x86-32 validator accepts against my DFA-based validator.
+</ns0:content><ns0:updated>2012-02-15T19:05:46.000Z</ns0:updated><ns0:published>2012-01-30T04:39:22.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/108470876877739532758/</ns2:uri><ns2:username>kschi...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>x86-32 validator allows the AVX instructions 'xrstor' and 'xsaveopt'</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2571/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2571" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2571" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>2571</ns2:id></ns0:entry>

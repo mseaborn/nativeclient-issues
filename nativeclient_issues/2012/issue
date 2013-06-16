@@ -1,0 +1,68 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkQDQ347eCl7ImA9WhdSEko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2012</ns0:id><ns0:author>
+			<ns0:name>mmorten...@google.com</ns0:name><ns0:uri>/u/100268164290167392978/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+  latest HEAD on July 13, 2011 -- revision 948
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+  same
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+  Windows
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. I compiled and ran this nexe inside the VSX plugin,
+   which I built from the latest SDK as well:
+
+FILE=NaClMain.c
+
+#include &amp;lt;stdio.h&amp;gt;
+
+int main(int argc, char* argv[]) {
+  int x = 3;
+  ++x;
+  printf(&amp;quot;x=%d\n&amp;quot;, x);
+  return 0;
+}
+
+2.  I am building with the latest toolchain from the latest NACL_SDK build,
+so that my Native Client SDK ROOT is
+   c:\src\nacl_sdk_5\src
+and running with debug host set to use the same SDK location:
+  C:\src\nacl_sdk_5\src\toolchain\win_x86\bin\nacl64-sel_ldr.exe
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+  It should run the nexe, breaking at any user-defined breakpoints
+  Instead, I hit the breakpoint before nexe entry, then when I hit
+    continue I get this stuck in a loop -- here's part of the output:
+
+Here's what sel_ldr's window shows:
+
+[2420,6036:14:17:50.788000] TX $dcffffff01000000#ac
+[2420,6036:14:17:50.790000] RX $mcffffff88,08#38
+[2420,6036:14:17:50.790000] TX +
+[2420,6036:14:17:50.790000] TX $6000020004000000#0c
+[2420,6036:14:17:50.791000] RX $mcffffff80,08#30
+[2420,6036:14:17:50.792000] TX +
+[2420,6036:14:17:50.792000] TX $90ffffff0c000000#80
+[2420,6036:14:17:50.793000] RX $mcffffff98,08#39
+[2420,6036:14:17:50.794000] TX +
+[2420,6036:14:17:50.794000] TX $203d05000c000000#71
+[2420,6036:14:17:50.796000] RX $mcffffff90,08#31
+[2420,6036:14:17:50.796000] TX +
+[2420,6036:14:17:50.796000] TX $c8ffffff0c000000#b2
+[2420,6036:14:17:50.797000] RX $mcffffff78,08#37
+[2420,6036:14:17:50.797000] TX +
+[2420,6036:14:17:50.798000] TX $dcffffff01000000#ac
+[2420,6036:14:17:50.799000] RX $mcffffff88,08#38
+[2420,6036:14:17:50.800000] TX +
+[2420,6036:14:17:50.800000] TX $6000020004000000#0c
+[2420,6036:14:17:50.802000] RX $mcffffff80,08#30
+[2420,6036:14:17:50.802000] TX +
+[2420,6036:14:17:50.802000] TX $90ffffff0c000000#80
+
+It is stuck in a loop in the file Thread.cs, in function RefreshFrameInfo
+
+</ns0:content><ns0:updated>2011-07-21T17:46:12.000Z</ns0:updated><ns0:published>2011-07-13T14:29:48.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/109474787648168037085/</ns2:uri><ns2:username>mli...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100268164290167392978/</ns2:uri><ns2:username>mmorten...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>VSX: Running simple nexe gets stuck in infinite loop, repeatedly query sel_ldr for memory values</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2012/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2012" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2012" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-21T17:46:12.000Z</ns2:closedDate><ns2:id>2012</ns2:id></ns0:entry>

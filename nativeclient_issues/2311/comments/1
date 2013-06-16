@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0cDRn47eCl7ImA9WhdUF0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2311/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>s...@google.com</ns0:name><ns0:uri>/u/108394971971967673680/</ns0:uri></ns0:author><ns0:content type="html">As of today, these tests fail with:
+
+
+ERROR: NativeClient toolchain does not seem present!,
+ Missing: /usr/local/google/home/sehr/src5/native_client/toolchain/pnacl_linux_x86_64_glibc/sysroot/include/stdio.h
+
+Configuration is:
+ NACL_SDK_INCLUDE=/usr/local/google/home/sehr/src5/native_client/toolchain/pnacl_linux_x86_64_glibc/sysroot/include
+ NACL_SDK_LIB=/usr/local/google/home/sehr/src5/native_client/toolchain/pnacl_linux_x86_64_glibc/lib-x86-32
+ CC=/usr/local/google/home/sehr/src5/native_client/toolchain/pnacl_linux_x86_64_glibc/bin/pnacl-gcc -std=gnu99
+ CXX=/usr/local/google/home/sehr/src5/native_client/toolchain/pnacl_linux_x86_64_glibc/bin/pnacl-g++
+ AR=/usr/local/google/home/sehr/src5/native_client/toolchain/pnacl_linux_x86_64_glibc/bin/pnacl-ar
+ AS=as
+ LINK=/usr/local/google/home/sehr/src5/native_client/toolchain/pnacl_linux_x86_64_glibc/bin/pnacl-g++ -arch x86-32 
+ RANLIB=/usr/local/google/home/sehr/src5/native_client/toolchain/pnacl_linux_x86_64_glibc/bin/pnacl-ranlib
+
+Run: gclient runhooks --force or build the SDK yourself.
+</ns0:content><ns0:updated>2011-10-04T17:24:37.000Z</ns0:updated><ns0:published>2011-10-04T17:24:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by s...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2311#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2311/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

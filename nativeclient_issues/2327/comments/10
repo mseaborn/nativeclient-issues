@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0UMQ347eCl7ImA9WhdbGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2327/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">The main compile problems currently are:
+ In file included from ../../gcc-4.6.1/libstdc++-v3/src/atomic.cc:27:
+In file included from /usr/local/google/home/robertm/nacl-gclient1/native_client/hg/build/include/atomic:40:
+/usr/local/google/home/robertm/nacl-gclient1/native_client/hg/build/include/bits/atomic_base.h:163:20: error: non-inline namespace cannot be reopened as inline
+  inline namespace _GLIBCXX_ATOMIC_NAMESPACE { }
+                   ^
+/usr/local/google/home/robertm/nacl-gclient1/native_client/hg/build/include/bits/atomic_base.h:145:36: note: expanded from macro: _GLIBCXX_ATOMIC_NAMESPACE
+# define _GLIBCXX_ATOMIC_NAMESPACE __atomic2
+                                   ^
+/usr/local/google/home/robertm/nacl-gclient1/native_client/hg/build/include/bits/atomic_base.h:127:13: note: previous definition is here
+
+
+and
+
+In file included from ../../gcc-4.6.1/libstdc++-v3/src/mutex.cc:25:
+In file included from /usr/local/google/home/robertm/nacl-gclient1/native_client/hg/build/include/mutex:39:
+/usr/local/google/home/robertm/nacl-gclient1/native_client/hg/build/include/chrono:666:7: error: static_assert expression is not an integral constant expression
+      static_assert(system_clock::duration::min()
+      ^             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+
+
+each occurring multiple times
+
+</ns0:content><ns0:updated>2011-10-18T23:41:22.000Z</ns0:updated><ns0:published>2011-10-18T23:41:22.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2327#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2327/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

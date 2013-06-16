@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQHRn47eCl7ImA9WhZXEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1725/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5107
+
+------------------------------------------------------------------------
+r5107 | ncbray@google.com | Fri Apr 29 11:53:22 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/branches/742/src/native_client/src/trusted/plugin/srt_socket.cc?r1=5107&amp;r2=5106&amp;pathrev=5107
+
+Merge 5092 - Do not use statics to hold name hash values that change per plugin instance.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1725,    http://code.google.com/p/nativeclient/issues/detail?id=1726,    http://code.google.com/p/nativeclient/issues/detail?id=1733,    http://code.google.com/p/nativeclient/issues/detail?id=1739
+Review URL: http://codereview.chromium.org/6880290
+TBR=kerz@google.com,sehr@google.com
+Review URL: http://codereview.chromium.org/6904133
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-29T18:55:37.000Z</ns0:updated><ns0:published>2011-04-29T18:55:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1725#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1725/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

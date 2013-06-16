@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEACRX47eCl7ImA9WhZbF0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1601/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">OK, my investigation shows that the code to blame is gcc/rtlanal.c:nonzero_bits1.
+
+What it does is that when pointers from memory (ptr_mode) are zero extended when getting into registers (Pmode)(POINTERS_EXTEND_UNSIGNED &gt; 0), and there is a Pmode PLUS or MINUS of a register that holds a pointer value with some other register, all bits above ptr_mode are considered zero.
+
+Here is the test that demonstrates the bug clearly (compile with -O2):
+
+  unsigned long long t(const void* p, unsigned long long q) {
+    unsigned long long a = (((unsigned long long)p) + q) &gt;&gt; 32;
+    return a;
+  }
+
+In our z86_64 compiler, p is 32-bit. It gets zero-extended to 64-bit long long for addition with q, but the fact that it was originally a pointer is preserved. Thus, nonzero_bits1 thinks the result of addition always has high 32-bits equal to zero, so the result of the right shift is always zero.
+
+The test gets optimized to "return 0;".
+
+I've checked gcc trunk and this code is still there. I think I'll ping gcc guys for explanation. In particular, x32 compiler will have exactly the same problem as we have, thus these guys might be interested...
+
+I'll disable that suspicious code if no other ideas arise in few days.
+</ns0:content><ns0:updated>2011-06-22T11:39:24.000Z</ns0:updated><ns0:published>2011-06-22T11:39:24.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by eaelt...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1601#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1601/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

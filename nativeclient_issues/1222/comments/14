@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUHQX47eCl7ImA9WhdWEE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1222/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">LLVM has lots of functions that use switch statements and we align every switch target to 32-bytes. Some functions like "SelectionDAGLegalize::ExpandNode" end up 2x bigger than native, though that is certainly an extreme case. Tried out the llc option "-disable-jump-tables" (like -fno-jump-tables for gcc), and here are the size measurements:
+
+llc.sb.x8632 w/ jump tables:    13404544
+             w/out jump tables: 13238220
+             diff             : 166324
+
+gzipped w/ jump tables:   4896281
+        w/out jumptables: 5152341
+        diff            : -256060
+
+Ouch. It's much less compressible because we're trading off nops for more compares. The performance will probably dip too, so we shouldn't turn off jump tables.
+
+Other:
+
+&gt; grep "\.align" temp/llc.sb.x8632.nexe---llc.pexe---.s  | sort | uniq -c
+
+   1089 	.align	16
+  24001 	.align	16, 0x90
+  43786 	.align	32, 0x90
+  25187 	.align	4
+   1137 	.align	8
+
+There are a bunch of .align 16, 0x90... what are those???</ns0:content><ns0:updated>2011-09-02T21:50:30.000Z</ns0:updated><ns0:published>2011-09-02T21:50:30.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1222#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1222/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

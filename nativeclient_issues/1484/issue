@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUUHSX47eCl7ImA9WhZRFUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1484</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Assigning to &amp;quot;__src&amp;quot; twice appears to cause the NaCl plugin in Chromium to crash with &amp;quot;Aw Snap&amp;quot;.
+
+The problem can be reproduced with the following test change:
+
+
+--- a/src/native_client/tests/inbrowser_test_runner/test_runner.html
++++ b/src/native_client/tests/inbrowser_test_runner/test_runner.html
+@@ -68,6 +68,7 @@ function startProcess(url, callback) {
+   // TODO(mseaborn): Sort out this incompatibility.
+   plugin.src = url;
+   plugin.__src = url;
++  plugin.__src = url;
+ }
+ 
+ function runTest(url, callback) {
+
+
+This test can be run with:
+./scons run_inbrowser_test_runner_chrome
+
+This was observed on Linux x86-32 and x86-64.</ns0:content><ns0:updated>2011-04-11T20:20:38.000Z</ns0:updated><ns0:published>2011-03-01T21:17:54.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Plugin: Assigning to "__src" twice causes the plugin to crash</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1484/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1484" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1484" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-04-11T20:20:38.000Z</ns2:closedDate><ns2:id>1484</ns2:id></ns0:entry>

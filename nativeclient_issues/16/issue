@@ -1,0 +1,62 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU8AQn47eCl7ImA9WxNVFUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/16</ns0:id><ns0:author>
+			<ns0:name>AndrewTS...@gmail.com</ns0:name><ns0:uri>/u/107120716377465086705/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? None.  Runtime only.
+What version of the runtime are you using? 0.1_9308700
+On what operating system? Gentoo Base System release 1.12.11.1 
+Linux darkstar 2.6.25 #2 SMP Sun Nov 30 22:17:10 EST 2008 i686 Intel(R)
+Pentium(R) 4 CPU 3.20GHz GenuineIntel GNU/Linux
+
+What browser are you using? Mozilla Firefox 3.0.4, Copyright (c) 1998 -
+2008 mozilla.org
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Install the firefox plugin using &amp;quot;./scons --prebuilt firefox_install&amp;quot; or
+&amp;quot;./scons firefox_install&amp;quot;
+2. Test the plugin: andrew@darkstar
+~/Desktop/nacl/googleclient/native_client $
+/home/andrew/.mozilla/plugins/sel_ldr
+/home/andrew/.mozilla/plugins/sel_ldr_bin: /usr/lib/libcrypto.so.0.9.8: no
+version information available (required by
+/home/andrew/.mozilla/plugins/sel_ldr_bin)
+No nacl file specified
+
+3. It fails.  ldd shows:
+
+andrew@darkstar ~/Desktop/nacl/googleclient/native_client $ ldd
+/home/andrew/.mozilla/plugins/sel_ldr_bin 
+/home/andrew/.mozilla/plugins/sel_ldr_bin: /usr/lib/libcrypto.so.0.9.8: no
+version information available (required by
+/home/andrew/.mozilla/plugins/sel_ldr_bin)
+        linux-gate.so.1 =&amp;gt;  (0xb7eea000)
+        libpthread.so.0 =&amp;gt; /lib/libpthread.so.0 (0xb7ebb000)
+        libssl.so.0.9.8 =&amp;gt; /usr/lib/libssl.so.0.9.8 (0xb7e74000)
+        libcrypto.so.0.9.8 =&amp;gt; /usr/lib/libcrypto.so.0.9.8 (0xb7d2a000)
+        librt.so.1 =&amp;gt; /lib/librt.so.1 (0xb7d21000)
+        libSDL-1.2.so.0 =&amp;gt; /usr/lib/libSDL-1.2.so.0 (0xb7cbd000)
+        libstdc++.so.6 =&amp;gt;
+/usr/lib/gcc/i686-pc-linux-gnu/4.1.2/libstdc++.so.6 (0xb7bd3000)
+        libm.so.6 =&amp;gt; /lib/libm.so.6 (0xb7bad000)
+        libgcc_s.so.1 =&amp;gt; /usr/lib/gcc/i686-pc-linux-gnu/4.1.2/libgcc_s.so.1
+(0xb7ba1000)
+        libc.so.6 =&amp;gt; /lib/libc.so.6 (0xb7a71000)
+        /lib/ld-linux.so.2 (0xb7eeb000)
+        libgssapi_krb5.so.2 =&amp;gt; /usr/lib/libgssapi_krb5.so.2 (0xb7a48000)
+        libkrb5.so.3 =&amp;gt; /usr/lib/libkrb5.so.3 (0xb79bb000)
+        libcom_err.so.2 =&amp;gt; /lib/libcom_err.so.2 (0xb79b6000)
+        libk5crypto.so.3 =&amp;gt; /usr/lib/libk5crypto.so.3 (0xb7990000)
+        libresolv.so.2 =&amp;gt; /lib/libresolv.so.2 (0xb797e000)
+        libdl.so.2 =&amp;gt; /lib/libdl.so.2 (0xb797a000)
+        libkrb5support.so.0 =&amp;gt; /usr/lib/libkrb5support.so.0 (0xb7971000)
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+It's supposed to run without errors, and it doesn't.  It also fails in the
+brower, probably from the same error issue.
+
+Please provide any additional information below and attach any relevant
+source files.
+</ns0:content><ns0:updated>2009-10-26T21:50:43.000Z</ns0:updated><ns0:published>2008-12-10T16:22:44.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/105678638446503189415/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>/usr/lib/libcrypto.so.0.9.8: no version information available (required by /home/andrew/.mozilla/plugins/sel_ldr_bin)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/16/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/16" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2009-10-26T21:50:43.000Z</ns2:closedDate><ns2:id>16</ns2:id></ns0:entry>

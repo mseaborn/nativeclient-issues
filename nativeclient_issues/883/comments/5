@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkAGRX47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/883/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3356
+
+------------------------------------------------------------------------
+r3356 | eaeltsin@google.com | Fri Sep 24 07:26:18 PDT 2010
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/patches/gcc-4.4.3/0054-gcc-x86_64-TLS-support-refactoring.patch?r1=3356&amp;r2=3355&amp;pathrev=3356
+
+Update gcc patches from Git.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=883
+Review URL: http://codereview.chromium.org/3453012/show
+
+
+Review URL: http://codereview.chromium.org/3467015
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:58:44.000Z</ns0:updated><ns0:published>2011-01-21T22:58:44.000Z</ns0:published><ns2:updates>
+			<ns2:summary>nacl64-gcc -fPIC generates R_X86_64_TPOFF32 relocation incompatible with DSO linking.</ns2:summary></ns2:updates><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=883#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/883/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

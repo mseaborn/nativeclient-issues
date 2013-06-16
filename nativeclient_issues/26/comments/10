@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEcBRH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/26/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3845
+
+------------------------------------------------------------------------
+r3845 | jvoung@google.com | Thu Dec 02 15:21:48 PST 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/dummy_translator_x8632.sh?r1=3845&amp;r2=3844&amp;pathrev=3845
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/dummy_translator_x8664.sh?r1=3845&amp;r2=3844&amp;pathrev=3845
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/llvm-fake.py?r1=3845&amp;r2=3844&amp;pathrev=3845
+
+Add LLC flag asm-verbose=false to drivers.
+This makes translation time more sane on ARM w/out const islands and with PIC.
+
+The tradeoff is fewer comments in the intermediate asm file.
+Examples of things omitted (the contents behind "@"):
+
+(1) annotations on what align applies to:
+
+.type   __nacl_startup,%function
+.align  4                       @ @__nacl_startup   
+
+(2) relationship between asm labels and bitcode basic blocks (possibly with nesting depth of loop):
+
+.LBB7_2:                                @ %bb1
+                          @   Parent Loop BB7_6 Depth=1 
+                          @ =&gt;  This Inner Loop Header: Depth=2          
+
+
+(3) How doubles encoded as integers translate back to doubles:
+
+.LCPI1_0:                               @ constant pool double                             
+          .long   0                       @ double 0.000000e+00                              
+          .long   0
+
+
+(4) What an immediate operand actually is
+        tst     r0, #18, 26             @ 1152
+...
+        add     sp, sp, #51, 28         @ 816                                              
+(for this, if you objdump the .o you will see the immediate)
+Review URL: http://codereview.chromium.org/5624001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:20:55.000Z</ns0:updated><ns0:published>2011-01-21T23:20:55.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=26#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/26/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

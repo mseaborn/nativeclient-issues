@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE8NQ347eCl7ImA9WhdXF0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/870</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">To reproduce:
+Patch http://codereview.chromium.org/3298014/show (if not already), enable the test, run it.
+It is a bit flaky.
+Eventually, you will get the following output:
+
+[19702,3744417552:15:04:01.673980] Lock method is not implemented for object of type NACL_DESC_HOST_IO
+[19702,3744417552:15:04:01.674202] Unlock method is not implemented for object of type NACL_DESC_HOST_IO
+
+, instead of expected:
+
+1
+
+This was found with ThreadSanitizer. The actual race report:
+==32004== WARNING: Possible data race during read of size 4 at 0xB00070058: {{{
+==32004==    T3 (L{}):
+==32004==     #0  0xB00028540: __newlib_thread_init scons-out/nacl-x86-64/obj/tests/threads/1.nexe
+==32004==     #1  0xB00021B7B: nc_thread_starter src/untrusted/pthread/nc_thread.c:125
+==32004==   Concurrent write(s) happened at (OR AFTER) these points:
+==32004==    T2 (L{L25, L42}):
+==32004==     #0  0xB0003708F: __sinit scons-out/nacl-x86-64/obj/tests/threads/1.nexe
+==32004==     #1  0xB0003743B: __sfp scons-out/nacl-x86-64/obj/tests/threads/1.nexe
+==32004==     #2  0xB0002733B: _fopen_r scons-out/nacl-x86-64/obj/tests/threads/1.nexe
+==32004==     #3  0xB0002049B: thr0 tests/threads/1.c:6
+==32004==     #4  0xB00021B9E: nc_thread_starter src/untrusted/pthread/nc_thread.c:126
+
+
+Racy instructions are:
+newlib/newlib/libc/reent/impure.c:44, read from _GLOBAL_REENT-&amp;gt;__cleanup
+newlib/newlib/libc/stdio/findfp.c:194, s-&amp;gt;__cleanup assignment</ns0:content><ns0:updated>2011-08-31T05:01:32.000Z</ns0:updated><ns0:published>2010-09-07T11:20:44.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/elijahtaylor@google.com/</ns2:uri><ns2:username>elijahtaylor@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>A data race in newlib between lazy stdio initialization and new thread creation</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/870/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=870" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/870" rel="self" type="application/atom+xml" /><ns2:stars>5</ns2:stars><ns2:closedDate>2011-08-31T05:01:32.000Z</ns2:closedDate><ns2:id>870</ns2:id></ns0:entry>

@@ -1,0 +1,80 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkAGQX47eCl7ImA9WhRVFE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2133</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">At r6314 ppapi_ppp_instance_browser_test hangs more than once per 200 runs on linux/x86-64 build.
+
+output is:
+================================================
+in stdout:
+719,2913728256:16:34:48.872728] Entered NaClMakeDispatchThunk
+[719,2913728256:16:34:48.872790] NaCl_page_alloc_randomized: 0x96bc609d
+[719,2913728256:16:34:48.872795] NaCl_page_alloc_randomized: hint 0x16bc609d0000
+[719,2913728256:16:34:48.872799] NaClMakeDispatchThunk: got addr 0x16bc609d0000
+[719,2913572608:16:34:49.264952] NaClAbiStatHostDescStatXlateCtor: Unusual NaCl descriptor type (not constructible). The NaCl app has a file with st_mode = 010600. (This is normal for std{in,out,err}, or other inherited/injected files.)
+--- PPP_Instance::DidCreate
+--- PPP_Instance::DidChangeView
+--- PPP_Instance::DidChangeView
+--- PPP_Instance::DidChangeView
+--- PPP_Instance::DidChangeView
+--- PPP_Instance::DidChangeView
+--- PPP_Instance::DidChangeView
+--- PPP_Instance::DidChangeView
+--- PPP_Instance::DidChangeView
+PID 678
+[  1235 ms] |||| GET /ppapi_ppp_instance.html (/ppapi_ppp_instance.html)
+[  1242 ms] |||| GET /nacltest.js (/nacltest.js)
+[  1243 ms] |||| GET /ppapi_ppp_instance.js (/ppapi_ppp_instance.js)
+[  1263 ms] |||| [STARTUP]
+[  1288 ms] |||| GET /ppapi_ppp_instance.nmf (/ppapi_ppp_instance.nmf)
+[  1301 ms] |||| GET /favicon.ico (/favicon.ico)
+[  1317 ms] |||| GET /ppapi_ppp_instance_x86-64.nexe (/ppapi_ppp_instance_x86-64.nexe)
+[  1997 ms] |||| nacl_module / test_nexe loaded
+[  2004 ms] ||||
+[  2006 ms] |||| [PPP_Instance::DidCreate BEGIN]
+[  2009 ms] |||| [PPP_Instance::DidCreate PASS]
+[  2015 ms] ||||
+[  2018 ms] |||| [PPP_Instance::DidChangeView BEGIN]
+[  2021 ms] |||| [PPP_Instance::DidChangeView LOG] 'DidChangeView:PASSED'
+[  2024 ms] |||| [PPP_Instance::DidChangeView LOG] 'DidChangeView:PASSED'
+[  2028 ms] |||| [PPP_Instance::DidChangeView LOG] 'DidChangeView:PASSED'
+[  2030 ms] |||| [PPP_Instance::DidChangeView PASS]
+[  2035 ms] ||||
+[  2038 ms] |||| [PPP_Instance::DidChangeFocus BEGIN]
+[ 22039 ms] ||||
+[ 22039 ms] |||| [SERVER_ERROR] Did not hear from the test for 20.0 seconds.
+[ 22039 ms] |||| Heard from Javascript 0.4 seconds ago.
+[ 22039 ms] |||| The test probably did not get a callback that it expected.
+KILLING the browser
+================================================
+
+Just because scons runs are dreadfully slow, I run the test with:
+
+/usr/bin/python \
+  $nacl/native_client/tools/browser_tester/browser_tester.py \
+  --browser_path \
+  $nacl/native_client/chromebinaries/linux_x86-64/chrome \
+  --url ppapi_ppp_instance.html \
+  --timeout 20 \
+  --ppapi_plugin \
+  $nacl/native_client/scons-out/dbg-linux-x86-64/staging/libppNaClPlugin.so \
+  --sel_ldr \
+  $nacl/native_client/scons-out/dbg-linux-x86-64/staging/sel_ldr \
+  --irt_library \
+  $nacl/native_client/scons-out/nacl_irt-x86-64/staging/irt.nexe \
+  --file \
+  $nacl/native_client/scons-out/nacl-x86-64/staging/ppapi_ppp_instance_x86-64.nexe \
+  --file \
+  $nacl/native_client/scons-out/nacl-x86-64/staging/ppapi_ppp_instance.html \
+  --file \
+  $nacl/native_client/scons-out/nacl-x86-64/staging/ppapi_ppp_instance.nmf \
+  --file \
+  $nacl/native_client/scons-out/nacl-x86-64/staging/ppapi_ppp_instance.js \
+  --file \
+  $nacl/native_client/scons-out/nacl-x86-64/staging/ppapi_ppp_instance_x86-64.nexe
+
+
+please, assign/mstone/prioritize as you see fit</ns0:content><ns0:updated>2012-01-12T22:52:00.000Z</ns0:updated><ns0:published>2011-08-04T13:09:29.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:owner>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>ppapi_ppp_instance_browser_test is flaky when testing DidChangeFocus</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-16</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>MigrateToChromium</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2133/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2133" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2133" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2012-01-12T22:52:00.000Z</ns2:closedDate><ns2:id>2133</ns2:id></ns0:entry>

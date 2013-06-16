@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE4ESX47eCl7ImA9WhdWGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1647</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">
+we have two trybots (nacl-lucid64-pnacl1 , nacl-lucid64-pnacl2) using
+ buildbot/buildbot_pnacl1.sh
+ buildbot/buildbot_pnacl2.sh
+
+and three regular bots 
+	
+lucid64-pnacl-translator
+lucid64-pnacl1	
+lucid64-pnacl2
+
+and some more arm bots:
+
+hardy64-marm-narm-dbg	
+hardy64-marm-narm-opt	
+arm-marm-narm-test-dbg	
+arm-marm-narm-test-opt
+
+
+We need to make sure that those are driven by a few scripts and that coverage is adequate.
+</ns0:content><ns0:updated>2011-09-12T22:35:08.000Z</ns0:updated><ns0:published>2011-04-12T19:56:46.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pnacl: unify  buildbot scripts between trybots and regular bots</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>FlakeyBots</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1647/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1647" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1647" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-09-12T22:35:08.000Z</ns2:closedDate><ns2:id>1647</ns2:id></ns0:entry>

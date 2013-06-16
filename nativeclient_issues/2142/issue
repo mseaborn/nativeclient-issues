@@ -1,0 +1,71 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEIGSH47eCl7ImA9WhVTEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2142</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Fairly recently (?) we have started to see qemu failing with &amp;quot;longjmp causes uninitialized stack frame&amp;quot;...
+
+E.g., at 6347:
+http://build.chromium.org/p/client.nacl.toolchain/builders/linux-pnacl-x86_64-newlib/builds/320/steps/test-arm/logs/stdio
+
+May have been earlier, not sure...
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Linux
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+None
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Run an ARM crash test in QEMU. For example, run &amp;quot;./scons platform=arm bitcode=1 run_nullptr_test&amp;quot; 50 times or so (or just run the command_tester, which skip scons startup).
+
+2. The log will show:
+
+*** longjmp causes uninitialized stack frame ***: /mnt/data/b/build/slave/lucid_64-newlib-arm_qemu-pnacl-opt/build/native_client/toolchain/linux_arm-trusted/qemu-arm terminated
+======= Backtrace: =========
+[0x600aa649]
+[0x600aa5db]
+[0x6001c9f9]
+[0x600507e2]
+[0x6001c859]
+[0x6001c5a6]
+[0x6001cf18]
+[0x100203c0]
+======= Memory map: ========
+00010000-00030000 r-xp 00000000 00:00 0 
+00030000-10020000 ---s 00000000 00:10 42812521                           /dev/shm/google-nacl-shm--24851.1 (deleted)
+10020000-10040000 r--p 00000000 00:00 0 
+10040000-10050000 rw-p 00000000 00:00 0 
+10050000-3f000000 ---p 00000000 00:00 0 
+3f000000-40000000 rw-p 00000000 00:00 0 
+40000000-40002000 ---p 00000000 00:00 0 
+40002000-40080000 rw-p 00000000 00:00 0 
+40080000-40081000 ---p 00000000 00:00 0 
+40082000-40083000 ---p 00000000 00:00 0 
+40083000-40092000 rw-p 00000000 00:00 0 
+40092000-40093000 ---p 00000000 00:00 0 
+40093000-400a2000 rw-p 00000000 00:00 0 
+400a2000-400a3000 ---p 00000000 00:00 0 
+400a3000-400a6000 rw-p 00000000 00:00 0 
+400a6000-400a7000 ---p 00000000 00:00 0 
+400a7000-400b6000 rw-p 00000000 00:00 0 
+55555000-55556000 r-xp 00000000 00:00 0                                  [vdso]
+55556000-57e64000 rw-p 00000000 00:00 0 
+60000000-60139000 r-xp 00000000 08:15 2457648                            /mnt/data/b/build/slave/lucid_64-newlib-arm_qemu-pnacl-opt/build/native_client/toolchain/linux_arm-trusted/qemu-arm
+60238000-6023c000 rw-p 00138000 08:15 2457648                            /mnt/data/b/build/slave/lucid_64-newlib-arm_qemu-pnacl-opt/build/native_client/toolchain/linux_arm-trusted/qemu-arm
+6023c000-6023f000 rw-p 00000000 00:00 0 
+6023f000-62240000 rwxp 00000000 00:00 0 
+62240000-62264000 rw-p 00000000 00:00 0 
+62264000-62265000 rwxp 00000000 00:00 0 
+62265000-62271000 rw-p 00000000 00:00 0 
+623c8000-6264b000 rw-p 00000000 00:00 0                                  [heap]
+70000000-70146000 r-xp 00000000 08:15 3186842                            /mnt/data/b/build/slave/lucid_64-newlib-arm_qemu-pnacl-opt/build/native_client/scons-out/opt-linux-arm/staging/sel_ldr
+7014d000-7014f000 rw-p 00145000 08:15 3186842                            /mnt/data/b/build/slave/lucid_64-newlib-arm_qemu-pnacl-opt/build/native_client/scons-out/opt-linux-arm/staging/sel_ldr
+7014f000-7017a000 rwxp 00000000 00:00 0 
+7017a000-70201000 rw-p 00000000 00:00 0 
+ffaf0000-ffb16000 rw-p 00000000 00:00 0                                  [stack]
+Test /mnt/data/b/build/slave/lucid_64-newlib-arm_qemu-pnacl-opt/build/native_client/scons-out/nacl-arm-pnacl-pic/test_results/nullptr.out took 0.180000 secs
+
+ERROR: Command returned exit status -6 (0xfffffffa) but we expected -11 (0xfffffff5)
+
+</ns0:content><ns0:updated>2012-02-23T18:42:09.000Z</ns0:updated><ns0:published>2011-08-10T01:59:57.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>qemu ARM hits "longjmp causes uninitialized stack frame"</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>FlakeyBots</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2142/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2142" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2142" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>2142</ns2:id></ns0:entry>

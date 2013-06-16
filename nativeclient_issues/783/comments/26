@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMCSX47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/783/comments/full/26</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2920
+
+------------------------------------------------------------------------
+r2920 | robertm@google.com | Thu Aug 05 08:09:13 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/nacl.scons?r1=2920&amp;r2=2919&amp;pathrev=2920
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/stubout_mode/nacl.scons?r1=2920&amp;r2=2919&amp;pathrev=2920
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/barebones/nacl.scons?r1=2920&amp;r2=2919&amp;pathrev=2920
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/tests/nacl.scons?r1=2920&amp;r2=2919&amp;pathrev=2920
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/life/nacl.scons?r1=2920&amp;r2=2919&amp;pathrev=2920
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/threads/nacl.scons?r1=2920&amp;r2=2919&amp;pathrev=2920
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/voronoi/nacl.scons?r1=2920&amp;r2=2919&amp;pathrev=2920
+
+Changed a bunch of tests to be guarded by bitcode/pnacl rather than
+arm in anticipation of "making pnacl a first class citizen with scons.
+Bugs have been files for all these tests:
+
+http://code.google.com/p/nativeclient/issues/detail?id=787
+http://code.google.com/p/nativeclient/issues/detail?id=786
+http://code.google.com/p/nativeclient/issues/detail?id=785
+http://code.google.com/p/nativeclient/issues/detail?id=784
+http://code.google.com/p/nativeclient/issues/detail?id=783
+
+
+
+tested on trybots
+Review URL: http://codereview.chromium.org/2883058
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:54:28.000Z</ns0:updated><ns0:published>2011-01-21T22:54:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 26 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=783#c26" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/783/comments/full/26" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEEEQH47eCl7ImA9WhRaE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2124</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">This test has been failing occasionally since it was added in http://src.chromium.org/viewvc/native_client?view=rev&amp;amp;revision=6216 (&amp;quot;Make the untrusted PPB_Var implementation thread safe.  This involves making the reference counting classes in ref_counted.h thread safe also.&amp;quot;).
+
+I have only seen it fail on xp-newlib-opt.
+
+The output is:
+
+[  2157 ms] |||| nacl_module / test_nexe loaded
+[  2171 ms] |||| 
+[  2171 ms] |||| [PPB_Var::TestStringVarCreateDelete BEGIN]
+[ 16125 ms] |||| [PPB_Var::TestStringVarCreateDelete PASS]
+[ 16125 ms] |||| 
+[ 16125 ms] |||| [PPB_Var::TestStringVarRefCount BEGIN]
+[ 36141 ms] |||| 
+[ 36141 ms] |||| [SERVER_ERROR] Did not hear from the test for 20.0 seconds.
+[ 36141 ms] |||| Heard from Javascript 20.0 seconds ago.
+[ 36141 ms] |||| The renderer probably hung or crashed.
+KILLING the browser
+...
+ppapi_ppb_var_browser_test.out: FAILED
+</ns0:content><ns0:updated>2012-02-15T20:10:01.000Z</ns0:updated><ns0:published>2011-08-01T23:33:56.000Z</ns0:published><ns2:status>Moved</ns2:status><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/106498078576352695438/</ns2:uri><ns2:username>bre...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>ppapi_ppb_var_browser_test is flaky</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>FlakeyBots</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Test</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>MigrateToChromium</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2124/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2124" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2124" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2012-02-15T20:10:01.000Z</ns2:closedDate><ns2:id>2124</ns2:id></ns0:entry>

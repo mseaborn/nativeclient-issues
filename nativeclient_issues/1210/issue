@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEARH47eCl7ImA9WhdXE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1210</ns0:id><ns0:author>
+			<ns0:name>dsprin...@google.com</ns0:name><ns0:uri>/u/112723007196297768207/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+  r625  Toolchain r3746
+
+What version of the runtime are you using?  N/A
+
+On what operating system?  Mac OS X 10.6
+
+What browser are you using?  N/A
+
+I was trying to port an opensource lib (libfreeimage: http://freeimage.sourceforge.net/), and many of its files #include &amp;lt;memory.h&amp;gt;.  I understand that this file is meaningful on Windows, but on my Mac it is a simple wrapper for #include &amp;lt;string.h&amp;gt;.  The problem is that there is legacy code out there that has this #include, and it makes porting more difficult than running the compiler.
+</ns0:content><ns0:updated>2011-08-26T18:17:25.000Z</ns0:updated><ns0:published>2010-12-02T00:03:24.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:state>closed</ns2:state><ns0:title>The NaCl toolchain does not have memory.h</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1210/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1210" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1210" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>565</ns2:id></ns2:blockedOn><ns2:closedDate>2011-08-26T18:17:25.000Z</ns2:closedDate><ns2:id>1210</ns2:id></ns0:entry>

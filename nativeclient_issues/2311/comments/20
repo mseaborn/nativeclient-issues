@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUEQ347eCl7ImA9WhdbGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2311/comments/full/20</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 7407ae7990bd07f0d52697135f4287b8078ff33d
+ Email: pdox@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+barebones_reloc: Add fake stub function for __tls_get_addr too.
+
+A call to __tls_get_addr is generated for X86-64 + PNaCl + GlibC.
+(probably because the executable is currently compiled with PIC on PNaCl).
+
+This test does not actually run with nacl_glibc enabled, but it does compile.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2311
+Review URL: http://codereview.chromium.org/8312009
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6956 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	tests/barebones/barebones_reloc.c</ns0:content><ns0:updated>2011-10-17T22:56:42.000Z</ns0:updated><ns0:published>2011-10-17T22:56:42.000Z</ns0:published><ns2:updates /><ns0:title>Comment 20 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2311#c20" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2311/comments/full/20" rel="self" type="application/atom+xml" /></ns0:entry>

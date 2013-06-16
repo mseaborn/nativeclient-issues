@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUIFRX47eCl7ImA9Wx5XFUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/884</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">$ cat tls_test.c
+#include &amp;lt;stdio.h&amp;gt;
+
+__extension__  int __thread tls_initiailized_data[] = {[0] = 40, [1000000] = 2};
+
+int __thread tls_bss_data[10000000];
+
+void the_answer() {
+  printf(&amp;quot;The answer is: %d!\n&amp;quot;, tls_bss_data[420024]);
+}
+
+int main(int argc, char* argv[]) {
+  tls_bss_data[420024] = tls_initiailized_data[0] + tls_initiailized_data[1000000];
+  the_answer();
+  return 0;
+}
+$ nacl-gcc -m32 -fPIC -c tls_test.c -o tls_test.o
+$ nacl-gcc -m32 -o tls_test.nexe tls_test.o 
+/usr/local/native_client/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/ld: tls_test.o: TLS transition from R_386_TLS_GD to R_386_TLS_IE_32 against `tls_bss_data' at 0x29 in section `.text' failed
+tls_test.o: could not read symbols: Bad value
+collect2: ld returned 1 exit status
+</ns0:content><ns0:updated>2010-09-15T12:25:14.000Z</ns0:updated><ns0:published>2010-09-15T12:16:16.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>TLS does not work with -fPIC</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Milestone-SDK-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/884/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=884" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/884" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-09-15T12:25:14.000Z</ns2:closedDate><ns2:id>884</ns2:id><ns2:mergedInto>
+			<ns2:id>237</ns2:id></ns2:mergedInto></ns0:entry>

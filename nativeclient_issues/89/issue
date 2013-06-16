@@ -1,0 +1,80 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0AGQX47eCl7ImA9WxNUEkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/89</ns0:id><ns0:author>
+			<ns0:name>facudegu...@gmail.com</ns0:name><ns0:uri>/u/108913955910080557503/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+2009_04_23 from downloads
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Linux Gentoo x64
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Firebox 3 - 32bit binary
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Run './scons MODE=opt-linux sel_ldr'
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+==================== Expected Output ==========================
+
+scons: Reading SConscript files ...
+======================================================================
+Building nexe binaries using sdk at
+[/home/fdeguzman/projects/nacl/nacl_source_0.1_2009_04_23/nacl/googleclient/third_party/nacl_sdk/linux/sdk/nacl-sdk]
+======================================================================
+======================================================================
+SDL build enabled, this is somewhat experimental
+Using version in
+/home/fdeguzman/projects/nacl/nacl_source_0.1_2009_04_23/nacl/googleclient/native_client/../third_party/sdl/linux/v1_2_13
+======================================================================
+*** Solution file generation skipped (not supported on this platform).
+scons: done reading SConscript files.
+scons: Building targets ...
+________Compiling scons-out/opt-linux/obj/service_runtime/linux/sel_memory.o
+________Creating library scons-out/opt-linux/obj/service_runtime/libsel.a
+________Indexing scons-out/opt-linux/obj/service_runtime/libsel.a
+Install file: &amp;quot;scons-out/opt-linux/obj/service_runtime/libsel.a&amp;quot; as
+&amp;quot;scons-out/opt-linux/lib/libsel.a&amp;quot;
+________Linking scons-out/opt-linux/obj/service_runtime/sel_ldr
+Install file: &amp;quot;scons-out/opt-linux/obj/service_runtime/sel_ldr&amp;quot; as
+&amp;quot;scons-out/opt-linux/staging/sel_ldr&amp;quot;
+scons: done building targets.
+
+===============================================================
+
+======================= Error Output ==========================
+
+scons: Reading SConscript files ...
+======================================================================
+Building nexe binaries using sdk at
+[/home/fdeguzman/projects/nacl/nacl_source_0.1_2009_04_23/nacl/googleclient/third_party/nacl_sdk/linux/sdk/nacl-sdk]
+======================================================================
+======================================================================
+SDL build enabled, this is somewhat experimental
+Using version in
+/home/fdeguzman/projects/nacl/nacl_source_0.1_2009_04_23/nacl/googleclient/native_client/../third_party/sdl/linux/v1_2_13
+======================================================================
+*** Solution file generation skipped (not supported on this platform).
+scons: done reading SConscript files.
+scons: Building targets ...
+________Compiling scons-out/opt-linux/obj/service_runtime/linux/sel_memory.o
+service_runtime/linux/sel_memory.c:43:1: error: &amp;quot;_XOPEN_SOURCE&amp;quot; redefined
+In file included from /usr/include/stdint.h:26,
+                 from service_runtime/linux/sel_memory.c:35:
+/usr/include/features.h:160:1: error: this is the location of the previous
+definition
+scons: *** [scons-out/opt-linux/obj/service_runtime/linux/sel_memory.o] Error 1
+scons: building terminated because of errors.
+
+===============================================================
+
+Comments: &amp;quot;_XOPEN_SOURCE&amp;quot; should be undefined first. Patch attached
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2009-11-03T01:28:40.000Z</ns0:updated><ns0:published>2009-05-31T22:51:48.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/105678638446503189415/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>sel_ldr build command fails on Linux because"_XOPEN_SOURCE" is being redefined</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>OS-Linux</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/89/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=89" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/89" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2009-11-03T01:28:40.000Z</ns2:closedDate><ns2:id>89</ns2:id></ns0:entry>

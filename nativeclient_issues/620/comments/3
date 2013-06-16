@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4DR347eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/620/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2549
+
+------------------------------------------------------------------------
+r2549 | mseaborn@chromium.org | Tue Jun 22 02:26:21 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=2549&amp;r2=2548&amp;pathrev=2549
+
+Scons build: Add use_libcrypto option for omitting libcrypto dependency
+
+This makes it easier to build x86-32 NaCl on x86-64 Ubuntu, where there is
+no -dev package for the 32-bit libssl.
+
+Also, this makes it possible to test the USE_CRYPTO=0 code path
+which otherwise is only accessible from the Chromium build.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=620
+
+Review URL: http://codereview.chromium.org/2841020
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:29:36.000Z</ns0:updated><ns0:published>2011-01-21T22:29:36.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=620#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/620/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

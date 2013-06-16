@@ -1,0 +1,44 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcFSX47eCl7ImA9WhRaEUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/562</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/114701340294105671768/</ns0:uri></ns0:author><ns0:content type="html">pthread_mutex in NaCl untrusted code is very slow. 
+I created a simple benchmark http://codereview.chromium.org/2665002/patch/1/2 which fires N threads. 
+Each thread locks and unlocks it's own pthread_mutex 10^6 times. 
+
+Here are the results of runs with different values of N (native code vs nacl): 
+NaCl   N=1 TIME: real: 1.002; user: 0.980; system: 0.008
+native N=1 TIME: real: 0.038; user: 0.040; system: 0.000
+
+NaCl   N=2 TIME: real: 1.532; user: 2.792; system: 0.204
+native N=2 TIME: real: 0.043; user: 0.076; system: 0.000
+
+NaCl   N=3 TIME: real: 3.056; user: 5.072; system: 3.280
+native N=3 TIME: real: 0.048; user: 0.108; system: 0.004
+
+NaCl   N=4 TIME: real: 6.067; user: 7.604; system: 12.645
+native N=4 TIME: real: 0.065; user: 0.152; system: 0.000
+
+NaCl   N=8 TIME: real: 12.358; user: 16.129; system: 31.374
+native N=8 TIME: real: 0.115; user: 0.292; system: 0.000
+
+NaCl   N=16 TIME: real: 24.933; user: 30.798; system: 64.480
+native N=16 TIME: real: 0.247; user: 0.584; system: 0.004
+
+As you can see the time of native run does not depend much on the number of threads because the threads are independent from each other. 
+With NaCl, we see that the time (and the time spent in system) grows dramatically. With 16 threads NaCl is 100x slower than native code. 
+
+The reason for this is that each untrusted call of pthread_mutex_lock does a nacl syscall which in turn acquires one global mutex (&amp;amp;nap-
+&amp;gt;desc_mu), which becomes deadly contended when many threads lock their mutexes. 
+
+ #1  0x42D6B4: NaCl::Lock::Acquire() src/shared/platform/linux/lock.cc:26
+ #2  0x42C6B0: NaClMutexLock src/shared/platform/nacl_sync.cc:49
+ #3  0x42C208: NaClXMutexLock src/shared/platform/nacl_sync_checked.c:20
+ #4  0x40A713: NaClGetDesc src/trusted/service_runtime/sel_ldr.c:654
+ #5  0x405BFC: NaClCommonSysMutex_Lock src/trusted/service_runtime/nacl_syscall_common.c:2414
+ #6  0x406F82: NaClSysMutex_Lock src/trusted/service_runtime/nacl_syscall_handlers.c:531
+ #7  0x407853: NaClSysMutex_LockDecoder src/trusted/service_runtime/nacl_syscall_handlers.c:955
+ #8  0x4082B2: NaClSyscallCSegHook src/trusted/service_runtime/nacl_syscall_hook.c:147
+ #9  0x414BD4: ???//home/kcc/nacl/native_client/scons-out/dbg-linux-x86-64/staging/sel_ldr scons-out/dbg-linux-x86-64/staging/sel_ldr
+ #10 0xB000108EA: ???
+ #11 0xB0002321E: nc_thread_mutex_lock src/untrusted/pthread/nc_mutex.c:98</ns0:content><ns0:updated>2012-02-14T04:33:38.000Z</ns0:updated><ns0:published>2010-06-04T16:45:29.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>performance of untrusted pthread_mutex (is bad)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-20</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/562/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=562" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/562" rel="self" type="application/atom+xml" /><ns2:stars>5</ns2:stars><ns2:id>562</ns2:id></ns0:entry>

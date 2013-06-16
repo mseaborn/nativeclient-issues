@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHRX47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/803</ns0:id><ns0:author>
+			<ns0:name>drus...@gmail.com</ns0:name><ns0:uri>/u/107282868206175406049/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+Mac os 0_1_504_0
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+NA
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Mac os 10.6
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+NA
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. try to run sel_ldr, it fails to find @executable_path/../Frameworks/SDL.framework/Versions/A/SDL and aborts
+&lt;b&gt;2.&lt;/b&gt;
+&lt;b&gt;3.&lt;/b&gt;
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+Based on various other bug reports against mac ports, this appears to be, in part a bug in either SDL or the mac ports build of SDL that the library id is set wrong. However, given that SDL doesn't seem to be included as part of the toolchain, any linking against would pull in an extra dependency.
+
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-07-29T00:12:14.000Z</ns0:updated><ns0:published>2010-08-10T21:59:08.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/112723007196297768207/</ns2:uri><ns2:username>dsprin...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>sel_ldr in Mac OS SDK looks for @executable_path/../Frameworks/SDL.framework/Versions/A/SDL</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/803/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=803" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/803" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-12-11T00:41:31.000Z</ns2:closedDate><ns2:id>803</ns2:id></ns0:entry>

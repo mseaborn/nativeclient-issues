@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIEQX47eCl7ImA9Wx5VEUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/862/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdroid1@gmail.com</ns0:name><ns0:uri>/u/bugdroid1@gmail.com/</ns0:uri></ns0:author><ns0:content type="html">Commit: ee0be16e2c812e7cf0698456904caca582763e10
+ Email: mseaborn@chromium.org
+
+Fix call to _dl_init so that environ is set correctly
+
+An earlier change broke the call to _dl_init so that the argv/envp
+arguments were the wrong way around.  This caused libc.so to set
+environ to the wrong value in __libc_init_first(), although main()
+receives argv via another route and so was still receiving the correct
+values.
+
+Swap the arguments and add comments to make the code clearer.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=862
+TEST=run_fib_array_test (which relies on an env var being set)
+  and the newly-added run_env_var_test
+
+Review URL: http://codereview.chromium.org/3516007
+
+M	sysdeps/i386/dl-machine.h</ns0:content><ns0:updated>2010-10-04T13:21:40.000Z</ns0:updated><ns0:published>2010-10-04T13:21:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdroid1@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=862#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/862/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

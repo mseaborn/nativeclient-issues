@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUGQH47eCl7ImA9WhdbFk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2256</ns0:id><ns0:author>
+			<ns0:name>elijahtaylor@google.com</ns0:name><ns0:uri>/u/elijahtaylor@google.com/</ns0:uri></ns0:author><ns0:content type="html">With glibc toolchain r6693, try to compile this program as follows:
+
+/* test.c */
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;fcntl.h&amp;gt;
+int main()
+{
+  open(&amp;quot;/dev/null&amp;quot;, O_WRONLY);
+  return 0;
+}
+
+$ x86_64-nacl-gcc test.c -O2 -D_FORTIFY_SOURCE=2
+
+output:
+
+/tmp/ccq99Iap.o: In function `main':
+test4.c:(.text+0x1c): undefined reference to `open64'
+collect2: ld returned 1 exit status
+
+
+
+Note that the program compiles without -O2 or -D_FORTIFY_SOURCE, but both of them tickle some problem.</ns0:content><ns0:updated>2011-10-14T21:03:41.000Z</ns0:updated><ns0:published>2011-09-14T23:04:57.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>undefined reference to 'open64' with -O2 and -D_FORTIFY_SOURCE=2 in glibc toolchain</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-16</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2256/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2256" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2256" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-10-14T21:03:41.000Z</ns2:closedDate><ns2:id>2256</ns2:id></ns0:entry>

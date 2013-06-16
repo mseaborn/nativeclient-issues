@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHRX47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1177</ns0:id><ns0:author>
+			<ns0:name>esei...@google.com</ns0:name><ns0:uri>/u/118329321683865945653/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? tip of tree (r3681)
+What version of the runtime are you using? same
+On what operating system? Mac Leopard 10.6.4
+What browser are you using? n/a
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Compile the attached program to see.
+
+Basically it boils down to this:
+
+src/untrusted/pthread/nc_mutex.c has the following code in pthread_mutex_unlock:
+
+  if (mutex-&amp;gt;mutex_type != PTHREAD_MUTEX_FAST_NP) {
+    if ((PTHREAD_MUTEX_ERRORCHECK_NP == mutex-&amp;gt;mutex_type) &amp;amp;&amp;amp;
+        (pthread_self() != mutex-&amp;gt;owner_thread_id)) {
+      /* error - releasing a mutex that's free or owned by another thread */
+      return EPERM;
+    }
+
+Which works fine, except when one is also using pthread_cond_wait (which will take the lock, w/o ever modifying the pthread_mutex_t's owner_thread_id.
+
+Arguably the bug is then in pthread_cond_wait:
+
+int pthread_cond_wait (pthread_cond_t *cond,
+                       pthread_mutex_t *mutex) {
+  pthread_cond_validate(cond);
+  return -NACL_GC_WRAP_SYSCALL(NACL_SYSCALL(cond_wait)(cond-&amp;gt;handle,
+                                                       mutex-&amp;gt;mutex_handle));
+}
+
+it should check the return code from the syscall and update the owner_thread_id accordingly.
+
+
+The bug is not present if you don't use PTHREAD_MUTEX_ERRORCHECK.  PTHREAD_MUTEX_NORMAL avoids the block in pthread_mutex_unlock, which avoids the bug.  There are probably other uses of owner_thread_id which may still get confused in that case however.
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+If you run the attached program, you should see:
+
+pthread_mutex_unlock return: 0 (should be 0)
+
+Under NaCl, you get:
+pthread_mutex_unlock return: 1 (should be 0)
+
+</ns0:content><ns0:updated>2011-07-29T00:12:14.000Z</ns0:updated><ns0:published>2010-11-16T00:10:25.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/117420925389613150407/</ns2:uri><ns2:username>aba...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/117420925389613150407/</ns2:uri><ns2:username>aba...@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PTHREAD_MUTEX_ERRORCHECK does not understand pthread_cond_wait</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-AppPlatform</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>ChromiumIPCBringup</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1177/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1177" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1177" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-12-03T07:18:30.000Z</ns2:closedDate><ns2:id>1177</ns2:id></ns0:entry>

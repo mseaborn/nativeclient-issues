@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A04FQ347eCl7ImA9WhRaEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2593</ns0:id><ns0:author>
+			<ns0:name>vi...@google.com</ns0:name><ns0:uri>/u/103223416233877126719/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+pepper_16 revision: 1398
+&lt;b&gt;On what operating system?&lt;/b&gt;
+ubuntu 10.04-lts 2.6.38.8 / mac os lion 10.7
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+not applicable
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. build pepper_16/examples/ using ./scons
+
+&lt;b&gt;What is the expected output?&lt;/b&gt;
+Write examples after building somewhere, or warn that NACL_INSTALL_ROOT is not set.
+
+&lt;b&gt;What do you see instead?&lt;/b&gt;
+if NACL_INSTALL_ROOT is not set, it writes files to C:\inetpub\wwwroot\. On linux or mac, it creates nacl_sdk/pepper_16/examples/C\:/inetpub/wwwroot path, which is not correct, imo.
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;</ns0:content><ns0:updated>2012-02-13T13:31:52.000Z</ns0:updated><ns0:published>2012-02-13T13:28:38.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Example build scripts are in some conditions windows-only</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>OS-Mac</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2593/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2593" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2593" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2593</ns2:id></ns0:entry>

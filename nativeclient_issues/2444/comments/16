@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEEFRH47eCl7ImA9WhRSFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2444/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">To reproduce (if the patch above is applied):
+
+$ ./scons platform=x86-64 run_strtoll_test  --nacl_glibc
+
+[ RUN      ] nacl_glibc.run_strtoll_test
+======================================================================
+running ['scons-out/opt-linux-x86-64/staging/sel_ldr', '-a', '--', '/usr/local/google/home/krasin/nacl-glibc-toolchain/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so', '--library-path', '/usr/local/google/home/krasin/nacl-glibc-toolchain/native_client/scons-out/nacl-x86-64-glibc/lib:/usr/local/google/home/krasin/nacl-glibc-toolchain/native_client/toolchain/linux_x86/x86_64-nacl/lib', 'scons-out/nacl-x86-64-glibc/obj/tests/toolchain/strtoll.nexe']
+======================================================================
+scons-out/opt-linux-x86-64/staging/sel_ldr -a -- /usr/local/google/home/krasin/nacl-glibc-toolchain/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /usr/local/google/home/krasin/nacl-glibc-toolchain/native_client/scons-out/nacl-x86-64-glibc/lib:/usr/local/google/home/krasin/nacl-glibc-toolchain/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/toolchain/strtoll.nexe
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+======================================================================
+Stdout for nacl_glibc.run_strtoll_test:
+======================================================================
+
+======================================================================
+Stderr for nacl_glibc.run_strtoll_test:
+======================================================================
+DEBUG MODE ENABLED (bypass acl)
+[22997,2255492928:13:48:49.705378] BYPASSING ALL ACL CHECKS
+strtoll("7FFFFFFFFFFFFFFF", 0, 16): Numerical result out of range
+
+[  FAILED  ] nacl_glibc.run_strtoll_test (230 ms)
+
+
+scons: *** [scons-out/nacl-x86-64-glibc/test_results/strtoll.out] Error 255
+scons: building terminated because of errors.
+</ns0:content><ns0:updated>2011-11-17T21:50:15.000Z</ns0:updated><ns0:published>2011-11-17T21:50:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2444#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2444/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

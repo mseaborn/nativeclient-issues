@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkIFSX47eCl7ImA9WxBUFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/251</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">Currently (r1320) our 'address space squatting' process on Linux uses mmap 
+to ensure that we own untrusted memory region, plus some guard regions.  
+We're asking the kernel to treat the pages as committed.  Unfortunately 
+this runs up against the overcommit policy on systems with relatively 
+little RAM+swap, like wee ARM systems.
+
+It appears (in initial tests) that adding MAP_NORESERVE fixes this.
+
+MAP_NORESERVE still guarantees that the region will not be reallocated by 
+mmap, but does not guarantee that it can actually be *used.*  If we touch 
+too many pages within the mmap'd region, we may take a SIGSEGV if the 
+kernel runs out of committable space.  This will happen at one of two 
+times:
+1. During executable load, when we fill out the text and data sections.  In 
+this case, the machine is incapable of running the program in its current 
+state, so death is okay.
+2. When a running program tries to commit more space than the machine can 
+provide.  Again, we can't magically add RAM, so taking a signal in this 
+case is also okay (though it would be lovely if we could report this to the 
+untrusted code somehow...).
+
+With MAP_NORESERVE I can start small programs in sel_ldr on a Marvell Dove 
+system that previously required changes to the kernel's overcommit policy.</ns0:content><ns0:updated>2010-03-02T21:15:18.000Z</ns0:updated><ns0:published>2010-01-14T19:30:02.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Address space squatting behaves poorly on smallish POSIX systems</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Component-TrustedRT</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/251/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=251" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/251" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-03-02T21:15:18.000Z</ns2:closedDate><ns2:id>251</ns2:id></ns0:entry>

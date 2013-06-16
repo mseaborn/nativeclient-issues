@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIESH47eCl7ImA9WhdXF08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2207/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>pdox%goo...@gtempaccount.com</ns0:name><ns0:uri>/u/104735739662288482898/</ns0:uri></ns0:author><ns0:content type="html">sehr &amp; Ivan,
+
+There seems to be some confusion over what "byval" means. The description for "byval" in the LLVM assembly documentation is not verbose enough.
+
+define i32 @bar(%struct.foo* byval align 4 %x) nounwind {
+  %a = getelementptr inbounds %struct.foo* %x, i32 0, i32 0
+  %tmp = load i32* %a, align 4
+  ret i32 %tmp
+}
+
+"byval" here means that the structure will be passed as a copy in memory, so we can assume there's a pointer to it. Using byval forces the backend to pass the structure on the stack, which is why we should never use it... it would cause incorrect code to be generated on X86-64 when the structure should be passed in registers.
+
+The better alternative is to do what we're currently doing:
+
+define i32 @bar(%struct.foo %x) nounwind {
+  %0 = alloca %struct.foo
+  store %struct.foo %x, %struct.foo* %0
+  %a = getelementptr inbounds %struct.foo* %0, i32 0, i32 0
+  %tmp = load i32* %a, align 4
+  ret i32 %tmp
+}
+
+Yes, this is uglier (and maybe slightly larger) bitcode, but llc is capable of optimizing out the extra store and fetch, so the code comes out correctly. This allows for the backend to choose whether to pass the argument on the stack or via registers.
+
+</ns0:content><ns0:updated>2011-08-30T18:05:09.000Z</ns0:updated><ns0:published>2011-08-30T18:05:09.000Z</ns0:published><ns2:updates /><ns0:title>Comment 13 by pdox%goo...@gtempaccount.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2207#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2207/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

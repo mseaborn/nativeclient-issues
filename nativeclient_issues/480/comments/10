@@ -1,0 +1,41 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck8BQX47eCl7ImA9WhZaEk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/480/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 3fa5cc11a02c86170fde740a2dc6bc2f7ef1d851
+ Email: fischman@chromium.org@0039d316-1c4b-4281-b951-d872f2087c98
+
+Revert 90681 - New NaCl zygote implementation 2, in which Chrome zygote forks a NaCl helper.
+
+This patch can launch earth_c.html with and without the SUID sandbox. It is enabled with the environment variable NACL_NEW_ZYGOTE.
+
+BUG=nativeclient:480
+TEST=nativeclient in-browser tests on Linux, ChromeOS
+
+Review URL: http://codereview.chromium.org/6995121
+
+TBR=bradchen@google.com
+Review URL: http://codereview.chromium.org/7274011
+
+git-svn-id: svn://svn.chromium.org/chrome/trunk/src@90682 0039d316-1c4b-4281-b951-d872f2087c98
+
+M	base/process_util.h
+M	base/process_util_posix.cc
+M	chrome/app/chrome_main.cc
+D	chrome/common/nacl_fork_delegate_linux.h
+D	chrome/common/nacl_helper_linux.h
+M	chrome/common/nacl_types.h
+M	chrome/nacl.gypi
+D	chrome/nacl/nacl_fork_delegate_linux.cc
+D	chrome/nacl/nacl_helper_linux.cc
+A	chrome/nacl/nacl_launcher_thread.cc
+A	chrome/nacl/nacl_launcher_thread.h
+D	chrome/nacl/nacl_listener.cc
+D	chrome/nacl/nacl_listener.h
+M	chrome/nacl/nacl_main.cc
+M	content/browser/child_process_launcher.cc
+M	content/browser/zygote_host_linux.cc
+M	content/browser/zygote_host_linux.h
+M	content/browser/zygote_main_linux.cc
+M	content/common/content_switches.cc
+M	content/common/content_switches.h
+M	content/common/sandbox_methods_linux.h
+D	content/common/zygote_fork_delegate_linux.h</ns0:content><ns0:updated>2011-06-28T00:27:30.000Z</ns0:updated><ns0:published>2011-06-28T00:27:30.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=480#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/480/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

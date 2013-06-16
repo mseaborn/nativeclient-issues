@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUcGQn47eCl7ImA9WhdQEE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/878</ns0:id><ns0:author>
+			<ns0:name>r...@codeaurora.org</ns0:name><ns0:uri>/u/110611514349750114994/</ns0:uri></ns0:author><ns0:content type="html">CompareAndSwap can potentially go into an infinite loop as suggested by the comment in src/include/linux/arm/atomic_ops.h by Alan Donovan. Please refer to lines 52 to 61 in the file, where this function is defined.
+
+I tried to use this code with atomicops unit test from the google-perftools tree, when this bug was exposed.
+
+The case in which old_value can become bogus is palpable. If two CAS are competing and the winner manages to change the value at *ptr then the first teq is going to fail, this will make the last branch (line 57) go back to 1:(line 52).. an infinite loop. The last branch(line 57) is meant to loop back only if we fail exclusive access, but is looping back because of old_value not matching with *ptr.
+
+The fix is trivial, just branch out of the routine if old_value is not what is read from mem (*ptr, stored in old). This involves just adding a forward branch if not equal (to 2f) after the first &amp;quot;teq&amp;quot;(line 54), possibly to a strex (labeled 2:) which writes back whatever was read (stored in old i.e the value of *ptr) to memory and reset the exclusive load tag (paranoid?).
+
+I have no issues posting a patch but the turnaround for us could be weeks due to our internal process problems.
+
+
+Thanks,
+Ravi </ns0:content><ns0:updated>2011-08-10T20:10:23.000Z</ns0:updated><ns0:published>2010-09-10T22:09:14.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Bug in ARM Atomic ops ?</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/878/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=878" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/878" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-08-10T20:10:23.000Z</ns2:closedDate><ns2:id>878</ns2:id></ns0:entry>

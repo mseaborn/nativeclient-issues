@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUEMRn47eCl7ImA9WhdTF0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2015</ns0:id><ns0:author>
+			<ns0:name>mmorten...@google.com</ns0:name><ns0:uri>/u/100268164290167392978/</ns0:uri></ns0:author><ns0:content type="html">
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Run a program (esp sel_ldr based) under debug
+2. After it finishes, select Debug-&amp;gt;Stop Debugging
+3. You will see a popup error that it couldn't stop the program.
+   That's because the program is no longer running.
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+In this case, it should just change the VSX state so that you can do 'Start Debugging' again if you want, but not emit a strange message (see attached picture).
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-07-15T16:34:47.000Z</ns0:updated><ns0:published>2011-07-13T16:20:57.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/100268164290167392978/</ns2:uri><ns2:username>mmorten...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109474787648168037085/</ns2:uri><ns2:username>mli...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>VSX: After program-under-debug has finishing, menu cmd 'Stop Debugging' gives error message</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2015/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2015" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2015" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-15T16:34:47.000Z</ns2:closedDate><ns2:id>2015</ns2:id></ns0:entry>

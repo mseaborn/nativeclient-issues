@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk4NSX47eCl7ImA9Wx9WFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1304/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: cc3d67a9abb3eceb0d79d5369b40b41f67e2474b
+ Email: eaeltsin@google.com
+
+[gcc] Replace rsp/rbp lea base with esp/ebp
+
+This is yet another fix for POINTERS_EXTEND_UNSIGNED &gt; 0 problem of keeping high part of rsp/rbp.
+
+In addition, minor fix for previous change - do not assert if writing rsp/rbp into memory (probably spill)?
+
+Test (-O1) must return 0 but returns high part of rsp without the fix:
+
+struct StringRef {
+ const char *Data;
+ unsigned Length;
+};
+
+// Prevent inlining with 'weak' attribute
+int print_size(struct StringRef Data) __attribute__((weak));
+
+int print_size(struct StringRef Data) {
+ return Data.Length;
+}
+
+int main() {
+ char str[6]; // NEEDED!
+
+ struct StringRef s;
+ s.Data = str + 3; // NEEDED!
+ s.Length = 0;
+
+ return print_size(s);
+}
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1304
+TEST=see above
+
+Review URL: http://codereview.chromium.org/6271009
+
+M	gcc/gcc/config/i386/i386-protos.h
+M	gcc/gcc/config/i386/i386.c
+M	gcc/gcc/config/i386/i386.md</ns0:content><ns0:updated>2011-01-19T16:36:38.000Z</ns0:updated><ns0:published>2011-01-19T16:36:38.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1304#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1304/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

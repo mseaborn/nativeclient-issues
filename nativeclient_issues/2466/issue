@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEEQn47eCl7ImA9WhRRF0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2466</ns0:id><ns0:author>
+			<ns0:name>col...@google.com</ns0:name><ns0:uri>/u/101359714341338829292/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+Pepper 16
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Windows 7
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+17.0.942.0 dev-m
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Download and compile https://code.google.com/p/field-of-uniforms-and-drawcalls/source/checkout
+2. Run the program , and press F to enter full screen mode
+3. Move the mouse (without clicking) and notice how smooth it is
+4. Click the mouse (which captures it) and notice how slow the mouse movement becomes.
+
+&lt;b&gt;What is the expected output?&lt;/b&gt;
+Mouse movement with capture shouldn't be slow.
+
+&lt;b&gt;What do you see instead?&lt;/b&gt;
+Mouse movement sampling in fullscreen w/ mouselock is slower than non mouselock.
+
+
+
+Please provide any additional information below and attach any relevant source files.
+
+https://code.google.com/p/field-of-uniforms-and-drawcalls/source/checkout
+(if you modify the code to allow the L key to toggle locking the mouse, it makes it easier to see</ns0:content><ns0:updated>2011-12-01T18:03:23.000Z</ns0:updated><ns0:published>2011-12-01T16:05:59.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/106710594185928520364/</ns2:uri><ns2:username>bbu...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Mouselock slow in fullscreen mode</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Pepper</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2466/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2466" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2466" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-12-01T18:03:23.000Z</ns2:closedDate><ns2:id>2466</ns2:id><ns2:mergedInto>
+			<ns2:id>106054</ns2:id><ns2:project>chromium</ns2:project></ns2:mergedInto></ns0:entry>

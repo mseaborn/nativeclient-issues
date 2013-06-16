@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkECRH47eCl7ImA9WhRTGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2394</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+r7031, 
+I see the failure on linux/newlib/x86-32, but it's probably not limited to this combination.
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+
+./scons --verbose --mode=opt-host,nacl platform=x86-32 SILENT=1 chrome_browser_tests
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+1. run_ppapi_ppb_graphics2d_browser_test:
+
+http://build.chromium.org/p/client.nacl/builders/lucid-32-newlib-dbg/builds/1473/steps/chrome_browser_tests/logs/stdio
+
+[   897 ms] |||| [PPB_Graphics2D::Flush FAIL] ('&#230;&#177;&#8224;&#231;&#141;&#181;&#228;&#141;&#168;&#230;&#177;&#161;&#230;&#8240;&#172;&#230;&#141;&#161;k&#238;&#8225;&#129;&#226;&#191;&#170;&#225;&#172;&#8217;' != 'FlushCallback')
+
+
+2. run_ppapi_ppb_core_browser_test:
+
+('&#230;&#8226;&#8221;&#231;&#8216;&#179;&#230;&#8230;&#402;&#230;&#177;&#172;&#230;&#185;&#143;&#230;&#8230;&#141;&#230;&#185;&#169;&#230;&#161;&#8221;&#230;&#8226;&#178;&#230;&#8216;&#161;&#228;&#8482;&#376;&#230;&#189;&#178;&#228;&#181;&#173;&#230;&#165;&#161;&#229;&#8216;&#174;&#231;&#8240;&#168;&#230;&#8230;&#165;&#227;&#169;&#164;&#228;&#8230;&#144;&#229;&#141;&#8220;&#228;&#8216;&#8230;&#234;&#8225;&#129;&#228;&#402;&#167;&#225;&#172;&#8217;&#235;&#164;&#339;&#230;&#189;&#164;&#231;&#8226;&#163;&#230;&#8226;&#173;&#231;&#8216;&#174;&#234;&#8225;&#129;&#228;&#402;&#167;&#225;&#172;&#8217;&#235;&#164;&#339;&#230;&#189;&#164;&#231;&#8226;&#163;&#230;&#8226;&#173;&#231;&#8216;&#174;' != 'TestCallOnMainThread_FromMainThread:PASSED')
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-11-09T19:57:45.000Z</ns0:updated><ns0:published>2011-10-26T19:09:58.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/dmichael@google.com/</ns2:uri><ns2:username>dmichael@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110736501920010896250/</ns2:uri><ns2:username>timur...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109494838902877177630/</ns2:uri><ns2:username>bruen...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/rnk@google.com/</ns2:uri><ns2:username>rnk@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/106321947286816917100/</ns2:uri><ns2:username>zhao...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/114701340294105671768/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dmichael@google.com/</ns2:uri><ns2:username>dmichael@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Broken unicode sequences instead of ascii in browser tests</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2394" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2394" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blocking>
+			<ns2:id>2392</ns2:id></ns2:blocking><ns2:blocking>
+			<ns2:id>2400</ns2:id></ns2:blocking><ns2:closedDate>2011-11-09T19:57:45.000Z</ns2:closedDate><ns2:id>2394</ns2:id></ns0:entry>

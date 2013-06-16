@@ -1,0 +1,34 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIDQH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/617/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3042
+
+------------------------------------------------------------------------
+r3042 | mseaborn@chromium.org | Thu Aug 19 08:45:04 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/plugin.cc?r1=3042&amp;r2=3041&amp;pathrev=3042
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser/deferred_srpc_init.c?r1=3042&amp;r2=3041&amp;pathrev=3042
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser/nacl.scons?r1=3042&amp;r2=3041&amp;pathrev=3042
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/plugin.h?r1=3042&amp;r2=3041&amp;pathrev=3042
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser/fake_browser_test.cc?r1=3042&amp;r2=3041&amp;pathrev=3042
+
+Plugin: Add __startSrpcServices() method
+
+This allows the SRPC initialisation (and the related
+NPAPI/PPAPI/multimedia initialisation) to be initiated from
+Javascript.
+
+This is for dynamic linking support.  The plugin's SRPC init is,
+unfortunately, blocking, and a dynamically-linked process cannot
+respond to the SRPC connection at least until it has finished loading
+its libraries and executable.
+
+Fix a test issue in DestroyPluginInstance() that occurs when running
+another test after TestAsyncMessages().
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=617
+TEST=run_fake_browser_test
+
+Review URL: http://codereview.chromium.org/3152013
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:56:11.000Z</ns0:updated><ns0:published>2011-01-21T22:56:11.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=617#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/617/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

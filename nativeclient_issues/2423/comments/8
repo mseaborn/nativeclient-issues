@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUMHSH47eCl7ImA9WhRQGUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2423/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: ae10ae60ea8ccc279990416376f4cc836eb69009
+ Email: pdox@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Use the PNaCl-built crtbegin.o/crtend.o/crti.bc for GlibC build.
+
+Currently, libgcc_s is being built using "single-threaded" mode, which means that no mutexes are used. Unfortunately, this causes flakiness. (especially in run_cond_wait_test). This CL switches to building libgcc_eh/libgcc_s in multi-threaded mode instead of single-threaded mode for the GlibC build. Ideally, the newlib version of libgcc_eh would also be thread-safe, but this goes beyond the scope of this CL. Bug has been filed: http://code.google.com/p/nativeclient/issues/detail?id=2492. To make this possible, "libgcc.mvars" has been split into libgcc-glibc.mvars and libgcc-newlib.mvars
+
+Also, added crtdummy.c to make sure the symbols in pnacl/support/bitcode/crtbegin.c are preserved.
+(bug in libLTO/gold: Constructors/destructors are not preserved unless there are references to symbols in the module).
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2423
+Review URL: http://codereview.chromium.org/8815006
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@7445 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	pnacl/build.sh
+M	pnacl/driver/pnacl-driver.py
+M	pnacl/driver/pnacl-ld.py
+M	pnacl/driver/pnacl-translate.py
+A	pnacl/scripts/libgcc-glibc.mvars
+A	pnacl/scripts/libgcc-newlib.mvars
+D	pnacl/scripts/libgcc.mvars
+M	pnacl/support/bitcode/crtbegin.c
+A	pnacl/support/bitcode/crtdummy.c
+M	pnacl/support/crtbegin.c
+M	pnacl/support/crtend.c
+M	pnacl/support/crti.c</ns0:content><ns0:updated>2011-12-15T11:10:39.000Z</ns0:updated><ns0:published>2011-12-15T11:10:39.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2423#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2423/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

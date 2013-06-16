@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkYMRX47eCl7ImA9WxFVEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/558/comments/full/17</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">Oh boy.
+
+I spoke to bsy and mseaborn, who are conveniently in the same office this week.  While people have asked me to weigh in, I'm afraid I'm not going to be the deciding vote here, because I'm not convinced by *either* side of this argument.  Blame my ignorance or my lack of imagination, your choice.
+
+1. I'm not convinced that a use-case exists where a third party needs to define custom PHDRs on short-ish notice.  The existing set of ELF phdrs appears to have evolved somewhat slowly, with roughly one change every five years in the GNU ones, except for bursts of activity in the processor-specific range when a new architecture is built out.  Vendors cannot safely put custom PHDRs into the OS-specific space, because they're not the OS.  It seems that if we simply support the full set of PT_ types in elf.h we'll be good for several years.
+
+2. The security argument for rejecting unrecognized PHDRs is weak.  The most convincing version of it, for me, is one of "obvious correctness."  If the sel_ldr recognizes and explicitly parses (or chooses not to part) every PHDR, we can be more confident that its processing of the headers was correct.  How *much* more confident is open to considerable debate! -- since we neither map the headers themselves into the sandbox, nor respond to unexpected PHDRs by doing anything at all.
+
+In the absence of concrete evidence contradicting either of these statements, I don't have much to add.</ns0:content><ns0:updated>2010-06-09T21:49:44.000Z</ns0:updated><ns0:published>2010-06-09T21:49:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 17 by cbiffle@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=558#c17" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/558/comments/full/17" rel="self" type="application/atom+xml" /></ns0:entry>

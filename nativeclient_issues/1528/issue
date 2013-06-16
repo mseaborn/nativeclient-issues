@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0YASX47eCl7ImA9WhZREU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1528</ns0:id><ns0:author>
+			<ns0:name>gareth.m...@gmail.com</ns0:name><ns0:uri>/u/111459031208495449410/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+N/A
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+Google Chrome 11.0.696.3 (Official Build 77593) dev
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Ubuntu 10.10 x86_64
+Linux 2.6.35-27-generic #48-Ubuntu SMP x86_64 GNU/Linux
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Google Chrome	11.0.696.3 (Official Build 77593) dev
+WebKit	534.24 (branches/chromium/696@80681)
+V8	3.1.8
+User Agent	Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/11.0.696.3 Safari/534.24
+Command Line	 /usr/bin/google-chrome --enable-nacl --no-sandbox --restore-last-session --flag-switches-begin --enable-nacl --flag-switches-end
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Install google-chrome-unstable_current_amd64.deb
+2. Start Google Chrome and enter &amp;quot;about:flags&amp;quot;
+3. Enable &amp;quot;Native Client&amp;quot;
+4. Click &amp;quot;Relaunch Now&amp;quot;
+5. a. Visit &amp;quot;http://code.google.com/chrome/nativeclient/docs/examples.html&amp;quot;. The page indicates that Native Client is not enabled. 
+   b. Visit &amp;quot;http://nacl-gallery.appspot.com/life/life.html&amp;quot; see &amp;quot;Missing Plug-In&amp;quot; message. 
+   c. Visit &amp;quot;http://naclports.googlecode.com/svn/trunk/src/gallery/pi_generator/pi_generator.html&amp;quot; see &amp;quot;Missing Plug-In&amp;quot; message.
+6. Quit Google Chrome.
+7. From the command-line type &amp;quot;google-chrome --no-sandbox&amp;quot;
+8. Visit pages in 5 with same results.
+9. Quit Chrome.
+10. From the command-line type &amp;quot;google-chrome --no-sandbox --enable-nacl --enable-gpu-plugin --internal-nacl&amp;quot;
+11. Visit pages in 5 with the same results.
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+I expected to see one of the Google Chrome demos running. Instead I see &amp;quot;Missing Plug-In&amp;quot;.
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+I have also tried the above steps with google-chrome-beta_current_amd64.deb and google-chrome_stable_current_amd64.deb with the same results. All browser packages were downloaded today.
+
+I have also tried the above steps with all browsers using the demos included in the SDK, but wasn't able to get any of them to work either. The Hello World demos just display &amp;quot;Loading&amp;quot; at the bottom, rather than &amp;quot;Missing Plug-In&amp;quot;.
+
+</ns0:content><ns0:updated>2011-04-06T21:25:48.000Z</ns0:updated><ns0:published>2011-03-13T12:12:26.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>NaCl not working on Ubuntu 10.10 in Chrome 11.0.696.3 dev</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1528/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1528" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1528" rel="self" type="application/atom+xml" /><ns2:stars>4</ns2:stars><ns2:closedDate>2011-04-06T21:25:48.000Z</ns2:closedDate><ns2:id>1528</ns2:id></ns0:entry>

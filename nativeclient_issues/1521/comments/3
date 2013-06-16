@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEDSH47eCl7ImA9WhZaEkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1521/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Reproducer (first download attached script pound_browser.sh):
+
+./scons platform=x86-64 --mode=dbg-host,nacl bitcode=1 run_pnacl_srpc_hw_browser_test
+
+./pound_browser.sh
+(run from native_client directory)
+
+When it fails, it will stop with a timeout. In the logs, you will see:
+
+
+ld:pnacl_support/x8664/ld_script_x8664_untrusted:93: syntax error
+[11972,411002624:13:11:36.962049] Exit syscall handler: 1
+[11972,411502368:13:11:36.962075] NaClPerfCounterInterval(SelMain CreateMainThread:WaitForMainThread): 10200371 microsecs
+[11972,411502368:13:11:36.962085] NaClPerfCounterInterval(SelMain __start__:SelMainEnd): 10767233 microsecs
+[SRPC:HOST:11945,4179310560:13:11:36.963241] NaClSrpcRpcWait(channel=0x7feafd396d50): EOF is received instead of response. Probably, the other side (usually, nacl module or browser plugin) crashed.
+f91b37e0: SrpcClient::Invoke (response=267)
+f91b37e0: SrpcClient::Invoke (err='Internal error in rpc method', return 0)
+f91b37e0: ScriptableHandlePpapi::Call (Link: invocation failed - Call('Link') failed
+)
+</ns0:content><ns0:updated>2011-06-28T20:24:39.000Z</ns0:updated><ns0:published>2011-06-28T20:24:39.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1521#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1521/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

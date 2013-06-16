@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4ARX47eCl7ImA9WhZUEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/750/comments/full/27</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I'm closing this bug because the problem as originally described (lack of contiguous address space) has gone away.  The new problem that Ivan found on Chrome OS is tracked as issue 1883.
+
+We're not sure what caused the address space fragmentation or what changed to make the problem go away.  In chrome_map.log, there is plenty of free address space, but it's not contiguous.  It had the following gaps between libraries:
+
+gap: 50MB
+gap: 48MB
+gap: 73MB
+gap: 666MB
+gap: 163MB
+gap: 118MB
+gap: 170MB
+gap: 326MB
+gap: 79MB
+
+Maybe this was caused by the kernel's mmap() allocation policy or by using prelink, although I can't find any evidence that Chrome OS has used prelink.
+</ns0:content><ns0:updated>2011-06-03T19:22:24.000Z</ns0:updated><ns0:published>2011-06-03T19:22:24.000Z</ns0:published><ns2:updates>
+			<ns2:label>OS-Chrome</ns2:label><ns2:status>Fixed</ns2:status><ns2:summary>NaCl fails on Chrome OS: lacks 1GB contiguous address space</ns2:summary></ns2:updates><ns0:title>Comment 27 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=750#c27" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/750/comments/full/27" rel="self" type="application/atom+xml" /></ns0:entry>

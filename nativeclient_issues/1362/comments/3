@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A08FRH47eCl7ImA9WhZTFkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1362/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 22a67afa71729e8ec422f095aa68f69742ea5b40
+ Email: pasko@google.com
+
+Teach sandboxed GCC not to rely on inode numbers.
+
+Inside the NaCl sandbox all inode numbers for files and directories are
+identical (because the least common denominator, Windows, does not have them).
+
+If GCC treats include directories (passed with -I) with identical inodes as
+identical directories.  GCC then is free to skip looking into some directories
+for header files as an optimization.  NaCl inodes are all identical, which makes
+GCC to only look into a single directory.  Before we learn to emulate inode
+numbers on Windows, the sandboxed GCC would just not use this optimization.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1362
+TEST=none
+
+Review URL: http://codereview.chromium.org/6685112
+
+M	gcc/config/i386/nacl.h</ns0:content><ns0:updated>2011-03-21T09:30:15.000Z</ns0:updated><ns0:published>2011-03-21T09:30:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1362#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1362/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

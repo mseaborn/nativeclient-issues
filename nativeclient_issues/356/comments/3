@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08HR347eCl7ImA9WxBbGU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/356/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/114701340294105671768/</ns0:uri></ns0:author><ns0:content type="html">Related note: memcheck complains that we are passing uninitialized data to sendmsg. 
+Indeed, some bytes of the memory allocated in NaClImcSendTypedMessage (hdr_buf = malloc(sys_bytes + sizeof *hdr);) are left uninitialized.
+
+
+==23123== Syscall param socketcall.sendmsg(msg.msg_iov[i]) points to uninitialised byte(s)
+==23123==    at 0x503EBB0: __sendmsg_nocancel (in /lib/libpthread-2.7.so)
+==23123==    by 0x418C92: nacl::SendDatagramTo(int, nacl::MessageHeader const*, int, nacl::SocketAddress const*) (nacl_imc.cc:162)
+==23123==    by 0x418CDB: nacl::SendDatagram(int, nacl::MessageHeader const*, int) (nacl_imc.cc:100)
+==23123==    by 0x418F1A: NaClSendDatagram (nacl_imc_c.cc:43)
+==23123==    by 0x40EFB8: NaClDescImcDescSendMsg (nacl_desc_imc.c:206)
+==23123==    by 0x410D67: NaClImcSendTypedMessage (nrd_xfer.c:293)
+==23123==    by 0x40D5D0: __NaClSrpcImcFlush (imc_buffer.c:254)
+==23123==    by 0x40A7E4: NaClSrpcRequestWrite (rpc_serialize.c:1009)
+==23123==    by 0x40725F: NaClSrpcInvokeV (invoke.c:121)
+==23123==    by 0x403776: Interpreter (sel_universal.c:40)
+==23123==    by 0x40CF0C: NaClSrpcCommandLoop (rpc_universal.c:829)
+==23123==    by 0x403A54: main (sel_universal.c:161)
+==23123==  Address 0x670ee98 is 8 bytes inside a block of size 48 alloc'd
+==23123==    at 0x4C230DB: malloc (vg_replace_malloc.c:236)
+==23123==    by 0x410B4E: NaClImcSendTypedMessage (nrd_xfer.c:232)
+==23123==    by 0x40D5D0: __NaClSrpcImcFlush (imc_buffer.c:254)
+==23123==    by 0x40A7E4: NaClSrpcRequestWrite (rpc_serialize.c:1009)
+==23123==    by 0x40725F: NaClSrpcInvokeV (invoke.c:121)
+==23123==    by 0x403776: Interpreter (sel_universal.c:40)
+==23123==    by 0x40CF0C: NaClSrpcCommandLoop (rpc_universal.c:829)
+==23123==    by 0x403A54: main (sel_universal.c:161)
+==23123==  Uninitialised value was created by a heap allocation
+==23123==    at 0x4C230DB: malloc (vg_replace_malloc.c:236)
+==23123==    by 0x410B4E: NaClImcSendTypedMessage (nrd_xfer.c:232)
+==23123==    by 0x40D5D0: __NaClSrpcImcFlush (imc_buffer.c:254)
+==23123==    by 0x40A7E4: NaClSrpcRequestWrite (rpc_serialize.c:1009)
+==23123==    by 0x40725F: NaClSrpcInvokeV (invoke.c:121)
+==23123==    by 0x403776: Interpreter (sel_universal.c:40)
+==23123==    by 0x40CF0C: NaClSrpcCommandLoop (rpc_universal.c:829)
+==23123==    by 0x403A54: main (sel_universal.c:161)
+
+</ns0:content><ns0:updated>2010-03-18T09:50:36.000Z</ns0:updated><ns0:published>2010-03-18T09:50:36.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by k...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=356#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/356/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

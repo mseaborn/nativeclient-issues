@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUAEQX47eCl7ImA9WhRbGU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2587/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7778
+
+------------------------------------------------------------------------
+r7778 | sehr@google.com | Fri Feb 10 12:57:39 PST 2012
+
+Changed paths:
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/srpc/srpc_perf.html?r1=7778&amp;r2=7777&amp;pathrev=7778
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/srpc_hw/srpc_hw.nmf?r1=7778&amp;r2=7777&amp;pathrev=7778
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/srpc_hw/nacl.scons?r1=7778&amp;r2=7777&amp;pathrev=7778
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pyauto_nacl/nacl_uma.py?r1=7778&amp;r2=7777&amp;pathrev=7778
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pyauto_nacl/surfaway.py?r1=7778&amp;r2=7777&amp;pathrev=7778
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/nameservice/srpc_nameservice_test.html?r1=7778&amp;r2=7777&amp;pathrev=7778
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/manifest_file/srpc_manifest_file_test.html?r1=7778&amp;r2=7777&amp;pathrev=7778
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/srpc/srpc_nrd_server.nmf?r1=7778&amp;r2=7777&amp;pathrev=7778
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pyauto_nacl/surfaway_async.py?r1=7778&amp;r2=7777&amp;pathrev=7778
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pyauto_nacl/multiple_nexes.py?r1=7778&amp;r2=7777&amp;pathrev=7778
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/srpc_hw/srpc_hw.html?r1=7778&amp;r2=7777&amp;pathrev=7778
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/srpc/nacl.scons?r1=7778&amp;r2=7777&amp;pathrev=7778
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/srpc/srpc_nrd_xfer.html?r1=7778&amp;r2=7777&amp;pathrev=7778
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/srpc/srpc_nrd_client.nmf?r1=7778&amp;r2=7777&amp;pathrev=7778
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pyauto_nacl/reload.py?r1=7778&amp;r2=7777&amp;pathrev=7778
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/manifest_file/nacl.scons?r1=7778&amp;r2=7777&amp;pathrev=7778
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/nameservice/nacl.scons?r1=7778&amp;r2=7777&amp;pathrev=7778
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/manifest_file/srpc_manifest_file.nmf?r1=7778&amp;r2=7777&amp;pathrev=7778
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/srpc/srpc_basic.html?r1=7778&amp;r2=7777&amp;pathrev=7778
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/srpc/srpc_test.nmf?r1=7778&amp;r2=7777&amp;pathrev=7778
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/srpc_hw/srpc_hw_data.html?r1=7778&amp;r2=7777&amp;pathrev=7778
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/nameservice/srpc_nameservice.nmf?r1=7778&amp;r2=7777&amp;pathrev=7778
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pyauto_nacl/nacl.scons?r1=7778&amp;r2=7777&amp;pathrev=7778
+
+Remove the first batch of tests using SRPC experimental interfaces.
+Begins the proess of removing the SRPC experimental support from the JavaScript
+interface in the plugin.
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2587
+TEST=none
+Review URL: https://chromiumcodereview.appspot.com/9373046
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-02-10T21:01:40.000Z</ns0:updated><ns0:published>2012-02-10T21:01:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2587#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2587/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

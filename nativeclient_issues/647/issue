@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkAGSX47eCl7ImA9WxFaGEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/647</ns0:id><ns0:author>
+			<ns0:name>nigels....@gmail.com</ns0:name><ns0:uri>/u/106066295531682381854/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+0_1_444_0
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+n/a
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+10.5
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Firefox and Safari
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+
+This works:
+nacl-g++ -fPIC -Wall -Wno-switch -Wno-missing-braces -Wall -Wno-long-long -DXP_UNIX -I. -D__native_client__ -Wno-invalid-offsetof -o scripting_bridge.o -c scripting_bridge.cc -m32
+
+This does not:
+acl-g++ -fPIC -Wall -Wno-switch -Wno-missing-braces -Wall -Wno-long-long -DXP_UNIX -I. -D__native_client__ -Wno-invalid-offsetof -o scripting_bridge.o -c scripting_bridge.cc -m64
+scripting_bridge.cc: In constructor &#8216;tumbler::ScriptingBridge::ScriptingBridge(NPP_t*)&#8217;:
+scripting_bridge.cc:55: error: unrecognizable insn:
+(insn 14 13 15 2 scripting_bridge.cc:52 (set (reg/f:SI 65)
+        (plus:SI (reg:SI 66)
+            (const_int 8 [0x8]))) -1 (expr_list:REG_EQUAL (const:SI (plus:SI (symbol_ref/i:SI (&amp;quot;_ZTVN7tumbler15ScriptingBridgeE&amp;quot;) &amp;lt;var_decl 0xfe6660 _ZTVN7tumbler15ScriptingBridgeE&amp;gt;)
+                (const_int 8 [0x8])))
+        (nil)))
+scripting_bridge.cc:55: internal compiler error: in extract_insn, at recog.c:2072
+Please submit a full bug report,
+with preprocessed source if appropriate.
+See &amp;lt;http://gcc.gnu.org/bugs.html&amp;gt; for instructions.
+
+What is the expected output?
+Expected that -m64 would work, as does -m32
+
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2010-07-23T11:32:08.000Z</ns0:updated><ns0:published>2010-06-25T16:35:24.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>tumbler example compilation error for -m64 on OSX nativeclient SDK</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Milestone-Chromium-7</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/647/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=647" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/647" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-07-23T11:32:08.000Z</ns2:closedDate><ns2:id>647</ns2:id></ns0:entry>

@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEIAQ347eCl7ImA9WhZTGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1563/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4601
+
+------------------------------------------------------------------------
+r4601 | mseaborn@chromium.org | Tue Mar 22 19:13:52 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_signal_unittest.c?r1=4601&amp;r2=4600&amp;pathrev=4601
+
+nacl_signal_unittest: Fix non-deterministic failure in test
+
+Use joined threads instead of unjoined threads, otherwise a test
+thread's siglongjmp() call can occur after the global jmp buffer has
+been overwritten by the next thread, causing the test to fail.
+
+Since we are no longer polling, g_SigFound does not need to be
+volatile.
+
+(It may be that this test doesn't need to use threads at all, but I am
+leaving them in in case it is significant.)
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1563
+TEST=run_nacl_signal_test (the non-determinism is hard to reproduce though)
+
+Review URL: http://codereview.chromium.org/6719020
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-03-23T02:15:42.000Z</ns0:updated><ns0:published>2011-03-23T02:15:42.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1563#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1563/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIHQ347eCl7ImA9WhRaGUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/941</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">This is an odd one.  The following line of code produced a compile warning/error when added to a NaCl test in &amp;quot;native_client/tests&amp;quot; and compiled against nacl-glibc:
+
+  assert(strcmp(value, &amp;quot;example_contents_of_env_var&amp;quot;) == 0);
+
+
+nacl-gcc -o scons-out/nacl-x86-32/obj/tests/environment_variables/env_var_test.o -c -O2 -fomit-frame-pointer -Wall -fdiagnostics-show-option -pedantic -Werror -m32 -D_GNU_SOURCE=1 -D__STDC_FORMAT_MACROS=1 -I/home/mseaborn/devel/nacl-trunk/src tests/environment_variables/env_var_test.c
+
+tests/environment_variables/env_var_test.c: In function 'main':
+tests/environment_variables/env_var_test.c:31: error: string length '2639' is greater than the length '509' ISO C90 compilers are required to support [-Woverlength-strings]
+
+
+The problem is that glibc's bits/string.h defines the humble strcmp() as a macro which expands to a huge expression.  assert() wants to put the expanded expression into a string constant.
+
+This seems to be enabled by -O2.  I think gcc undefines __NO_STRING_INLINES and glibc picks up on this.
+
+Note that bits/string.h contains inline assembly.  I didn't spot any obvious indirect jumps, but there might still be instructions there that don't pass the validator.</ns0:content><ns0:updated>2012-02-22T22:42:12.000Z</ns0:updated><ns0:published>2010-10-01T14:00:22.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>glibc's optimised string.h falls foul of -Woverlength-strings</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/941/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=941" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/941" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:id>941</ns2:id></ns0:entry>

@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QNQX47eCl7ImA9WxFQGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/469/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>grego...@google.com</ns0:name><ns0:uri>/u/114685308157308201595/</ns0:uri></ns0:author><ns0:content type="html">We discussed the question of dependencies with the Chrome team several times, 
+starting with the first integration CL, and the conclusion was always the same: files 
+from the chrome directory should not be included outside of that directory. So a 
+policy does exist. Do you think there are any benefits in changing that policy?
+As for register functions, we already have one such function: 
+RegisterInternalNaClPlugin in src/trusted/plugin/nacl_entry_points.cc. We can 
+probably enhance it to use the mechanism you suggest in (b), if we don't hit any 
+design problems in the process.
+By the way, the Windows sandbox is pretty separate from Chrome and can be found in 
+the sandbox directory. Unfortunately, it seems that the situation for Linux and Mac 
+is different.
+</ns0:content><ns0:updated>2010-05-14T18:23:10.000Z</ns0:updated><ns0:published>2010-05-14T18:23:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by grego...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=469#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/469/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

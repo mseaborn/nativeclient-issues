@@ -1,0 +1,55 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkACRH47eCl7ImA9WhdVF0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1475</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+nacl -r4374
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Linux
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. install oprofile and untar attached scripts and tests
+2. run &amp;quot;NACL=/mynacldir.../native_client ./test_malloc.sh&amp;quot;
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Linux-gcc x86-64 real	0m0.885s
+Nacl-gcc x86-64 real	0m6.567s
+Pnacl-gcc x86-64 real	0m5.838s
+
+Ideally the numbers would be a lot closer. I'm not sure the performance is like with nacl-glibc. It is possible that this is one of the reasons that the nacl-sandboxed pnacl translators are slow (we see free/malloc taking much time in the profile).
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+See attached tarball for the microbenchmark and parameters used for the test.
+
+Top functions reported for nacl64:
+
+EVENTS		FUNC [LOW_VMA, UPPER_VMA]
+5719		nc_spinlock_lock [0x22160, 0x2219a]
+5140		lran2 [0x204e0, 0x205df]
+3710		nc_thread_mutex_lock [0x23e20, 0x2407f]
+3430		_malloc_r [0x26320, 0x2713f]
+2814		_free_r [0x31e80, 0x322ff]
+...
+
+Top functions reported for pnacl64:
+
+EVENTS		FUNC [LOW_VMA, UPPER_VMA]
+5427		_malloc_r [0x251c0, 0x25cdd]
+4968		_free_r [0x2ebc0, 0x2f41d]
+4386		malloc_test [0x22e60, 0x236bf]
+3162		__malloc_unlock [0x25f00, 0x2605f]
+...
+
+
+To run without oprofile and just &amp;quot;time&amp;quot;:
+
+NACL=/mynacldir/native_client/ DO_OPROFILE=false ./test_malloc.sh
+
+</ns0:content><ns0:updated>2011-09-22T18:06:05.000Z</ns0:updated><ns0:published>2011-02-25T19:35:53.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Malloc/free microbenchmark is 6x slower w/ nacl-gcc/pnacl-gcc + newlib</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Performance</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1475/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1475" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1475" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2011-09-22T18:06:05.000Z</ns2:closedDate><ns2:id>1475</ns2:id><ns2:mergedInto>
+			<ns2:id>2271</ns2:id></ns2:mergedInto></ns0:entry>

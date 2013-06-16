@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck8CRn47eCl7ImA9WxFUFE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/641/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I am pretty sure this is a real issue because I hit a crasher while writing an automated test today.  The code to reproduce it is at http://codereview.chromium.org/2825020/show.
+
+The problem is that PluginNpapi's destructor is re-entered:
+
+fake_browser_test: src/trusted/plugin/fake_browser_test.cc:79: void&lt;unnamed&gt;::fb_NPN_ReleaseObject(NPObject*): Assertion `npobj-&gt;referenceCount &gt; 0' failed.
+[New Thread 0xb71d76c0 (LWP 14437)]
+
+Program received signal SIGABRT, Aborted.
+[Switching to Thread 0xb71d76c0 (LWP 14437)]
+0xb7760410 in __kernel_vsyscall ()
+(gdb) bt
+#0  0xb7760410 in __kernel_vsyscall ()
+#1  0xb725c085 in raise () from /lib/tls/i686/cmov/libc.so.6
+#2  0xb725da01 in abort () from /lib/tls/i686/cmov/libc.so.6
+#3  0xb725510e in __assert_fail () from /lib/tls/i686/cmov/libc.so.6
+#4  0x0804c38a in fb_NPN_ReleaseObject (npobj=0x80aa128) at src/trusted/plugin/fake_browser_test.cc:79
+#5  0x0804d098 in NPN_ReleaseObject (obj=0x80aa128) at src/third_party_mod/npapi_plugin/npn_gate.cc:282
+#6  0x0805440c in plugin::ScriptableImplNpapi::Unref (this=0x80aa120) at src/trusted/plugin/npapi/scriptable_impl_npapi.cc:746
+#7  0x08052887 in ~PluginNpapi (this=0x80a96d8) at src/trusted/plugin/npapi/plugin_npapi.cc:120
+#8  0x080564ac in plugin::PortableHandle::Delete (this=0x80a96dc)
+    at /home/mseaborn/devel/nacl-trunk/src/native_client/src/trusted/plugin/srpc/portable_handle.h:40
+#9  0x08053d9d in plugin::ScriptableImplNpapi::Deallocate (obj=0x80aa128) at src/trusted/plugin/npapi/scriptable_impl_npapi.cc:692
+#10 0x0804c3b8 in fb_NPN_ReleaseObject (npobj=0x80aa128) at src/trusted/plugin/fake_browser_test.cc:81
+#11 0x0804d098 in NPN_ReleaseObject (obj=0x80aa128) at src/third_party_mod/npapi_plugin/npn_gate.cc:282
+#12 0x0805440c in plugin::ScriptableImplNpapi::Unref (this=0x80aa120) at src/trusted/plugin/npapi/scriptable_impl_npapi.cc:746
+#13 0x08052887 in ~PluginNpapi (this=0x80a96d8) at src/trusted/plugin/npapi/plugin_npapi.cc:120
+#14 0x080515af in plugin::PluginNpapi::Destroy (this=0x80a96d8, save=0x0) at src/trusted/plugin/npapi/plugin_npapi.cc:126
+#15 0x08050f9f in NPP_Destroy (instance=0x80a90f8, save=0x0) at src/trusted/plugin/npapi/npp_launcher.cc:128
+#16 0x0804c266 in main () at src/trusted/plugin/fake_browser_test.cc:216
+</ns0:content><ns0:updated>2010-06-24T17:34:27.000Z</ns0:updated><ns0:published>2010-06-24T17:34:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=641#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/641/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

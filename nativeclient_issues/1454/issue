@@ -1,0 +1,34 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4NQX47eCl7ImA9WhZTE0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1454</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? 721
+What version of the runtime are you using? N/A
+On what operating system? Windows XP 32-bit SP2
+What browser are you using? Chrome 10.0.648.82
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Install SDK using all default options
+2. cd examples
+3. make -j4 (the -j4 is probably not the problem, but included for completeness)
+4. httpd.cmd
+5. With Chrome, go to localhost:5103
+6. Open up all the examples into separate tabs (again, probably not necessary, but for completeness...)
+7. Go to the tab running geturl example
+8. Click on the Get URL button
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+This is supposed to display the raw html contents of a particular link.
+
+Instead, it prints this error:
+
+exception: TypeError: Object #&amp;lt;HTMLEmbedElement&amp;gt; has no method 'getUrl'
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+Note: This same test works correctly when using the precompiled examples.
+
+For ArcticSea, we should make sure to mention this in the Known Issues section.</ns0:content><ns0:updated>2011-03-17T14:09:50.000Z</ns0:updated><ns0:published>2011-02-17T20:04:43.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:cc>
+			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>GetURL Example has an exception on Windows XP 32-bit</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1454/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1454" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1454" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-03-17T14:09:50.000Z</ns2:closedDate><ns2:id>1454</ns2:id><ns2:mergedInto>
+			<ns2:id>1540</ns2:id></ns2:mergedInto></ns0:entry>

@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUERn47eCl7ImA9Wx9XGUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1253/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: f7c5dcf9d547a9c7ea1bb5b08d379c69198286eb
+ Email: mseaborn@chromium.org
+
+Update for changed NaCl syscall ABI with 64-bit off_t, ino_t and time_t
+
+We change time_t as presented by nacl-glibc's ABI to be 64-bit.  This
+is the easiest way to keep NACL_PRIdNACL_TIME matching up and avoids
+having to convert struct timeval and struct timespec in the syscall
+wrappers.
+
+However, off_t and ino_t as presented by nacl-glibc's ABI remain the
+same for now.
+
+mktime.c: Remove a compile-time assertion that does not seem to make
+sense because it fails when we increase the width of the output while
+keeping the input widths the same.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1253
+TEST=small_tests --nacl_glibc
+
+Review URL: http://codereview.chromium.org/6272001
+
+M	bits/typesizes.h
+M	sysdeps/nacl/llseek.c
+M	sysdeps/nacl/lseek.c
+M	sysdeps/nacl/mmap.c
+M	sysdeps/nacl/nacl_stat.h
+M	sysdeps/nacl/nacl_syscalls.h
+M	time/mktime.c</ns0:content><ns0:updated>2011-01-13T19:33:27.000Z</ns0:updated><ns0:published>2011-01-13T19:33:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1253#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1253/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,55 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkcBSX47eCl7ImA9WhRSEUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2436</ns0:id><ns0:author>
+			<ns0:name>p...@pmudesign.com</ns0:name><ns0:uri>/u/101001713971859060420/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+n/a
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+unknown
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Mac OSX 10.6.8
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Chrome 15.0.874.120
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Selected Ogre demo from Chrome Web Store
+2. Allowed it to install
+3. Screen displays:
+Status:
+
+SUCCESS
+Loading Log
+
+100%
+NaCl exe loading started
+load
+NaCl exe loading ended
+lastError: &amp;lt;none&amp;gt;
+downloading resource zip file started: Popular.zip
+downloading resource zip file started: Essential.zip
+If it works you should see ogre sample browser under this text. (wait 6 min for it...)
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+I expect to see an Ogre or something, but all I see is a blank area of the screen.
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+My hardware:
+ Model Name:	MacBook Pro
+  Model Identifier:	MacBookPro2,2
+  Processor Name:	Intel Core 2 Duo
+  Processor Speed:	2.33 GHz
+  Number Of Processors:	1
+  Total Number Of Cores:	2
+  L2 Cache:	4 MB
+  Memory:	2 GB
+  Bus Speed:	667 MHz
+  Boot ROM Version:	MBP22.00A5.B07
+  SMC Version (system):	1.12f5
+
+</ns0:content><ns0:updated>2011-11-13T12:40:58.000Z</ns0:updated><ns0:published>2011-11-13T12:40:58.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>NaCl demos don't work</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2436/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2436" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2436" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2436</ns2:id></ns0:entry>

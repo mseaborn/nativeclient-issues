@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEGSH47eCl7ImA9WxVVEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/31</ns0:id><ns0:author>
+			<ns0:name>pavan.ka...@gmail.com</ns0:name><ns0:uri>/u/102275509595758624035/</ns0:uri></ns0:author><ns0:content type="html">I am not able use Nacl modules over internet. I am able to open local files
+using firefox browser.
+
+when i open files over internet I get the following error
+
+&amp;quot;NaCl module did not come from a whitelisted source.
+Use a URL beginning with file://:
+
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Windows XP
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Mozilla Firefox 3.0.1
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+Not sure.. I think this information is not needed for this problem
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Try opening any Nacl (*.nexe) x-nacl-srpc embed object over internet.
+2. When I connect wireshark i see that the nexe object is downloaded from
+server but I see the error before the object is actually shown. 
+
+Not sure if it is a browser problem or Nacl's problem.
+
+</ns0:content><ns0:updated>2009-03-03T19:30:29.000Z</ns0:updated><ns0:published>2008-12-15T05:38:12.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/108782782163151845439/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title> NaCl module did not come from a whitelisted source. Use a URL beginning with file://</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/31/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=31" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/31" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2009-03-03T19:30:29.000Z</ns2:closedDate><ns2:id>31</ns2:id></ns0:entry>

@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4CSH47eCl7ImA9Wx5SF08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/305</ns0:id><ns0:author>
+			<ns0:name>kschi...@google.com</ns0:name><ns0:uri>/u/108470876877739532758/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;[Please summarize the enhancement so it will be comprehensible to someone&lt;/b&gt;
+&lt;b&gt;from outside the Native Client team. A good summary will include:]&lt;/b&gt;
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+
+Currently, the NaCl validator accepts all 0x90 forms (independent of
+prefix) as a NOP. However, if you read the Intel Manual, Rex.R and Rex.W
+can change the meaning of this operation. We need to clarify how this
+should be handled.
+
+Note: This only happens on the x64-64 bit platform.
+
+
+</ns0:content><ns0:updated>2010-08-13T19:32:49.000Z</ns0:updated><ns0:published>2010-02-17T23:19:22.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108470876877739532758/</ns2:uri><ns2:username>kschi...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>The Xchg instruction (0x90) and NULL</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/305/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=305" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/305" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-08-13T19:32:49.000Z</ns2:closedDate><ns2:id>305</ns2:id></ns0:entry>

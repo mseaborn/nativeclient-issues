@@ -1,0 +1,82 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUcEQH47eCl7ImA9Wx5WEkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/847</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">This problem shows up in 177.mesa when the source files are converted to bitcode WITHOUT optimizations then linked together followed by and opt pass.
+
+The code looks like:
+define internal void @gl_EvalCoord2f(%struct.GLcontext* %ctx, float %u, float %v) nounwind {
+
+....
+
+  store float %46, float* %47, align 4
+  %48 = load float* %37, align 4                  ; &amp;lt;float&amp;gt; [#uses=3]
+  %49 = fmul float %48, %48                       ; &amp;lt;float&amp;gt; [#uses=1]
+  %50 = load float* %43, align 4                  ; &amp;lt;float&amp;gt; [#uses=2]
+  %51 = fmul float %50, %50                       ; &amp;lt;float&amp;gt; [#uses=1]
+  %52 = fadd float %49, %51                       ; &amp;lt;float&amp;gt; [#uses=1]
+  %53 = fmul float %46, %46                       ; &amp;lt;float&amp;gt; [#uses=1]
+  %54 = fadd float %52, %53                       ; &amp;lt;float&amp;gt; [#uses=2]
+  %55 = fpext float %54 to double                 ; &amp;lt;double&amp;gt; [#uses=1]
+  %56 = call double @sqrt(double %55) nounwind    ; &amp;lt;double&amp;gt; [#uses=0]
+  %57 = call float @sqrtf(float %54) nounwind     ; &amp;lt;float&amp;gt; [#uses=2]
+  %58 = fcmp ogt float %57, 0x3F1A36E2E0000000    ; &amp;lt;i1&amp;gt; [#uses=1]
+  br i1 %58, label %bb5, label %bb25
+
+
+Only the result of the second sqrt is used subsequently
+
+A smaller reproducer is shown below:
+
+cat  sqrt.c
+===========================
+#include &amp;lt;math.h&amp;gt;
+
+float my_sqrt_f(float d) {
+  return sqrt(d);
+}
+
+
+double my_sqrt_d(double d) {
+  return sqrt(d);
+}
+
+
+float my_pow_f(float d1, float d2) {
+  return pow(d1, d2);
+}
+
+float my_pow_d(double d1, double d2) {
+  return pow(d1, d2);
+}
+
+====================================
+The optimization that makes sqrt into sqrtf can be triggered by:
+
+toolchain/linux_arm-untrusted/arm-none-linux-gnueabi/llvm-fake-sfigcc -emit-llvm -c -O3 -o m.ll  sqrt.c
+llvm-dis -o -  m.ll 
+
+
+But here is where it gets weird, try this
+
+toolchain/linux_arm-untrusted/arm-none-linux-gnueabi/llvm-fake-sfigcc -emit-llvm -c  -o m.ll  sqrt.c 
+toolchain/linux_arm-untrusted/arm-none-linux-gnueabi/bin/opt  -f -O3 -std-compile-opts  m.ll -o n.ll
+llvm-dis -o -  n.ll 
+
+
+; ModuleID = 'n.ll'
+target triple = &amp;quot;armv7-none-linux-gnueabi&amp;quot;
+
+define float @my_sqrt_f(float %d) nounwind {
+entry:
+  %0 = fpext float %d to double                   ; &amp;lt;double&amp;gt; [#uses=1]
+  %1 = tail call double @sqrt(double %0) nounwind ; &amp;lt;double&amp;gt; [#uses=0]
+  %2 = tail call float @sqrtf(float %d) nounwind  ; &amp;lt;float&amp;gt; [#uses=1]
+  ret float %2
+}
+....
+
+
+NOTE, the two tailcalls. 
+
+</ns0:content><ns0:updated>2010-09-23T23:03:21.000Z</ns0:updated><ns0:published>2010-08-24T17:40:11.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>llvm mis-optimization with regard to sqrt</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/847/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=847" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/847" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2010-09-23T23:03:21.000Z</ns2:closedDate><ns2:id>847</ns2:id></ns0:entry>

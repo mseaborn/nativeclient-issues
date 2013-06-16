@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ECR347eCl7ImA9WhdXEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1061</ns0:id><ns0:author>
+			<ns0:name>pol...@google.com</ns0:name><ns0:uri>/u/101953680983947802512/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+
+http://build.chromium.org/buildbot/nacl-toolchain/waterfall
+There are 6 x86 bots and 3 ARM bots. Each bots rebuilds the toolchain at NaCL ToT revision.
+
+The build results are written into a directory that corresponds to the revision used to sync the build client: http://gsdview.appspot.com/nativeclient-archive/toolchain/
+
+NaCl DEPS file then pins the toolchain version at the revision that it was successfully rebuilt at by the bots - one version for x86 (x86_toolchain_version) and one for ARM (arm_toolchain_version). This indicates which revision directory to download the prebuilt toolchain from during &amp;quot;gclient runhooks&amp;quot;.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+
+To be usable for a toolchain DEPS version, the revision directory must contain the full set of files - 6 for x86 or 3 for ARM. Finding such a directory can be very tricky since the bots restart at different times and thus at different revisions when engineers are continuously committing CLs.
+
+For example, it is common to have half of the x86 bots produce toolchain files at revision X and the other half - at revision X+1. This means that neither X or X+1 can be used in the DEPS file even if all the bots were green.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+
+Synchronize the bots within x86 and ARM categories. Make them wait for each other, so they can restart at the same revision making it usable in native_client/DEPS on success.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+
+Aligned waterfall.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+
+Easy and fast toolchain version DEPS updates.</ns0:content><ns0:updated>2011-08-24T16:01:06.000Z</ns0:updated><ns0:published>2010-10-19T04:17:43.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:state>closed</ns2:state><ns0:title>Toolchain build bots for x86 / ARM need to be synchronized to build at the same revision</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1061/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1061" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1061" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-08-24T16:01:06.000Z</ns2:closedDate><ns2:id>1061</ns2:id></ns0:entry>

@@ -1,0 +1,6 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUMQX47eCl7ImA9WhRTEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/60</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">replied by email friday, which bounced.
+
+note typeof result is v8:Handle&lt;v8:Value&gt; so setting result to v8:Persistent&lt;v8:Value&gt;::New(...) which returns a v8:Persistent&lt;v8:Value&gt; will be invoking the copy ctor on the base class slice of the returned value.  (Persistent&lt;T&gt; subclasses from Handle&lt;T&gt;.)
+</ns0:content><ns0:updated>2011-10-31T16:58:00.000Z</ns0:updated><ns0:published>2011-10-31T16:58:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 60 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2394#c60" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/60" rel="self" type="application/atom+xml" /></ns0:entry>

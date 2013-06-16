@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUABQn47eCl7ImA9WhdaFkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/27</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">Interesting. I have added the logging to MessageChannel::PostMessageToJavaScript (logs are attached).
+
+The text of this function is:
+
+
+void MessageChannel::PostMessageToJavaScript(PP_Var message_data) {
+  StringVar* string = StringVar::FromPPVar(message_data);
+  if (string) {
+    LOG(ERROR) &lt;&lt; "MessageChannel::PostMessageToJavaScript [" &lt;&lt; string-&gt;value() &lt;&lt; "]";
+  }
+
+  // Make a copy of the message data for the Task we will run.                                                                                                                                                                             
+  PP_Var var_copy(CopyPPVar(message_data));
+
+  MessageLoop::current()-&gt;PostTask(
+      FROM_HERE,
+      base::Bind(&amp;MessageChannel::PostMessageToJavaScriptImpl,
+                 weak_ptr_factory_.GetWeakPtr(),
+                 var_copy));
+}
+
+Logs show that this function receives the correct value that becomes corrupted at the later stage.
+
+I will continue investigating. The next step is to place logging after PP_CopyVar which looks suspicious.
+
+If anyone would like to take a look at logs and verify my findings, I would vote for you on the next elections of the Russian president.</ns0:content><ns0:updated>2011-10-27T02:49:13.000Z</ns0:updated><ns0:published>2011-10-27T02:49:13.000Z</ns0:published><ns2:updates /><ns0:title>Comment 27 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2394#c27" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/27" rel="self" type="application/atom+xml" /></ns0:entry>

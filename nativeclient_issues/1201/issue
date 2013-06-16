@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08GQn47eCl7ImA9Wx9SEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1201</ns0:id><ns0:author>
+			<ns0:name>bradnelson@google.com</ns0:name><ns0:uri>/u/bradnelson@google.com/</ns0:uri></ns0:author><ns0:content type="html">Since around the time we switched to the new buildbots. On windows we've seen intermittent -1073741819 (0xc0000005) return code. This apparently indicates access violation == null pointer dereference.
+
+It has been speculated that this related to base VMs. However, we just saw this on bare metal.
+
+For example:
+cl /Foscons-out\opt-win-x86-32\obj\src\trusted\plugin\ppapi\ppapi_var_utils.obj /c src\trusted\plugin\ppapi\var_utils.cc /TP /nologo /W3 /EHsc /O1 /GS /MD /EHsc /DNACL_STANDALONE=1 /DNACL_BLOCK_SHIFT=5 /DNACL_BLOCK_SIZE=32 /DNACL_BUILD_ARCH=x86 /DNACL_BUILD_SUBARCH=32 /DNACL_TARGET_ARCH=x86 /DNACL_TARGET_SUBARCH=32 /DNACL_WINDOWS=1 /DNACL_OSX=0 /DNACL_LINUX=0 /D_WIN32_WINNT=0x0501 /D__STDC_LIMIT_MACROS=1 /DNOMINMAX=1 /DNDEBUG /D_DLL /D_MT /DXP_WIN /DWIN32 /D_WINDOWS /DNACL_PPAPI /D_USRDLL /D_WINDLL /IC:\b\build\slave\win7-bare-m32-n32-opt\build\third_party\libxt\include /Isrc\third_party\npapi\files\include /IC:\b\build\slave\win7-bare-m32-n32-opt\build /Z7
+scriptable_handle_ppapi.cc
+program finished with exit code -1073741819
+
+</ns0:content><ns0:updated>2010-12-01T00:03:43.000Z</ns0:updated><ns0:published>2010-11-30T01:24:29.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Random -1073741819 return code from cl.exe</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1201/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1201" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1201" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-12-01T00:03:43.000Z</ns2:closedDate><ns2:id>1201</ns2:id></ns0:entry>

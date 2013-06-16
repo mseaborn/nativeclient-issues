@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0cDRX47eCl7ImA9WhRaGU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2559</ns0:id><ns0:author>
+			<ns0:name>dsch...@google.com</ns0:name><ns0:uri>/u/104270846665912603141/</ns0:uri></ns0:author><ns0:content type="html">1. Create a method string with only 2 colons, e.g. &amp;quot;StreamChunk:C&amp;quot;
+2. call NaClSrpcAcceptClientConnection
+3. Crash!
+
+#0  0x00007f71023ec424 in *__GI_strlen (str=0x0) at ../string/strlen.c:109
+#1  0x00007f7101fea260 in NaClSrpcServiceHandlerCtor () from /ulg/newgit/native_client/toolchain/linux_x86/x86_64-nacl/lib64/libsrpc.so
+#2  0x00007f7101fea4a0 in NaClSrpcServerLoop () from /ulg/newgit/native_client/toolchain/linux_x86/x86_64-nacl/lib64/libsrpc.so
+#3  0x00007f7101fea7e0 in NaClSrpcAcceptClientConnection () from /ulg/newgit/native_client/toolchain/linux_x86/x86_64-nacl/lib64/libsrpc.so
+#4  0x00007f710102a040 in main () at /usr/local/google/home/dschuff/newgit/native_client/pnacl/src/upstream/llvm/tools/llc/nacl_file.cpp:499
+#5  0x00007f71023407a0 in __libc_start_main (main=&amp;lt;optimized out&amp;gt;, argc=&amp;lt;optimized out&amp;gt;, ubp_av=&amp;lt;optimized out&amp;gt;, init=&amp;lt;optimized out&amp;gt;, 
+    fini=&amp;lt;optimized out&amp;gt;, rtld_fini=&amp;lt;optimized out&amp;gt;, stack_end=0x7f71fffffe90) at libc-start.c:227
+#6  0x00007f7101003ec0 in _start (info=&amp;lt;optimized out&amp;gt;) at ../sysdeps/nacl/start.c:39
+#7  0x00007f7100021100 in _dl_start (arg=&amp;lt;optimized out&amp;gt;) at rtld.c:578
+#8  0x00007f710fc003a0 in _start () from /ulg/newgit/native_client/scons-out/nacl_irt-x86-64/staging/irt_core.nexe</ns0:content><ns0:updated>2012-02-22T18:24:34.000Z</ns0:updated><ns0:published>2012-01-25T23:44:52.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Invalid SRPC method signature string causes crash</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2559/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2559" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2559" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-02-22T18:24:34.000Z</ns2:closedDate><ns2:id>2559</ns2:id></ns0:entry>

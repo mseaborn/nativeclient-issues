@@ -1,0 +1,8 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcGQ347eCl7ImA9WxFWFkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/561</ns0:id><ns0:author>
+			<ns0:name>stuartmorgan@chromium.org</ns0:name><ns0:uri>/u/stuartmorgan@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">src/shared/npruntime/naclnp_util.cc uses strncpy, but never includes &amp;lt;string.h&amp;gt;. It works right 
+now only because it's getting the header through several layers of indirection, ultimately coming 
+from an include in Chromium's copy of npapi.h that doesn't belong there.
+
+This missing include prevents me from fixing npapi.h.</ns0:content><ns0:updated>2010-06-04T19:33:42.000Z</ns0:updated><ns0:published>2010-06-04T15:57:01.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/106660544658168484743/</ns2:uri><ns2:username>j...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>naclnp_util.cc is missing an include of &lt;string.h&gt;</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/561/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=561" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/561" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-06-04T19:33:42.000Z</ns2:closedDate><ns2:id>561</ns2:id></ns0:entry>

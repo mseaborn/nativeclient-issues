@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEIGSX47eCl7ImA9WxFRGUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/472/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>dt...@codeaurora.org</ns0:name><ns0:uri>/u/102710273696022658094/</ns0:uri></ns0:author><ns0:content type="html">Basic binary search revealed this commit is needed.
+
+commit 108646b0cb4182a97fa54ef3fa629dd894debeef
+Author: Paul Brook &lt;paul@codesourcery.com&gt;
+Date:   Tue Nov 3 12:37:44 2009 +0000
+
+    2009-11-03  Paul Brook  &lt;paul@codesourcery.com&gt;
+    
+        gas/
+        * config/tc-arm.c (do_vfp_nsyn_mla_mls): Fix vmls excoding.
+    
+        gas/testsuite/
+        * gas/arm/vfp-neon-syntax.d: Update expected results.
+        * gas/arm/vfp-neon-syntax_t2.d: Update expected results.
+</ns0:content><ns0:updated>2010-05-04T17:02:08.000Z</ns0:updated><ns0:published>2010-05-04T17:02:08.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by dt...@codeaurora.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=472#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/472/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

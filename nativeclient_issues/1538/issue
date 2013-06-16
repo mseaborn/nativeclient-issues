@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0QBSX47eCl7ImA9WhZREU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1538</ns0:id><ns0:author>
+			<ns0:name>bjarke.w...@gmail.com</ns0:name><ns0:uri>/u/111895975545066954541/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+N/A
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+Chromium 10.0.648.127 (76697) Ubuntu 10.04
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Ubuntu 10.04.2 LTS
+Linux 2.6.32-29-generic #58-Ubuntu SMP i686 GNU/Linux
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Chromium 10.0.648.127 (Developer Build 76697) Ubuntu 10.04
+WebKit   534.16 (trunk@76408)
+V8       3.0.12.30
+User Agent     Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Ubuntu/10.04 Chromium/10.0.648.127 Chrome/10.0.648.127 Safari/534.16
+Command Line   /usr/lib/chromium-browser/chromium-browser --flag-switches-begin --enable-nacl --flag-switches-end
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Open Chromium.
+2. Go to about:flags.
+3. Enable Native Client.
+4. Restart Chromium.
+5. Go to:
+   a. http://code.google.com/intl/da/chrome/nativeclient/docs/examples.html
+   b. http://nacl-gallery.appspot.com/life/life.html
+7. Also try the above, just starting browser from command line: chromium-browser --no-sandbox --enable-nacl
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+a. Examples page displays a red box &#8220;WARNING: Native Client is not enabled in Google Chrome. [...]&#8221;. Expected that NaCl was enabled.
+b. Life page displays a grey area &#8220;Missing Plug-In&#8221;. Expected to see Conway's Life Demo, ie. NaCl was working.
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+N/A</ns0:content><ns0:updated>2011-04-06T21:29:18.000Z</ns0:updated><ns0:published>2011-03-16T02:04:18.000Z</ns0:published><ns2:status>Done</ns2:status><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>NaCl not working on Ubuntu 10.04 in Chromium 10.0.648.127</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1538/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1538" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1538" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-04-06T21:29:18.000Z</ns2:closedDate><ns2:id>1538</ns2:id></ns0:entry>

@@ -1,0 +1,49 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEDRn47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/863/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3224
+
+------------------------------------------------------------------------
+r3224 | mseaborn@chromium.org | Wed Sep 08 04:19:00 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/contest_issues/issue52.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/contest_issues/issue63.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/contest_issues/issue55.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/mandel/mandel.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/srpc_nrd_server.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/autoloader/autoloader_default.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/srpc_basic_test.stdout?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/srpc_bidir.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/cat.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/srpc_nrd_client.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fib/fib_scalar.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc_without_pthread/basic_srpc.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/syscalls_deprecated/srpc_av.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/native_worker/native_worker.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/hello_world/abi.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/srpc_test.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/native_worker/mandel_worker.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/mandel/mandel_tiled.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/srpc_shm.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc_hw/srpc_hw.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fib/fib_array.c?r1=3224&amp;r2=3223&amp;pathrev=3224
+
+Change various tests to use NaClSrpcMain() instead of NACL_SRPC_METHOD
+
+This means setup/startup is explicit rather than implicit.  This
+allows these programs to work with dynamic linking.
+
+Note that I have not changed the cases that are not built by the Scons
+build, and I have not changed the cases that already have an explicit
+main() function (earth and mandel_nav) -- these will require more work
+to update.
+
+In two places I had to add dummy __shutdown methods in order to match
+golden files that are shared with checked-in executables.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=863
+TEST=build with scons + any existing tests on the trybot
+
+Review URL: http://codereview.chromium.org/3317010
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:57:57.000Z</ns0:updated><ns0:published>2011-01-21T22:57:57.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=863#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/863/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcESX47eCl7ImA9WhRaE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2106</ns0:id><ns0:author>
+			<ns0:name>ncb...@google.com</ns0:name><ns0:uri>/u/100032148147647801554/</ns0:uri></ns0:author><ns0:content type="html">NaCl's architecture contains enough threads and communication channels that figuring out which thread should perform a particular task and how to get data to that thread can be a daunting task for anyone not intimately familiar with the system.  For people familiar with the system, any mistakes or misunderstandings could lead to the subtle bugs associated with parallel programming.
+
+
+The following aspects of NaCl's architecture should be documented:
+
+What threads are there?
+What tasks do the threads perform?
+When / where / by which other thread is a particular thread created and joined?
+Which objects are owned/accessible by which threads?
+What assumptions can be made about object lifetimes on each thread?
+What communication mechanisms exist between a particular pair of threads?
+  Sockets?
+  Message queues?
+  Thread safe functions?
+Which threads can interact with PPAPI, and by what mechanism?</ns0:content><ns0:updated>2012-02-15T22:13:28.000Z</ns0:updated><ns0:published>2011-07-28T19:28:44.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>NaCl's threads / channels should be documented.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>CoreRuntime</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2106/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2106" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2106" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>2106</ns2:id></ns0:entry>

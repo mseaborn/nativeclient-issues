@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEMMQH47eCl7ImA9WhdTF0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1681</ns0:id><ns0:author>
+			<ns0:name>pol...@google.com</ns0:name><ns0:uri>/u/101953680983947802512/</ns0:uri></ns0:author><ns0:content type="html">There is a test-like manual example under native_client/tests/ppapi_example_audio using C++ API with some C API checks. It should be moved under native_client/tests/ppapi_browser/audio.
+
+Verification checklist used for other PPB interfaces:
+- Add a browser test verifying each C API function with an exhaustive set of good/bad inputs (use ppapi_test_lib).
+- Add some stress tests (e.g. creating gazillion resources).
+- Add trusted plugin build, so the test can be sanity-checked directly using --register-pepper-plugins.
+- Document the functionality that cannot be tested automatically for manual QA plan:
+https://docs.google.com/a/google.com/document/d/1IazpqcE62O2u9-Mb6vvk8MNBRzKLPf_69jy55HgS150/edit?hl=en#
+
+Audio is special, so not all functions can be tested using ppapi_test_lib-approach. At the same time, adding misc negative tests to a working example can make it confusing and hence less useful. And having proxy tests all following the same approach would make maintenance easier. So please see what can be factored out of the example into an automatic browser test uing ppapi_test_lib.
+
+
+</ns0:content><ns0:updated>2011-07-15T17:54:41.000Z</ns0:updated><ns0:published>2011-04-16T06:36:42.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>PPB_Audio[Config] proxy verification</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-14</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1681/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1681" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1681" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-15T17:54:41.000Z</ns2:closedDate><ns2:id>1681</ns2:id></ns0:entry>

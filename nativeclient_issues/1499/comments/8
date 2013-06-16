@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A08DSX47eCl7ImA9WhZbEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1499/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 08b27126683c4089d4adb34ab401ede6a1138c3a
+ Email: mseaborn@chromium.org@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Add buildbot step to do a minimal test of x86-64 sel_ldr on Mac
+
+We do not yet intend to deploy x86-64 NaCl on Mac OS X, but we want to
+prevent it from regressing; I have occasionally committed changes that
+break its compilation.  Having x86-64 work on Mac is useful for
+testing.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1499
+TEST=trybots
+
+Review URL: http://codereview.chromium.org/7155002
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@5649 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	buildbot/buildbot_mac.sh</ns0:content><ns0:updated>2011-06-14T22:17:58.000Z</ns0:updated><ns0:published>2011-06-14T22:17:58.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1499#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1499/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

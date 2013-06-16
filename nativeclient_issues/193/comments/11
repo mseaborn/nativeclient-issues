@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0EFSX47eCl7ImA9Wx9SFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/193/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Actually I think there is a simple way to remove the padding from
+executables without changing sel_ldr.  The issue is that binutils
+assumes that the load address and file offset of a segment have to be
+the same modulo the mmap page size.  But sel_ldr does not mmap the
+segments anyway: they are just copied.  So we should be able to
+disable this assumption in binutils, and get ELF Program Headers that
+look something like this:
+
+    PHDR off    0x00000000 vaddr 0x00000000 paddr 0x00000000 align 2**2
+         filesz 0x00000100 memsz 0x00000100 flags r--
+    LOAD off    0x00000100 vaddr 0x00020000 paddr 0x00020000 align 2**16
+         filesz 0x00000100 memsz 0x00000100 flags r-x
+    LOAD off    0x00000200 vaddr 0x00030000 paddr 0x00030000 align 2**16
+         filesz 0x00000100 memsz 0x00000100 flags r--
+    LOAD off    0x00000300 vaddr 0x00040000 paddr 0x00050000 align 2**16
+         filesz 0x00000100 memsz 0x00000100 flags rw-
+
+I suspect we can do this just by setting COMMONPAGESIZE=1 (instead of 64k).
+
+As before the caveat is that this hinders our ability to mmap instead
+of copy, and nacl-glibc's dynamic linker mmaps data segments, so
+dynamic objects would still need COMMONPAGESIZE=0x10000.</ns0:content><ns0:updated>2010-12-04T02:26:58.000Z</ns0:updated><ns0:published>2010-12-04T02:26:58.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=193#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/193/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

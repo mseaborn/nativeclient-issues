@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0YGSH47eCl7ImA9WhZREk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1623/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4788
+
+------------------------------------------------------------------------
+r4788 | ncbray@google.com | Thu Apr 07 13:41:30 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/multiarch/nacl.scons?r1=4788&amp;r2=4787&amp;pathrev=4788
+
+Disabled multiarch test on win32 because it is broken.
+
+The bug actually affected only one of the win32 bots.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1623
+TEST= scons run_multiarch_test
+
+Review URL: http://codereview.chromium.org/6812028
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-07T20:45:29.000Z</ns0:updated><ns0:published>2011-04-07T20:45:29.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1623#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1623/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

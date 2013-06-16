@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8BQ347eCl7ImA9WhdUE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2325</ns0:id><ns0:author>
+			<ns0:name>jdfrist...@gmail.com</ns0:name><ns0:uri>/u/113789577071322302973/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+sdk_tools 1.4
+pepper_15 revision 1208
+
+On what operating system? Windows 7, 64bit
+What browser are you using? 16.0.891.0 dev-m
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+To be honest, you'll probably need my code to repro it. I can give it to you for bug reproducing purposes, but it's a lot, I don't have a minimum reproducing case - e-mail me, jdfristrom@gmail.com, if you want it.
+1. bind and render to a 2048x1024 texture,  
+2. set glViewport( 0, 0, 1280, 720),
+3. then render a POINTLIST primitive near the bottom of the texture
+
+&lt;b&gt;What is the expected output?&lt;/b&gt;
+The entire primitive should be rendered. If I use LINELIST or TRIANGELIST, it is.  It also doesn't happen on my windows visual C++ port of the same code.
+
+&lt;b&gt;What do you see instead?&lt;/b&gt;
+It is clipped as if the viewport was specified - glViewport( 0, 125, ..., ...)
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+I've attached some pngs showing the difference between LINELIST and POINTLIST.  The clouds, when using LINELIST, aren't clipped - but with POINTLIST they are.  The code is otherwise identical.</ns0:content><ns0:updated>2011-09-29T22:20:52.000Z</ns0:updated><ns0:published>2011-09-29T22:09:20.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>POINTLIST primitive clips wrong when rendering to texture</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2325/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2325" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2325" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2325</ns2:id></ns0:entry>

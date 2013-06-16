@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMHSH47eCl7ImA9WhdSFk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2006/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 80140df03140360e7963dec14e1bd7f8269aecfb
+ Email: mseaborn@chromium.org@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Turn the Breakpad test's warnings into errors
+
+These tests pass fine on the Chromium 32-bit Windows buildbot, so they
+are safe to enable.
+
+The test code that continues after failure originally seemed rather
+verbose, but I think it's good that it can report multiple failures,
+so I will keep it that way.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2006
+TEST=with disable_dynamic_plugin_loading=1 on x86-32 Windows:
+  run_inbrowser_crash_in_syscall_test
+  run_inbrowser_trusted_crash_in_startup_test
+  run_inbrowser_untrusted_crash_test
+
+Review URL: http://codereview.chromium.org/7492025
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6203 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	tests/inbrowser_crash_test/crash_dump_tester.py</ns0:content><ns0:updated>2011-07-25T21:47:19.000Z</ns0:updated><ns0:published>2011-07-25T21:47:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2006#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2006/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

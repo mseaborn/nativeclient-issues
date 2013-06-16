@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMARn47eCl7ImA9WhRQGU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1096</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">This can be easily fixed in crt1 by calling __libc_init_array and __libc_fini_array instead of _init and _fini.
+
+However, this does not build on Mac as configure script there does not find readelf and thus just thinks that .init_array and .fini_array support is not available.
+
+Next step is to reproduce a case when .init_array and .fini_array are actually needed (not a synthetic test with direct placement to named sections, but an actual C++ code). If no reproducer, priority will go down.
+
+ </ns0:content><ns0:updated>2011-12-14T22:07:27.000Z</ns0:updated><ns0:published>2010-10-26T12:01:00.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>nacl-gcc does not support .init_array and .fini_array</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>Mstone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1096/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1096" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1096" rel="self" type="application/atom+xml" /><ns2:stars>0</ns2:stars><ns2:blockedOn>
+			<ns2:id>2482</ns2:id></ns2:blockedOn><ns2:closedDate>2011-12-14T22:07:27.000Z</ns2:closedDate><ns2:id>1096</ns2:id></ns0:entry>

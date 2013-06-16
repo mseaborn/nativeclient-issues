@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08BSH47eCl7ImA9WxVaE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/53</ns0:id><ns0:author>
+			<ns0:name>mark.d...@gmail.com</ns0:name><ns0:uri>/u/117634658684698531165/</ns0:uri></ns0:author><ns0:content type="html">Team: Beached As
+
+An Integer overflow vulnerability exists within the SharedMemory
+implementation of the browser plugin. Specifically, when read() is called
+on a shared memory object, an overly large offset can result in a memory
+leak, and an overly large length parameter can result in memory corruption</ns0:content><ns0:updated>2009-04-10T17:50:59.000Z</ns0:updated><ns0:published>2009-03-12T07:37:15.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/110254776827258378715/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>SRPC Shared Memory Infoleak / Memory corruption</ns0:title><ns2:label>Security-Contest</ns2:label><ns2:label>Type-Defect</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/53/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=53" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/53" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2009-04-10T17:50:59.000Z</ns2:closedDate><ns2:id>53</ns2:id></ns0:entry>

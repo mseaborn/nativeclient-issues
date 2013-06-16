@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4HRn47eCl7ImA9WhZUEE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1326</ns0:id><ns0:author>
+			<ns0:name>s...@google.com</ns0:name><ns0:uri>/u/108394971971967673680/</ns0:uri></ns0:author><ns0:content type="html">There are additional fails with --enable-nacl not seen when loading the NaCl plugin with --register-pepper-plugins.  As of Friday, 1/17:
+
+With --enable-nacl
+- SRPC Plugin Properties Test - Argument type tests (12 of them) fail.
+- SRPC &amp;quot;Shared Memory API&amp;quot; - fails with a pop-up &amp;quot;Memory Maps test setup failed&amp;quot;, all tests are blue (not run)
+- SRPC &amp;quot;Resource Descriptor Transfer&amp;quot; - 4/6 tests are red (failed)
+- PPAPI &amp;quot;Scripting&amp;quot; - 2 red (failed) &amp;quot;integer&amp;quot; tests, 3 blue (not run) tests
+- PPAPI &amp;quot;Audio&amp;quot; - no sound
+- PPAPI &amp;quot;2D&amp;quot; - does not turn blue
+- PPAPI url loading times out</ns0:content><ns0:updated>2011-06-02T18:22:17.000Z</ns0:updated><ns0:published>2011-01-19T17:02:07.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:owner>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>--enable-nacl behavior disagrees with --register-pepper-plugins</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1326/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1326" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1326" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-06-02T18:22:17.000Z</ns2:closedDate><ns2:id>1326</ns2:id></ns0:entry>

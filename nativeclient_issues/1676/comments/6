@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE8HQ347eCl7ImA9WhdSEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1676/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=6141
+
+------------------------------------------------------------------------
+r6141 | polina@google.com | Wed Jul 20 15:57:04 PDT 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppb_url_request_info/ppapi_ppb_url_request_info.html?r1=6141&amp;r2=6140&amp;pathrev=6141 (from /trunk/src/native_client/tests/ppapi_test_example/ppapi_test_example.html revision 5796)
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppb_url_request_info/ppapi_ppb_url_request_info.nmf?r1=6141&amp;r2=6140&amp;pathrev=6141 (from /trunk/src/native_client/tests/ppapi_test_example/ppapi_test_example.nmf revision 5796)
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=6141&amp;r2=6140&amp;pathrev=6141
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppb_url_request_info/ppapi_ppb_url_request_info.cc?r1=6141&amp;r2=6140&amp;pathrev=6141
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppb_url_request_info?r1=6141&amp;r2=6140&amp;pathrev=6141
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppb_url_request_info/nacl.scons?r1=6141&amp;r2=6140&amp;pathrev=6141 (from /trunk/src/native_client/tests/ppapi_test_example/nacl.scons revision 5796)
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppb_url_request_info/ppapi_ppb_url_request_info.js?r1=6141&amp;r2=6140&amp;pathrev=6141
+
+PPB_URLRequestInfo proxy validation: add test using ppapi_test_lib.
+Missing AppendFileToBody and AppendDataToBody testing.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1676
+TEST=scons run_ppapi_ppb_url_request_info_browser_test
+Review URL: http://codereview.chromium.org/7384007
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-07-20T23:00:32.000Z</ns0:updated><ns0:published>2011-07-20T23:00:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1676#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1676/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

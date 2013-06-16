@@ -1,0 +1,60 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8DQX47eCl7ImA9WhRQEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2414</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I have been investigating x86-64 Windows stack unwinding in the
+context of issue 2235 and issue 2237.
+
+There is a problem with unwinding the stack inside a NaCl syscall
+handler on x86-64 Windows: the unwinder will currently read and
+interpret uninitialised values from the stack.
+
+Background: Unlike Linux, Windows has a default behaviour for
+unwinding a stack frame of a function without unwind info.  From &amp;quot;The
+Unwind Procedure&amp;quot;
+(http://msdn.microsoft.com/en-us/library/8ydc79k6(v=VS.80).aspx):
+
+  &amp;quot;1. Use the current RIP stored in the context record to search for a
+  RUNTIME_FUNCTION table entry that describes the current function (or
+  function portion, in the case of chained UNWIND_INFO entries).
+  
+  2. If no function table entry is found, then it is in a leaf
+  function, and RSP will directly address the return pointer. The
+  return pointer at [RSP] is stored in the updated context, the
+  simulated RSP is incremented by 8, and step 1 is repeated.&amp;quot;
+
+This rule gets applied in two contexts:
+
+ a) It is applied to the RIP value at which a fault occurred.  This
+    makes sense.
+
+ b) It is applied to function return addresses (i.e. an address
+    immediately after a &amp;quot;call&amp;quot; instruction).  This does not actually
+    make sense, because a leaf function is not allowed to call other
+    functions.  It's not legal in the Windows x86-64 ABI for a
+    function to do something like this:
+
+    foo:
+      call baz
+      ret
+
+    This is not legal because the stack will not be properly aligned
+    on entry to baz.  Worse, foo fails to allocate the 32 bytes of
+    &amp;quot;shadow space&amp;quot; on the stack, and since baz can overwrite this, it
+    can overwrite the address that foo will return to.
+
+Windows applies (b) to attempt to unwind a stack frame for
+NaClSyscallSeg.  In doing so, it reads an uninitialised value from the
+stack and treats it as NaClSyscallSeg's return address.  If this
+uninitialised value happens to be an address in a function with an
+associated exception handler, Windows will jump to the exception
+handler code.  This is bad.
+
+For this to be exploitable, an attacker would have to do two things:
+
+ 1) Find a function in the process that uses exception handling where
+    the exception handler does something dangerous.
+
+ 2) Arrange for the function-internal address to appear in the
+    uninitialised data near the top of a trusted stack as used by
+    NaClAppThread.  This might be difficult, but I'm not sure.
+</ns0:content><ns0:updated>2011-12-06T20:54:30.000Z</ns0:updated><ns0:published>2011-11-03T17:53:52.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>x86-64 Windows: Stack unwinding reads uninitialised values from stack for crash-in-syscall</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-17</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2414/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2414" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2414" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-11-15T22:49:34.000Z</ns2:closedDate><ns2:id>2414</ns2:id></ns0:entry>

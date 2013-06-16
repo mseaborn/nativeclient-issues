@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUcFSH47eCl7ImA9WhRaGUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1462</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I saw this fail on the Mac OS X 10.5 buildbot today:
+
+======================================================================
+FAIL: test_send_error (__main__.ImcTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File &amp;quot;/b/build/slave/mac10.5-m32-n32-opt/build/native_client/src/trusted/python_bindings/test_python_imc.py&amp;quot;, line 149, in test_send_error
+    self.assertRaises(Exception, lambda: sock.imc_sendmsg(&amp;quot;data&amp;quot;, ()))
+AssertionError: Exception not raised
+
+The failed test was:
+
+  def test_send_error(self):
+    # Note that this assumes prompt garbage collection.
+    sock = MakeSocketPair()[0]
+    self.assertRaises(Exception, lambda: sock.imc_sendmsg(&amp;quot;data&amp;quot;, ()))
+
+This could be the result of non-determinism in the Python bindings, but I think it's more likely to be the result of non-determinism in IMC.
+</ns0:content><ns0:updated>2012-02-23T00:30:19.000Z</ns0:updated><ns0:published>2011-02-18T17:40:45.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>IMC test failed once non-deterministically on Mac</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Test</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1462/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1462" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1462" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>1462</ns2:id></ns0:entry>

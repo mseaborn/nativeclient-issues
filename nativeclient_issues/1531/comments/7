@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQGR347eCl7ImA9WhZRFk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1531/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4843
+
+------------------------------------------------------------------------
+r4843 | robertm@google.com | Tue Apr 12 12:38:04 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pnacl_ld_example/Makefile.pnacl?r1=4843&amp;r2=4842&amp;pathrev=4843
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pnacl_ld_example/ld_script_x86_32_shared?r1=4843&amp;r2=4842&amp;pathrev=4843
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pnacl_ld_example/ld_script_arm_shared?r1=4843&amp;r2=4842&amp;pathrev=4843
+
+The pnacl switch from gold to bfd for final link broke the pnacl_ld_example 
+test. In this CL we switch back to the gold linker for this test, but also make some initial progress towards fixing the problem by providing linker scripts
+geared towards shared libs to be used with the "bfd" linker.
+
+These new linker scripts are copied/derived from:
+http://git.chromium.org/gitweb/?p=nacl-glibc.git;a=tree;f=nacl/dyn-link/ldscripts;hb=HEAD
+
+To enable their use please uncomment the corresponding lines in Makefile.pnacl
+This should produce the following failure:
+
+./main.x86-32: error while loading shared libraries: libsimple.x86-32.so: object file has no dynamic section
+
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1531
+Review URL: http://codereview.chromium.org/6820036
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-12T19:42:06.000Z</ns0:updated><ns0:published>2011-04-12T19:42:06.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1531#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1531/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

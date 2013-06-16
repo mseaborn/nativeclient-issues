@@ -1,0 +1,84 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IHQ347eCl7ImA9WhZaFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1958</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+0.4.907
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+N/A
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Windows 7 64-bit
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+N/A
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Install SDK (version 0.4 or thereabouts)
+2. cd examples  (from the root of the SDK directory)
+3. scons.bat test64
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+The expectation is that this test runs without seeing cygwin path errors
+
+Here's the error output:
+
+C:\native_client_sdk_0_4_907\examples&amp;gt;scons.bat test64
+scons: Reading SConscript files ...
+----------------------------------------------
+NaClTestProgram arch_name x86_32
+ENV &amp;lt;SCons.Script.SConscript.SConsEnvironment object at 0x027CEA10&amp;gt;
+----------------------------------------------
+NaClTestProgram arch_name x86_64
+ENV &amp;lt;SCons.Script.SConscript.SConsEnvironment object at 0x027D6DD0&amp;gt;
+scons: done reading SConscript files.
+scons: Building targets ...
+C:\native_client_sdk_0_4_907\examples\..\toolchain\win_x86\bin\nacl-g++ -o hello
+_world\test_x86_64\helper_functions.o -c -std=gnu++98 -Wno-long-long -Werror -Wa
+ll -Wswitch-enum -pedantic -pthread -O2 -Werror -Wall -Wswitch-enum -fno-builtin
+-fno-stack-protector -fdiagnostics-show-option -pedantic -m64 -D_GNU_SOURCE=1 -
+D__STDC_FORMAT_MACROS=1 -D_BSD_SOURCE=1 -D_POSIX_C_SOURCE=199506 -D_XOPEN_SOURCE
+=600 -IC:\native_client_sdk_0_4_907\toolchain\win_x86\include -IC:\native_client
+_sdk_0_4_907\toolchain\win_x86\nacl64\include -IC:\native_client_sdk_0_4_907 hel
+lo_world\helper_functions.cc
+cygwin warning:
+MS-DOS style path detected: hello_world\helper_functions.cc
+Preferred POSIX equivalent is: hello_world/helper_functions.cc
+CYGWIN environment variable option &amp;quot;nodosfilewarning&amp;quot; turns off this warning.
+Consult the user's guide for more details about POSIX paths:
+http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+C:\native_client_sdk_0_4_907\examples\..\toolchain\win_x86\bin\nacl-g++ -o hello
+_world\test_x86_64\test_helper_functions.o -c -std=gnu++98 -Wno-long-long -Werro
+r -Wall -Wswitch-enum -pedantic -pthread -O2 -Werror -Wall -Wswitch-enum -fno-bu
+iltin -fno-stack-protector -fdiagnostics-show-option -pedantic -m64 -D_GNU_SOURC
+E=1 -D__STDC_FORMAT_MACROS=1 -D_BSD_SOURCE=1 -D_POSIX_C_SOURCE=199506 -D_XOPEN_S
+OURCE=600 -IC:\native_client_sdk_0_4_907\toolchain\win_x86\include -IC:\native_c
+lient_sdk_0_4_907\toolchain\win_x86\nacl64\include -IC:\native_client_sdk_0_4_90
+7 hello_world\test_helper_functions.cc
+cygwin warning:
+MS-DOS style path detected: hello_world\test_helper_functions.cc
+Preferred POSIX equivalent is: hello_world/test_helper_functions.cc
+CYGWIN environment variable option &amp;quot;nodosfilewarning&amp;quot; turns off this warning.
+Consult the user's guide for more details about POSIX paths:
+http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+C:\native_client_sdk_0_4_907\examples\..\toolchain\win_x86\bin\nacl-g++ -o hello
+_world\hello_world_test_x86_64_test64.nexe -melf64_nacl -m64 hello_world\test_x8
+6_64\helper_functions.o hello_world\test_x86_64\test_helper_functions.o -lppapi
+-lppapi_cpp
+cygwin warning:
+MS-DOS style path detected: hello_world\test_x86_64\helper_functions.o
+Preferred POSIX equivalent is: hello_world/test_x86_64/helper_functions.o
+CYGWIN environment variable option &amp;quot;nodosfilewarning&amp;quot; turns off this warning.
+Consult the user's guide for more details about POSIX paths:
+http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+C:\native_client_sdk_0_4_907\examples\..\toolchain\win_x86\bin\nacl64-sel_ldr he
+llo_world\hello_world_test_x86_64_test64.nexe
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+(Bug originally reported by Mike Linck)
+
+These cygwin warnings will confuse users and make them think the system is failing, even if the tests run and pass just fine. We should fix them before the 1.0 release.
+</ns0:content><ns0:updated>2011-06-30T22:05:32.000Z</ns0:updated><ns0:published>2011-06-28T17:33:16.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101571556652463395731/</ns2:uri><ns2:username>dsprin...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109474787648168037085/</ns2:uri><ns2:username>mli...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Running scons on Windows causes Cygwin path errors</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-14</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1958/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1958" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1958" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-06-30T22:05:32.000Z</ns2:closedDate><ns2:id>1958</ns2:id></ns0:entry>

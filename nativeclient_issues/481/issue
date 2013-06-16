@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A08ESX47eCl7ImA9WxFQFko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/481</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The three validators treat external jumps (that is, jumps to addresses outside the chunk of 
+code being validated) differently.
+
+ARM: Allows jumps only to the trampoline area, and then allows jumps only to 32-byte-aligned 
+addresses (whereas instruction bundles are 16 bytes for ARM).
+
+x86-32: Allows jumps only to the 64kbytes below the chunk of code.  For static code, this is 
+the trampoline area.  For dynamic code, this is just wrong, though not unsafe.
+
+x86-64: Allows jumps only to addresses below the chunk of code, not above.  For static code, 
+this is the trampoline area plus zero page.  For dynamic code, this is pretty arbitrary.
+
+We should change the validators to be consistent with each other.  The new rule should be more 
+permissive.  We should allow direct jumps to any location that indirect jumps can target.
+
+This more permissive rule is not necessary for dynamic libraries, because an ELF object won't 
+usually contain direct jumps outside the object (unless it has TEXTRELs).  However, it is 
+useful for JIT compilers or language runtimes such as Go's runtime that creates thunks for 
+closures.  In those cases it is useful to dynamically load code with direct jumps to 
+previously-loaded code.
+</ns0:content><ns0:updated>2010-05-12T15:56:48.000Z</ns0:updated><ns0:published>2010-05-06T10:18:53.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101210015472507833666/</ns2:uri><ns2:username>rsc.elgo...@gmail.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Validators' treatment of external jumps is inconsistent</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/481/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=481" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/481" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-05-12T15:56:48.000Z</ns2:closedDate><ns2:id>481</ns2:id></ns0:entry>

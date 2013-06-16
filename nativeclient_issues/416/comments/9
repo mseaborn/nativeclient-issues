@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkUARH47eCl7ImA9WhZXGUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/416/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5226
+
+------------------------------------------------------------------------
+r5226 | robertm@google.com | Mon May 09 13:45:54 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pnacl_ld_example/Makefile.pnacl?r1=5226&amp;r2=5225&amp;pathrev=5226
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/buildbot/buildbot_pnacl1.sh?r1=5226&amp;r2=5225&amp;pathrev=5226
+
+Enable one more ad-hoc shared lib test for pnacl.
+Some cleanup in the correspoding Makefile.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=416
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1782
+Review URL: http://codereview.chromium.org/6971001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-09T20:50:45.000Z</ns0:updated><ns0:published>2011-05-09T20:50:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=416#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/416/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

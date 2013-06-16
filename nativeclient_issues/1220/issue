@@ -1,0 +1,44 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMGQX47eCl7ImA9WhRQGEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1220</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+
+Currently, service_runtime does a lot of things: it defines some useful headers, implements sel_ldr, contains code for plugin expiration, etc.
+
+There're service_runtime/include directory for headers accessible from outside of service_runtime. This invariant is violated by a number of headers:
+
+krasin@li139-230:~/nacl3/native_client/src$ grep -R &amp;quot;trusted/service_runtime&amp;quot; * | grep -v &amp;quot;[/]include&amp;quot; | grep -v svn | grep -v &amp;quot;^trusted[/]service_runtime&amp;quot; | grep &amp;quot;#include&amp;quot; | sed 's/^[^:]*:\(.*\)/\1/' | sort | uniq
+
+#include &amp;quot;native_client/src/trusted/service_runtime/expiration.h&amp;quot;
+#include &amp;quot;native_client/src/trusted/service_runtime/gio_shm_unbounded.h&amp;quot;
+#include &amp;quot;native_client/src/trusted/service_runtime/internal_errno.h&amp;quot;
+#include &amp;quot;native_client/src/trusted/service_runtime/linux/nacl_syscall_inl.h&amp;quot;
+#include &amp;quot;native_client/src/trusted/service_runtime/nacl_app_thread.h&amp;quot;
+#include &amp;quot;native_client/src/trusted/service_runtime/nacl_assert.h&amp;quot;
+#include &amp;quot;native_client/src/trusted/service_runtime/nacl_config.h&amp;quot;
+#include &amp;quot;native_client/src/trusted/service_runtime/nacl_error_code.h&amp;quot;
+#include &amp;quot;native_client/src/trusted/service_runtime/nacl_signal.h&amp;quot;
+#include &amp;quot;native_client/src/trusted/service_runtime/nacl_syscall_common.h&amp;quot;
+#include &amp;quot;native_client/src/trusted/service_runtime/sel_ldr.h&amp;quot;
+#include &amp;quot;native_client/src/trusted/service_runtime/sel_mem.h&amp;quot;
+#include &amp;quot;native_client/src/trusted/service_runtime/sel_memory.h&amp;quot;
+#include &amp;quot;native_client/src/trusted/service_runtime/sel_rt.h&amp;quot;
+#include &amp;quot;native_client/src/trusted/service_runtime/sel_util.h&amp;quot;
+#include &amp;quot;native_client/src/trusted/service_runtime/win/mman.h&amp;quot;
+
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+It makes our code base tight coupled. You can't extract the code that's needed just to write a plugin (or other launcher for sel_ldr). It makes harder to use Native Client sandbox in any environment other than Chrome.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+These headers should be moved to service_runtime/include or outside of service_runtime.
+
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+There're no headers in service_runtime and outside of service_runtime/include which are accessed from outside of service_runtime (directly or indirectly)
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+1. It would be easier to use NaCl outside of Chrome environment.
+2. The code base will become a little bit less coupled and will make it easier to perform deps analysis (currently, it has a lot of cycles)
+</ns0:content><ns0:updated>2011-12-13T22:13:40.000Z</ns0:updated><ns0:published>2010-12-03T12:59:20.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:state>open</ns2:state><ns0:title>Public headers in service_runtime and outside of service_runtime/include</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1220/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1220" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1220" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>1221</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1656</ns2:id></ns2:blockedOn><ns2:id>1220</ns2:id></ns0:entry>

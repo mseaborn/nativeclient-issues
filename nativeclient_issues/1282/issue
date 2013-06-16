@@ -1,0 +1,98 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHRX47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1282</ns0:id><ns0:author>
+			<ns0:name>halya...@google.com</ns0:name><ns0:uri>/u/112856509894568708731/</ns0:uri></ns0:author><ns0:content type="html">Compiler some times generate useless .label1 // nop // .label2 sequences.
+The program:
+
+void func(int x, int y)
+{
+ for(;;) {
+   if(x) {
+     if(y) {
+       y = 1 ;
+     } else {
+       break ;
+     }
+   }
+ }
+ return ;
+}
+int main(int argc, char* argv[]) {
+ func(0,0);
+ return 0;
+}
+
+Assembler file:
+
+       .file   &amp;quot;hello_world.c&amp;quot;
+       .text
+       .align 32
+.globl func
+       .type   func, @function
+func:
+.LFB0:
+       .cfi_startproc
+       pushq   %rbp
+       .cfi_def_cfa_offset 16
+       movq    %rsp, %rbp
+       .cfi_offset 6, -16
+       .cfi_def_cfa_register 6
+       movl    %edi, -4(%rbp)
+       movl    %esi, -8(%rbp)
+#first useless section starts here
+       jmp     .L4
+       .align 32
+.L6:
+       nop
+       .align 32
+.L4:
+#first useless section ends here
+       cmpl    $0, -4(%rbp)
+       je      .L6
+       cmpl    $0, -8(%rbp)
+       je      .L7
+       movl    $1, -8(%rbp)
+       jmp     .L4
+#second useless section starts here
+       .align 32
+.L7:
+       nop
+       .align 32
+.L5:
+#second useless section ends here
+       popq    %r11
+       naclrestbp      %r11d, %r15
+       popq    %r11
+       nacljmp %r11d,%r15
+       .cfi_endproc
+.LFE0:
+       .size   func, .-func
+       .align 32
+.globl main
+       .type   main, @function
+main:
+.LFB1:
+       .cfi_startproc
+       pushq   %rbp
+       .cfi_def_cfa_offset 16
+       movq    %rsp, %rbp
+       .cfi_offset 6, -16
+       .cfi_def_cfa_register 6
+       naclsspq        $8, %r15
+       movl    %edi, -4(%rbp)
+       movl    %esi, -8(%rbp)
+       movl    $0, %esi
+       movl    $0, %edi
+       call    func
+       movl    $0, %eax
+       movq    %rbp, %rsp
+       popq    %r11
+       naclrestbp      %r11d, %r15
+       popq    %r11
+       nacljmp %r11d,%r15
+       .cfi_endproc
+.LFE1:
+       .size   main, .-main
+       .ident  &amp;quot;GCC: (GNU) 4.4.3&amp;quot;
+       .section        .note.GNU-stack,&amp;quot;&amp;quot;,@progbits
+</ns0:content><ns0:updated>2011-07-29T00:12:14.000Z</ns0:updated><ns0:published>2010-12-27T12:41:20.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>Compiler generates spurious nops.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1282/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1282" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1282" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1282</ns2:id></ns0:entry>

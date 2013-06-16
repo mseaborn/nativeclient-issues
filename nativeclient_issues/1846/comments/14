@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEASX47eCl7ImA9WhZbEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1846/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5665
+
+------------------------------------------------------------------------
+r5665 | dspringer@google.com | Wed Jun 15 11:28:04 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/build.scons?r1=5665&amp;r2=5664&amp;pathrev=5665
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_globals.h?r1=5665&amp;r2=5664&amp;pathrev=5665
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/utility.h?r1=5665&amp;r2=5664&amp;pathrev=5665
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_ppb.cc?r1=5665&amp;r2=5664&amp;pathrev=5665
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/nacl.scons?r1=5665&amp;r2=5664&amp;pathrev=5665
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_globals.cc?r1=5665&amp;r2=5664&amp;pathrev=5665
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/utility.cc?r1=5665&amp;r2=5664&amp;pathrev=5665
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_globals.cc?r1=5665&amp;r2=5664&amp;pathrev=5665
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_ppb_var.cc?r1=5665&amp;r2=5664&amp;pathrev=5665
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_ppb_var.h?r1=5665&amp;r2=5664&amp;pathrev=5665
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_ppb_var_deprecated.cc?r1=5665&amp;r2=5664&amp;pathrev=5665
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_globals.h?r1=5665&amp;r2=5664&amp;pathrev=5665
+
+Add PPB_Var to the proxy - Part 1 of 2 (this has no tests on purpose).
+
+Notes to reviewers:
+1. This code has already been LGTM'ed (see http://codereview.chromium.org/7134101/)
+2. This CL splits the original into two parts: this half exposes PPB_Var from the plugin; the next half adds tests.
+3. The reason this CL is split in two is so that the Chrome integration bots stay green.  PPB_Var needs to be exposed form the plugin and DEPSed into Chrome *before* tests go green on the integration bots.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1846
+TEST=run_fake_browser_ppapi_test, chrome_browser_tests
+
+Review URL: http://codereview.chromium.org/7134101
+
+
+Review URL: http://codereview.chromium.org/7155027
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-06-15T18:30:48.000Z</ns0:updated><ns0:published>2011-06-15T18:30:48.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1846#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1846/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

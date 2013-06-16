@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkABRH47eCl7ImA9WhVRF0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/30</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8105
+
+------------------------------------------------------------------------
+r8105 | pasko@google.com | Mon Mar 26 05:24:18 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/gen-decoder.cc?r1=8105&amp;r2=8104&amp;pathrev=8105
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/nops.def?r1=8105&amp;r2=8104&amp;pathrev=8105
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/general-purpose-instructions.def?r1=8105&amp;r2=8104&amp;pathrev=8105
+
+validator_ragel: backslash escaping to double-quoting in .def files
+
+Now it is slightly easier to read the *.def files, a backslashed parenthesis
+followed by a non-backslashed one looked worse than just plain quotes.  Also,
+makes the parsing code slightly longer and more readable.
+
+Additionally, some renaming to make the code more readable: get_strings() is too
+general, split_till_comma() is much better.
+
+Original purpose of this change was to remove non-const references as
+parameters, as the style guid suggests.  Done that.  For split_till_comma() it
+produces 2 extra lines of code, otherwise would have to write something like
+*(*it) more than once, which stinks.  Alternative suggestions are welcome.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2597
+TEST=make check
+
+Review URL: https://chromiumcodereview.appspot.com/9837035
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-03-26T12:25:55.000Z</ns0:updated><ns0:published>2012-03-26T12:25:55.000Z</ns0:published><ns2:updates /><ns0:title>Comment 30 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c30" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/30" rel="self" type="application/atom+xml" /></ns0:entry>

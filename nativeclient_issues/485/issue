@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEMMQn47eCl7ImA9WxFQFkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/485</ns0:id><ns0:author>
+			<ns0:name>stuartmorgan@chromium.org</ns0:name><ns0:uri>/u/stuartmorgan@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The NPAPI headers have switched over to using the _t family of int types, and I'm trying to propagate 
+that change through the Chromium code, which includes removing the extra types header includes 
+that had been added to Chromium's copy of npapi.h. I'm blocked by this function in srpc.h:
+
+  int32_t Write(NPStream* stream,
+                int32 offset,
+                int32 len,
+                void* buf);
+
+offset and len need to use int32_t (the rest of the file is already using the _t types).</ns0:content><ns0:updated>2010-05-12T16:41:23.000Z</ns0:updated><ns0:published>2010-05-07T17:30:06.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:state>closed</ns2:state><ns0:title>srpc.h should use int32_t, not int32</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Priority-Medium</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Milestone-Chromium-6</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/485/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=485" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/485" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-05-12T16:41:23.000Z</ns2:closedDate><ns2:id>485</ns2:id></ns0:entry>

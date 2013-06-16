@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEGQX47eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/459/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2125
+
+------------------------------------------------------------------------
+r2125 | kschimpf@google.com | Fri Apr 23 12:54:05 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_read_segment.c?r1=2125&amp;r2=2124&amp;pathrev=2125
+
+Change to use portable form of strtoull, to convert 64-bit hex values. This
+is needed to fix x86-64 on Windows.
+
+Fixes native client issue:
+  http://code.google.com/p/nativeclient/issues/detail?id=459
+
+Review URL: http://codereview.chromium.org/1769007
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:23:40.000Z</ns0:updated><ns0:published>2011-01-21T22:23:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=459#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/459/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

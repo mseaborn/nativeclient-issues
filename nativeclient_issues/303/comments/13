@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QGSH47eCl7ImA9WhRQGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/303/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">+mcgrathr
+
+Is this still an issue now that we have the bootstrap loader?
+BTW: is there a design doc for the new loader</ns0:content><ns0:updated>2011-12-15T22:48:49.000Z</ns0:updated><ns0:published>2011-12-15T22:48:49.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>mcgra...@chromium.org</ns2:ccUpdate></ns2:updates><ns0:title>Comment 13 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=303#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/303/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

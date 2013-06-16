@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkACQ347eCl7ImA9WhRTFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2411/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7109
+
+------------------------------------------------------------------------
+r7109 | pdox@google.com | Fri Nov 04 10:43:58 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=7109&amp;r2=7108&amp;pathrev=7109
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/scripts/merge-tool.sh?r1=7109&amp;r2=7108&amp;pathrev=7109
+
+Stop building and merging llvm-gcc. Remove old libgcc_eh build script.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=404
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2411
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2312
+Review URL: http://codereview.chromium.org/8477001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-11-04T17:46:02.000Z</ns0:updated><ns0:published>2011-11-04T17:46:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2411#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2411/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

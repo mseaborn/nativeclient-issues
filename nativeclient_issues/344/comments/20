@@ -1,0 +1,41 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkQFR347eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/344/comments/full/20</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2750
+
+------------------------------------------------------------------------
+r2750 | mseaborn@chromium.org | Wed Jul 21 13:16:40 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/imc/osx/nacl_imc.cc?r1=2750&amp;r2=2749&amp;pathrev=2750
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/imc/sigpipe_test.cc?r1=2750&amp;r2=2749&amp;pathrev=2750
+
+IMC: Remove accept() call to work under the Mac OS X Chromium sandbox
+
+Remove the ability of ReceiveDatagram() to work on bound socket FDs
+(which is no longer used since r2697), by removing its call to
+accept().
+
+ReceiveDatagram() now only works on connected sockets.  Oddly, it used
+to fall back to doing this if accept() failed.  However, this did not
+work in the sandbox on at least OS X 10.5 because the sandbox made
+accept() return EPERM, which ReceiveDatagram() did not expect.
+
+As a result of the change, Receive() has only one caller, so we inline
+it into ReceiveDatagram().
+
+Fix up sigpipe_test to stop it testing bound sockets on OS X.
+
+Tidy: Remove code from osx/nacl_imc.cc that is no longer needed.
+These were called from sigpipe_test but not any more on OS X:
+  GetSocketAddress()
+  SendDatagramTo()
+  BoundSocket()
+
+Remove IsBoundSocket() because now it will never return true.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=344
+TEST=run all tests with sandbox_init() call added to sel_main.c
+
+Review URL: http://codereview.chromium.org/3013024
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:51:56.000Z</ns0:updated><ns0:published>2011-01-21T22:51:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 20 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=344#c20" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/344/comments/full/20" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,96 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUcHSH47eCl7ImA9Wx9UGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1281</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I am trying to run x86-32 Native Client in a virtual machine based on QEMU.
+
+In this VM, the processor's CPUID flags do not have the &amp;quot;VME&amp;quot; bit set.  (When this flag is set, it indicates that the CPU supports &amp;quot;virtual 8086 mode&amp;quot;: http://en.wikipedia.org/wiki/Virtual_8086_mode)
+
+This causes the validator to reject the CPU.  Running &amp;quot;ncval&amp;quot; on &amp;quot;hello_world.nexe&amp;quot; produces the following output:
+
+D: segment[0] p_type 6 p_offset 0 vaddr 0 paddr 0 align 4
+D:     filesz b4 memsz b4 flags 4
+D: segment[1] p_type 1 p_offset 10000 vaddr 20000 paddr 20000 align 65536
+D:     filesz 64e0 memsz 64e0 flags 5
+D: parsing segment 1
+VALIDATOR: 0: CPU does not support CPUID
+D: segment[2] p_type 1 p_offset 20000 vaddr 30000 paddr 30000 align 65536
+D:     filesz 10494 memsz 10494 flags 4
+D: segment[3] p_type 1 p_offset 40000 vaddr 50000 paddr 50000 align 65536
+D:     filesz 904 memsz 9b0 flags 6
+VALIDATOR: 20000: Bad basic block alignment
+VALIDATOR: 20020: Bad basic block alignment
+VALIDATOR: 20040: Bad basic block alignment
+VALIDATOR: 20060: Bad basic block alignment
+VALIDATOR: 20080: Bad basic block alignment
+VALIDATOR: 200a0: Bad basic block alignment
+VALIDATOR: 200c0: Bad basic block alignment
+VALIDATOR: 200e0: Bad basic block alignment
+...
+
+There are two problems with this:
+
+ * The message &amp;quot;CPU does not support CPUID&amp;quot; is wrong.  This is printed when &amp;quot;vstate-&amp;gt;cpufeatures.f_386&amp;quot; is false, which can happen when the VME bit is unset.  See nacl_cpuid.c; see CPUID_EDX_VME, CPUFeature_386 and CPUFeature_VME.
+ * The first error only partly aborts the validator.  The instruction decoder is not run, but the final validation step is run.  As a result, it prints &amp;quot;Bad basic block alignment&amp;quot; for every instruction bundle, which is confusing.
+
+
+Here is what /proc/cpuinfo contains when running Linux on this VM:
+
+$ cat /proc/cpuinfo 
+processor	: 0
+vendor_id	: AuthenticAMD
+cpu family	: 6
+model		: 2
+model name	: QEMU Virtual CPU version 0.9.1
+stepping	: 3
+cpu MHz		: 2210.374
+cache size	: 512 KB
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 2
+wp		: yes
+flags		: fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm up pni
+bogomips	: 4427.62
+clflush size	: 64
+
+(Normally &amp;quot;flags&amp;quot; will start with &amp;quot;fpu vme de pse tsc ...&amp;quot;)
+
+Running &amp;quot;nacl_cpuid&amp;quot; on this VM prints the following:
+
+$ ./scons-out/dbg-win-x86-32/staging/nacl_cpuid.exe
+This processor has:
+        x87
+        MMX
+        SSE
+        SSE2
+        SSE3
+        SSSE3
+        SSE41
+        SSE42
+        MOVBE
+        POPCNT
+        CX8
+        CX16
+        CMOV
+        MON
+        FXSR
+       CLFLUSH
+        TSC
+        MSR
+        VME
+        PSN
+        VMX
+        3DNOW
+        E3DNOW
+        LZCNT
+        SSE4A
+        SVM
+
+On a normal system, nacl_cpuid would start by printing:
+&amp;quot;This is a 386 compatible computer&amp;quot;
+</ns0:content><ns0:updated>2011-02-17T22:50:39.000Z</ns0:updated><ns0:published>2010-12-27T12:31:04.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108470876877739532758/</ns2:uri><ns2:username>kschi...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108470876877739532758/</ns2:uri><ns2:username>kschi...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>ncval fails with a confusing error on QEMU</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Milestone-Baltic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1281/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1281" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1281" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-01-24T17:56:11.000Z</ns2:closedDate><ns2:id>1281</ns2:id></ns0:entry>

@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCRn47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1239</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Eventually we will want to have fork() work under NaCl, in order to
+run the many programs that use fork() (often with execve()).
+
+An ideal implementation would implement a lot of the logic in
+untrusted code.  A NaCl process would be able to list its memory
+mappings, and create copy-on-write copies of those mappings for
+mapping into a new process.
+
+In practice we may need to compromise to get something that works.
+
+Here are two possible design sketches:
+
+1) A portable, non-copy-on-write, untrusted version:
+ * libc's mmap() is modified to keep a record of the process's mappings.
+   This would be necessary because sel_ldr does not provide an interface
+   to enumerate memory mappings.  Similarly, we would need to record
+   dynamically loaded code.
+ * The userland fork() makes copies of all MAP_PRIVATE writable mappings.
+ * A helper executable is used for setting up the copies in a new target
+   process.
+ * The copying will not be atomic, so I believe this would deviate from the
+   POSIX spec in the multi-threaded case.  Interfaces for halting threads
+   would help here.
+ * This is probably similar to Cygwin's implementation.  I have seen
+   suggestions that Cygwin's fork() has trouble in the multi-threaded case.
+
+2) A non-portable, copy-on-write, trusted version:
+ * On a Unix host OS, sel_ldr could provide a fork() syscall that calls the
+   host OS's fork() syscall.
+ * We would need to ensure that MAP_PRIVATE and MAP_SHARED mappings in NaCl
+   correspond to MAP_PRIVATE and MAP_SHARED mappings with the host OS.
+ * Dynamic code loading is currently done using a MAP_SHARED mapping but we
+   want it to behave as MAP_PRIVATE.  We would need to handle this specially.
+   The simplest solution would be to copy the whole dynamic code area.
+
+A further complication is that some of NaCl's descriptor types are
+non-transferrable, so fork() cannot or should not allow them to be
+shared between processes.</ns0:content><ns0:updated>2011-07-29T00:12:47.000Z</ns0:updated><ns0:published>2010-12-10T03:43:57.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Implement fork() for Native Client</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1239/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1239" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1239" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blocking>
+			<ns2:id>1362</ns2:id></ns2:blocking><ns2:id>1239</ns2:id></ns0:entry>

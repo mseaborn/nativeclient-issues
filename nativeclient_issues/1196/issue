@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QDQH47eCl7ImA9Wx9WEE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1196</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+r3786
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+r3786
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Ubuntu Lucid x86-64
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+No browser
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Download the latest revision (r3786 at the moment)
+2. Run ./scons --verbose --mode=opt-linux,nacl run_simple_srpc_test_nexe platform=arm bitcode=1 sdl=none
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+Expected: PASSED
+Actual output:
+[8517,1880043520:11:15:52.543208] VALIDATION FAILED.
+[8517,1880043520:11:15:52.547763] Run sel_ldr in debug mode to ignore validation failure.
+[8517,1880043520:11:15:52.547944] Run ncval &amp;lt;module-name&amp;gt; for validation error details.
+Error while loading &amp;quot;scons-out/nacl-arm-pnacl/obj/tests/unittests/shared/srpc/simple_srpc_test.nexe&amp;quot;: Validation failure. File violates Native Client safety rules.
+Using the wrong type of nexe (nacl-x86-32 on an x86-64 or vice versa)
+or a corrupt nexe file may be responsible for this error.
+
+
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-01-14T21:09:31.000Z</ns0:updated><ns0:published>2010-11-29T10:17:15.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>run_simple_srpc_test_nexe does not pass PNaCl validator</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>Milestone-Caviar</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1196/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1196" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1196" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-01-14T21:09:31.000Z</ns2:closedDate><ns2:id>1196</ns2:id></ns0:entry>

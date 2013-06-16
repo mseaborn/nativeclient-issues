@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEAMQ347eCl7ImA9WhZTFEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1497/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">We now have two trybots running pnacl related stuff:
+
+
+nacl-lucid64-pnacl1:
+   * runs scons tests with various configuration include one using the  translator
+   The details are here:
+    buildbot/buildbot_pnacl1.sh
+nacl-lucid64-pnacl2
+   * runs spec2k test with various configurations
+   The details are here:
+   buildbot/buildbot_pnacl2.sh
+
+Some compromised were made in coverage to keep the running time to no more than 30min.  pnacl1 takes currently takes 25min while pancl2 takes 20min.
+
+The next step is to reorganize the regular build bots
+
+
+</ns0:content><ns0:updated>2011-03-18T15:39:42.000Z</ns0:updated><ns0:published>2011-03-18T15:39:42.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1497#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1497/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

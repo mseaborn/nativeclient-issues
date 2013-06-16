@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMHQX47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/713/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2800
+
+------------------------------------------------------------------------
+r2800 | mseaborn@chromium.org | Tue Jul 27 02:35:38 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/build.scons?r1=2800&amp;r2=2799&amp;pathrev=2800
+
+Fix plugin to build correctly on Mac OS X 10.6
+
+The "-bundle" flag was not being added when linking the plugin, which
+leads to it being linked as an executable which cannot be dlopen()'d.
+
+This was being caused by use of FilterOut() to remove "-bundle" on a
+Clone()'d Scons env.  For some reason, this was affecting the original
+"env" object's settings.  This might be a bug in FilterOut().  It
+might have been caused by switching to Python 2.6, which OS 10.6 uses.
+(OS X 10.5 uses Python 2.5.)
+
+We fix this by removing those uses of FilterOut(), because this makes
+the Scons rules clearer anyway.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=713
+TEST=run_plugin_unittest, run_fake_browser_test
+
+Review URL: http://codereview.chromium.org/2811070
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:53:50.000Z</ns0:updated><ns0:published>2011-01-21T22:53:50.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=713#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/713/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

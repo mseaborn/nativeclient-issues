@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcGRX47eCl7ImA9WxFVEko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/585/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">I agree that the right place for this code is in the sel_ldr, not the validator.
+
+Bennet - why does the x86-32 need halts at the end of text?  Don't we set CS to the exact bounds of the text?  Are we concerned about CS's bound enforcement being imprecise?  Or is there some minimum granularity?
+
+On the other architectures, we rely on the presence of data execution prevention.  I'd argue that what we *actually* need is just something predictable up to the end of the last executable page.  This could be a nop slide just as easily as it could be halts!  At the end of the page we have an obstacle that, if it fails, breaks our sandbox model anyway.</ns0:content><ns0:updated>2010-06-11T16:33:44.000Z</ns0:updated><ns0:published>2010-06-11T16:33:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by cbiffle@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=585#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/585/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

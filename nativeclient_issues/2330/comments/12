@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUMSX47eCl7ImA9WhdbEEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2330/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">It seems that .tdata and/or .tbss are wrong by 8 bytes in case of clang.
+
+
+irt_start_thread, 100, tsd: 0x3ef543b8rpc call complete PPP_Audio_StreamCreated:ihih:
+
+
+
+irt_start_thread, 110, &amp;tsd: 0x3efe0c08
+"*** AUDIO STREAM SYNC"
+irt_start_thread, 100, tsd: 0x6
+irt_start_thread, 110, &amp;tsd: 0x3efe0c0c
+irt_start_thread, 100, tsd: 0x1
+irt_start_thread, 110, &amp;tsd: 0x3efe0c10
+irt_start_thread, 100, tsd: 0x2
+irt_start_thread, 110, &amp;tsd: 0x3efe0c14
+irt_start_thread, 100, tsd: 0x3
+irt_start_thread, 110, &amp;tsd: 0x3efe0c18
+irt_start_thread, 100, tsd: 0x4
+irt_start_thread, 110, &amp;tsd: 0x3efe0c1c
+irt_start_thread, 100, tsd: 0x5
+irt_start_thread, 110, &amp;tsd: 0x3efe0c20
+irt_start_thread, 100, tsd: 0x6
+irt_start_thread, 110, &amp;tsd: 0x3efe0c24
+irt_start_thread, 100, tsd: 0x7
+irt_start_thread, 110, &amp;tsd: 0x3efe0c28
+irt_start_thread, 100, tsd: 0x8
+irt_start_thread, 110, &amp;tsd: 0x3efe0c2c
+</ns0:content><ns0:updated>2011-10-08T02:18:08.000Z</ns0:updated><ns0:published>2011-10-08T02:18:08.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2330#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2330/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

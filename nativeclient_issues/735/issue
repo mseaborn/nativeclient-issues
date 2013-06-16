@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMDSX47eCl7ImA9WhRaE0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/735</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The majority of the automated tests for NaCl run under the standalone sel_ldr, but we don't have a way to run them all inside the browser, so we don't really know if all of NaCl's functionality works inside the browser.  Only a small subset of NaCl tests currently run inside the browser, and these mostly test plugin functionality rather than core runtime functionality.
+
+Currently we have three approaches to automated browser/plugin testing:
+
+1) Selenium tests, in the NaCl tree.
+ * Runs from Scons.
+ * Runs a number of tests from the NaCl tree (usually labelled &amp;quot;srpc*&amp;quot; or &amp;quot;npapi*&amp;quot;).
+ * We're only running these with Firefox on Linux and Mac.  Maybe it could work with Safari and Chromium and on Windows, but we're not doing that.
+ * Potentially requires manually adapting to every browser.
+ * Very slow.
+ * Very difficult to debug.
+
+2) nacl_ui_tests, part of the Chromium tree.
+ * Built by Gyp.
+ * This is a pain to add to: it doesn't scale, because it requires binaries to be checked into the NaCl SVN repo.
+ * nacl_ui_tests must be built from the Chromium tree; doesn't test a standalone, production copy of Chromium.
+
+3) fake_browser_test, in the NaCl tree.
+ * Runs from Scons.
+ * It doesn't test a browser, it tests the plugin in isolation.
+ * Since it doesn't have a Javascript implementation, your &amp;quot;in-browser&amp;quot; test code is really in C++ rather than Javascript.
+
+
+I propose taking a different approach:
+
+Create a web app that encapsulates all our tests.  Pointing a browser at its test page will run all the tests.
+
+The test results can be displayed on the page, but they can also be sent back to the server and logged, along with the browser and plugin versions.
+
+Hence this can be used in different ways:
+ * To test a newly-built development version of the browser/plugin automatically, by launching the browser from the command line.
+ * To crowd-source test results and test the plugin's compatibility with different browsers, OS versions, architectures, etc.
+
+The web app can be implemented as a Python script (similar to tools/httpd.py) plus executables and other files produced by the Scons build.  Once generated, this bundle can be used separately from the Scons build.
+
+This seems to be the direction that Javascript libraries have gone in for their unit tests.  You can run a &amp;quot;build slave&amp;quot; just by pointing your browser at a test page.  e.g. See http://www.browserscope.org
+
+
+Potential problems/limitations:
+
+* The NaCl plugin does many blocking calls (issue 673), so a test failure can wedge the whole page/renderer/browser.
+
+* The plugin doesn't provide an interface for finding out if a subprocess has exited/crashed.  We could work around this.
+</ns0:content><ns0:updated>2012-02-16T05:34:38.000Z</ns0:updated><ns0:published>2010-07-29T23:04:13.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Create automated (unattended) test suite for running inside browser</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Test</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/735/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=735" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/735" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-02-16T05:34:38.000Z</ns2:closedDate><ns2:id>735</ns2:id></ns0:entry>

@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEMHQH47eCl7ImA9Wx5SEE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/775</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">SVN r2859
+
+Valgrind reports uninitialized syscall arguments. To reproduce, run 
+
+./scons --mode=dbg-linux,nacl platform=x86-64 sdl=none buildbot=memcheck run_socket_transfer_test
+
+The relevant part of the report:
+
+==11604== Syscall param socketcall.sendmsg(msg.msg_control) points to uninitialised byte(s)
+==11604==    at 0x503EBEB: ??? (in /lib/libpthread-2.7.so)
+==11604==    by 0x4296DA: NaClDescConnCapFdConnectAddr /usr/local/google/homedirs/eugenis/nativeclient/native_client/src/trusted/desc/posix/nacl_desc_conn_cap.c:117
+==11604==    by 0x4082AC: NaClCommonSysImc_Connect /usr/local/google/homedirs/eugenis/nativeclient/native_client/src/trusted/service_runtime/nacl_syscall_common.c:1555
+==11604==    by 0x40A432: NaClSysImc_Connect /usr/local/google/homedirs/eugenis/nativeclient/native_client/scons-out/dbg-linux-x86-64/gen/native_client/src/trusted/service_runtime/nacl_syscall_handlers.c:479
+==11604==    by 0x40AC7F: NaClSysImc_ConnectDecoder /usr/local/google/homedirs/eugenis/nativeclient/native_client/scons-out/dbg-linux-x86-64/gen/native_client/src/trusted/service_runtime/nacl_syscall_handlers.c:874
+==11604==    by 0x40B89B: NaClSyscallCSegHook /usr/local/google/homedirs/eugenis/nativeclient/native_client/src/trusted/service_runtime/nacl_syscall_hook.c:147
+==11604==    by 0x419408: ??? (in /usr/local/google/homedirs/eugenis/nativeclient/native_client/scons-out/dbg-linux-x86-64/staging/sel_ldr)
+==11604==    by 0x403A0BF: ???
+==11604==    by 0x431BF8: NaCl::Lock::Release() /usr/local/google/homedirs/eugenis/nativeclient/native_client/src/shared/platform/linux/lock.cc:30
+==11604==    by 0x403A0CF: ???
+==11604==    by 0x658854F: ???
+==11604==    by 0x403A07F: ???
+</ns0:content><ns0:updated>2010-08-05T11:07:11.000Z</ns0:updated><ns0:published>2010-08-03T09:57:51.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/114701340294105671768/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Uninitialized sendmsg syscall arguments in sel_ldr</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/775/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=775" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/775" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-08-05T11:07:11.000Z</ns2:closedDate><ns2:id>775</ns2:id></ns0:entry>

@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEAERn47eCl7ImA9WhdXEE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1070</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+We currently have two separate builds.
+
+The first (and I would say &amp;quot;primary&amp;quot;) uses the scons build system and compiles sel_ldr, untrusted libraries, tests, and the Firefox plugin.
+
+The second uses gyp, and lets Chrome bake a sel_ldr binary and our plugin into Chrome's executable.
+
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+1. Because it makes us maintain two incompatible build systems.  The gyp build is less full-featured (e.g. it doesn't support our full cross-compile matrix) and is used only by Chrome.
+
+2. Because it hurts our development process.  To test Native Client when it's built into Chrome in this way, we have to check out and rebuild all of Chrome.  This turns our 1-5 minute incremental build into a 15+ minute affair, and that's when we're very lucky.
+
+3. Because it hurts Chrome's development process.  Every Chrome engineer has to build all of *our* code!  Same reasoning as #2 above.
+
+4. Because Native Client and Chrome's address space requirements are very different, but while we're in Chrome's executable we have to live with their choices.  NaCl needs a large contiguous chunk of vaddr; Chrome likes to load lots of dynamic libraries and doesn't mind the fragmentation.  This is causing problems for some 32-bit Windows users today, and greatly complicates deployment on ARM systems (as well as performance on Atom systems).
+
+
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+Build NaCl separately from Chrome.  Essentially, we will provide Chrome with a DLL/.so of the plugin, and an executable version of the sel_ldr (or several such executables for platforms that support 32- and 64-bit).  For now, Native Client will still be *bundled* with Chrome, so the user experience does not change.
+
+This will also not change the amount of continuous integration between NaCl and Chrome.  Today, Chrome only pulls in new revisions of NaCl when we explicitly say so, using the DEPS mechanism.  We maintain the continuous integration bots, and they don't need to change.
+
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+Separately-built Native Client (meaning both plugin and sel_ldr) working in modern Chrome.  This implies Pepper2, 32- and 64-bit support, Mac/Win/Lin, the whole shebang.
+
+Note that this does *not* free us from needing an outer sandbox.  The sel_ldr distributed with Chrome must be encapsulated within an equivalent (ideally: identical) outer sandbox.
+
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+Users, particularly 32-bit users, will have an easier time running Native Client.
+
+Native Client module startup time will increase slightly, unless we use a trick (like the current nacl64.exe broker on Win64).
+
+NaCl engineer development time will drop precipitously, as we will only have to build Chrome when we're actually changing Chrome.
+
+Chrome build time and source checkout size will also drop.</ns0:content><ns0:updated>2011-08-22T17:05:07.000Z</ns0:updated><ns0:published>2010-10-20T22:34:44.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>sel_ldr and plugin must be built separately from Chrome</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1070/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1070" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1070" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>480</ns2:id></ns2:blocking><ns2:closedDate>2011-08-22T17:05:07.000Z</ns2:closedDate><ns2:id>1070</ns2:id></ns0:entry>

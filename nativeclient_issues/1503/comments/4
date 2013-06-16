@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkYHSX47eCl7ImA9Wx9aF00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1503/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">After some more debugging the problem seems to be a misplaced end marker for the .eh_frame you can see this quite clearly with 
+
+objdump -W=frames
+
+once you have hacked up the linkerscript to make the code segment for gold and regular ld identical.
+
+Using tests/toolchain/unwind_trace.cc as an example, it seems
+that the gold linker is adding the eh_frame termination marker at the end of the concatenated eh_frame sections. The regular ld is placing the marker after eh_frame information of main.
+This makes the following eh_frames for the routines _Unwind_DeleteException(), read_encoded_value(), ..., _Unwind_Find_FDE()  invisible to the unwinder.
+</ns0:content><ns0:updated>2011-03-09T19:48:58.000Z</ns0:updated><ns0:published>2011-03-09T19:48:58.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1503#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1503/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

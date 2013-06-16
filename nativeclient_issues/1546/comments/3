@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEYNRX47eCl7ImA9WhZTFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1546/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">
+Hrmm... the top offender is "loop". This "loop" is actually just the assembly-written memset loop in nacl-gcc Newlib (since we are currently using nacl-gcc to sandbox llc). I hope this does not get worse when we switch to a PNaCl version of newlib. It may be worth trying a memset microbenchmark...
+
+
+As for other functions with high sample count they look similar to native llc:
+
+Samples llc.native vs nonsrpc.tcmal | FUNCTION NAME
+========================================================================
+6941 vs 9180                        | llvm::MachineInstr::addRegisterDead
+2921 vs 3677                        | SelectionDAGLegalize::LegalizeOp(llvm::SDValue)
+3033 vs 3614                        | llvm::SelectionDAGISel::SelectCodeCommon
+1253 vs 3046                        | ScheduleDAGRRList::PickNodeToScheduleBottomUp
+762  vs 3004                        | llvm::FoldingSetImpl::FindNodeOrInsertPos
+1998 vs 2639                        | RALinScan::assignRegOrStackSlotAtInterval
+180  vs 2567                        | operator delete(void*)
+1603 vs 2398                        | llvm::SmallPtrSetImpl::insert_imp
+63   vs 2366                        | pthread_getspecific
+2361 vs 2336                        | llvm::Value::getNumUses()
+1438 vs 2093                        | SimpleRegisterCoalescing::JoinIntervals
+1132 vs 1834                        | SelectionDAG::ComputeMaskedBits(llvm::SDValue, ...)
+990  vs 1773                        | SelectionDAG::LegalizeTypes
+1173 vs 1749                        | DAGTypeLegalizer::run()
+1624 vs 1729                        | SmallPtrSetImpl::FindBucketFor
+1332 vs 1599                        | VectorLegalizer::LegalizeOp
+1259 vs 1545                        | MachineInstr::findRegisterDefOperandIdx
+1239 vs 1479                        | memmove
+
+Interesting points: delete and pthread_getspecific are still much slower.
+Interesting points: though memset was significantly slower, memmove is not.
+
+</ns0:content><ns0:updated>2011-03-18T18:16:34.000Z</ns0:updated><ns0:published>2011-03-18T18:16:34.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1546#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1546/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

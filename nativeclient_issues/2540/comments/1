@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcFQn47eCl7ImA9WhRVFEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2540/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7591
+
+------------------------------------------------------------------------
+r7591 | mseaborn@chromium.org | Fri Jan 13 11:43:07 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_handlers_gen2.py?r1=7591&amp;r2=7590&amp;pathrev=7591
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/linux/nacl_syscall_impl.c?r1=7591&amp;r2=7590&amp;pathrev=7591
+
+Syscall list: Put the list of system calls into nacl_syscall_handlers_gen2.py
+
+The new SYSCALL_LIST is checked against the lists that are scraped
+from {linux,win}/nacl_syscall_impl.c.  In a later change, I will make
+SYSCALL_LIST authoritative and remove the code for scraping C files.
+Having the two side-by-side demonstrates that the two lists match.
+
+This changes some argument names to match between
+{linux,win}/nacl_syscall_impl.c.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2540
+TEST=build sel_ldr on Linux and Windows
+
+Review URL: http://codereview.chromium.org/9197016
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-01-13T19:46:53.000Z</ns0:updated><ns0:published>2012-01-13T19:46:53.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2540#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2540/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

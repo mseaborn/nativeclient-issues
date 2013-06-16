@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUEDRH47eCl7ImA9WhdTEUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1856/comments/full/22</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 2bfe76a5ca17703bfcc410617e1634a6d0fb3ebc
+ Email: mcgrathr@chromium.org@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Remove partial_sdk step from main buildbot
+
+This reintroduces http://codereview.chromium.org/7281033, which was
+previously committed in r5912.
+
+The only problem that introduced was with the browser_dynamic_library_test
+in the case where a PPAPI change had been made.  That issue was fixed by
+r5935 (http://codereview.chromium.org/7307039/).
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1856
+TEST=trybots
+
+R=mseaborn@chromium.org,polina@google.com
+
+Review URL: http://codereview.chromium.org/7324002
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@5951 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	buildbot/buildbot_standard.py</ns0:content><ns0:updated>2011-07-08T16:47:55.000Z</ns0:updated><ns0:published>2011-07-08T16:47:55.000Z</ns0:published><ns2:updates /><ns0:title>Comment 22 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1856#c22" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1856/comments/full/22" rel="self" type="application/atom+xml" /></ns0:entry>

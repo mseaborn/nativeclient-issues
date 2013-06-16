@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UBSH47eCl7ImA9WhVQEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2697/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8144
+
+------------------------------------------------------------------------
+r8144 | robertm@google.com | Fri Mar 30 12:17:15 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/site_scons/site_tools/naclsdk.py?r1=8144&amp;r2=8143&amp;pathrev=8144
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=8144&amp;r2=8143&amp;pathrev=8144
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/nacl.scons?r1=8144&amp;r2=8143&amp;pathrev=8144
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pnacl_abi/nacl.scons?r1=8144&amp;r2=8143&amp;pathrev=8144
+
+Remove code for non-clang frontends from SConstruct and naclsdk.py
+
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2697
+Review URL: https://chromiumcodereview.appspot.com/9882001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-03-30T19:20:59.000Z</ns0:updated><ns0:published>2012-03-30T19:20:59.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2697#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2697/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

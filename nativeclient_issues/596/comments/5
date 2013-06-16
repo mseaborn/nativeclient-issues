@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUDQX47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/596/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2627
+
+------------------------------------------------------------------------
+r2627 | mseaborn@chromium.org | Mon Jul 05 09:37:49 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/btarget_test.py?r1=2627&amp;r2=2626&amp;pathrev=2627
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/wrappers/bin?r1=2627&amp;r2=2626&amp;pathrev=2627
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/build.py?r1=2627&amp;r2=2626&amp;pathrev=2627
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/naclsdk.py?r1=2627&amp;r2=2626&amp;pathrev=2627
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=2627&amp;r2=2626&amp;pathrev=2627
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/wrappers/bin/nacl-glibc-spec?r1=2627&amp;r2=2626&amp;pathrev=2627
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/wrappers?r1=2627&amp;r2=2626&amp;pathrev=2627
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/wrappers/bin/nacl-glibc-gcc?r1=2627&amp;r2=2626&amp;pathrev=2627
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/btarget.py?r1=2627&amp;r2=2626&amp;pathrev=2627
+
+Extend Scons build to support building with nacl-glibc
+
+Adds a --nacl_glibc option to the Scons build which changes how
+untrusted code is built.
+
+Extend toolchain build to include a nacl-glibc-gcc wrapper script.
+
+Extend toolchain build to include linker scripts from nacl-glibc.  To
+do this, extend the UnionDir2() helper function and add a test for it.
+
+This makes it possible to run the following test:
+./scons --mode=dbg-linux,nacl \
+    --nacl_glibc \
+    naclsdk_mode=custom:tools/modular-build/out/input-prefix/glibc_toolchain \
+    run_hello_world_test
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=596
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=597
+
+Review URL: http://codereview.chromium.org/2799025
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:51:10.000Z</ns0:updated><ns0:published>2011-01-21T22:51:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=596#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/596/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

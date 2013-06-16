@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUINQ347eCl7ImA9WhdXF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2036/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>pdox%goo...@gtempaccount.com</ns0:name><ns0:uri>/u/104735739662288482898/</ns0:uri></ns0:author><ns0:content type="html">The failure was caused by r124487. In particular, it is caused by this optimization:
+
+  // (X * Y) / Y -&gt; X if the multiplication does not overflow.
+  Value *X = 0, *Y = 0;
+  if (match(Op0, m_Mul(m_Value(X), m_Value(Y))) &amp;&amp; (X == Op1 || Y == Op1)) {
+    if (Y != Op1) std::swap(X, Y); // Ensure expression is (X * Y) / Y, Y = Op1
+    BinaryOperator *Mul = dyn_cast&lt;BinaryOperator&gt;(Op0);
+    // If the Mul knows it does not overflow, then we are good to go.
+    bool isSigned = Opcode == Instruction::SDiv;
+    if ((isSigned &amp;&amp; Mul-&gt;hasNoSignedWrap()) ||
+        (!isSigned &amp;&amp; Mul-&gt;hasNoUnsignedWrap()))
+      return X;
+    // If X has the form X = A / Y then X * Y cannot overflow.
+    if (BinaryOperator *Div = dyn_cast&lt;BinaryOperator&gt;(X))
+      if (Div-&gt;getOpcode() == Opcode &amp;&amp; Div-&gt;getOperand(1) == Y)
+        return X;
+  }
+
+I can reproduce the problem with vanilla llvm-gcc and llvm. (using LTO).
+
+There is no obvious flaw with this optimization technique, so I'm not sure why it is causing a problem. It is possible llvm-gcc is generating bitcode with the "nsw" flags incorrectly set, which would cause this optimization to be applied to situations in which it not safe.
+</ns0:content><ns0:updated>2011-08-31T06:53:12.000Z</ns0:updated><ns0:published>2011-08-31T06:53:12.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by pdox%goo...@gtempaccount.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2036#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2036/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

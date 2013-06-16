@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A04FRX47eCl7ImA9Wx9aEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1496/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>jamesfen...@gmail.com</ns0:name><ns0:uri>/u/105008541472586726939/</ns0:uri></ns0:author><ns0:content type="html">$ cd ../pi_generator/
+[fengcao@myhost pi_generator]$ make clean
+rm -f *.nmf *.o *.obj *.nexe
+[fengcao@myhost pi_generator]$ make all
+../../toolchain/linux_x86/bin/nacl-g++ -Wall -Wno-long-long -pthread -Werror -m32 -I../.. -O2 -c -o pi_generator_x86_32.o pi_generator.cc
+../../toolchain/linux_x86/bin/nacl-g++ -Wall -Wno-long-long -pthread -Werror -m32 -I../.. -O2 -c -o pi_generator_module_x86_32.o pi_generator_module.cc
+../../toolchain/linux_x86/bin/nacl-g++ pi_generator_x86_32.o pi_generator_module_x86_32.o -lppruntime -lppapi_cpp -lgoogle_nacl_platform -lgio -lpthread -lsrpc  -m32 -o pi_generator_x86_32.nexe
+pi_generator_x86_32.o: In function `pi_generator::PiGenerator::PiGenerator(int)':
+pi_generator.cc:(.text+0x27c): undefined reference to `pp::Instance::Instance(int)'
+pi_generator_x86_32.o: In function `pi_generator::PiGenerator::PiGenerator(int)':
+pi_generator.cc:(.text+0x2fc): undefined reference to `pp::Instance::Instance(int)'
+pi_generator_x86_32.o: In function `pi_generator::PiGenerator::ComputePi(void*)':
+pi_generator.cc:(.text+0xc1c): undefined reference to `__assert_fail'
+pi_generator.cc:(.text+0xc7c): undefined reference to `__assert_fail'
+pi_generator_x86_32.o: In function `pi_generator::PiGenerator::DidChangeView(pp::Rect const&amp;, pp::Rect const&amp;)':
+pi_generator.cc:(.text+0x13bc): undefined reference to `__assert_fail'
+pi_generator.cc:(.text+0x141c): undefined reference to `__assert_fail'
+collect2: ld returned 1 exit status
+make: *** [pi_generator_x86_32.nexe] Error 1
+</ns0:content><ns0:updated>2011-03-04T03:38:34.000Z</ns0:updated><ns0:published>2011-03-04T03:38:34.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by jamesfen...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1496#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1496/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

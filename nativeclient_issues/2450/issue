@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEAGSX47eCl7ImA9WhRaE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2450</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">The start of the discussion is here: http://codereview.chromium.org/8575005/
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+
+Every time when we use something from:
+--pnacl-allow-native
+pnacl-clang -arch [x86-64|x86-32|arm]
+env.PNaClForceNative()
+nacl_irt_env.AddBiasForPNaCl()
+
+we actually know the target platform. This is not PNaCl, but NNaCl. Although, we have nacl-gcc for x86-32/x86-64 architectures, we miss it for ARM and we have to use Clang for that purpose. 
+
+In my opinion, pnacl-clang should not have -arch option and related stuff. It should only be capable to compile a portable bitcode.
+
+At the same time, we need to be able to compile NNaCl. This needs a separate toolchain. Currently, we put everything to something like pnacl_linux_x86-64_newlib. We need to put NNaCl toolchain to something like llvm_linux_x86_64_newlib. In this case, when you build irt for ARM, you will not have to call pnacl-clang, pnacl-ld and pnacl-translate. You will call NNaCl toolchain for ARM even if it will share the same llvm/clang binaries and the only difference would be the drivers.
+
+That would allows us to simplify pnacl-translate, pnacl-clang and scons scripts. Also, it will eliminate the mess with scons tests which run under bitcode==1, because some of them are pnacl, but other tests are just for ARM NNaCl.
+
+Also, there're some cases when we use x86-64/x86-32 NNaCl llvm toolchain, but this is just fine. We already have this support and the driver for NNaCl llvm toolchain will be the same as for ARM. No additional complexity here.
+
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+
+This makes pnacl-clang, pnacl-ld and pnacl-translate more complex than it's needed.
+
+Also, it effectively prevents from going to bitcode linking because some tests require native linking. But these tests are to NNaCl toolchain, because they use pnacl-clang -arch.
+
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+We need to extract LLVM NNaCl toolchain and use it for building irt and tests which require this
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+pnacl-clang does not have -arch option.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+&lt;b&gt;[for users as well as other parts of the system]&lt;/b&gt;
+</ns0:content><ns0:updated>2012-02-15T19:05:28.000Z</ns0:updated><ns0:published>2011-11-17T00:56:50.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Remove -arch argument from pnacl-clang</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2450/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2450" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2450" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2450</ns2:id></ns0:entry>

@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQFSX47eCl7ImA9WhdTFk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1908</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">Slow path of CopyInstructionInternal (when the written instruction crosses an 8-byte aligned boundary) contains a check (in SerializeAllProcessors) that valloc() returns NULL.
+
+That almost never happens. 
+
+Just a typo, of course. But we lack a test for this case.
+
+This was, unexpectedly, found by Valgrind (probably just because of a different memory allocator). I could also reproduce the failure with strategically placed printf's in the test code. This code was added in r5405.
+</ns0:content><ns0:updated>2011-07-14T08:48:38.000Z</ns0:updated><ns0:published>2011-06-09T13:01:04.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108470876877739532758/</ns2:uri><ns2:username>kschi...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/114701340294105671768/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Code replacement slow path always fails on POSIX</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Mstone-14</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1908/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1908" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1908" rel="self" type="application/atom+xml" /><ns2:stars>4</ns2:stars><ns2:closedDate>2011-07-14T08:48:38.000Z</ns2:closedDate><ns2:id>1908</ns2:id></ns0:entry>

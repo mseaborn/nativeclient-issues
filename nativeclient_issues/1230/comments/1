@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQDQn47eCl7ImA9Wx9SF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1230/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The other use case I have in mind for this is for testing nacl-glibc's
+IPC-based file operations.  I want to make sure this is testable
+outside the Web browser, because testing with a browser is a pain.
+
+I wrote some minimal Python bindings for untrusted IMC in 2009:
+http://repo.or.cz/w/nativeclient.git/tree/HEAD:/python_extension
+This was enough to implement the Python REPL demo:
+http://lackingrhoticity.blogspot.com/2009/06/python-standard-library-in-native.html
+</ns0:content><ns0:updated>2010-12-08T03:19:33.000Z</ns0:updated><ns0:published>2010-12-08T03:19:33.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1230#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1230/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

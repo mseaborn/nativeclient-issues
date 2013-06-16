@@ -1,0 +1,71 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0YHRX47eCl7ImA9WhZTFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1441</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? 721
+On what operating system? Windows XP 
+What browser are you using? N/A
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. 'gcl try xxxx win'
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+The windows trybot typically fails with one of two different failures:
+
+1) It fails during the update phase with this error:
+
+Traceback (most recent call last):
+  File &amp;quot;e:\b\depot_tools\\gclient.py&amp;quot;, line 1269, in &amp;lt;module&amp;gt;
+    sys.exit(Main(sys.argv[1:]))
+  File &amp;quot;e:\b\depot_tools\\gclient.py&amp;quot;, line 1259, in Main
+    return command(parser, argv[1:])
+  File &amp;quot;e:\b\depot_tools\\gclient.py&amp;quot;, line 1116, in CMDrevert
+    return client.RunOnDeps('revert', args)
+  File &amp;quot;e:\b\depot_tools\\gclient.py&amp;quot;, line 726, in RunOnDeps
+    work_queue.flush(revision_overrides, command, args, options=self._options)
+  File &amp;quot;e:\b\depot_tools\gclient_utils.py&amp;quot;, line 637, in flush
+    self._run_one_task(self.queued.pop(i), args, kwargs)
+  File &amp;quot;e:\b\depot_tools\gclient_utils.py&amp;quot;, line 687, in _run_one_task
+    task_item.run(*args, **kwargs)
+  File &amp;quot;e:\b\depot_tools\\gclient.py&amp;quot;, line 364, in run
+    scm.RunCommand(command, options, args, self._file_list)
+  File &amp;quot;e:\b\depot_tools\gclient_scm.py&amp;quot;, line 113, in RunCommand
+    return getattr(self, command)(options, args, file_list)
+  File &amp;quot;e:\b\depot_tools\gclient_scm.py&amp;quot;, line 847, in revert
+    scm.SVN.Revert(self.checkout_path, callback=printcb)
+  File &amp;quot;e:\b\depot_tools\scm.py&amp;quot;, line 872, in Revert
+    gclient_utils.RemoveDirectory(file_path)
+  File &amp;quot;e:\b\depot_tools\gclient_utils.py&amp;quot;, line 256, in RemoveDirectory
+    RemoveDirectory(fullpath)
+  File &amp;quot;e:\b\depot_tools\gclient_utils.py&amp;quot;, line 256, in RemoveDirectory
+    RemoveDirectory(fullpath)
+  File &amp;quot;e:\b\depot_tools\gclient_utils.py&amp;quot;, line 256, in RemoveDirectory
+    RemoveDirectory(fullpath)
+  File &amp;quot;e:\b\depot_tools\gclient_utils.py&amp;quot;, line 256, in RemoveDirectory
+    RemoveDirectory(fullpath)
+  File &amp;quot;e:\b\depot_tools\gclient_utils.py&amp;quot;, line 235, in RemoveDirectory
+    for fn in os.listdir(file_path):
+WindowsError: [Error 3] The system cannot find the path specified: u'E:\\b\\build\\slave\\naclsdk-windows\\build\\src\\build_tools\\hermetic_cygwin\\usr\\share\\groff\\current\\*.*'
+
+
+
+2) It fails during the cooking_tarball stage with this error:
+
+Install file: &amp;quot;scons-out\opt-win-x86-64\obj\src\trusted\validator_x86\ncdecode_table.exe&amp;quot; as &amp;quot;scons-out\opt-win-x86-64\staging\ncdecode_table.exe&amp;quot;
+E:\b\build\slave\naclsdk-windows\build\src\build_tools\packages\native_client\native_client\scons-out\opt-win-x86-64/staging/ncdecode_table.exe -m64 E:\b\build\slave\naclsdk-windows\build\src\build_tools\packages\native_client\native_client\scons-out\opt-win-x86-64\gen\native_client\src\trusted\validator_x86\ncdecodetab.h E:\b\build\slave\naclsdk-windows\build\src\build_tools\packages\native_client\native_client\scons-out\opt-win-x86-64\gen\native_client\src\trusted\validator_x86\ncdisasmtab.h
+
+command timed out: 1500 seconds without output, killing pid 484
+program finished with exit code 1
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+
+From doing an initial triage, it appears that these problems are likely due to two things:
+
+1) The trybots run Windows XP whereas the buildbots run Windows Vista.  If we upgraded the trybots to the same version as is run on the buildbots, then this problem would likely go away.
+
+2) It might be possible to fix this by running setup_mount.bat before using hermetic cygwin during a gclient sync.</ns0:content><ns0:updated>2011-03-18T19:05:34.000Z</ns0:updated><ns0:published>2011-02-16T15:07:17.000Z</ns0:published><ns2:status>Verified</ns2:status><ns2:owner>
+			<ns2:uri>/u/mball@google.com/</ns2:uri><ns2:username>mball@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Windows SDK trybots do not work</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>Milestone-Baltic-Brill-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1441/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1441" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1441" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-03-18T19:05:34.000Z</ns2:closedDate><ns2:id>1441</ns2:id></ns0:entry>

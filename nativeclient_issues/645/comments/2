@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUCQ347eCl7ImA9WxFUFE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/645/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">I can elaborate some, since I was involved in the discussion that led to this (very terse) report.
+
+This is a case of the validator prohibiting an instruction because it's "suspicious," not because it's inherently unsafe.  We've seen two cases now of people porting software that contains int3s.  In both cases, it was in some assert-style debug code, so it could have simply stayed in rather than requiring more patches: the code was designed to blow up.
+
+This is rooted in my suspicion that int3 is not a security risk on x86-32 (the report also mentions x86-64, but that isn't what we discussed in person).  On Linux, it kills the process (safe).  I will check with the local Windows gurus for details there.
+
+I've changed the title of the bug to be specific to the x86-32 validator for the moment.</ns0:content><ns0:updated>2010-06-24T17:57:42.000Z</ns0:updated><ns0:published>2010-06-24T17:57:42.000Z</ns0:published><ns2:updates>
+			<ns2:label>Component-TrustedRT</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:summary>int3 should be accepted by the x86-32 validator</ns2:summary></ns2:updates><ns0:title>Comment 2 by cbiffle@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=645#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/645/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

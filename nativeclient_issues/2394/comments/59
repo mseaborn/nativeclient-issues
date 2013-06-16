@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEMQn47eCl7ImA9WhdaGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/59</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">As suggested above, the v8::persistent&lt;v8::value&gt; is destroyed when the ScriptValue exits scope, suggesting we are returning something that is no longer referenced.
+In stead of leaking a ScriptValue, we possibly leak a handle, by returning via:
+   result = v8::Persistent&lt;v8::Value&gt;::New(scriptValue.v8Value())
+instead of scriptValue.v8Value() directly.
+
+Unfortunately at this point I'm not sure who "owns" this data, so I don't know if this is the correct fix, or if a way needs to be find to pass the original handle in the native object:  V8MessageEvent::toNative(info.Holder());
+
+Since the MessageEvent returns a ScriptValue not ScriptValue&amp;, by the time we get access to it, the m_value within may already be aliased in some way by the copy constructor/assign operator.
+
+Since dataAsScriptValue() in the MessageEvent is const, perhaps we could get away with returning a const reference?  Once we have a const reference the v8Value may return the correct object which should live as long as the MessageEvent, which I would guess is the correct lifetime of the data.
+
+Here is the diff which appears to prevent the problem from manifesting:
+
+Index: V8MessageEventCustom.cpp
+===================================================================
+--- V8MessageEventCustom.cpp	(revision 98723)
++++ V8MessageEventCustom.cpp	(working copy)
+@@ -48,6 +48,7 @@
+ {
+     INC_STATS("DOM.MessageEvent.data");
+     MessageEvent* event = V8MessageEvent::toNative(info.Holder());
++    v8::HandleScope scope;
+ 
+     v8::Handle&lt;v8::Value&gt; result;
+     switch (event-&gt;dataType()) {
+@@ -56,7 +57,7 @@
+         if (scriptValue.hasNoValue())
+             result = v8::Null();
+         else
+-            result = scriptValue.v8Value();
++            result = v8::Persistent&lt;v8::Value&gt;::New(scriptValue.v8Value());
+         break;
+     }
+
+
+
+</ns0:content><ns0:updated>2011-10-29T01:11:23.000Z</ns0:updated><ns0:published>2011-10-29T01:11:23.000Z</ns0:published><ns2:updates /><ns0:title>Comment 59 by noelal...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2394#c59" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/59" rel="self" type="application/atom+xml" /></ns0:entry>

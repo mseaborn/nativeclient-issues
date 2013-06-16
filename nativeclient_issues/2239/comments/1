@@ -1,0 +1,82 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcGRn47eCl7ImA9WhdWE0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2239/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">The 32-bit binary seems to run fine on head of tree. The 64-bit binary can be downloaded here: http://nacl-scumm.appspot.com/static/scummvm_x86_64.nexe
+
+Here is the output from ncval. Fatal errors are due to the 0x67 prefix byte. Considering the first example, it appears to disassemble as an addr32 prefix, not an addr16 prefix:
+  2a1bd8:       67 0f 6f 43 f8          addr32 movq -0x8(%ebx),%mm0
+  2a1bdd:       0f 1f 00                nopl   (%rax)
+It looks like 67 is addr16 in 32-bit and addr32 in 64-bit. I suspect it should be legal in 64-bit.
+
+Caveat I'm doing this on the Mac and so may have muffed the 64-bit tools somehow.
+
+bradchen-macbookpro:native_client bradchen$ scons-out/opt-mac-x86-64/staging/ncval ~/tmp/scummvm_x86_64.nexe 
+VALIDATOR: segment[0] p_type 6 p_offset 0 vaddr 0 paddr 0 align 8
+VALIDATOR:     filesz 120 memsz 120 flags 4
+VALIDATOR: segment[1] p_type 1 p_offset 10000 vaddr 20000 paddr 20000 align 65536
+VALIDATOR:     filesz 42c0a0 memsz 42c0a0 flags 5
+VALIDATOR: parsing segment 1
+VALIDATOR: 200cc: Does not support LM feature, removing usage(s).
+VALIDATOR: 3a35a: Does not support SSE feature, removing usage(s).
+VALIDATOR: 70273: Does not support CMOV feature, removing usage(s).
+VALIDATOR: 158ca0: Does not support SSE2 feature, removing usage(s).
+VALIDATOR: 24cbc4: Does not support MMX feature, removing usage(s).
+VALIDATOR: 2a1bd8: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1bd8: Assignment to non-64 bit memory address
+VALIDATOR: 2a1be0: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1be0: Assignment to non-64 bit memory address
+VALIDATOR: 2a1be4: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1be4: Assignment to non-64 bit memory address
+VALIDATOR: 2a1c06: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1c06: Assignment to non-64 bit memory address
+VALIDATOR: 2a1c1c: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1c1c: Assignment to non-64 bit memory address
+VALIDATOR: 2a1c20: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1c20: Assignment to non-64 bit memory address
+VALIDATOR: 2a1c60: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1c60: Assignment to non-64 bit memory address
+VALIDATOR: 2a1c64: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1c64: Assignment to non-64 bit memory address
+VALIDATOR: 2a1d58: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1d58: Assignment to non-64 bit memory address
+VALIDATOR: 2a1d60: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1d60: Assignment to non-64 bit memory address
+VALIDATOR: 2a1d64: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1d64: Assignment to non-64 bit memory address
+VALIDATOR: 2a1d86: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1d86: Assignment to non-64 bit memory address
+VALIDATOR: 2a1d9c: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1d9c: Assignment to non-64 bit memory address
+VALIDATOR: 2a1da0: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1da0: Assignment to non-64 bit memory address
+VALIDATOR: 2a1de0: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1de0: Assignment to non-64 bit memory address
+VALIDATOR: 2a1de4: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1de4: Assignment to non-64 bit memory address
+VALIDATOR: 2a1ed7: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1ed7: Assignment to non-64 bit memory address
+VALIDATOR: 2a1edc: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1edc: Assignment to non-64 bit memory address
+VALIDATOR: 2a1ee0: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1ee0: Assignment to non-64 bit memory address
+VALIDATOR: 2a1f03: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1f03: Assignment to non-64 bit memory address
+VALIDATOR: 2a1f19: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1f19: Assignment to non-64 bit memory address
+VALIDATOR: 2a1f20: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1f20: Assignment to non-64 bit memory address
+VALIDATOR: 2a1f60: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1f60: Assignment to non-64 bit memory address
+VALIDATOR: 2a1f64: Use of 67 (ADDR16) prefix not allowed by Native Client
+VALIDATOR: 2a1f64: Assignment to non-64 bit memory address
+VALIDATOR: 42133c: Does not support CLFLUSH feature, removing usage(s).
+VALIDATOR: 42133c: Does not support SFENCE feature, removing usage(s).
+VALIDATOR: Checking jump targets: 20000 to 44c0a0
+VALIDATOR: Checking that basic blocks are aligned
+VALIDATOR: segment[2] p_type 1 p_offset 440000 vaddr 10020000 paddr 10020000 align 65536
+VALIDATOR:     filesz 100488 memsz 100488 flags 4
+VALIDATOR: segment[3] p_type 1 p_offset 550000 vaddr 10130000 paddr 10130000 align 65536
+VALIDATOR:     filesz 4244 memsz 10c58 flags 6
+*** /Users/bradchen/tmp/scummvm_x86_64.nexe IS UNSAFE ***
+*** /Users/bradchen/tmp/scummvm_x86_64.nexe IS UNSAFE ***
+bradchen-macbookpro:native_client bradchen$ 
+</ns0:content><ns0:updated>2011-09-07T03:27:07.000Z</ns0:updated><ns0:published>2011-09-07T03:27:07.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bradc...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2239#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2239/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

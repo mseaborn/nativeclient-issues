@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEAFQH47eCl7ImA9Wx9bFEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1469/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">adding some people from the nacl-gcc team as it seems the problem is with their compiler:
+
+below is the failure from the bots:
+
+libtool: link: /usr/local/google/home/robertm/gclient-nacl1/native_client/toolchain/linux_x86/bin/nacl-gcc -W -Wall -Wstrict-prototypes -Wmissing-prototypes -Wshadow -m32 -O3 -DNACL_ALIGN_BYTES=32 -DNACL_ALIGN_POW2=5 -DNACL_TOOLCHAIN_PATCH -DNACL_SRPC -I/usr/local/google/home/robertm/gclient-nacl1/native_client/toolchain/linux_x86/nacl/include -s -Wl,--wrap=open -Wl,--wrap=read -Wl,--wrap=write -Wl,--wrap=close -Wl,--wrap=lseek -o ld-new ldgram.o ldlex-wrapper.o lexsup.o ldlang.o mri.o ldctor.o ldmain.o ldwrite.o ldexp.o ldemul.o ldver.o ldmisc.o ldfile.o ldcref.o nacl_file.o eelf_nacl.o  -lav -lsrpc -lpthread -lm ../bfd/.libs/libbfd.a ../libiberty/libiberty.a
+/usr/local/google/home/robertm/gclient-nacl1/native_client/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/ld:ldscripts/elf_nacl.x:67: syntax error
+collect2: ld returned 1 exit status
+
+the linker script used is:
+toolchain/linux_x86/nacl64/lib/ldscripts/elf_nacl.x
+
+    63    PROVIDE (__etext = .);
+    64    PROVIDE (_etext = .);
+    65    PROVIDE (etext = .);
+    66    . = . + 32; /* reserve space for HLTs */
+    67    . = ALIGN(CONSTANT (COMMONPAGESIZE)); /* nacl wants page alignment */
+    68    .rodata         : { *(.rodata .rodata.* .gnu.linkonce.r.*) } :rodata
+    69    .rodata1        : { *(.rodata1) }
+    70    .nacl_rpc_methods : { *(.nacl_rpc_methods) }
+
+
+
+
+</ns0:content><ns0:updated>2011-02-23T18:45:11.000Z</ns0:updated><ns0:published>2011-02-23T18:45:11.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>k...@google.com</ns2:ccUpdate><ns2:ccUpdate>pa...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 1 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1469#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1469/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIDSH47eCl7ImA9WhZXE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1753/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5117
+
+------------------------------------------------------------------------
+r5117 | sehr@google.com | Mon May 02 08:31:13 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/progress_events/ppapi_progress_events.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_proxy/basic_object.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_example_2d/ppapi_example_2d.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_core/ppapi_core.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_test_example/ppapi_test_example.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_geturl/ppapi_geturl.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pnacl_client_translator/pnacl_coordinator.js?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/ppapi_bad.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc_hw/srpc_hw.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_example_audio/ppapi_example_audio.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/earth/earth_c.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/srpc_nrd_xfer.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/mandel/mandel_tiled.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/plugin.cc?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/srpc_sockaddr.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/chrome_extension/background.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/plugin.h?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/srpc_plugin.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/earth/earth_cc.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/srpc_perf.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/plugin_ppapi.cc?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc_hw/srpc_hw_fd.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/chrome_extension/extension_test.cc?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_example_audio/ppapi_audio_test.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/nacl.scons?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/inbrowser_test_runner/test_runner.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_file_system/ppapi_file_system.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/srpc_shm.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/srpc_url_as_nacl_desc.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/plugin_async_messaging/async_messaging.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_proxy/event_example.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/srpc_basic.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc_hw/srpc_hw_data.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_ppb_scrollbar/ppapi_ppb_scrollbar.html?r1=5117&amp;r2=5116&amp;pathrev=5117
+
+The embed/object tag now uses the more standard-conforming 'src' attribute
+to specify the manifest file.  The 'nacl' attribute is gone.
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1753
+TEST=chrome_browser_tests
+Review URL: http://codereview.chromium.org/6880342
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-02T15:36:19.000Z</ns0:updated><ns0:published>2011-05-02T15:36:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1753#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1753/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

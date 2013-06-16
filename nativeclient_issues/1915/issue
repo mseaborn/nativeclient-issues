@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0ENQ347eCl7ImA9WhRbE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1915</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">This bug is triggered by the compiler rt which is using strd and hence requires proper 8 byte alignment for some parameters.
+
+Reproducer
+tools/llvm/utman.sh  build-compiler-rt
+rm scons-out/nacl-arm-pnacl/obj/tests/toolchain/intrinsics.nexe
+./scons bitcode=1 platform=arm --verbose run_intrinsics_tests
+
+The disassembly is not quite working but the segfault is happening here:
+
+
+objdump-arm -d  toolchain/hg-build/compiler_rt/arm/divmoddi4.o
+0000000 &amp;lt;__aeabi_ldivmod&amp;gt;:
+   0:   e92d48f0        push    {r4, r5, r6, r7, fp, lr}
+   4:   e1a04003        mov     r4, r3
+...
+  3c:   e1cc20f0        strd    r2, [ip]   &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;
+...
+
+The signature of __aeabi_ldivmod is
+ di_int __aeabi_ldivmod(di_int a, di_int b, di_int* rem)
+where di_int is a 64bit int
+
+The problem is with the caller, though.
+I think the pointer for di_int* rem is not aligned properly.
+NOTE: the  _aeabi_ldivmod  call is likely the result of the compiler merging a div and mod operation into one instruction and there could be a bug in that transformation as well.
+</ns0:content><ns0:updated>2012-02-04T11:41:32.000Z</ns0:updated><ns0:published>2011-06-13T15:02:53.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:cc>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pnacl arm miscompile: calling functions with 64bit args  cause alignment issue</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1915/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1915" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1915" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-06-22T14:22:48.000Z</ns2:closedDate><ns2:id>1915</ns2:id></ns0:entry>

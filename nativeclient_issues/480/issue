@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUEBRX47eCl7ImA9WhdaFEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/480</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">The &amp;quot;NaCl Classic&amp;quot; segment-register sandbox performs poorly on Intel's Atom 
+chips -- as much as doubling runtime compared to native code.  Reading 
+through the Intel Architecture Optimization Manual a couple months back, it 
+became clear why: the Atom has assigned these little-used segment registers 
+to second-class status.  If a segment register's base is non-zero, loads and 
+stores to that segment can be issued only infrequently -- in some cases, 
+only every 9 cycles.
+
+This bug will track my work on fixing this.  The current strategy is simply 
+to move the sandbox to (virtual) address zero.  This is known to work on 
+Linux -- we do it on ARM, after all -- but may not work on other platforms.</ns0:content><ns0:updated>2011-10-24T19:14:14.000Z</ns0:updated><ns0:published>2010-05-05T19:21:29.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>NaCl x86-32 performs poorly on Atom</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Performance</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/480/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=480" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/480" rel="self" type="application/atom+xml" /><ns2:stars>10</ns2:stars><ns2:blockedOn>
+			<ns2:id>1070</ns2:id></ns2:blockedOn><ns2:closedDate>2011-09-08T15:56:08.000Z</ns2:closedDate><ns2:id>480</ns2:id></ns0:entry>

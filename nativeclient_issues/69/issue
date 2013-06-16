@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0UDRX47eCl7ImA9WxNVFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/69</ns0:id><ns0:author>
+			<ns0:name>trent.wa...@gmail.com</ns0:name><ns0:uri>/u/118156278383070592809/</ns0:uri></ns0:author><ns0:content type="html">ncvalidate.c contains a function:
+
+void ValidateInst(const struct NCDecoderState *mstate) {
+  ..
+  int squashme = 0;
+  ..
+  switch (mstate-&amp;gt;opinfo-&amp;gt;insttype) {
+  ..
+    case NACLi_386RE:
+      break;
+  ..
+    case NACLi_CFLUSH:
+      squashme = (!cpufeatures-&amp;gt;f_CFLUSH);
+      break;
+  ..
+    /* Note that by omitting a default: case the compiler checks */
+    /* that all cases are covered.                               */
+  }
+  if (squashme) memset(mstate-&amp;gt;inst.maddr, kNaClFullStop, mstate-&amp;gt;inst.length);
+}
+
+The comment is telling.  Consider what happens when someone creates a new
+class of instructions.  They compile the code and ignore this warning that
+the compiler is supposed to generate, maybe it doesn't, maybe they're not
+using the compiler you expect, or maybe they're just lazy .. or the
+insttype has been corrupted by some other bug.  In any case, blacklisting
+fails to capture the desired semantics, which is: allowing safe
+instructions while blocking unsafe instructions.  You don't know if you've
+thought of all the unsafe instructions, so you're erring on the side of
+convenience, not safety.
+
+Better to assign squashme to be 1 in its declaration and do squashme = 0 in
+each branch of the switch where you are sure the instruction is safe.
+</ns0:content><ns0:updated>2009-10-26T17:47:54.000Z</ns0:updated><ns0:published>2009-04-06T09:12:43.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108782782163151845439/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Validator blacklists instruction types instead of whitelisting</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/69/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=69" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/69" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2009-10-26T17:47:54.000Z</ns2:closedDate><ns2:id>69</ns2:id></ns0:entry>

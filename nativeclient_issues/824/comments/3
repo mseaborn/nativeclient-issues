@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUERn47eCl7ImA9Wx5WFko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/824/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I wrote a change to fix this which works on Unix:
+http://codereview.chromium.org/3122020/show
+
+However, I haven't committed it because the test does not pass on Windows.
+
+The problem is that on Windows, if you map a 1k file, the first 4k of
+the 64k mapping will be writable, but the remaining 60k will not be
+writable (writing to it will fault).
+
+But because Windows only allows mapping at 64k granularity, we can't
+map zero-fill pages into the remaining 60k.  So this is a leaky
+abstraction: some of Windows memory mapping operates at 64k
+granularity and some operates at 4k granularity.
+
+Options:
+
+0) Look harder and discover some interface in Windows that does what
+we want.
+
+1) Change sel_ldr so that, on Windows, it copies the last page of the
+file.  This consumes extra memory, which is especially wasteful if the
+process does not need to read/write beyond the file's extent.  It
+won't work with MAP_SHARED mappings, but that is probably OK because
+writing beyond the file's extent is not defined in that case.
+
+2) Require files to be padded to a multiple of 64k in size.
+
+3) Abandon the attempt to provide 64k pages with Unix semantics and
+remove the incomplete zero-fill feature from sel_ldr.  Change the
+dynamic linker to handle the case where part of the 64k page might not
+be accessible.
+
+
+Note that inside Chromium, we are currently using SHM FDs instead of
+file FDs, and the problem does not occur there because we are
+effectively doing (2).</ns0:content><ns0:updated>2010-09-28T12:33:27.000Z</ns0:updated><ns0:published>2010-09-28T12:33:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=824#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/824/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

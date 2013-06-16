@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUNR347eCl7ImA9Wx9SFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/484</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">This issue is to track my work on my modular build script.  There is also a wiki page for this: 
+http://code.google.com/p/nativeclient/wiki/ModularBuildProposal
+
+The existing tools/Makefile for building the NaCl x86 toolchain has some problems:
+
+* It does not support incremental rebuilds.  e.g. If gcc changes, you'd want to rebuild gcc, 
+newlib etc. without rebuilding binutils.  Similarly, when glibc is added to the toolchain 
+build, I don't want to have to rebuild everything just to test the glibc build, but I do want 
+to have glibc rebuilt when the compiler changes.
+
+* Makefiles don't support abstraction very well, so tools/Makefile has some duplication for 
+unpacking and patching tarballs, etc.
+
+* Given the resulting toolchain install tree, it can be hard to determine which component each 
+file comes from.  e.g. Does nacl64/include/pthread.h come from newlib or from nc_threads?
+
+* tools/Makefile doesn't cover the packages in native_client_sdk, which have their own build 
+scripts.
+
+It would be nice if we could use a tool like JHBuild, which builds packages in a uniform way 
+from an XML description, assuming packages use autotools or something similar.  However, NaCl's 
+toolchain has a number of special cases that would need to be ironed out before we can reduce 
+the build to a simple data description.
+</ns0:content><ns0:updated>2010-12-04T01:48:16.000Z</ns0:updated><ns0:published>2010-05-07T13:42:20.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Modularise the toolchain build (tools/Makefile)</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/484/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=484" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/484" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-12-04T01:48:16.000Z</ns2:closedDate><ns2:id>484</ns2:id></ns0:entry>

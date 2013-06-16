@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QNRn47eCl7ImA9Wx9bEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/527</ns0:id><ns0:author>
+			<ns0:name>rafael.e...@gmail.com</ns0:name><ns0:uri>/u/108996039294665965197/</ns0:uri></ns0:author><ns0:content type="html">I was trying to debug a reported failure in a spec benchmark. I can build
+that benchmark with &amp;quot;gcc *.c -o foo&amp;quot;. That is also true with a cross
+compiler and, with llvm-gcc, by adding &amp;quot;-emit-llvm -Wl,-plugin=LLVMgold.so&amp;quot;
+it does lto.
+
+In all cases, all that is needed is the toolchain.
+
+Now for NaCl.
+
+After two hours trying to figure out how to build the benchmark with NaCL
+for ARM I managed to do it. It involved hacking a makefile and lots of
+magic script shell script invocations that used more python scripts. Once
+the benchmark was built, trying to run it would produce a segmentation
+fault. Only problem: that was not the same error the other developer was
+having!
+
+This is a meta bug to keep track of things as we try to untangle our &amp;quot;user
+interface&amp;quot; and pack it in an easy to use toolchain.
+</ns0:content><ns0:updated>2011-02-20T11:29:57.000Z</ns0:updated><ns0:published>2010-05-25T22:54:21.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>"$CC *.c -o foo" has to work </ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Milestone-Caviar</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/527/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=527" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/527" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-02-20T11:29:57.000Z</ns2:closedDate><ns2:id>527</ns2:id></ns0:entry>

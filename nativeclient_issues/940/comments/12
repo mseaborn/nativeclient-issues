@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEAMQ347eCl7ImA9Wx9XE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/940/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 3f55ac545ccee0f200bd2c28165fd9e2606a5ea7
+ Email: mseaborn@chromium.org
+
+Make static linking work on x86-64
+
+Add a linker script for static linking on x86-64.  This is the same as
+elf_nacl.x.static but with different architecture names.
+
+Fix up sysdeps/x86_64/elf/start.S to ignore %rdx and not treat it as
+the address of an atexit() handler function, because sel_ldr does not
+zero %rdx on process startup (although it could).  This brings this
+file into line with sysdeps/i386/elf/start.S, which has a similar
+modification.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=940
+TEST=run_hello_world_test nacl_static_link=1 (plus scons changes)
+
+Review URL: http://codereview.chromium.org/6099005
+
+A	nacl/dyn-link/ldscripts/elf64_nacl.x.static
+M	sysdeps/x86_64/elf/start.S</ns0:content><ns0:updated>2011-01-06T19:39:42.000Z</ns0:updated><ns0:published>2011-01-06T19:39:42.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=940#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/940/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

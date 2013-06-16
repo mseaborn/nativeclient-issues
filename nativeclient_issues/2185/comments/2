@@ -1,0 +1,91 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0cGSH47eCl7ImA9WhdXEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2185/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">I don't know where to find the public URL. Log excerpt:
+
+running ['/usr/bin/python',
+'/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/tests/inbrowser_crash_test/crash_dump_tester.py',
+'--browser_path',
+'/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/chromebinaries/linux_x86-32/chrome',
+'--url', 'crash_in_syscall.html', '--timeout', '20', '--ppapi_plugin',
+'/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/dbg-linux-x86-32/staging/libppNaClPlugin.so',
+'--sel_ldr',
+'/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/dbg-linux-x86-32/staging/sel_ldr',
+'--file',
+'/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/nacl-x86-32/obj/tests/inbrowser_crash_test/inbrowser_crash_in_syscall_x86-32.nexe',
+'--file',
+'/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/tests/inbrowser_crash_test/inbrowser_crash_in_syscall.nmf',
+'--file',
+'/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/tests/inbrowser_crash_test/crash_in_syscall.html',
+'--expected_crash_dumps=0']
+======================================================================
+/usr/bin/python
+/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/tests/inbrowser_crash_test/crash_dump_tester.py
+--browser_path
+/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/chromebinaries/linux_x86-32/chrome
+--url crash_in_syscall.html --timeout 20 --ppapi_plugin
+/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/dbg-linux-x86-32/staging/libppNaClPlugin.so
+--sel_ldr
+/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/dbg-linux-x86-32/staging/sel_ldr
+--file
+/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/nacl-x86-32/obj/tests/inbrowser_crash_test/inbrowser_crash_in_syscall_x86-32.nexe
+--file
+/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/tests/inbrowser_crash_test/inbrowser_crash_in_syscall.nmf
+--file
+/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/tests/inbrowser_crash_test/crash_in_syscall.html
+--expected_crash_dumps=0
+ENV:
+NACL_SEL_LDR=/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/dbg-linux-x86-32/staging/sel_ldr
+XAUTHORITY=/tmp/xvfb-run.mS9zsV/Xauthority CHROME_HEADLESS=1
+PWD=/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client
+NACL_ENABLE_PPAPI_DEV=1 CYGWIN=nodosfilewarning HOME=/home/chrome-bot
+PATH=/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/toolchain/linux_x86_newlib/bin:/usr/local/bin:/opt/bin:/bin:/usr/bin
+CHROME_BREAKPAD_PIPE_NAME=\\.\pipe\nacl_crash_dump_tester_sGoVzf_crash_service
+DISPLAY=:99
+LAUNCHING:
+/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/chromebinaries/linux_x86-32/chrome
+--disable-web-resources --disable-preconnect --no-first-run
+--no-default-browser-check --enable-logging --log-level=1
+--safebrowsing-disable-auto-update --explicitly-allowed-ports=59454
+--user-data-dir=/tmp/browserprofile_e8ulNZ
+--register-pepper-plugins=/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/dbg-linux-x86-32/staging/libppNaClPlugin.so;application/x-nacl
+--no-sandbox http://127.0.0.1:59454/crash_in_syscall.html
+PID 1368
+third_party/tcmalloc/chromium/src/system-alloc.cc:422] (null) failed.
+third_party/tcmalloc/chromium/src/system-alloc.cc:422] (null) failed.
+[1368:1375:8589092655073:ERROR:gl_surface_glx.cc(64)] GLX 1.3 or later is
+required.
+[1368:1375:8589092657044:ERROR:gl_surface_linux.cc(73)]
+GLSurfaceGLX::InitializeOneOff failed.
+[1368:1375:8589092657072:ERROR:gpu_info_collector_linux.cc(216)]
+gfx::GLContext::InitializeOneOff() failed
+[1385:1385:8589092743919:ERROR:renderer_main.cc(213)] Running without
+renderer sandbox
+[   196 ms] |||| GET /crash_in_syscall.html (/crash_in_syscall.html)
+[   201 ms] |||| GET /nacltest.js (/nacltest.js)
+[   219 ms] |||| [STARTUP]
+[   232 ms] ||||
+[   233 ms] |||| [crash_in_syscall BEGIN]
+[   240 ms] |||| GET /inbrowser_crash_in_syscall.nmf
+(/inbrowser_crash_in_syscall.nmf)
+[   251 ms] |||| GET /inbrowser_crash_in_syscall_x86-32.nexe
+(/inbrowser_crash_in_syscall_x86-32.nexe)
+Entered main
+[   293 ms] |||| GET /favicon.ico (/favicon.ico)
+About to crash
+third_party/tcmalloc/chromium/src/system-alloc.cc:422] (null) failed.
+[ 20414 ms] ||||
+[ 20414 ms] |||| [SERVER_ERROR] Did not hear from the test for 20.0 seconds.
+[ 20414 ms] |||| Heard from Javascript 0.1 seconds ago.
+[ 20414 ms] |||| The test probably did not get a callback that it expected.
+KILLING the browser
+crash_dump_tester: Found 0 files
+crash_dump_tester: PASSED
+Test
+/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/nacl-x86-32/test_results/inbrowser_crash_in_syscall_test.out
+took 0.580000 secs
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+inbrowser_crash_in_syscall_test.out: FAILED
+scons: ***
+[scons-out/nacl-x86-32/test_results/inbrowser_crash_in_syscall_test.out]
+Error 255</ns0:content><ns0:updated>2011-08-24T15:50:29.000Z</ns0:updated><ns0:published>2011-08-24T15:50:29.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bradc...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2185#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2185/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8FSH47eCl7ImA9WhRTGUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2428/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7140
+
+------------------------------------------------------------------------
+r7140 | bsy@google.com | Thu Nov 10 17:22:21 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/browser_tester/browserdata/nacltest.js?r1=7140&amp;r2=7139&amp;pathrev=7140
+
+A temporary hack to workaround the WebKit plugin-not-loading bug.
+
+This change adds a timeout so that if the plugin isn't loaded after
+the 40 seconds timeout, the nacltest JavaScript code will forcibly
+reload the page, thereby triggering layout again.
+
+Several tests do not use nacltest.js, and would need individual
+attention to add in a similar temporary hack.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2428
+TEST= None
+Review URL: http://codereview.chromium.org/8525004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-11-11T01:26:59.000Z</ns0:updated><ns0:published>2011-11-11T01:26:59.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2428#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2428/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

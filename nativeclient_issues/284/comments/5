@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEHRX47eCl7ImA9WxBUFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/284/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">mac builds has to be 32-bits for now; the 64-bit sandboxing model requires the 
+ability to get the thread identity for figuring out where to save/restore registers 
+during a context switch between untrusted NaCl module code and the service runtime.  
+we also require a syscall to get the per-thread thread descriptor base address for 
+the untrusted thread library as well.  on windows and linux this is done in the 
+context switch code by inlining assembly code for accessing TLS variables in the 
+service runtime that holds the thread ID, tdb, etc.  on OSX, there is no TLS support 
+in the host side, and while there are spots where we would patch in the TSD code, it 
+probably won't get implemented any time soon -- the 32-bit sandboxing model works 
+fine on OSX, so there's really no great need for a 64-bit version.
+
+anyway, specifying -m64 will not result in usable code, since context switch will be 
+broken.</ns0:content><ns0:updated>2010-03-02T00:43:54.000Z</ns0:updated><ns0:published>2010-03-02T00:43:54.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=284#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/284/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

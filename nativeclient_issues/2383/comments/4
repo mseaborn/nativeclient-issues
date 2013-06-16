@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ADRn47eCl7ImA9WhdaE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2383/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>mmorten...@google.com</ns0:name><ns0:uri>/u/100268164290167392978/</ns0:uri></ns0:author><ns0:content type="html">I wasn't aware of any binaries that we had posted for the plugin.  There are
+instructions (not necessarily easy) for people who want to build the plugin
+directly and launch the plugin itself through Visual Studio and then use the
+plugin to build their .nexes.  For that, see:
+   http://www.chromium.org/nativeclient/sdk/vsx-plugin/vsx-plugin-g
+and
+
+http://www.chromium.org/nativeclient/sdk/vsx-plugin/vsx-plugin-g/creating-a-project
+
+We are still investigating delivering this plugin (with an installer) for VS
+developers to use (w/o the debugging parts) because it directly calls
+nacl-g++/nacl-gcc
+for each .cc/.cpp/.c file and then calls nacl-g++ for linking.
+
+I've been creating an internal document -- it's pretty rough -- and decided
+to be brave and make it more widely disseminated.
+It's located at:
+
+https://sites.google.com/a/chromium.org/dev/nativeclient/sdk/vs-nacl-development
+
+and documents how to use a Visual Studio 2008 Makefile project with Scons,
+how to set custom build rules in Visual Studio 2008, and how to build and
+use the plugin we've been developing (which requires Visual Studio 2008
+professional and the Visual Studio 2008 SDK).
+
+It also includes a link to the Ogre3D page that discusses using a Visual
+Studio 2010 C# solution that you can build and use to convert other
+solutions to use custom rules to build .nexes.
+
+If you find errors, have suggestions, or want changes to it please email me!</ns0:content><ns0:updated>2011-10-23T14:56:17.000Z</ns0:updated><ns0:published>2011-10-23T14:56:17.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by mmorten...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2383#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2383/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

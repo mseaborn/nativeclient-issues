@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkYGQn47eCl7ImA9Wx5bFkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1082/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">OK, we have a sort of strategy on DSO scheme, thus let's discuss scheme-independent stuff:
+
+At the moment loader has a bunch of restrictions on what and where it can load:
+
+* It loads only executables. For loading ld.so we actually make runnable-ld.so from ld.so by changing header bit;
+
+* It has a restriction on where to load the executable. As in DSO our executable is runnable-ld.so, we load it instead of actual executable. We have to load the executable somewhere else, and this should be known at link time. As a result we have a non-continuous memory for dyncode allocation.
+
+Of course this can be bypassed in nacl_dyncode_alloc. However, that way looks unnatural.
+
+IMHO making sel_ldr capable of loading ld.so in a way different from how it loads executable is a right way to go. We can implement kinda standard memory layout with loader at high memory addresses, executable low and all dynamic libraries in between.
+
+Yes, this is TCB change, but it can be hardly called "complexity". What do you think?
+</ns0:content><ns0:updated>2010-11-02T06:42:03.000Z</ns0:updated><ns0:published>2010-11-02T06:42:03.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>k...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 13 by eaelt...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1082#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1082/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

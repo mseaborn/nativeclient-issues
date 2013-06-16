@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIAQn47eCl7ImA9WhZVFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1777/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5483
+
+------------------------------------------------------------------------
+r5483 | pasko@google.com | Fri May 27 05:10:27 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/glibc-tests/exclude_list.txt?r1=5483&amp;r2=5482&amp;pathrev=5483
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/REVISIONS?r1=5483&amp;r2=5482&amp;pathrev=5483
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/glibc-tests/xfail_list.txt?r1=5483&amp;r2=5482&amp;pathrev=5483
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/glibc-tests/bin/collect2?r1=5483&amp;r2=5482&amp;pathrev=5483
+
+Bump glibc revision.  Update glibc tests.
+
+Pick up these commits:
+0ab863c Make wait,waitpid,waitid nosys stubs.
+92fb462 Remove colon from perror argument because perror outputs colon too.
+a6ad473 Small typo in _dl_runtime_profile.
+89840f9 Fix one bug and validation errors in dynamic linker profile path.
+
+Also make more tests excluded automatically that use libc functions:
+    sigaction, pthread_cancel, accept, bind, connect, ftruncate, getcontext,
+    gethostname, getrlimit, getsockname, getsockopt, listen, makecontext, pread,
+    pwrite, recv, recvfrom, recvmsg, send, sendmsg, sendto, setcontext, setrlimit,
+    setsockopt, socketpair, swapcontext, truncate, wait, waitpid
+
+sadly test-vfprintf depends on ftruncate which we don't have in NaCl.  We should
+chane the test at later point.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1777
+TEST=none
+Review URL: http://codereview.chromium.org/7068016
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-27T12:15:43.000Z</ns0:updated><ns0:published>2011-05-27T12:15:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1777#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1777/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

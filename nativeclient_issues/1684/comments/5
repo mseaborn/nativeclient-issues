@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkEFQH47eCl7ImA9WhZQEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1684/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4920
+
+------------------------------------------------------------------------
+r4920 | mcgrathr@chromium.org | Mon Apr 18 15:08:48 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/nacl.scons?r1=4920&amp;r2=4919&amp;pathrev=4920
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/srpc/nacl.scons?r1=4920&amp;r2=4919&amp;pathrev=4920
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/nacl.scons?r1=4920&amp;r2=4919&amp;pathrev=4920
+
+Conditionalize -mtls-use-call use to exclude glibc-based builds.
+
+The -mtls-use-call option is needed only for the libraries going into
+the IRT itself.  Since that is only ever built with newlib, we don't
+need to use this flag for a glibc-based build.  Doing so requires the
+x86-32 glibc to provide the __nacl_read_tp entrypoint, which is not
+otherwise needed (and not present so far).
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1684
+TEST=trybots
+
+R=eaeltsin@google.com,mseaborn@chromium.org,khim@google.com
+
+Review URL: http://codereview.chromium.org/6873052
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-18T22:10:11.000Z</ns0:updated><ns0:published>2011-04-18T22:10:11.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1684#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1684/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

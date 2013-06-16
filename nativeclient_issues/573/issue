@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QDQH47eCl7ImA9WxFUGU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/573</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The problem: glibc's libc.so contains a lot of code, not all of which
+initially passes the validator.  It's not a good idea to fix these
+cases without testing the fixes.  e.g. If I fixed use of &amp;quot;ret $20&amp;quot; in
+_dl_runtime_profile without testing it, I might introduce a bug that
+is hard to track down later.
+
+The solution: Use a tool to replace any non-validating instructions
+(such as &amp;quot;ret $20&amp;quot;) with HLTs.  Rather than fixing code in a
+validator-failure-driven manner, fix code in a test-driven manner.  So
+a piece of code should only be fixed when it has been observed to
+fault from hitting a HLT instruction as part of a test case.
+
+This helps to direct the search for code fragments to fix; the most
+important functions can be fixed first.  This is a simple form of code
+coverage; it helps us to be sure that the code we're changing is
+actually being run.
+
+
+There are two ways this can be done:
+
+1) Add a debugging option to sel_ldr which overwrites non-validating
+instructions at load time.  This would be like &amp;quot;-d&amp;quot;, but safe: it
+would not disable the sandbox.  There is already some code for doing
+this for extension instructions: see &amp;quot;squashme&amp;quot; in ValidateInst().
+
+2) Add a tool which rewrites ELF executables and libraries
+(ncval_stubout).  This is what I have used for glibc in the past.
+
+(2) has the advantage that is can be applied to libraries/executables
+selectively, but the build system needs to know how to apply it.  (1)
+is easier to use, because it can apply to all dynamically loaded code
+plus the initially loaded executable.  The two require similar changes
+to ncvalidate.c.
+</ns0:content><ns0:updated>2010-06-30T12:36:11.000Z</ns0:updated><ns0:published>2010-06-08T01:02:11.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Would like a tool for replacing non-validating instructions with HLTs</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Debugging</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/573/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=573" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/573" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-06-30T12:36:11.000Z</ns2:closedDate><ns2:id>573</ns2:id></ns0:entry>

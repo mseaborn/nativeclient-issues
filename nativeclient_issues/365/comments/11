@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEDR347eCl7ImA9Wx5XFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/365/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">I am not sure about examples on Mac, but..
+I downloaded this version of the linux SDK: native_client_sdk_0_1_507_0 (as advertised on the website). The referred executables (of size ~5Mb) appear to be unstripped. The stripped versions are around 1.4Mb where most of the size goes from text:
+$ size hello_world_x86_32.nexe
+   text    data     bss     dec     hex filename
+1191860    4664   32096 1228620  12bf4c hello_world_x86_32.nexe
+$ size hello_world_x86_64.nexe
+   text    data     bss     dec     hex filename
+1324788    4680   32128 1361596  14c6bc hello_world_x86_64.nexe
+
+the gzipped versions are as follows:
+$ du -h hello_world_x86_*
+332K    hello_world_x86_32.nexe.gz
+364K    hello_world_x86_64.nexe.gz</ns0:content><ns0:updated>2010-09-16T12:37:56.000Z</ns0:updated><ns0:published>2010-09-16T12:37:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by pa...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=365#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/365/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

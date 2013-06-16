@@ -1,0 +1,44 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUIGQ347eCl7ImA9WhVTEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/519</ns0:id><ns0:author>
+			<ns0:name>s...@google.com</ns0:name><ns0:uri>/u/108394971971967673680/</ns0:uri></ns0:author><ns0:content type="html">In the attached test case nacl[64]-gcc aligns direct branch targets when it 
+doesn't need to.  This causes unnecessary icache footprint and executable 
+code size.  In the 64-bit case the problem looks like:
+
+
+0000000000000000 &amp;lt;foo&amp;gt;:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	89 7d fc             	mov    %edi,-0x4(%rbp)
+   7:	83 7d fc 01          	cmpl   $0x1,-0x4(%rbp)
+   b:	7f 13                	jg     20 &amp;lt;foo+0x20&amp;gt;
+   d:	c7 05 00 00 00 00 01 	movl   $0x1,0x0(%rip)        # 17 
+&amp;lt;foo+0x17&amp;gt;
+  14:	00 00 00 
+  17:	eb 27                	jmp    40 &amp;lt;foo+0x40&amp;gt;
+  19:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+  20:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  23:	83 c0 01             	add    $0x1,%eax
+  26:	89 05 00 00 00 00    	mov    %eax,0x0(%rip)        # 2c 
+&amp;lt;foo+0x2c&amp;gt;
+  2c:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+  31:	66 66 66 66 66 66 2e 	nopw   %cs:0x0(%rax,%rax,1)
+  38:	0f 1f 84 00 00 00 00 
+  3f:	00 
+  40:	41 5b                	pop    %r11
+  42:	44 89 dd             	mov    %r11d,%ebp
+  45:	4c 01 fd             	add    %r15,%rbp
+  48:	41 5b                	pop    %r11
+  4a:	41 83 e3 e0          	and    $0xffffffffffffffe0,%r11d
+  4e:	4d 01 fb             	add    %r15,%r11
+  51:	41 ff e3             	jmpq   *%r11
+
+In particular, the nop at offset 0x19 is not needed, and also the one at 
+0x31.  By compiling with -S one can see that both nops result from .align 
+directives emitted by the compiler.
+
+Although this is not a correctness defect it is clearly a potential 
+performance improvement.</ns0:content><ns0:updated>2012-02-24T17:12:02.000Z</ns0:updated><ns0:published>2010-05-25T17:09:56.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>nacl[64]-gcc over-aligns</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Component-GCC</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/519/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=519" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/519" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:id>519</ns2:id></ns0:entry>

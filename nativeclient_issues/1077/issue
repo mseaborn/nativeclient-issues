@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHRX47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1077</ns0:id><ns0:author>
+			<ns0:name>elijahtaylor@google.com</ns0:name><ns0:uri>/u/elijahtaylor@google.com/</ns0:uri></ns0:author><ns0:content type="html">The service runtime tries to validate unchanged portions of code when calling nacl_dyncode_modify, which can result in erroneous validation issues.
+
+For instance, currently only 32-byte aligned jumps/calls can be validated when replacing code with nacl_dyncode_modify.  If there is an unaligned jump which jumps outside of the area being validated, the jump will be flagged as invalid, even if it was valid before and isn't changed.
+
+Example with actual x86-64 instructions:
+
+old bundle:
+0000000000000000 83f87f           cmp $0x7f, %eax         
+0000000000000003 0f852fffffff     jnz 0xffffffffffffff38  
+0000000000000009 8b45bc           mov -0x44(%rbp), %eax   
+000000000000000c 85c0             test %eax, %eax         
+000000000000000e 0f850f000000     jnz 0x23                
+0000000000000014 bf7f000000       mov $0x7f, %edi         
+0000000000000019 6690             o16 nop                 
+000000000000001b e8401e0000       call 0x1e60             
+
+new bundle:
+0000000000000000 83f87f           cmp $0x7f, %eax         
+0000000000000003 0f852fffffff     jnz 0xffffffffffffff38  
+0000000000000009 8b45bc           mov -0x44(%rbp), %eax   
+000000000000000c 85c0             test %eax, %eax         
+000000000000000e 0f850f000000     jnz 0x23                
+0000000000000014 bf7f000000       mov $0x7f, %edi         
+0000000000000019 6690             o16 nop                 
+000000000000001b e8401e0200       call 0x21e60 
+
+Even if you call nacl_dyncode_modify to modify only the 4 bytes that correspond to the offset of the &amp;quot;call&amp;quot; instruction, the whole bundle will attempt to be validated and you'll get invalid jump targets at 0x3 and 0xe.
+
+</ns0:content><ns0:updated>2011-07-29T00:12:14.000Z</ns0:updated><ns0:published>2010-10-21T21:51:08.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/elijahtaylor@google.com/</ns2:uri><ns2:username>elijahtaylor@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>nacl_dyncode_modify attempts to validate unchanged instructions</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1077/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1077" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1077" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-03-15T17:52:59.000Z</ns2:closedDate><ns2:id>1077</ns2:id></ns0:entry>

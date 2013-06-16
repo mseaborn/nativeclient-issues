@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEBQn47eCl7ImA9WhdRFUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1027</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Suppose we have a program which repeatedly creates and pthread_join()s
+a thread (example below).  A race condition in thread exit means that
+the process could eventually run out of trusted address space and die.
+
+The reason for this is that there is a race condition between the exit
+of the untrusted thread and the trusted thread.  The pthread_join() in
+untrusted code can return before the trusted thread has exited.  On
+Unix, the trusted thread is marked as detached and so is never
+pthread_join()'d.  This means the untrusted code might spawn a new
+thread before the earlier trusted thread has exited, in which case a
+new trusted stack will be allocated.
+
+If the host kernel schedules threads such that there are enough
+outstanding unexited trusted threads, the process will run out of
+address space.
+
+Running the program below under sel_ldr shows memory usage creeping
+up.  It starts at:
+
+ 2763 mseaborn  20   0 1039m  10m 1608 S   73  0.5   0:02.32 sel_ldr            
+
+and after about a minute it has crept up to:
+
+ 2763 mseaborn  20   0 1273m 244m 1608 S   76 12.3   1:07.56 sel_ldr            
+
+In contrast, running the same program under Linux natively shows no
+increase in memory usage.
+
+
+#include &amp;lt;assert.h&amp;gt;
+#include &amp;lt;pthread.h&amp;gt;
+
+void *thread_func(void *x) {
+  return NULL;
+}
+
+int main() {
+  while (1) {
+    pthread_t tid;
+    int rc = pthread_create(&amp;amp;tid, NULL, thread_func, NULL);
+    assert(rc == 0);
+    rc = pthread_join(tid, NULL);
+    assert(rc == 0);
+  }
+  return 0;
+}
+</ns0:content><ns0:updated>2011-08-05T23:57:33.000Z</ns0:updated><ns0:published>2010-10-14T13:24:53.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Race condition in thread exit can lead to memory exhaustion</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>ThreadJoinRace</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1027/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1027" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1027" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1027</ns2:id></ns0:entry>

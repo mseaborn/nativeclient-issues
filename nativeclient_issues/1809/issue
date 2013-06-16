@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEENQ347eCl7ImA9WhdRGU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1809</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">We need to be able to run a debugger on SDK examples before BalticBrill release.  An ideal solution would have many aspects (debug stub on all systems, IRT debug info download, dynamic loading support, symbol name conflicts, IDE plugin, mixed nacl+postmessage+plugin debugging).  We certainly cannot address all of the aspects for the BB release.  We need to decide the set of features that the SDK team would be OK with when enabling examples to use IRT and glibc.
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+* debugging on Win32 and Mac requires debug stub or the new out-of-process design, experimental state, no howtos
+* Win64 has a howto for sel_ldr_dbg with the stub, but sel_ldr_dbg is not available in the SDK yet
+* On Linux32 nacl-gdb can debug only newlib, with glibc it cannot continue after stopping on breakpoints
+* On Linux64 there is an experimental GDB based on GDB-6.8 that supports both newlib- and glibc-based binaries, but not IRT
+* On Linux64 with non-trivial trickery it is possible to debug using the native debugger (undocumented in glibc case)
+* Most recent debugging tips should be published here: http://www.chromium.org/nativeclient/how-tos/debuggingtips
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+Debugging story varies significantly by platform, currently in experimental stage, none of the options fully supports IRT.
+IRT-specific problems:
+* IRT includes a C library and a C++ library in untrusted region with nacl-specific modifications, a huge stack
+* Symbol names in the IRT C/C++ libraries conflict with NaCl module's C/C++ library
+* IRT will likely require to be debugged along with regular NaCl modules/libraries in the browser
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+I see several options.  Easiest to hardest.
+
+1. Write a comprehensive howto for the SDK team to debug most problems on Linux, use add-symbol-file to resolve symbol name conflicts.
+
+2. Same as above, but rewrite nacl-gdb based on GDB-7.0 that supports multi-process debugging (we need only multi-namespace).
+
+3. Add multi-namespace support to sel_ldr_dbg, use remote debugging based on GDB-7.0.  This can start from Windows-only or Mac-only.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+TBD</ns0:content><ns0:updated>2011-08-09T16:18:12.000Z</ns0:updated><ns0:published>2011-05-17T13:35:11.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109474787648168037085/</ns2:uri><ns2:username>mli...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113823374410613289742/</ns2:uri><ns2:username>garia...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Debugging story for IRT and glibc on x86-32 and x86-64</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Component-IRT</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1809/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1809" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1809" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-05T18:28:06.000Z</ns2:closedDate><ns2:id>1809</ns2:id></ns0:entry>

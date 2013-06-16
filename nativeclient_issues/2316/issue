@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIHSX47eCl7ImA9WhdUGUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2316</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">These shell scripts need appropriate copyright headers.
+
+'native_client/tests/spec2k/252.eon/run.ref.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/252.eon/run.train.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/188.ammp/run.ref.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/188.ammp/run.train.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/256.bzip2/run.ref.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/256.bzip2/run.train.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/186.crafty/run.ref.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/186.crafty/run.train.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/186.crafty/run.test.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/specdiff.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/254.gap/run.ref.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/254.gap/run.train.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/300.twolf/run.ref.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/300.twolf/run.train.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/300.twolf/run.test.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/179.art/run.ref.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/179.art/run.train.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/164.gzip/run.ref.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/164.gzip/run.train.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/175.vpr/run.ref.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/175.vpr/run.train.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/175.vpr/run.test.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/181.mcf/run.ref.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/181.mcf/run.train.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/255.vortex/run.ref.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/255.vortex/run.train.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/176.gcc/run.ref.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/176.gcc/run.train.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/183.equake/run.ref.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/183.equake/run.train.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/197.parser/run.ref.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/197.parser/run.train.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/253.perlbmk/run.ref.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/253.perlbmk/run.train.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/177.mesa/run.ref.sh' has non-whitelisted license 'UNKNOWN'
+'native_client/tests/spec2k/177.mesa/run.train.sh' has non-whitelisted license 'UNKNOWN'</ns0:content><ns0:updated>2011-10-06T16:12:18.000Z</ns0:updated><ns0:published>2011-09-27T19:40:51.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>tests/spec2k/*.sh needs copyright header</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-</ns2:label><ns2:label>OS-</ns2:label><ns2:label>Arch-</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2316/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2316" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2316" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>2314</ns2:id></ns2:blocking><ns2:id>2316</ns2:id></ns0:entry>

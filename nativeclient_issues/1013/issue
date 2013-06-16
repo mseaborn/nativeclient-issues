@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUECQH47eCl7ImA9Wx9UGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1013</ns0:id><ns0:author>
+			<ns0:name>mli...@google.com</ns0:name><ns0:uri>/u/109474787648168037085/</ns0:uri></ns0:author><ns0:content type="html">I can run the httpd.py script from
+   C:\native_client_sdk_0_1_494_0
+but I can't run the one from
+   C:\native_client_sdk_0_1_507_0
+
+I noticed that 494 uses 
+  import BaseHTTPServer
+  import SimpleHTTPServer
+  import SocketServer
+
+While 507 uses
+  import http.server
+  import http.server
+  import socketserver
+
+This seems to have broken my ability to run a web server on windows Python 2.6.6
+
+</ns0:content><ns0:updated>2011-02-18T00:07:41.000Z</ns0:updated><ns0:published>2010-10-11T20:21:20.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:state>closed</ns2:state><ns0:title>Can't find http in httpd.py</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>TeamBoulder</ns2:label><ns2:label>Milestone-Arctic-Sea-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1013/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1013" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1013" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-02-12T05:35:18.000Z</ns2:closedDate><ns2:id>1013</ns2:id></ns0:entry>

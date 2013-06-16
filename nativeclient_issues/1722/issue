@@ -1,0 +1,56 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEIEQH47eCl7ImA9WhZQFUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1722</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+
+nacl r4970 or higher
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+
+linux lucid 64
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+
+none
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. run scons tests in parallel (-j8) (may be important to compile with pnacl, maybe not)
+
+2. sometimes the fib_scalar test or fib_array test will segfault at the very end (??):
+
+Example with fib_array:
+
+ERROR: Command returned normal -11, expecting ['normal'] 0 for linux2
+======================================================================
+Stdout
+======================================================================
+rpc call intiated fib:ii:I
+input 0:  i(1)
+input 1:  i(1)
+rpc call complete fib:ii:I
+output 0:  I(10,1,1,2,3,5,8,13,21,34,55)
+
+rpc call intiated fib:ii:I
+input 0:  i(1)
+input 1:  i(2)
+rpc call complete fib:ii:I
+output 0:  I(15,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987)
+
+
+======================================================================
+Stderr
+======================================================================
+0&amp;gt; 1&amp;gt; 2&amp;gt; 
+RESULT fib_array_test.out: FAILED= 0.010000 secs
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Test should pass fine.
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+Will try turning off parallel testing on the try bot for now.
+</ns0:content><ns0:updated>2011-04-22T23:55:01.000Z</ns0:updated><ns0:published>2011-04-22T18:51:45.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:cc>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>lucid pnacl bots fail on fib srpc tests when run in parallel since r4970</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>Milestone-Caviar</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1722/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1722" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1722" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-04-22T23:55:01.000Z</ns2:closedDate><ns2:id>1722</ns2:id></ns0:entry>

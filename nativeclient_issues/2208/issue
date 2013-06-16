@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AMRX47eCl7ImA9WhdWFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2208</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">glibc's dl-trampoline.S calls the C function _dl_fixup(), which normally must be careful not to do to any floating point operations, since dl-trampoline.S currently does not save and restore floating point registers.
+
+However, this assumption of dl-trampoline's is broken under x86-64 NaCl, because _dl_fixup() indirectly calls the tls_get syscall, which can clobber %mmx registers.
+
+For example, run_float_math_test will fail when run with NACLVERBOSITY=4 (or &amp;quot;-vvvv&amp;quot;) against x86-64 nacl-glibc.  It produces the output:
+
+ERROR NAN(0.000000) != NaN at 39
+Print out of NaN: nan
+ERROR inf != Inf at 41
+Print out of Infinity: inf
+ERROR inf != Inf at 43
+...
+14 errs!
+
+This happens presumably because the NaClLog() calls end up clobbering %mmx registers, so the arguments to isinf(), isnan() etc. are overwritten.
+
+I discovered this when adding a NaClXMutexLock() call into the syscall path (for issue 140), since on Windows this apparently clobbers %mmx registers.
+
+We probably do not want to commit to having the IRT or service_runtime preserve %mmx registers etc. across syscalls and IRT calls.  I suspect we should change dl-trampoline.S to save and restore these registers.  This is a slow path anyway.  At a minimum, we should save and restore registers that are used for argument-passing in the x86-64 ABI.
+</ns0:content><ns0:updated>2011-09-08T18:16:24.000Z</ns0:updated><ns0:published>2011-08-30T00:38:38.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Dynamic linker's dl-trampoline fails to preserve %xmm registers</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2208/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2208" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2208" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-09-08T18:16:24.000Z</ns2:closedDate><ns2:id>2208</ns2:id></ns0:entry>

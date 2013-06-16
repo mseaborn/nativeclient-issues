@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0UFSX47eCl7ImA9WhdTFUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2010/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=6030
+
+------------------------------------------------------------------------
+r6030 | kschimpf@google.com | Wed Jul 13 14:02:57 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/modeled_insts.txt?r1=6030&amp;r2=6029&amp;pathrev=6030
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/bsr-mask.dis?r1=6030&amp;r2=6029&amp;pathrev=6030
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/bsf-mask.rval?r1=6030&amp;r2=6029&amp;pathrev=6030
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/zero_extends.c?r1=6030&amp;r2=6029&amp;pathrev=6030
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/nc_opcode_table_64.h?r1=6030&amp;r2=6029&amp;pathrev=6030
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/bsf-mask.hex?r1=6030&amp;r2=6029&amp;pathrev=6030
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/bsf-mask.dis?r1=6030&amp;r2=6029&amp;pathrev=6030
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/bsr-mask.hex?r1=6030&amp;r2=6029&amp;pathrev=6030
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/bsr-mask.rval?r1=6030&amp;r2=6029&amp;pathrev=6030
+
+Turn off zero-extends for bsf and bsr instructions. Fixes a sandbox escape.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2010
+
+TEST=src/trusted/validator_x86/testdata/64/bsf-mask.dis
+TEST=src/trusted/validator_x86/testdata/64/bsf-mask.rval
+
+TEST=src/trusted/validator_x86/testdata/64/bsr-mask.dis
+TEST=src/trusted/validator_x86/testdata/64/bsr-mask.rval
+Review URL: http://codereview.chromium.org/7353022
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-07-13T21:06:58.000Z</ns0:updated><ns0:published>2011-07-13T21:06:58.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2010#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2010/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

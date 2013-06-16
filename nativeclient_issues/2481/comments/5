@@ -1,0 +1,69 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYHQH47eCl7ImA9WhRaFE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2481/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7816
+
+------------------------------------------------------------------------
+r7816 | pdox@google.com | Thu Feb 16 15:14:52 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/driver_tools.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-dg++.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/artools.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-dgcc.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-nmf.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/ldtools.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-ld.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/loader.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-as.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-x86_64-as.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-strip.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-nativeld.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/redirect.bat?r1=7816&amp;r2=7815&amp;pathrev=7816
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-i686-as.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-opt.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-clang++.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/findpython.sh?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-driver.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-dis.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-translate.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-meta.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-nm.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-bclink.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/driver_env.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-ar.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pathtools.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/redirect.sh?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-illegal.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/driver_log.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/shelltools.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-clang.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-nop.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-ranlib.py?r1=7816&amp;r2=7815&amp;pathrev=7816
+
+PNaCl driver cleanup/enhancements:
+
+* Update copyright year. (2011 -&gt; 2012)
+
+* Replace "tools/llvm/utman.sh" with "pnacl/build.sh" in comments.
+
+* Add "help" info module (driver_help.py), displayed using -h or --help. Text is only added for pnacl-clang, pnacl-translate, and pnacl-as in this CL.
+
+* Switch to using a redirector shell script for each tool, instead of directly invoking the .py script.
+This has two advantages:
+1) This shell script can look for Python 2.6 using "which", or accept a path via the PYTHON environment variable.
+2) Python can generate and use pre-compiled code. (.pyc files)
+
+* Make RunDriver() import and execute driver modules directly, instead of executing a separate Python process. This should marginally improve speed, especially on Windows, where fork/exec is expensive.
+
+* Remove pnacl-x86_64-as and pnacl-i686-as (unused native tools).
+
+* Convert "env" from a class object to an instance object. (this is generally more hygenic).
+
+* Get rid of "from X import *" in a few files (a few cases remain).
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2523
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2481
+Review URL: https://chromiumcodereview.appspot.com/9347041
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-02-16T23:15:31.000Z</ns0:updated><ns0:published>2012-02-16T23:15:31.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2481#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2481/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

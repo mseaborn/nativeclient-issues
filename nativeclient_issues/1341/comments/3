@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEERX47eCl7ImA9Wx9WGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1341/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4221
+
+------------------------------------------------------------------------
+r4221 | mseaborn@chromium.org | Mon Jan 24 17:54:29 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=4221&amp;r2=4220&amp;pathrev=4221
+
+Scons: Fix SelUniversalTest() to work with built_elsewhere=1
+
+This should fix Buildbot breakage introduced by r4218.
+
+The dependency on sel_ldr does not work when using built_elsewhere=1,
+which is used in the ARM (non-emulated) and Windows Atom bots.  The
+bots attempt to rebuild sel_ldr in the small_tests phase, and this
+fails.  On Windows, it fails because "cl" is not present.  On ARM, it
+looks like the resulting executable (presumably built using the
+system's gcc) is bad in some way.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1341
+TEST=as for r4218
+
+Review URL: http://codereview.chromium.org/6277019
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-25T01:56:44.000Z</ns0:updated><ns0:published>2011-01-25T01:56:44.000Z</ns0:published><ns2:updates>
+			<ns2:status>New</ns2:status></ns2:updates><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1341#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1341/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

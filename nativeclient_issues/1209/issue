@@ -1,0 +1,70 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEENSX47eCl7ImA9WhdWGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1209</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">i was looking for the 32-bit arm toolchain build.  that this is 32-bit lucid is not great -- we should have a 32-bit hardy build for maximal compatibility.  anyway, i went to the toolchain build waterfall, looked at:
+
+http://chromegw.corp.google.com/i/client.nacl.toolchain/builders/lucid32-toolchain_arm-untrusted/builds/247/steps/archive_build/logs/stdio
+
+and saw what is an obvious failure, though the build step is green:
+
+python /b/build/scripts/command_wrapper/bin/command_wrapper.py -- python ../../../third_party/gsutil/gsutil cp native_client/arm-untrusted.tgz gs://nativeclient-archive2/toolchain/3830/naclsdk_linux_arm-untrusted.tgz
+ in dir /mnt/data/build/slave/lucid32-toolchain_arm-untrusted/build (timeout 600 secs)
+ watching logfiles {}
+ argv: ['python', '/b/build/scripts/command_wrapper/bin/command_wrapper.py', '--', 'python', '../../../third_party/gsutil/gsutil', 'cp', 'native_client/arm-untrusted.tgz', 'gs://nativeclient-archive2/toolchain/3830/naclsdk_linux_arm-untrusted.tgz']
+ environment:
+  AR=native_client/toolchain/linux_arm-trusted/arm-2009q3/bin/arm-none-linux-gnueabi-ar
+  AS=native_client/toolchain/linux_arm-trusted/arm-2009q3/bin/arm-none-linux-gnueabi-as
+  CC=native_client/toolchain/linux_arm-trusted/arm-2009q3/bin/arm-none-linux-gnueabi-gcc
+  CHROME_HEADLESS=1
+  CXX=native_client/toolchain/linux_arm-trusted/arm-2009q3/bin/arm-none-linux-gnueabi-g++
+  DISPLAY=:0.0
+  GSUTIL=../../../third_party/gsutil/gsutil
+  GYP_DEFINES=target_arch=arm sysroot=native_client/toolchain/linux_arm-trusted/arm-2009q3/arm-none-linux-gnueabi/libc linux_use_tcmalloc=0 armv7=1 arm_thumb=1 
+  GYP_GENERATORS=make
+  HOME=/home/chrome-bot
+  LANG=en_US.UTF-8
+  LD=native_client/toolchain/linux_arm-trusted/arm-2009q3/bin/arm-none-linux-gnueabi-ld
+  LOGNAME=chrome-bot
+  PAGER=cat
+  PATH=/mnt/data/build/../depot_tools:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+  PWD=/mnt/data/build/slave/lucid32-toolchain_arm-untrusted/build
+  PYTHONPATH=/mnt/data/build/third_party/buildbot_7_12:/mnt/data/build/third_party/twisted_8_1:/mnt/data/build/site_config:/mnt/data/build/scripts:/mnt/data/build/third_party:/mnt/data/build_internal/site_config
+  RANLIB=native_client/toolchain/linux_arm-trusted/arm-2009q3/bin/arm-none-linux-gnueabi-ranlib
+  SHELL=/bin/bash
+  USER=chrome-bot
+ closing stdin
+ using PTY: True
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File &amp;quot;/usr/lib/python2.6/threading.py&amp;quot;, line 532, in __bootstrap_inner
+    self.run()
+  File &amp;quot;/usr/lib/python2.6/threading.py&amp;quot;, line 484, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File &amp;quot;/b/build/scripts/command_wrapper/bin/command_wrapper.py&amp;quot;, line 77, in CallFunc
+    result = func(*args, **kwargs)
+  File &amp;quot;/b/build/scripts/command_wrapper/bin/command_wrapper.py&amp;quot;, line 65, in LogCommand
+    f = urllib.urlopen(options.logurl, params)
+  File &amp;quot;/usr/lib/python2.6/urllib.py&amp;quot;, line 88, in urlopen
+    return opener.open(url, data)
+  File &amp;quot;/usr/lib/python2.6/urllib.py&amp;quot;, line 207, in open
+    return getattr(self, name)(url, data)
+  File &amp;quot;/usr/lib/python2.6/urllib.py&amp;quot;, line 442, in open_https
+    errcode, errmsg, headers = h.getreply()
+  File &amp;quot;/usr/lib/python2.6/httplib.py&amp;quot;, line 1060, in getreply
+    response = self._conn.getresponse()
+  File &amp;quot;/usr/lib/python2.6/httplib.py&amp;quot;, line 986, in getresponse
+    response.begin()
+  File &amp;quot;/usr/lib/python2.6/httplib.py&amp;quot;, line 391, in begin
+    version, status, reason = self._read_status()
+  File &amp;quot;/usr/lib/python2.6/httplib.py&amp;quot;, line 349, in _read_status
+    line = self.fp.readline()
+  File &amp;quot;/usr/lib/python2.6/socket.py&amp;quot;, line 397, in readline
+    data = recv(1)
+  File &amp;quot;/usr/lib/python2.6/ssl.py&amp;quot;, line 96, in &amp;lt;lambda&amp;gt;
+    self.recv = lambda buflen=1024, flags=0: SSLSocket.recv(self, buflen, flags)
+  File &amp;quot;/usr/lib/python2.6/ssl.py&amp;quot;, line 222, in recv
+    raise x
+IOError: [Errno socket error] The read operation timed out</ns0:content><ns0:updated>2011-09-12T16:58:18.000Z</ns0:updated><ns0:published>2010-12-01T23:36:21.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>toolchain build archive step fails but bot is green</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1209/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1209" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1209" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-09-12T16:58:18.000Z</ns2:closedDate><ns2:id>1209</ns2:id></ns0:entry>

@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYBQX47eCl7ImA9Wx9UGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1132/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4328
+
+------------------------------------------------------------------------
+r4328 | mseaborn@chromium.org | Wed Feb 16 13:45:14 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/REVISIONS?r1=4328&amp;r2=4327&amp;pathrev=4328
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/Makefile?r1=4328&amp;r2=4327&amp;pathrev=4328
+
+Get toolchain sources from Git instead of tarballs + patches
+
+Switch tarball+patch invocations to using git clone+checkout.  Add the
+pinned Git commit IDs to tools/REVISIONS.
+
+Remove the version string munging because we do not want to leave
+uncommitted changes in the Git working copies.
+
+Remove some of the *_VERSION defines in the cases where they are not
+needed.
+
+We now assume bison and flex are installed.  Maintaining a patch for
+the generated files is not really maintainable, and it's easy to
+install bison/flex on our target systems.
+
+Still to do:
+ * Update the references to nacl-toolchain.git.
+ * Switch modular-build to use the Git repos too.
+ * Remove tools/patches.
+ * Record the SVN revision somewhere in the toolchain tarball.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1132
+TEST=cd tools &amp;&amp; make
+
+Review URL: http://codereview.chromium.org/6526055
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-02-16T21:52:30.000Z</ns0:updated><ns0:published>2011-02-16T21:52:30.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1132#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1132/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

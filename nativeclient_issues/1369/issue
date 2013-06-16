@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUECQH47eCl7ImA9Wx9UGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1369</ns0:id><ns0:author>
+			<ns0:name>dmichael@google.com</ns0:name><ns0:uri>/u/dmichael@google.com/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? N/A
+What version of the runtime are you using? N/A
+On what operating system? N/A
+What browser are you using? N/A
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1.  Go to http://codesite-staging.corp.google.com:9292/chrome/nativeclient/docs/tutorial.html (from within corp)
+2.  Try to click on 'installation instructions'
+3.  See 'The requested URL /chrome/nativeclient/installation.html was not found on this server.'
+
+What is the expected output? Some installation instructions.
+What do you see instead? 'The requested URL /chrome/nativeclient/installation.html was not found on this server.'
+
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-02-18T00:07:41.000Z</ns0:updated><ns0:published>2011-01-31T21:06:16.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/103868156703017965534/</ns2:uri><ns2:username>jos...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/103868156703017965534/</ns2:uri><ns2:username>jos...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112551196268481112795/</ns2:uri><ns2:username>jhart...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Staging site documentation has link to non-existent Installation Instructions</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Milestone-Arctic-Sea-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1369/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1369" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1369" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-02-03T01:23:37.000Z</ns2:closedDate><ns2:id>1369</ns2:id></ns0:entry>

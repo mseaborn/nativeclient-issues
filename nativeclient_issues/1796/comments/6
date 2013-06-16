@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcNQH47eCl7ImA9WhZWF04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1796/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">If I understand the kernel bug correctly, it could affect NaCl in three places:
+
+ 1) imc_connect()+imc_accept() as described above.
+
+ 2) Sending a SocketAddress descriptor across a ConnectedSocket using imc_sendmsg()+imc_recvmsg().
+     * This is done during nexe startup in NaClSendServiceAddressTo() and ServiceRuntime::GetSocketAddress().  However, because nap-&gt;service_address is never freed, this code would not be affected by the Mac kernel bug.  (On the other hand, this means that if the trusted plugin dies during nexe startup, sel_ldr could be left running.)
+     * Currently I don't know of any other case where a SocketAddress is sent across a ConnectedSocket.  However, Bennet may be planning to add uses of this in the future.
+     * There used to be a workaround for this in native_client/src/shared/imc/osx/nacl_imc.cc.  However, it is #if'd out (see OSX_BLEMISH_HEURISTIC).  The old comment I quoted before applies to this disabled workaround -- I had not realised before that it was disabled.
+     * It would be fairly easy to work around the bug in this case by adding an acknowledgement message.  (imc_sendmsg() is already synchronous on Windows when sending handles.)
+
+ 3) In Chromium's chrome/browser/nacl_host/nacl_process_host.cc.  The descriptors sent in NaClProcessMsg_Start are closed in the browser process after it sends them (via setting auto_close), so they are risk of getting garbage collected.
+</ns0:content><ns0:updated>2011-05-18T15:54:51.000Z</ns0:updated><ns0:published>2011-05-18T15:54:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1796#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1796/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

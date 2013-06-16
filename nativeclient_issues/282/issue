@@ -1,0 +1,48 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIDR347eCl7ImA9Wx9UGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/282</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Steps to reproduce:
+
+$ cat &amp;gt;hellow.c &amp;lt;&amp;lt;END
+#include &amp;lt;stdio.h&amp;gt;
+int main()
+{
+  printf(&amp;quot;hello world\n&amp;quot;);
+  return 0;
+}
+END
+
+# This works:
+$ nacl-gcc hellow.c -o hellow
+$ sel_ldr hellow
+hello world
+[14793,3086371728:10:54:34.216791] Exit syscall handler: 0
+
+# But this doesn't:
+$ nacl-gcc hellow.c -o hellow -Wl,--section-start,.rodata=0x100000
+$ sel_ldr hellow
+Segmentation fault
+
+$ readelf -l hellow
+...
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  PHDR           0x000000 0x00000000 0x00000000 0x000b4 0x000b4 R   0x4
+  LOAD           0x010000 0x00020000 0x00020000 0x06180 0x06180 R E 0x10000
+  LOAD           0x020000 0x00100000 0x00100000 0x104d4 0x104d4 R   0x10000
+  LOAD           0x040000 0x00120000 0x00120000 0x008ec 0x00970 RW  0x10000
+...
+
+(gdb) bt
+#0  0xb7ae34e7 in memset () from /lib/tls/i686/cmov/libc.so.6
+#1  0x08058131 in NaClFillMemoryRegionWithHalt (start=0xa78e7180, 
+size=892544)
+    at src/trusted/service_runtime/arch/x86/sel_ldr_x86.c:90
+#2  0x08058238 in NaClFillEndOfTextRegion (nap=0xbfef199c)
+    at src/trusted/service_runtime/arch/x86/sel_ldr_x86.c:119
+#3  0x0805548d in NaClAppLoadFile (gp=0xbfef1a70, nap=0xbfef199c, 
+    check_abi=NACL_ABI_CHECK_OPTION_CHECK)
+    at src/trusted/service_runtime/sel_ldr_standard.c:206
+#4  0x0804b0dc in main (ac=2, av=0xbfef1b94)
+    at src/trusted/service_runtime/sel_main.c:450
+</ns0:content><ns0:updated>2011-02-18T00:06:16.000Z</ns0:updated><ns0:published>2010-01-29T11:00:53.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>sel_ldr segfaults if rodata segment is higher than expected</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Security</ns2:label><ns2:label>Milestone-Arctic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/282/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=282" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/282" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-11-22T21:57:30.000Z</ns2:closedDate><ns2:id>282</ns2:id></ns0:entry>

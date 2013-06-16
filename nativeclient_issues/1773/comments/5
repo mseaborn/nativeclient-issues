@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUFQn47eCl7ImA9WhZWFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1773/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bradnelson@google.com</ns0:name><ns0:uri>/u/bradnelson@google.com/</ns0:uri></ns0:author><ns0:content type="html">So the way this gets handled with the native compiler on windows (for reference) is that cl supports the @ syntax where it takes the command line from a file instead of the command line.
+
+Here are the relevant scons environment variables:
+MAXLINELINEGTH - selects when a command line is big enough it needs special treatment (2048 when the msvs compiler's been selecte, but probably 128072 in nacl_env currently, posix default).
+TEMPFILEPREFIX - prefix to put when using a temp file
+TEMPFILE - scons'y command processor that does the work of generating the tempfile and cleanup etc.
+
+We can inject the alternative path simply enough with:
+nacl_env['MAXLINELENGTH'] = 2048
+nacl_env['TEMPFILEPREFIX'] = '--from_file'
+nacl_env['LINKCOM'] = '${TEMPFILE("' + nacl_env['LINKCOM'] + '")}'
+
+Which would cause the linker to get invoked with:
+nacl-gcc --from_file foo.tmp
+where foo.tmp contains the desired command line in full.
+
+That solves the problem of how to get the information from scons. The question remains as to the best way to use this. I would think a wrapper script which invokes ar multiple times would be the simplest.
+</ns0:content><ns0:updated>2011-05-16T17:16:53.000Z</ns0:updated><ns0:published>2011-05-16T17:16:53.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bradnelson@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1773#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1773/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

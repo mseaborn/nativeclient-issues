@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QBQn47eCl7ImA9WhRaFU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2096/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Current blockers are:
+ * For testing purposes we need Breakpad to be compiled into Linux Chromium by default: issue chromium:105778.
+ * For quality-of-implementation purposes we need to ensure that untrusted code cannot cause Breakpad to be run with insufficient stack: issue 2397.
+
+Aside from that, we are mostly ready to enable NaCl's signal handling by default without having to enable NaCl's exception handling syscalls.
+</ns0:content><ns0:updated>2012-02-17T23:29:13.000Z</ns0:updated><ns0:published>2012-02-17T23:29:13.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Component-IRT</ns2:label><ns2:label>-MStone-17</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:blockedOnUpdate>2397</ns2:blockedOnUpdate><ns2:blockedOnUpdate>chromium:105778</ns2:blockedOnUpdate></ns2:updates><ns0:title>Comment 10 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2096#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2096/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

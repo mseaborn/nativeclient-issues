@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0QHR347eCl7ImA9WhVTFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2623/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7914
+
+------------------------------------------------------------------------
+r7914 | mseaborn@chromium.org | Wed Feb 29 20:14:27 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/nonnacl_util/posix/sel_ldr_launcher_posix.cc?r1=7914&amp;r2=7913&amp;pathrev=7914
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/nonnacl_util/build.scons?r1=7914&amp;r2=7913&amp;pathrev=7914
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/nonnacl_util/win/sel_ldr_launcher_win.cc?r1=7914&amp;r2=7913&amp;pathrev=7914
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/nonnacl_util/sel_ldr_launcher.cc?r1=7914&amp;r2=7913&amp;pathrev=7914
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/nonnacl_util/sel_ldr_launcher_chrome.cc?r1=7914&amp;r2=7913&amp;pathrev=7914
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=7914&amp;r2=7913&amp;pathrev=7914
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/sel_universal/sel_universal.cc?r1=7914&amp;r2=7913&amp;pathrev=7914
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/nonnacl_util/sel_ldr_launcher.h?r1=7914&amp;r2=7913&amp;pathrev=7914
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=7914&amp;r2=7913&amp;pathrev=7914
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/nonnacl_util/sel_ldr_launcher_test.cc?r1=7914&amp;r2=7913&amp;pathrev=7914
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main_chrome.c?r1=7914&amp;r2=7913&amp;pathrev=7914
+
+Revert SelLdrLauncher refactoring: r7867, r7884, r7885, r7895
+
+r7867: "SelLdrLauncher refactoring."
+r7884: "Fix handle count assertion in NaClMainForChromium"
+r7885: "Remove addition of unused IMC handles"
+r7895: "Correct the socket number that the startup information is
+transmitted on."
+
+These changes broke nacl_integration in NaCl-in-Chromium.
+
+It would be better to start again cleanly than to try to patch this
+further.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2623
+TEST=NaCl trybots
+
+Review URL: https://chromiumcodereview.appspot.com/9545013
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-03-01T04:15:36.000Z</ns0:updated><ns0:published>2012-03-01T04:15:36.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2623#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2623/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

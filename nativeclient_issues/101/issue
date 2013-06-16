@@ -1,0 +1,52 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkAHRX47eCl7ImA9WxNXE08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/101</ns0:id><ns0:author>
+			<ns0:name>jdtang...@gmail.com</ns0:name><ns0:uri>/u/116022617263272286242/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+nacl_mac_538a
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+MacOS X 10.5.8
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+N/A. I am trying to run standalone.
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+N/A
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+Precisely what it says in 
+http://nativeclient.googlecode.com/svn/trunk/src/native_client/documentation/getting_started.
+html
+
+1. cd install_dir/build/native_client/tests/earth
+2. make debug run
+
+What is the expected output? 
+A running Earth.
+
+What do you see instead?
+Mercury:earth johnt$ make debug  run
+
+g++ earth.cc /Users/johnt/nacl/build/native_client/common/standalone.cc  -
+I/Users/johnt/nacl/build/native_client/..  -Wall -Werror -DSTANDALONE -O0  -g  -lpthread -lm 
+-o earth_debug -
+I/Users/johnt/nacl/build/native_client/../third_party/sdl/osx/v1_2_13/SDL.framework/Headers 
+/Users/johnt/nacl/build/native_client/common/SDLApplication.m -
+F/Users/johnt/nacl/build/native_client/../third_party/sdl/osx/v1_2_13 -framework SDL -
+framework Cocoa
+
+./earth_debug 
+dyld: Library not loaded: @executable_path/../Frameworks/SDL.framework/Versions/A/SDL
+  Referenced from: /Users/johnt/nacl/build/native_client/tests/earth/./earth_debug
+  Reason: image not found
+make: *** [run] Trace/BPT trap
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+I used the unmodified download. 
+
+I also tried the life demo, and &amp;quot;make debug run&amp;quot; fails in the same way.
+
+Note that make release nacl run works as expected. </ns0:content><ns0:updated>2009-09-30T15:32:14.000Z</ns0:updated><ns0:published>2009-09-24T17:43:37.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:state>closed</ns2:state><ns0:title>demo fails to run</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/101/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=101" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/101" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2009-09-30T15:32:14.000Z</ns2:closedDate><ns2:id>101</ns2:id></ns0:entry>

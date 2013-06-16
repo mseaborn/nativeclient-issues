@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AFSH47eCl7ImA9WhdWFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1085</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">pthread_key_create() allows registering a destructor function for the TSD/TLS entry.  This function is supposed to get run when a thread exits (provided the entry is non-NULL, I think).  See http://www.opengroup.org/onlinepubs/000095399/functions/pthread_key_create.html.
+
+In nacl-newlib, the destructor is run if the thread does an explicit pthread_exit() call, but *not* when the thread function returns.
+
+This seems to be a bug.
+
+I can see nothing in the specs that suggests the destructor should only be called on an explicit pthread_exit().  They say the opposite:  
+&amp;quot;If the start_routine returns, the effect is as if there was an implicit call to pthread_exit()&amp;quot; -- http://www.opengroup.org/onlinepubs/007908799/xsh/pthread_create.html
+
+thread_test.c works around this bug:  the TSD test has a pthread_exit() call, with no comment for why it is necessary.
+
+Strangely, nc_thread.c goes out of its way to do this:  this seems to be the sole purpose of the &amp;quot;exiting_without_returning&amp;quot; flag.</ns0:content><ns0:updated>2011-09-08T18:15:19.000Z</ns0:updated><ns0:published>2010-10-25T10:53:40.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100177598732114324016/</ns2:uri><ns2:username>mcgra...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>nacl-newlib: TSD/TLS destructor only run by explicit pthread_exit()</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1085/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1085" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1085" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-09-08T18:15:19.000Z</ns2:closedDate><ns2:id>1085</ns2:id></ns0:entry>

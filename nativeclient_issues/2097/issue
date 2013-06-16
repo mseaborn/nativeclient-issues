@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0ADSX47eCl7ImA9WhRUE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2097</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+MacOS systems do not provide crash reports for crashes in trusted code.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+It makes it harder to detect and diagnose crashes.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+Fix crash-reporting for MacOS.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+MacOS systems provide reports for crashes in trusted code.
+</ns0:content><ns0:updated>2012-01-23T21:56:18.000Z</ns0:updated><ns0:published>2011-07-27T18:28:48.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Breakpad crash reporting for Mac OS X</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>CoreRuntime</ns2:label><ns2:label>MStone-17</ns2:label><ns2:label>Pri-1</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2097/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2097" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2097" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>105778</ns2:id><ns2:project>chromium</ns2:project></ns2:blockedOn><ns2:closedDate>2012-01-19T07:13:53.000Z</ns2:closedDate><ns2:id>2097</ns2:id></ns0:entry>

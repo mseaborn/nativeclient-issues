@@ -1,0 +1,53 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEIMSH47eCl7ImA9WhRSFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2443/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Note that exit status -5 is SIGTRAP, which probably means the CPU is executing the breakpoint instructions that we fill the dynamic code area with initially.
+
+I know that issue 2214 (flushing the icache in the RW mapping) could be a cause of failures.  However, if I apply the fix for that, I find that the test still dies with SIGTRAP.
+
+It looks like icache flushing isn't working properly.  Here's what I get when running the test under gdb (with printf()s added to nacl_text.c to show the addresses we're flushing):
+
+mseaborn@localhost:~$ gdb --args ./sel_ldr -E NACL_SRPC_STANDALONE=1 dynamic_load_test_arm.nexe 
+...
+Running test_stress...
+flush create 0x150000 0x150020
+flush create 0x150020 0x150040
+flush create 0x150040 0x150060
+...
+flush create 0x153fa0 0x153fc0
+flush create 0x153fc0 0x153fe0
+flush create 0x153fe0 0x154000
+flush create 0x154000 0x154020
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+[Switching to LWP 10162]
+0x00154000 in ?? ()
+(gdb) disassemble 0x00154000, 0x00154040
+Dump of assembler code from 0x154000 to 0x154040:
+=&gt; 0x00154000:	mov	r0, #210	; 0xd2
+   0x00154004:	orr	r0, r0, #1024	; 0x400
+   0x00154008:	bic	lr, lr, #-268435441	; 0xf000000f
+   0x0015400c:	bx	lr
+   0x00154010:	nop			; (mov r0, r0)
+   0x00154014:	nop			; (mov r0, r0)
+   0x00154018:	nop			; (mov r0, r0)
+   0x0015401c:	nop			; (mov r0, r0)
+   0x00154020:	bkpt	0x6666
+   0x00154024:	bkpt	0x6666
+   0x00154028:	bkpt	0x6666
+   0x0015402c:	bkpt	0x6666
+   0x00154030:	bkpt	0x6666
+   0x00154034:	bkpt	0x6666
+   0x00154038:	bkpt	0x6666
+   0x0015403c:	bkpt	0x6666
+End of assembler dump.
+(gdb) cont
+Continuing.
+flush create 0x154020 0x154040
+flush create 0x154040 0x154060
+flush create 0x154060 0x154080
+...
+
+Disassembling shows that the instruction is no longer a breakpoint; so does the fact that the process will continue successfully.
+
+Interestingly, this always seems to fail at a 4k page boundary.  I wonder if this is interacting with the page-by-page HLT/BKPT page filling that nacl_text.c does - which fills pages at a 64k granularity.
+</ns0:content><ns0:updated>2011-11-16T20:49:49.000Z</ns0:updated><ns0:published>2011-11-16T20:49:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2443#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2443/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,137 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UERX47eCl7ImA9WxFaGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/706</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+
+cd native_client/tools/modular-build
+python build.py -b
+
+The output ends as follows:
+
+** building linux_headers-src
+Initialized empty Git repository in /usr/local/google/h/1nacl-internal/native_client/tools/modular-build/out/source/linux_headers/.git/
+Updating origin
+From http://repo.or.cz/r/linux-headers-for-nacl
+ * [new branch]      to-be-reviewed -&amp;gt; origin/to-be-reviewed
+Note: checking out '2dc04f8190a54defc0d59e693fa6cff3e8a916a9'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b new_branch_name
+
+HEAD is now at 2dc04f8... Import a subset of the Linux kernel headers
+** building glibc
+configure: WARNING: If you wanted to set the --build type, don't use --host.
+    If a cross compiler is detected then cross compile mode will be used.
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... i486-pc-linux-gnu
+configure: running configure fragment for add-on libidn
+configure: running configure fragment for add-on nptl
+checking sysdep dirs... sysdeps/i386/elf sysdeps/nacl nptl/sysdeps/unix/sysv/linux/i386/i486 nptl/sysdeps/unix/sysv/linux/i386 sysdeps/unix/sysv/linux/i386 nptl/sysdeps/unix/sysv/linux nptl/sysdeps/pthread sysdeps/pthread sysdeps/unix/sysv/linux sysdeps/gnu sysdeps/unix/common sysdeps/unix/mman sysdeps/unix/inet sysdeps/unix/sysv/i386 nptl/sysdeps/unix/sysv sysdeps/unix/sysv sysdeps/unix/i386 nptl/sysdeps/unix sysdeps/unix sysdeps/posix nptl/sysdeps/i386/i486 sysdeps/i386/i486 sysdeps/i386/fpu nptl/sysdeps/i386 sysdeps/i386 sysdeps/wordsize-32 sysdeps/ieee754/ldbl-96 sysdeps/ieee754/dbl-64 sysdeps/ieee754/flt-32 sysdeps/ieee754 sysdeps/generic/elf sysdeps/generic
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether ln -s works... yes
+checking for i486-linux-gnu-gcc... nacl64-gcc -m32
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether nacl64-gcc -m32 accepts -g... yes
+checking for nacl64-gcc -m32 option to accept ISO C89... none needed
+checking for gcc... gcc
+checking how to run the C preprocessor... nacl64-gcc -m32 -E
+checking for i486-linux-gnu-g++... no
+checking for i486-linux-gnu-c++... no
+checking for i486-linux-gnu-gpp... no
+checking for i486-linux-gnu-aCC... no
+checking for i486-linux-gnu-CC... no
+checking for i486-linux-gnu-cxx... no
+checking for i486-linux-gnu-cc++... no
+checking for i486-linux-gnu-cl.exe... no
+checking for i486-linux-gnu-FCC... no
+checking for i486-linux-gnu-KCC... no
+checking for i486-linux-gnu-RCC... no
+checking for i486-linux-gnu-xlC_r... no
+checking for i486-linux-gnu-xlC... no
+checking for g++... g++
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ accepts -g... yes
+checking whether /usr/local/google/h/1nacl-internal/native_client/tools/modular-build/out/input-prefix/glibc/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/as is GNU as... yes
+checking whether /usr/local/google/h/1nacl-internal/native_client/tools/modular-build/out/input-prefix/glibc/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/ld is GNU ld... yes
+checking for /usr/local/google/h/1nacl-internal/native_client/tools/modular-build/out/input-prefix/glibc/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/as... /usr/local/google/h/1nacl-internal/native_client/tools/modular-build/out/input-prefix/glibc/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/as
+checking version of /usr/local/google/h/1nacl-internal/native_client/tools/modular-build/out/input-prefix/glibc/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/as... 2.20, ok
+checking for /usr/local/google/h/1nacl-internal/native_client/tools/modular-build/out/input-prefix/glibc/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/ld... /usr/local/google/h/1nacl-internal/native_client/tools/modular-build/out/input-prefix/glibc/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/ld
+checking version of /usr/local/google/h/1nacl-internal/native_client/tools/modular-build/out/input-prefix/glibc/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/ld... 2.20, ok
+checking for pwd... /bin/pwd
+checking for i486-linux-gnu-gcc... (cached) nacl64-gcc -m32
+checking version of nacl64-gcc -m32... 4.4.3, ok
+checking for gnumake... no
+checking for gmake... no
+checking for make... make
+checking version of make... 3.81, ok
+checking for gnumsgfmt... no
+checking for gmsgfmt... no
+checking for msgfmt... msgfmt
+checking version of msgfmt... 0.17, ok
+checking for makeinfo... makeinfo
+checking version of makeinfo... 4.11, ok
+checking for sed... sed
+checking version of sed... 4.1.5, ok
+checking for autoconf... autoconf
+checking whether autoconf works... yes
+checking whether ranlib is necessary... no
+checking LD_LIBRARY_PATH variable... ok
+checking whether GCC supports -static-libgcc... -static-libgcc
+checking for bash... /bin/bash
+checking for gawk... gawk
+checking for perl... /usr/bin/perl
+checking for install-info... /usr/sbin/install-info
+checking for bison... /usr/bin/bison
+checking for signed size_t type... no
+checking for libc-friendly stddef.h... yes
+checking whether we need to use -P to assemble .S files... no
+checking whether .text pseudo-op must be used... yes
+checking for assembler global-symbol directive... .globl
+checking for .set assembler directive... yes
+checking for assembler .type directive prefix... @
+checking for .symver assembler directive... yes
+checking for ld --version-script... yes
+checking for .previous assembler directive... yes
+checking for .protected and .hidden assembler directive... yes
+checking whether __attribute__((visibility())) is supported... yes
+checking for broken __attribute__((visibility()))... no
+checking for broken __attribute__((alias()))... no
+checking whether to put _rtld_local into .sdata section... no
+checking for .preinit_array/.init_array/.fini_array support... yes
+checking for libunwind-support in compiler... no
+checking for -z nodelete option... yes
+checking for -z nodlopen option... yes
+checking for -z initfirst option... yes
+checking for -z relro option... no
+configure: error: linker with -z relro support required
+Traceback (most recent call last):
+  File &amp;quot;build.py&amp;quot;, line 268, in &amp;lt;module&amp;gt;
+    Main(sys.argv[1:])
+  File &amp;quot;build.py&amp;quot;, line 264, in Main
+    btarget.BuildMain(root_targets, args, sys.stdout)
+  File &amp;quot;/usr/local/google/h/1nacl-internal/native_client/tools/modular-build/btarget.py&amp;quot;, line 407, in BuildMain
+    Rebuild(root_targets, stream)
+  File &amp;quot;/usr/local/google/h/1nacl-internal/native_client/tools/modular-build/btarget.py&amp;quot;, line 376, in Rebuild
+    Visit(target)
+  File &amp;quot;/usr/local/google/h/1nacl-internal/native_client/tools/modular-build/btarget.py&amp;quot;, line 337, in wrapper
+    value = func(*args)
+  File &amp;quot;/usr/local/google/h/1nacl-internal/native_client/tools/modular-build/btarget.py&amp;quot;, line 372, in Visit
+    target.DoBuild()
+  File &amp;quot;/usr/local/google/h/1nacl-internal/native_client/tools/modular-build/btarget.py&amp;quot;, line 79, in DoBuild
+    self._build_func()
+  File &amp;quot;/usr/local/google/h/1nacl-internal/native_client/tools/modular-build/btarget.py&amp;quot;, line 221, in DoBuild
+    cwd=build_dir)
+  File &amp;quot;/usr/lib/python2.5/subprocess.py&amp;quot;, line 462, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['env', 'PATH=/usr/local/google/h/1nacl-internal/native_client/tools/modular-build/out/input-prefix/glibc/bin:/usr/local/google/homedirs/pasko/depot_tools:/usr/local/google/homedirs/pasko/local/bin:/bin:/bin:/usr/local/google/homedirs/pasko/local/bin:/bin:/bin:/usr/local/symlinks:/usr/local/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/X11:/usr/sbin:/sbin:/usr/lib/openoffice/program:/usr/sbin:/sbin:/usr/lib/openoffice/program', 'env', '/usr/local/google/h/1nacl-internal/native_client/tools/modular-build/out/source/glibc/configure', '--prefix=/usr/local/google/h/1nacl-internal/native_client/tools/modular-build/out/input-prefix/glibc', '--prefix=/nacl64', '--host=i486-linux-gnu', 'CC=nacl64-gcc -m32', 'CFLAGS=-march=i486 -pipe -fno-strict-aliasing -O2 -mno-tls-direct-seg-refs -g', '--with-headers=/usr/local/google/h/1nacl-internal/native_client/tools/modular-build/out/source/linux_headers/include', '--enable-kernel=2.2.0']' returned non-zero exit status 1
+
+attached is out/build/glibc/config.log
+</ns0:content><ns0:updated>2010-07-23T14:26:44.000Z</ns0:updated><ns0:published>2010-07-19T17:16:47.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/mseaborn@google.com/</ns2:uri><ns2:username>mseaborn@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Modular build on x86-64 hardy fails during glibc configuration step</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/706/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=706" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/706" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-07-23T14:26:44.000Z</ns2:closedDate><ns2:id>706</ns2:id></ns0:entry>

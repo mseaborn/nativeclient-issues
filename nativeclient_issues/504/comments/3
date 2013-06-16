@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0cGRn47eCl7ImA9WhZSF00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/504/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4735
+
+------------------------------------------------------------------------
+r4735 | mseaborn@chromium.org | Fri Apr 01 16:32:32 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_text.c?r1=4735&amp;r2=4734&amp;pathrev=4735
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/win/sel_memory.c?r1=4735&amp;r2=4734&amp;pathrev=4735
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_signal_unittest.c?r1=4735&amp;r2=4734&amp;pathrev=4735
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/linux/sel_memory.c?r1=4735&amp;r2=4734&amp;pathrev=4735
+
+Dynamic loading: Fix the NaCl_page_free() warnings that occur on Windows
+
+Before this change, sel_ldr produces warnings like the following when
+dynamic code loading is enabled:
+  NaCl_page_free: VirtualFree(0x10590000, 0, MEM_RELEASE) failed with error 0x1E7
+
+There are three Map() calls in nacl_text.c:
+ 1) During startup:  Map() read+write
+    This needs to NaCl_page_free() the originally-reserved address space.
+ 2) During startup:  Map() read+execute
+    This doesn't need the effector to do the unmap because
+    NaClMakeDynamicTextShared calls UnmapUnsafe() explicitly.
+ 3) From the dyncode syscall:  Map() read+write
+    This doesn't need the effector to do an unmap because this maps
+    into trusted address space.
+
+(2) and (3) were producing warnings before.
+
+Fix by calling NaCl_page_free() explicitly before (1), and not for
+(2) and (3).
+
+Change NaCl_page_free()'s warning to be fatal in order to catch
+mistakes like this in future.  Fix one test where NaCl_page_free() is
+called twice on the same address.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=504
+TEST=run_dynamic_load_test + check output on Windows manually
+
+Review URL: http://codereview.chromium.org/6689005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-01T23:37:07.000Z</ns0:updated><ns0:published>2011-04-01T23:37:07.000Z</ns0:published><ns2:updates>
+			<ns2:summary>Dynamic loading produces warnings on Windows</ns2:summary></ns2:updates><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=504#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/504/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkABQ347eCl7ImA9WhZTF0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1560/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4589
+
+------------------------------------------------------------------------
+r4589 | mseaborn@chromium.org | Mon Mar 21 19:23:25 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=4589&amp;r2=4588&amp;pathrev=4589
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/debug_stub/debug_stub_test.py?r1=4589&amp;r2=4588&amp;pathrev=4589
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/debug_stub/nacl.scons?r1=4589&amp;r2=4588&amp;pathrev=4589
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/debug_stub/transport_common.cc?r1=4589&amp;r2=4588&amp;pathrev=4589
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/debug_stub/debugger_test.c?r1=4589&amp;r2=4588&amp;pathrev=4589
+
+Debug stub: Add a simple test case
+
+This test works on x86-64 Windows only since this is currently the
+only platform where the debug stub works.
+
+The test runs a small program which sets registers to fixed values and
+faults.  The test then checks that the debug stub returns these
+register values successfully.
+
+In order to make the test reliable, we have to set SO_REUSEADDR on the
+debug stub's socket.  Otherwise, the OS does not release the TCP port
+promptly when sel_ldr exits, and we would have to wait for a timeout
+to elapse before the test can be successfully run again.
+
+The test must be disabled to start with since the debug stub is
+enabled by uncommenting lines in the source code.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1560
+TEST=run_debug_stub_test
+
+Review URL: http://codereview.chromium.org/6676070
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-03-22T02:25:52.000Z</ns0:updated><ns0:published>2011-03-22T02:25:52.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1560#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1560/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

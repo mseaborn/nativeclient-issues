@@ -1,0 +1,62 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUMCQH47eCl7ImA9WxFbFkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/231</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">nacl-gcc is aligning to bundle boundaries some instructions that don't need 
+to be aligned.  The validator allows direct branches to unaligned 
+instructions, but nacl-gcc is not taking advantage of this by default.
+
+Example:
+
+$ cat &amp;gt;simple-jump.c &amp;lt;&amp;lt;END
+int g(int x)
+{
+  return x ? 0x100 : 0x200;
+}
+END
+$ nacl-gcc -S simple-jump.c -o -
+        .file   &amp;quot;simple-jump.c&amp;quot;
+        .text
+        .p2align 5,,31
+.globl g
+        .type   g, @function
+g:
+        pushl   %ebp
+        movl    %esp, %ebp
+        subl    $4, %esp
+        cmpl    $0, 8(%ebp)
+        je      .L2
+        movl    $256, -4(%ebp)
+        jmp     .L4
+        .p2align 5
+.L2:
+        movl    $512, -4(%ebp)
+        .p2align 5
+.L4:
+        movl    -4(%ebp), %eax
+        leave
+        popl    %ecx
+        nacljmp %ecx
+        .size   g, .-g
+        .ident  &amp;quot;GCC: (GNU) 4.2.2&amp;quot;
+        .section        .note.GNU-stack,&amp;quot;&amp;quot;,@progbits
+
+
+The last two &amp;quot;.p2align 5&amp;quot; directives are unnecessary.  If you pass the 
+option &amp;quot;-falign-labels=1&amp;quot;, gcc omits these directives and generates more 
+compact code that still validates.
+
+The code responsible seems to be the following chunk in our gcc patch which 
+simply sets the default for -falign-labels:
+
++  /* NativeClient: set the alignment based on command line flags. */
++  if (flag_nacl_align_pow2 != NACL_ALIGN_POW2)
++    {
++      align_jumps = (1 &amp;lt;&amp;lt; flag_nacl_align_pow2);
++      align_labels = (1 &amp;lt;&amp;lt; flag_nacl_align_pow2);
++      align_functions = (1 &amp;lt;&amp;lt; flag_nacl_align_pow2);
++    }
+
+I imagine we're not entirely sure that -falign-labels=1 always generates 
+correct code?
+</ns0:content><ns0:updated>2010-07-09T14:57:41.000Z</ns0:updated><ns0:published>2009-12-22T15:10:50.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>nacl-gcc: Default -falign-labels setting is overly high</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Milestone-SDK-Win-Dev</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>OS-NaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/231/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=231" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/231" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-07-09T14:57:41.000Z</ns2:closedDate><ns2:id>231</ns2:id><ns2:mergedInto>
+			<ns2:id>519</ns2:id></ns2:mergedInto></ns0:entry>

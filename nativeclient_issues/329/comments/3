@@ -1,0 +1,66 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkMNR347eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/329/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=1881
+
+------------------------------------------------------------------------
+r1881 | bsy@google.com | Mon Mar 29 11:15:52 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/gio_shm.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/linux/nacl_desc_sysv_shm.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/win/nacl_find_addrsp.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/imc/win/nacl_shm.cc?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/gio/gio_mem.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/service_runtime_tests.gyp?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/linux/sel_memory.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/gio_shm.h?r1=1881&amp;r2=1880&amp;pathrev=1881
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_effector_trusted_mem.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_effector_trusted_mem.h?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/platform.gyp?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/build.scons?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/sel_universal/sel_universal.gyp?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/build.scons?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_base.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_base.h?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/win/sel_memory.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/linux/nacl_host_desc.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/desc.gyp?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/plugin.gyp?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/elf_util.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=1881&amp;r2=1880&amp;pathrev=1881
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/linux/nacl_find_addrsp.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_io.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/imc/imc.gyp?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/gio/gio.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/gio_shm_test.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/gio/gio.h?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_imc_shm.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/nacl_find_addrsp.h?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/win/nacl_host_desc.c?r1=1881&amp;r2=1880&amp;pathrev=1881
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_imc_shm.h?r1=1881&amp;r2=1880&amp;pathrev=1881
+
+Create Gio subclass to wrap a NaClDescImcShm object, so that the
+startup nexe from when in Chrome would not have to be completely
+mapped into memory before being copied into the final location in the
+untrusted address space -- the shm access would be wrapped, so like
+GioFile we'd only access a chunk at a time.
+
+The various NaClDesc subclasses were also modified to permit the
+absence of NACL_ABI_MAP_FIXED, in which case the code will try to find
+unused address space.  This is safe to use from trusted code after
+initial address space squatting is done, modulo the ever present race
+conditions on windows.
+
+Also in gyp files, s/libgoogle_nacl_imc/google_nacl_imc/g so that our
+scons and gyp targets are consistently named.
+
+BUG=329
+
+Review URL: http://codereview.chromium.org/1082007
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:21:36.000Z</ns0:updated><ns0:published>2011-01-21T22:21:36.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=329#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/329/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

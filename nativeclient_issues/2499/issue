@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE8NQX47eCl7ImA9WhRXEEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2499</ns0:id><ns0:author>
+			<ns0:name>hava...@gmail.com</ns0:name><ns0:uri>/u/101030305466669609345/</ns0:uri></ns0:author><ns0:content type="html">Native Client supports runtime code generation, modification and deletion, but this support is not complete. This enhancement request brings full support for dynamic code to ARM, an architecture often used in embedded devices like smartphones.
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+The original NaCl-JIT paper only described runtime code modification on x86 and x86-64. Code creation and deletion on ARM is implemented, but not modification. The nacl_dyncode_modify function simply returns NaClValidationFailedNotImplemented.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+As part of my master thesis I have implemented this functionality. The solution I went for is relatively straight forward, and heavily based on the original design by Jason Ansel and Petr Marchenko. The design was discussed with my supervisor, Brad Karp, and Petr Marchenko to ensure safety. See the attached patch for details. If more details are required I can also upload a copy of the full paper.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+Code modification on ARM works via the intended nacl_dyncode_modify function.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+This patch will allow JITing language runtimes to be ported to Native Client on ARM. One possible use is added security for language runtimes like v8 running on android.
+</ns0:content><ns0:updated>2011-12-16T23:08:10.000Z</ns0:updated><ns0:published>2011-12-16T23:08:10.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>nacl_dyncode_modify is not supported on ARM</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2499/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2499" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2499" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>2499</ns2:id></ns0:entry>

@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEYMQn47eCl7ImA9WhVREUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2670</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">nacl-glibc's pthread_join() does the following:
+
+ 1) Waits on a condvar for the thread to signal that it is about to exit.
+ 2) Busy-waits until a memory location is set to zero by the NaCl thread_exit syscall.
+
+Step (2) is wasteful of CPU.
+
+This might be the cause of the test failure described in issue 2669, where run_many_threads_sequential_test is marked as failed because it takes a long time to run.
+
+This problem was previously described in issue 1028.  The long-term fix is to provide a thread_join syscall, as described in issue 1027.
+
+The code responsible for this is in sysdeps/nacl/lowlevellock.h:
+
+  /* NaCl can not wake up us after the death of the thread.  Instead thread
+     which is about to die changes tid to -2, wakes us up and then calls TCB.
+     TCB will clear the tid field and this is when the thread is truly dead.
+     We are waiting in a tight loop here (note: tid filed is volatile).  */
+  #define lll_wait_tid(tid) \
+    do                                                    \
+      {                                                   \
+        __typeof (tid) __tid;                             \
+        volatile __typeof (tid) *__ptid = &amp;amp;tid;           \
+        while ((__tid = (*__ptid)) != 0)                  \
+          if (__tid != -2)                                \
+            lll_futex_wait (&amp;amp;(tid), __tid, LLL_SHARED);   \
+      }                                                   \
+    while (0)
+
+This was added in http://codereview.chromium.org/3384028 (http://git.chromium.org/gitweb/?p=native_client/nacl-glibc.git;a=commit;h=ef76cee2917920d209e00d3f617cc4e05655b031).
+</ns0:content><ns0:updated>2012-03-19T15:49:43.000Z</ns0:updated><ns0:published>2012-03-19T15:49:43.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>nacl-glibc: pthread_join() contains a busy wait</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>ThreadJoinRace</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2670/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2670" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2670" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2670</ns2:id></ns0:entry>

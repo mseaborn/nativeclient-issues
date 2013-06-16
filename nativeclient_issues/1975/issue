@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIHQn47eCl7ImA9WhRaGUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1975</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">At the moment the agreement is to use:
+- /lib for 64-bit libraries
+- /lib32 for 32-bit libraries
+
+This seems to match FHS, but in the real life this is Ubuntu-specific, and
+- /lib64 for 64-bit libraries
+- /lib for 32-bit libraries
+is somewhat more &amp;quot;standard&amp;quot;.
+
+Consider going with &amp;quot;/lib64&amp;quot; and &amp;quot;/lib&amp;quot;?
+
+The migration requires few minor changes:
+- toolchain Makefile
+- naclsdk.py
+- File system structure document
+</ns0:content><ns0:updated>2012-02-22T22:42:13.000Z</ns0:updated><ns0:published>2011-07-05T12:42:05.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>In x86_64 toolchain, consider using /lib for 32-bit libraries and /lib64 for 64-bit libraries</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1975/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1975" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1975" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1975</ns2:id></ns0:entry>

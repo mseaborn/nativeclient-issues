@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4BQX47eCl7ImA9WhRUE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2550/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Issue 1705 is related to this.
+
+The following files contain loops to map/unmap in chunks of 64k (NACL_MAP_PAGESIZE):
+
+src/shared/platform/win/nacl_host_desc.c
+src/trusted/desc/linux/nacl_desc_sysv_shm.c
+src/trusted/desc/nacl_desc_imc_shm.c
+src/trusted/desc/nacl_desc_io.c
+src/trusted/service_runtime/nacl_desc_effector_ldr.c
+src/trusted/service_runtime/nacl_text.c
+src/trusted/service_runtime/win/nacl_syscall_impl.c
+</ns0:content><ns0:updated>2012-01-23T17:49:10.000Z</ns0:updated><ns0:published>2012-01-23T17:49:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2550#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2550/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

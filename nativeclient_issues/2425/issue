@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUAQn47eCl7ImA9WhVSEUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2425</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+SConstruct has the following code:
+
+if nacl_env.Bit('bitcode'):
+  # TODO(robertm): remove this ASAP, we currently have llvm issue with c++                                                                                                                                                                 
+  nacl_env.FilterOut(CCFLAGS = ['-Werror'])
+  nacl_env.Append(CFLAGS = werror_flags)
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+Warnings are useful. We usually don't mention them, because warnings don't break the build.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+Remove that code or make it more narrow, suppress just specific warnings.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+TODO is addressed
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+&lt;b&gt;[for users as well as other parts of the system]&lt;/b&gt;
+</ns0:content><ns0:updated>2012-03-07T19:57:23.000Z</ns0:updated><ns0:published>2011-11-08T21:24:14.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Don't filter out -Werror for pnacl c++</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2425/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2425" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2425" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-03-07T19:57:23.000Z</ns2:closedDate><ns2:id>2425</ns2:id></ns0:entry>

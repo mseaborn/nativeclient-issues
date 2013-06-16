@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0YFQH47eCl7ImA9WhRTEUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2406</ns0:id><ns0:author>
+			<ns0:name>haiou.ji...@gmail.com</ns0:name><ns0:uri>/u/114931139503670429327/</ns0:uri></ns0:author><ns0:content type="html">Hi,
+  Sorry to bother you. Now I am working on Native Client, and try to use nacl64-gdb to debug programs. I take &#8220;hello_world_c&#8221; in folder &#8220;examples&#8221; as an example to debug.
+  I follow step by step on &#8220;http://www.chromium.org/nativeclient/how-tos/debuggingtips/debugging-x86-64-native-client-modules-with-nacl64-gdb&#8221;, whether I load service runtime file or not, it does not work normally.
+
+Load service runtime file:
+shell :nacl64-gcc &#8211;g &#8211;o hello_world64.nexe  hello_world.c -lppapi 
+shell: nacl64-gdb hello_world64.nexe
+gdb: file /home/superhaiou/new_disk/home/superhaiou/chrome_os_source/src/native_client/scons-out/dbg-linux-x86-64/staging/sel_ldr
+gdb: set args -Q ./hello_world64.nexe
+or   set args -Q ./hello_world64.nexe --library-path /home/superhaiou/new_disk/home/superhaiou/chrome_os_source/chrome_os_code/nacl/nacl_sdk/pepper_14/native_client_sdk_0_5_1052/toolchain/linux_x86/x86_64-nacl/lib64/
+gdb: nacl-file ./hello_world64.nexe
+gdb:  r
+
+below is the issue when service runtime file is loaded:
+PpapiPluginStart: No AT_SYSINFO item found in auxv, so cannot start PPAPI.  Is the IRT library not present
+
+
+Below is the issue when service runtime file is not loaded&#65306;
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000028fa2 in _start ()
+
+Besides, I use Remote Debugging With the Debug Stub on Windows 7 step by step on
+http://www.chromium.org/nativeclient/how-tos/debuggingtips/remote-debugging-with-the-debug-stub
+, and when I input &#8220;c&#8221; in gdb, I always got error message &amp;quot;Can't send signals to this remote system. SIGILL not sent
+
+
+So, can you give some advice about using nacl64-gdb on Ubuntu 64bit? Or can you show some successful cases? Thanks.
+
+
+What version of the SDK are you using? /home/superhaiou/nacl_sdk/pepper_15/
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Ubuntu 1104 64bit
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Chrome
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+Google Chrome 14.0.835.202
+</ns0:content><ns0:updated>2011-11-01T09:51:51.000Z</ns0:updated><ns0:published>2011-11-01T08:17:12.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:state>closed</ns2:state><ns0:title>Can not use nacl64-gcc normally</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2406/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2406" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2406" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-11-01T09:51:51.000Z</ns2:closedDate><ns2:id>2406</ns2:id></ns0:entry>

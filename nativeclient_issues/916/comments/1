@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEQCSH47eCl7ImA9Wx5WF0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/916/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I looked into this a few weeks ago.  The reason the failure is ignored
+is that Makerules does this:
+
+-include $(common-objpfx)sysd-rules
+
+It is the "-" prefix that causes errors to be ignored.
+
+The "-" prefix was there before I added make_sysd_rules.py and
+(AFAICT) was not necessary.
+
+However, make_sysd_rules.py has the following problem: It works if it
+is run from the top-level source directory, but not from a
+subdirectory.  But it will only get run from a subdirectory if
+make_sysd_rules.py (or config.make or Makerules -- sysd-rules'
+dependencies) is modified while make is running.
+
+The "-" prefix is now acting as a workaround for such failures.
+
+make_sysd_rules.py should ideally be fixed to work from a
+subdirectory, but fixing this case is problematic because it will
+rarely be tested because it is triggered in a race condition.
+</ns0:content><ns0:updated>2010-09-29T09:26:09.000Z</ns0:updated><ns0:published>2010-09-29T09:26:09.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=916#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/916/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,85 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUHQH47eCl7ImA9WhdQFU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2155/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">So, what's the correct way to do this?
+
+MSVC produces the following assembly code for an x86-64 TLS variable access:
+
+$ cat tls_var.c
+__declspec(thread) int tvar = 0x123;
+int get() { return tvar; }
+$ cl /c /Fa /O2 tls_var.c
+$ cat tls_var.asm
+...
+	mov	ecx, DWORD PTR _tls_index
+	mov	rax, QWORD PTR gs:88
+	mov	edx, OFFSET FLAT:tvar
+	mov	rax, QWORD PTR [rax+rcx*8]
+	mov	eax, DWORD PTR [rdx+rax]
+	ret	0
+...
+
+*However*, this assembly output appears to be informational only, because the assembler does not actually accept it:
+
+$ ml64 /c tls_var.asm
+ Assembling: tls_var.asm
+tls_var.asm(28) : error A2027:operand must be a memory expression
+tls_var.asm(29) : error A2006:undefined symbol : FLAT
+Microsoft (R) Macro Assembler (x64) Version 9.00.30729.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+So, curiously, it seems that it's not possible to use Microsoft's assembler to write code to Microsoft's TLS ABI.  However, we are not using Microsoft's assembler to build NaCl anyway -- we are using GNU binutils' assembler on Windows.
+
+
+The reference to "tvar" is a "SECREL" relocation:
+
+$ dumpbin /relocations /disasm tls_var.obj 
+get:
+  0000000000000000: 8B 0D 00 00 00 00  mov         ecx,dword ptr [_tls_index]
+  0000000000000006: 65 48 8B 04 25 58  mov         rax,qword ptr gs:[58h]
+                    00 00 00
+  000000000000000F: BA 00 00 00 00     mov         edx,offset tvar
+  0000000000000014: 48 8B 04 C8        mov         rax,qword ptr [rax+rcx*8]
+  0000000000000018: 8B 04 02           mov         eax,dword ptr [rdx+rax]
+  000000000000001B: C3                 ret
+RELOCATIONS #4                                                Symbol    Symbol
+ Offset    Type              Applied To         Index     Name
+ --------  ----------------  -----------------  --------  ------
+ 00000002  REL32                      00000000         D  _tls_index
+ 00000010  SECREL                     00000000         7  tvar
+
+
+GNU binutils has some support for this relocation type:
+
+$ /usr/x86_64-w64-mingw32/bin/objdump.exe -dr tls_var.obj 
+tls_var.obj:     file format pe-x86-64
+Disassembly of section .text:
+0000000000000000 &lt;get&gt;:
+   0:	8b 0d 00 00 00 00    	mov    0x0(%rip),%ecx        # 6 &lt;get+0x6&gt;
+			2: R_X86_64_PC32	_tls_index
+   6:	65 48 8b 04 25 58 00 	mov    %gs:0x58,%rax
+   d:	00 00 
+   f:	ba 00 00 00 00       	mov    $0x0,%edx
+			10: secrel32	tvar
+  14:	48 8b 04 c8          	mov    (%rax,%rcx,8),%rax
+  18:	8b 04 02             	mov    (%rdx,%rax,1),%eax
+  1b:	c3                   	retq   
+
+The binutils assembler has some limited support for generating a SECREL relocation.  It looks like it can't generate it as part of an instruction, but it can insert it directly with ".secrel32 SYMBOL".  You can either use this in a data segment, or generate an instruction using it manually with ".byte", e.g.:
+
+.byte 0xba
+.secrel32 tvar
+
+becomes:
+
+$ /usr/x86_64-w64-mingw32/bin/objdump.exe -dr secrel.o
+secrel.o:     file format pe-x86-64
+Disassembly of section .text:
+0000000000000000 &lt;.text&gt;:
+   0:	ba 00 00 00 00       	mov    $0x0,%edx
+			1: secrel32	tvar
+
+Ideally you'd be able to write something like:
+mov $tvar@SECREL, %edx
+
+Ross Ridge posted about adding a "tvar`SECREL" syntax (see http://gcc.gnu.org/ml/gcc/2006-06/msg00100.html, "TLS on windows") but it doesn't seem to have made it upstream.
+</ns0:content><ns0:updated>2011-08-16T20:40:31.000Z</ns0:updated><ns0:published>2011-08-16T20:40:31.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2155#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2155/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,112 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUEQn47eCl7ImA9WhRXFk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2511</ns0:id><ns0:author>
+			<ns0:name>jba...@chromium.org</ns0:name><ns0:uri>/u/103511348585633505839/</ns0:uri></ns0:author><ns0:content type="html">[ RUN      ] nacl_newlib.run_ppapi_ppb_image_data_browser_test
+======================================================================
+running ['/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python', '/b/build/slave/Mac10_5_Tests__1_/build/src/native_client/tools/browser_tester/browser_tester.py', '--browser_path', '/b/build/slave/Mac10_5_Tests__1_/build/src/xcodebuild/Release/Chromium.app/Contents/MacOS/Chromium', '--url', 'ppapi_ppb_image_data.html', '--timeout', '20', '--file', '/b/build/slave/Mac10_5_Tests__1_/build/src/native_client/scons-out/nacl-x86-32/staging/ppapi_ppb_image_data_x86-32.nexe', '--file', '/b/build/slave/Mac10_5_Tests__1_/build/src/native_client/scons-out/nacl-x86-32/staging/ppapi_ppb_image_data.html', '--file', '/b/build/slave/Mac10_5_Tests__1_/build/src/native_client/scons-out/nacl-x86-32/staging/nacltest.js', '--file', '/b/build/slave/Mac10_5_Tests__1_/build/src/native_client/scons-out/nacl-x86-32/staging/ppapi_ppb_image_data_x86-32.nexe', '--serving_dir', '/b/build/slave/Mac10_5_Tests__1_/build/src/native_client/toolchain/mac_x86_newlib/x86_64-nacl/lib32', '--serving_dir', '/b/build/slave/Mac10_5_Tests__1_/build/src/native_client/scons-out/nacl-x86-32/lib', '--file', '/b/build/slave/Mac10_5_Tests__1_/build/src/native_client/scons-out/nacl-x86-32/staging/ppapi_ppb_image_data.nmf']
+======================================================================
+/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python /b/build/slave/Mac10_5_Tests__1_/build/src/native_client/tools/browser_tester/browser_tester.py --browser_path /b/build/slave/Mac10_5_Tests__1_/build/src/xcodebuild/Release/Chromium.app/Contents/MacOS/Chromium --url ppapi_ppb_image_data.html --timeout 20 --file /b/build/slave/Mac10_5_Tests__1_/build/src/native_client/scons-out/nacl-x86-32/staging/ppapi_ppb_image_data_x86-32.nexe --file /b/build/slave/Mac10_5_Tests__1_/build/src/native_client/scons-out/nacl-x86-32/staging/ppapi_ppb_image_data.html --file /b/build/slave/Mac10_5_Tests__1_/build/src/native_client/scons-out/nacl-x86-32/staging/nacltest.js --file /b/build/slave/Mac10_5_Tests__1_/build/src/native_client/scons-out/nacl-x86-32/staging/ppapi_ppb_image_data_x86-32.nexe --serving_dir /b/build/slave/Mac10_5_Tests__1_/build/src/native_client/toolchain/mac_x86_newlib/x86_64-nacl/lib32 --serving_dir /b/build/slave/Mac10_5_Tests__1_/build/src/native_client/scons-out/nacl-x86-32/lib --file /b/build/slave/Mac10_5_Tests__1_/build/src/native_client/scons-out/nacl-x86-32/staging/ppapi_ppb_image_data.nmf
+ENV: SHLVL=1 PWD=/b/build/slave/Mac10_5_Tests__1_/build/src/native_client NACL_ENABLE_PPAPI_DEV=1 CYGWIN=nodosfilewarning PATH=/b/build/slave/Mac10_5_Tests__1_/build/src/native_client/toolchain/mac_x86_newlib/bin:/usr/local/bin:/opt/bin:/bin:/usr/bin:/sw/bin HOME=/Users/chrome-bot DISPLAY=/tmp/launch-Sv8qXw/:0 _=/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python
+LAUNCHING: /b/build/slave/Mac10_5_Tests__1_/build/src/xcodebuild/Release/Chromium.app/Contents/MacOS/Chromium --disable-web-resources --disable-preconnect --no-first-run --no-default-browser-check --enable-logging --log-level=1 --safebrowsing-disable-auto-update --explicitly-allowed-ports=51096 --user-data-dir=/tmp/browserprofile_IA2GpX --enable-nacl http://127.0.0.1:51096/ppapi_ppb_image_data.html
+PID 5297
+[1222/161722:INFO:breakpad_mac.mm(137)] Breakpad disabled
+[  1270 ms] |||| GET /ppapi_ppb_image_data.html (/ppapi_ppb_image_data.html)
+[  1289 ms] |||| GET /nacltest.js (/nacltest.js)
+[  1447 ms] |||| [STARTUP]
+[  1480 ms] |||| GET /ppapi_ppb_image_data.nmf (/ppapi_ppb_image_data.nmf)
+[  1513 ms] |||| GET /ppapi_ppb_image_data_x86-32.nexe (/ppapi_ppb_image_data_x86-32.nexe)
+[  1535 ms] |||| GET /favicon.ico (/favicon.ico)
+[5300,2953064448:16:17:24.293005] Native Client module will be loaded at base address 0x0000000016c98000
+[5300,2953064448:16:17:24.375406] NaCl_page_alloc_randomized: 0x37c55be7
+[5300,2953064448:16:17:24.375439] NaCl_page_alloc_randomized: hint 0x37c50000
+[5300,2953064448:16:17:24.375572] NaClMakePcrelThunk: got addr 0x56c98000
+[  1964 ms] |||| nacl_module / test_nexe loaded
+[  1973 ms] |||| 
+[  1977 ms] |||| [PPB_ImageData::GetNativeImageDataFormat BEGIN]
+[  1986 ms] |||| [PPB_ImageData::GetNativeImageDataFormat PASS]
+[  2006 ms] |||| 
+[  2010 ms] |||| [PPB_ImageData::IsImageDataFormatSupported BEGIN]
+[  2016 ms] |||| [PPB_ImageData::IsImageDataFormatSupported PASS]
+[  2022 ms] |||| 
+[  2026 ms] |||| [PPB_ImageData::Create BEGIN]
+[SRPC:NACL:5300,1056900288:00:17:24.545000] NaClSrpcMessageChannelSend: first send failed, 132 != -14.
+[SRPC:NACL:5300,1056900288:00:17:24.545000] NaClSrpcInvokeV(channel=0x3efc0bb0): rpc request send failed
+[SRPC:NACL:5300,1056900288:00:17:24.545000] NaClSrpcMessageChannelSend: first send failed, 132 != -14.
+[SRPC:NACL:5300,1056900288:00:17:24.545000] NaClSrpcInvokeV(channel=0x3efc0bb0): rpc request send failed
+[SRPC:NACL:5300,1056900288:00:17:24.545000] NaClSrpcMessageChannelSend: first send failed, 132 != -14.
+[SRPC:NACL:5300,1056900288:00:17:24.545000] NaClSrpcInvokeV(channel=0x3efc0bb0): rpc request send failed
+[SRPC:NACL:5300,1056900288:00:17:24.545000] NaClSrpcMessageChannelSend: first send failed, 132 != -14.
+[SRPC:NACL:5300,1056900288:00:17:24.546000] NaClSrpcInvokeV(channel=0x3efc0bb0): rpc request send failed
+[  2046 ms] |||| [PPB_ImageData::Create PASS]
+[  2052 ms] |||| 
+[  2056 ms] |||| [PPB_ImageData::IsImageData BEGIN]
+[  2063 ms] |||| [PPB_ImageData::IsImageData PASS]
+[  2069 ms] |||| 
+[  2072 ms] |||| [PPB_ImageData::Describe BEGIN]
+[  2079 ms] |||| [PPB_ImageData::Describe PASS]
+[  2084 ms] |||| 
+[  2088 ms] |||| [PPB_ImageData::MapUnmap BEGIN]
+[  2102 ms] |||| [PPB_ImageData::MapUnmap PASS]
+[  2107 ms] |||| 
+[  2111 ms] |||| [PPB_ImageData::Stress BEGIN]
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:310: PP_TRUE == PPBImageData()-&amp;gt;IsImageData(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:311: NULL != PPBImageData()-&amp;gt;Map(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:310: PP_TRUE == PPBImageData()-&amp;gt;IsImageData(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:311: NULL != PPBImageData()-&amp;gt;Map(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:310: PP_TRUE == PPBImageData()-&amp;gt;IsImageData(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:311: NULL != PPBImageData()-&amp;gt;Map(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:310: PP_TRUE == PPBImageData()-&amp;gt;IsImageData(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:311: NULL != PPBImageData()-&amp;gt;Map(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:310: PP_TRUE == PPBImageData()-&amp;gt;IsImageData(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:311: NULL != PPBImageData()-&amp;gt;Map(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:310: PP_TRUE == PPBImageData()-&amp;gt;IsImageData(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:311: NULL != PPBImageData()-&amp;gt;Map(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:310: PP_TRUE == PPBImageData()-&amp;gt;IsImageData(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:311: NULL != PPBImageData()-&amp;gt;Map(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:310: PP_TRUE == PPBImageData()-&amp;gt;IsImageData(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:311: NULL != PPBImageData()-&amp;gt;Map(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:310: PP_TRUE == PPBImageData()-&amp;gt;IsImageData(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:311: NULL != PPBImageData()-&amp;gt;Map(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:310: PP_TRUE == PPBImageData()-&amp;gt;IsImageData(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:311: NULL != PPBImageData()-&amp;gt;Map(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:310: PP_TRUE == PPBImageData()-&amp;gt;IsImageData(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:311: NULL != PPBImageData()-&amp;gt;Map(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:310: PP_TRUE == PPBImageData()-&amp;gt;IsImageData(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:311: NULL != PPBImageData()-&amp;gt;Map(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:310: PP_TRUE == PPBImageData()-&amp;gt;IsImageData(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:311: NULL != PPBImageData()-&amp;gt;Map(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:310: PP_TRUE == PPBImageData()-&amp;gt;IsImageData(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:311: NULL != PPBImageData()-&amp;gt;Map(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:310: PP_TRUE == PPBImageData()-&amp;gt;IsImageData(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:311: NULL != PPBImageData()-&amp;gt;Map(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:310: PP_TRUE == PPBImageData()-&amp;gt;IsImageData(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:311: NULL != PPBImageData()-&amp;gt;Map(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:310: PP_TRUE == PPBImageData()-&amp;gt;IsImageData(large_image_data)
+ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:311: NULL != PPBImageData()-&amp;gt;Map(large_image_data)
+[  4092 ms] |||| [PPB_ImageData::Stress FAIL] ('TestStress:ERROR at /b/build/slave/Mac10_5_Tests__1_/build/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.cc:309: large_image_data != kInvalidResource
+[  4092 ms] |||| ' != 'TestStress:PASSED')
+[  4095 ms] |||| 
+[  4099 ms] |||| [SHUTDOWN] 6 passed, 1 failed, 0 errors
+KILLING the browser
+OSX_BLEMISH_HEURISTIC: retry_count = 1, count = -1
+[SRPC:HOST:5300,2953359360:16:17:26.780586] NaClSrpcMessageChannelSend: first send failed, 60 != -5.
+[SRPC:HOST:5300,2953359360:16:17:26.780612] NaClSrpcInvokeV(channel=0xbfffd14c): rpc request send failed
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+[  FAILED  ] nacl_newlib.run_ppapi_ppb_image_data_browser_test (3070 ms)</ns0:content><ns0:updated>2011-12-23T02:26:43.000Z</ns0:updated><ns0:published>2011-12-23T00:36:52.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>nacl_newlib.run_ppapi_ppb_image_data_browser_test is failing</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2511/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2511" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2511" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2511</ns2:id></ns0:entry>

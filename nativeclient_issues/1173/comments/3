@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUAASH47eCl7ImA9Wx9TEE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1173/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">Well, the program which assumes that int32_t and int are one and the same is obviously broken: why do you need all these typedefs and defines (uint32_t, int_least32_t, int_fast32_t, PRId32, PRIdLEAST32, PRIdFAST32, etc) if you don't use them?
+
+Note: man pages define them as newlib defines them ( see http://linux.die.net/man/3/int32_t ) and newlib is used not only by NaCl but by other systems too (for example CygWin).
+
+The question here is: do we want to provide a way to solve this problem for cases where someone want to create "quick and dirty" port.
+
+The answer is probably "yes", but I don't like the proposed solution because it enforces it unconditionally.</ns0:content><ns0:updated>2010-11-17T15:29:09.000Z</ns0:updated><ns0:published>2010-11-17T15:29:09.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by k...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1173#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1173/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

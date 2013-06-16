@@ -1,0 +1,70 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkEMQH47eCl7ImA9WxFbEE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/436/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Example output from a failure that occurred on a trybot just now:
+
+running ['C:\\b\\slave\\nacl-win32_dbg\\build\\native_client\\scons-out\\dbg-win-x86-32\\staging\\sel_ldr.exe', '-f', 'C:\\b\\slave\\nacl-win32_dbg\\build\\native_client\\scons-out\\nacl-x86-32\\obj\\tests\\threads\\thread_test.nexe']
+======================================================================
+C:\b\slave\nacl-win32_dbg\build\native_client\scons-out\dbg-win-x86-32\staging\sel_ldr.exe -f C:\b\slave\nacl-win32_dbg\build\native_client\scons-out\nacl-x86-32\obj\tests\threads\thread_test.nexe
+command returned unexpected exit status -1073741819
+======================================================================
+Stdout
+======================================================================
+TestTlsAndSync:142:0: Start
+
+TestTlsAndSync:164:0: OK
+
+TestManyThreadsJoinable:170:0: Start
+
+TestManyThreadsJoinable:177:0: OK
+
+TestManyThreadsDetached:183:0: Start
+
+TestManyThreadsDetached:190:0: OK
+
+TestSemaphores:213:0: Start
+
+TestSemaphores:234:0: OK
+
+TestSemaphoreInitDestroy:240:0: Start
+
+TestSemaphoreInitDestroy:254:0: OK
+
+TestPthreadOnce:275:0: Start
+
+TestPthreadOnce:289:0: OK
+
+TestRecursiveMutex:316:0: Start
+
+TestRecursiveMutex:361:0: OK
+
+TestErrorCheckingMutex:370:0: Start
+
+TestErrorCheckingMutex:387:0: OK
+
+TestTSD:411:0: Start
+
+TestTSD:427:0: OK
+
+TestMalloc:444:0: Start
+
+TestMalloc:459:0: OK
+
+TestRealloc:487:0: Start
+
+TestRealloc:497:0: OK
+
+TestIntrinsics:558:0: Start
+
+
+======================================================================
+Stderr
+======================================================================
+[2208,2232:17:12:25.171000] NaClTimeInternalInit: timeBeginPeriod(1)
+
+[2208,2232:17:12:25.171000] Unix epoch start is  11644473600000ms in Windows epoch time
+
+[2208,2416:17:12:25.577000] NaClAbiStatHostDescStatXlateCtor: how did NaCl app open a file with st_mode = 010000?
+
+
+RESULT: C:\b\slave\nacl-win32_dbg\build\native_client\scons-out\nacl-x86-32/test_results/thread_test.out FAILED
+</ns0:content><ns0:updated>2010-07-01T17:18:01.000Z</ns0:updated><ns0:published>2010-07-01T17:18:01.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=436#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/436/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

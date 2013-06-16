@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0UCSX47eCl7ImA9WhRTE00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2151</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">(Bug report from LinkWu &amp;lt;wolfired at gmail.com&amp;gt;)
+
+&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+0.5.1014
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+N/A
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Fedora 14, 64-bit
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Chrome 14.0.835.35 (Official Build 96116) dev
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Run the Hello World example from the SDK, using nginx as the web server
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Expect to see a working Hello world example.
+Instead, it just says LOADING...
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+NaCl was enabled:
+chrome://flags/ =&amp;gt; Native Client =&amp;gt;Enable
+chrome://plugins/ =&amp;gt; Native Client =&amp;gt;Enable</ns0:content><ns0:updated>2011-11-03T06:21:08.000Z</ns0:updated><ns0:published>2011-08-15T16:12:21.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:cc>
+			<ns2:uri>/u/109857549299018291846/</ns2:uri><ns2:username>wolfi...@gmail.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Unable to run hello world from 64-bit Fedora 14</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-14</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-IRT</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2151/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2151" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2151" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-16T15:51:01.000Z</ns2:closedDate><ns2:id>2151</ns2:id><ns2:mergedInto>
+			<ns2:id>2002</ns2:id></ns2:mergedInto></ns0:entry>

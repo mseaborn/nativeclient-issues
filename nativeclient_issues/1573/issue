@@ -1,0 +1,74 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIFRX47eCl7ImA9WhVSGUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1573</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">The test imc_shm_mmap_test.nexe which is triggered by the in_browser_test_runner appears to be flaky on Mac.   
+This test passed on a few tries, then failed, then passed again.  There wee know code changes on the two last tries.
+
+Creating symlink in /tmp/nacl_chrome_download_eavXeM: Chromium Framework.framework -&amp;gt; Chromium.app/Contents/Versions/12.0.705.0/Chromium Framework.framework
+Moving /tmp/nacl_chrome_download_eavXeM to chromebinaries/mac_x86-32
+/usr/bin/python /b/build/slave/nacl-mac_opt/build/native_client/tools/browser_tester/browser_tester.py --browser_path /b/build/slave/nacl-mac_opt/build/native_client/chromebinaries/mac_x86-32/Chromium.app/Contents/MacOS/Chromium --url test_runner.html --timeout 20 --ppapi_plugin /b/build/slave/nacl-mac_opt/build/native_client/scons-out/opt-mac-x86-32/staging/ppNaClPlugin --sel_ldr /b/build/slave/nacl-mac_opt/build/native_client/scons-out/opt-mac-x86-32/staging/sel_ldr --file /b/build/slave/nacl-mac_opt/build/native_client/tests/inbrowser_test_runner/test_runner.html --file /b/build/slave/nacl-mac_opt/build/native_client/scons-out/nacl-x86-32/staging/nacltest.js --file /b/build/slave/nacl-mac_opt/build/native_client/scons-out/nacl-x86-32/staging/dynamic_load_test.nexe --file /b/build/slave/nacl-mac_opt/build/native_client/scons-out/nacl-x86-32/staging/dynamic_modify_test.nexe --file /b/build/slave/nacl-mac_opt/build/native_client/scons-out/nacl-x86-32/staging/imc_shm_mmap_test.nexe
+ENV: NACL_SEL_LDR=/b/build/slave/nacl-mac_opt/build/native_client/scons-out/opt-mac-x86-32/staging/sel_ldr VERSIONER_PYTHON_VERSION=2.6 SHLVL=1 VERSIONER_PYTHON_PREFER_32_BIT=no __CF_USER_TEXT_ENCODING=0x4BA5FAA2:0:0 PWD=/b/build/slave/nacl-mac_opt/build/native_client CYGWIN=nodosfilewarning PATH=/b/build/slave/nacl-mac_opt/build/native_client/toolchain/mac_x86/bin:/usr/local/bin:/opt/bin:/bin:/usr/bin:/sw/bin HOME=/Users/chrome-bot DISPLAY=/tmp/launch-AgVgy9/org.x:0 _=/usr/bin/python
+LAUNCHING: /b/build/slave/nacl-mac_opt/build/native_client/chromebinaries/mac_x86-32/Chromium.app/Contents/MacOS/Chromium --disable-web-resources --disable-preconnect --no-first-run --no-default-browser-check --enable-logging --log-level=1 --safebrowsing-disable-auto-update --user-data-dir=/tmp/browserprofile_26zWfU --register-pepper-plugins=/b/build/slave/nacl-mac_opt/build/native_client/scons-out/opt-mac-x86-32/staging/ppNaClPlugin;application/x-nacl --no-sandbox http://127.0.0.1:49702/test_runner.html
+PID 8875
+[8876:263:12509220302708:ERROR:renderer_main.cc(290)] Running without renderer sandbox
+**** GET /test_runner.html
+**** GET /nacltest.js
+**** [STARTUP]
+**** 
+**** [dynamic_load_test.nexe BEGIN]
+**** [dynamic_modify_test.nexe BEGIN]
+**** GET /dynamic_load_test.nexe
+**** [imc_shm_mmap_test.nexe BEGIN]
+**** GET /dynamic_modify_test.nexe
+**** GET /imc_shm_mmap_test.nexe
+**** GET /favicon.ico
+**** [dynamic_load_test.nexe LOG] process has started...
+Running test_loading_code...
+Running test_loading_code_non_page_aligned...
+Running test_loading_large_chunk...
+Running test_loading_zero_size...
+Running test_fail_on_validation_error...
+Running test_fail_on_non_bundle_aligned_dest_addresses...
+Running test_fail_on_load_to_static_code_area...
+Running test_fail_on_load_to_data_area...
+Running test_fail_on_overwrite...
+Running test_fail_on_mmap_to_dyncode_area...
+Running test_branches_outside_chunk...
+Running test_end_of_code_region...
+Running test_hlt_filled_bundle...
+Running test_loading_code...
+**** [dynamic_load_test.nexe LOG] passed
+**** [dynamic_load_test.nexe PASS]
+**** [dynamic_modify_test.nexe LOG] process has started...
+Running test_replacing_code...
+Running test_replacing_code_unaligned...
+Running test_deleting_code...
+Running test_illegal_code_replacment...
+	misaligned_replacement
+misaligned replacement code c0006 != c0002
+ErrorSegmentation
+	illegal_register_replacement
+	illegal_guard_replacement
+	illegal_call_target
+	illegal_constant_replacement
+misaligned replacement code c0006 != c0002
+ErrorSegmentation
+Running test_external_jump_target_replacement...
+**** [dynamic_modify_test.nexe LOG] passed
+**** [dynamic_modify_test.nexe PASS]
+**** [imc_shm_mmap_test.nexe LOG] process has started...
+**** [imc_shm_mmap_test.nexe EXCEPTION] Error calling method on NPObject.
+**** Error: Error calling method on NPObject.
+****     at http://127.0.0.1:49702/test_runner.html:79:27
+****     at onload (http://127.0.0.1:49702/test_runner.html:52:5)
+****     at unknown source
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2012-03-17T01:41:54.000Z</ns0:updated><ns0:published>2011-03-25T02:25:13.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Flaky imc_shm_mmap_test (inside inbrowser_test) on Mac</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Test</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>FlakeyBots</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1573/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1573" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1573" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-03-17T01:41:54.000Z</ns2:closedDate><ns2:id>1573</ns2:id></ns0:entry>

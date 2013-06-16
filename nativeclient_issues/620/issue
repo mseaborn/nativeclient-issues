@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkQMSH47eCl7ImA9WxFaEUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/620</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">If I try to build for x86-32 on x86-64 Linux, I typically get the following error when linking sel_ldr:
+
+$ ./scons --mode=dbg-linux,nacl platform=x86-32 sdl=none sel_ldr
+...
+/usr/bin/ld: skipping incompatible /usr/lib/libcrypto.so when searching for -lcrypto
+/usr/bin/ld: skipping incompatible /usr/lib/libcrypto.a when searching for -lcrypto
+/usr/bin/ld: skipping incompatible /usr/lib/gcc/x86_64-linux-gnu/4.2.4/../../../libcrypto.so when searching for -lcrypto
+/usr/bin/ld: skipping incompatible /usr/lib/gcc/x86_64-linux-gnu/4.2.4/../../../libcrypto.a when searching for -lcrypto
+/usr/bin/ld: skipping incompatible /usr/bin/../lib/libcrypto.so when searching for -lcrypto
+/usr/bin/ld: skipping incompatible /usr/bin/../lib/libcrypto.a when searching for -lcrypto
+/usr/bin/ld: skipping incompatible /usr/lib/libcrypto.so when searching for -lcrypto
+/usr/bin/ld: skipping incompatible /usr/lib/libcrypto.a when searching for -lcrypto
+/usr/bin/ld: cannot find -lcrypto
+collect2: ld returned 1 exit status
+
+This is caused by a lack of a 32-bit -dev package for libcrypto.
+
+It would be nice to have a build time option to omit the dependency, given that there is non-libcrypto-using fallback code in NaCl that is used inside the Chromium build.
+</ns0:content><ns0:updated>2010-07-15T10:39:49.000Z</ns0:updated><ns0:published>2010-06-20T22:30:41.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Add option to omit dependency on libcrypto</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/620/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=620" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/620" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-07-15T10:39:49.000Z</ns2:closedDate><ns2:id>620</ns2:id></ns0:entry>

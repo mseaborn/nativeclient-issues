@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C04ARX47eCl7ImA9Wx9bEEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/637</ns0:id><ns0:author>
+			<ns0:name>espind...@google.com</ns0:name><ns0:uri>/u/101432766050863658364/</ns0:uri></ns0:author><ns0:content type="html">With the attached file:
+
+$ llc-sfi  -sfi-cp-fudge -sfi-cp-fudge-percent=80 -sfi-store -sfi-stack -sfi-branch -sfi-data -no-inline-jumptables -march=arm -mcpu=cortex-a8 -mattr=-neon -mattr=+vfp3 -mtriple=armv7a-*-*eabi* -arm-reserve-r9 -f test.ll -o test.s
+
+$ llvm-gcc -nostdinc -D__native_client__=1 -DNACL_TARGET_ARCH=arm -DNACL_TARGET_SUBARCH=32 -DNACL_LINUX=1 -ffixed-r9 -mfpu=vfp3 -march=armv7-a test.s -c -o lib_a-er_lgamma.o
+
+test.ll:582: Error: co-processor offset out of range
+test.ll:584: Error: co-processor offset out of range
+test.ll:588: Error: co-processor offset out of range
+</ns0:content><ns0:updated>2011-02-18T17:59:04.000Z</ns0:updated><ns0:published>2010-06-23T04:54:31.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Constant island placement accounting is incomplete</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Milestone-Caviar</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/637/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=637" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/637" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-02-18T17:59:04.000Z</ns2:closedDate><ns2:id>637</ns2:id></ns0:entry>

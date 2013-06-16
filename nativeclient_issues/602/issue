@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEIMSH47eCl7ImA9WxFVGEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/602</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">As of at least r2500, the ARM validator has a decoding bug.  The key is this function, which pulls bitfields out of integers:
+
+inline uint32_t Instruction::bits(int hi, int lo) const {
+  uint32_t mask = (1 &amp;lt;&amp;lt; (hi + 1)) - 1;
+  return (_bits &amp;amp; mask) &amp;gt;&amp;gt; lo;
+}
+
+In C, this function's behavior is undefined when hi==31.  On ARM, it does the right thing: ((1 &amp;lt;&amp;lt; 31) - 1) == -1.
+
+On x86, the mask comes out as 0, so the function always returns 0.
+
+This has no security impact, but it means the validator for the newer conditional store sequence doesn't work on x86.  This caused the rollback of r2388.</ns0:content><ns0:updated>2010-06-17T23:16:29.000Z</ns0:updated><ns0:published>2010-06-15T20:48:24.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101432766050863658364/</ns2:uri><ns2:username>espind...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>ARM validator incorrectly decodes instruction predicates when compiled for x86</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Component-TrustedRT</ns2:label><ns2:label>Maintainability</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/602/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=602" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/602" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-06-17T23:16:29.000Z</ns2:closedDate><ns2:id>602</ns2:id></ns0:entry>

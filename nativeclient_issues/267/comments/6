@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EMQ347eCl7ImA9WxBUGE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/267/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>r...@codeaurora.org</ns0:name><ns0:uri>/u/110611514349750114994/</ns0:uri></ns0:author><ns0:content type="html">I ran the thread test three ways on the hardware (test loop count = 10000, the 
+default)
+1. as `sel_ldr -d /thread_test.nexe` 
+   - SEG FAULT during TestManyThreadsDetached, core dumps give no stack 
+2. as `gdb sel_ldr` then set args, run. 
+   - passes, runs to completion.
+3. recompiled as a non nacl app, using pthread libs from target 
+   - passes, runs to completion (not running TestPthreadOnce(); TestRecursiveMutex(); 
+TestSemaphoreInitDestroy();)
+
+Observation:
+#1 runs fine when the test loop count is upto 5000 (roughly..)
+What is the reason of it being able to handle the test loop count default (10000)
+
+
+#2 runs to completion suggesting there is some race, which gdb avoids by tons of 
+thread creation and exit prints ?
+
+#3 runs orders of magnitude faster.. 3.452s v/s 3m55.111s.
+What is the reason for the this amount of performance difference ?
+
+
+
+
+
+</ns0:content><ns0:updated>2010-03-05T16:14:42.000Z</ns0:updated><ns0:published>2010-03-05T16:14:42.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by r...@codeaurora.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=267#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/267/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

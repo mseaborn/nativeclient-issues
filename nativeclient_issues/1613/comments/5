@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQARH47eCl7ImA9WhZQF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1613/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5018
+
+------------------------------------------------------------------------
+r5018 | kschimpf@google.com | Mon Apr 25 16:14:17 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_state.h?r1=5018&amp;r2=5017&amp;pathrev=5018
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_state_statics.c?r1=5018&amp;r2=5017&amp;pathrev=5018 (from /trunk/src/native_client/src/trusted/validator_x86/nc_inst_state.c revision 4929)
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_state_Tests.cc?r1=5018&amp;r2=5017&amp;pathrev=5018
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/RexPrefixes.h?r1=5018&amp;r2=5017&amp;pathrev=5018
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/build.scons?r1=5018&amp;r2=5017&amp;pathrev=5018
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/enum_gen.py?r1=5018&amp;r2=5017&amp;pathrev=5018
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncopcode_desc.h?r1=5018&amp;r2=5017&amp;pathrev=5018
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_state_internal.h?r1=5018&amp;r2=5017&amp;pathrev=5018
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=5018&amp;r2=5017&amp;pathrev=5018
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_iter.c?r1=5018&amp;r2=5017&amp;pathrev=5018
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdis_util.c?r1=5018&amp;r2=5017&amp;pathrev=5018
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode.h?r1=5018&amp;r2=5017&amp;pathrev=5018
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_iter.h?r1=5018&amp;r2=5017&amp;pathrev=5018
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/multiple_sandboxes/nacl.scons?r1=5018&amp;r2=5017&amp;pathrev=5018
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/utils/debugging.h?r1=5018&amp;r2=5017&amp;pathrev=5018
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_segment.h?r1=5018&amp;r2=5017&amp;pathrev=5018
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_state.c?r1=5018&amp;r2=5017&amp;pathrev=5018
+
+Start unit testing for functions in nc_inst_state.c
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1613
+TEST=src/trusted/validator_x86/nc_inst_state_Tests.cc
+Review URL: http://codereview.chromium.org/6883091
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-25T23:15:45.000Z</ns0:updated><ns0:published>2011-04-25T23:15:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1613#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1613/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

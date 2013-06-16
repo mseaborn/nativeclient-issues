@@ -1,0 +1,70 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUERn47eCl7ImA9WhRQEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2430</ns0:id><ns0:author>
+			<ns0:name>pbommana@chromium.org</ns0:name><ns0:uri>/u/pbommana@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;On what operating system?&lt;/b&gt;
+Linux 10.04
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Chrome 16.0.912.32 (Official Build 108990) dev
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Install chrome and check &amp;quot;About:&amp;quot; 
+2. Goto &amp;quot;About:flags&amp;quot; enable &amp;quot;native Client&amp;quot; to the bottom of the page click on Relaunch 
+3. Goto &amp;quot;About:plugins&amp;quot; and verify &amp;quot;Native Client is Enabled&amp;quot;
+4.Goto http://nacl-gallery.appspot.com
+5.Select &amp;quot;SDK examples&amp;quot; 
+6.Try to run &amp;quot;Tumbler&amp;quot; and &amp;quot;Full-screen Tumbler&amp;quot;
+
+&lt;b&gt;What is the expected output?&lt;/b&gt;
+When we run the above mentioned test cases, We should not see any crashes or snaps. 
+
+&lt;b&gt;What do you see instead?&lt;/b&gt;
+There is an tab crash.
+
+Crash Id's: 
+Crash ID 9d27c5be879b28de
+Crash ID 6c13b74998650644
+Crash ID a43c5cb76e5b8acb
+Crash ID e804b0c275c15796
+Crash ID dfa86e0fe4680994
+Crash ID c7735ce3c2e98dfb
+
+About:gpu
+Graphics Feature Status
+Canvas: Software only. Hardware acceleration disabled.
+HTML Rendering: Hardware accelerated
+3D CSS: Hardware accelerated
+WebGL: Hardware accelerated
+WebGL multisampling: Hardware accelerated
+Problems Detected
+Accelerated 2D canvas is unavailable: either not enabled via about:flags or not supported by the current system.
+Accelerated 2d canvas is unstable in Linux at the moment.
+Version Information
+Data exported	Wed Nov 09 2011 14:49:58 GMT-0800 (PST)
+Chrome version	16.0.912.32 (Official Build 108990) dev
+Operating system	Linux 2.6.38.8-gg621
+Software rendering list version	1.22
+ANGLE revision	811
+Driver Information
+Initialization time	77
+Vendor Id	0x10de
+Device Id	0x00cd
+Driver vendor	NVIDIA Corporation
+Driver version	270.29
+Driver date	
+Pixel shader version	
+Vertex shader version	
+GL version	2.1
+GL_VENDOR	NVIDIA Corporation
+GL_RENDERER	Quadro FX 3450/4000 SDI/PCI/SSE2
+GL_VERSION	2.1.2 NVIDIA 270.29
+GL_EXTENSIONS	GL_ARB_color_buffer_float GL_ARB_depth_clamp GL_ARB_depth_texture GL_ARB_draw_buffers GL_ARB_ES2_compatibility GL_ARB_explicit_attrib_location GL_ARB_fragment_program GL_ARB_fragment_program_shadow GL_ARB_fragment_shader GL_ARB_framebuffer_object GL_ARB_half_float_vertex GL_ARB_imaging GL_ARB_multisample GL_ARB_multitexture GL_ARB_occlusion_query GL_ARB_point_parameters GL_ARB_point_sprite GL_ARB_provoking_vertex GL_ARB_separate_shader_objects GL_ARB_shader_objects GL_ARB_shading_language_100 GL_ARB_shadow GL_ARB_texture_border_clamp GL_ARB_texture_compression GL_ARB_texture_cube_map GL_ARB_texture_env_add GL_ARB_texture_env_combine GL_ARB_texture_env_crossbar GL_ARB_texture_env_dot3 GL_ARB_texture_float GL_ARB_texture_mirrored_repeat GL_ARB_texture_non_power_of_two GL_ARB_texture_rectangle GL_ARB_texture_rg GL_ARB_texture_swizzle GL_ARB_timer_query GL_ARB_transpose_matrix GL_ARB_vertex_buffer_object GL_ARB_vertex_program GL_ARB_vertex_shader GL_ARB_window_pos GL_ATI_draw_buffers GL_ATI_texture_float GL_ATI_texture_mirror_once GL_S3_s3tc GL_EXT_texture_env_add GL_EXT_abgr GL_EXT_bgra GL_EXT_blend_color GL_EXT_blend_equation_separate GL_EXT_blend_func_separate GL_EXT_blend_minmax GL_EXT_blend_subtract GL_EXT_Cg_shader GL_EXT_depth_bounds_test GL_EXT_draw_range_elements GL_EXT_fog_coord GL_EXT_framebuffer_blit GL_EXT_framebuffer_multisample GL_EXT_framebuffer_object GL_EXT_gpu_program_parameters GL_EXT_multi_draw_arrays GL_EXT_packed_pixels GL_EXT_point_parameters GL_EXT_provoking_vertex GL_EXT_rescale_normal GL_EXT_secondary_color GL_EXT_separate_specular_color GL_EXT_shadow_funcs GL_EXT_stencil_two_side GL_EXT_stencil_wrap GL_EXT_texture3D GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_s3tc GL_EXT_texture_cube_map GL_EXT_texture_edge_clamp GL_EXT_texture_env_combine GL_EXT_texture_env_dot3 GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_lod GL_EXT_texture_lod_bias GL_EXT_texture_mirror_clamp GL_EXT_texture_object GL_EXT_texture_sRGB GL_EXT_texture_swizzle GL_EXT_timer_query GL_EXT_vertex_array GL_EXT_vertex_array_bgra GL_IBM_rasterpos_clip GL_IBM_texture_mirrored_repeat GL_KTX_buffer_region GL_NV_alpha_test GL_NV_blend_minmax GL_NV_blend_square GL_NV_complex_primitives GL_NV_copy_depth_to_color GL_NV_depth_clamp GL_NV_fbo_color_attachments GL_NV_float_buffer GL_NV_fog_distance GL_NV_fragdepth GL_NV_fragment_program GL_NV_fragment_program_option GL_NV_fragment_program2 GL_NV_half_float GL_NV_light_max_exponent GL_NV_multisample_filter_hint GL_NV_occlusion_query GL_NV_packed_depth_stencil GL_NV_point_sprite GL_NV_register_combiners GL_NV_texgen_reflection GL_NV_texture_compression_vtc GL_NV_texture_env_combine4 GL_NV_texture_expand_normal GL_NV_texture_lod_clamp GL_NV_texture_rectangle GL_NV_texture_shader GL_NV_texture_shader2 GL_NV_texture_shader3 GL_NV_vertex_program GL_NV_vertex_program1_1 GL_NV_vertex_program2 GL_NV_vertex_program2_option GL_NV_vertex_program3 GL_OES_depth24 GL_OES_depth32 GL_OES_depth_texture GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_rgb8_rgba8 GL_OES_standard_derivatives GL_OES_texture_3D GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_vertex_half_float GL_SGIS_generate_mipmap GL_SGIS_texture_lod GL_SGIX_depth_texture GL_SGIX_shadow GL_SUN_slice_accum
+Log Messages
+[17233:17233:1668374100268:INFO:gpu_child_thread.cc(108)] : gpu_info_collector::CollectGraphicsInfo complete
+[17233:17233:1669554293894:INFO:gl_context_glx.cc(231)] : Forcing vsync off because compositing window manager was detected.
+[17233:17233:1669554309115:ERROR:gles2_cmd_decoder.cc(2537)] : GLES2DecoderImpl::ResizeOffscreenFrameBuffer failed to allocate storage for offscreen target stencil buffer.
+[17233:17233:1669554309385:ERROR:gles2_cmd_decoder.cc(1950)] : Could not allocate offscreen buffer storage.
+[17233:17233:1669554316540:ERROR:gpu_command_buffer_stub.cc(237)] : Failed to initialize decoder.
+
+</ns0:content><ns0:updated>2011-12-05T18:03:27.000Z</ns0:updated><ns0:published>2011-11-09T22:53:01.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/mball@google.com/</ns2:uri><ns2:username>mball@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/pbommana@chromium.org/</ns2:uri><ns2:username>pbommana@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Rendered crashes while executing the Tumbler and full-screen tumbler NACL SDK examples.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2430/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2430" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2430" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-12-05T18:03:27.000Z</ns2:closedDate><ns2:id>2430</ns2:id></ns0:entry>

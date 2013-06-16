@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IDRH47eCl7ImA9WhdbFU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/349</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Currently the x86-64 version of NaCl uses ELFCLASS64 (the 64-bit container-
+format version of ELF).  For consistency with x86-32 and ARM, and because 
+NaCl always uses ILP32, NaCl should use ELFCLASS32 instead.
+
+See the mailing list thread:
+http://groups.google.com/group/native-client-
+discuss/browse_frm/thread/a5455c084cd10a61
+</ns0:content><ns0:updated>2011-10-13T18:46:15.000Z</ns0:updated><ns0:published>2010-03-10T11:56:36.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>x86-64 NaCl should use ELFCLASS32 instead of ELFCLASS64</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>DynamicLinking</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/349/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=349" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/349" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>349</ns2:id></ns0:entry>

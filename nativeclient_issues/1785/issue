@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEAMQH47eCl7ImA9WhZUGUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1785</ns0:id><ns0:author>
+			<ns0:name>bbu...@google.com</ns0:name><ns0:uri>/u/106710594185928520364/</ns0:uri></ns0:author><ns0:content type="html">Saw a spurious failure of a gyp_compile stage on vista64-m64-n64-dbg Bot when building env_cleanser_test.
+
+stdio:
+
+http://chromegw.corp.google.com/i/client.nacl/builders/vista64-m64-n64-dbg/builds/1371/steps/gyp_compile/logs/stdio
+
+Excerpt:
+
+80&amp;gt;Linking...
+79&amp;gt;Compiling manifest to resources...
+79&amp;gt;Microsoft (R) Windows (R) Resource Compiler Version 6.1.6723.1
+79&amp;gt;Copyright (C) Microsoft Corporation.  All rights reserved.
+80&amp;gt;env_cleanser_test.obj : error LNK2019: unresolved external symbol _NaClEnvCleanserDtor referenced in function _main
+80&amp;gt;env_cleanser_test.obj : error LNK2019: unresolved external symbol _NaClEnvCleanserEnvironment referenced in function _main
+79&amp;gt;Linking...
+80&amp;gt;env_cleanser_test.obj : error LNK2019: unresolved external symbol _NaClEnvCleanserInit referenced in function _main
+80&amp;gt;env_cleanser_test.obj : error LNK2019: unresolved external symbol _NaClEnvCleanserCtor referenced in function _main
+80&amp;gt;env_cleanser_test.obj : error LNK2019: unresolved external symbol _NaClEnvInWhitelist referenced in function _main
+80&amp;gt;env_cleanser_test.obj : error LNK2001: unresolved external symbol _kNaClEnvWhitelist
+80&amp;gt;e:\b\build\slave\vista64-m64-n64-dbg\build\native_client\build\Debug\env_cleanser_test.exe : fatal error LNK1120: 6 unresolved externals
+80&amp;gt;Build log was saved at &amp;quot;file://e:\b\build\slave\vista64-m64-n64-dbg\build\native_client\build\Debug\obj\env_cleanser_test\BuildLog.htm&amp;quot;
+80&amp;gt;env_cleanser_test - 7 error(s), 0 warning(s)
+
+</ns0:content><ns0:updated>2011-06-13T20:26:21.000Z</ns0:updated><ns0:published>2011-05-10T00:32:13.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:owner>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>env_cleanser_test 32 bit GYP build is flaky on Vista</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-</ns2:label><ns2:label>flaky-bots</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1785/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1785" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1785" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-06-13T20:26:07.000Z</ns2:closedDate><ns2:id>1785</ns2:id></ns0:entry>

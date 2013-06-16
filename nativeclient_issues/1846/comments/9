@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMDSX47eCl7ImA9WhZUFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1846/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 59e2a0fef529cf26c19101721076b6e8f23e86dc
+ Email: dspringer@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Create a single cache for proxy vars, use inheritance instead of templates.
+
+Factor out the VarImpl instance map out of plugin_ppb_var_deprecated, so that I can use it in the plugin_ppb_var implementation.  This will allow PPB_Var and PPB_Var_deprecated objects to be inserted into a single global map.
+
+The cache is handled by a single class.  I use shared_ptr&lt;&gt; to handle the chaced object polymorphism.  The cached objects use an inheritance scheme instead of templates.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1846
+TEST=run_fake_browser_ppapi_test
+
+Review URL: http://codereview.chromium.org/7024009
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@5605 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+A	src/include/nacl_memory.h
+M	src/shared/ppapi_proxy/build.scons
+M	src/shared/ppapi_proxy/nacl.scons
+M	src/shared/ppapi_proxy/object_proxy.cc
+A	src/shared/ppapi_proxy/object_proxy_var.h
+M	src/shared/ppapi_proxy/plugin_ppb_var_deprecated.cc
+A	src/shared/ppapi_proxy/proxy_var.cc
+A	src/shared/ppapi_proxy/proxy_var.h
+A	src/shared/ppapi_proxy/proxy_var_cache.cc
+A	src/shared/ppapi_proxy/proxy_var_cache.h
+A	src/shared/ppapi_proxy/string_proxy_var.h
+M	tests/fake_browser_ppapi/fake_object.cc</ns0:content><ns0:updated>2011-06-10T00:07:58.000Z</ns0:updated><ns0:published>2011-06-10T00:07:58.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1846#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1846/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

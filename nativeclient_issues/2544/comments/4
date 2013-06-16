@@ -1,0 +1,47 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUBSH47eCl7ImA9WhRUE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2544/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">Current state based on scons tests:
+
+ARM
+
+./scons bitcode=1 translate_fast=1 platform=arm --verbose -j 12 -k
+
+scons-out/nacl-arm-pnacl-fast-clang/obj/tests/minnacl/minimal_test_guest.nexe failed: Error 255
+scons-out/nacl-arm-pnacl-fast-clang/obj/tests/windows_crash_in_syscall/test_guest.nexe failed: Error 255
+
+problems seems to be undefined symbols during linking
+/usr/local/google/home/robertm/nacl-gclient0/native_client/toolchain/pnacl_linux_x86_64/lib-x86-32/libgcc_eh.a(unwind-dw2-fde-glibc.o): In function `__register_frame':
+/mnt/data/b/build/slave/linux-pnacl-x86_64/build/native_client/pnacl/git/gcc/libgcc/../gcc/unwind-dw2-fde.c:114: undefined reference to `malloc'
+
+.X86-32
+
+./scons bitcode=1 translate_fast=1 platform=x86-32 --verbose -j 12 -k
+same as ARM
+
+X86-64
+
+
+./scons bitcode=1 translate_fast=1 platform=x86-64 --verbose -j 12 -k
+
+Almost nothing works, e.g.:
+
+.      Running pass 'NaCl Rewrites' on function '@_ZN12_GLOBAL__N_122TestMemAllocAndMemFreeEv'
+llc: /mnt/data/b/build/slave/linux-pnacl-x86_64/build/native_client/pnacl/src/upstream/llvm/lib/Target/X86/X86NaClRewritePass.cpp:520: bool&lt;unnamed&gt;::X86NaClRewritePass::ApplyMemorySFI(llvm::MachineBasicBlock&amp;, llvm::MachineBasicBlock::bundle_iterator&lt;llvm::MachineInstr, llvm::ilist_iterator&lt;llvm::MachineInstr&gt; &gt;): Assertion `!BaseReg.getReg() &amp;&amp; "Unexpected relative register pair"' failed.
+0  llc             0x0000000000db61ef
+1  llc             0x0000000000db8462
+2  libpthread.so.0 0x00007fd1271138f0
+3  libc.so.6       0x00007fd126402a75 gsignal + 53
+4  libc.so.6       0x00007fd1264065c0 abort + 384
+5  libc.so.6       0x00007fd1263fb941 __assert_fail + 241
+6  llc             0x00000000006374b2
+7  llc             0x000000000063762b
+8  llc             0x0000000000d586eb llvm::FPPassManager::runOnFunction(llvm::Function&amp;) + 587
+9  llc             0x0000000000d587d3 llvm::FPPassManager::runOnModule(llvm::Module&amp;) + 51
+10 llc             0x0000000000d581c1 llvm::MPPassManager::runOnModule(llvm::Module&amp;) + 497
+11 llc             0x0000000000d5834b llvm::PassManagerImpl::run(llvm::Module&amp;) + 187
+12 llc             0x000000000052bb7a llc_main(int, char**) + 5082
+13 libc.so.6       0x00007fd1263edc4d __libc_start_main + 253
+14 llc             0x0000000000528059
+
+
+</ns0:content><ns0:updated>2012-01-23T17:37:39.000Z</ns0:updated><ns0:published>2012-01-23T17:37:39.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2544#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2544/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

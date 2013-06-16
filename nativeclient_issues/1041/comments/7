@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C04HRH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1041/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3722
+
+------------------------------------------------------------------------
+r3722 | dspringer@google.com | Thu Nov 18 08:33:40 PST 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/plugin_ppapi.cc?r1=3722&amp;r2=3721&amp;pathrev=3722
+
+Add support for ISA choosing from a manifest file.  Note that this CL parses
+the JSON by calling 'eval' in the browser, which is distressing.  Tracked by bug
+http://code.google.com/p/nativeclient/issues/detail?id=1038
+
+BUG = http://code.google.com/p/nativeclient/issues/detail?id=1039
+http://code.google.com/p/nativeclient/issues/detail?id=885
+TEST = none (see bug http://code.google.com/p/nativeclient/issues/detail?id=1041)
+
+
+Review URL: http://codereview.chromium.org/4831004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:18:55.000Z</ns0:updated><ns0:published>2011-01-21T23:18:55.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1041#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1041/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

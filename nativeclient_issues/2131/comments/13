@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QFRH47eCl7ImA9WhdQEEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2131/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Attached is a memory mapping listing from 32-bit Windows XP which shows a gap of only 1006MB above chrome.dll on my test setup, which causes NaCl startup to fail.  chrome.dll is 162MB -- I suspect it has become larger than usual because of MSVC's incremental linking.  (The NaCl tests started failing on my XP VM after rebuilding Chromium but *without* any code change.)
+
+I generated the listing as follows:
+ * Remove the code from crash_dump_tester.py that deletes any resulting crash dump files.
+ * Run "run_inbrowser_trusted_crash_in_startup_test" on Chromium with disable_dynamic_plugin_loading=1.
+ * Run the binary dump through Breakpad's "minidump_dump" tool to get human-readable output.
+ * Pipe that text through the script attached.
+
+Note that the memory mapping listing is incomplete because it only shows code objects, not heap/stack memory etc.
+</ns0:content><ns0:updated>2011-08-10T23:35:15.000Z</ns0:updated><ns0:published>2011-08-10T23:35:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 13 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2131#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2131/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

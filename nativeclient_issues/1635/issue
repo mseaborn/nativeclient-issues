@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUGQ347eCl7ImA9WhZRFk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1635</ns0:id><ns0:author>
+			<ns0:name>suna...@chromium.org</ns0:name><ns0:uri>/u/108616898676203953394/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? 0.2.781.0
+On what operating system? Win7 x64
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. cd ~/examples/hello_world
+2. execute: make test
+
+What is the expected output? 
+../../toolchain/&amp;lt;platform&amp;gt;/bin/nacl-sel_ldr test_helper_functions_x86_32_dbg.nexe
+Check: &amp;quot;FortyTwo()&amp;quot; == &amp;quot;42&amp;quot; passed
+Check: &amp;quot;ReverseText(empty_string)&amp;quot; == &amp;quot;empty_string&amp;quot; passed
+Check: &amp;quot;ReverseText(palindrome)&amp;quot; == &amp;quot;palindrome&amp;quot; passed
+Check: &amp;quot;ReverseText(alphabet)&amp;quot; == &amp;quot;alphabet_backwards&amp;quot; passed
+../../toolchain/&amp;lt;platform&amp;gt;/bin/nacl64-sel_ldr test_helper_functions_x86_64_dbg.nexe
+Check: &amp;quot;FortyTwo()&amp;quot; == &amp;quot;42&amp;quot; passed
+Check: &amp;quot;ReverseText(empty_string)&amp;quot; == &amp;quot;empty_string&amp;quot; passed
+Check: &amp;quot;ReverseText(palindrome)&amp;quot; == &amp;quot;palindrome&amp;quot; passed
+Check: &amp;quot;ReverseText(alphabet)&amp;quot; == &amp;quot;alphabet_backwards&amp;quot; passed
+
+What do you see instead?
+c:\nacl-sdk\native_client_sdk_0_2_781_0\examples\hello_world&amp;gt;make test
+../../toolchain/win_x86/bin/nacl-g++ -Wall -Wno-long-long -pthread -Werror -m32
+-I../.. -g -c -o test_helper_functions_x86_32_dbg.o test_helper_functions.cc
+../../toolchain/win_x86/bin/nacl-g++ -Wall -Wno-long-long -pthread -Werror -m32
+-I../.. -g -c -o helper_functions_x86_32_dbg.o helper_functions.cc
+../../toolchain/win_x86/bin/nacl-g++ test_helper_functions_x86_32_dbg.o helper_f
+unctions_x86_32_dbg.o -lppruntime -lppapi_cpp -lplatform -lgio -lpthread -lsrpc
+ -m32 -o test_helper_functions_x86_32_dbg.nexe
+../../toolchain/win_x86/bin/nacl-sel_ldr test_helper_functions_x86_32_dbg.nexe
+[8544,14528:23:50:51.502000] NaClTimeInternalInit: timeBeginPeriod(1)
+[8544,14528:23:50:51.503000] Unix epoch start is  11644473600000ms in Windows ep
+och time
+Error while loading &amp;quot;test_helper_functions_x86_32_dbg.nexe&amp;quot;: Operating system pl
+atform is not supported
+make: *** [test32] Error 1</ns0:content><ns0:updated>2011-04-12T16:53:42.000Z</ns0:updated><ns0:published>2011-04-08T23:56:57.000Z</ns0:published><ns2:status>Done</ns2:status><ns2:state>closed</ns2:state><ns0:title>'make test ' fails on Windows 64bit</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1635/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1635" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1635" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-04-12T16:53:42.000Z</ns2:closedDate><ns2:id>1635</ns2:id></ns0:entry>

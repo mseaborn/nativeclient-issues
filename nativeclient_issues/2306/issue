@@ -1,0 +1,49 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkYARn47eCl7ImA9WhVSGU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2306</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">Definitions:
+
+Portable Bitcode toolchain: a toolchain that compiles into PNaCl and does not know about any particular target (like ARM, x86-64 or x86-32)
+
+Translator toolchain: a toolchain that translates PNaCl into the specific list of targets (one or more).
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+
+Currently, PNaCl toolchain consists of:
+
+1. Trusted ARM toolchain (it&#8217;s not included by default, but tools/llvm scripts has some related functionality)
+
+2. PNaCl translator toolchains for three targets (x86-32, x86-64 and ARM)
+
+3. PNaCl bitcode toolchains: llvm-gcc, DragonEgg, Clang
+
+So, typically, the output directory contains one toolchain from #2 and three toolchains from #3. Moreover, these toolchains sometimes share some files (such as binaries, libraries and headers).
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+
+It makes the implementation complex and makes it harder for the developers to compile into PNaCl (because they have to have all other dependencies, including translator toolchains, llvm-gcc, patched binutils, and so on).
+
+It makes the changes to one of the toolchains much slower, because it needs to rebuild a lot of unrelated code.
+
+It makes the distribution of PNaCl bitcode toolchain larger (Clang must include GCC and DragonEgg/GCC must include Clang).
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+
+Clang portable bitcode toolchain should be separate from llvm-gcc and translator toolchains.
+
+One toolchain is for newlib, another is for glibc (as always).
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+
+Clang portable bitcode toolchain builds w/o requiring to build translator toolchains and llvm-gcc and has the install directory under native_client/toolchain.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+
+1. It will decrease complexity of the whole PNaCl infrastructure
+2. It will make it possible to produce PNaCl executable and shared objects w/o having a translator toolchain
+3. It will increase build time and the distribution size.
+
+</ns0:content><ns0:updated>2012-03-16T20:35:47.000Z</ns0:updated><ns0:published>2011-09-26T23:30:18.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Separate Clang portable bitcode toolchain from the llvm-gcc and translator toolchains</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2306/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2306" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2306" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
+			<ns2:id>2307</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2308</ns2:id></ns2:blockedOn><ns2:blocking>
+			<ns2:id>2279</ns2:id></ns2:blocking><ns2:closedDate>2012-03-16T20:35:47.000Z</ns2:closedDate><ns2:id>2306</ns2:id></ns0:entry>

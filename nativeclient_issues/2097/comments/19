@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0ADSX47eCl7ImA9WhRUE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2097/comments/full/19</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I tested NaCl/Breakpad in Mac Chrome 18.0.1016.0 Canary using inbrowser_crash_in_syscall and successfully got crash report dceb1906c2e38cee.
+
+The stack trace for the crashing thread is correct upto NaClSyscallSeg:
+
+Thread 8 *CRASHED* ( EXC_BAD_ACCESS / KERN_PROTECTION_FAILURE @ 0x0f801004 )
+0x022eee8e 	[Google Chrome Framework 	- ../../../../native_client/src/trusted/service_runtime/sel_ldr-inl.h:90] 	NaClCommonSysImc_Recvmsg
+0x022e9c7b 	[Google Chrome Framework 	- nacl_syscall_handlers.c:468] 	NaClSysImc_RecvmsgDecoder
+0x022f0482 	[Google Chrome Framework 	- nacl_syscall_hook.c:164] 	NaClSyscallCSegHook
+0x0000798d 	[Google Chrome Framework 	+ 0x0000298d] 	NaClSyscallSeg
+0x022f4347 	[Google Chrome Framework 	- sel_ldr.c:1678] 	NaClVmHoleThreadStackIsSafe
+0x0231563d 	[Google Chrome Framework 	- nacl_switch_to_app_32.c:50] 	NaClStartThreadInApp
+0x9585ffe4 	[libSystem.B.dylib 	+ 0x00000fe4] 	_pthread_set_self
+0x022ebafd 	[Google Chrome Framework 	- nacl_app_thread.c:45] 	NaClThreadLauncher
+0x9588d10d 	[libSystem.B.dylib 	+ 0x0002e10d] 	_pthread_start
+0x9588d258 	[libSystem.B.dylib 	+ 0x0002e258] 	_pthread_start
+0x022ebaef 	[Google Chrome Framework 	+ 0x022e6aef] 	
+0x0000ffff 	[Google Chrome Framework 	- chrome_content_client.cc:231] 	chrome::ChromeContentClient::AddPepperPlugins
+0x9588d0dd 	[libSystem.B.dylib 	+ 0x0002e0dd] 	thread_start
+0x022ebaef 	[Google Chrome Framework 	+ 0x022e6aef] 	
+0x0000ffff 	[Google Chrome Framework 	- chrome_content_client.cc:231] 	chrome::ChromeContentClient::AddPepperPlugins
+0x022ebaef 	[Google Chrome Framework 	+ 0x022e6aef] 
+</ns0:content><ns0:updated>2012-01-23T21:56:18.000Z</ns0:updated><ns0:published>2012-01-23T21:56:18.000Z</ns0:published><ns2:updates /><ns0:title>Comment 19 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2097#c19" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2097/comments/full/19" rel="self" type="application/atom+xml" /></ns0:entry>

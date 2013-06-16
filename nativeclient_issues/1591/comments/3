@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIAR347eCl7ImA9WhZRFU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1591/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4811
+
+------------------------------------------------------------------------
+r4811 | robertm@google.com | Mon Apr 11 09:12:49 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/utman.sh?r1=4811&amp;r2=4810&amp;pathrev=4811
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/driver.py?r1=4811&amp;r2=4810&amp;pathrev=4811
+
+The experimental pexe checker available via the pnacl driver.
+It can be invoked like so:
+
+bad example:
+toolchain/linux_arm-untrusted/bin/pnacl-pexecheck scons-out/nacl-x86-64-pnacl/obj/tests/ppapi_proxy/ppapi_event_example_x86-64.nexe---linked.pexe
+
+good example:
+toolchain/linux_arm-untrusted/bin/pnacl-pexecheck scons-out/nacl-x86-64-pnacl/obj/tests/barebones/barebones_vaarg.nexe---linked.pexe
+
+Shortcomings:
+At this point the tool still produces an output file as a side-effect and the driver duplicates stdout on failure.
+
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1591
+Review URL: http://codereview.chromium.org/6813076
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-11T16:15:46.000Z</ns0:updated><ns0:published>2011-04-11T16:15:46.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1591#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1591/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

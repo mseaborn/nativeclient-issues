@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE8FQn47eCl7ImA9WhdaFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">The following command line reliably reproduces SRPC failures and 1/4 of the time it reproduces the garbage:
+
+./scons --verbose --mode=dbg-host,nacl  platform=x86-64 SILENT=1 run_ppapi_ppb_graphics2d_browser_test
+
+I'm trying to debug Chrome, but so far I am not lucky</ns0:content><ns0:updated>2011-10-26T22:06:53.000Z</ns0:updated><ns0:published>2011-10-26T22:06:53.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2394#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

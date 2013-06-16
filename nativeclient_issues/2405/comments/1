@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk4HQH47eCl7ImA9WhRTEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2405/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">this is the function in  buildbot/buildbot_pnacl.sh 
+which run the arm (qemu) tests annotated with timing info:
+
+
+mode-buildbot-arm() {
+  FAIL_FAST=false
+  local mode=$1
+
+  clobber
+  install-lkgr-toolchains
+
+  gyp-arm-build Release
+
+  scons-tests "arm" "${mode} -j8 -k" ""                a[30min for translator tests]
+  scons-tests "arm" "${mode} -k" "small_tests"         b[ 6min  "]
+  scons-tests "arm" "${mode} -k" "medium_tests"        c[ 0min  "]
+  scons-tests "arm" "${mode} -k" "large_tests"         d[ 0min  "]
+  browser-tests "arm" "${mode}"
+  #ad-hoc-shared-lib-tests "arm"
+}
+
+"a" build many more nexes than needed for actual test runs.
+ideally we would keep "a" around but just build those tests needed tests without running the tests - not sure whether this is possible.
+
+
+Or, "a" could be changed to disable the translator tests
+and then build the tests as needed during "b" (and "c" and "d")
+But "b" does not involved parallelism and it is not clear why we turned it off (flaky tests maybe)
+ 
+
+
+ 
+</ns0:content><ns0:updated>2011-11-01T16:28:51.000Z</ns0:updated><ns0:published>2011-11-01T16:28:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2405#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2405/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

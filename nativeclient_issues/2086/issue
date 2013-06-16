@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIHR347eCl7ImA9WhdXFkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2086</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+N/A
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+NaCl r6195
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Ubuntu Lucid 64-bit
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Chrome M14 r93797
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Run the lucid64-tsan-nacl-chrome integration bot
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+running ['/usr/bin/python', '/mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/native_client/tools/browser_tester/browser_tester.py', '--browser_path', '/mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/out/Release/chrome', '--url', 'srpc_nameservice_test.html', '--timeout', '400', '--irt_library', '/mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/native_client/scons-out/nacl_irt-x86-64/staging/irt.nexe', '--file', '/mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/native_client/scons-out/nacl-x86-64/staging/srpc_nameservice_test_x86-64.nexe', '--file', '/mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/native_client/scons-out/nacl-x86-64/staging/srpc_nameservice_test.html', '--file', '/mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/native_client/scons-out/nacl-x86-64/staging/srpc_nameservice.nmf', '--file', '/mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/native_client/scons-out/nacl-x86-64/staging/srpc_nameservice_test_x86-64.nexe', '--tool', 'tsan', '--debug', '--enable_experimental_js']
+======================================================================
+/usr/bin/python /mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/native_client/tools/browser_tester/browser_tester.py --browser_path /mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/out/Release/chrome --url srpc_nameservice_test.html --timeout 400 --irt_library /mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/native_client/scons-out/nacl_irt-x86-64/staging/irt.nexe --file /mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/native_client/scons-out/nacl-x86-64/staging/srpc_nameservice_test_x86-64.nexe --file /mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/native_client/scons-out/nacl-x86-64/staging/srpc_nameservice_test.html --file /mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/native_client/scons-out/nacl-x86-64/staging/srpc_nameservice.nmf --file /mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/native_client/scons-out/nacl-x86-64/staging/srpc_nameservice_test_x86-64.nexe --tool tsan --debug --enable_experimental_js
+ENV: XAUTHORITY=/tmp/xvfb-run.rVfhqn/Xauthority NACL_PLUGIN_DEBUG=1 NACL_PPAPI_PROXY_DEBUG=1 SSH_TTY=/dev/pts/0 NACL_IRT_LIBRARY=/mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/native_client/scons-out/nacl_irt-x86-64/staging/irt.nexe PWD=/mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/native_client NACL_ENABLE_PPAPI_DEV=1 CYGWIN=nodosfilewarning PPAPI_BROWSER_DEBUG=1 HOME=/home/chrome-bot PATH=/mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/native_client/toolchain/linux_x86_newlib/bin:/usr/local/bin:/opt/bin:/bin:/usr/bin NACL_ENABLE_EXPERIMENTAL_JAVASCRIPT_APIS=1 DISPLAY=:100
+LAUNCHING: src/third_party/valgrind/tsan.sh -v --num-callers=30 --trace-children=yes --nacl-file=/mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/native_client/scons-out/nacl-x86-64/staging/srpc_nameservice_test_x86-64.nexe --ignore=../tools/valgrind/tsan/ignores.txt --suppressions=../tools/valgrind/tsan/suppressions.txt --log-file=/tmp/vglogs_nyvKva/log.%p /mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/out/Release/chrome --disable-web-resources --disable-preconnect --no-first-run --no-default-browser-check --enable-logging --log-level=1 --safebrowsing-disable-auto-update --explicitly-allowed-ports=58692 --user-data-dir=/tmp/browserprofile_j_NZBL --enable-nacl http://127.0.0.1:58692/srpc_nameservice_test.html
+PID 4783
+src/third_party/valgrind/tsan.sh: line 3: src/third_party/valgrind/bin/tsan: No such file or directory
+[   133 ms] |||| 
+[   133 ms] |||| [SERVER_ERROR] Browser process ended during test (return code 127)
+-----------------------------------------------------
+Suppressions used:
+  count name
+-----------------------------------------------------
+Test /mnt/data/b/build/slave/lucid64-tsan-nacl-chrome/build/src/native_client/scons-out/nacl-x86-64/test_results/srpc_ns_browser_test.out took 0.110000 secs
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+srpc_ns_browser_test.out: FAILED
+scons: *** [scons-out/nacl-x86-64/test_results/srpc_ns_browser_test.out] Error 255
+</ns0:content><ns0:updated>2011-08-29T11:48:56.000Z</ns0:updated><ns0:published>2011-07-25T20:13:40.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Chrome Integration bot can't find valgrind tsan</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2086/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2086" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2086" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-29T11:48:56.000Z</ns2:closedDate><ns2:id>2086</ns2:id></ns0:entry>

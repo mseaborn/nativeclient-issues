@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHRH47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1661</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">This is a long-known bug.
+
+Test code:
+================ begin test ================
+void callme (void (*callback) (void));
+
+void
+tryme (void)
+{
+  int ok = 0;
+  void callback (void) { ok = 1; }
+
+  callme (&amp;amp;callback);
+}
+
+void
+callme (void (*callback) (void))
+{
+  (*callback) ();
+}
+================ end test ================
+
+shell&amp;gt; nacl64-gcc -m64 -c test.c
+o.c: In function &#8216;tryme&#8217;:
+o.c:4: internal compiler error: in copy_to_mode_reg, at explow.c:623
+Please submit a full bug report,
+with preprocessed source if appropriate.
+See &amp;lt;http://gcc.gnu.org/bugs.html&amp;gt; for instructions.
+
+with -m32 the compilation would succeed, but the code would crash.  We cannot support nested functions because NaCl restricts the user code not to execute from stack.  The compiler should fail and provide a sane message (for both -m32 and -m64).</ns0:content><ns0:updated>2011-07-29T00:12:15.000Z</ns0:updated><ns0:published>2011-04-14T18:57:28.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>nacl64-gcc crashes when compiling nested functions</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1661/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1661" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1661" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:id>1661</ns2:id></ns0:entry>

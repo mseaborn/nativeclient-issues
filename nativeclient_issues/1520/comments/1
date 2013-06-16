@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0YDQn47eCl7ImA9Wx9aGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1520/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">I would like to see this happen but it will be hardish
+
+There seems to be already a trend to move more and more libgcc stuff into llc.
+
+To see what currently lives in libgcc, run 
+
+nm toolchain/linux_arm-untrusted/libs-x8632/libgcc.a | grep " T "
+nm toolchain/linux_arm-untrusted/libs-arm/libgcc.a | grep " T "
+...
+
+This looks actually quite manageable and many of the function can probably expressed in bitcode anyway.
+
+
+For libgcc_eh we might have to abstract away constants and data structure to make the code arch neutral but luckily the code involved here lives in only a handful of files.</ns0:content><ns0:updated>2011-03-11T18:46:13.000Z</ns0:updated><ns0:published>2011-03-11T18:46:13.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1520#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1520/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

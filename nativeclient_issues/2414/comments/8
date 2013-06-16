@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUCQH47eCl7ImA9WhRRF0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2414/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 238ff91b6a8fe2a970073c663591ee654ae9d420
+ Email: mseaborn@chromium.org@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+x86-64 Windows: Fix check in stack unwinding test to be suitably strict
+
+While refactoring the code I accidentally broke the check by making it
+do an unsigned comparison instead of a signed comparison, so it would
+not catch bogus stack frames that are too small.
+
+When the unwind info is broken by inserting "sub rsp, 16" at the start
+of NaClSwitchSavingStackPtr, I expect to get the following error with
+"frame_size=-8":
+
+Stack backtrace:
+#0: ip=00000001400012E0 stack=24efd10 frame=24efd08 CrashyTestSyscall + 0x40
+#1: ip=000000014001B682 stack=24efd40 frame=24efdc0 NaClSyscallCSegHook + 0x1d2
+#2: ip=000000014001ABF2 stack=24efdd0 frame=24efe30 NaClSwitchSavingStackPtr + 0x22
+#3: ip=CCCCCCCCCCCCCCCC stack=24efe40 frame=24efe38 &lt;no symbol&gt;
+Error: frame_size=-8, which is too small
+#4: ip=00000000024EFE80 stack=24efe48 frame=24efe40 &lt;no symbol&gt;
+Error: frame_size=-8, which is too small
+#5: ip=0000000140009CA3 stack=24efe50 frame=24efe80 NaClStartThreadInApp + 0xc3
+#6: ip=000000014000E72F stack=24efe90 frame=24efec0 NaClThreadLauncher + 0x1ff
+#7: ip=0000000140090355 stack=24efed0 frame=24eff10 _callthreadstartex + 0x25
+#8: ip=0000000140090328 stack=24eff20 frame=24eff50 _threadstartex + 0xd8
+#9: ip=000000007747F33D stack=24eff60 frame=24eff80 BaseThreadInitThunk + 0xd
+#10: ip=00000000775B2CC1 stack=24eff90 frame=24effd0 RtlUserThreadStart + 0x21
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2414
+TEST=run_windows_crash_in_syscall_test
+
+Review URL: http://codereview.chromium.org/8763003
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@7310 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	tests/windows_crash_in_syscall/test_host.c</ns0:content><ns0:updated>2011-12-01T03:31:01.000Z</ns0:updated><ns0:published>2011-12-01T03:31:01.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2414#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2414/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

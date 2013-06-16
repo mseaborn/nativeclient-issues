@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0YHQ347eCl7ImA9WhdQF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2150</ns0:id><ns0:author>
+			<ns0:name>yokot...@gmail.com</ns0:name><ns0:uri>/u/105125559029543946517/</ns0:uri></ns0:author><ns0:content type="html">Hi, I have already suggested that enhancement in Issue 1603, but apparently I was not properly understood. Now try to describe my proposal.
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+Currently the platform can only play audio with low latency, but did not record the audio stream from multichannel audio interfaces! Those are not possible to implement, for example, processing vocals from a microphone, a guitar signal processing, multi-track recording studio that operates in real time (delays &amp;lt;10 ms).
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+A whole class of commercially popular audio applications that use Web capabilities and a new level could not be developed under NaCl.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+Should be allowed to annex under NaCl have full access to the audio subsystem user. For example, to implement support for ASIO input and output (for Windows) and CoreAudio (under MacOS). 
+That is, users with professional audio interfaces (supporting ASIO, multi-channel) should be able to process signals from the audio interfaces. 
+
+In general, you must give the possibility to create multi-track recording studio for NaCl, with low latency.
+
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+When it becomes possible that I have described. Now it is impossible to get audio from the input audio interface and process it to bring the output audio interface with low latency (&amp;lt;10ms).
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+&lt;b&gt;[for users as well as other parts of the system]&lt;/b&gt;
+</ns0:content><ns0:updated>2011-08-19T18:38:52.000Z</ns0:updated><ns0:published>2011-08-13T10:44:11.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:state>closed</ns2:state><ns0:title>RECORD support from audio interfaces with low-latency. (Using ASIO under Win/CoreAudio under MacOS, e.g.)</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2150/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2150" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2150" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-19T18:38:52.000Z</ns2:closedDate><ns2:id>2150</ns2:id><ns2:mergedInto>
+			<ns2:id>41779</ns2:id><ns2:project>chromium</ns2:project></ns2:mergedInto></ns0:entry>

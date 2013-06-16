@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMERn47eCl7ImA9WhZVEkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1784/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5416
+
+------------------------------------------------------------------------
+r5416 | mcgrathr@chromium.org | Tue May 24 09:21:56 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt/irt_malloc.c?r1=5416&amp;r2=5415&amp;pathrev=5416
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/third_party_mod/dlmalloc?r1=5416&amp;r2=5415&amp;pathrev=5416
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/third_party/dlmalloc/NOTICE?r1=5416&amp;r2=5415&amp;pathrev=5416 (from /trunk/src/native_client/src/third_party_mod/dlmalloc/NOTICE revision 5415)
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/third_party/dlmalloc/README.nacl?r1=5416&amp;r2=5415&amp;pathrev=5416
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/third_party/dlmalloc?r1=5416&amp;r2=5415&amp;pathrev=5416
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/third_party/dlmalloc/malloc.c?r1=5416&amp;r2=5415&amp;pathrev=5416 (from /trunk/src/native_client/src/third_party_mod/dlmalloc/malloc.c revision 5415)
+
+Switch IRT-private malloc to dlmalloc version 2.8.5, verbatim
+
+Version 2.8.5 of dlmalloc has been released.
+It incorporates enough changes that we can use it verbatim.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1784
+TEST=trybots
+
+R=bradchen@google.com,mseaborn@chromium.org
+
+Review URL: http://codereview.chromium.org/7067008
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-24T16:26:47.000Z</ns0:updated><ns0:published>2011-05-24T16:26:47.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1784#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1784/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

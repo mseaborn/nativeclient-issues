@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QARX47eCl7ImA9WhZQFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1605</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">There is a binary for Valgrind in NaCl SVN here, under bin/memcheck:
+http://src.chromium.org/viewvc/native_client/trunk/src/third_party/valgrind/
+
+However, there is no licence notice there and no link to the corresponding source.
+
+Note that Valgrind is licensed under GPL v2.
+
+There used to be links to sources and patch files, but they have been removed:
+
+http://src.chromium.org/viewvc/native_client?view=rev&amp;amp;revision=2581
+-- this changeset dropped the patch file (native_client/tools/patches/valgrind-11096-VEX-1964.patch) and replaced it with a link to the source in another SVN repo (http://valgrind-variant.googlecode.com/svn/trunk/).
+
+http://src.chromium.org/viewvc/native_client?view=rev&amp;amp;revision=3160
+-- this changeset dropped the reference to the SVN repo containing the source and left only the binaries behind.
+
+http://src.chromium.org/viewvc/native_client?view=rev&amp;amp;revision=4018
+-- this changeset (along with others), moved the binaries out of native_client/src into third_party.
+
+It is quite bad that detective work is required to find the source.
+</ns0:content><ns0:updated>2011-04-22T13:35:44.000Z</ns0:updated><ns0:published>2011-04-05T03:35:09.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/114701340294105671768/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>The Valgrind binaries in NaCl SVN do not link to the Valgrind source</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1605/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1605" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1605" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-04-22T13:35:44.000Z</ns2:closedDate><ns2:id>1605</ns2:id></ns0:entry>

@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIAQn47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/699</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The test for dynamic loading, run_dynamic_load_test, appears to be
+flaky on the Linux-ARM trybots and often fails with a segfault.
+
+(Unfortunately this tends to be obscured by the way the trybot e-mails
+don't contain links to the ARM failures.  This is because the
+Linux-ARM build is set up on Buildbot using a trigger.  The tests run
+on an ARM machine but the code is built on a faster x86 machine.)
+
+The strange thing is that run_dynamic_load_test is not failing on the
+Linux-ARM *Buildbot* which runs on every SVN commit.
+
+I suspect the trybot and Buildbot are running on different ARM
+hardware or with a different kernel.
+
+It is possible that this is affected by issue 501.
+
+This needs further investigation.
+</ns0:content><ns0:updated>2011-07-29T00:15:43.000Z</ns0:updated><ns0:published>2010-07-15T16:25:12.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>run_dynamic_load_test is flaky on ARM</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Test</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/699/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=699" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/699" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>777</ns2:id></ns2:blockedOn><ns2:closedDate>2011-05-27T17:24:46.000Z</ns2:closedDate><ns2:id>699</ns2:id></ns0:entry>

@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEERn47eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/318/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2035
+
+------------------------------------------------------------------------
+r2035 | mseaborn@chromium.org | Tue Apr 13 03:40:16 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_validate_image.c?r1=2035&amp;r2=2034&amp;pathrev=2035
+
+NaClValidateCode(): Add guest_addr argument
+
+Currently, the uniform interface to the three validators
+(NaClValidateCode()) assumes that code is validated in the location
+where it will be run.  The interface needs to be extended for dynamic
+loading support because code will be validated in a temporary location
+before it is copied into place.
+
+Furthermore, the address of the temporary location might not be
+instruction-bundle-aligned.
+
+Current usage of the validators is not affected by this change:
+
+x86-32 validator: Validation judgements are location-independent,
+except for judgements about jumps to syscall trampolines and zero page
+in RememberTP().  These judgements are not affected by this change
+because RememberTP() finds the trampoline location relative to
+iadrbase.  A beneficial side effect of this change is that the
+validator will print more meaningful addresses in validation errors if
+"g_print_diagnostics = 0;" is removed.
+
+x86-64 validator: Validation judgements are location-independent.
+This validator does not allow direct branches to syscall trampolines
+or to anywhere outside the chunk being validated, so current use of
+this validator is not affected by this change.
+
+ARM validator: Validation judgement are location-independent, except
+for judgements about jumps to syscall trampolines.  In current use of
+the ARM validator, NaClValidateCode() is called with guest_addr==data,
+so this use is not affected by this change.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=318
+
+Review URL: http://codereview.chromium.org/1280001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:23:27.000Z</ns0:updated><ns0:published>2011-01-21T22:23:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=318#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/318/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

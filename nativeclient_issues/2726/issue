@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0YDQX47eCl7ImA9WhVXEks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2726</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">If the code in intercept.S gets run on the DbgUiRemoteBreakin thread (a thread created by the Windows debug API), it will fail uncleanly because this thread does not have TLS set up.  Specifically, the TLS field in the TEB, %gs:0x58, is zero.
+
+Background:  The DbgUiRemoteBreakin thread is injected into a process by the Windows debug API when a debugger attaches to a process.  Its purpose is to stop the process on a breakpoint.  DbgUiRemoteBreakin calls DbgBreakpoint (both of which are in NTDLL) which executes an int3 (breakpoint) instruction.
+
+If the debugger resumes the process with DBG_EXCEPTION_NOT_HANDLED (e.g. with the command &amp;quot;gn&amp;quot; in Windbg), KiUserExceptionDispatcher will be run.  intercept.S will be run but will fault on the instruction &amp;quot;movq (%rax,%rcx,8), %rax&amp;quot; because the address fetched from %gs:0x58 is zero.  This fault will cause KiUserExceptionDispatcher to be re-entered.  This will loop until the thread runs out of stack.
+
+I found this while implementing the change for issue 2618 (attaching the debug helper process on demand).  On x86-64, debug_exception_handler.c is currently using DBG_EXCEPTION_NOT_HANDLED to resume from any breakpoints instead of DBG_CONTINUE.
+
+There is no safety problem here.  The failure can be confusing, though, because the thread does not exit immediately.
+
+We could change intercept.S to check for %gs:0x58 being zero.
+
+
+It's possible to demonstrate this property of the DbgUiRemoteBreakin thread by attaching Windbg to a process.  This shows that the &amp;quot;Tls Storage&amp;quot; field is zero:
+
+(21b8.c3c): Break instruction exception - code 80000003 (first chance)
+ntdll!DbgBreakPoint:
+00000000`770de910 cc              int     3
+0:005&amp;gt; !teb
+Wow64 TEB32 at 000000007efa9000
+...
+error InitTypeRead( wow64!_TEB32 )...
+Wow64 TEB at 000000007efa7000
+    ExceptionList:        000000007efa9000
+    StackBase:            000000000585fd20
+    StackLimit:           000000000585c000
+    SubSystemTib:         0000000000000000
+    FiberData:            0000000000001e00
+    ArbitraryUserPointer: 0000000000000000
+    Self:                 000000007efa7000
+    EnvironmentPointer:   0000000000000000
+    ClientId:             00000000000021b8 . 0000000000000c3c
+    RpcHandle:            0000000000000000
+    Tls Storage:          0000000000000000
+    PEB Address:          000000007efdf000
+    LastErrorValue:       0
+    LastStatusValue:      0
+    Count Owned Locks:    0
+    HardErrorMode:        0
+</ns0:content><ns0:updated>2012-04-12T20:06:10.000Z</ns0:updated><ns0:published>2012-04-11T16:15:25.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>KiUserExceptionDispatcher patch exits uncleanly on the DbgUiRemoteBreakin thread</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2726/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2726" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2726" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2726</ns2:id></ns0:entry>

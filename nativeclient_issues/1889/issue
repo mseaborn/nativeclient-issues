@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEQCRX47eCl7ImA9WhRQEkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1889</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Some changes needed first:
+
+(1) Conditionally generate the segment gap when statically linking. This is currently conditioned upon the presence/value of the symbol (__nacl_rodata_start). Some options:
+  (a) When we detect libppapi.a, add link_segment_gap.o to the native link line. This means we need to ship that extra .o file (e.g., to the browser), just to provide a bookend of sorts.
+  (b) Use an LD commandline option --defsym=__nacl_rodata_start=0x10000000 to provide the segment gap start value.
+     - For command-line testing: Have the driver detect the presence of libppapi.a and add this arg to the native link line.
+     - For browser/sel_universal testing: Do a SRPC AddArg() call to add this flag.
+  (c) Fork static linker script to always/never have the segment gap (one line diff).
+
+Note: This really needs to be conditional, otherwise non-pepper tests like &amp;quot;run_sysbasic_test&amp;quot; seem to break. For the sysbasic test, this makes sysbrk() return an address that is considered too high.
+
+
+(2) Getting the IRT image
+  - Take the version built for the browser (with nacl-gcc newlib). I think we want to get to this point to test the real thing, but in the meantime there may be ABI issues.
+  - Build the image with pnacl. Just need to add the flag &amp;quot;-mtls-use-call&amp;quot; to get a hook for TLS accesses (rather directly access a thread-pointer register). I've tried this and it works for x86-32 (64-bit didn't need the flag). We can also keep this around to see if the IRT image is any smaller when built with PNaCl, for instance. We need this option to build the IRT image for ARM (which is currently built, but not functional). See issue 1853.
+
+
+(3) Newlib changes within the pnacl HG repo?
+  - Looks like no? The changes are in libnacl (native_client/src/untrusted/nacl) seem to be enough...
+</ns0:content><ns0:updated>2011-12-06T22:59:24.000Z</ns0:updated><ns0:published>2011-06-06T19:09:00.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Run tests with IRT=1 with pnacl</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1889/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1889" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1889" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
+			<ns2:id>1902</ns2:id></ns2:blockedOn><ns2:closedDate>2011-12-06T22:59:24.000Z</ns2:closedDate><ns2:id>1889</ns2:id></ns0:entry>

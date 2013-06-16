@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU4GRn47eCl7ImA9WxFXE0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/514</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The NaCl source tree contains 80Mb of x86-64 test executables.  The executables are 6Mb 
+each because of excessive ELF segment alignment.
+
+The files might be sparse, but Subversion doesn't know about sparse files.
+
+Once the linker is fixed, these executables should be relinked.
+
+$ du -h native_client/src/trusted/service_runtime/testdata/
+184K	native_client/src/trusted/service_runtime/testdata/arm
+4.6M	native_client/src/trusted/service_runtime/testdata/x86_32
+80M	native_client/src/trusted/service_runtime/testdata/x86_64
+90M	native_client/src/trusted/service_runtime/testdata/
+
+$ ls -l native_client/src/trusted/service_runtime/testdata/x86_64
+total 81644
+ 6438044 Apr 13 13:36 data_not_last.nexe
+ 6438041 Mar 12 12:02 fib_array.nexe
+ 6438044 Mar 12 12:02 fib_scalar.nexe
+</ns0:content><ns0:updated>2010-05-20T16:45:27.000Z</ns0:updated><ns0:published>2010-05-20T16:45:27.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Source tree is bloated by 80Mb of x86-64 test executables </ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/514/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=514" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/514" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>514</ns2:id></ns0:entry>

@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEDR347eCl7ImA9WhRQE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2204/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: cb8db9f43bee42fcdaa3575bc2170c46a50f8803
+ Email: dschuff@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Some additional torture test failures with O3 not caught before and pass --verbose to the torture test when running on a bot to see invocation
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2204
+TEST=self
+
+Review URL: http://codereview.chromium.org/8890047
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@7389 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	pnacl/scripts/testsuite_known_failures_pnacl.txt
+M	tools/toolchain_tester/known_failures_pnacl.txt
+M	tools/toolchain_tester/torture_test.sh</ns0:content><ns0:updated>2011-12-08T23:57:56.000Z</ns0:updated><ns0:published>2011-12-08T23:57:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2204#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2204/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

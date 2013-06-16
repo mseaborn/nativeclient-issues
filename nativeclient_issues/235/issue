@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UMR347eCl7ImA9WhVSEUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/235</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">
+can be reproduced by adding 
+'tests/earth/nacl.scons',
+to the  BUILD_SCONSCRIPTS list in nacl_env in the toplevel  SConstruct file
+
+failure looks like:
+
+/usr/local/crosstool-untrusted/codesourcery/arm-2007q3/bin/arm-none-linux-gnueabi-ld:
+/home/robertm/gclient-nacl3/native_client/src/third_party/nacl_sdk/arm-newlib/arm-none-linux-gnueabi/lib/libav.a(nacl_av.o)(.debug_info+0x1c8):
+R_ARM_ABS32 used with TLS symbol nacl_multimedia_thread_id
+collect2: ld returned 1 exit status
+
+</ns0:content><ns0:updated>2012-03-07T18:34:46.000Z</ns0:updated><ns0:published>2009-12-23T19:49:28.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:owner>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>arm untrusted toolchain has linker issus with TLS relocations </ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>NaCl-TCB</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/235/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=235" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/235" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-03-07T18:34:46.000Z</ns2:closedDate><ns2:id>235</ns2:id></ns0:entry>

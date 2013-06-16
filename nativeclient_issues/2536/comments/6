@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4DSX47eCl7ImA9WhVTEEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2536/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7879
+
+------------------------------------------------------------------------
+r7879 | mseaborn@chromium.org | Thu Feb 23 17:40:35 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/exception_test/nacl.scons?r1=7879&amp;r2=7878&amp;pathrev=7879
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/exception_patch/ntdll_test.c?r1=7879&amp;r2=7878&amp;pathrev=7879
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/exception_test/exception_crash_test.c?r1=7879&amp;r2=7878&amp;pathrev=7879
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=7879&amp;r2=7878&amp;pathrev=7879
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/command_tester.py?r1=7879&amp;r2=7878&amp;pathrev=7879
+
+Exception handling: Add test for crashes inside trusted code
+
+This is in preparation for exception handling on x86-64 Windows, so
+that we have a test that covers the %rip range check.
+
+Fix an incorrect value for "trusted_segfault:win32" in status_map.  A
+Windows process won't return -11 when exiting from a crash.  This
+field was not being used until now.  I've removed two other incorrect
+win32/win64 values that weren't being used.  (If the
+deprecated-on-Windows signal handler kicks in, it can return -11, but
+that's what the "trusted_segfault:win_fakesig" field tracks.)
+
+For consistency, I've also changed the "trusted_segfault:win64" field
+to match the win32 value.  This involves changing the NTDLL patch
+tests to use "untrusted_segfault" instead, which is more appropriate
+because the NTDLL patch is for catching untrusted faults.
+
+To clarify further, I've renamed "win64_crash_exit" to
+"win64_exit_via_ntdll_patch".  I've updated the comment to reflect
+that the NTDLL patch only does a HLT when an untrusted-code crash
+happens.  (I hadn't updated the comment when I extended the NTDLL
+patch to recover from trusted-code crashes.)
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2536
+TEST=exception_tests and others
+
+Review URL: https://chromiumcodereview.appspot.com/9452027
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-02-24T01:46:18.000Z</ns0:updated><ns0:published>2012-02-24T01:46:18.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2536#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2536/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIMSX47eCl7ImA9WhRSFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2413/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: b5e811c17f83b07719fee76ecd18b83aef41569e
+ Email: robertm@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Initial hook for triggering the abi "shimming" for pnacl nexes on x86-64.
+
+This is quite hackish but lets us start experimentation.
+Do activate this force IRT_ABI_HACK_64 to '1' in
+ pnacl/driver/pnacl-translate.py
+then run
+pnacl/build.sh driver
+
+Note: I removed the "write" call in 
+src/untrusted/pnacl_irt_shim/shim_entry.c
+because it let to undefined symbols
+(the bitcode linking does  not know about this library)
+
+Also, I have not really run the nexes but I confirmed that
+nm scons-out/nacl-x86-64-pnacl-clang/staging/ppapi_tests_x86-64.nexe | grep start
+0000000010040670 A __bss_start
+0000000010034af8 t __fini_array_start
+0000000010034ae0 t __init_array_start
+0000000010034ae0 b __preinit_array_start
+0000000010034680 D __tls_template_start
+0000000000020080 T _pnacl_wrapper_start
+
+objdump -f scons-out/nacl-x86-64-pnacl-clang/staging/ppapi_tests_x86-64.nexe 
+
+scons-out/nacl-x86-64-pnacl-clang/staging/ppapi_tests_x86-64.nexe:     file format elf64-x86-64
+architecture: i386:x86-64, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x0000000000020080
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2413
+Review URL: http://codereview.chromium.org/8587037
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@7229 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	pnacl/driver/pnacl-nativeld.py
+M	pnacl/driver/pnacl-translate.py
+M	src/untrusted/pnacl_irt_shim/shim_entry.c</ns0:content><ns0:updated>2011-11-17T22:06:28.000Z</ns0:updated><ns0:published>2011-11-17T22:06:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2413#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2413/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

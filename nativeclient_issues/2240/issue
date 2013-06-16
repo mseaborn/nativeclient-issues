@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIBQX47eCl7ImA9WhdVFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2240</ns0:id><ns0:author>
+			<ns0:name>halya...@google.com</ns0:name><ns0:uri>/u/112856509894568708731/</ns0:uri></ns0:author><ns0:content type="html">Chrome browser tests are flaky on Win32 glibc bots and Mac glibc bots.
+
+Tests that fail the most often are srpc_nameservice and inbrowser_crash.
+
+Extensive testing on win32 catched one failure in srpc_nameservice. sel_ldr crashes while copying part of ELF file. It copies data from ELF+0x140 to ELF+0x1C00, but only region ELF-ELF+0x1000 is mapped. Here ELF is an address where ELF file starts (or at least memory which looks like ELF file ). The crash address is 42bcfa on rep movs instruction. I haven't determined what function it is yet.</ns0:content><ns0:updated>2011-09-19T10:19:10.000Z</ns0:updated><ns0:published>2011-09-07T15:09:35.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Flaky glibc bots.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>OS-Mac</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2240/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2240" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2240" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
+			<ns2:id>95570</ns2:id><ns2:project>chromium</ns2:project></ns2:blockedOn><ns2:closedDate>2011-09-19T10:19:10.000Z</ns2:closedDate><ns2:id>2240</ns2:id></ns0:entry>

@@ -1,0 +1,60 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04MQH47eCl7ImA9WhdQFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2151/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">I just tried running Hello World myself on Fedora 15, 64-bit, and got the following SELinux exception:
+
+
+
+SELinux is preventing /opt/google/chrome/chrome from execute access on the file /dev/shm/.com.google.Chrome.XRlKuT (deleted).
+
+*****  Plugin catchall (100. confidence) suggests  ***************************
+
+If you believe that chrome should be allowed execute access on the .com.google.Chrome.XRlKuT (deleted) file by default.
+Then you should report this as a bug.
+You can generate a local policy module to allow this access.
+Do
+allow this access for now by executing:
+# grep chrome /var/log/audit/audit.log | audit2allow -M mypol
+# semodule -i mypol.pp
+
+Additional Information:
+Source Context                unconfined_u:unconfined_r:chrome_sandbox_t:s0-s0:c
+                              0.c1023
+Target Context                unconfined_u:object_r:user_tmpfs_t:s0
+Target Objects                /dev/shm/.com.google.Chrome.XRlKuT (deleted) [
+                              file ]
+Source                        chrome
+Source Path                   /opt/google/chrome/chrome
+Port                          &lt;Unknown&gt;
+Host                          Fedora-15-64bit
+Source RPM Packages           google-chrome-beta-14.0.835.35-96116
+Target RPM Packages           
+Policy RPM                    selinux-policy-3.9.16-23.fc15
+Selinux Enabled               True
+Policy Type                   targeted
+Enforcing Mode                Enforcing
+Host Name                     Fedora-15-64bit
+Platform                      Linux Fedora-15-64bit 2.6.38.6-26.rc1.fc15.x86_64
+                              #1 SMP Mon May 9 20:45:15 UTC 2011 x86_64 x86_64
+Alert Count                   1
+First Seen                    Mon 15 Aug 2011 04:24:27 AM MDT
+Last Seen                     Mon 15 Aug 2011 04:24:27 AM MDT
+Local ID                      47df4280-f890-425f-b1ad-b1bfe680c616
+
+Raw Audit Messages
+type=AVC msg=audit(1313403867.587:59): avc:  denied  { execute } for  pid=2551 comm="chrome" path=2F6465762F73686D2F2E636F6D2E676F6F676C652E4368726F6D652E58526C4B7554202864656C6574656429 dev=tmpfs ino=30540 scontext=unconfined_u:unconfined_r:chrome_sandbox_t:s0-s0:c0.c1023 tcontext=unconfined_u:object_r:user_tmpfs_t:s0 tclass=file
+
+
+type=SYSCALL msg=audit(1313403867.587:59): arch=x86_64 syscall=mprotect success=no exit=EACCES a0=7f300fc00000 a1=10000 a2=5 a3=0 items=0 ppid=1 pid=2551 auid=500 uid=500 gid=500 euid=500 suid=500 fsuid=500 egid=500 sgid=500 fsgid=500 tty=(none) ses=1 comm=chrome exe=/opt/google/chrome/chrome subj=unconfined_u:unconfined_r:chrome_sandbox_t:s0-s0:c0.c1023 key=(null)
+
+Hash: chrome,chrome_sandbox_t,user_tmpfs_t,file,execute
+
+audit2allow
+
+#============= chrome_sandbox_t ==============
+allow chrome_sandbox_t user_tmpfs_t:file execute;
+
+audit2allow -R
+
+#============= chrome_sandbox_t ==============
+allow chrome_sandbox_t user_tmpfs_t:file execute;
+</ns0:content><ns0:updated>2011-08-15T16:33:01.000Z</ns0:updated><ns0:published>2011-08-15T16:33:01.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by mball@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2151#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2151/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

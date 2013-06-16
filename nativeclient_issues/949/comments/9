@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ICRX47eCl7ImA9WhZRFUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/949/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4812
+
+------------------------------------------------------------------------
+r4812 | robertm@google.com | Mon Apr 11 10:03:45 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/utman.sh?r1=4812&amp;r2=4811&amp;pathrev=4812
+
+Enable better library object format verification for ARM.
+Drop depenency on nacl-gcc toolchain.
+Small refactoring to eliminate code duplication.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1482 http://code.google.com/p/nativeclient/issues/detail?id=949
+TEST= tools/llvm/utman.sh verify
+Review URL: http://codereview.chromium.org/6821047
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-11T17:06:04.000Z</ns0:updated><ns0:published>2011-04-11T17:06:04.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=949#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/949/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

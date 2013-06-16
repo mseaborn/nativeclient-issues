@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcAQH47eCl7ImA9WhVREkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2644/comments/full/18</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8066
+
+------------------------------------------------------------------------
+r8066 | jvoung@google.com | Mon Mar 19 19:16:23 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/toolchain/nacl.scons?r1=8066&amp;r2=8065&amp;pathrev=8066
+
+Revise list of broken pnacl eh tests (only glibc versions now).
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2644
+TEST= toolchain_tests
+
+Review URL: https://chromiumcodereview.appspot.com/9728012
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-03-20T02:20:41.000Z</ns0:updated><ns0:published>2012-03-20T02:20:41.000Z</ns0:published><ns2:updates /><ns0:title>Comment 18 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2644#c18" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2644/comments/full/18" rel="self" type="application/atom+xml" /></ns0:entry>

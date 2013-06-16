@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A08HRn47eCl7ImA9Wx5VE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/876/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdroid1@gmail.com</ns0:name><ns0:uri>/u/bugdroid1@gmail.com/</ns0:uri></ns0:author><ns0:content type="html">Commit: f615f4c7c03cf47ccc3815503bd944a62dbe296a
+ Email: mseaborn@chromium.org
+
+Fix two validation failures in ld.so: disable check_consistency()
+
+Remove a "ret" and a "ud2a" (both disallowed).
+
+This is an odd macro.  It does a sanity check on %ebx, but there is no
+hint at the call sites about why %ebx might be set incorrectly.  While
+we could fix this to pass the validator, it is simpler to assume this
+is old debugging code and remove it.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=876
+TEST=small_tests --nacl_glibc
+
+Review URL: http://codereview.chromium.org/3530010
+
+M	sysdeps/unix/sysv/linux/i386/sysdep.h</ns0:content><ns0:updated>2010-10-06T10:10:37.000Z</ns0:updated><ns0:published>2010-10-06T10:10:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdroid1@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=876#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/876/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

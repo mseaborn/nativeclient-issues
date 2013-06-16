@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08ASH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1037/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3612
+
+------------------------------------------------------------------------
+r3612 | dspringer@google.com | Tue Nov 02 12:41:24 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/plugin_ppapi.cc?r1=3612&amp;r2=3611&amp;pathrev=3612
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/nexe_arch.h?r1=3612&amp;r2=3611&amp;pathrev=3612
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/plugin.h?r1=3612&amp;r2=3611&amp;pathrev=3612
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/plugin_ppapi.h?r1=3612&amp;r2=3611&amp;pathrev=3612
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=3612&amp;r2=3611&amp;pathrev=3612
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/nexe_arch.cc?r1=3612&amp;r2=3611&amp;pathrev=3612
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/build.scons?r1=3612&amp;r2=3611&amp;pathrev=3612
+
+Integrate the JSON parser.  This is a fisrt step in getting the ISA selection
+to work.
+
+BUG = http://code.google.com/p/nativeclient/issues/detail?id=1037
+TEST = ./scons run_ppapi_plugin_unittest
+
+Review URL: http://codereview.chromium.org/4102009
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:17:29.000Z</ns0:updated><ns0:published>2011-01-21T23:17:29.000Z</ns0:published><ns2:updates /><ns0:title>Comment 13 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1037#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1037/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

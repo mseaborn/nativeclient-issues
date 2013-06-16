@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUcHR347eCl7ImA9WhVSEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2643/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">progress report:
+
+I can reproduce one of the failures like so:
+
+./scons platform=arm -j 12 run_return_address_test --verbose
+
+The segfault happens after main exits
+
+I stripped out all the printf calls and the failure is still there.
+
+Debugging progress:
+I compiled a (bad) return_address binary with this toolchain and another 
+(good) one with an older TC, then disassembled them objdump-arm -D  and ran the output through a massager script.
+
+inspecting them via 
+tkdiff ~/x.good.m  ~/x.bad.m
+
+No difference found in the return_address code, but some differences in library code.
+Will see whether it is feasible to go through them by hand.
+
+
+
+</ns0:content><ns0:updated>2012-03-07T23:30:36.000Z</ns0:updated><ns0:published>2012-03-07T23:30:36.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2643#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2643/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

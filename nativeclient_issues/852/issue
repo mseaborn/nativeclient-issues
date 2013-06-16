@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcFSX47eCl7ImA9WhRaE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/852</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Currently modular-build snapshots all output directories, including:
+ * final outputs (the full toolchain tree)
+ * intermediate outputs (e.g. binutils install tree)
+ * untarred &amp;amp; patched source trees (e.g. binutils source tree)
+This means it records a hash of exactly what was produced, and can
+match those up with inputs.
+
+However, there are two things it does not do:
+
+1) It does not rescan source directories to check whether they have
+been changed manually.  For speed, the out/source/* directories are
+only scanned when they are first unpacked.
+
+2) It does not scan the main NaCl SVN tree (and the trees pulled in
+via DEPS) at all, even on the first run.
+
+
+I want to address these points so that modular-build is a more useful
+tool for testing changes before committing them.  Currently
+modular-build will not always rebuild targets when their inputs have
+changed.  This means that modular-build will suggest that a change
+builds OK when it would actually not build from scratch.
+
+Also, by addressing (2), modular-build will become more of a memoizing
+build system.  By recording &amp;lt;input-hash, output-hash&amp;gt; pairs, we can
+distribute the build process so that (for example) a local build can
+reliably reuse results built on Buildbot.
+
+The reason for (2) is that the NaCl working tree contains many huge,
+frequently-changing or non-source files, including:
+
+ * native_client/toolchain
+ * native_client/scons-out
+ * native_client/tools/modular-build itself, and the &amp;quot;out&amp;quot; subdir
+ * tarballs in third_party
+ * &amp;quot;.svn&amp;quot; directories
+
+To address (2), I plan to change modular-build so that it makes a copy
+of a subset of the NaCl SVN tree.  This subset would exclude the
+directories above.
+
+Furthermore, when building untrusted libraries, we could use a copy
+that excludes &amp;quot;native_client/src/trusted&amp;quot;.  This means:
+ * we can be sure that untrusted libraries are separate from src/trusted;
+ * changes to src/trusted need not trigger toolchain rebuilds.
+</ns0:content><ns0:updated>2012-02-15T22:46:58.000Z</ns0:updated><ns0:published>2010-08-25T14:19:22.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Ensure that modular-build (re)scans source directories</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/852/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=852" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/852" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-02-15T22:46:58.000Z</ns2:closedDate><ns2:id>852</ns2:id></ns0:entry>

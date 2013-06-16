@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEcGQH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1203/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3809
+
+------------------------------------------------------------------------
+r3809 | krasin@google.com | Tue Nov 30 13:07:04 PST 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/unittests/shared/srpc/build.scons?r1=3809&amp;r2=3808&amp;pathrev=3809
+
+Reenable types_srpc_test for ARM.
+
+TEST=run_types_srpc_test
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1203
+
+Review URL: http://codereview.chromium.org/5290009
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:20:21.000Z</ns0:updated><ns0:published>2011-01-21T23:20:21.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1203#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1203/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

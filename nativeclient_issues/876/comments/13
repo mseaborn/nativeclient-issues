@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkACQH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/876/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3396
+
+------------------------------------------------------------------------
+r3396 | mseaborn@chromium.org | Mon Oct 04 11:18:23 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/egyptian_cotton/nacl.scons?r1=3396&amp;r2=3395&amp;pathrev=3396
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=3396&amp;r2=3395&amp;pathrev=3396
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/voronoi/nacl.scons?r1=3396&amp;r2=3395&amp;pathrev=3396
+
+CommandSelLdrTestNacl: Always pass "--" to sel_ldr
+
+This enforces a split between args that go to the trusted code (before
+"--") and args that go to untrusted code (after "--").
+
+We were already passing "--" when using nacl-glibc.
+
+This means tests/voronoi and tests/egyptian_cotton should not pass
+"--", which is redundant.  This means these tests now receive the
+correct args when using nacl-glibc (though they don't pass yet because
+multi-threading support is not finished).
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=876
+TEST=run on trybots
+
+Review URL: http://codereview.chromium.org/3568005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:59:21.000Z</ns0:updated><ns0:published>2011-01-21T22:59:21.000Z</ns0:published><ns2:updates /><ns0:title>Comment 13 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=876#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/876/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

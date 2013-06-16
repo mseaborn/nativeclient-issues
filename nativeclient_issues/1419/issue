@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIGRn47eCl7ImA9WhdRFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1419</ns0:id><ns0:author>
+			<ns0:name>dmichael@google.com</ns0:name><ns0:uri>/u/dmichael@google.com/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using?  721
+What version of the runtime are you using?  N/A
+On what operating system?  N/A
+What browser are you using?  N/A
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1.  Use init_project.py to put a project stub somewhere other than alongside the SDK examples.
+2.  Now you don't have an easy way to run a server for your app (existing httpd.py only works in examples).
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+I suggest making init_project.py put a version of httpd.py in to the created project, so that the project can go anywhere and be easily testable.  Currently, our manual test plan has us put the project with the SDK examples, and that's probably not the best way going forward.
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-08-05T18:22:07.000Z</ns0:updated><ns0:published>2011-02-11T21:19:54.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:cc>
+			<ns2:uri>/u/109474787648168037085/</ns2:uri><ns2:username>mli...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Make init_project.py provide a simple http server</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1419/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1419" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1419" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-05T18:22:07.000Z</ns2:closedDate><ns2:id>1419</ns2:id></ns0:entry>

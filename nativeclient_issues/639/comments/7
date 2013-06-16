@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYDRX47eCl7ImA9WxFUE0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/639/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">nm toolchain/linux_x86/sdk/nacl-sdk/lib/gcc/nacl64/4.4.3/libgcc_eh.a | grep
+" U " | sort -u
+
+                 U _GLOBAL_OFFSET_TABLE_
+                 U _Unwind_Find_FDE
+                 U _Unwind_GetDataRelBase
+                 U _Unwind_GetIP
+                 U _Unwind_GetLanguageSpecificData
+                 U _Unwind_GetRegionStart
+                 U _Unwind_GetTextRelBase
+                 U _Unwind_SetGR
+                 U _Unwind_SetIP
+                 U __fixunsdfti
+                 U __fixunssfti
+                 U __popcount_tab
+                 U abort
+                 U free
+                 U malloc
+                 U memcpy
+                 U memset
+                 U strlen
+
+All the _Unwind symbols seems to be  defined by the lib itself.
+The dependency  on malloc/free is heavy and could be a deal breaker.
+I do not quite understand how the dependency works, though, as it does not
+appear in the disassembly - maybe the address is taken somewhere.
+Maybe it can be factored out we well.</ns0:content><ns0:updated>2010-06-23T18:36:14.000Z</ns0:updated><ns0:published>2010-06-23T18:36:14.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=639#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/639/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEQERX47eCl7ImA9WhRaE0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2600</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">Using the pnacl SDK, I compile a simple &amp;quot;hello_world.c&amp;quot;.  Somewhere along the line a bunch of files with ---XXXX--- in them are generated.  This is unexpected based on the command-lines.
+
+noelallen@noelallen2:~/private_svn/chrome_gyp/src/out/pepper_18/examples/hello_world_pnacl$ make
+/usr/local/google/private_svn/chrome_gyp/src/out/pepper_18/toolchain/linux_x86_pnacl/newlib/bin/pnacl-clang -o hello_world.pexe hello_world.c -O0 -g -pthread -O0 -g -Wno-long-long -Wall -Wswitch-enum -Werror -pedantic  -lppapi
+/usr/local/google/private_svn/chrome_gyp/src/out/pepper_18/toolchain/linux_x86_pnacl/newlib/bin/pnacl-translate -arch x86-32 hello_world.pexe -o hello_world_x86_32.nexe 
+/usr/local/google/private_svn/chrome_gyp/src/out/pepper_18/toolchain/linux_x86_pnacl/newlib/bin/pnacl-translate -arch x86-64 hello_world.pexe -o hello_world_x86_64.nexe
+/usr/local/google/private_svn/chrome_gyp/src/out/pepper_18/toolchain/linux_x86_pnacl/newlib/bin/pnacl-translate -arch arm hello_world.pexe -o hello_world_arm.nexe
+noelallen@noelallen2:~/private_svn/chrome_gyp/src/out/pepper_18/examples/hello_world_pnacl$ ls -al
+total 1272
+drwxr-x--- 2 noelallen eng   4096 2012-02-15 10:14 .
+drwxr-x--- 3 noelallen eng   4096 2012-02-15 10:11 ..
+-rwxr-x--- 1 noelallen eng 375246 2012-02-15 10:14 hello_world_arm.nexe
+-rw-r----- 1 noelallen eng 138332 2012-02-15 10:14 hello_world_arm.nexe---hello_world.pexe---.o
+-rw-r----- 1 noelallen eng   6876 2012-02-15 10:11 hello_world.c
+-rw-r----- 1 noelallen eng   3204 2012-02-15 10:11 hello_world.html
+-rw-r----- 1 noelallen eng    166 2012-02-15 10:11 hello_world.nmf
+-rwxr-x--- 1 noelallen eng 269032 2012-02-15 10:14 hello_world.pexe
+-rw-r----- 1 noelallen eng  11228 2012-02-15 10:14 hello_world.pexe---hello_world.c---.po
+-rwxr-x--- 1 noelallen eng 375506 2012-02-15 10:14 hello_world_x86_32.nexe
+-rw-r----- 1 noelallen eng 126288 2012-02-15 10:14 hello_world_x86_32.nexe---hello_world.pexe---.o
+-rwxr-x--- 1 noelallen eng 399268 2012-02-15 10:14 hello_world_x86_64.nexe
+-rw-r----- 1 noelallen eng 175672 2012-02-15 10:14 hello_world_x86_64.nexe---hello_world.pexe---.o
+-rw-r----- 1 noelallen eng     25 2012-02-15 10:11 make.bat
+-rw-r----- 1 noelallen eng   1884 2012-02-15 10:11 Makefile
+noelallen@noelallen2:~/private_svn/chrome_gyp/src/out/pepper_18/examples/hello_world_pnacl$ 
+</ns0:content><ns0:updated>2012-02-16T06:05:04.000Z</ns0:updated><ns0:published>2012-02-15T18:19:00.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Unexpected (trash?) files when using PNaCl toolchain.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2600/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2600" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2600" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-02-16T06:05:04.000Z</ns2:closedDate><ns2:id>2600</ns2:id></ns0:entry>

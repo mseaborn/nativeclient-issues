@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C04GQn47eCl7ImA9WhZXE0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1757/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bradnelson@google.com</ns0:name><ns0:uri>/u/bradnelson@google.com/</ns0:uri></ns0:author><ns0:content type="html">granted BUILDBOT_SLAVENAME generally shouldn't be relied on, as that's narrowing things to a particular machine. The one plausible exception might be archiving, which you really don't want to have happen accidentally on the wrong host. (We've had accidental duplicates, with the ppapi integration bots for instance). I'd be willing to concede scripts should do something plausible when this isn't set.
+
+I think we DO want to encourage BUILDBOT_BUILDERNAME to be set, even when running subscripts directly, as we don't want scripts magically deciding how to build based on something else (like introspecting on the system) instead we want it gated on BUILDBOT_BUILDERNAME so that you can get exactly the same execution path when running locally.
+
+buildbot_selector.py does just chose what to run based on buildername, but that isn't to say that this should be the only place that this variable is used. It exists so that's there's a single entry point to every single buildbot, not just a limited class. I would argue if your goal is to duplicate what the bots do, you should run this, not a subscript.
+
+build_linux.sh &lt;32|64&gt; &lt;dbg|opt&gt; &lt;newlib|glibc&gt;
+seems exhaustive, but is deceptive. It for instance does different things when run inside the toolchain build or not. It doesn't handle coverage.
+We could insist that it be fully parameterized, but pretty soon it would start looking like the scons command line. If you'll recall the earlier distressing flamewar, these scripts nearly ended up being one per builder and 100% pedantic. They only ended up being merged as a concession to my sloth. I really didn't intend folks to run them directly. And if you had been relying on a consistent interface, newlib|glibc would have broken you.
+
+Might I suggest you're mixing two separate use cases:
+1. Duplicating exactly what the buildbots run.
+2. Having a convenient script with a small number of arguments that runs an appropriate subset of build and test on the current system.
+
+If the scons entry point isn't working for #2, perhaps we need refactoring or another wrapper for that use case (I know bsy uses one locally).
+Mixing #1 and #2 is problematic. In theory they are very similar, but #1 has to cope with all the corner cases (don't do this when in the toolchain, disable this stage on atom hardware, use something known/expected to be locally installed on the bot). For #1 you really want all choices to flow from BUILDBOT_BUILDERNAME to support reproducibility. But for #2, you want the script to be 'smart' and poke around your system to fall back based on local conditions or to have optional arguments making it complex. Making the script smarter/complex is in conflict with making it reproducible.
+
+Would the aversion to running buildbot_selector.py directly be reduced if it took an optional override for BUIDLBOT_BUILDERNAME, and had a batch entry point ie:
+buildbot/buildbot_selector.bat foo
+in place of:
+set BUILDBOT_BUILDERNAME=foo
+python.bat buildbot/buildbot_selector.py
+
+</ns0:content><ns0:updated>2011-05-02T21:32:03.000Z</ns0:updated><ns0:published>2011-05-02T21:32:03.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bradnelson@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1757#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1757/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

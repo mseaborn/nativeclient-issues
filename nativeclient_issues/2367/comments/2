@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQFSX47eCl7ImA9WhdbGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2367/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>pdox%goo...@gtempaccount.com</ns0:name><ns0:uri>/u/104735739662288482898/</ns0:uri></ns0:author><ns0:content type="html">Here's an example. If you compile:
+
+typedef int (*funcptr)(void);
+int main() {
+  funcptr foo = (funcptr)0x100;
+  foo();
+}
+
+On X86-32, LLVM generates:
+
+call 0x100  ; Absolute address 0x100
+
+The problem is that this requires a relocation which is not valid in PIC mode. 
+
+In PIC, it should actually generate something like:
+
+movl$0x100, %eax
+call *%eax
+
+The problem is that X86Subtarget::IsLegalToCallImmediateAddr should actually return False when PIC is enabled, but as written it returns True.</ns0:content><ns0:updated>2011-10-18T00:21:58.000Z</ns0:updated><ns0:published>2011-10-18T00:21:58.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by pdox%goo...@gtempaccount.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2367#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2367/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

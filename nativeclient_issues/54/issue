@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEIERn47eCl7ImA9WxVUGUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/54</ns0:id><ns0:author>
+			<ns0:name>mark.d...@gmail.com</ns0:name><ns0:uri>/u/117634658684698531165/</ns0:uri></ns0:author><ns0:content type="html">Team: Beached As
+
+The SRPC Shared Memory implementation contains an integer overflow in the
+range checking of the write() function, which is callable from javascript.
+If this method is called with an overly large offset, memory at a negative
+offset to the allocated shared memory segment can be written to, resulting
+in memory corruption.</ns0:content><ns0:updated>2009-03-25T15:55:07.000Z</ns0:updated><ns0:published>2009-03-12T07:39:43.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:state>closed</ns2:state><ns0:title>SRPC Shared Memory Integer Overflow</ns0:title><ns2:label>Security-Contest</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/54/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=54" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/54" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2009-03-25T15:55:07.000Z</ns2:closedDate><ns2:id>54</ns2:id></ns0:entry>

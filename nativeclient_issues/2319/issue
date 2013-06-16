@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0IMQH47eCl7ImA9WhdaFko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2319</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">The following hangs:
+
+./scons platform=x86-64 --mode=opt-host,nacl --clang run_gio_test
+
+(gdb) disassemble 
+Dump of assembler code for function GioFileRead:
+=&amp;gt; 0x00007ffff7fe8ca0 &amp;lt;+0&amp;gt;:	jmp    0x7ffff7fe8ca0 &amp;lt;GioFileRead&amp;gt;
+End of assembler dump.
+
+
+objdump:
+
+0000000000028ca0 &amp;lt;GioFileRead&amp;gt;:
+   28ca0:       eb fe                   jmp    28ca0 &amp;lt;GioFileRead&amp;gt;
+   28ca2:       66 66 66 66 66 2e 0f    nopw   %cs:0x0(%rax,%rax,1)
+   28ca9:       1f 84 00 00 00 00 00 
+</ns0:content><ns0:updated>2011-10-27T00:33:01.000Z</ns0:updated><ns0:published>2011-09-28T02:57:19.000Z</ns0:published><ns2:status>Accepted</ns2:status><ns2:owner>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100177598732114324016/</ns2:uri><ns2:username>mcgra...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>clang miscompiles trusted code base in opt-host mode</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2319/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2319" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2319" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>2319</ns2:id></ns0:entry>

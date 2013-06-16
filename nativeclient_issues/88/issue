@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A04ER347eCl7ImA9WxNVFko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/88</ns0:id><ns0:author>
+			<ns0:name>lucas.t...@gmail.com</ns0:name><ns0:uri>/u/108053976489373140344/</ns0:uri></ns0:author><ns0:content type="html">I did not install plug-in the native client in the browser google chrome. 
+I appreciate if someone explain me how can I install the plugin's native 
+client in chrome. 
+And I also can not use the files or the SCons sel_ldr.exe
+
+Version of the SDK - 0.1
+Operating system - windows XP
+Browser - google chrome
+
+
+</ns0:content><ns0:updated>2009-10-27T21:45:06.000Z</ns0:updated><ns0:published>2009-05-17T22:11:18.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:state>closed</ns2:state><ns0:title>How to install the native client's plugin in google chrome</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/88/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=88" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/88" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2009-10-27T21:45:06.000Z</ns2:closedDate><ns2:id>88</ns2:id></ns0:entry>

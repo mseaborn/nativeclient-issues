@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AHSH47eCl7ImA9WhVTGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2636/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7954
+
+------------------------------------------------------------------------
+r7954 | kschimpf@google.com | Mon Mar 05 14:14:58 PST 2012
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/imm-3byte.dis?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/gen/ncval_reg_sfi_opcode_table_32.h?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/ncdecode_tablegen.c?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/testdata/64/ncval_reg_sfi_modeled_insts.txt?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/gen/nc_opcode_table_64.h?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/gen/nc_opcode_table_32.h?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/gen/ncop_expr_node_flag_impl.h?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/gen/ncopcode_operand_kind_impl.h?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/nc_inst_state_statics.c?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/testdata/64/modeled_insts.txt?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/testdata/32/modeled_insts.txt?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/gen/ncopcode_operand_kind.h?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/gen/ncop_expr_node_flag.h?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/gen/nc_subregs_64.h?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/gen/nc_subregs_32.h?r1=7954&amp;r2=7953&amp;pathrev=7954
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/imm-farptr.dis?r1=7954&amp;r2=7953&amp;pathrev=7954
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/imm-farptr.vdis?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/ncdecode_onebyte.c?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/nc_inst_trans.c?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/ncdecode_forms.c?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/ncop_expr_node_flag.enum?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/ncopcode_operand_kind.enum?r1=7954&amp;r2=7953&amp;pathrev=7954
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/gen/ncval_reg_sfi_opcode_table_64.h?r1=7954&amp;r2=7953&amp;pathrev=7954
+
+Fix jump far instructions for x86-32 in the new decoder. Note that this doesn't
+impact validation. It only effects the x86-32 command line disassembler.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2636&amp;thanks=2636&amp;ts=1330982548
+Review URL: https://chromiumcodereview.appspot.com/9586017
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-03-05T22:15:39.000Z</ns0:updated><ns0:published>2012-03-05T22:15:39.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2636#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2636/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

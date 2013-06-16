@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkcDQ347eCl7ImA9Wx5UEUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/579/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">Spoke to Mark about this.  Mark's stance is essentially this:
+1. It is unreasonable, from a performance standpoint, to expect the TCB to validate parameters that can be validated by the host OS.  In particular, bad memory addresses -- they turn into a fault regardless of OS.
+
+2. It is useful, as a debugging aid, to be told "we just faulted in trusted code, but it's really your fault, you naughty untrusted program."
+
+So my stance is now:
+1. This is mostly a POLA problem.  It's not a bug in Noel's work per se.
+2. It would be good to distinguish three states: trusted fault, untrusted fault, and trusted fault caused by recognizably bad behavior in an untrusted program.
+
+Distinguishing these is going to require some plumbing.  Mark's suggestion seems reasonable.  To paraphrase: when trusted code accesses untrusted memory (under the control of the nexe), it should set a flag in the NaCl thread context, and then clear it when the access completes.  The signal handler can inspect this flag and adjust its reporting.
+
+Doing this will take some work.  Every trusted-to-untrusted memory access would need to be instrumented.  Fortunately, I believe we tend to make these accesses through utility functions.
+
+In light of all this I've messed with the labels, reclassifying it as a usability-related enhancement.</ns0:content><ns0:updated>2010-10-15T21:27:52.000Z</ns0:updated><ns0:published>2010-10-15T21:27:52.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Type-Defect</ns2:label><ns2:label>-OS-Linux</ns2:label><ns2:label>-Milestone-ArcticSea</ns2:label><ns2:label>Type-Enhancement</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Usability</ns2:label><ns2:status>Available</ns2:status><ns2:ownerUpdate>---</ns2:ownerUpdate></ns2:updates><ns0:title>Comment 7 by cbiffle@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=579#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/579/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

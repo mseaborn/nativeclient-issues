@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIAQn47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1141</ns0:id><ns0:author>
+			<ns0:name>techtonik@gmail.com</ns0:name><ns0:uri>/u/techtonik@gmail.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Ubuntu
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+None
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+2.6.35-22-generic #35-Ubuntu SMP Sat Oct 16 20:36:48 UTC 2010 i686 GNU/Linux
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. ./scons
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+scons: done reading SConscript files.
+scons: Building targets ...
+________Compiling scons-out/nacl-x86-32/obj/tests/contest_issues/issue52.o
+tests/contest_issues/issue52.c:21: error: expected declaration specifiers or '...' before 'NaClSrpcClosure'
+tests/contest_issues/issue52.c: In function 'FortyTwo':
+tests/contest_issues/issue52.c:23: error: 'NaClSrpcRpc' has no member named 'result'
+tests/contest_issues/issue52.c:24: error: 'done' undeclared (first use in this function)
+tests/contest_issues/issue52.c:24: error: (Each undeclared identifier is reported only once
+tests/contest_issues/issue52.c:24: error: for each function it appears in.)
+tests/contest_issues/issue52.c: At top level:
+tests/contest_issues/issue52.c:33: error: expected declaration specifiers or '...' before 'NaClSrpcClosure'
+tests/contest_issues/issue52.c: In function 'HelloWorld':
+tests/contest_issues/issue52.c:38: error: 'NaClSrpcRpc' has no member named 'result'
+tests/contest_issues/issue52.c:39: error: 'done' undeclared (first use in this function)
+cc1: warnings being treated as errors
+tests/contest_issues/issue52.c: At top level:
+tests/contest_issues/issue52.c:43: error: initialization from incompatible pointer type
+tests/contest_issues/issue52.c:48: error: initialization from incompatible pointer type
+scons: *** [scons-out/nacl-x86-32/obj/tests/contest_issues/issue52.o] Error 1
+scons: building terminated because of errors.
+
+**********************************************************************
+ERROR REPORT: 1 failures
+**********************************************************************
+
+scons-out/nacl-x86-32/obj/tests/contest_issues/issue52.o failed: Error 1
+</ns0:content><ns0:updated>2011-07-29T00:15:43.000Z</ns0:updated><ns0:published>2010-11-05T01:43:26.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Build fails on Ubuntu in PNACL : Revision: 3586 </ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1141/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1141" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1141" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-11-16T19:14:53.000Z</ns2:closedDate><ns2:id>1141</ns2:id></ns0:entry>

@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkQNQn47eCl7ImA9WhVSGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2641</ns0:id><ns0:author>
+			<ns0:name>olo...@google.com</ns0:name><ns0:uri>/u/113921375080395685545/</ns0:uri></ns0:author><ns0:content type="html">PppInputEventRpcServer::PPP_InputEvent_HandleInputEvent() incorrectly passes input_event parameter from PluginResource::AdoptAsWithNoBrowserCount() to input_event-&amp;gt;Init(data, character_text_var);
+Init() sees 'this' as NULL, and module crashes.
+
+Following patch confuses optimizer enough, to hide issue: 
+
+Index: ../ppapi/native_client/src/shared/ppapi_proxy/plugin_ppp_input_event_rpc_server.cc
+===================================================================
+--- ../ppapi/native_client/src/shared/ppapi_proxy/plugin_ppp_input_event_rpc_server.cc	(revision 121877)
++++ ../ppapi/native_client/src/shared/ppapi_proxy/plugin_ppp_input_event_rpc_server.cc	(working copy)
+@@ -53,6 +53,7 @@
+   scoped_refptr&amp;lt;PluginInputEvent&amp;gt; input_event =
+       PluginResource::AdoptAsWithNoBrowserCount&amp;lt;PluginInputEvent&amp;gt;(
+           browser_resource);
++  fprintf(stderr, &amp;quot;input_event 1 %p\n&amp;quot;, (void*)input_event);
+   // Now deserialize the input event data and initialize the local
+   // InputEventData with it. Note that we don't actually use the provided
+   // PP_Resource for anything; we have all the data sent to us immediately to
+@@ -65,6 +66,7 @@
+   PP_Var character_text_var = PP_MakeUndefined();
+   DeserializeTo(character_text_bytes, character_text_size, 1,
+                 &amp;amp;character_text_var);
++  fprintf(stderr, &amp;quot;input_event 2 %p\n&amp;quot;, (void*)input_event);
+   input_event-&amp;gt;Init(data, character_text_var);
+ 
+   *handled = static_cast&amp;lt;int32_t&amp;gt;(
+
+Likely code related to the way structure return works.
+</ns0:content><ns0:updated>2012-03-16T18:59:53.000Z</ns0:updated><ns0:published>2012-03-07T00:45:14.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pnacl compiler bug for ARM targets: incorrect structure return  </ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>MigrateToChromium</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2641/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2641" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2641" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-03-16T18:59:53.000Z</ns2:closedDate><ns2:id>2641</ns2:id></ns0:entry>

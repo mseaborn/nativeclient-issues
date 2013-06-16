@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIGQX47eCl7ImA9Wx5VFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/938/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>pol...@google.com</ns0:name><ns0:uri>/u/101953680983947802512/</ns0:uri></ns0:author><ns0:content type="html">The missing pieces are:
+- Change PluginPpapi::RequestNaClPlugin to use pp::URLLoader with URLNotify
+- Implement URLNotify to extract an FD and call Plugin::LoadNaClModule with it
+- Upgrade LoadNaclModule to process an FD and pass it on to ServiceRuntime requesting command-line launch for now while we are not browser integrated
+- Upgrade ServiceRuntime to use the SelLdrLauncher to launch the sel_ldr via command-line and then pass FD via RPC
+- Upgrade SelLdrLauncher to start the sel_ldr with the right flags to achieve such start-up
+  </ns0:content><ns0:updated>2010-10-08T22:55:20.000Z</ns0:updated><ns0:published>2010-10-08T22:55:20.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by pol...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=938#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/938/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

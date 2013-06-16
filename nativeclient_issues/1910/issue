@@ -1,0 +1,122 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUFQH47eCl7ImA9WhZUF08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1910</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? N/A
+What version of the runtime are you using? NaCl svn r5610
+On what operating system? Windows 7
+What browser are you using? Chrome 13 r88131
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Run the win7-toolchain_x86 buildbot with r5610
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Here is the error during the ncval_annotate_test:
+
+C:\b\build\slave\win7-toolchain_x86\build\third_party\python_26\python.exe C:\b\build\slave\win7-toolchain_x86\build\native_client\tools\command_tester.py --name C:\b\build\slave\win7-toolchain_x86\build\native_client\scons-out\nacl-x86-64/test_results/ncval_annotate_test.out --report C:\b\build\slave\win7-toolchain_x86\build\native_client\scons-out\nacl-x86-64/test_results/ncval_annotate_test.out --time_warning 2 --time_error 20 --perf_env_description x86-64_nnacl_newlib_static_irt --osenv NACL_CFLAGS=-m64 C:\b\build\slave\win7-toolchain_x86\build\third_party\python_26\python.exe C:\b\build\slave\win7-toolchain_x86\build\native_client\src\trusted\validator_x86\ncval_annotate_test.py -v
+======================================================================
+setting environment
+======================================================================
+[NACL_CFLAGS] = [-m64]
+======================================================================
+running ['C:\\b\\build\\slave\\win7-toolchain_x86\\build\\third_party\\python_26\\python.exe', 'C:\\b\\build\\slave\\win7-toolchain_x86\\build\\native_client\\src\\trusted\\validator_x86\\ncval_annotate_test.py', '-v']
+======================================================================
+NACL_CFLAGS=-m64 C:\b\build\slave\win7-toolchain_x86\build\third_party\python_26\python.exe C:\b\build\slave\win7-toolchain_x86\build\native_client\src\trusted\validator_x86\ncval_annotate_test.py -v
+Test C:\b\build\slave\win7-toolchain_x86\build\native_client\scons-out\nacl-x86-64/test_results/ncval_annotate_test.out took 0.078001 secs
+
+ERROR: Command returned 1 with type='normal', but expected [0] with type='normal' for platform=win32
+======================================================================
+Stdout
+======================================================================
+
+======================================================================
+Stderr
+======================================================================
+test_ncval_handles_many_errors (__main__.ToolchainTests) ... ERROR
+
+test_ncval_returns_errors (__main__.ToolchainTests) ... ERROR
+
+
+
+======================================================================
+
+ERROR: test_ncval_handles_many_errors (__main__.ToolchainTests)
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File &amp;quot;C:\b\build\slave\win7-toolchain_x86\build\native_client\src\trusted\validator_x86\ncval_annotate_test.py&amp;quot;, line 106, in test_ncval_handles_many_errors
+
+    &amp;quot;-o&amp;quot;, os.path.join(temp_dir, &amp;quot;prog&amp;quot;)] + NACL_CFLAGS)
+
+  File &amp;quot;C:\b\build\slave\win7-toolchain_x86\build\native_client\src\trusted\validator_x86\..\..\..\tests\testutils.py&amp;quot;, line 48, in check_call
+
+    rc = subprocess.call(*args, **kwargs)
+
+  File &amp;quot;C:\b\build\slave\win7-toolchain_x86\build\third_party\python_26\lib\subprocess.py&amp;quot;, line 444, in call
+
+    return Popen(*popenargs, **kwargs).wait()
+
+  File &amp;quot;C:\b\build\slave\win7-toolchain_x86\build\third_party\python_26\lib\subprocess.py&amp;quot;, line 595, in __init__
+
+    errread, errwrite)
+
+  File &amp;quot;C:\b\build\slave\win7-toolchain_x86\build\third_party\python_26\lib\subprocess.py&amp;quot;, line 804, in _execute_child
+
+    startupinfo)
+
+WindowsError: [Error 2] The system cannot find the file specified
+
+
+
+======================================================================
+
+ERROR: test_ncval_returns_errors (__main__.ToolchainTests)
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File &amp;quot;C:\b\build\slave\win7-toolchain_x86\build\native_client\src\trusted\validator_x86\ncval_annotate_test.py&amp;quot;, line 43, in test_ncval_returns_errors
+
+    &amp;quot;-o&amp;quot;, os.path.join(temp_dir, &amp;quot;prog&amp;quot;)] + NACL_CFLAGS)
+
+  File &amp;quot;C:\b\build\slave\win7-toolchain_x86\build\native_client\src\trusted\validator_x86\..\..\..\tests\testutils.py&amp;quot;, line 48, in check_call
+
+    rc = subprocess.call(*args, **kwargs)
+
+  File &amp;quot;C:\b\build\slave\win7-toolchain_x86\build\third_party\python_26\lib\subprocess.py&amp;quot;, line 444, in call
+
+    return Popen(*popenargs, **kwargs).wait()
+
+  File &amp;quot;C:\b\build\slave\win7-toolchain_x86\build\third_party\python_26\lib\subprocess.py&amp;quot;, line 595, in __init__
+
+    errread, errwrite)
+
+  File &amp;quot;C:\b\build\slave\win7-toolchain_x86\build\third_party\python_26\lib\subprocess.py&amp;quot;, line 804, in _execute_child
+
+    startupinfo)
+
+WindowsError: [Error 2] The system cannot find the file specified
+
+
+
+----------------------------------------------------------------------
+
+Ran 2 tests in 0.016s
+
+
+
+FAILED (errors=2)
+
+
+ncval_annotate_test.out: FAILED
+scons: *** [scons-out\nacl-x86-64\test_results\ncval_annotate_test.out] Error -1
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-06-10T17:16:51.000Z</ns0:updated><ns0:published>2011-06-10T16:06:28.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>ncval_annotate_test failure on toolchain</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1910/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1910" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1910" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-06-10T17:16:51.000Z</ns2:closedDate><ns2:id>1910</ns2:id></ns0:entry>

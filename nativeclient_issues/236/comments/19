@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIFRH47eCl7ImA9WxFQEks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/236/comments/full/19</ns0:id><ns0:author>
+			<ns0:name>dt...@codeaurora.org</ns0:name><ns0:uri>/u/102710273696022658094/</ns0:uri></ns0:author><ns0:content type="html">Referring to my previous comment, the change I made to llvm-fake.py was a 2 line 
+change. Both within the MassageFinalLinkCommandArm function: 1) Add crtbegin.o just 
+before crt1.o in the init code, 2) add -lnacl just after -lc in the fini code.
+
+Since life does not really use iostream, I wrote a 'hello-world' app that simple does 
+cout &lt;&lt; "hellow world" &lt;&lt; "\n"; This results in a 'segmentation fault' on our hw 
+linux target.
+</ns0:content><ns0:updated>2010-05-07T19:28:35.000Z</ns0:updated><ns0:published>2010-05-07T19:28:35.000Z</ns0:published><ns2:updates /><ns0:title>Comment 19 by dt...@codeaurora.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=236#c19" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/236/comments/full/19" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYFSH47eCl7ImA9WhVXFk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2701/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8271
+
+------------------------------------------------------------------------
+r8271 | bradnelson@google.com | Mon Apr 16 12:01:28 PDT 2012
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/abi_corpus/validator_regression_test.py?r1=8271&amp;r2=8270&amp;pathrev=8271
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/abi_corpus/corpus_errors.py?r1=8271&amp;r2=8270&amp;pathrev=8271
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_standard.py?r1=8271&amp;r2=8270&amp;pathrev=8271
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/abi_corpus/startup_regression_test.py?r1=8271&amp;r2=8270&amp;pathrev=8271
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/abi_corpus/corpus_utils.py?r1=8271&amp;r2=8270&amp;pathrev=8271
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/validator_regression?r1=8271&amp;r2=8270&amp;pathrev=8271
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/abi_corpus?r1=8271&amp;r2=8270&amp;pathrev=8271
+
+Adding a startup regression test.
+
+Adding a test that starts up a chrome build against a corpus of CRXs.
+Vet that a module loads and doesn't crash.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2701
+TEST=startup_regression
+R=ncbray@chromium.org
+
+Review URL: https://chromiumcodereview.appspot.com/9950041
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-04-16T19:05:19.000Z</ns0:updated><ns0:published>2012-04-16T19:05:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2701#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2701/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

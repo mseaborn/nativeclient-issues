@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEEDQ347eCl7ImA9WhRaE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/322</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">If I try to build the NaCl toolchain on Ubuntu karmic, it fails while 
+building gdb:
+
+../../gdb-6.8/gdb/linux-nat.c: In function &#8216;linux_nat_info_proc_cmd&#8217;:
+../../gdb-6.8/gdb/linux-nat.c:2940: error: ignoring return value of 
+&#8216;fgets&#8217;, declared with attribute warn_unused_result
+
+The problem is that gdb's build scripts add &amp;quot;-Werror&amp;quot; to CFLAGS by default.
+
+The workaround appears to be to set ERROR_ON_WARNING=no in the environment.  
+This needs to be set when invoking make as well as configure, because make 
+runs configure in subdirectories.
+</ns0:content><ns0:updated>2012-02-15T22:57:52.000Z</ns0:updated><ns0:published>2010-03-01T10:50:39.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Toolchain fails to build on Ubuntu karmic: gdb build error</ns0:title><ns2:label>Type-Defect</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/322/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=322" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/322" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-02-15T22:57:52.000Z</ns2:closedDate><ns2:id>322</ns2:id></ns0:entry>

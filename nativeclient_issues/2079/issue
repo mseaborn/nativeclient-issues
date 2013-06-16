@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUcAQn47eCl7ImA9WhdREEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2079</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">native_client/src/shared/ppapi_proxy/browser_ppp.cc contains the following code:
+
+  if (srpc_result != NACL_SRPC_RESULT_INTERNAL)  // Nexe is still alive.
+    NaClThreadJoin(&amp;amp;upcall_thread_);
+  ShutdownChannel();
+
+The NaClThreadJoin() call was made conditional in http://src.chromium.org/viewvc/native_client?view=rev&amp;amp;revision=6167.
+
+Making the join conditional is wrong because it will cause the thread to be leaked.
+
+This is probably also memory-unsafe, because the main thread destroys main_channel_ (in ShutdownChannel()) potentially while the thread is still running and still using main_channel_.
+
+This is a repeat of issue 668.
+</ns0:content><ns0:updated>2011-07-30T20:17:23.000Z</ns0:updated><ns0:published>2011-07-23T03:39:45.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Unjoined thread in browser_ppp.cc in trusted plugin</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Security</ns2:label><ns2:label>Mstone-14</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2079/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2079" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2079" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-29T00:22:18.000Z</ns2:closedDate><ns2:id>2079</ns2:id></ns0:entry>

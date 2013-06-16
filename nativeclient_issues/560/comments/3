@@ -1,0 +1,54 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8NSX47eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/560/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2458
+
+------------------------------------------------------------------------
+r2458 | mseaborn@chromium.org | Tue Jun 08 10:46:38 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.h?r1=2458&amp;r2=2457&amp;pathrev=2458
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_addrspace.c?r1=2458&amp;r2=2457&amp;pathrev=2458
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=2458&amp;r2=2457&amp;pathrev=2458
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/mmap_test.c?r1=2458&amp;r2=2457&amp;pathrev=2458
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_addrspace.h?r1=2458&amp;r2=2457&amp;pathrev=2458
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=2458&amp;r2=2457&amp;pathrev=2458
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=2458&amp;r2=2457&amp;pathrev=2458
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=2458&amp;r2=2457&amp;pathrev=2458
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=2458&amp;r2=2457&amp;pathrev=2458
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/arm/sel_addrspace_arm.c?r1=2458&amp;r2=2457&amp;pathrev=2458
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.c?r1=2458&amp;r2=2457&amp;pathrev=2458
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_test.cc?r1=2458&amp;r2=2457&amp;pathrev=2458
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/sel_addrspace_x86_64.c?r1=2458&amp;r2=2457&amp;pathrev=2458
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=2458&amp;r2=2457&amp;pathrev=2458
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/sel_addrspace_x86_32.c?r1=2458&amp;r2=2457&amp;pathrev=2458
+
+Remove thread refcount and remove NaClAppDtor()
+
+Following r2358, where support for signal stacks was added,
+NaClAppThreadDtor() must now be called from the thread that is
+shutting down, or the signal stack will be unregistered for the wrong
+thread.
+
+This means the refcount for threads should be removed, to ensure that
+it is not used unsafely, so remove NaClAppThreadIncRef() (which was
+not used anyway) and remove NaClAppThreadDecRef().
+
+NaClAppDtor() called NaClAppThreadDecRef() but is basically unused,
+because it is not able to shut down running threads safely.  There is
+a TODO for its removal, so remove it.
+
+This leaves other code unused, so remove it too:
+
+ * NaClAppFreeAllMemory()
+ * NaClAppFreeWalker()
+ * NaClTeardownMprotectGuards()
+ * guard_pages_initialized field
+
+web_worker_stub.c called NaClAppDtor() but is dead code.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=560
+TEST=existing tests
+
+Review URL: http://codereview.chromium.org/2659002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:28:18.000Z</ns0:updated><ns0:published>2011-01-21T22:28:18.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=560#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/560/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

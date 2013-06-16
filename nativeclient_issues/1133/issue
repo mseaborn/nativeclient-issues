@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ADQX47eCl7ImA9WhVXFE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1133</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Currently we have a big Git repository that contains binutils, gcc, newlib and gdb together:
+http://git.chromium.org/gitweb/?p=nacl-toolchain.git;a=summary
+
+I would like to split this up into one Git repository per component.
+
+* Having one repo per component is the usual way to use Git.  These components are maintained separately upstream and have separate release cycles.  Compare how X.org, GNOME and Chromium OS operate: they use many Git repositories.
+
+* This will make it possible to branch and merge each component independently.
+
+* That will therefore make it easier to merge from upstream.  The procedure would be to import upstream changes onto the upstream branch, and merge that into the NaCl branch.  (This would be awkward with a combined repo.)
+
+* It will be easier to integrate separate repos into tools/modular-build; there is already logic for this.  But with the current combined repo, I would have to write logic to split the directory up in the build system.
+
+Also the &amp;quot;gcc&amp;quot; directory in nacl-toolchain.git contains bundled copies of libgmp and libmpfr which are not wanted for tools/modular-build, which builds those libraries separately.</ns0:content><ns0:updated>2012-04-14T19:29:30.000Z</ns0:updated><ns0:published>2010-11-01T21:32:02.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Split up the nacl-toolchain Git repo into binutils/gcc/newlib repos</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1133/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1133" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1133" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2012-04-14T19:29:30.000Z</ns2:closedDate><ns2:id>1133</ns2:id></ns0:entry>

@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUEBRH47eCl7ImA9WxFQGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/471</ns0:id><ns0:author>
+			<ns0:name>jonasech...@gmail.com</ns0:name><ns0:uri>/u/113991051396727541021/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+
+nacl_mac_782a_2010_03_28.tgz
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+
+Chromium 5.0.394.0 (46103)
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+
+Mac OS X 10.6.2
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+
+1. Add the following line anywhere to a native client executable (for instance the tumbler 
+example):
+
+sem_t sem;
+sem_init(&amp;amp;sem,0,1);
+
+2. Run in Mac Chromium.
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Upon execution of the sem_init() function the program stops execution with the following 
+console output:
+
+[20284,2954014720:20:12:14.216968] Exit syscall handler: 0
+[47467:519:155334273455067:ERROR:/b/slave/chromium-rel-
+mac/build/src/chrome/common/chrome_paths.cc(241)] Not implemented reached in bool 
+chrome::PathProvider(int, FilePath*)
+
+When running the same .nexe with the --no-sandbox option enabled in Chromium, it works as 
+expected.</ns0:content><ns0:updated>2010-05-14T16:14:15.000Z</ns0:updated><ns0:published>2010-05-03T00:53:25.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/105190905030319373792/</ns2:uri><ns2:username>msn...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/114685308157308201595/</ns2:uri><ns2:username>grego...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Plugin process stops when calling sem_init() and the sandbox is enabled</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Milestone-Chromium-6</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/471/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=471" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/471" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2010-05-14T16:14:15.000Z</ns2:closedDate><ns2:id>471</ns2:id></ns0:entry>

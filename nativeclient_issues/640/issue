@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8GSH47eCl7ImA9Wx5RGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/640</ns0:id><ns0:author>
+			<ns0:name>*...@chromium.org</ns0:name><ns0:uri>/u/105874584972181853076/</ns0:uri></ns0:author><ns0:content type="html">OS: Windows XP SP2
+Dev Tool: Visual Studio 2008
+Browser: Chrome/Chromium
+
+I am from chrome team, I am trying to set up nacl environment so that I can run the examples and tests within chrome/chromium browser.
+
+I checked out nacl source code and then tried to build it by following guide:
+http://nativeclient.googlecode.com/svn/trunk/src/native_client/documentation/building.html
+
+When I run the command:
+.\scons.bat --download
+
+Finally it fails with message like &amp;quot;Visual studio tools are not in your path...&amp;quot;, See attached screen-shot for reference.
+
+I run vcvar32.bat and tried again several times, but it makes no use.
+
+How can I resolve this problem and build nacl successfully?
+
+
+</ns0:content><ns0:updated>2010-08-26T18:53:49.000Z</ns0:updated><ns0:published>2010-06-23T17:33:05.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/114685308157308201595/</ns2:uri><ns2:username>grego...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Build failes with message "Visual studio tools are not in your path..." when building native client with --download option</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/640/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=640" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/640" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-08-26T18:53:49.000Z</ns2:closedDate><ns2:id>640</ns2:id></ns0:entry>

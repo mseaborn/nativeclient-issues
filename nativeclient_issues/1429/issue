@@ -1,0 +1,51 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4GRX47eCl7ImA9Wx9UF0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1429</ns0:id><ns0:author>
+			<ns0:name>dsprin...@google.com</ns0:name><ns0:uri>/u/112723007196297768207/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? r721 (ArcticSea)
+What version of the runtime are you using? r4235
+On what operating system? Any
+What browser are you using? Chrome M10
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Host a .nexe on a service such as BigStore (commondatastorage.googleapis.com/...).  Use any service that will redirect GETs.
+2. Try to load your .nexe using a .nmf file.
+
+What is the expected output? 
+I expect the .nexe to load and run.
+
+What do you see instead?
+Nothing - the .nexe is never loaded.  When I turn on NACL_PLUGIN_DEBUG, I get this output:
+
+a0919500: FileDownloader::URLLoadFinishNotify (full_url=Var&amp;lt;'http://commondatastorage.googleapis.com/nativeclient-mirror/nacl/gallery/sine_synth/sine_synth.nmf'&amp;gt;)
+a0919500: FileDownloader::URLLoadFinishNotify (async_notify_ok=1)
+a0919500: FileDownloader::FileOpenNotify (pp_error=0)
+a0919500: PluginPpapi::NaClManifestFileDidOpen (pp_error=0)
+a0919500: PluginPpapi::NaClManifestFileDidOpen (file_desc=24)
+a0919500: PluginPpapi::NaClManifestFileDidOpen (dup_file_desc=25, json_file=0xa091a8a0)
+a0919500: GetNexeURLFromManifest(): sandbox='x86-32' nexe_manifest_json='{
+  &amp;quot;nexes&amp;quot;: {
+    &amp;quot;x86-64&amp;quot;: &amp;quot;sine_synth_x86_64.nexe&amp;quot;,
+    &amp;quot;x86-32&amp;quot;: &amp;quot;sine_synth_x86_32.nexe&amp;quot;,
+  }
+}
+'.
+a0919500: PluginPpapi::NaClManifestFileDidOpen (nexe_url=sine_synth_x86_32.nexe)
+a0919500: Plugin::SetSrcPropertyImpl (unloading previous)
+a0919500: Plugin::ShutDownSubprocess (this=0x4b0cb70)
+a0919500: Plugin::ShutDownSubprocess (socket_address=0x0, socket=0x0)
+a0919500: Plugin::ShutDownSubprocess (service_runtime=0x0)
+a0919500: Plugin::ShutDownSubprocess (this=0x4b0cb70, return)
+a0919500: PluginPpapi::RequestNaClModule (url='sine_synth_x86_32.nexe')
+a0919500: FileDownloader::RequestNaClModule (async_notify_ok=1)
+a0919500: FileDownloader::URLLoadStartNotify (pp_error=-7)
+a0919500: PluginPpapi::NexeFileDidOpen (pp_error=-7)
+
+Note the pp_error -7 (ENOACCESS).  This happens because sine_synth_x86_32.nexe causes a redirect which is not followed.
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-02-15T19:42:04.000Z</ns0:updated><ns0:published>2011-02-15T15:27:51.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Loading .nexes doesn't follow redirects.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1429/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1429" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1429" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2011-02-15T19:42:04.000Z</ns2:closedDate><ns2:id>1429</ns2:id></ns0:entry>

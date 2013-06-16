@@ -1,0 +1,86 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU8GSH47eCl7ImA9Wx9TFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/608/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">I believe this is fixed. For reference here are the idioms current produce by llc for CompareAndSwap at
+Last Changed Rev: 3752
+Last Changed Date: 2010-11-22 09:54:41 -0500 (Mon, 22 Nov 2010):
+
+*00025240 &lt;CompareAndSwap&gt;:
+    25240:       e24dd014        sub     sp, sp, #20     ; 0x14
+    25244:       e3cdd103        bic     sp, sp, #-1073741824    ; 0xc0000000
+    25248:       e58d0010        str     r0, [sp, #16]
+    2524c:       e58d100c        str     r1, [sp, #12]
+    25250:       e59d0010        ldr     r0, [sp, #16]
+    25254:       e59d100c        ldr     r1, [sp, #12]
+    25258:       e58d2008        str     r2, [sp, #8]
+    2525c:       f57ff05f        dmb     sy
+    25260:       e1903f9f        ldrex   r3, [r0]
+    25264:       e1530001        cmp     r3, r1
+*   25268:       1a000004        bne     25280 &lt;CompareAndSwap+0x40&gt;
+    2526c:       e1a00000        .word   0xe1a00000
+    25270:       e3c00103        bic     r0, r0, #-1073741824    ; 0xc0000000
+    25274:       e180cf92        strex   ip, r2, [r0]
+    25278:       e35c0000        cmp     ip, #0  ; 0x0
+*   2527c:       1afffff7        bne     25260 &lt;CompareAndSwap+0x20&gt;
+    25280:       f57ff05f        dmb     sy
+    25284:       e58d3004        str     r3, [sp, #4]
+    25288:       e59d0004        ldr     r0, [sp, #4]
+    2528c:       e58d3000        str     r3, [sp]
+    25290:       e28dd014        add     sp, sp, #20     ; 0x14
+    25294:       e3cdd103        bic     sp, sp, #-1073741824    ; 0xc0000000
+    25298:       e3cee13f        bic     lr, lr, #-1073741809    ; 0xc000000f
+    2529c:       e12fff1e        bx      lr
+
+
+*000254a0 &lt;CompareAndSwap&gt;:
+    254a0:       83 ec 14                sub    $0x14,%esp
+    254a3:       8b 44 24 18             mov    0x18(%esp),%eax
+    254a7:       89 44 24 10             mov    %eax,0x10(%esp)
+    254ab:       8b 44 24 1c             mov    0x1c(%esp),%eax
+    254af:       89 44 24 0c             mov    %eax,0xc(%esp)
+    254b3:       8b 4c 24 20             mov    0x20(%esp),%ecx
+    254b7:       89 4c 24 08             mov    %ecx,0x8(%esp)
+    254bb:       8b 54 24 10             mov    0x10(%esp),%edx
+    254bf:       90                      nop
+    254c0:       8b 44 24 0c             mov    0xc(%esp),%eax
+    254c4:       f0 0f b1 0a             lock cmpxchg %ecx,(%edx)
+    254c8:       89 04 24                mov    %eax,(%esp)
+    254cb:       89 44 24 04             mov    %eax,0x4(%esp)
+    254cf:       8b 44 24 04             mov    0x4(%esp),%eax
+    254d3:       83 c4 14                add    $0x14,%esp
+    254d6:       59                      pop    %ecx
+    254d7:       83 e1 e0                and    $0xffffffe0,%ecx
+    254da:       ff e1                   jmp    *%ecx
+    254dc:       90                      nop
+    254dd:       90                      nop
+    254de:       90                      nop
+    254df:       90                      nop
+
+
+*0000000000026300 &lt;CompareAndSwap&gt;:
+    26300:       55                      push   %rbp
+    26301:       48 89 e5                mov    %rsp,%rbp
+    26304:       89 7d fc                mov    %edi,-0x4(%rbp)
+    26307:       89 75 f8                mov    %esi,-0x8(%rbp)
+    2630a:       89 55 f4                mov    %edx,-0xc(%rbp)
+    2630d:       8b 4d fc                mov    -0x4(%rbp),%ecx
+    26310:       8b 45 f8                mov    -0x8(%rbp),%eax
+    26313:       89 c9                   mov    %ecx,%ecx
+    26315:       f0 41 0f b1 14 0f       lock cmpxchg %edx,(%r15,%rcx,1)
+    2631b:       89 45 ec                mov    %eax,-0x14(%rbp)
+    2631e:       66 90                   xchg   %ax,%ax
+    26320:       89 45 f0                mov    %eax,-0x10(%rbp)
+    26323:       8b 45 f0                mov    -0x10(%rbp),%eax
+    26326:       8b 2c 24                mov    (%rsp),%ebp
+    26329:       4c 01 fd                add    %r15,%rbp
+    2632c:       83 c4 08                add    $0x8,%esp
+    2632f:       4c 01 fc                add    %r15,%rsp
+    26332:       59                      pop    %rcx
+    26333:       83 e1 e0                and    $0xffffffffffffffe0,%ecx
+    26336:       4c 01 f9                add    %r15,%rcx
+    26339:       ff e1                   jmpq   *%rcx
+    2633b:       90                      nop
+    2633c:       90                      nop
+    2633d:       90                      nop
+    2633e:       90                      nop
+    2633f:       90                      nop
+</ns0:content><ns0:updated>2010-11-22T19:23:49.000Z</ns0:updated><ns0:published>2010-11-22T19:23:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=608#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/608/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

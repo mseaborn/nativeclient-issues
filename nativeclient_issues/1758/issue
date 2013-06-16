@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUcDQn47eCl7ImA9WhZXFU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1758</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">browser_tester sets the &amp;quot;timeout&amp;quot; attribute and defines a handle_timeout() method in a class which derives from SocketServer (via BaseHTTPServer.HTTPServer).
+
+However, those features were introduced in Python 2.6 (though the docs do not state this -- http://docs.python.org/library/socketserver.html).
+
+Mac OS X 10.5 includes Python 2.5, so browser_tester's test timeout feature does not work there.
+
+This is the danger of using interfaces based on inheritance in Python!  You get no warnings if the attributes you are overriding don't exist in the base class.
+
+This explains why test failures on OS X 10.5 have led to timeouts at the Buildbot level.</ns0:content><ns0:updated>2011-05-04T18:17:53.000Z</ns0:updated><ns0:published>2011-04-30T03:12:32.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>browser_tester: Test timeout does not work on Python 2.5 (e.g. on Mac OS X 10.5)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Test</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1758/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1758" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1758" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-05-04T18:17:53.000Z</ns2:closedDate><ns2:id>1758</ns2:id></ns0:entry>

@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8NQH47eCl7ImA9WxFVEEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/574/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">&gt; This will be a little tricky, the ARM's "decoration" script doesn't
+&gt; just decorate: it calls an external disassembler, since I
+&gt; deliberately did not write a custom ARM disassembler.  This implies
+&gt; that even on x86-32, you will need an ARM binutils installed to get
+&gt; "pretty" validator results.
+
+Actually I don't think that's a problem, because anyone who's
+developing for ARM will already have an ARM cross-toolchain (typically
+running on x86) which already includes objdump.  And also, this is not
+an impediment to unifying the (unwrapped) command line tools that
+produce unprettified output.
+</ns0:content><ns0:updated>2010-06-08T17:41:31.000Z</ns0:updated><ns0:published>2010-06-08T17:41:31.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=574#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/574/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

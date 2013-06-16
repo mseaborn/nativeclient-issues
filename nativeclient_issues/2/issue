@@ -1,0 +1,61 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcER347eCl7ImA9WhRQFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2</ns0:id><ns0:author>
+			<ns0:name>Christop...@gmail.com</ns0:name><ns0:uri>/u/114977650582966975541/</ns0:uri></ns0:author><ns0:content type="html">german WinXP SP3, Python 2.5.2, DELL Inspiron 9400 laptop with 2GB Ram, 250 
+GB Harddrive
+
+On a german system, the default plugin system directory for the firefox 
+plugin is not found, as the build script is assuming a wrong path.
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Windows XP German
+2. walk through the &amp;quot;Getting Started&amp;quot; guide to build the firefox plugin
+3. the compilation failes, as the build script expects to build into 
+&amp;quot;C:\Program Files\Mozilla Firefox\&amp;quot;, whereas on localized versions of 
+windows, the program directory can have different names. E.g. in german, it 
+is &amp;quot;C:\Programme&amp;quot;
+
+I see this when doing the steps in the &amp;quot;Getting started&amp;quot; guide:
+
+C:\nacl\googleclient\native_client&amp;gt;.\scons.bat --prebuilt firefox_install
+scons: Reading SConscript files ...
+======================================================================
+Building nexe binaries using sdk at 
+[C:\nacl\googleclient\native_client\tools_bi
+n\windows\sdk\nacl-sdk]
+======================================================================
+scons: done reading SConscript files.
+scons: Building targets ...
+C:\Python25\python.exe ./tools/firefoxinstall.py MODE=0 
+PLATFORM_BASE=&amp;quot;C:\nacl\g
+oogleclient\native_client/scons-out/&amp;quot;
+MODE=0
+PLATFORM_BASE=C:\nacl\googleclient\native_client/scons-out/
+Error: directory &amp;quot;c:\Program Files\Mozilla Firefox\plugins&amp;quot; not found.
+I don't know where to install browser plugins.
+
+**** INSTALLATION FAILED.
+
+scons: unknown OSError exception code 0 - 'C:\WINDOWS\System32\cmd.exe /C 
+&amp;quot;&amp;quot;C:\P
+ython25\python.exe&amp;quot; ./tools/firefoxinstall.py MODE=0 
+PLATFORM_BASE=&amp;quot;C:\nacl\goog
+leclient\native_client/scons-out/&amp;quot;&amp;quot;': Error
+scons: *** [firefox_install] Error 127
+scons: building terminated because of errors.
+
+
+Workaround is to manually create the english directory manually 
+(&amp;quot;C:\Program Files\&amp;quot;) and then copy the Mozilla firefox folder into it, and 
+then recopy the plugins folder back to the normal directory.
+
+As an alternative, the build script could also create non-existing 
+directories on the fly in order to create the output, but this would still 
+not make the plugin work. 
+
+Best would be to find the localized application folder or to let the user 
+specify where it is if it is not found in the assumed location. 
+
+</ns0:content><ns0:updated>2011-12-11T03:26:46.000Z</ns0:updated><ns0:published>2008-12-09T11:51:02.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/hbridge@google.com/</ns2:uri><ns2:username>hbridge@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Localized system paths are not being found on windows XP</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>HelpWanted</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>OS-Windows</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2010-10-15T17:19:03.000Z</ns2:closedDate><ns2:id>2</ns2:id></ns0:entry>

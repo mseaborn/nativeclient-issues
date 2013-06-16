@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUMNR347eCl7ImA9WhdTFkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2014</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">When passing control to x86-64 untrusted code, the NaClSwitch routine leaves %rcx pointing to the thread's trusted struct NaClThreadContext:
+
+        jmp     *0x88(%rcx)
+        /*
+         * This leaves %rcx pointing to the thread context, but that
+         * should be memory that's inaccessible by NaCl module code.
+         */
+
+This means that if there is a vulnerability that allows writing to an arbitrary location in memory, the vulnerability is very easy to exploit in a cross-platform way, because the exploit code can easily find the address of new_prog_ctr to overwrite.
+
+See issue 2010 for an example.
+
+Without this, if all trusted addresses are randomised, exploits should be harder to pull off.  (That said, the location of the service_runtime code+data is probably not randomised on all platforms.)
+
+We might as well fix this leak because it's trivial to do.</ns0:content><ns0:updated>2011-07-14T22:44:56.000Z</ns0:updated><ns0:published>2011-07-13T15:21:20.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>NaClSwitch() leaks NaClThreadContext pointer to x86-64 untrusted code</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Security</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2014/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2014" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2014" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-14T22:44:56.000Z</ns2:closedDate><ns2:id>2014</ns2:id></ns0:entry>

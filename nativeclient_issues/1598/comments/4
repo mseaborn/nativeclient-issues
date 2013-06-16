@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEEGQX47eCl7ImA9WhdSEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1598/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: a440bab2e0f9265bb646540bf23ecded027f32a4
+ Email: noelallen@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Remove Fake Browser
+
+Last cleanup for fake browser.
+Move async_messaging source file to pluging_async_messaging directory.
+Move async_message_test.c build from fake_browser to async_messaging scons files.
+Remove unused deferred_srpc_init.c
+Remove unused fake_browser directory
+Remove refernce to fake_browser/nacl.scons from SConstruct
+
+TEST= run_async_messaging_test
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1598
+Review URL: http://codereview.chromium.org/7449006
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6127 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	SConstruct
+D	tests/fake_browser/async_message_test.c
+D	tests/fake_browser/deferred_srpc_init.c
+D	tests/fake_browser/nacl.scons
+A	tests/plugin_async_messaging/async_message_test.c
+M	tests/plugin_async_messaging/nacl.scons</ns0:content><ns0:updated>2011-07-20T04:37:00.000Z</ns0:updated><ns0:published>2011-07-20T04:37:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1598#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1598/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

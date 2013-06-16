@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0AHRH47eCl7ImA9WhVTFEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/232</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">work around: http://codereview.chromium.org/501174
+
+problem description by Dennis Taul:
+
+What I determined was the initial malloc for the buffer to copy in the
+.nexe code was being tossed after the mmap call to allocate the sandbox.
+The size of the malloc for the buffer was triggering malloc to use mmap. I
+determined this from viewing /proc/&amp;lt;pid#&amp;gt;/smaps
+ 2aaab000-2aad9000 rwxp 00000000 00:00 0
+ Size:                184 kB
+ ...
+Note the virtual address occupies the same region as the sandbox.
+After the mmap call, this mapping disappeared?
+Thus, the call to memcpy to copy the code segment into the sandbox was
+triggering a read protection exception.
+
+I worked around this addding a call to 'mallopt' early in the main
+(sel_main.c) e.g. &amp;quot;mallopt(M_MMAP_MAX, 0);&amp;quot;
+This disables malloc from using mmap and thus eliminated the 'collision'.</ns0:content><ns0:updated>2012-02-28T22:55:35.000Z</ns0:updated><ns0:published>2009-12-22T19:02:49.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>ARM HW does not work with trusted malloc using mmap</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>TestNeeded</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/232/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=232" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/232" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2012-02-28T22:55:35.000Z</ns2:closedDate><ns2:id>232</ns2:id></ns0:entry>

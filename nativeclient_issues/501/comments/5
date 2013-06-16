@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUEARH47eCl7ImA9WxFXEkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/501/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">even w/o dynamic code deletion, there is a correctness issue.  consider a situation 
+where a program inserts dynamic code D into a cache line:
+
+DDDHHHHHHHHHHHHH
+
+where the D instructions does not fill the cache line, and the rest of the line is 
+filled with halt instructions (H).  since this memory should never have been read 
+into the icache, the program's first execution of the D code will load it in.  
+suppose it isn't evicted while the program introduces more dynamic code E into the 
+cache line, so the RAM/dcache version -- after the dsb -- looks like:
+
+DDDEEEHHHHHHHHHH
+
+since the icache is not getting evicted, even though the program used the correct 
+code insertion abstractions/services that we provide, because of the implementation 
+oversight, when the program tries to execute the E code, it will instead get the 
+stale icache copy
+
+DDDHHHHHHHHHHHHH
+
+i.e., hit a halt instruction and the program will abort.  worse, this behavior may be 
+effectively non-deterministic, since input-dependent execution of other unrelated 
+code between the insertions of D and E may or may not cause the cache line's 
+eviction, making this hard to diagnose properly.
+
+anyway, while this particular scenario -- without dynamic code deletion -- is not a 
+security issue per se, it is a correctness issue.  in order for the program to be 
+able to use dynamic code in a robust fashion, we must do dsb, icache-flush, isb after 
+all the code is inserted.  in order for the program to be robust and to not be able 
+to subvert the system, we must do the dsb,icache,isb sequence both between the bundle 
+tail and bundle head copies and after all the code is inserted.  what we have now, 
+dsb between bundle tail and head copies, is not correct (since what ends up in the 
+icache may be an incomplete copy, with halt in place of the bundle head or in place 
+of entire bundles) but arguably secure as long as dynamic code deletion support isn't 
+added w/o change in the insertion code.</ns0:content><ns0:updated>2010-05-18T20:14:05.000Z</ns0:updated><ns0:published>2010-05-18T20:14:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=501#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/501/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

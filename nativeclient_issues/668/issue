@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUDRn47eCl7ImA9WxFaEE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/668</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">In src/shared/npruntime/npupcall_server.cc, the NaCl plugin creates a
+thread which listens on an IMC socket.  When the plugin instance is
+deleted with NPP_Destroy(), there is no code to ensure that the thread
+has exited before NPP_Destroy() returns and before the plugin
+instance's data structures are freed.
+
+This has two consequences:
+
+1) This thread can receive messages after the sel_ldr subprocess has
+been terminated because the messages are queued by the OS.  So if
+UpcallThread() receives an NPN_PluginThreadAsyncCall message or a
+Device3DFlush message, it can use a dangling NPP or NPModule pointer.
+This could cause a crash or be a vulnerability.
+
+
+2) If the thread receives no messages, it initially appears to be
+safe, *except* that the browser is allowed to dlclose() the plugin
+after NPP_Destroy()+NP_Shutdown().  If the thread is still running, it
+will crash, because the code it is executing is gone.
+
+This seems to be what is causing fake_browser_test to fail with
+SIGSEGV on the Ubuntu Jaunty buildbot.  Inserting &amp;quot;while(1) ;&amp;quot; at the
+end of UpcallThread() reliably reproduces the crash.  (Inserting a
+sleep() call doesn't reproduce the failure because the thread's code
+is not executing while the thread is in the syscall.)
+
+It's lucky that I put a dlclose() into fake_browser_test.  Although
+gdb and valgrind didn't help directly, gdb's logging alerted me to the
+fact that a thread was involved and valgrind's logging reminded me
+that dlclose() was being called.
+
+
+Also, the NaClThread struct is being leaked in this code because
+NaClThreadDtor() is not called.
+</ns0:content><ns0:updated>2010-07-13T08:04:37.000Z</ns0:updated><ns0:published>2010-07-03T13:57:09.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Plugin: Race condition in thread shutdown in npupcall_server.cc</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Plugins</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/668/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=668" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/668" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-07-13T08:04:37.000Z</ns2:closedDate><ns2:id>668</ns2:id></ns0:entry>

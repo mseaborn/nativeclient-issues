@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0YCR347eCl7ImA9WhVSGUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1495</ns0:id><ns0:author>
+			<ns0:name>myriac...@gmail.com</ns0:name><ns0:uri>/u/112082128194607343681/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? whatever is on the web site
+What version of the runtime are you using? whatever is on the web site
+On what operating system? Windows NT 5.1 and 5.2
+What browser are you using? N/A
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+I have not actually tried any of this, but I can see the problem in the source code browsing it online.
+1. Set the x86 direction flag from an untrusted program on NT 5.1 (XP 32) or 5.2 (2003/XP64).
+2. Cause an exception from the untrusted program.
+3. The vectored handler executes in an invalid context, possibly leading to memory corruption and unsandboxed code execution.
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Any AddVectoredExceptionHandler handler functions must do __asm cld before they do anything else to avoid the Windows bug.
+
+Please provide any additional information below and attach any relevant source files.
+
+There is a bug in Windows NT that was fixed in Vista but not before: KiUserExceptionDispatcher does not clear the direction flag.  This means that if you use AddVectoredExceptionHandler to register a vectored handler, and the exception occurs while the direction flag is set, the vectored handler will be called with the direction flag still set.
+
+This is a violation of the x86-32 and x86-64 ABIs, which state that the direction flag must be clear upon entry to any function.  Compilers make use of this assumption - optimizers will frequently inline small constant-sized memcpy operations as &amp;quot;movsd&amp;quot; instructions without first clearing the direction flag.  Thus, ordinary, bug-free code can be induced into corrupting memory due to invalid processor state.
+
+My apologies if this is not an issue, since I haven't actually tried it.  Like, if &amp;quot;cld&amp;quot; and &amp;quot;popf&amp;quot; are illegal opcodes in a sandboxed program, this isn't a problem.</ns0:content><ns0:updated>2012-03-17T01:52:46.000Z</ns0:updated><ns0:published>2011-03-04T00:43:50.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Fault handlers might need to clear the x86 direction flag</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Security</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>FaultHandler</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1495/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1495" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1495" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:blocking>
+			<ns2:id>2537</ns2:id></ns2:blocking><ns2:closedDate>2012-03-17T01:52:46.000Z</ns2:closedDate><ns2:id>1495</ns2:id></ns0:entry>

@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEQBSX47eCl7ImA9WhVTEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1683</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">The output from the Windows buildbots is currently useless for the sheriff (me).
+
+Take this one, for example: http://build.chromium.org/p/client.nacl/builders/win7-bare-m32-n32-opt/builds/1081/steps/annotate/logs/stdio
+
+My usual triage routine fails entirely.
+1. Scroll to the bottom, discover that something failed with exit code &amp;quot;-1073741819&amp;quot;.  No sign as to *what* that was, because all the messages above it look successful.  Just says that &amp;quot;program&amp;quot; failed.
+2. Grep for various combinations of &amp;quot;error&amp;quot;, &amp;quot;error:&amp;quot;, and &amp;quot;error(s)&amp;quot;.  The last one is particularly infuriating because apparently the Microsoft compiler likes to announce &amp;quot;0 error(s)&amp;quot; on EVERY COMPILE.  (Of course, finding a bazillion hits for gcc's -Werror is nearly as bad.)
+3. Same deal with &amp;quot;failed&amp;quot; and &amp;quot;failure&amp;quot;.
+4. Scroll through the file slowly, looking for anything in red, or containing large numbers of newlines or asterisks -- really, anything that looks different.  Find lots of things that really, really do look like build errors: &amp;quot;The system cannot find the file specified&amp;quot; in five places during vcvars execution, a bunch of lines reading &amp;quot;***** BROKEN&amp;quot;, etc.  Note that all of these lines also appear in *successful* runs and are there merely as distractions.
+
+Of course, as usual these days, the scons_compile log is even *less* useful, since only the annotate log has any indication that anything even failed: http://build.chromium.org/p/client.nacl/builders/win7-bare-m32-n32-opt/builds/1081/steps/scons_compile/logs/stdio
+
+I would like to have a concise summary of what failed when I open a build log.  This could be at the top or bottom, or on a separate page -- as long as it exists.</ns0:content><ns0:updated>2012-02-24T23:32:38.000Z</ns0:updated><ns0:published>2011-04-16T19:13:36.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Windows bots need clear, findable error messages</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Mstone-20</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1683/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1683" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1683" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1683</ns2:id></ns0:entry>

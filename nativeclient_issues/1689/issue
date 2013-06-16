@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUUBRn47eCl7ImA9WhZUFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1689</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">scons-out/opt-win-x86-32/staging/sel_ldr.exe -S -a -- E:\b\build\slave\nacl-win32_glibc_opt\build\native_client\toolchain\win_x86/nacl64/lib32/runnable-ld.so --library-path E:\b\build\slave\nacl-win32_glibc_opt\build\native_client\toolchain\win_x86/nacl64/lib32 scons-out/nacl-x86-32-glibc/obj/tests/data_not_executable/execute_data.nexe
+
+ERROR: Command returned normal -1073741674, expecting ['normal'] -1073741819 for win32
+======================================================================
+Stdout
+======================================================================
+This should fault...
+
+
+======================================================================
+Stderr
+======================================================================
+[3356,2464:20:34:19.437000] NaClTimeInternalInit: timeBeginPeriod(1)
+[3356,2464:20:34:19.437000] Unix epoch start is  11644473600000ms in Windows epoch time
+[3356,2464:20:34:19.453000] BYPASSING ALL ACL CHECKS
+DEBUG MODE ENABLED (bypass acl)
+[3356,4076:20:34:20.484000] munmap: rounded length to 0x10000
+[3356,4076:20:34:20.484000] invalid mmap flags 04022, ignoring extraneous bits
+[3356,4076:20:34:20.484000] invalid mmap flags 04022, ignoring extraneous bits
+[3356,4076:20:34:20.562000] munmap: rounded length to 0xf0000
+[3356,4076:20:34:20.562000] invalid mmap flags 04022, ignoring extraneous bits
+[3356,4076:20:34:20.562000] invalid mmap flags 04022, ignoring extraneous bits
+[3356,4076:20:34:20.578000] munmap: rounded length to 0x30000
+[3356,4076:20:34:20.578000] invalid mmap flags 04022, ignoring extraneous bits
+[3356,4076:20:34:20.578000] invalid mmap flags 04022, ignoring extraneous bits
+[3356,4076:20:34:20.578000] munmap: rounded length to 0x10000
+[3356,4076:20:34:20.578000] invalid mmap flags 04022, ignoring extraneous bits
+[3356,4076:20:34:20.578000] invalid mmap flags 04022, ignoring extraneous bits
+[3356,4076:20:34:20.718000] munmap: rounded length to 0x1a0000
+[3356,4076:20:34:20.718000] invalid mmap flags 04022, ignoring extraneous bits
+[3356,4076:20:34:20.718000] invalid mmap flags 04022, ignoring extraneous bits
+[3356,4076:20:34:20.718000] NaClAbiStatHostDescStatXlateCtor: how did NaCl app open a file with st_mode = 010000?
+
+RESULT execute_data.out: FAILED= 1.312500 secs
+
+Tests pass on Linux IA32 with nacl-glibc, Mac IA32 with nacl-glibc and or Win64 with nacl-glibc.
+
+Possibility exist that it's glibc fault, but looks unlikely.</ns0:content><ns0:updated>2011-06-09T18:14:17.000Z</ns0:updated><ns0:published>2011-04-18T21:12:18.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>execute_data test fails on win32 with nacl-glibc</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1689/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1689" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1689" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2011-05-11T07:17:09.000Z</ns2:closedDate><ns2:id>1689</ns2:id></ns0:entry>

@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYBR347eCl7ImA9WhZQGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1623</ns0:id><ns0:author>
+			<ns0:name>ncb...@google.com</ns0:name><ns0:uri>/u/100032148147647801554/</ns0:uri></ns0:author><ns0:content type="html">When the bot runs the multiarch test suite, the __src attribute of the embed tag is undefined.
+
+This is strange because all the other bots work fine, including the xp 32-bit VM.
+
+This is even stranger because two of the other tests in the same suite, which operate on the same nexe, are fine.
+
+Unfortunately the browser tests do not generate console output on Windows, so we are lacking debugging information.
+
+Initial conversations with sehr indicate that the __src attribute should be set if the nexe loads.  Alternate explanations may include it's being set to a null value, etc.</ns0:content><ns0:updated>2011-04-27T18:15:56.000Z</ns0:updated><ns0:published>2011-04-07T19:42:51.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Bizarre win7-bare-m32-n32-opt / multiarch test failure.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns2:label>Component-Pepper</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1623/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1623" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1623" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-04-27T18:15:56.000Z</ns2:closedDate><ns2:id>1623</ns2:id></ns0:entry>

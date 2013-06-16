@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEHRX47eCl7ImA9Wx9SGUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1228</ns0:id><ns0:author>
+			<ns0:name>dsprin...@google.com</ns0:name><ns0:uri>/u/112723007196297768207/</ns0:uri></ns0:author><ns0:content type="html">With NaCl rev 3860, I get these results:
+
+ './scons --mode=opt-win platform=x86-64 naclsdk_validate=0 sdl=none sel_ldr'
+________Compiling scons-out\opt-win-x86-64\obj\src\trusted\service_runtime\sel_main.obj
+sel_main.c
+C:\users\chrome~2\appdata\local\temp\nacl_toolsgmnggt\native_client/src/trusted/service_runtime/sel_ldr-inl.h(165) : error C2220: warning treated as error - no 'object' file generated
+C:\users\chrome~2\appdata\local\temp\nacl_toolsgmnggt\native_client/src/trusted/service_runtime/sel_ldr-inl.h(165) : warning C4293: '&amp;lt;&amp;lt;' : shift count negative or too big, undefined behavior
+
+
+This is blocking http://code.google.com/p/nativeclient/issues/detail?id=1032</ns0:content><ns0:updated>2010-12-10T14:17:14.000Z</ns0:updated><ns0:published>2010-12-07T19:48:53.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>64-bit sel_ldr doesn't build on windows.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1228/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1228" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1228" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>1032</ns2:id></ns2:blocking><ns2:closedDate>2010-12-10T14:17:14.000Z</ns2:closedDate><ns2:id>1228</ns2:id></ns0:entry>

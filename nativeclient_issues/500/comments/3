@@ -1,0 +1,147 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk4AR347eCl7ImA9WxFVEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/500/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>adono...@google.com</ns0:name><ns0:uri>/u/110803933729866443698/</ns0:uri></ns0:author><ns0:content type="html">Readily reproducible on Linux/x86-64, 6.0.430.0.
+
+Looks like the cause is WebPluginImpl::delegate_ == NULL, probably due to the fact that we're mid-initialization of the plugin when we attempt to make an NPN_GetURLNotify request.  I don't think it's my fault---looks like a Chrome NPAPI bug to me.
+
+More detail below:
+
+Stack at time of crash (SIGSEGV when invoking CreateResourceClient method on NULL delegate_):
+
+#0  webkit_glue::WebPluginImpl::HandleURLRequestInternal (this=0x7f9236a19380, 
+    url=0x7f92369d24b8 "a", method=0x31c379b "GET", target=0x0, buf=0x0, 
+    len=0, notify_id=1, popups_allowed=false, 
+    referrer_flag=webkit_glue::WebPluginImpl::PLUGIN_SRC)
+    at webkit/glue/plugins/webplugin_impl.cc:968
+#1  0x00000000016676f2 in webkit_glue::WebPluginImpl::HandleURLRequest (
+    this=0x7f9236a19380, url=0x7f92369d24b8 "a", method=0x31c379b "GET", 
+    target=0x0, buf=0x0, len=0, notify_id=1, popups_allowed=false)
+    at webkit/glue/plugins/webplugin_impl.cc:919
+#2  0x000000000165466d in NPAPI::PluginInstance::RequestURL (
+    this=0x7f9236a39000, url=0x7f92369d24b8 "a", method=0x31c379b "GET", 
+    target=0x0, buf=0x0, len=0, notify=true, notify_data=0x7f9236a12b10)
+    at webkit/glue/plugins/plugin_instance.cc:546
+#3  0x0000000001651a4c in GetURLNotify (id=0x7f923699efe0, 
+    url=0x7f92369d24b8 "a", target=0x0, notify=true, 
+    notify_data=0x7f9236a12b10) at webkit/glue/plugins/plugin_host.cc:344
+#4  0x0000000001651ad9 in NPN_GetURLNotify (id=0x7f923699efe0, 
+    url=0x7f92369d24b8 "a", target=0x0, notify_data=0x7f9236a12b10)
+    at webkit/glue/plugins/plugin_host.cc:371
+#5  0x0000000002291eb9 in nacl_srpc::Closure::StartDownload (
+    this=0x7f9236a12b10) at native_client/src/trusted/plugin/srpc/closure.cc:38
+#6  0x00000000022865d9 in nacl_srpc::Plugin::SetSrcPropertyImpl (
+    this=0x7f92411aae00, url="a")
+    at native_client/src/trusted/plugin/srpc/plugin.cc:303
+#7  0x00000000022867fe in nacl_srpc::Plugin::SetNexesPropertyImpl (
+    this=0x7f92411aae00, nexes_attr=0x7f923699eeb0 "x86-64:a")
+    at native_client/src/trusted/plugin/srpc/plugin.cc:279
+#8  0x0000000002286866 in nacl_srpc::Plugin::PostInit (this=0x7f92411aae00)
+    at native_client/src/trusted/plugin/srpc/plugin.cc:369
+#9  0x00000000022749d6 in SRPC_Plugin (this=0x7f92369a8b40, 
+    npp=0x7f923699efe0, argc=7, argn=0x7f92369a9480, argv=0x7f92369a9600)
+    at native_client/src/trusted/plugin/srpc/srpc.cc:179
+#10 0x0000000002272614 in NPP_New (
+    plugin_type=0x7f92369d18e8 "application/x-nacl-srpc", 
+    instance=0x7f923699efe0, mode=1, argc=7, argn=0x7f92369a9480, 
+    argv=0x7f92369a9600, saved=0x0)
+    at native_client/src/trusted/plugin/npapi/npp_launcher.cc:100
+#11 0x00000000016544db in NPAPI::PluginInstance::NPP_New (this=0x7f9236a39000, 
+    mode=1, argc=7, argn=0x7f92369a9480, argv=0x7f92369a9600)
+    at webkit/glue/plugins/plugin_instance.cc:192
+#12 0x0000000001654587 in NPAPI::PluginInstance::Start (this=0x7f9236a39000, 
+    url=..., param_names=0x7f92369a9480, param_values=0x7f92369a9600, 
+    param_count=7, load_manually=false)
+    at webkit/glue/plugins/plugin_instance.cc:155
+#13 0x0000000000ca5686 in WebPluginDelegatePepper::Initialize (
+    this=0x7f92369f8b40, url=..., 
+    arg_names=std::vector of length 7, capacity 8 = {...}, 
+    arg_values=std::vector of length 7, capacity 8 = {...}, 
+    plugin=0x7f9236a19380, load_manually=false)
+    at chrome/renderer/webplugin_delegate_pepper.cc:140
+#14 0x0000000001665296 in webkit_glue::WebPluginImpl::initialize (
+    this=0x7f9236a19380, container=0x7f9236a1b9d8)
+    at webkit/glue/plugins/webplugin_impl.cc:221
+
+
+
+Source:
+
+
+
+webkit/glue/plugins/webplugin_impl.cc:
+
+922     void WebPluginImpl::HandleURLRequestInternal(const char* url,
+923                                                  const char* method,
+924                                                  const char* target,
+925                                                  const char* buf,
+926                                                  unsigned int len,
+927                                                  int notify_id,
+928                                                  bool popups_allowed,
+929                                                  Referrer referrer_flag) {
+930       // For this request, we either route the output to a frame
+931       // because a target has been specified, or we handle the request
+932       // here, i.e. by executing the script if it is a javascript url
+933       // or by initiating a download on the URL, etc. There is one special
+934       // case in that the request is a javascript url and the target is "_self",
+935       // in which case we route the output to the plugin rather than routing it
+936       // to the plugin's frame.
+937       bool is_javascript_url = StartsWithASCII(url, "javascript:", false);
+938       RoutingStatus routing_status = RouteToFrame(
+939           url, is_javascript_url, method, target, buf, len, notify_id,
+940           referrer_flag);
+941       if (routing_status == ROUTED)
+942         return;
+943
+944       if (is_javascript_url) {
+945         GURL gurl(url);
+946         WebString result = container_-&gt;executeScriptURL(gurl, popups_allowed);
+947
+948         // delegate_ could be NULL because executeScript caused the container to
+949         // be deleted.
+950         if (delegate_) {
+951           delegate_-&gt;SendJavaScriptStream(
+952               gurl, result.utf8(), !result.isNull(), notify_id);
+953         }
+954
+955         return;
+956       }
+957
+958       unsigned long resource_id = GetNextResourceId();
+959       if (!resource_id)
+960         return;
+961
+962       GURL complete_url = CompleteURL(url);
+963       // Remove when flash bug is fixed. http://crbug.com/40016.
+964       if (!WebPluginImpl::IsValidUrl(complete_url, referrer_flag))
+965         return;
+966
+967       WebPluginResourceClient* resource_client = delegate_-&gt;CreateResourceClient(
+968           resource_id, complete_url, notify_id);
+969       if (!resource_client)
+970         return;
+971
+972       // If the RouteToFrame call returned a failure then inform the result
+973       // back to the plugin asynchronously.
+974       if ((routing_status == INVALID_URL) ||
+975           (routing_status == GENERAL_FAILURE)) {
+976         resource_client-&gt;DidFail();
+977         return;
+
+Breakpoints hit:
+
+
+
+Hit?	Location
+Y	WebPluginImpl::WebPluginImpl
+Y	WebPluginImpl::ReinitializePluginForResponse(WebKit::WebURLLoader*)
+N	WebPluginImpl::initialize(WebKit::WebPluginContainer*)
+N	WebPluginImpl::didReceiveResponse(WebKit::WebURLLoader*, WebKit::WebURLResponse const&amp;)
+N	WebPluginImpl::didFinishLoading() at webkit/glue/plugins/webplugin_impl.cc:344
+Y WebPluginImpl::HandleURLRequestInternal(char const*, char const*, char const*, char const*, unsigned int, int, bool, webkit_glue::WebPluginImpl::Referrer)
+N	WebPluginImpl::InitiateHTTPRequest(unsigned long, webkit_glue::WebPluginResourceClient*, GURL const&amp;, char const*, char const*, int, char const*, webkit_glue::WebPluginImpl::Referrer) at webkit/glue/plugins/webplugin_impl.cc:1007
+N	WebPluginImpl::ReinitializePluginForResponse(WebKit::WebURLLoader*)
+N	WebPluginImpl::TearDownPluginInstance(WebKit::WebURLLoader*)
+
+Note how neither of the two methods that initialize delegate_ (initialize(), ReinitializePluginForResponse()) was reached before HandleURLRequest.
+</ns0:content><ns0:updated>2010-06-09T17:35:46.000Z</ns0:updated><ns0:published>2010-06-09T17:35:46.000Z</ns0:published><ns2:updates>
+			<ns2:status>Available</ns2:status><ns2:ownerUpdate>---</ns2:ownerUpdate><ns2:summary>SIGSEGV when invoking NPN_GetURLNotify during early WebPluginDelegatePepper initialization</ns2:summary><ns2:ccUpdate>dsprin...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 3 by adono...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=500#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/500/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

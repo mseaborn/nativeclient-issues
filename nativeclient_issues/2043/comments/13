@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8FQH47eCl7ImA9WhdSEko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2043/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>mark@chromium.org</ns0:name><ns0:uri>/u/mark@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The entire kernel isn&#8217;t mapped into user space on Mac OS X. This is a departure from what people seem to expect based on Linux and Windows experience.
+
+http://developer.apple.com/library/mac/#documentation/Performance/Conceptual/LaunchTime/Articles/Prebinding.html#//apple_ref/doc/uid/20001858-126593-CJBFFIJG
+
+If we nab it early enough so that nothing else maps in that region, we can use 0xC0000000 to 0xFDFFFFFF. That&#8217;s 992MB. Not a power of two, though.
+
+This makes me sad, but we might need to turn off PIE for the helper executable, unless you&#8217;re ready to add a new NaCl-only executable. At least we can keep it on for the browser.</ns0:content><ns0:updated>2011-07-21T20:06:51.000Z</ns0:updated><ns0:published>2011-07-21T20:06:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 13 by mark@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2043#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2043/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

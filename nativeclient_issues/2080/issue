@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEQFRn47eCl7ImA9WhdSGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2080</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">See the following comment for run_inbrowser_trusted_crash_in_startup_test in tests/inbrowser_crash_test/nacl.scons:
+
+        # This test hangs the renderer process on Unix using
+        # Chromium's NaCl startup code, which suggests that the
+        # renderer is failing to close a socket that it sends to the
+        # NaCl process.  TODO(mseaborn): Investigate and fix.
+        or (env.Bit('disable_dynamic_plugin_loading') and
+            (env.Bit('host_linux') or env.Bit('host_mac'))))
+
+To reproduce, run Scons with &amp;quot;run_inbrowser_trusted_crash_in_startup_test disable_dynamic_plugin_loading=1&amp;quot; on Linux or Mac.
+
+This only happens for NaCl-in-Chromium, and does not happen with the externally-built plugin+sel_ldr.
+
+This might fail for the same reason that the recently-added tests run_ppapi_crash_browser_test and run_ppapi_bad_browser_test fail in NaCl-in-Chromium.
+
+I suspect there might be a socket FD leak in nacl_process_host.cc.
+</ns0:content><ns0:updated>2011-07-29T23:31:57.000Z</ns0:updated><ns0:published>2011-07-23T04:04:31.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Renderer can hang if NaCl process exits during startup</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Mstone-14</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2080/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2080" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2080" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-29T23:31:57.000Z</ns2:closedDate><ns2:id>2080</ns2:id></ns0:entry>

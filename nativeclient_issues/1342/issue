@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4FQn47eCl7ImA9WhdTF0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1342</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;On what operating system?&lt;/b&gt;
+
+Mac OSX 10.6.  Maybe others? Mercurial version 1.7.3 for me.
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+
+&amp;gt; tools/llvm/utman.sh hg-checkout-all
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+We should be able to check out the mercurial repos.
+Instead we get the error:
+
+abort: llvm-gcc.nacl-llvm-branches.googlecode.com certificate error: certificate is for *.googlecode.com
+
+I believe this is due to the &amp;quot;*.*.googlecode.com&amp;quot; format of the URL.
+The llvm repo (vs the llvm-gcc repo) checks out fine because it is just &amp;quot;*.googlecode.com&amp;quot;.
+See https://code.google.com/p/support/issues/detail?id=4533
+
+</ns0:content><ns0:updated>2011-07-15T22:28:33.000Z</ns0:updated><ns0:published>2011-01-24T21:12:49.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pnacl hg repos may have hg checkout SSL errors</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>Milestone-Caviar</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1342/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1342" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1342" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-15T22:28:33.000Z</ns2:closedDate><ns2:id>1342</ns2:id></ns0:entry>

@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcDSX47eCl7ImA9WhdUFko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2289/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">On thread model:
+
+1. Newlib-based nacl-gcc reports Thread model: nacl
+2. Glibc-based nacl-gcc reports Thread model: posix
+3. llvm-gcc reports Thread model: single
+4. Clang reports Thread model: posix
+
+At the same time, configure looks only if thread model is single or not:
+
+  if test $target_thread_file != single; then
+cat &gt;&gt;confdefs.h &lt;&lt;\_ACEOF                                                                                                                                                                                                                 
+#define HAVE_GTHR_DEFAULT 1   
+...
+
+It means that setting thread model from posix to nacl will not solve the issue.
+It probably makes sense to report single thread model and fix the issue when we have migrated to a more recent libstdc++. Anyway, we currently compile libstdc++ with Thread model: single, so it would not make anything worse.
+
+Thoughts?</ns0:content><ns0:updated>2011-10-03T20:34:38.000Z</ns0:updated><ns0:published>2011-10-03T20:34:38.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2289#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2289/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,52 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ANQ347eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1058/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3527
+
+------------------------------------------------------------------------
+r3527 | kschimpf@google.com | Thu Oct 21 10:49:11 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/modeled_insts.txt?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode_onebyte.c?r1=3527&amp;r2=3526&amp;pathrev=3527
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/long_mode.c?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/32/modeled_insts.txt?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nacl_illegal.c?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode_forms.c?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncopcode_operand_kind.enum?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncopcode_insts.enum?r1=3527&amp;r2=3526&amp;pathrev=3527
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/long_mode.h?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_cpu_checks.c?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode_forms.h?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/lock_insts.c?r1=3527&amp;r2=3526&amp;pathrev=3527
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/invalid_nonextend_store.dis?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/build.scons?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/nacl_illegal.dis?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/32/ncdis_iter_test.internal?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/ncdis_iter_test.internal?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/zero_extends.c?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/nacl_illegal.rval?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_trans.c?r1=3527&amp;r2=3526&amp;pathrev=3527
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/invalid_nonextend_store.rval?r1=3527&amp;r2=3526&amp;pathrev=3527
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/invalid_nonextend_store.hex?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncopcode_opcode_flags.enum?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/32/ncdis_iter_test.input?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/nacl_illegal.hex?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode_tablegen.c?r1=3527&amp;r2=3526&amp;pathrev=3527
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/invalid_nonextend_store.val?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/nacl_illegal.val?r1=3527&amp;r2=3526&amp;pathrev=3527
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/validator_x86.gyp?r1=3527&amp;r2=3526&amp;pathrev=3527
+
+Fix the modeling of one-byte opcodes for the x86-64 validator.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1058
+
+TEST=src/trusted/validator_x86/testdata/64/ncdis_iter_test.internal
+TEST=src/trusted/validator_x86/testdata/64/modeled_insts.txt
+
+TEST=src/trusted/validator_x86/testdata/32/ncdis_iter_test.input
+TEST=src/trusted/validator_x86/testdata/32/ncdis_iter_test.internal
+TEST=src/trusted/validator_x86/testdata/32/modeled_insts.txt
+
+Review URL: http://codereview.chromium.org/3873002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:16:32.000Z</ns0:updated><ns0:published>2011-01-21T23:16:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1058#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1058/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

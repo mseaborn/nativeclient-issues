@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEEDQn47eCl7ImA9WhZbF0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1885</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">During startup on 32-bit Windows, sel_ldr will temporarily commit 1GB of swap space.
+
+This will limit the number of sel_ldr instances that can be launched concurrently.
+
+sel_ldr uncommits the swap space later on in startup, so this does not limit the number of NaCl processes that can be running concurrently if they are started at suitably-spaced intervals.
+
+The code responsible is in NaCl_page_alloc() in native_client/src/trusted/service_runtime/win/sel_memory.c.  It explicitly passes MEM_COMMIT|MEM_RESERVE when it should just pass MEM_RESERVE.
+
+The space is later uncommitted via NaCl_mprotect() using VirtualFree() + MEM_DECOMMIT.
+
+This might be causing the multiple-tabs pyauto test to be flaky on 32-bit Windows.  I don't think the race condition occurs when launching multiple processes from the same tab (or same renderer process) because I think the trusted plugin waits for sel_ldr's startup to complete.
+</ns0:content><ns0:updated>2011-06-22T23:51:13.000Z</ns0:updated><ns0:published>2011-06-03T22:53:27.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>sel_ldr temporarily allocates 1GB of swap space on x86-32 Windows at startup</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1885/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1885" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1885" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-06-22T23:51:13.000Z</ns2:closedDate><ns2:id>1885</ns2:id></ns0:entry>

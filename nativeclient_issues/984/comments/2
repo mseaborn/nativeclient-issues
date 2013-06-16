@@ -1,0 +1,70 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0QNRX47eCl7ImA9Wx5VGE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/984/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mli...@google.com</ns0:name><ns0:uri>/u/109474787648168037085/</ns0:uri></ns0:author><ns0:content type="html">Comment 3 by project member khim@google.com, Jul 28, 2010
+The fact that you can not reproduce it just means permissions on your system changed.
+
+Our buildbot still produces files with 000 permissions as of r2813 and it's still impossible to build an SDK on fresh install of Windows 7:
+
+
+$ wget http://gsdview.appspot.com/nativeclient-archive/toolchain/2813/naclsdk_win_x86a.tgz
+--2010-07-28 22:37:48--  http://gsdview.appspot.com/nativeclient-archive/toolchain/2813/naclsdk_win_x86a.tgz
+Resolving gsdview.appspot.com... 74.125.77.141
+Connecting to gsdview.appspot.com|74.125.77.141|:80... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: http://commondatastorage.googleapis.com/nativeclient-archive/toolchain/2813/naclsdk_win_x86a.tgz [following]
+--2010-07-28 22:37:48--  http://commondatastorage.googleapis.com/nativeclient-archive/toolchain/2813/naclsdk_win_x86a.tgz
+Resolving commondatastorage.googleapis.com... 74.125.77.132
+Connecting to commondatastorage.googleapis.com|74.125.77.132|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 51762125 (49M) [application/x-tar]
+Saving to: `naclsdk_win_x86a.tgz'
+
+100%[=================================================================================================================================================================&gt;] 51,762,125   869K/s   in 76s     
+
+2010-07-28 22:39:04 (669 KB/s) - `naclsdk_win_x86a.tgz' saved [51762125/51762125]
+
+$ tar tSvpf naclsdk_win_x86a.tgz | grep -- ----------
+
+---------- chrome-bot/None     2104 2010-07-28 03:52 sdk/nacl-sdk/nacl64/lib/32/crt1.o
+---------- chrome-bot/None     1796 2010-07-28 03:52 sdk/nacl-sdk/nacl64/lib/32/crti.o
+---------- chrome-bot/None     1800 2010-07-28 03:52 sdk/nacl-sdk/nacl64/lib/32/crtn.o
+---------- chrome-bot/None      510 2010-07-28 03:52 sdk/nacl-sdk/nacl64/lib/32/intrinsics.o
+---------- chrome-bot/None    39354 2010-07-28 03:52 sdk/nacl-sdk/nacl64/lib/32/libav.a
+---------- chrome-bot/None     3826 2010-07-28 03:52 sdk/nacl-sdk/nacl64/lib/32/libcrt_platform.a
+---------- chrome-bot/None    37886 2010-07-28 03:51 sdk/nacl-sdk/nacl64/lib/32/libgio.a
+---------- chrome-bot/None  1823360 2010-07-28 05:40 sdk/nacl-sdk/nacl64/lib/32/libgoogle_nacl_gpu.a
+---------- chrome-bot/None    20182 2010-07-28 05:37 sdk/nacl-sdk/nacl64/lib/32/libgoogle_nacl_imc.a
+---------- chrome-bot/None    29374 2010-07-28 05:37 sdk/nacl-sdk/nacl64/lib/32/libgoogle_nacl_imc_c.a
+---------- chrome-bot/None  1206808 2010-07-28 05:37 sdk/nacl-sdk/nacl64/lib/32/libgoogle_nacl_npruntime.a
+---------- chrome-bot/None   246754 2010-07-28 05:40 sdk/nacl-sdk/nacl64/lib/32/libgoogle_nacl_pgl.a
+---------- chrome-bot/None   133780 2010-07-28 05:38 sdk/nacl-sdk/nacl64/lib/32/libgoogle_nacl_platform.a
+---------- chrome-bot/None  9796278 2010-07-28 05:39 sdk/nacl-sdk/nacl64/lib/32/libgoogle_nacl_protobuf.a
+---------- chrome-bot/None   121280 2010-07-28 03:52 sdk/nacl-sdk/nacl64/lib/32/libnacl.a
+---------- chrome-bot/None   250262 2010-07-28 03:53 sdk/nacl-sdk/nacl64/lib/32/libnosys.a
+---------- chrome-bot/None   737552 2010-07-28 05:38 sdk/nacl-sdk/nacl64/lib/32/libppapi_cpp.a
+---------- chrome-bot/None    85884 2010-07-28 03:52 sdk/nacl-sdk/nacl64/lib/32/libpthread.a
+---------- chrome-bot/None   235686 2010-07-28 03:52 sdk/nacl-sdk/nacl64/lib/32/libsrpc.a
+---------- chrome-bot/None    44154 2010-07-28 03:53 sdk/nacl-sdk/nacl64/lib/32/libvalgrind.a
+---------- chrome-bot/None     3152 2010-07-28 03:52 sdk/nacl-sdk/nacl64/lib/32/nacl_startup.o
+---------- chrome-bot/None     2984 2010-07-28 03:53 sdk/nacl-sdk/nacl64/lib/crt1.o
+---------- chrome-bot/None     2656 2010-07-28 03:53 sdk/nacl-sdk/nacl64/lib/crti.o
+---------- chrome-bot/None     2656 2010-07-28 03:53 sdk/nacl-sdk/nacl64/lib/crtn.o
+---------- chrome-bot/None      730 2010-07-28 03:53 sdk/nacl-sdk/nacl64/lib/intrinsics.o
+---------- chrome-bot/None    59638 2010-07-28 03:53 sdk/nacl-sdk/nacl64/lib/libav.a
+---------- chrome-bot/None     5570 2010-07-28 03:53 sdk/nacl-sdk/nacl64/lib/libcrt_platform.a
+---------- chrome-bot/None    53066 2010-07-28 03:53 sdk/nacl-sdk/nacl64/lib/libgio.a
+---------- chrome-bot/None  2768844 2010-07-28 05:43 sdk/nacl-sdk/nacl64/lib/libgoogle_nacl_gpu.a
+---------- chrome-bot/None    28298 2010-07-28 05:40 sdk/nacl-sdk/nacl64/lib/libgoogle_nacl_imc.a
+---------- chrome-bot/None    41938 2010-07-28 05:40 sdk/nacl-sdk/nacl64/lib/libgoogle_nacl_imc_c.a
+---------- chrome-bot/None  1763838 2010-07-28 05:40 sdk/nacl-sdk/nacl64/lib/libgoogle_nacl_npruntime.a
+---------- chrome-bot/None   335002 2010-07-28 05:43 sdk/nacl-sdk/nacl64/lib/libgoogle_nacl_pgl.a
+---------- chrome-bot/None   185420 2010-07-28 05:40 sdk/nacl-sdk/nacl64/lib/libgoogle_nacl_platform.a
+---------- chrome-bot/None 15235284 2010-07-28 05:42 sdk/nacl-sdk/nacl64/lib/libgoogle_nacl_protobuf.a
+---------- chrome-bot/None   170964 2010-07-28 03:53 sdk/nacl-sdk/nacl64/lib/libnacl.a
+---------- chrome-bot/None   359258 2010-07-28 03:54 sdk/nacl-sdk/nacl64/lib/libnosys.a
+---------- chrome-bot/None  1098656 2010-07-28 05:41 sdk/nacl-sdk/nacl64/lib/libppapi_cpp.a
+---------- chrome-bot/None   116704 2010-07-28 03:53 sdk/nacl-sdk/nacl64/lib/libpthread.a
+---------- chrome-bot/None   344298 2010-07-28 03:53 sdk/nacl-sdk/nacl64/lib/libsrpc.a
+---------- chrome-bot/None    83634 2010-07-28 03:54 sdk/nacl-sdk/nacl64/lib/libvalgrind.a
+---------- chrome-bot/None     4760 2010-07-28 03:53 sdk/nacl-sdk/nacl64/lib/nacl_startup.o
+</ns0:content><ns0:updated>2010-10-11T19:29:54.000Z</ns0:updated><ns0:published>2010-10-11T19:29:54.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mli...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=984#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/984/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

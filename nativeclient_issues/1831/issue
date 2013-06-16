@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEGQX47eCl7ImA9WhZVE00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1831</ns0:id><ns0:author>
+			<ns0:name>halya...@google.com</ns0:name><ns0:uri>/u/112856509894568708731/</ns0:uri></ns0:author><ns0:content type="html">In linux we can join with main thread, in NaCl (glibc) this application hangs on join:
+
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;pthread.h&amp;gt;
+void* func (void* arg)
+{
+  pthread_t* th_main;
+  void* value;
+  th_main = (pthread_t*) arg;
+  if (pthread_join (*th_main, &amp;amp;value) != 0)
+  {
+    printf (&amp;quot;Failed to join main thread.\n&amp;quot;);
+    exit (2);
+  }
+  printf (&amp;quot;OK\n&amp;quot;);
+}
+int main ()
+{
+  pthread_t th_self;
+  pthread_t th;
+  th_self = pthread_self ();
+  if (pthread_create (&amp;amp;th, NULL, func, &amp;amp;th_self) != 0)
+  {
+    printf (&amp;quot;Can't create thread.\n&amp;quot;);
+    return 1;
+  }
+  pthread_exit (NULL);
+}
+</ns0:content><ns0:updated>2011-05-25T07:30:20.000Z</ns0:updated><ns0:published>2011-05-20T08:43:26.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Can't join with main thread in NaCl (glibc)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Milestone-Baltic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1831/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1831" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1831" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-05-25T07:30:20.000Z</ns2:closedDate><ns2:id>1831</ns2:id></ns0:entry>

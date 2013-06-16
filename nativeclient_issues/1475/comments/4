@@ -1,0 +1,68 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYASH47eCl7ImA9WhZQEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1475/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4919
+
+------------------------------------------------------------------------
+r4919 | jvoung@google.com | Mon Apr 18 14:56:39 PDT 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/process_oprofile_x86_64.py?r1=4919&amp;r2=4918&amp;pathrev=4919
+
+Add a simple script to process oprofile samples within the x86-64 sandbox.
+Idea came from eaeltsin.
+
+Prints top 30 long-running untrusted functions (not trusted).
+Generates an annotated .s file with sample counts attached to code.
+
+
+TEST = Use this with the microbenchmark that is attached in issue
+http://code.google.com/p/nativeclient/issues/detail?id=1475
+
+For documentation see:
+https://sites.google.com/a/google.com/nativeclient/testing/using-oprofile-with-nacl
+(TODO move that to somewhere public?)
+
+#  No matching function for addr/count: 0x1092a 121
+#  No matching function for addr/count: 0x10a80 291
+#  No matching function for addr/count: 0x10a8a 79
+#  NOTE: sample addrs &lt; 0x20000 are likely trampolines
+============= Top 30 Untrusted Functions ===============
+EVENTS		FUNC [LOW_VMA, UPPER_VMA]
+11994		loop [0xc4de00, 0xc4deac]
+9558		llvm::MachineInstr::addRegisterDead(unsigned int, llvm::TargetRegisterInfo const*, bool) [0x4b34c0, 0x4b3b9b]
+4021		(anonymous namespace)::cpp_alloc(unsigned int, bool) [0xb89c40, 0xb8a61f]
+3810		(anonymous namespace)::SelectionDAGLegalize::LegalizeOp(llvm::SDValue) [0x3682c0, 0x372fbb]
+3664		llvm::SelectionDAGISel::SelectCodeCommon(llvm::SDNode*, unsigned char const*, unsigned int) [0x317980, 0x31dabf]
+2954		llvm::FoldingSetImpl::FindNodeOrInsertPos(llvm::FoldingSetNodeID const&amp;, void*&amp;) [0xb266a0, 0xb2689c]
+2917		(anonymous namespace)::ScheduleDAGRRList::PickNodeToScheduleBottomUp() [0x2573e0, 0x25997f]
+2707		operator delete(void*) [0xc82ac0, 0xc8301b]
+2493		(anonymous namespace)::RALinScan::assignRegOrStackSlotAtInterval(llvm::LiveInterval*) [0x53eb00, 0x545c7b]
+2424		pthread_getspecific [0xb6b560, 0xb6b61f]
+2401		llvm::SmallPtrSetImpl::insert_imp(void const*) [0xb433c0, 0xb436df]
+2284		llvm::Value::getNumUses() const [0xa204c0, 0xa2057b]
+2208		llvm::SmallPtrSetImpl::FindBucketFor(void const*) const [0xb427e0, 0xb4291f]
+2198		llvm::SimpleRegisterCoalescing::JoinIntervals(llvm::CoalescerPair&amp;) [0x5b5680, 0x5b7dfb]
+2192		byte_copy [0xc4db2a, 0xc4db47]
+1913		nc_spinlock_lock [0xb6bcc0, 0xb6bcfa]
+1851		llvm::SelectionDAG::LegalizeTypes() [0x381820, 0x381fff]
+1738		llvm::SelectionDAG::ComputeMaskedBits(llvm::SDValue, llvm::APInt const&amp;, llvm::APInt&amp;, llvm::APInt&amp;, unsigned int) const [0x28eca0, 0x2945fb]
+1700		llvm::DAGTypeLegalizer::run() [0x37fe00, 0x38181b]
+1510		memmove [0xc4db80, 0xc4dd9f]
+1498		llvm::PMTopLevelManager::findAnalysisPass(void const*) [0x9eb000, 0x9eb33f]
+1489		(anonymous namespace)::VectorLegalizer::LegalizeOp(llvm::SDValue) [0x384a00, 0x387ebb]
+1476		llvm::PassRegistry::getPassInfo(void const*) const [0xa04f60, 0xa0563b]
+1461		llvm::MachineInstr::findRegisterDefOperandIdx(unsigned int, bool, bool, llvm::TargetRegisterInfo const*) const [0x4b5e40, 0x4b615b]
+1438		llvm::LiveVariables::runOnMachineFunction(llvm::MachineFunction&amp;) [0x476300, 0x478edf]
+1412		llvm::sys::AtomicIncrement(unsigned long volatile*) [0xb0c4e0, 0xb0c4fe]
+1361		llvm::TargetLowering::SimplifyDemandedBits(llvm::SDValue, llvm::APInt const&amp;, llvm::APInt&amp;, llvm::APInt&amp;, llvm::TargetLowering::TargetLoweringOpt&amp;, unsigned int) const [0x33dc60, 0x3457fb]
+1360		llvm::SelectionDAG::DeallocateNode(llvm::SDNode*) [0x2754c0, 0x275f1b]
+1327		llvm::ScalarEvolution::getAddExpr(llvm::SmallVectorImpl&lt;llvm::SCEV const*&gt;&amp;, bool, bool) [0x860760, 0x8640ff]
+1323		llvm::MachineInstr::addOperand(llvm::MachineOperand const&amp;) [0x4b2a00, 0x4b34bb]
+ TODO: process the rest of the oprofile log and also include
+ the top trusted funcs / OS funcs. For now you must look at the log
+ yourself for that data. It may end up being a large portion of
+ the execution time.
+#  Printing annotated assembly to tempout/./llc.srpc.tc.annotated (or stdout)
+Review URL: http://codereview.chromium.org/6870015
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-18T22:02:29.000Z</ns0:updated><ns0:published>2011-04-18T22:02:29.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1475#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1475/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

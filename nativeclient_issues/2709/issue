@@ -1,0 +1,52 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4NRn47eCl7ImA9WhVWEkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2709</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">When I updated nacl_revision in Chromium's DEPS (in https://src.chromium.org/viewvc/chrome?view=rev&amp;amp;revision=130715), it caused dynamic_modify_test to start failing non-deterministically on Windows on x86-64.
+
+nacl_newlib.run_inbrowser_test_runner produced the following output:
+
+[   472 ms] |||| GET /test_runner.html?parallel=0 (/test_runner.html)
+[   488 ms] |||| GET /nacltest.js (/nacltest.js)
+[   490 ms] |||| GET /nmf_test_list.js (/nmf_test_list.js)
+[   509 ms] |||| [STARTUP]
+[   517 ms] |||| 
+[   520 ms] |||| [imc_shm_mmap_test.nmf BEGIN]
+[   569 ms] |||| Registering ForcePluginLoadOnTimeout (Bugs: NaCl 2428, Chrome 103588)
+[   575 ms] |||| GET /imc_shm_mmap_test.nmf (/imc_shm_mmap_test.nmf)
+[   579 ms] |||| GET /favicon.ico (/favicon.ico)
+[   583 ms] |||| GET /imc_shm_mmap_test_x86-64.nexe (/imc_shm_mmap_test_x86-64.nexe)
+[   934 ms] |||| [imc_shm_mmap_test.nmf LOG] 'Loaded http://127.0.0.1:52668/imc_shm_mmap_test.nmf'
+[   970 ms] |||| [imc_shm_mmap_test.nmf PASS]
+[   975 ms] |||| 
+[   978 ms] |||| [dynamic_load_browser_test.nmf BEGIN]
+[   982 ms] |||| Registering ForcePluginLoadOnTimeout (Bugs: NaCl 2428, Chrome 103588)
+[   987 ms] |||| GET /dynamic_load_browser_test.nmf (/dynamic_load_browser_test.nmf)
+[  1000 ms] |||| GET /dynamic_load_browser_test_x86-64.nexe (/dynamic_load_browser_test_x86-64.nexe)
+[  1345 ms] |||| [dynamic_load_browser_test.nmf LOG] 'Loaded http://127.0.0.1:52668/dynamic_load_browser_test.nmf'
+[  1934 ms] |||| [dynamic_load_browser_test.nmf PASS]
+[  1941 ms] |||| 
+[  1944 ms] |||| [dynamic_modify_browser_test.nmf BEGIN]
+[  1948 ms] |||| Registering ForcePluginLoadOnTimeout (Bugs: NaCl 2428, Chrome 103588)
+[  1954 ms] |||| GET /dynamic_modify_browser_test.nmf (/dynamic_modify_browser_test.nmf)
+[  1959 ms] |||| GET /dynamic_modify_browser_test_x86-64.nexe (/dynamic_modify_browser_test_x86-64.nexe)
+[ 22027 ms] |||| 
+[ 22027 ms] |||| [SERVER_ERROR] Did not hear from the test for 20.0 seconds.
+[ 22027 ms] |||| Heard from Javascript 20.1 seconds ago.
+[ 22027 ms] |||| The renderer probably hung or crashed.
+KILLING the browser
+
+(e.g. see http://build.chromium.org/p/chromium/builders/NACL%20Tests%20%28x64%29/builds/27629/steps/nacl_integration/logs/nacl_newlib.run_inbrowser_test_runner)
+
+The DEPS update was reverted.  Since this problem is blocking a DEPS update, it's Pri=0 for now.
+
+There are two changes that were pulled in that might have caused this:
+
+ * r8138: (mseaborn) Dynamic code deletion: Add test; flush the icache on ARM
+   This does not change code that is called by dynamic_modify_test, so I don't see how this change can be responsible.
+
+ * r8145: (ncbray) Create parallel and sequential instantiations of the inbrowser test runner.
+   The in-parallel version of the test hasn't failed so far.  Strangely, it looks like running the tests sequentially makes the problem surface.
+
+Possibly-related bug: issue chromium:120355.
+</ns0:content><ns0:updated>2012-04-24T04:16:37.000Z</ns0:updated><ns0:published>2012-04-04T21:40:34.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>dynamic_modify_test failing on Windows in NaCl-in-Chromium</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>FlakeyBots</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2709/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2709" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2709" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2709</ns2:id></ns0:entry>

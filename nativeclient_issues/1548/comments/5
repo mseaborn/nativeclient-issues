@@ -1,0 +1,52 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8CSX47eCl7ImA9WhZXFk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1548/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">
+For --nacl_glibc, it looks like half the time is the 256MB fill, the other half is waiting for the main thread:
+
+NaClLogCounterInterval(SelMain __start__:SnapshotNaclFile): 1878 microsecs
+== Sub measurement ==
+NaClLogCounterInterval(NaClAppLoadFile MakeDynStart:MakeDynEnd): 323159 microsecs
+NaClLogCounterInterval(NaClAppLoadFile validate start:validate end): 12516 microsecs
+NaClLogCounterInterval(NaClAppLoadFile __start__:EndLoadFile): 336404 microsecs
+== End-Sub measurement ==
+NaClLogCounterInterval(SelMain SnapshotNaclFile:AppLoadEnd): 336609 microsecs
+NaClLogCounterInterval(SelMain __start__:AppLoadEnd): 338487 microsecs
+NaClLogCounterInterval(SelMain AppLoadEnd:InitDescHook): 29 microsecs
+NaClLogCounterInterval(SelMain InitDescHook:RedirInherit): 9 microsecs
+NaClLogCounterInterval(SelMain RedirInherit:SecureCmd): 8 microsecs
+NaClLogCounterInterval(SelMain SecureCmd:AppPrepLaunch): 100 microsecs
+NaClLogCounterInterval(SelMain AppPrepLaunch:chrootEnd): 16 microsecs
+NaClLogCounterInterval(SelMain chrootEnd:WaitedForStartModul): 12 microsecs
+NaClLogCounterInterval(SelMain WaitedForStartModul:DynArrayMade): 7 microsecs
+NaClLogCounterInterval(SelMain DynArrayMade:CreateMainThread): 77 microsecs
+NaClLogCounterInterval(SelMain CreateMainThread:WaitForMainThread): 233735 microsecs
+NaClLogCounterInterval(SelMain __start__:WaitForMainThread): 572480 microsecs
+
+
+
+
+For the IRT, more than 3/4 is the 256MB fill and 1/4 is the blob loading.
+
+NaClLogCounterInterval(SelMain __start__:SnapshotBlob): 9569 microsecs
+NaClLogCounterInterval(SelMain SnapshotBlob:SnapshotNaclFile): 737 microsecs
+== Sub Measurement ==
+NaClLogCounterInterval(NaClAppLoadFile MakeDynStart:MakeDynEnd): 304779 microsecs
+NaClLogCounterInterval(NaClAppLoadFile validate start:validate end): 2703 microsecs
+NaClLogCounterInterval(NaClAppLoadFile __start__:EndLoadFile): 307937 microsecs
+== End-Sub Measurement ==
+NaClLogCounterInterval(SelMain SnapshotNaclFile:AppLoadEnd): 308038 microsecs
+NaClLogCounterInterval(SelMain AppLoadEnd:InitDescHook): 41 microsecs
+NaClLogCounterInterval(SelMain InitDescHook:RedirInherit): 13 microsecs
+NaClLogCounterInterval(SelMain RedirInherit:SecureCmd): 13 microsecs
+NaClLogCounterInterval(SelMain SecureCmd:AppPrepLaunch): 125 microsecs
+NaClLogCounterInterval(SelMain AppPrepLaunch:BlobLoaded): 107050 microsecs
+NaClLogCounterInterval(SelMain BlobLoaded:chrootEnd): 110 microsecs
+NaClLogCounterInterval(SelMain chrootEnd:WaitedForStartModul): 14 microsecs
+NaClLogCounterInterval(SelMain WaitedForStartModul:DynArrayMade): 13 microsecs
+NaClLogCounterInterval(SelMain DynArrayMade:CreateMainThread): 109 microsecs
+NaClLogCounterInterval(SelMain CreateMainThread:WaitForMainThread): 468 microsecs
+NaClLogCounterInterval(SelMain __start__:SelMainEnd): 426308 microsecs
+
+
+
+This is with the "run_hello_world_test" on x86-32 + some instrumentation.</ns0:content><ns0:updated>2011-05-05T22:34:28.000Z</ns0:updated><ns0:published>2011-05-05T22:34:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1548#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1548/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

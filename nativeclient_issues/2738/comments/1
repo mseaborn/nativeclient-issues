@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYFRH47eCl7ImA9WhVXF00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2738/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8289
+
+------------------------------------------------------------------------
+r8289 | jvoung@google.com | Tue Apr 17 15:49:35 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=8289&amp;r2=8288&amp;pathrev=8289
+
+pnacl/build.sh changes to build binutils-gold sandboxed.
+This doesn't work yet, without patching one number in clang.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2738
+TEST=
+pnacl/build.sh sdk newlib &amp;&amp;
+pnacl/build.sh binutils-gold-sb universal srpc newlib
+
+Review URL: https://chromiumcodereview.appspot.com/10021040
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-04-17T22:51:55.000Z</ns0:updated><ns0:published>2012-04-17T22:51:55.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2738#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2738/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

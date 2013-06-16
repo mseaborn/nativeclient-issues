@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkYCSX47eCl7ImA9WhdRFEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/691</ns0:id><ns0:author>
+			<ns0:name>msn...@google.com</ns0:name><ns0:uri>/u/105190905030319373792/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+NaCl tip of tree
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Linux 64-bit
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Chrome tip of tree
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Start Chrome: ./out/Debug/chrome --enable-nacl
+2. Clear the browser cache
+3. Navigate to http://localhost:5103/scons-out/nacl-x86-64/staging/examples.html
+4. Click on the NPAPI Examples and Tests button
+5. Click on the Npruntime unit tests button
+Note: Do not start *any* other tests before running Npruntime unit tests
+
+
+What is the expected output?
+The test should pass.
+
+What do you see instead?
+Aw, Snap!
+
+
+I'm not sure how long this has been broken since it requires that the Npruntime unit tests is the first test run after starting the browser.
+
+Linux 32-bit and Mac both seem to pass in this scenario.  I.e., it seems to be Linux 64-bit only. (I have not tried Windows.)
+
+I'll try to gather more information and I'll add that to this issue.
+</ns0:content><ns0:updated>2011-08-03T22:22:48.000Z</ns0:updated><ns0:published>2010-07-14T19:48:43.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Npruntime unit tests fail if run before anything else</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Test</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/691/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=691" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/691" rel="self" type="application/atom+xml" /><ns2:stars>0</ns2:stars><ns2:closedDate>2011-08-03T22:22:48.000Z</ns2:closedDate><ns2:id>691</ns2:id></ns0:entry>

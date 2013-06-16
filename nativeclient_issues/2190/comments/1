@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUABRH47eCl7ImA9WhdXEk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2190/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Here's a test: http://codereview.chromium.org/7740001
+
+The relevant bit is:
+
+void *short_thread(void *unused_arg) {
+  sleep(1);
+  return NULL;
+}
+
+void *forever_thread(void *unused_arg) {
+  while (1) {
+    sleep(1);
+  }
+}
+
+void test_thread() {
+  pthread_t tid;
+  int rc;
+
+  /* This thread gets index 1.
+     It must last long enough for the next thread to get index 2. */
+  rc = pthread_create(&amp;tid, NULL, short_thread, NULL);
+  assert(rc == 0);
+  rc = pthread_detach(tid);
+  assert(rc == 0);
+
+  rc = pthread_create(&amp;tid, NULL, forever_thread, NULL);
+  assert(rc == 0);
+  rc = pthread_detach(tid);
+  assert(rc == 0);
+
+  /* We must wait for the first thread (index 1) to exit.
+     pthread_join() is not enough because the host OS thread is
+     unjoined. */
+  sleep(2);
+
+  test_deleting_code();
+}</ns0:content><ns0:updated>2011-08-24T22:09:15.000Z</ns0:updated><ns0:published>2011-08-24T22:09:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2190#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2190/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

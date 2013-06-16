@@ -1,0 +1,62 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUYDR347eCl7ImA9WhVQFUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2356</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">With the following .ll test case:
+
+target datalayout = &amp;quot;e-i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-f32:32:32-f64:64:64-p:32:32:32-v128:32:32&amp;quot;
+target triple = &amp;quot;le32-unknown-nacl&amp;quot;
+
+define void @foo___v4df(&amp;lt;4 x double&amp;gt; %z) nounwind {
+entry:
+  %z.addr = alloca &amp;lt;4 x double&amp;gt;, align 32
+  store &amp;lt;4 x double&amp;gt; %z, &amp;lt;4 x double&amp;gt;* %z.addr, align 32
+  %0 = load &amp;lt;4 x double&amp;gt;* %z.addr, align 32
+  %1 = load &amp;lt;4 x double&amp;gt;* %z.addr, align 32
+  %add = fadd &amp;lt;4 x double&amp;gt; %0, %1
+  store &amp;lt;4 x double&amp;gt; %add, &amp;lt;4 x double&amp;gt;* %z.addr, align 32
+  ret void
+}
+
+The x86-64 fails to sandbox the SP adjustment to align 32 and crashes with the following assert:
+
+toolchain/pnacl_linux_x86_64_newlib/pkg/llvm/bin/llc \
+    -march=x86-64 \
+    -mcpu=core2 \
+    -mtriple=x86_64-none-nacl-gnu \
+    -filetype=asm \
+    -asm-verbose=false \
+    -tail-merge-threshold=50 \
+    temp.s---temp.ll---.po \
+    -o temp.s
+stdout        : 
+stderr        : %RSP&amp;lt;def&amp;gt; = AND64ri32 %RSP, -32, %EFLAGS&amp;lt;imp-def,dead&amp;gt;; flags: FrameSetup
+4 operands:
+  0(0):%RSP&amp;lt;def&amp;gt;
+  1(0):%RSP
+  2(1):-32
+  3(0):%EFLAGS&amp;lt;imp-def,dead&amp;gt;
+
+Unhandled Stack SFI
+UNREACHABLE executed at hg/upstream/llvm/lib/Target/X86/X86NaClRewritePass.cpp:294!
+0  llc             0x0000000000d83c8f
+1  llc             0x0000000000d85f02
+2  libpthread.so.0 0x00007fbf1bc068f0
+3  libc.so.6       0x00007fbf1aef5a75 gsignal + 53
+4  libc.so.6       0x00007fbf1aef95c0 abort + 384
+5  llc             0x0000000000d6ea22 llvm::llvm_unreachable_internal(char const*, char const*, unsigned int) + 354
+6  llc             0x00000000006408d6
+7  llc             0x0000000000641cce
+8  llc             0x0000000000642e1b
+9  llc             0x0000000000caa9fb llvm::FPPassManager::runOnFunction(llvm::Function&amp;amp;) + 587
+10 llc             0x0000000000caaae3 llvm::FPPassManager::runOnModule(llvm::Module&amp;amp;) + 51
+11 llc             0x0000000000caa4f7 llvm::MPPassManager::runOnModule(llvm::Module&amp;amp;) + 503
+12 llc             0x0000000000caa68b llvm::PassManagerImpl::run(llvm::Module&amp;amp;) + 187
+13 llc             0x000000000052eb5a llc_main(int, char**) + 4682
+14 libc.so.6       0x00007fbf1aee0c4d __libc_start_main + 253
+15 llc             0x000000000052bc79
+Stack dump:
+0.	Program arguments: toolchain/pnacl_linux_x86_64_newlib/pkg/llvm/bin/llc -march=x86-64 -mcpu=core2 -mtriple=x86_64-none-nacl-gnu -filetype=asm -asm-verbose=false -tail-merge-threshold=50 temp.s---temp.ll---.po -o temp.s 
+1.	Running pass 'Function Pass Manager' on module 'temp.s---temp.ll---.po'.
+2.	Running pass 'NaCl Rewrites' on function '@foo___v4df'
+
+Should it need to sandbox this SP update?</ns0:content><ns0:updated>2012-04-05T00:52:56.000Z</ns0:updated><ns0:published>2011-10-13T21:07:00.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>pnacl x86-64 backend asserts when alloca is aligned 32</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2356/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2356" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2356" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-04-05T00:52:56.000Z</ns2:closedDate><ns2:id>2356</ns2:id></ns0:entry>

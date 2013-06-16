@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCSX47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1341</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">sel_universal tests in the Scons build do not declare their dependency
+on sel_ldr, so if they are run with a clean scons-out directory, they
+fail because sel_ldr does not get built:
+
+$ rm -r scons-out/dbg-linux-x86-32/
+$ ./scons --mode=dbg-linux,nacl run_srpc_basic_test
+...
+[12207,4147463888:17:46:53.787611] execv failed, args were:
+[12207,4147463888:17:46:53.787791] /home/mseaborn/devel/nacl-trunk/src/native_client/scons-out/dbg-linux-x86-32/staging/sel_ldr
+[12207,4147463888:17:46:53.787827] -f
+[12207,4147463888:17:46:53.787861] /home/mseaborn/devel/nacl-trunk/src/native_client/scons-out/nacl-x86-32/obj/tests/srpc/srpc_test.nexe
+[12207,4147463888:17:46:53.787895] -X
+[12207,4147463888:17:46:53.787932] 5
+[12207,4147463888:17:46:53.787965] -i
+[12207,4147463888:17:46:53.787998] 5:6
+execv: No such file or directory
+[12206,4147463888:17:46:53.788138] sel_universal: Open channel failed</ns0:content><ns0:updated>2011-07-29T00:12:48.000Z</ns0:updated><ns0:published>2011-01-22T01:50:33.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>sel_universal tests do not declare their dependency on sel_ldr</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1341/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1341" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1341" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-01-28T17:58:24.000Z</ns2:closedDate><ns2:id>1341</ns2:id></ns0:entry>

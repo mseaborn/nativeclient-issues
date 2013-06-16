@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUAASX47eCl7ImA9WhdXEE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1988</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">On 64-bit Windows (and probably soon on Mac), we use an x86-32 PPAPI plugin with a x86-64 sel_ldr, because Chromium is x86-32.
+
+Nick put a hack into GetPPAPIPluginPath() so that when we're running chrome_browser_tests, the &amp;quot;platform=x86-64&amp;quot; invocation of scons reuses whatever x86-32 plugin was built by a previous invocation of scons, but it can't rebuild the plugin itself.
+
+So to get correct results you have to do:
+
+  ./scons platform=x86-32 ppNaClPlugin
+  ./scons platform=x86-64 chrome_browser_tests
+
+We should fix this so that we can get a correct incremental build just with:
+
+  ./scons platform=x86-64 chrome_browser_tests
+
+This should trigger a rebuild of the x86-32 plugin.
+</ns0:content><ns0:updated>2011-08-22T17:22:28.000Z</ns0:updated><ns0:published>2011-07-08T02:20:23.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Allow mixing 32/64-bit builds within the same Scons invocation for Windows/Mac</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1988/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1988" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1988" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1988</ns2:id></ns0:entry>

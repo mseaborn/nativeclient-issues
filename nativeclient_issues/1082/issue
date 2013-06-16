@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIHQ347eCl7ImA9WhRaGUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1082</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">There are some related problems here:
+
+* nacl_dyncode_alloc() always allocates linearly, and does not know how to free space.  So dlclose() will not reclaim space in the code region.
+
+* nacl_dyncode_alloc() does not know about the location of the executable, so when the linear allocator hits the executable, it will fail.  So if the executable is loaded at 0x1000000 (16MB), we can only load 16MB of library code, even if the code region is larger.
+
+* When nacl_dyncode_alloc() picks the corresponding address in the data region, it can fail if that address has already been allocated by mmap().  Possible fixes:
+  1) Reserve some address space on startup (but this reduces the amount available for general purpose use).
+  2) Retry the allocation (but other addresses in the code region might not be available).
+Neither is ideal.  The problem of fragmentation is made worse because we are allocating from two regions simultaneously.
+
+Some of these issues were discussed on
+http://code.google.com/p/nativeclient/wiki/DynamicLoadingOptions</ns0:content><ns0:updated>2012-02-22T22:42:12.000Z</ns0:updated><ns0:published>2010-10-22T15:02:26.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Dynamic linker: Make nacl_dyncode_alloc() more intelligent</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1082/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1082" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1082" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1082</ns2:id></ns0:entry>

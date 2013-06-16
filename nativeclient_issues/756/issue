@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4GR347eCl7ImA9Wx5TGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/756</ns0:id><ns0:author>
+			<ns0:name>espind...@google.com</ns0:name><ns0:uri>/u/101432766050863658364/</ns0:uri></ns0:author><ns0:content type="html">This is the current blocker for build llvm-gcc for x86-64
+
+$ llc test.ll
+LLVM ERROR: Cannot yet select: 0x1da6f48: i64 = X86ISD::MUL_IMM 0x1da6d58, 0x1da6e50 [ID=8]
+  0x1da6d58: i64 = shl 0x1da6598, 0x1da6c60 [ID=7]
+    0x1da6598: i64,ch = CopyFromReg 0x1da6010, 0x1da64a0 [ORD=1] [ID=6]
+      0x1da6010: ch = EntryToken [ORD=1] [ID=0]
+      0x1da64a0: i64 = Register %reg1024 [ORD=1] [ID=1]
+    0x1da6c60: i8 = Constant&amp;lt;3&amp;gt; [ID=4]
+  0x1da6e50: i64 = Constant&amp;lt;5&amp;gt; [ID=5]
+</ns0:content><ns0:updated>2010-08-03T17:52:06.000Z</ns0:updated><ns0:published>2010-08-02T20:54:22.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101432766050863658364/</ns2:uri><ns2:username>espind...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u//</ns2:uri><ns2:username>native-c...@googlegroups.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>another x86-64 backend crash</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/756/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=756" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/756" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-08-03T17:52:06.000Z</ns2:closedDate><ns2:id>756</ns2:id></ns0:entry>

@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QCRX47eCl7ImA9WhdQEE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2142/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">According to the backtrace, it appears to be croaking while doing __irt_mandatory_query:
+
+IN: __libnacl_mandatory_irt_query
+0x0002b4e0:  movw       r1, #1072       ; 0x430
+0x0002b4e4:  ldr        r5, [r6, #220]
+0x0002b4e8:  movt       r1, #4098       ; 0x1002
+0x0002b4ec:  sub        r2, r4, r1
+0x0002b4f0:  mov        r0, #2  ; 0x2
+0x0002b4f4:  mov        r3, sp
+0x0002b4f8:  bic        r5, r5, #-1073741809    ; 0xc000000f
+0x0002b4fc:  blx        r5
+
+Trace 0x602a34b0 [0002b4e0] __libnacl_mandatory_irt_query
+@@NACL =========================================================
+R00=00000002 R01=10020430 R02=00000020 R03=3fffff90
+R04=10020450 R05=00000000 R06=100408b8 R07=00000000
+R08=00000000 R09=10040ae8 R10=00000000 R11=00000000
+R12=00000008 R13=3fffff90 R14=0002b500 R15=00000000
+PSR=60000010 -ZC- A usr32
+
+
+If, however, we run the test with the IRT:
+
+${NACLDIR}/toolchain/linux_arm-trusted/run_under_qemu_arm \
+  scons-out/opt-linux-arm/staging/sel_ldr -Q \
+  -B scons-out/nacl_irt-arm/staging/irt_core.nexe -- \
+  scons-out/nacl-arm-pnacl/obj/tests/nullptr/nullptr.nexe
+
+then it actually makes it to __start and does the nullptr load:
+
+
+Trace 0x602c2180 [0002bcd8] _start
+----------------
+IN: _start
+0x0002bcd8:  mov        r0, #0  ; 0x0
+0x0002bcdc:  ldrb       r0, [r0]
+0x0002bce0:  nop        {0}
+0x0002bce4:  nop        {0}
+0x0002bce8:  nop        {0}
+0x0002bcec:  bl 0x21900
+
+Looks like this crash test was crashing at the wrong place before, and that was somehow tripping up qemu...</ns0:content><ns0:updated>2011-08-10T20:49:24.000Z</ns0:updated><ns0:published>2011-08-10T20:49:24.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>mcgra...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 3 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2142#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2142/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

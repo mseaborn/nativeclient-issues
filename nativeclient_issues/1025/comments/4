@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ACR347eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1025/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3477
+
+------------------------------------------------------------------------
+r3477 | dspringer@google.com | Thu Oct 14 09:12:07 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/posix/nacl_signal.c?r1=3477&amp;r2=3476&amp;pathrev=3477
+
+Changing &lt;ucontext.h&gt; to &lt;sys/ucontext.h&gt; seems to fix this build issue, and all the tests are passing.
+
+Note that setting _XOPEN_SOURCE=500 (or higher, I tried up to 600) will produce other build errors.
+
+Note that this means we are using deprecated API:
+https://groups.google.com/group/comp.sys.mac.programmer.help/browse_thread/thread/5135ddb9f397aa71?pli=1
+
+Logged http://code.google.com/p/nativeclient/issues/detail?id=1025
+Review URL: http://codereview.chromium.org/3805001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:16:06.000Z</ns0:updated><ns0:published>2011-01-21T23:16:06.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1025#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1025/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

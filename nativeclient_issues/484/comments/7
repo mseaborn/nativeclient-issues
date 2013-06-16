@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8MRX47eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/484/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2351
+
+------------------------------------------------------------------------
+r2351 | mseaborn@chromium.org | Tue May 25 02:44:18 PDT 2010
+
+Changed paths:
+ D http://src.chromium.org/viewvc/chrome/trunk/src/third_party/python-cmdenv/cmd_env.py?r1=2351&amp;r2=2350&amp;pathrev=2351
+ D http://src.chromium.org/viewvc/chrome/trunk/src/third_party/python-actiontree/action_tree.py?r1=2351&amp;r2=2350&amp;pathrev=2351
+ D http://src.chromium.org/viewvc/chrome/trunk/src/third_party/python-cmdenv/LGPL-2.1?r1=2351&amp;r2=2350&amp;pathrev=2351
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/dirtree.py?r1=2351&amp;r2=2350&amp;pathrev=2351
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/dirtree_test.py?r1=2351&amp;r2=2350&amp;pathrev=2351
+ D http://src.chromium.org/viewvc/chrome/trunk/src/third_party/python-actiontree/action_tree_test.py?r1=2351&amp;r2=2350&amp;pathrev=2351
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/btarget.py?r1=2351&amp;r2=2350&amp;pathrev=2351
+ D http://src.chromium.org/viewvc/chrome/trunk/src/third_party/python-cmdenv/cmd_env_test.py?r1=2351&amp;r2=2350&amp;pathrev=2351
+ D http://src.chromium.org/viewvc/chrome/trunk/src/third_party/python-actiontree/LGPL-2.1?r1=2351&amp;r2=2350&amp;pathrev=2351
+
+Modular build script: Tidy: Remove use of cmd_env
+
+Remove the cmd_env argument from the WriteTree() method, since it
+isn't very useful, except perhaps for logging.  This means we can
+remove cmd_env.py and action_tree.py from third_party.  It is no
+longer necessary to set PYTHONPATH in order to run build.py.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=484
+
+Review URL: http://codereview.chromium.org/2096020
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:28:04.000Z</ns0:updated><ns0:published>2011-01-21T22:28:04.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=484#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/484/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

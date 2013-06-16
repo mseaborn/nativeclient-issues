@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYGRX47eCl7ImA9WhVSFUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1582</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">we are currently using:
+qemu-0.11.0.tar.gz
+while the latest version is:
+http://download.savannah.gnu.org/releases/qemu/qemu-0.14.0.tar.gz
+
+Our current qemu version suffers from
+* arm slowness (floating point emulation)
+* unsupported syscalls (in &amp;quot;user&amp;quot; mode)
+It is unclear whether the newer version will fix this but probably worth
+a shot
+</ns0:content><ns0:updated>2012-03-12T21:35:24.000Z</ns0:updated><ns0:published>2011-03-28T14:58:06.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pnacl-arm: switch to a newer version of qemu for pnacl arm testing</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>FlakeyBots</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1582/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1582" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1582" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-11-18T17:24:10.000Z</ns2:closedDate><ns2:id>1582</ns2:id></ns0:entry>

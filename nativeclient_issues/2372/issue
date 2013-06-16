@@ -1,0 +1,41 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUcDRH47eCl7ImA9WhdaEEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2372</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+r6873
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Download r6973
+2. Run small_tests
+&lt;b&gt;3.&lt;/b&gt;
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+http://build.chromium.org/p/client.nacl/builders/lucid-32-newlib-dbg/builds/1425/steps/small_tests/logs/stdio
+
+/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/dbg-linux-x86-32/obj/src/trusted/validator_x86/ncval_tests
+
+ERROR: Command returned exit status -6 (0xfffffffa) but we expected 0 (0x0)
+======================================================================
+Stdout
+======================================================================
+
+======================================================================
+Stderr
+======================================================================
+ncval_tests: src/trusted/validator_x86/ncval_tests.c:1158: TestValidator: Assertion `rc == 0' failed.
+
+[  FAILED  ] nacl.ncval_tests (0 ms)
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-10-19T19:37:55.000Z</ns0:updated><ns0:published>2011-10-18T22:28:48.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>NCValidateFinish fails in some small_tests</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2372/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2372" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2372" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-10-19T19:37:55.000Z</ns2:closedDate><ns2:id>2372</ns2:id></ns0:entry>

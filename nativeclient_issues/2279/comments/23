@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYBRH47eCl7ImA9WhdUE08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2279/comments/full/23</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 95358f1c7d92b2c1df45c2f95da0cb55498e9ed5
+ Email: pdox@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+* Add "git-sync" step to utman.sh, which downloads pnacl-gcc into native_client/pnacl/git/gcc. At the moment, it always downloads the read-only version.
+
+* Renames global variables in utman.sh in preparation for separating and moving repository directories. No paths are changed yet.
+
+Note: All instances of PNACL_ROOT were renamed to INSTALL_ROOT, but then a new PNACL_ROOT variable was created to point to native_client/pnacl.
+
+This change will let us switch to a newer version of gcc, which will impact:
+
+1) The Clang effort 
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2279
+
+2) The DragonEgg (newer gcc is needed for plugin API)
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2323
+
+3) GLibC (building libgcc_s.so, libstdc++.so)
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=416
+Review URL: http://codereview.chromium.org/8077004
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6820 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+A	pnacl/DEPS
+A	pnacl/gclient_template
+M	tools/llvm/common-tools.sh
+M	tools/llvm/utman.sh</ns0:content><ns0:updated>2011-09-29T19:55:55.000Z</ns0:updated><ns0:published>2011-09-29T19:55:55.000Z</ns0:published><ns2:updates /><ns0:title>Comment 23 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2279#c23" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2279/comments/full/23" rel="self" type="application/atom+xml" /></ns0:entry>

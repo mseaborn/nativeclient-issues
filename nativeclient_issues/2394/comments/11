@@ -1,0 +1,86 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0cCQH47eCl7ImA9WhdaFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">I put more info for the convenience:
+http://build.chromium.org/p/client.nacl/builders/lucid-32-newlib-dbg/builds/1473/steps/chrome_browser_tests/logs/stdio
+
+David S., are these SRPC failures "expected"?
+
+/usr/bin/python /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/tools/command_tester.py --name run_ppapi_ppb_graphics2d_browser_test --report /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/nacl-x86-32/test_results/ppapi_ppb_graphics2d_browser_test.out --time_warning 1800 --time_error 18000 --perf_env_description x86-32_nnacl_newlib_static_irt --subarch 32 --arch x86 --capture_output 0 /usr/bin/python /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/tools/browser_tester/browser_tester.py --browser_path /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/chromebinaries/linux_x86-32/chrome --url ppapi_ppb_graphics2d.html --timeout 20 --ppapi_plugin /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/dbg-linux-x86-32/staging/libppNaClPlugin.so --sel_ldr /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/dbg-linux-x86-32/staging/sel_ldr --irt_library /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/nacl_irt-x86-32/staging/irt.nexe --file /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/nacl-x86-32/obj/tests/ppapi_browser/ppb_graphics2d/ppapi_ppb_graphics2d_x86-32.nexe --file /mnt/data/build/slave/lucid-32-newlib-dbg/build/ppapi/native_client/tests/ppapi_browser/ppb_graphics2d/ppapi_ppb_graphics2d.html --serving_dir /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/toolchain/linux_x86_newlib/x86_64-nacl/lib32 --serving_dir /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/nacl-x86-32/lib --file /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/nacl-x86-32/staging/ppapi_ppb_graphics2d.nmf --browser_flag --enable-pepper-testing
+[ RUN      ] nacl.run_ppapi_ppb_graphics2d_browser_test
+======================================================================
+running ['/usr/bin/python', '/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/tools/browser_tester/browser_tester.py', '--browser_path', '/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/chromebinaries/linux_x86-32/chrome', '--url', 'ppapi_ppb_graphics2d.html', '--timeout', '20', '--ppapi_plugin', '/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/dbg-linux-x86-32/staging/libppNaClPlugin.so', '--sel_ldr', '/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/dbg-linux-x86-32/staging/sel_ldr', '--irt_library', '/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/nacl_irt-x86-32/staging/irt.nexe', '--file', '/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/nacl-x86-32/obj/tests/ppapi_browser/ppb_graphics2d/ppapi_ppb_graphics2d_x86-32.nexe', '--file', '/mnt/data/build/slave/lucid-32-newlib-dbg/build/ppapi/native_client/tests/ppapi_browser/ppb_graphics2d/ppapi_ppb_graphics2d.html', '--serving_dir', '/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/toolchain/linux_x86_newlib/x86_64-nacl/lib32', '--serving_dir', '/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/nacl-x86-32/lib', '--file', '/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/nacl-x86-32/staging/ppapi_ppb_graphics2d.nmf', '--browser_flag', '--enable-pepper-testing']
+======================================================================
+/usr/bin/python /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/tools/browser_tester/browser_tester.py --browser_path /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/chromebinaries/linux_x86-32/chrome --url ppapi_ppb_graphics2d.html --timeout 20 --ppapi_plugin /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/dbg-linux-x86-32/staging/libppNaClPlugin.so --sel_ldr /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/dbg-linux-x86-32/staging/sel_ldr --irt_library /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/nacl_irt-x86-32/staging/irt.nexe --file /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/nacl-x86-32/obj/tests/ppapi_browser/ppb_graphics2d/ppapi_ppb_graphics2d_x86-32.nexe --file /mnt/data/build/slave/lucid-32-newlib-dbg/build/ppapi/native_client/tests/ppapi_browser/ppb_graphics2d/ppapi_ppb_graphics2d.html --serving_dir /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/toolchain/linux_x86_newlib/x86_64-nacl/lib32 --serving_dir /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/nacl-x86-32/lib --file /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/nacl-x86-32/staging/ppapi_ppb_graphics2d.nmf --browser_flag --enable-pepper-testing
+ENV: NACL_SEL_LDR=/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/dbg-linux-x86-32/staging/sel_ldr XAUTHORITY=/tmp/xvfb-run.JY9WBv/Xauthority NACL_IRT_LIBRARY=/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/nacl_irt-x86-32/staging/irt.nexe PWD=/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client NACL_ENABLE_PPAPI_DEV=1 CYGWIN=nodosfilewarning HOME=/home/chrome-bot PATH=/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/toolchain/linux_x86_newlib/bin:/usr/local/bin:/opt/bin:/bin:/usr/bin DISPLAY=:99
+LAUNCHING: /mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/chromebinaries/linux_x86-32/chrome --disable-web-resources --disable-preconnect --no-first-run --no-default-browser-check --enable-logging --log-level=1 --safebrowsing-disable-auto-update --explicitly-allowed-ports=35469 --user-data-dir=/tmp/browserprofile_ah2RnI --register-pepper-plugins=/mnt/data/build/slave/lucid-32-newlib-dbg/build/native_client/scons-out/dbg-linux-x86-32/staging/libppNaClPlugin.so;application/x-nacl --no-sandbox --enable-pepper-testing http://127.0.0.1:35469/ppapi_ppb_graphics2d.html
+I'M THE SESSION LEADER!
+PID 10826
+[10826:10834:1106693965686:ERROR:gl_surface_glx.cc(64)] GLX 1.3 or later is required.
+[10826:10834:1106693965750:ERROR:gl_surface_linux.cc(73)] GLSurfaceGLX::InitializeOneOff failed.
+[10826:10834:1106693965766:ERROR:gpu_info_collector_linux.cc(216)] gfx::GLSurface::InitializeOneOff() failed
+[10845:10845:1106694045734:ERROR:renderer_main.cc(213)] Running without renderer sandbox
+[   213 ms] |||| GET /ppapi_ppb_graphics2d.html (/ppapi_ppb_graphics2d.html)
+[   217 ms] |||| GET /nacltest.js (/nacltest.js)
+[   246 ms] |||| [STARTUP]
+[   264 ms] |||| GET /ppapi_ppb_graphics2d.nmf (/ppapi_ppb_graphics2d.nmf)
+[   277 ms] |||| GET /favicon.ico (/favicon.ico)
+[   316 ms] |||| GET /ppapi_ppb_graphics2d_x86-32.nexe (/ppapi_ppb_graphics2d_x86-32.nexe)
+[10845,2953825136:12:01:10.518040] PluginReverseInterface::StartupInitializationComplete
+[10845,2953825136:12:01:10.518228] PluginReverseInterface::StartupInitializationComplete: invoking CB
+[   748 ms] |||| nacl_module / test_nexe loaded
+[   755 ms] |||| 
+[   757 ms] |||| [PPB_Graphics2D::Create BEGIN]
+[SRPC:NACL:10851,1056900288:19:01:10.544000] NaClSrpcMessageChannelSend: first send failed, 116 != -14.
+[SRPC:NACL:10851,1056900288:19:01:10.545000] NaClSrpcInvokeV(channel=0x3efc0bb0): rpc request send failed
+[SRPC:NACL:10851,1056900288:19:01:10.545000] NaClSrpcMessageChannelSend: first send failed, 116 != -14.
+[SRPC:NACL:10851,1056900288:19:01:10.545000] NaClSrpcInvokeV(channel=0x3efc0bb0): rpc request send failed
+[   764 ms] |||| [PPB_Graphics2D::Create PASS]
+[   794 ms] |||| 
+[   797 ms] |||| [PPB_Graphics2D::IsGraphics2D BEGIN]
+[   801 ms] |||| [PPB_Graphics2D::IsGraphics2D PASS]
+[   806 ms] |||| 
+[   808 ms] |||| [PPB_Graphics2D::Describe BEGIN]
+[   812 ms] |||| [PPB_Graphics2D::Describe PASS]
+[   817 ms] |||| 
+[   819 ms] |||| [PPB_Graphics2D::ReplaceContents BEGIN]
+[   828 ms] |||| [PPB_Graphics2D::ReplaceContents PASS]
+[   831 ms] |||| 
+[   834 ms] |||| [PPB_Graphics2D::PaintImageData BEGIN]
+[SRPC:NACL:10851,1056900288:19:01:10.622000] NaClSrpcMessageChannelSend: first send failed, 132 != -14.
+[SRPC:NACL:10851,1056900288:19:01:10.622000] NaClSrpcInvokeV(channel=0x3efc0bb0): rpc request send failed
+[SRPC:NACL:10851,1056900288:19:01:10.623000] NaClSrpcMessageChannelSend: first send failed, 132 != -14.
+[SRPC:NACL:10851,1056900288:19:01:10.623000] NaClSrpcInvokeV(channel=0x3efc0bb0): rpc request send failed
+[   842 ms] |||| [PPB_Graphics2D::PaintImageData PASS]
+[   846 ms] |||| 
+[   848 ms] |||| [PPB_Graphics2D::PaintImageDataEntire BEGIN]
+[SRPC:NACL:10851,1056900288:19:01:10.637000] NaClSrpcMessageChannelSend: first send failed, 116 != -14.
+[SRPC:NACL:10851,1056900288:19:01:10.637000] NaClSrpcInvokeV(channel=0x3efc0bb0): rpc request send failed
+[SRPC:NACL:10851,1056900288:19:01:10.637000] NaClSrpcMessageChannelSend: first send failed, 116 != -14.
+[SRPC:NACL:10851,1056900288:19:01:10.637000] NaClSrpcInvokeV(channel=0x3efc0bb0): rpc request send failed
+[   857 ms] |||| [PPB_Graphics2D::PaintImageDataEntire PASS]
+[   861 ms] |||| 
+[   864 ms] |||| [PPB_Graphics2D::Scroll BEGIN]
+[SRPC:NACL:10851,1056900288:19:01:10.652000] NaClSrpcMessageChannelSend: first send failed, 116 != -14.
+[SRPC:NACL:10851,1056900288:19:01:10.652000] NaClSrpcInvokeV(channel=0x3efc0bb0): rpc request send failed
+[   872 ms] |||| [PPB_Graphics2D::Scroll PASS]
+[   875 ms] |||| 
+[   878 ms] |||| [PPB_Graphics2D::ScrollEntire BEGIN]
+[SRPC:NACL:10851,1056900288:19:01:10.665000] NaClSrpcMessageChannelSend: first send failed, 100 != -14.
+[SRPC:NACL:10851,1056900288:19:01:10.665000] NaClSrpcInvokeV(channel=0x3efc0bb0): rpc request send failed
+[   885 ms] |||| [PPB_Graphics2D::ScrollEntire PASS]
+[   889 ms] |||| 
+[   891 ms] |||| [PPB_Graphics2D::Flush BEGIN]
+[   897 ms] |||| [PPB_Graphics2D::Flush FAIL] ('&#230;&#177;&#8224;&#231;&#141;&#181;&#228;&#141;&#168;&#230;&#177;&#161;&#230;&#8240;&#172;&#230;&#141;&#161;k&#238;&#8225;&#129;&#226;&#191;&#170;&#225;&#172;&#8217;' != 'FlushCallback')
+[  1001 ms] |||| 
+[  1003 ms] |||| [PPB_Graphics2D::FlushAnimation BEGIN]
+[  1017 ms] |||| [PPB_Graphics2D::FlushAnimation PASS]
+[  1021 ms] |||| 
+[  1023 ms] |||| [PPB_Graphics2D::Stress BEGIN]
+[  1053 ms] |||| [PPB_Graphics2D::Stress PASS]
+[  1055 ms] |||| 
+[  1058 ms] |||| [SHUTDOWN] 10 passed, 1 failed, 0 errors
+KILLING the browser
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+[  FAILED  ] nacl.run_ppapi_ppb_graphics2d_browser_test (550 ms)</ns0:content><ns0:updated>2011-10-26T20:31:01.000Z</ns0:updated><ns0:published>2011-10-26T20:31:01.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>s...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 11 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2394#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

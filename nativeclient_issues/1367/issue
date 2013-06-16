@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EGSX47eCl7ImA9WhRaE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1367</ns0:id><ns0:author>
+			<ns0:name>ncb...@google.com</ns0:name><ns0:uri>/u/100032148147647801554/</ns0:uri></ns0:author><ns0:content type="html">Platform: Linux, using recent Chrome binary and head-of-tree PPAPI plugin.
+
+Problem: in srpc_basic_ppapi.html, the nexe method .char_array returns an object that almost behaves like an Array, but is actually an Object and this can cause problems.
+
+For example, rev_val.join(&amp;quot;,&amp;quot;) works correctly, but ret_val.toString() does not because the method detects that ret_val is not actually an Array. (It throws a exception: Array.prototype.toString is not generic).  Arrays are special objects according to the language spec.  (See: http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/ )
+
+Instrumenting array_ppapi.cc shows that it creates Array objects correctly.  The problem is likely elsewhere.
+
+Starting point: char_array is implemented in tests/srpc/srpc_test.c as the function CharArrayMethod  I would guess either the out_args are constructed wrong, or there's a object copy done incorrectly somewhere along the line.
+</ns0:content><ns0:updated>2012-02-15T19:53:48.000Z</ns0:updated><ns0:published>2011-01-27T22:20:17.000Z</ns0:published><ns2:status>Moved</ns2:status><ns2:owner>
+			<ns2:uri>/u/dmichael@google.com/</ns2:uri><ns2:username>dmichael@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Javascript array types are lost when returned from NaCl</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>OS-</ns2:label><ns2:label>Arch-</ns2:label><ns2:label>Mstone-16</ns2:label><ns2:label>MigrateToChromium</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1367/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1367" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1367" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2012-02-15T19:53:48.000Z</ns2:closedDate><ns2:id>1367</ns2:id></ns0:entry>

@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A08FQ347eCl7ImA9WhdXEkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1716</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">Occasionally the nacl_semaphore_test will fail (about 1 in 1000).  On Windows it returns -6.
+
+The value -6 represents a SIGABRT.  This was caused by a failure to lock a mutex.
+
+The test spawns several worker threads which use the platform synchronization methods.  The main thread waits on the various workers terminating by incrementing a 'Done' counter.
+
+The issue is as follows:
+
+The worker thread exits with:
+  NaClMutexLock(&amp;amp;gMu);
+  gFailure += failed;
+  ++gNumThreadsDone;
+  NaClMutexUnlock(&amp;amp;gMu);
+  NaClCondVarSignal(&amp;amp;gCv);
+
+The main thread checks with:
+  NaClMutexLock(&amp;amp;gMu);
+  while (gNumThreadsDone != num_threads) {
+    NaClCondVarWait(&amp;amp;gCv, &amp;amp;gMu);
+  }
+  ...shutdown code...
+
+There is a race where the worker can increment gNumThreadsDone causing the main thread to successfully verify the threads are done and proceed to destroying the synchronization objects before one of the workers calls NaClCondVarSignal, causing the worker to use an invalid object.
+
+On Windows the CondVar is implemented with a Mutex and Events.  It's the destruction of this internal mutex, and it's subsequent use during the call to signal that causes the actual lock failure on an invalid handle.
+
+To solve this problem the signal must be moved inside the lock of gMu, to prevent the main thread from destroying the CondVar before the signal happens.</ns0:content><ns0:updated>2011-08-25T19:16:52.000Z</ns0:updated><ns0:published>2011-04-22T00:28:13.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dmichael@google.com/</ns2:uri><ns2:username>dmichael@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Flaky nacl_semaphore test</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-</ns2:label><ns2:label>Arch-</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1716/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1716" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1716" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-04-27T18:39:23.000Z</ns2:closedDate><ns2:id>1716</ns2:id></ns0:entry>

@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEGQH47eCl7ImA9Wx5bF00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1095/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdroid1@gmail.com</ns0:name><ns0:uri>/u/bugdroid1@gmail.com/</ns0:uri></ns0:author><ns0:content type="html">Commit: d0661795314a671fc154e6406c4ba31f03a376ab
+ Email: eaeltsin@google.com
+
+[binutils] Special processing of R_X86_64_32 relocations
+
+R_X86_64_32 relocations in NaCl64 play the same role as R_X86_64_64 in native x86_64. They should be rewritten in case relocated symbol is hidden and will not exist in statically linked binary.
+
+R_X86_64_64 are rewritten into R_X86_64_RELATIVE using the absolute value of the symbol. Unfortunately we don't have 32-bit alternative, thus we change relocation to use section instead of symbol. Usually this rewrite produces buggy relocations (why? there is corresponding comment in bfd, but it does not explain much), but in our special case we just create valid relocations.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1095
+TEST=
+
+Review URL: http://codereview.chromium.org/4128004
+
+M	binutils/bfd/elf64-x86-64.c</ns0:content><ns0:updated>2010-11-02T12:57:01.000Z</ns0:updated><ns0:published>2010-11-02T12:57:01.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdroid1@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1095#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1095/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

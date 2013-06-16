@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUAFRn47eCl7ImA9WxVVEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/17</ns0:id><ns0:author>
+			<ns0:name>neoz...@gmail.com</ns0:name><ns0:uri>/u/117062785323323830916/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+0.1
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+0.1
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Windows 2000 sp4
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Firefox 3.0
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. cd C:\nacl\googleclient\native_client\tests\earth
+2. C:\nacl\googleclient\native_client&amp;gt;python -V
+Python 2.5.2
+
+3. C:\nacl\googleclient\native_client\tests\earth&amp;gt;python run.py
+
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+I was hoping to see the earth demo, instead I got a :
+
+
+the instruction at &amp;quot;0x0040e3ab&amp;quot; refrenced memory at 0x00000000 the memory 
+could not be &amp;quot;read&amp;quot;
+
+
+Please provide any additional information below and attach any relevant 
+source files.
+
+
+Opening it in VS2003's debugger I see everything crashing in LockImpl::Lock
+()
+
+&amp;gt;	sel_ldr.exe!LockImpl::Lock()  Line 57 + 0x2	C++
+ 	sel_ldr.exe!Lock::Acquire()  Line 70	C++
+ 	sel_ldr.exe!NaClMutexLock(NaClMutex * mp=0x0042f4b0)  Line 68	C++
+ 	sel_ldr.exe!NaClLog(int detail_level=-3, char * 
+fmt=0x00419938, ...)  Line 229	C
+ 	sel_ldr.exe!SDL_main(int ac=6, char * * av=0x0012fe60)  Line 510 + 
+0x13	C
+ 	sel_ldr.exe!_main()  + 0xf5	C
+ 	sel_ldr.exe!_WinMain@16()  + 0x8a	C
+ 	sel_ldr.exe!__tmainCRTStartup()  Line 589 + 0x1d	C
+ 	KERNEL32.DLL!7c5989d5() 	
+
+</ns0:content><ns0:updated>2009-03-03T22:01:57.000Z</ns0:updated><ns0:published>2008-12-10T16:53:07.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:state>closed</ns2:state><ns0:title>Cant run the example, or the plugin</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/17/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=17" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/17" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2009-03-03T22:01:57.000Z</ns2:closedDate><ns2:id>17</ns2:id></ns0:entry>

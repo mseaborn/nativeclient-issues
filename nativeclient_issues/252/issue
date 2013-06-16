@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHQ347eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/252</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">Beneath src/trusted/service_runtime we have a few OS-specific directories, 
+containing OS-specific source files:
+  linux/
+  win/
+  osx/
+
+A glance into the osx/ directory may confuse the newcomer: it's nearly 
+empty, and lacks implementations of most of the primitives contained in the 
+linux/ and win/ directories.  This is because OS X builds simply use the 
+code in linux/.
+
+This is:
+1. Confusing.  Despite working in a directory called &amp;quot;linux&amp;quot; we must avoid 
+or #ifdef any Linux-specific constructs, such as MAP_NORESERVE (see issue 
+251).
+2. Potentially wrong.  Look again at MAP_NORESERVE, which has no direct 
+equivalent on OS X.  Fixing issue 251 on OS X will probably require 
+Mach/XNU calls, which obviously don't belong in linux/.
+
+Off the top of my head, a fix might be to create a &amp;quot;posix&amp;quot; directory 
+containing the bits common to Linux and OS X, and rework the build targets 
+a little bit to make this obvious.</ns0:content><ns0:updated>2011-07-29T00:12:12.000Z</ns0:updated><ns0:published>2010-01-14T22:28:42.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Code in .../service_runtime/linux is also used by Mac OS X</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Maintainability</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/252/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=252" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/252" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>252</ns2:id></ns0:entry>

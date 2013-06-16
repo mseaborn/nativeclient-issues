@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEQDQn47eCl7ImA9WxFUGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/641</ns0:id><ns0:author>
+			<ns0:name>msn...@google.com</ns0:name><ns0:uri>/u/105190905030319373792/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+  Chrome tip-of-tree and NaCl tip-of-tree
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+  Linux 32-bit and Linux 64-bit
+  Mac OS X 10.6
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+  1. Start httpd.py and navigate to staging/examples.html or staging/npapi_examples.html
+  2. Click any test. (With 1 exception, the test will pass)
+  3. Click the &amp;quot;Back&amp;quot; arrow
+
+What is the expected output?
+  You go back to the staging/examples.html or staging/npapi_examples.html page.
+
+What do you see instead?
+  Aw, Snap!
+
+Extra info:
+  On Linux 64-bit, The &amp;quot;Npruntime unit tests&amp;quot; immediately goes to &amp;quot;Aw, Snap!&amp;quot; as soon as you start it. The test does not run.  All other tests on Linux 64-bit pass.  All tests on Linux 32-bit and Mac pass.
+
+On Mac, these lines are output to the console:
+StartServer: creating bound socket
+StartServer: bound socket 21, address 22
+StartServer: creating server...
+StartServer: server created
+START RPC FINISHED
+ServerThread: waiting on 21 to accept connections...
+ServerThread: shutting down
+THREAD EXIT
+Chromium Helper(49048,0xa07a6720) malloc: *** error for object 0x157860: double free
+*** set a breakpoint in malloc_error_break to debug
+Chromium Helper(49048,0xa07a6720) malloc: *** error for object 0x1748a0: double free
+*** set a breakpoint in malloc_error_break to debug
+Chromium Helper(49048,0xa07a6720) malloc: *** error for object 0x1bfb60: double free
+*** set a breakpoint in malloc_error_break to debug
+Chromium Helper(49048,0xa07a6720) malloc: *** error for object 0x1c0df0: double free
+*** set a breakpoint in malloc_error_break to debug
+Chromium Helper(49048,0xa07a6720) malloc: *** error for object 0x1c0df0: incorrect checksum for freed object - object was probably modified after being freed.
+*** set a breakpoint in malloc_error_break to debug
+</ns0:content><ns0:updated>2010-06-30T18:26:13.000Z</ns0:updated><ns0:published>2010-06-23T22:20:02.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>All SRPC and Pepper brower tests crash on surf-away</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Milestone-Chromium-6</ns2:label><ns2:label>Component-Plugins</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/641/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=641" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/641" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-06-30T18:26:13.000Z</ns2:closedDate><ns2:id>641</ns2:id></ns0:entry>

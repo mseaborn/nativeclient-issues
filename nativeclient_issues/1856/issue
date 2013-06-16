@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEEMQn47eCl7ImA9WhdTFE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1856</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+A set of NaCl libraries and header files are included in the toolchain, but frequently get out of date. As some dependencies are external (Pepper) these problems are frequently hard for people to track down. Native Client developers can use &amp;quot;scons --mode=nacl_extra_sdk extra_sdk_update&amp;quot;, a.k.a. &amp;quot;partial-sdk build&amp;quot; to freshens these artifacts, but developers commonly forget, or don't realize it is needed.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+Lost developer productivity.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+Eliminate the partial-SDK build step. Plan here: https://docs.google.com/a/google.com/document/d/1JpI8t__OKg3NlmmKqJeV5ULo6tdLFskl6ERTZYkwSbc/edit?hl=en_US
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+Scons no longer implements the extra_sdk_update target. Related artifacts are incorporated into mode=nacl and other relevant targets. The mode=nacl build properly models dependencies on Pepper headers, protecting developers from using libraries that are inconsistent with the Pepper headers in their development tree.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+Improved developer productivity and happiness.
+
+</ns0:content><ns0:updated>2011-07-11T17:51:23.000Z</ns0:updated><ns0:published>2011-05-26T21:10:21.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Eliminate the "partial-sdk" step from the NaCl build</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Partial-SDK-Retirement</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1856/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1856" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1856" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
+			<ns2:id>1857</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1858</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1859</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1860</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1861</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1862</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1863</ns2:id></ns2:blockedOn><ns2:closedDate>2011-07-11T17:51:23.000Z</ns2:closedDate><ns2:id>1856</ns2:id></ns0:entry>

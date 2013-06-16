@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHRH47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1434</ns0:id><ns0:author>
+			<ns0:name>albert.s...@gmail.com</ns0:name><ns0:uri>/u/115465361164615642731/</ns0:uri></ns0:author><ns0:content type="html">Low-latency realtime audio applications require two main pieces of infrastructure. The first is a low-latency audio API for interfacing with sound devices, which Pepper2 already implements. The second is a system-provided low-level audio decoding API capable of giving an application raw audio samples from an encoded audio file, and such an API is currently missing from Pepper2 / NaCl.
+
+Without an API to perform low-level audio decoding, web applications will be severely limited or continue to rely on Adobe Flash for audio processing. Without being able to retrieve raw samples of audio, one is unable to do any signal processing or visualization of the audio. The existing Pepper2 audio API appears only usable for synthesis applications, where audio is generated in the browser, and not for something like a jukebox with an equalizer. 
+
+The HTML5 &amp;lt;audio&amp;gt; tag offers nothing for web application developers who would like to process audio or do something interactive and realtime. Any rich application that has these requirements (like Audiotool - http://www.audiotool.com) currently relies on Adobe Flash.
+
+A low-level audio decoding API should implement some basic operations like:
+- retrieving a buffer of samples
+- seeking
+- reporting the expected length of the audio file
+- etc (it probably makes sense to build some streaming capabilities in too, for decoding audio while it's being downloaded from the web) 
+
+This API should wrap a native audio decoding API provided by the host operating system in order to minimize the impact of patented codecs on web applications. (IANAL)
+
+Successful implementation of a low-level audio decoding API should allow Native Client SDK users to decode raw samples from common compressed audio formats like MP3 and AAC, process them in some way, and play them back using the Pepper2 audio API.
+
+This API could enable a new class of rich audio applications on the web. However, audio compression decoding algorithms are complex and bug-prone, so care must be taken to avoid creating security hole(s) when relying on host operating system audio decoding APIs. These APIs should be treated as untrusted.
+
+</ns0:content><ns0:updated>2011-07-29T00:12:15.000Z</ns0:updated><ns0:published>2011-02-15T18:24:36.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:cc>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Low-level Audio Decoding API</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1434/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1434" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1434" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-04-08T18:19:56.000Z</ns2:closedDate><ns2:id>1434</ns2:id></ns0:entry>

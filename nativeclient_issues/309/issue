@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkYHR347eCl7ImA9WxFaEUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/309</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Steps to reproduce:
+
+Test program:
+#include &amp;lt;assert.h&amp;gt;
+#include &amp;lt;fcntl.h&amp;gt;
+#include &amp;lt;sys/stat.h&amp;gt;
+int main()
+{
+  struct stat st;
+  int fd = open(&amp;quot;fstat&amp;quot;, O_RDONLY);
+  assert(fd &amp;gt;= 0);
+  int rc = fstat(fd, &amp;amp;st);
+  assert(rc == 0);
+  printf(&amp;quot;st_mode=%o\n&amp;quot;, st.st_mode);
+  return 0;
+}
+
+$ nacl-gcc -Wall fstat.c -o fstat
+$ sel_ldr -d ./fstat
+
+Expected output:
+st_mode=100700
+
+Actual output:
+st_mode=100000
+
+There is a mistake in NaClAbiStatHostDescStatXlateCtor() in 
+src/trusted/desc/linux/nacl_desc.c.  It reads the output struct instead of the 
+input struct.
+</ns0:content><ns0:updated>2010-07-15T10:35:36.000Z</ns0:updated><ns0:published>2010-02-18T16:36:26.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>fstat()'s st_mode filtering is broken</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Component-TrustedRT</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/309/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=309" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/309" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-07-15T10:35:36.000Z</ns2:closedDate><ns2:id>309</ns2:id></ns0:entry>

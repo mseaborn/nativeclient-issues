@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUHQn47eCl7ImA9WhVTEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1218</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+Every developer basically needs five machines under his/her desk in order to work on NaCl. Even then, personal machines sometimes differ in configuration from trybots, making it hard to diagnose trybot failures. Also when trybots fail, it's sometimes hard to figure out why remotely. For these reasons it would be desireable to have a cluster of trybots that are close to engineers desks, so folks can walk up and debug things easily. The hardware has been purchased. We are waiting for an external network drop before the known prerequisites will be complete.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+Space/time/sysadmin overhead
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+Set up the machines beneath the build status lights as trybots.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+The four machines in the rack with the build status lights are operational  trybots and available for debugging.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+&lt;b&gt;[for users as well as other parts of the system]&lt;/b&gt;
+</ns0:content><ns0:updated>2012-02-24T23:30:33.000Z</ns0:updated><ns0:published>2010-12-02T23:46:12.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:state>closed</ns2:state><ns0:title>Set up trybot cluster in NaCl team area</ns0:title><ns2:label>Type-Task</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Mstone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1218/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1218" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1218" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-02-24T23:30:33.000Z</ns2:closedDate><ns2:id>1218</ns2:id></ns0:entry>

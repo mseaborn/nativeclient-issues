@@ -1,0 +1,66 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUEHSX47eCl7ImA9WxBSFUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/232/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">email conversation with bsy:
+
+BSY:
+
+what's
+probably happening is that the ARM malloc is mmap'ing MAP_ANON memory to
+do allocation -- possibly large ones that may get fragmented later --
+and GioMemoryFileSnapshotCtor definitely performs a large allocation;
+that allocation is not MAP_FIXED, so chances are that we're ending up
+with the nexe buffer down in the low 1G that we want to use for the NaCl
+app's address space, and when the NaCl app addrspace allocation happens,
+either that fails or the allocation overwrites the nexe contents,
+clobbering the load.
+
+the reason i suggested moving it up is to reduce the risk of some other
+library routine calling malloc before this.  even moving it to the top
+of main might not work, since dynamic library and global ctors may
+already have done allocations.  a better long term solution is to have
+the arm nexe for sel_ldr reserve the low 1G somehow -- maybe a BSS
+segment?  as long as the space is reserved (but we don't want to commit
+memory / paging space), we're okay.
+
+another potential solution is to add code to crt0 for ARM to just
+mmap((void *) 0x10000, 0x4000000-0x10000,
+PROT_READ|PROT_WRITE|PROT_EXEC,
+MAP_ANONYMOUS|MAP_PRIVATE|MAP_FIXED|MAP_NORESERVE,0,(off_t)0); before
+any .so or global ctor could have executed.  this is cleaner / more
+explicit, i think, and safer, but requires more toolchain work.
+
+ROBERTM:
+
+Can suggest and assert that I can add in this CL to verify that this  the case,
+so that we
+* can make sure this does not happen elsewhere
+* we have a starting point if we want to find a proper fix
+Basically anything that will make the failure be detected sooner.
+For example can I safely assert inside GioMemoryFileSnapshotCtor that
+the memory is
+in the trusted area -- maybe just for ARM.
+
+
+Also, I wonder if this could become a security vulnerability,
+at least on ARM, if other trusted data accidentally gets malloc'ed
+in untrusted space.
+
+BSY:
+
+not if we do address space squatting.  once the 1G addr space is
+mmap'd into place, no allocator will try to re-use that space.  the
+problem was that mmap got there first, and the ARM NaCl module
+addrspace setup code forcibly did mmap w/ MAP_FIXED.
+
+this is currently a potential vulnerability in that if the earlier
+malloc'd arena contained malloc-private bookkeeping info that gets
+overwritten with validated code/data that is also interpreted as
+malloc bookkeeping info, then the nexe could cause malloc to do
+something that it shouldn't.  but once we squat on the 1G addr space
+very early on in the process start up, e.g., by including something
+that does it in crt0, then we'll be okay.  note that we probably want
+to carefully look at sel_ldr's addrspace layout on the ARM: we
+wouldn't want glibc, for example, to dynamically load in the low 1G at
+process start up, since that clearly introduces a huge security
+problems -- this goes beyond just malloc....
+</ns0:content><ns0:updated>2009-12-23T15:53:58.000Z</ns0:updated><ns0:published>2009-12-23T15:53:58.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=232#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/232/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

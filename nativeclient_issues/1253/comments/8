@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUCQn47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1253/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4132
+
+------------------------------------------------------------------------
+r4132 | mseaborn@chromium.org | Thu Jan 13 08:16:46 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/glibc_syscall_wrappers/nacl.scons?r1=4132&amp;r2=4131&amp;pathrev=4132
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/include/nacl/nacl_inttypes.h?r1=4132&amp;r2=4131&amp;pathrev=4132
+
+Fix some breakage introduced by ABI change for 64-bit time_t/ino_t/off_t in r4116
+
+Disable run_dir_test, since r4116 breaks NaCl's getdents syscall on
+Linux.  (This was the only test that covers getdents.)
+
+Extend nacl/nacl_inttypes.h so that it defines NACL_PRIdNACL_TIME.
+This is needed to fix the compilation of:
+
+  tests/nanosleep/nanosleep_test.c
+  tests/syscalls/timefuncs_test.cc
+  tests/time/gettimeofday_test.c
+
+The alternative would be to #include &lt;machine/_types.h&gt; in those
+files, but that does not seem appropriate because "_types.h" suggests
+a private header and "machine/*" is a newlibism.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1253
+TEST=small_tests --nacl_glibc
+
+Review URL: http://codereview.chromium.org/6278001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:24:23.000Z</ns0:updated><ns0:published>2011-01-21T23:24:23.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1253#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1253/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

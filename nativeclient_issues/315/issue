@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkQFQn47eCl7ImA9WxBUFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/315</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">To get libgcc to produce sandboxed SFI code, we had to modify several of its 
+intrinsics.  The divide and remainder operations were by far the most 
+complex, using an aggressively unrolled loop with computed entry points.
+
+I made a mistake in sandboxing the mod loop, by omitting some backslashes in 
+one of the macros, causing nops to be lost from the expansion.  It looks 
+like this may have worked for divisors with certain numbers of significant 
+bits, but not for others.  In the end, bundle_size.nexe showed the problem 
+most clearly.</ns0:content><ns0:updated>2010-03-02T21:11:53.000Z</ns0:updated><ns0:published>2010-02-24T23:59:18.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Integer mod is broken on untrusted ARM</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-UntrustedRT</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Milestone-Chromium-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/315/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=315" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/315" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-03-02T21:11:53.000Z</ns2:closedDate><ns2:id>315</ns2:id></ns0:entry>

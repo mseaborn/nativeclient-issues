@@ -1,0 +1,51 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0MGRn47eCl7ImA9WhZTE08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1541</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+r4546
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Apply patch:
+
+===================================================================
+--- tools/llvm/driver.py	(revision 4546)
++++ tools/llvm/driver.py	(working copy)
+@@ -665,10 +665,6 @@
+   AssertParseComplete()
+   PrepareCompile()
+ 
+-  # TODO(pdox): Fix the optimization bug(s) that require this.
+-  # See: http://code.google.com/p/nativeclient/issues/detail?id=1225
+-  env.set('SKIP_OPT', '1')
+-
+   inputs = shell.split(env.get('INPUTS'))
+   output = env.get('OUTPUT')
+   arch = GetArch()
+
+2. tools/llvm/utman.sh driver
+3. tools/llvm/utman.sh test-x86-32 run_barebones_negindex_test
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Expect test to run and pass. Instead, see &amp;quot;seek failure segment 3&amp;quot;.
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+Should &amp;quot;NaClElfImageLoad&amp;quot; not try to Seek and Read when &amp;quot;0 == php-&amp;gt;p_filesz&amp;quot;?
+
+readelf -a scons-out/nacl-x86-32-pnacl/obj/tests/barebones/barebones_negindex.nexe
+
+...
+Number of program headers:         5
+...
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  PHDR           0x000000 0x00000000 0x00000000 0x000d4 0x000d4 R   0x4
+  LOAD           0x010000 0x00020000 0x00020000 0x00120 0x00120 R E 0x10000
+  LOAD           0x010120 0x00000000 0x00000000 0x00000 0x00000 R   0x10000
+  LOAD           0x020000 0x00030000 0x00030000 0x00000 0x001b8 RW  0x10000
+  TLS            0x000000 0x00000000 0x00000000 0x00000 0x00000 R   0x4
+</ns0:content><ns0:updated>2011-03-17T00:23:47.000Z</ns0:updated><ns0:published>2011-03-16T18:14:57.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Empty segments (in terms of ELF FileSize not MemSize) can prevent loading</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1541/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1541" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1541" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-03-17T00:23:47.000Z</ns2:closedDate><ns2:id>1541</ns2:id></ns0:entry>

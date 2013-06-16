@@ -1,0 +1,105 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4BQn47eCl7ImA9WhZWF0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1763</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">We have seen at least one instance of Egyptian cotton being flaky on nacl-win32_glibc.  The exit code was -6 which denotes an abort. It appears that some thread was attempting to lock a mutex that was invalid.  The theory is that there exists a race on Windows where one thread can call TerminateProccess which proceeds to destroy the synchronization objects while another thread tries to access one.
+
+At this point we have enough confidence in our understanding of the issue, and Egyptian cotton failed infrequently enough for this to be high priority. If the problem does not reproduce itself in a reasonable amount of time, it may make sense to mark this Won't Fix instead.
+
+-Noel
+
+scons-out/opt-win-x86-32/staging/sel_ldr.exe -S -a -- E:\b\build\slave\nacl-win32_glibc_opt\build\native_client\toolchain\win_x86/nacl64/lib32/runnable-ld.so --library-path E:\b\build\slave\nacl-win32_glibc_opt\build\native_client\toolchain\win_x86/nacl64/lib32 scons-out/nacl-x86-32-glibc/obj/tests/egyptian_cotton/egyptian_cotton.nexe -n 900 -m
+
+ERROR: Command returned normal -6, expecting ['normal'] 0 for win32
+======================================================================
+Stdout
+======================================================================
+................................................................
+
+................................................................
+
+................................................................
+
+................................................................255
+
+................................................................
+
+................................................................
+
+................................................................
+
+................................................................511
+
+................................................................
+
+................................................................
+
+................................................................
+
+................................................................767
+
+................................................................
+
+................................................................
+
+....PASSED
+
+
+======================================================================
+Stderr
+======================================================================
+[2020,3056:18:14:47.407000] NaClTimeInternalInit: timeBeginPeriod(1)
+
+[2020,3056:18:14:47.407000] Unix epoch start is  11644473600000ms in Windows epoch time
+
+[2020,3056:18:14:47.423000] BYPASSING ALL ACL CHECKS
+
+DEBUG MODE ENABLED (bypass acl)
+
+[2020,1996:18:14:48.360000] munmap: rounded length to 0x10000
+
+[2020,1996:18:14:48.360000] invalid mmap flags 04022, ignoring extraneous bits
+
+[2020,1996:18:14:48.360000] invalid mmap flags 04022, ignoring extraneous bits
+
+[2020,1996:18:14:48.376000] munmap: rounded length to 0x20000
+
+[2020,1996:18:14:48.376000] invalid mmap flags 04022, ignoring extraneous bits
+
+[2020,1996:18:14:48.376000] invalid mmap flags 04022, ignoring extraneous bits
+
+[2020,1996:18:14:48.439000] munmap: rounded length to 0xf0000
+
+[2020,1996:18:14:48.439000] invalid mmap flags 04022, ignoring extraneous bits
+
+[2020,1996:18:14:48.439000] invalid mmap flags 04022, ignoring extraneous bits
+
+[2020,1996:18:14:48.454000] munmap: rounded length to 0x30000
+
+[2020,1996:18:14:48.454000] invalid mmap flags 04022, ignoring extraneous bits
+
+[2020,1996:18:14:48.454000] invalid mmap flags 04022, ignoring extraneous bits
+
+[2020,1996:18:14:48.470000] munmap: rounded length to 0x10000
+
+[2020,1996:18:14:48.470000] invalid mmap flags 04022, ignoring extraneous bits
+
+[2020,1996:18:14:48.470000] invalid mmap flags 04022, ignoring extraneous bits
+
+[2020,1996:18:14:48.579000] munmap: rounded length to 0x1a0000
+
+[2020,1996:18:14:48.579000] invalid mmap flags 04022, ignoring extraneous bits
+
+[2020,1996:18:14:48.579000] invalid mmap flags 04022, ignoring extraneous bits
+
+[2020,1996:18:14:48.595000] NaClAbiStatHostDescStatXlateCtor: Unusual NaCl descriptor type (not constructible). The NaCl app has a file with st_mode = 010000. (This is normal for std{in,out,err}, or other inherited/injected files.)
+
+Unrecoverable failure locking a Mutex.
+
+
+RESULT egyptian_cotton_test.out: FAILED= 2.890625 secs
+E:\b\build\slave\nacl-win32_glibc_opt\build\third_party\python_26\python.exe tools/command_tester.py --name E:\b\build\slave\nacl-win32_glibc_opt\build\native_client\scons-out\nacl-x86-32-glibc/test_results/thread_stack_alloc_test.out --report E:\b\build\slave\nacl-win32_glibc_opt\build\native_client\scons-out\nacl-x86-32-glibc/test_results/thread_stack_alloc_test.out --time_warning 10 --time_error 100 --subarch 32 --arch x86 scons-out/opt-win-x86-32/staging/sel_ldr.exe -S -a -- E:\b\build\slave\nacl-win32_glibc_opt\build\native_client\toolchain\win_x86/nacl64/lib32/runnable-ld.so --library-path E:\b\build\slave\nacl-win32_glibc_opt\build\native_client\toolchain\win_x86/nacl64/lib32 scons-out/nacl-x86-32-glibc/obj/tests/egyptian_cotton/egyptian_cotton.nexe -s 0x400000 -n 4095 -f
+scons: *** [scons-out\nacl-x86-32-glibc\test_results\egyptian_cotton_test.out] Error -1
+
+
+</ns0:content><ns0:updated>2011-05-18T20:02:33.000Z</ns0:updated><ns0:published>2011-05-02T21:25:10.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Egyptian cotton can abort on Mutex lock fail after printing success.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1763/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1763" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1763" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-05-18T20:02:33.000Z</ns2:closedDate><ns2:id>1763</ns2:id></ns0:entry>

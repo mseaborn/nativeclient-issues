@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE4DQH47eCl7ImA9Wx9UGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/421</ns0:id><ns0:author>
+			<ns0:name>msn...@google.com</ns0:name><ns0:uri>/u/105190905030319373792/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? tip of tree
+What version of the runtime are you using? tip of tree
+On what operating system? Linux, Mac
+What browser are you using? Chrome
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+I instrumented tests/pepper_plugin/plugin_object.cc to request a 
+reinitialization of the 3d context once per second.
+
+What is the expected output?
+Once per second you might see a flash as the 3d context is deleted and 
+recreated.
+
+What do you see instead?
+Once per second, the 3d context window disappears.
+
+Note: Placing the mouse over the 3d area (with or without moving the mouse) 
+results in the correct expected behavior.
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-02-17T22:49:31.000Z</ns0:updated><ns0:published>2010-04-09T20:35:50.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:cc>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Reinitialized 3D context does not redisplay</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>Milestone-Baltic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/421/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=421" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/421" rel="self" type="application/atom+xml" /><ns2:stars>0</ns2:stars><ns2:closedDate>2011-01-28T18:14:04.000Z</ns2:closedDate><ns2:id>421</ns2:id></ns0:entry>

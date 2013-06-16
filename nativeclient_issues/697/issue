@@ -1,0 +1,93 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE4CRn47eCl7ImA9WhRQEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/697</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">On Linux and Mac we are defining INLINE as follows in
+src/include/portability.h:
+
+# if __GNUC_MINOR__ &amp;gt;= 2
+#  define INLINE __inline__ __attribute__((gnu_inline))
+# else
+#  define INLINE __inline__
+# endif
+
+Since recent gcc versions are &amp;gt;=4.2, this uses gnu_inline.
+
+We always use &amp;quot;INLINE&amp;quot; in combination with &amp;quot;static&amp;quot;.
+
+The problem with gnu_inline is that it can cause the compiler to omit
+the definition of an inlined function, so that it generates code with
+an undefined symbol.
+
+For example:
+
+
+#include &amp;lt;alloca.h&amp;gt;
+
+void nontrivial_func(void *x);
+
+static inline __attribute__((gnu_inline))
+void foo() {
+  // Using alloca() stops the function from being inlined.
+  nontrivial_func(alloca(10000));
+}
+
+void bar() {
+  while(1) {
+    foo();
+  }
+}
+
+
+Building this with g++ omits the definition of foo():
+
+$ g++ -c inline-test.c
+$ nm -C inline-test.o
+0000000000000000 T bar()
+                 U foo()
+                 U __gxx_personality_v0
+
+However this does not happen for C code:
+
+$ gcc -c inline-test.c 
+$ nm -C inline-test.o
+                 U __stack_chk_fail
+0000000000000000 T bar
+0000000000000010 t foo
+                 U nontrivial_func
+
+(This was tested on Ubuntu Jaunty x86-64.)
+
+This issue is somewhat known, and as a consequence sel_ldr-inl.h
+(which contains inline definitions) has a corresponding sel_ldr-inl.c
+which #undefs INLINE -- and similarly for some other headers.
+
+However, not all inline-containing headers have a corresponding C
+file, e.g. linux/nacl_syscall_inl.h.
+
+This issue can cause the NaCl plugin to fail to link in the Gyp build,
+with the error:
+
+    src/trusted/plugin/npapi/video.cc:1251: error: undefined reference to 'NaClRoundAllocPage'
+
+This is because NaClRoundAllocPage() is defined in sel_ldr-inl.h, and
+a definition is compiled into sel_ldr-inl.o, but the plugin's Gyp
+build does not declare a dependency on the &amp;quot;sel&amp;quot; library.
+
+While we could fix this specific problem by declaring a dependency on
+&amp;quot;sel&amp;quot;, it might not be desirable for the plugin to link to
+service_runtime functions.  Also, it does not fix the wider problem of
+the build being unpredictable and not detecting these problems sooner.
+
+I propose that we drop the use of &amp;quot;gnu_inline&amp;quot;.  Without this
+attribute, gcc will use the more standard C99 inline semantics.
+
+
+gnu_inline is documented here:
+http://gcc.gnu.org/onlinedocs/gcc/Function-Attributes.html
+http://gcc.gnu.org/onlinedocs/gcc/Inline.html
+
+However, the behaviour we are seeing for &amp;quot;static inline&amp;quot; is actually
+more like what you'd expect for &amp;quot;extern inline&amp;quot;, which is odd.  That
+said, the docs don't really say what &amp;quot;static inline&amp;quot; should do when
+gnu_inline is set.
+</ns0:content><ns0:updated>2011-12-06T00:56:07.000Z</ns0:updated><ns0:published>2010-07-15T13:47:52.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Use of gnu_inline makes the build unpredictable</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Linux</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/697/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=697" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/697" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-12-06T00:56:07.000Z</ns2:closedDate><ns2:id>697</ns2:id></ns0:entry>

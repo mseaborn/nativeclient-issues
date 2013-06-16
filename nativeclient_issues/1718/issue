@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4FQH47eCl7ImA9WhZXEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1718</ns0:id><ns0:author>
+			<ns0:name>jamesfen...@gmail.com</ns0:name><ns0:uri>/u/105008541472586726939/</ns0:uri></ns0:author><ns0:content type="html">By returning the number of remaining bytes instead of # of bytes sent, we can significantly simplify programming logic and thus improve performance too.
+
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+Currently, the file io write function returns the bytes sent. this return value will also be passed to completion callback. 
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+Usually, if we provide buffering for short writes, we can free these buffers 
+in the completion callback. If the callback receive bytes already sent, then we need to keep track of accumulated bytes sent and also the file io write request itself, this is a non-trivial effort and have a significant performance penalty.
+If as suggested, the result passed to completion callback is remaining bytes, then we can just free the buffer when result==0.
+
+Since PP_OK is defined as 0, thus when # of remaining bytes is 0, it can also mean PP_OK(successful completion of the write request).
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+file io write function returns # of remaining bytes not sent yet. 
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+Much simpler programming logic on use of file io write.
+</ns0:content><ns0:updated>2011-04-29T18:15:11.000Z</ns0:updated><ns0:published>2011-04-22T07:31:02.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/brettw@chromium.org/</ns2:uri><ns2:username>brettw@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>file io write function should return the remaining bytes not sent for the request (in ppapi/c/dev)</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1718/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1718" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1718" rel="self" type="application/atom+xml" /><ns2:stars>4</ns2:stars><ns2:closedDate>2011-04-29T18:15:11.000Z</ns2:closedDate><ns2:id>1718</ns2:id></ns0:entry>

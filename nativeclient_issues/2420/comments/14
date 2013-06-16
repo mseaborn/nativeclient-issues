@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU8BR347eCl7ImA9WhVTFEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2420/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>pdox%goo...@gtempaccount.com</ns0:name><ns0:uri>/u/104735739662288482898/</ns0:uri></ns0:author><ns0:content type="html">Upstream commit: 151696
+
+[Object] Add symbol attribute flags: ST_ThreadLocal, ST_Common, and ST_Undefined. Implement these completely for ELF.
+Rename ST_External to ST_Unknown, and slightly change its semantics. It now only indicates that the symbol's type
+is unknown, not that the symbol is undefined. (For that, use ST_Undefined).
+
+http://llvm.org/viewvc/llvm-project?view=rev&amp;revision=151696</ns0:content><ns0:updated>2012-02-29T02:50:56.000Z</ns0:updated><ns0:published>2012-02-29T02:50:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by pdox%goo...@gtempaccount.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2420#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2420/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcEQ347eCl7ImA9WhRaEko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2589</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I tried building tests/exception_test/exception_crash_test.c for ARM after doing env.PNaClForceNative() in the nacl.scons file (as suggested by pdox in https://chromiumcodereview.appspot.com/9314059/).
+
+This adds &amp;quot;--pnacl-allow-native --pnacl-allow-translate&amp;quot; etc. to the compiler driver.
+
+However, I got the following link error as a result:
+
+/home/mseaborn/devel/nacl/native_client/toolchain/pnacl_linux_x86_64/pkg/binutils/bin/arm-pc-nacl-ld.bfd: _impure_ptr: TLS definition in /home/mseaborn/devel/nacl/native_client/scons-out/nacl-arm-pnacl-clang/obj/tests/exception_test/exception_crash_test.nexe---linked.o section .tdata mismatches non-TLS reference in scons-out/nacl-arm-pnacl-clang/obj/tests/exception_test/exception_crash_test.o
+
+Commenting out all the references to stderr in exception_crash_test.c made this error go away.
+
+My guess is that PNaClForceNative() causes the compiler to generate TLS references that are incompatible with those used in libc -- maybe creating a mixture of PIC and non-PIC references.  This might be a similar problem to issue 1382.
+</ns0:content><ns0:updated>2012-02-15T01:40:02.000Z</ns0:updated><ns0:published>2012-02-10T21:43:17.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PNaClForceNative() breaks stderr/stdout references in C code</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2589/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2589" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2589" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-02-15T01:40:02.000Z</ns2:closedDate><ns2:id>2589</ns2:id></ns0:entry>

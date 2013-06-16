@@ -1,0 +1,49 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU8HQX47eCl7ImA9WhZUEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1805/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5546
+
+------------------------------------------------------------------------
+r5546 | mcgrathr@chromium.org | Fri Jun 03 09:15:01 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/buildbot/buildbot_linux.sh?r1=5546&amp;r2=5545&amp;pathrev=5546
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/nacl_irt.c?r1=5546&amp;r2=5545&amp;pathrev=5546
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/pthread/nacl.scons?r1=5546&amp;r2=5545&amp;pathrev=5546
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=5546&amp;r2=5545&amp;pathrev=5546
+
+Build IRT and its libraries independent of SDK library builds
+
+Executive summary: we get an IRT image built under --nacl_glibc now.
+Theoretically --nacl_glibc should no longer change the default to irt=0.
+But the tests don't work right with glibc yet, so it's still left disabled.
+
+This changes the scons rules to build the IRT nexe images and the libraries
+that go into them separately from the main build.  They are always built
+using the newlib toolchain, regardless of --nacl_glibc.  The libraries for
+the IRT are built just for the IRT and go directly into its link, without
+requiring the "partial SDK" installation step to find them.
+
+The implicit exceptions are libnacl and libcrt_platform, which are not
+proper dependencies in scons but brought in by default toolchain linking
+rules.  Those will be taken from the newlib toolchain install unless scons
+happens to build them first in the nacl_irt run.  We may try to clean that
+up later in one way or another.
+
+Currently this means several libraries can be built twice, once for the SDK
+and once for the IRT.  Some of these libraries will eventually be
+eliminated from the SDK and exist only in the IRT.
+
+The only way we found to do this was to create a separate scons Environment
+that wants to be a separate build mode.  To work around that and not
+require every developer's and every bot's command lines to add "nacl_irt"
+to their non-default --mode argument, we add a hack to add the new nacl_irt
+mode whenever the nacl mode is being built and irt=1.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1805
+TEST=trybots
+
+R=bradchen@google.com,mseaborn@chromium.org,bradnelson@google.com
+
+Review URL: http://codereview.chromium.org/7066054
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-06-03T16:17:10.000Z</ns0:updated><ns0:published>2011-06-03T16:17:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1805#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1805/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

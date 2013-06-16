@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE8DR347eCl7ImA9WhVQFE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2703</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The distinction between NACL_BUILD_ARCH and NACL_TARGET_ARCH is obsolete and should be removed because it just confuses people.  (The same applies to the 'build_*' and 'target_*' flags inside the Scons build.)
+
+The reason for having this distinction was to allow cross-building the validators, so that the ARM validator can be run on x86, for example.  However:
+
+ * A better way to do that is to arrange for all validators to be built as part of each architecture's build: see issue 574.  To that end, we already build the ARM ncval-core as part of the x86-32 build.
+
+ * Configurations where the build arch doesn't match the target arch are never tested, so are probably very bitrotted.
+</ns0:content><ns0:updated>2012-04-02T21:41:16.000Z</ns0:updated><ns0:published>2012-04-02T21:30:59.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Cleanup: Remove the distinction between NACL_BUILD_ARCH and NACL_TARGET_ARCH</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2703/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2703" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2703" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2703</ns2:id></ns0:entry>

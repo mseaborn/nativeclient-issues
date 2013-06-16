@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0ECSX47eCl7ImA9WhRaGUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1872</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I am splitting this out from issue 503.
+
+Although I've committed a change (http://src.chromium.org/viewvc/native_client?view=rev&amp;amp;revision=5481) to use mprotect() to reveal dynamic code pages individually on Unix, dynamic code support is still slow at startup time on Mac OS X.  This is because:
+
+ 1) We use /tmp for the backing file for the dynamic code area, but Mac's HFS+ doesn't support sparse files.  This makes increasing the extent of the /tmp file expensive.  I think it actually writes pages to disc.
+ 2) The reason we use /tmp is that, on OS X, shm_open() produces FDs that can't be mapped with PROT_EXEC.
+
+I think one way to fix this is to use OS X's Mach system calls rather than its POSIX system calls for setting up the dyncode mappings.
+
+Pros:
+ * The dynamic code pages won't get written to disc (unless swap kicks in).
+ * I can remove the hackery I put in place for using /tmp FDs.  This includes the Chromium-side stuff in nacl_process_host.cc and nacl_launcher_thread.cc.
+ * We can turn on the Mac outer sandbox earlier in the standalone sel_ldr.
+
+Cons:
+ * I'm not sure if the Mach system calls are officially supported.  They don't seem to be documented.  But we are already relying on some unofficial stuff for the Mac outer sandbox.  We can always undo this Mach stuff if it breaks in the future.
+</ns0:content><ns0:updated>2012-02-22T22:27:48.000Z</ns0:updated><ns0:published>2011-05-28T00:37:08.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Make dynamic loading more efficient on startup on Mac OS X</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Performance</ns2:label><ns2:label>CoreRuntime</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1872/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1872" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1872" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-02-22T22:19:13.000Z</ns2:closedDate><ns2:id>1872</ns2:id></ns0:entry>

@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcFQn47eCl7ImA9WxFUF04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/652/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>s...@google.com</ns0:name><ns0:uri>/u/108394971971967673680/</ns0:uri></ns0:author><ns0:content type="html">When I was initially tracking this down in the plugin, I found that browsers typically use invalidate as a sledgehammer.  One would like to see:
+
+Invalidate A
+Invalidate B
+Invalidate C
+...
+Deallocate A
+Deallocate B
+Deallocate C
+...
+
+But the calls are usually made as 
+Invalidate A
+Deallocate A
+Invalidate B
+Deallocate B
+...
+
+So pretty much what needs to happen is that if Invalidate is called, no assumptions should be made in the deallocate calls about the state of referred-to objects.  Probably the right answer is either nulling cross-object pointers or setting a boolean to indicate that Invalidate was called.
+
+Just to make this more fun, Invalidate is only called on surf-away.</ns0:content><ns0:updated>2010-06-28T14:40:13.000Z</ns0:updated><ns0:published>2010-06-28T14:40:13.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by s...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=652#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/652/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

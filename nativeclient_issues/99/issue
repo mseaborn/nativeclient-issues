@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEQMQH47eCl7ImA9WhdQGE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/99</ns0:id><ns0:author>
+			<ns0:name>henry_y...@compal.com</ns0:name><ns0:uri>/u/101632753399388061653/</ns0:uri></ns0:author><ns0:content type="html">if my Native client module add following code
+   do_CreateInstance(&amp;quot;@mozilla.org/file/local;1&amp;quot;);
+build nexe is ok.
+but replace following code:
+   nsCOMPtr&amp;lt;nsILocalFile&amp;gt; file=do_CreateInstance(&amp;quot;@mozilla.org/file/local;1&amp;quot;);
+build nexe will output following err message:
+  
+/home/henry/NaCl/build/native_client/src/third_party/nacl_sdk/linux/sdk/nacl-sdk/bin/../lib/gcc/nacl/4.2.2/../../../../nacl/bin/ld:
+BFD (GNU Binutils) 2.18 internal error, aborting at
+../../binutils-2.18/bfd/elf32-nacl.c line 2493 in elf_i386_relocate_section
+
+/home/henry/NaCl/build/native_client/src/third_party/nacl_sdk/linux/sdk/nacl-sdk/bin/../lib/gcc/nacl/4.2.2/../../../../nacl/bin/ld:
+Please report this bug.
+
+collect2: ld returned 1 exit status
+make: *** [srpc_hw_release.nexe] &#38169;&#35823; 1
+</ns0:content><ns0:updated>2011-08-20T07:46:21.000Z</ns0:updated><ns0:published>2009-09-09T07:07:40.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:owner>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>About Native client module  call XPCOM code build failure.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/99/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=99" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/99" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-20T07:46:21.000Z</ns2:closedDate><ns2:id>99</ns2:id></ns0:entry>

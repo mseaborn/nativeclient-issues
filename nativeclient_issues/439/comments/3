@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQAQn47eCl7ImA9WxFSE0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/439/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>dmazz...@google.com</ns0:name><ns0:uri>/u/100787230356233093716/</ns0:uri></ns0:author><ns0:content type="html">I would very much like to see the "chrome-extension://" protocol whitelisted ASAP - 
+I've already verified that NaCl works in Chrome extensions (if you whitelist that url 
+pattern), the security is good, and I've got an application for it that's ready to go 
+now.
+
+(Cliff already knows this, I'm just adding this to the bug for the record.)
+
+Adding "chrome://" for Firefox sounds good too, but I haven't tested it personally 
+and I don't know if it's equally secure.
+
+Thanks!
+</ns0:content><ns0:updated>2010-04-15T21:52:23.000Z</ns0:updated><ns0:published>2010-04-15T21:52:23.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by dmazz...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=439#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/439/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

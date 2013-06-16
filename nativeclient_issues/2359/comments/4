@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYERH47eCl7ImA9WhRUEEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2359/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 4515e1a9fc523d7f43dcf08c39f64d0fa2e7ad3c
+ Email: pdox@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+PNaCl: Activate new symbol wrapping implementation.
+
+Remove existing implementation from python driver. The new implementation is in the bitcode linker, and behaves exactly like the normal linker --wrap. This should completely fix PNaCl's problems with --wrap.
+
+Activates CLs:
+http://codereview.chromium.org/9131007/
+http://codereview.chromium.org/9269006/
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2359
+Review URL: https://chromiumcodereview.appspot.com/9141006
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@7644 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	pnacl/build.sh
+M	pnacl/driver/pnacl-ld.py</ns0:content><ns0:updated>2012-01-20T22:21:45.000Z</ns0:updated><ns0:published>2012-01-20T22:21:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2359#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2359/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

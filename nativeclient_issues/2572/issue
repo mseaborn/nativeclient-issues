@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkUFQH47eCl7ImA9WhVQFEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2572</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The Windows API WriteProcessMemory() bypasses page permissions in some cases, rather like Linux's ptrace().  The attached program demonstrates this and prints the following on Windows 7:
+
+PAGE_EXECUTE_READ:
+rc=1 written=1 before=0 after=123
+PAGE_READONLY:
+rc=0 written=9999 before=0 after=0
+
+This is despite the fact that the docs say &amp;quot;Before data transfer occurs, the system verifies that all data in the base address and memory of the specified size is accessible for write access. If so, the function proceeds; otherwise, the function fails.&amp;quot; (http://msdn.microsoft.com/en-us/library/aa909195.aspx)
+
+The inconsistency looks like a bug in Windows.  However, the behaviour on PAGE_EXECUTE_READ is probably something that debuggers rely on for setting breakpoints.
+
+This means we need to reinstate the page permissions checks that I removed in https://src.chromium.org/viewvc/native_client?view=rev&amp;amp;revision=7648.  The test I added was not sufficient.
+
+It shouldn't be possible to overwrite the rodata segment with this, since this segment is mapped PAGE_READONLY (but we don't want to rely on Windows' inconsistency).
+
+It shouldn't be possible to overwrite the dynamic code area with this, because apparently WriteProcessMemory() won't write to non-copy-on-write read-only mappings created with MapViewOfFile().  (Again, we don't want to rely on that.)
+
+But this will probably allow overwriting the static code area, which is a hole.
+</ns0:content><ns0:updated>2012-04-03T00:50:11.000Z</ns0:updated><ns0:published>2012-01-30T18:09:43.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Windows exception handling: Reinstate stack page permissions check</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>UntrustedHardwareExceptions</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2572/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2572" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2572" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>2401</ns2:id></ns2:blocking><ns2:closedDate>2012-02-11T03:38:19.000Z</ns2:closedDate><ns2:id>2572</ns2:id></ns0:entry>

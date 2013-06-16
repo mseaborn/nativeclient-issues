@@ -1,0 +1,44 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkAHSX47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/932/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3377
+
+------------------------------------------------------------------------
+r3377 | bsy@google.com | Wed Sep 29 21:51:42 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_io.c?r1=3377&amp;r2=3376&amp;pathrev=3377
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/gio_nacl_desc.c?r1=3377&amp;r2=3376&amp;pathrev=3377
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=3377&amp;r2=3376&amp;pathrev=3377
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/gio_nacl_desc.h?r1=3377&amp;r2=3376&amp;pathrev=3377
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=3377&amp;r2=3376&amp;pathrev=3377
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/gio_nacl_desc_test.c?r1=3377&amp;r2=3376&amp;pathrev=3377
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/service_runtime_tests.gyp?r1=3377&amp;r2=3376&amp;pathrev=3377
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/plugin.gyp?r1=3377&amp;r2=3376&amp;pathrev=3377
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/build.scons?r1=3377&amp;r2=3376&amp;pathrev=3377
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=3377&amp;r2=3376&amp;pathrev=3377
+
+Adds a new Gio subclass NaClGioNaClDesc that wraps a NaClDesc,
+enabling the plugin to use SRPC to pass a NaClDesc in the LoadModule
+RPC that is either NaClDescImcShm or NaClDescIoDesc subclasses of
+NaClDesc.
+
+NB: the test verifies that the Gio subclass works by copying files,
+but does not exercise it via the LoadModule RPC.  That awaits
+integration tests when the plugin has the necessary changes for use in
+fake_browser.
+
+This turned out to be more than a page of code, primarily because I
+didn't want to violate abstraction and reach inside of the
+NaClDescIoDesc and take the host-OS descriptor out and then use it via
+
+GioFileRefCtor(&amp;gio_file,
+               fdopen(((struct NaClDescIoDesc *) nexe_binary)-&gt;hd-&gt;d));
+
+plus, the test itself is longer....
+
+TESTS= scons run_gio_nacl_desc_test
+BUGS=932
+
+Review URL: http://codereview.chromium.org/3541004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:58:58.000Z</ns0:updated><ns0:published>2011-01-21T22:58:58.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=932#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/932/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

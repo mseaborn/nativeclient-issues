@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCRn47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1200</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The ARM build of NaCl produces the following output, which I notice every so often:
+
+Decoder Generator reading  /home/mseaborn/devel/nacl-trunk/src/native_client/tools/modular-build/out/temp_source/nacl/native_client/src/trusted/validator_arm/armv7-opt.table
+Successful - got 30 tables.
+Generating output to /home/mseaborn/devel/nacl-trunk/src/native_client/tools/modular-build/out/build/scons_tests/gen/native_client/src/trusted/validator_arm/decode.cc...
+Table ARMv7: 7 rows minimized to 7
+Table dp_misc: 13 rows minimized to 13
+Table dp_reg: 3 rows minimized to 3
+Table dp_immed: 8 rows minimized to 8
+Table mult: 5 rows minimized to 5
+Table sat_add_sub: 1 rows minimized to 1
+Table half_mult: 3 rows minimized to 3
+Table extra_load_store: 8 rows minimized to 8
+Table sync: 8 rows minimized to 8
+Table msr_and_hints: 11 rows minimized to 11
+Table misc: 13 rows minimized to 13
+Table load_store_word_byte: 6 rows minimized to 6
+Table media: 8 rows minimized to 8
+Table parallel_add_sub: 7 rows minimized to 7
+Table pack_sat_rev: 11 rows minimized to 11
+Table signed_mult: 6 rows minimized to 6
+Table branch_block_xfer: 4 rows minimized to 4
+Table super_cop: 9 rows minimized to 9
+Table unconditional: 16 rows minimized to 16
+Table misc_hints_simd: 18 rows minimized to 18
+Table simd_dp: 15 rows minimized to 15
+Table simd_dp_3same: 17 rows minimized to 17
+Table simd_dp_3diff: 5 rows minimized to 5
+Table simd_dp_2scalar: 6 rows minimized to 6
+Table simd_dp_2shift: 10 rows minimized to 10
+Table simd_dp_2misc: 13 rows minimized to 13
+Table simd_dp_1imm: 6 rows minimized to 6
+Table simd_load_store: 2 rows minimized to 2
+Table simd_load_store_l0: 7 rows minimized to 7
+Table simd_load_store_l1: 6 rows minimized to 6
+Completed.
+
+It looks like not a whole lot of minimisation is going on there!
+</ns0:content><ns0:updated>2011-07-29T00:12:47.000Z</ns0:updated><ns0:published>2010-11-30T01:17:47.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:cc>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>ARM build apparently failing to minimise decoding tables meaningfully</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1200/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1200" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1200" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-11-30T01:23:37.000Z</ns2:closedDate><ns2:id>1200</ns2:id></ns0:entry>

@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0UEQX47eCl7ImA9WhdXEkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2173/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I suspect this was introduced by Bennet's change:
+http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=6375
+
+Bennet added the following code to crash_in_syscall.c:
+
+#if defined(IN_BROWSER)
+  if (!NaClSrpcModuleInit())
+    return -1;
+  NaClPluginLowLevelInitializationComplete();
+#endif
+</ns0:content><ns0:updated>2011-08-24T18:40:00.000Z</ns0:updated><ns0:published>2011-08-24T18:40:00.000Z</ns0:published><ns2:updates>
+			<ns2:status>Available</ns2:status><ns2:ownerUpdate>---</ns2:ownerUpdate><ns2:ccUpdate>mseaborn@chromium.org</ns2:ccUpdate></ns2:updates><ns0:title>Comment 4 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2173#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2173/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

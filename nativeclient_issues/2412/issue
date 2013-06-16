@@ -1,0 +1,53 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IGRH47eCl7ImA9WhRTEks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2412</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">Looks like this flake is due to Python throwing an exception on a socket that has gone bad.  The tester probably needs a catch for this case.  If it is possible for sockets to die due to purposeful crash tests then...
+
+Not sure how common this is or how many tests it may effect, but looking at the output of the mac10.6 tester, it seems this could account for some of our flaky browser/crash tests.
+
+http://chromegw.corp.google.com/i/client.nacl/builders/mac10.6-glibc-opt/builds/1800/steps/chrome_browser_tests/logs/stdio
+
+
+======================================================================
+running ['/usr/bin/python2.6', '/b/build/slave/mac10.6-glibc-opt/build/native_client/tests/inbrowser_crash_test/crash_dump_tester.py', '--browser_path', '/b/build/slave/mac10.6-glibc-opt/build/native_client/chromebinaries/mac_x86-32/Chromium.app/Contents/MacOS/Chromium', '--url', 'crash_in_syscall.html', '--timeout', '20', '--ppapi_plugin', '/b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/opt-mac-x86-32/staging/ppNaClPlugin', '--sel_ldr', '/b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/opt-mac-x86-32/staging/sel_ldr', '--irt_library', '/b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/nacl_irt-x86-32/staging/irt.nexe', '--file', '/b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/nacl-x86-32-glibc/obj/tests/inbrowser_crash_test/inbrowser_crash_in_syscall_x86-32.nexe', '--file', '/b/build/slave/mac10.6-glibc-opt/build/native_client/tests/inbrowser_crash_test/crash_in_syscall.html', '--serving_dir', '/b/build/slave/mac10.6-glibc-opt/build/native_client/toolchain/mac_x86/x86_64-nacl/lib32', '--serving_dir', '/b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/nacl-x86-32-glibc/lib', '--file', '/b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/nacl-x86-32-glibc/staging/inbrowser_crash_in_syscall.nmf', '--expected_crash_dumps=0']
+======================================================================
+/usr/bin/python2.6 /b/build/slave/mac10.6-glibc-opt/build/native_client/tests/inbrowser_crash_test/crash_dump_tester.py --browser_path /b/build/slave/mac10.6-glibc-opt/build/native_client/chromebinaries/mac_x86-32/Chromium.app/Contents/MacOS/Chromium --url crash_in_syscall.html --timeout 20 --ppapi_plugin /b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/opt-mac-x86-32/staging/ppNaClPlugin --sel_ldr /b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/opt-mac-x86-32/staging/sel_ldr --irt_library /b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/nacl_irt-x86-32/staging/irt.nexe --file /b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/nacl-x86-32-glibc/obj/tests/inbrowser_crash_test/inbrowser_crash_in_syscall_x86-32.nexe --file /b/build/slave/mac10.6-glibc-opt/build/native_client/tests/inbrowser_crash_test/crash_in_syscall.html --serving_dir /b/build/slave/mac10.6-glibc-opt/build/native_client/toolchain/mac_x86/x86_64-nacl/lib32 --serving_dir /b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/nacl-x86-32-glibc/lib --file /b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/nacl-x86-32-glibc/staging/inbrowser_crash_in_syscall.nmf --expected_crash_dumps=0
+ENV: NACL_SEL_LDR=/b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/opt-mac-x86-32/staging/sel_ldr VERSIONER_PYTHON_VERSION=2.6 SHLVL=1 VERSIONER_PYTHON_PREFER_32_BIT=no __CF_USER_TEXT_ENCODING=0x4BA5FAA2:0:0 NACL_IRT_LIBRARY=/b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/nacl_irt-x86-32/staging/irt.nexe PWD=/b/build/slave/mac10.6-glibc-opt/build/native_client NACL_ENABLE_PPAPI_DEV=1 CYGWIN=nodosfilewarning CHROME_HEADLESS=1 HOME=/Users/chrome-bot CHROME_BREAKPAD_PIPE_NAME=\\.\pipe\nacl_crash_dump_tester_sxvhx9_crash_service DISPLAY=/tmp/launch-i895nT/org.x:0 _=/usr/bin/python PATH=/b/build/slave/mac10.6-glibc-opt/build/native_client/toolchain/mac_x86/bin:/usr/local/bin:/opt/bin:/bin:/usr/bin:/sw/bin
+LAUNCHING: /b/build/slave/mac10.6-glibc-opt/build/native_client/chromebinaries/mac_x86-32/Chromium.app/Contents/MacOS/Chromium --disable-web-resources --disable-preconnect --no-first-run --no-default-browser-check --enable-logging --log-level=1 --safebrowsing-disable-auto-update --explicitly-allowed-ports=64203 --user-data-dir=/tmp/browserprofile_KEldes --register-pepper-plugins=/b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/opt-mac-x86-32/staging/ppNaClPlugin;application/x-nacl --no-sandbox http://127.0.0.1:64203/crash_in_syscall.html
+PID 9102
+[9103:263:260411704591639:ERROR:renderer_main.cc(213)] Running without renderer sandbox
+[   389 ms] |||| GET /crash_in_syscall.html (/crash_in_syscall.html)
+[   397 ms] |||| GET /nacltest.js (/nacltest.js)
+[   450 ms] |||| [STARTUP]
+[   457 ms] |||| 
+[   460 ms] |||| [crash_in_syscall BEGIN]
+[   553 ms] |||| GET /favicon.ico (/favicon.ico)
+[ 20554 ms] |||| 
+[ 20554 ms] |||| [SERVER_ERROR] Did not hear from the test for 20.0 seconds.
+[ 20554 ms] |||| Heard from Javascript 0.4 seconds ago.
+[ 20554 ms] |||| The test probably did not get a callback that it expected.
+KILLING the browser
+crash_dump_tester: Found 0 files
+Unhandled exception in thread started by &amp;lt;function Serve at 0x1011ac938&amp;gt;
+Traceback (most recent call last):
+  File &amp;quot;/b/build/slave/mac10.6-glibc-opt/build/native_client/tests/inbrowser_crash_test/../../tools/browser_tester/browser_tester.py&amp;quot;, line 197, in Serve
+    server.handle_request()
+  File &amp;quot;/System/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/SocketServer.py&amp;quot;, line 262, in handle_request
+    fd_sets = select.select([self], [], [], timeout)
+select.error: (9, 'Bad file descriptor')
+crash_dump_tester: PASSED
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+[  FAILED  ] nacl.run_inbrowser_crash_in_syscall_test (1766 ms)
+
+
+scons: *** [scons-out/nacl-x86-32-glibc/test_results/inbrowser_crash_in_syscall_test.out] Error 255
+/usr/bin/python /b/build/slave/mac10.6-glibc-opt/build/native_client/tools/command_tester.py --name run_inbrowser_untrusted_crash_test --report /b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/nacl-x86-32-glibc/test_results/inbrowser_untrusted_crash_test.out --time_warning 1800 --time_error 18000 --perf_env_description x86-32_nnacl_glibc_dynamic_irt --subarch 32 --arch x86 --capture_output 0 /usr/bin/python /b/build/slave/mac10.6-glibc-opt/build/native_client/tests/inbrowser_crash_test/crash_dump_tester.py --browser_path /b/build/slave/mac10.6-glibc-opt/build/native_client/chromebinaries/mac_x86-32/Chromium.app/Contents/MacOS/Chromium --url untrusted_crash.html --timeout 20 --ppapi_plugin /b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/opt-mac-x86-32/staging/ppNaClPlugin --sel_ldr /b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/opt-mac-x86-32/staging/sel_ldr --irt_library /b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/nacl_irt-x86-32/staging/irt.nexe --file /b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/nacl-x86-32-glibc/obj/tests/inbrowser_crash_test/inbrowser_crash_test_x86-32.nexe --file /b/build/slave/mac10.6-glibc-opt/build/native_client/tests/inbrowser_crash_test/untrusted_crash.html --serving_dir /b/build/slave/mac10.6-glibc-opt/build/native_client/toolchain/mac_x86/x86_64-nacl/lib32 --serving_dir /b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/nacl-x86-32-glibc/lib --file /b/build/slave/mac10.6-glibc-opt/build/native_client/scons-out/nacl-x86-32-glibc/staging/inbrowser_crash_test.nmf --expected_crash_dumps=0
+[ RUN      ] nacl.run_inbrowser_untrusted_crash_test
+
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-11-02T19:18:45.000Z</ns0:updated><ns0:published>2011-11-02T19:18:45.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>Dead socket in Python gives flaky result</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-16</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-</ns2:label><ns2:label>OS-</ns2:label><ns2:label>Arch-</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2412/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2412" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2412" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2412</ns2:id></ns0:entry>

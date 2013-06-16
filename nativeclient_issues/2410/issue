@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8NSH47eCl7ImA9WhRSFE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2410</ns0:id><ns0:author>
+			<ns0:name>mcgra...@chromium.org</ns0:name><ns0:uri>/u/109286297231979736865/</ns0:uri></ns0:author><ns0:content type="html">We'd like to support the &amp;quot;gclient --git-deps&amp;quot; mode, aka &amp;quot;new git workflow&amp;quot; described at http://code.google.com/p/chromium/wiki/UsingNewGit  (for the chromium repo).
+
+This requires some infrastructure support and some cleanup of native_client/DEPS.
+
+1. Consolidate DEPS to have fewer separate entries, since each one translates into a git mirror repository.
+
+2. Don't use File() in DEPS.  This is blocked on http://code.google.com/p/chromium/issues/detail?id=102682
+
+3. Get the infrastructure team's scripts to handle the native_client repo URLs needed, and to do repo synch'ing and .DEPS.git generation in their cron jobs.
+</ns0:content><ns0:updated>2011-11-16T00:54:59.000Z</ns0:updated><ns0:published>2011-11-02T17:52:20.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>support .DEPS.git in native_client repository</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2410/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2410" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2410" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>102682</ns2:id><ns2:project>chromium</ns2:project></ns2:blockedOn><ns2:closedDate>2011-11-16T00:54:59.000Z</ns2:closedDate><ns2:id>2410</ns2:id></ns0:entry>

@@ -1,0 +1,61 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEEGR347eCl7ImA9WhRTGUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2173/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">run_inbrowser_crash_in_syscall_test is currently failing on every run on the x86-64 Windows NaCl/Chrome integration bot, but is passing consistently on x86-32 Windows or Mac or Linux.
+
+I suspect the reason for the current failure is unrelated to the original reason.
+
+The original reason was flakiness that affected all of tests/inbrowser_crash_test: issue 2234, which has been fixed.
+
+Currently, run_inbrowser_crash_in_syscall_test causes the renderer process to hang in the NaCl plugin while connecting to the NaCl process, producing the following error:
+
+[   296 ms] |||| [crash_in_syscall BEGIN]
+[   315 ms] |||| GET /inbrowser_crash_in_syscall.nmf (/inbrowser_crash_in_syscall.nmf)
+[   315 ms] |||| GET /favicon.ico (/favicon.ico)
+[   355 ms] |||| GET /inbrowser_crash_in_syscall_x86-64.nexe (/inbrowser_crash_in_syscall_x86-64.nexe)
+[ 20361 ms] |||| 
+[ 20361 ms] |||| [SERVER_ERROR] Did not hear from the test for 20.0 seconds.
+[ 20361 ms] |||| Heard from Javascript 20.1 seconds ago.
+[ 20361 ms] |||| The renderer probably hung or crashed.
+
+The NaCl process is stuck, with two threads stuck in Breakpad-related code:
+
+thread 1:
+
+ 	ntdll.dll!ZwWaitForSingleObject()  + 0xa bytes	
+ 	KernelBase.dll!WaitForSingleObjectEx()  + 0x9c bytes	
+&gt;	nacl64.exe!google_breakpad::ExceptionHandler::WriteMinidumpOnHandlerThread(_EXCEPTION_POINTERS * exinfo=0x000000004147f8d0, MDRawAssertionInfo * assertion=0x0000000000000001)  Line 668	C++
+ 	nacl64.exe!google_breakpad::ExceptionHandler::HandleException(_EXCEPTION_POINTERS * exinfo=0x0000000000000000)  Line 446	C++
+ 	kernel32.dll!UnhandledExceptionFilter()  + 0x160 bytes	
+ 	ntdll.dll!string "Enabling heap debug options\n"()  + 0x11088 bytes	
+ 	ntdll.dll!__C_specific_handler()  + 0x9c bytes	
+ 	ntdll.dll!RtlpExecuteHandlerForException()  + 0xd bytes	
+ 	ntdll.dll!RtlDispatchException()  + 0x38c bytes	
+ 	ntdll.dll!KiUserExceptionDispatcher()  + 0x2e bytes	
+ 	nacl64.exe!NaClCommonSysImc_Recvmsg(NaClAppThread * natp=0x0000000000000000, int d=1079098816, NaClAbiNaClImcMsgHdr * nanimhp=0x0000000c00001000, int flags=0)  Line 1953	C
+ 	nacl64.exe!NaClSyscallCSegHook(int tls_idx=-192)  Line 158 + 0xe bytes	C
+ 	nacl64.exe!NaClSyscallSeg()  + 0x8c bytes	
+ 	0000000cffffff40()	
+ 	000000004051bd70()	
+ 	000000000021e440()	
+ 	000000004051bdc0()	
+ 	000000000021e440()	
+ 	nacl64.exe!NaClStartThreadInApp(NaClAppThread * natp=0x0000000010042120, unsigned __int64 new_prog_ctr=1079098736)  Line 81	C
+ 	nacl64.exe!NaClThreadLauncher(void * state=0x0000000040bc0a20)  Line 66 + 0xf bytes	C
+ 	nacl64.exe!_callthreadstartex()  Line 348 + 0xd bytes	C
+ 	nacl64.exe!_threadstartex(void * ptd=0x0000000000000000)  Line 326 + 0x5 bytes	C
+ 	kernel32.dll!BaseThreadInitThunk()  + 0xd bytes	
+ 	ntdll.dll!RtlUserThreadStart()  + 0x21 bytes	
+
+thread 2:
+
+ 	ntdll.dll!NtDelayExecution()  + 0xa bytes	
+ 	KernelBase.dll!SleepEx()  + 0xb3 bytes	
+ 	nacl64.exe!`anonymous namespace'::FilterCallback(void * __formal=0x0000000040516600, void * __formal=0x0000000040516600, void * __formal=0x0000000040516600)  Line 375	C++
+ 	nacl64.exe!google_breakpad::ExceptionHandler::WriteMinidumpWithException(unsigned long requesting_thread_id=1079076576, _EXCEPTION_POINTERS * exinfo=0x0000000000000000, MDRawAssertionInfo * assertion=0x00000000000000ec)  Line 717 + 0x1f bytes	C++
+&gt;	nacl64.exe!google_breakpad::ExceptionHandler::ExceptionHandlerThreadMain(void * lpParameter=0x0000000000000000)  Line 339	C++
+ 	kernel32.dll!BaseThreadInitThunk()  + 0xd bytes	
+ 	ntdll.dll!RtlUserThreadStart()  + 0x21 bytes	
+
+(The fact that two threads are involved indicates it has fallen back to the in-process Breakpad case.  If I enable the out-of-process Breakpad case by using crash_service64.exe instead of crash_service.exe, there is just one stuck Breakpad-related thread.)
+</ns0:content><ns0:updated>2011-11-10T23:10:26.000Z</ns0:updated><ns0:published>2011-11-10T23:10:26.000Z</ns0:published><ns2:updates>
+			<ns2:status>Assigned</ns2:status><ns2:ownerUpdate>mseaborn@chromium.org</ns2:ownerUpdate><ns2:ccUpdate>-mseaborn@chromium.org</ns2:ccUpdate></ns2:updates><ns0:title>Comment 11 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2173#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2173/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

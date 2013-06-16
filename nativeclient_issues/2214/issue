@@ -1,0 +1,86 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0ENSX47eCl7ImA9WhVSGUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2214</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">While looking at the dynamic loading code again, I realised that I made a mistake when adding the icache flush for ARM (in http://src.chromium.org/viewvc/native_client?view=rev&amp;amp;revision=5479).
+
+Rather than flushing the icache for the read+execute mapping (in untrusted address space), it's flushing the icache for the read+write mapping (in trusted address space).  This would be a potential security hole if the icache were indexed by virtual addresses.
+
+Here's a change which ought to fix this: http://codereview.chromium.org/7785009/
+
+Surprisingly, though, that change doesn't work on ARM hardware - at least, on our nacl-arm2 machine.  The test fails as follows:
+
+$ strace -f ./sel_ldr_dbg -E NACL_SRPC_STANDALONE=1 dynamic_load_test_arm.nexe
+...
+[pid 10291] cacheflush(0x50000, 0x50020, 0, 0x50020, 0 &amp;lt;unfinished ...&amp;gt;
+[pid 10290] futex(0x8ee425ac, FUTEX_WAKE_OP_PRIVATE, 1, 1, 0x8ee425a8, {FUTEX_OP_SET, 0, FUTEX_OP_CMP_GT, 1}) = -1 ENOSYS (Function not implemented)
+[pid 10290] futex(0x8ee425ac, FUTEX_WAKE_PRIVATE, 1) = 1
+[pid 10290] recvmsg(11,  &amp;lt;unfinished ...&amp;gt;
+[pid 10288] &amp;lt;... futex resumed&amp;gt; )       = 0
+[pid 10288] futex(0x8ee42590, FUTEX_WAKE_PRIVATE, 1) = 0
+[pid 10288] futex(0x8ee425ac, FUTEX_WAIT_PRIVATE, 3, NULL &amp;lt;unfinished ...&amp;gt;
+[pid 10291] +++ killed by SIGSEGV +++
+PANIC: handle_group_exit: 10291 leader 10288
+[it then hangs]
+
+It hangs if run outside of strace too.
+
+dmesg shows the following error:
+
+[3175633.210000] Internal error: Oops: 817 [#9] SMP
+[3175633.210000] Modules linked in: ar6000
+[3175633.210000] CPU: 0    Tainted: G      D W   (2.6.29 #1)
+[3175633.210000] PC is at v7_coherent_kern_range+0x18/0x44
+[3175633.210000] LR is at arm_syscall+0x2f4/0x388
+[3175633.210000] pc : [&amp;lt;90038908&amp;gt;]    lr : [&amp;lt;90033d04&amp;gt;]    psr: 80000013
+[3175633.210000] sp : 9fde1e80  ip : 9fde7f90  fp : 9fde1fa4
+[3175633.210000] r10: 00000000  r9 : 9fde0000  r8 : 00000000
+[3175633.210000] r7 : 000f0002  r6 : 00000000  r5 : 00050020  r4 : 00050000
+[3175633.210000] r3 : 0000001f  r2 : 00000020  r1 : 00051000  r0 : 00050000
+[3175633.210000] Flags: Nzcv  IRQs on  FIQs on  Mode SVC_32  ISA ARM  Segment user
+[3175633.210000] Control: 10c53c7d  Table: 0fdb804a  DAC: 00000015
+[3175633.210000] Process sel_ldr_dbg (pid: 10296, stack limit = 0x9fde02e8)
+[3175633.210000] Stack: (0x9fde1e80 to 0x9fde2000)
+[3175633.210000] 1e80: a755d5bc 00060000 9fde1ec4 9fde1e98 900fd96c 90435db4 00060fff 9fde0000 
+[3175633.210000] 1ea0: 9054c020 00000001 00000005 9002f308 9fde0000 9054c020 9fde1ee4 9fde1ec8 
+[3175633.210000] 1ec0: 900bd418 900bc704 9fde0000 9fde1ee8 00000005 00000005 9fde1f84 9fde1ee8 
+[3175633.210000] 1ee0: 900bd4a4 900bd278 00000005 00000000 00000005 00002838 000003e9 00000000 
+[3175633.210000] 1f00: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 
+[3175633.210000] 1f20: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 
+[3175633.210000] 1f40: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 
+[3175633.210000] 1f60: 00000000 00000000 9fde0000 9fde1fb0 00000000 000f0002 9fde1fa4 9fde1f88 
+[3175633.210000] 1f80: 90030aac 900bd428 00000000 00000000 00000000 00000000 00000000 9fde1fa8 
+[3175633.210000] 1fa0: 9002f2d8 90033a1c 00000000 00000000 00050000 00050020 00000000 00050020 
+[3175633.210000] 1fc0: 00000000 00000000 00000000 000f0002 00000000 00000000 00000000 40052888 
+[3175633.210000] 1fe0: 00000000 40052878 7000aa7c 700bca1c 60000010 00050000 00000000 00000000 
+[3175633.210000] Backtrace: 
+[3175633.210000] [&amp;lt;90033a10&amp;gt;] (arm_syscall+0x0/0x388) from [&amp;lt;9002f2d8&amp;gt;] (__sys_trace_return+0x0/0x28)
+[3175633.210000]  r6:00000000 r5:00000000 r4:00000000
+[3175633.210000] Code: e3a02010 e1a02312 e2423001 e1c00003 (ee070f3b) 
+[3175633.610000] ---[ end trace 1b75b31a2719ed26 ]---
+
+Some info about this ARM machine:
+
+chrome-bot@nacl-arm2:~$ cat /proc/cpuinfo 
+Processor	: ARMv7 Processor rev 0 (v7l)
+processor	: 0
+BogoMIPS	: 1795.68
+
+Features	: swp half thumb fastmult vfp edsp vfpv3 vfpv3d16 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x1
+CPU part	: 0xc09
+CPU revision	: 0
+
+Hardware	: Tegra generic
+Revision	: 0000
+Serial		: 0000000000000000
+
+chrome-bot@nacl-arm2:~$ uname -a
+Linux nacl-arm2 2.6.29 #1 SMP Wed Nov 25 12:51:07 PST 2009 armv7l GNU/Linux
+
+Note that the kernel version we're using is of dubious provenance.
+</ns0:content><ns0:updated>2012-03-17T00:54:58.000Z</ns0:updated><ns0:published>2011-08-30T21:28:09.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>ARM dynamic loading flushes icache for the wrong addresses</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2214/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2214" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2214" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-03-17T00:54:58.000Z</ns2:closedDate><ns2:id>2214</ns2:id></ns0:entry>

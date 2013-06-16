@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU8HRX47eCl7ImA9WhZTE0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1519/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4562
+
+------------------------------------------------------------------------
+r4562 | sehr@google.com | Thu Mar 17 13:29:31 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/stubs/tls_arm.c?r1=4562&amp;r2=4561&amp;pathrev=4562
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/stubs/tls_x86_64.c?r1=4562&amp;r2=4561&amp;pathrev=4562
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/stubs/tls_x86_32.c?r1=4562&amp;r2=4561&amp;pathrev=4562
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/tls.h?r1=4562&amp;r2=4561&amp;pathrev=4562
+
+Add notations to the tls support used by the compiler that PNaCl is replacing
+this code by intrinsics.
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1519
+TEST=none (comment changes only)
+Review URL: http://codereview.chromium.org/6711007
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-03-17T20:30:34.000Z</ns0:updated><ns0:published>2011-03-17T20:30:34.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1519#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1519/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

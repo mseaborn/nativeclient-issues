@@ -1,0 +1,41 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4ER347eCl7ImA9WhdTF0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2028/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=6089
+
+------------------------------------------------------------------------
+r6089 | jvoung@google.com | Fri Jul 15 21:31:08 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/manifest.cc?r1=6089&amp;r2=6088&amp;pathrev=6089
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/pnacl_srpc_lib.h?r1=6089&amp;r2=6088&amp;pathrev=6089
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/plugin_ppapi.cc?r1=6089&amp;r2=6088&amp;pathrev=6089
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/nacl_subprocess.cc?r1=6089&amp;r2=6088&amp;pathrev=6089
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/nacl_subprocess.h?r1=6089&amp;r2=6088&amp;pathrev=6089
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/plugin_ppapi.h?r1=6089&amp;r2=6088&amp;pathrev=6089
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pnacl_client_translator/nacl.scons?r1=6089&amp;r2=6088&amp;pathrev=6089
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/manifest.h?r1=6089&amp;r2=6088&amp;pathrev=6089
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/pnacl_srpc_lib.cc?r1=6089&amp;r2=6088&amp;pathrev=6089
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pnacl_client_translator/pnacl_coordinator.js?r1=6089&amp;r2=6088&amp;pathrev=6089
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/pnacl_coordinator.cc?r1=6089&amp;r2=6088&amp;pathrev=6089
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pnacl_client_translator/pnacl_srpc_hw.nmf?r1=6089&amp;r2=6088&amp;pathrev=6089
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/delayed_callback.h?r1=6089&amp;r2=6088&amp;pathrev=6089
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/pnacl_coordinator.h?r1=6089&amp;r2=6088&amp;pathrev=6089
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/build.scons?r1=6089&amp;r2=6088&amp;pathrev=6089
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/pnacl_thread_args.h?r1=6089&amp;r2=6088&amp;pathrev=6089
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pnacl_client_translator/pnacl_srpc_hw2.html?r1=6089&amp;r2=6088&amp;pathrev=6089
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/plugin.gypi?r1=6089&amp;r2=6088&amp;pathrev=6089
+
+Retry "implement pnacl coordinator in the plugin".
+Originally: http://codereview.chromium.org/7109018/
+
+Main diff is that pp::CompletionCallbacks have been changed to have a default constructor so that we can make std::pair&lt;url, callback&gt;. Need to wait for dmichael's chrome DEPs roll.
+
+Misc changes
+- Get rid of the linker script to avoid flakiness, and therefore turn on the test! (at least for x86-32..., see http://code.google.com/p/nativeclient/issues/detail?id=2028)
+
+BUG=
+TEST= run_pnacl_srpc_hw2_browser_test
+
+Review URL: http://codereview.chromium.org/7362010
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-07-16T04:35:06.000Z</ns0:updated><ns0:published>2011-07-16T04:35:06.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2028#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2028/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

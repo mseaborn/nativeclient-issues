@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUHQ347eCl7ImA9WhdVFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2234/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 0bfa653dac7a1924db62bae1e6c64bfeb8392863
+ Email: bsy@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+NaCl repo side changes to make crash reporting more reliable.
+
+The Chrome repo side changes depend on this CL, and both has to be
+committed before the following tests can be re-enabled:
+
+  run_inbrowser_crash_in_syscall_test
+  run_inbrowser_untrusted_crash_test
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2234
+TEST= existing, but not-yet re-enabled
+Review URL: http://codereview.chromium.org/7942008
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6727 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	src/trusted/nonnacl_util/posix/sel_ldr_launcher_posix.cc
+M	src/trusted/nonnacl_util/win/sel_ldr_launcher_win.cc
+M	src/trusted/reverse_service/reverse_service.cc
+M	src/trusted/reverse_service/reverse_service.h
+M	src/trusted/reverse_service/reverse_socket.cc
+M	src/trusted/reverse_service/reverse_socket.h
+M	src/trusted/service_runtime/sel_ldr.c
+M	src/trusted/service_runtime/sel_ldr.h
+M	src/trusted/service_runtime/sel_main.c
+M	src/trusted/service_runtime/sel_main_chrome.c</ns0:content><ns0:updated>2011-09-19T22:10:32.000Z</ns0:updated><ns0:published>2011-09-19T22:10:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2234#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2234/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

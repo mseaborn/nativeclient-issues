@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE8FSH47eCl7ImA9WhZbEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1797</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">On Windows 7 glibc builders we are seeing flaky results.  The typical has been as follows:
+
+First, only release was failing.
+Then debug and release started failing.
+Release was moved to a newly spun up VM and failed.
+
+Tests tend to fail on real builds, and pass on force build.
+
+A few interesting notes:
+  Turns out we have MANY VMs per physical machine, not just 4.
+  In the case of glibc, both are on the same physical machine along with other NaCl VMs.  
+  Our VMs have known issues wrt timing.  This is especially true of windows which tends to use timer ticks unlick tickless modern linux.
+  SEE: https://docs.google.com/a/google.com/viewer?url=http://www.vmware.com/files/pdf/Timekeeping-In-VirtualMachines.pdf
+
+While we were unable to conclusively prove that the issue is due to a VM, there are several things that point us in this direction.
+1) CLs at about the time this issue manifested do no appear to affect at least one of the failing tests.
+2) Normal builds tend to fail, while force builds tend to succeed.  When you take into account that normal builds will activate several VMs on the same physical machine at once, while force builds tend to happen while the various VMs are idle thus only one active VM, there is a load correlation.
+3) Timing issues especially in Windows are compounded by needing to simulate multiple simultaneous timer ticks (interrupts) when the whole VM gets swapped in and out.
+4) Increasing timer resolution can compound this problem.
+
+At this point the solution is to disable these types of tests on the VM, and make sure that we run them in bare metal.
+</ns0:content><ns0:updated>2011-06-15T04:40:19.000Z</ns0:updated><ns0:published>2011-05-11T03:21:39.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/106710594185928520364/</ns2:uri><ns2:username>bbu...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Flaky timing tests (nanosleep, nacl_sync_cond_test) on windows.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-</ns2:label><ns2:label>FlakeyBots</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1797/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1797" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1797" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-06-15T04:40:19.000Z</ns2:closedDate><ns2:id>1797</ns2:id></ns0:entry>

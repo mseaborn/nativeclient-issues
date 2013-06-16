@@ -1,0 +1,44 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUMSH47eCl7ImA9WhRSFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2452/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">David,
+
+putting two different toolchains into one directory will make things more complicated for everyone:
+1. PNaCl bot will become slower
+2. PNaCl bot will be broken if glibc OR newlib toolchain is broken. If we keep newlib and glibc separate, only one bot would be broken.
+3. It will make it harder to understand if the particular failure is libc specific (for example, only hits glibc), or it's in the common code)
+4. The end developer will unlikely use both toolchains. No need to complicate things to him.
+5. I don't see how your proposal is aligned with http://code.google.com/p/nativeclient/issues/detail?id=2306. The whole direction is to separate PNaCl to small independent parts with clean interface between these parts, instead of putting everything into one place and make even more implicit dependencies between them.
+
+From what I see, you're trying to address the following issues with the proposed change:
+
+1. Don't build common components twice.
+2. Simplify local testing of both toolchains.
+
+Both goals may be easily achieved if instead of putting everything into one combined toolchain, we will split pnacl output into the following parts:
+
+1. binutils
+2. llvm (w/ clang, because llvm make builds both components at once)
+3. sandboxed translator
+4. newlib
+5. glibc
+6. glibc portable link stubs
+7. bitcode driver
+8. translator driver
+9. NNaCl driver
+Aggregate targets (don't build anything, just putting things together):
+
+10. PNaCl glibc bitcode toolchain: bitcode driver, llvm, glibc portable link stubs
+11. PNaCl newlib bitcode toolchain: bitcode driver, llvm, newlib
+12. PNaCl translator toolchain: translator driver, sandboxed translator, binutils
+13. PNaCl glibc runtime: glibc + (probably) sel_ldr and irt
+14. NNaCl glibc toolchain: NNaCl driver, llvm, glibc, binutils
+15. NNaCl newlib toolchain: NNaCl driver, llvm, newlib, binutils.
+
+Every target may depend on other parts, but there's no cycles. pnacl/build.sh needs to be changed from doing actions, do building targets.
+
+So, in order to get both toolchains, you will need just invoke something like:
+
+pnacl/build.sh newlib_bitcode_toolchain glibc_bitcode_toolchain
+and it will rebuild all the needed parts. Obviously, llvm and binutils will be built once.
+
+I understand that we're currently far from this goal, but we're pretty close to separate bitcode and translator toolchains now. Given that the issues you want to address are already on the track, and the proposal above does not fit to already discussed goals (splitting bitcode and translator toolchains), I don't think that we need to put glibc and newlib into one big toolchain.</ns0:content><ns0:updated>2011-11-17T23:24:49.000Z</ns0:updated><ns0:published>2011-11-17T23:24:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2452#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2452/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,65 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkUFRH47eCl7ImA9WhRUEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2533</ns0:id><ns0:author>
+			<ns0:name>jupiter...@gmail.com</ns0:name><ns0:uri>/u/115005346060258762080/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+no SDK
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Gentoo 64 bits
+
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Chrome 17.0.963.26_beta116225
+nacl-toolchain-newlib 0_p7311
+nvidia proprietary drivers 290.10
+glxinfo says &amp;quot;direct rendering: Yes&amp;quot;
+Linux JuPiTeR 3.0.4-gentoo-r1 #1 SMP PREEMPT Fri Sep 30 17:26:12 CEST 2011 x86_64 Intel(R) Core(TM)2 Quad CPU Q9550 @ 2.83GHz GenuineIntel GNU/Linux
+
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. The bug happens when I try to play the game &amp;quot;Star Legends&amp;quot;, available from the store.  
+
+What is the expected output?
+The game is supposed to run.
+
+What do you see instead?
+
+The game stops loading at 43%.
+
+The Log message that should show up on the JavaScript console:
+
+NativeClient: NaCl module load failed: Nexe crashed during startup 
+
+While the terminal tells me:
+
+jupiter@JuPiTeR ~ $ google-chrome --enable-nacl
+[30301:30311:1700162069792:ERROR:object_proxy.cc(239)] Failed to call method: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.NetworkManager was not provided by any .service files
+[30301:30314:1700166416380:ERROR:native_backend_kwallet_x.cc(774)] Error obtaining KWallet handle
+[30465,1047361280:09:49:58.601013] Native Client module will be loaded at base address 0x00007f3300000000
+[30465,1047361280:09:49:59.722965] Entered NaClMakeDispatchThunk
+[30465,1047361280:09:49:59.723134] NaCl_page_alloc_randomized: 0xe01a9bf8
+[30465,1047361280:09:49:59.723166] NaCl_page_alloc_randomized: hint 0x601a9bf80000
+[30465,1047361280:09:49:59.723181] NaClMakeDispatchThunk: got addr 0x601a9bf80000
+[30465,858986816:09:49:59.842501] MakeDynamicCodePageVisible: NaCl_mprotect() failed
+LOG_FATAL abort exit
+[30427,2311124736:10:49:59.844246] PluginReverseInterface::ReportCrash
+[30427,2311124736:10:49:59.844365] PluginReverseInterface::ReportCrash: invoking CB
+jupiter@JuPiTeR ~ $ 
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+The two first warnings happen even before I launch StarLegend.
+The first one is http://code.google.com/p/chromium/issues/detail?id=109432
+The second one is when I deny access to my kde wallet.
+
+[30465,858986816:09:49:59.842501] MakeDynamicCodePageVisible: NaCl_mprotect() failed
+might be related to http://code.google.com/p/nativeclient/issues/detail?id=1884&amp;amp;q=NaCl_mprotect%28%29%20failed&amp;amp;colspec=ID%20Pri%20Component%20Type%20Status%20Summary%20Owner%20Mstone
+
+The problem seems to happen on some 64bit archlinux too (same js error but I don't have his terminal output): http://www.spacetimestudios.com/showthread.php?47637-Nexe-crashed-during-startup.-Linux.&amp;amp;highlight=nexe+crashed
+
+
+Please excuse me and let me know if any more information is required, I'm not a dev and this is my first error report :s</ns0:content><ns0:updated>2012-01-20T18:30:15.000Z</ns0:updated><ns0:published>2012-01-11T10:49:11.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:cc>
+			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>NaCl_mprotect() failed</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2533/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2533" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2533" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-01-20T18:30:15.000Z</ns2:closedDate><ns2:id>2533</ns2:id><ns2:mergedInto>
+			<ns2:id>2002</ns2:id></ns2:mergedInto></ns0:entry>

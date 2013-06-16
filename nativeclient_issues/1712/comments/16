@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEMBRH47eCl7ImA9WhZbGUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1712/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>mseaborn%chromium.org@gtempaccount.com</ns0:name><ns0:uri>/u/mseaborn%25chromium.org@gtempaccount.com/</ns0:uri></ns0:author><ns0:content type="html">I have found three kernel bugs so far (in xnu-1504.9.37):
+
+Bug 1: In the 64-bit kernel, the logic in L_dispatch (in osfmk/x86_64/idt64.s) for deciding whether the process was 32-bit or 64-bit is wrong:
+
+	cmpl	$(USER_CS), ISF64_CS(%rsp)
+	je	L_32bit_dispatch /* 32-bit user task */
+	/* fall through to 64bit user dispatch */
+
+If a 32-bit process sets %cs to a segment selector other than USER_CS (such as a segment set up with i386_set_ldt()), the kernel incorrectly treats it as a 64-bit process.  It will save and restore the process's registers using the 64-bit code path, but will still return to the process using the original %cs value.
+
+In contrast the 32-bit kernel's code in osfmk/i386/idt64.s does not have this problem because it checks against USER64_CS:
+
+L_enter_lohandler_continue:
+	cmpl	$(USER64_CS), ISF64_CS(%rsp)
+	je	L_64bit_enter		/* this is a 64-bit user task */
+	cmpl	$(KERNEL64_CS), ISF64_CS(%rsp)
+	je	L_64bit_enter		/* we're in 64-bit (EFI) code */
+	jmp	L_32bit_enter
+
+
+Bug 2: The Mac kernel has code which is intended to stop processes from switching between 32-bit and 64-bit mode using lcall on USER_CS/USER64_CS.  (This is unlike Linux, where processes can switch modes this way.)  osfmk/i386/pcb.c has code like this:
+
+		/*
+		 * Disable USER64_CS
+		 * Enable USER_CS
+		 */
+		ldt_desc_p(USER64_CS)-&gt;access &amp;= ~ACC_PL_U;
+		ldt_desc_p(USER_CS)-&gt;access |= ACC_PL_U;
+
+This works on 32-bit kernels where USER_CS and USER64_CS are LDT entries (see osfmk/i386/seg.h).  But it is broken on 64-bit kernels where they are GDT entries.
+
+Bug 1 and bug 2 combine so that a process that the kernel mistakenly thinks is 64-bit can be restored with the 32-bit %cs.  If it wasn't for bug 2, the iretq in ret64_iret would fail.
+
+
+Bug 3: Both 32-bit and 64-bit kernels fail to preserve %fs across a context switch for 64-bit processes.  For example, you can set %fs to the same segment selector as %cs and it will get changed back later.  I mention this mainly for completeness.
+</ns0:content><ns0:updated>2011-06-24T20:14:15.000Z</ns0:updated><ns0:published>2011-06-24T20:14:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by mseaborn%chromium.org@gtempaccount.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1712#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1712/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0AARX47eCl7ImA9Wx5UFkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/726/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">I'm splitting this work into two phases.
+
+For Arctic, we will confirm that Chrome *believes* the sandbox to be intact -- we will not probe its limitations.  It is possible that a compromised Chrome instance could lie to us about this, but this implies that other attacks against us are already possible -- dropping a layer of defense-in-depth is the least of our concerns.
+
+For a later release (TBD) we'll add some more proactive sandbox tests, if we deem them necessary.
+
+I've changed the title accordingly.</ns0:content><ns0:updated>2010-10-21T20:09:04.000Z</ns0:updated><ns0:published>2010-10-21T20:09:04.000Z</ns0:published><ns2:updates>
+			<ns2:status>Started</ns2:status><ns2:summary>Platform Qualification Test should confirm that outer sandbox is present</ns2:summary></ns2:updates><ns0:title>Comment 13 by cbiffle@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=726#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/726/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,89 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUDRH47eCl7ImA9WhZUFE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1690</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">cons-out/opt-win-x86-32/staging/sel_ldr.exe -S -a -- E:\b\build\slave\nacl-win32_glibc_opt\build\native_client\toolchain\win_x86/nacl64/lib32/runnable-ld.so --library-path E:\b\build\slave\nacl-win32_glibc_opt\build\native_client\toolchain\win_x86/nacl64/lib32 scons-out/nacl-x86-32-glibc/obj/tests/threads/thread_test.nexe 100
+
+ERROR: Command returned normal -6, expecting ['normal'] 0 for win32
+======================================================================
+Stdout
+======================================================================
+TestTlsAndSync:168:268847920: Start
+TestTlsAndSync:196:268847920: OK
+TestManyThreadsJoinable:202:268847920: Start
+TestManyThreadsJoinable:209:268847920: OK
+TestManyThreadsDetached:215:268847920: Start
+TestManyThreadsDetached:222:268847920: OK
+TestSemaphores:245:268847920: Start
+TestSemaphores:266:268847920: OK
+TestSemaphoreInitDestroy:272:268847920: Start
+TestSemaphoreInitDestroy:290:268847920: OK
+TestTryLockReturnValue:296:268847920: Start
+TestTryLockReturnValue:304:268847920: OK
+TestDoubleUnlockReturnValue:310:268847920: Start
+TestDoubleUnlockReturnValue:323:268847920: OK
+TestUnlockUninitializedReturnValue:329:268847920: Start
+TestUnlockUninitializedReturnValue:340:268847920: OK
+TestPthreadOnce:361:268847920: Start
+TestPthreadOnce:373:268847920: OK
+TestRecursiveMutex:396:268847920: Start
+TestRecursiveMutex:433:268847920: OK
+TestErrorCheckingMutex:442:268847920: Start
+TestErrorCheckingMutex:460:268847920: OK
+TestTSD:491:268847920: Start
+TestTSD:504:268847920: OK
+TestPthreadExit:519:268847920: Start
+TestPthreadExit:523:268847920: OK
+TestMallocSmall:541:268847920: Start
+TestMallocSmall:556:268847920: OK
+TestMallocLarge:578:268847920: Start
+
+======================================================================
+Stderr
+======================================================================
+[184,2588:20:35:51.669000] NaClTimeInternalInit: timeBeginPeriod(1)
+[184,2588:20:35:51.669000] Unix epoch start is  11644473600000ms in Windows epoch time
+[184,2588:20:35:51.685000] BYPASSING ALL ACL CHECKS
+DEBUG MODE ENABLED (bypass acl)
+[184,2008:20:35:52.778000] munmap: rounded length to 0x10000
+[184,2008:20:35:52.778000] invalid mmap flags 04022, ignoring extraneous bits
+[184,2008:20:35:52.778000] invalid mmap flags 04022, ignoring extraneous bits
+[184,2008:20:35:52.794000] munmap: rounded length to 0x20000
+[184,2008:20:35:52.794000] invalid mmap flags 04022, ignoring extraneous bits
+[184,2008:20:35:52.794000] invalid mmap flags 04022, ignoring extraneous bits
+[184,2008:20:35:52.872000] munmap: rounded length to 0xf0000
+[184,2008:20:35:52.872000] invalid mmap flags 04022, ignoring extraneous bits
+[184,2008:20:35:52.872000] invalid mmap flags 04022, ignoring extraneous bits
+[184,2008:20:35:52.888000] munmap: rounded length to 0x30000
+[184,2008:20:35:52.888000] invalid mmap flags 04022, ignoring extraneous bits
+[184,2008:20:35:52.888000] invalid mmap flags 04022, ignoring extraneous bits
+[184,2008:20:35:52.888000] munmap: rounded length to 0x10000
+[184,2008:20:35:52.888000] invalid mmap flags 04022, ignoring extraneous bits
+[184,2008:20:35:52.888000] invalid mmap flags 04022, ignoring extraneous bits
+[184,2008:20:35:53.013000] munmap: rounded length to 0x1a0000
+[184,2008:20:35:53.028000] invalid mmap flags 04022, ignoring extraneous bits
+[184,2008:20:35:53.028000] invalid mmap flags 04022, ignoring extraneous bits
+[184,2008:20:35:53.028000] NaClAbiStatHostDescStatXlateCtor: how did NaCl app open a file with st_mode = 010000?
+[184,2008:20:35:53.028000] invalid mmap flags 0400042, ignoring extraneous bits
+[184,2008:20:35:53.075000] invalid mmap flags 0400042, ignoring extraneous bits
+[184,2008:20:35:53.169000] invalid mmap flags 0400042, ignoring extraneous bits
+[184,2008:20:35:53.185000] invalid mmap flags 0400042, ignoring extraneous bits
+[184,2008:20:35:53.185000] invalid mmap flags 0400042, ignoring extraneous bits
+[184,2008:20:35:53.185000] invalid mmap flags 0400042, ignoring extraneous bits
+[184,2008:20:35:53.185000] invalid mmap flags 0400042, ignoring extraneous bits
+[184,2008:20:35:53.185000] invalid mmap flags 0400042, ignoring extraneous bits
+[184,2008:20:35:53.185000] invalid mmap flags 0400042, ignoring extraneous bits
+[184,2008:20:35:53.185000] invalid mmap flags 0400042, ignoring extraneous bits
+[184,5036:20:35:53.200000] invalid mmap flags 040042, ignoring extraneous bits
+[184,5044:20:35:53.200000] invalid mmap flags 040042, ignoring extraneous bits
+[184,5044:20:35:53.200000] Could not VirtualAlloc anonymous memory at addr 0x3e3a0000 with prot 1
+LOG_FATAL abort exit
+
+RESULT thread_test.out: FAILED= 1.593750 secs
+
+Possibility exist that it's glibc fault, but looks unlikely. Problem is quite obviously with allocation of large region of memory but it works just fine on Linux IA32 with nacl-glibc and on Mac IA32 with nacl-glibc. We DO expect that programs will allocate large regions (especially 3D games).
+</ns0:content><ns0:updated>2011-06-07T09:17:55.000Z</ns0:updated><ns0:published>2011-04-18T21:12:23.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>thread_test test fails on win32 with nacl-glibc</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1690/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1690" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1690" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blocking>
+			<ns2:id>565</ns2:id></ns2:blocking><ns2:closedDate>2011-06-07T09:17:55.000Z</ns2:closedDate><ns2:id>1690</ns2:id></ns0:entry>

@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0EESH47eCl7ImA9WhZWEko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1800/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5280
+
+------------------------------------------------------------------------
+r5280 | bsy@google.com | Fri May 13 00:21:37 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/nacl_switch_to_app_32.c?r1=5280&amp;r2=5279&amp;pathrev=5280
+
+when on win32, do not get the actual %gs value to save as the trusted
+thread's %gs value when setting up the untrusted thread's trusted
+register context.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1800
+TEST= None but maybe halyavin can suggest something that might be deterministic?
+Review URL: http://codereview.chromium.org/7016032
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-13T07:26:49.000Z</ns0:updated><ns0:published>2011-05-13T07:26:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1800#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1800/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

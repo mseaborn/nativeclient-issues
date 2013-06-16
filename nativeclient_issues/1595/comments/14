@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0EBQn47eCl7ImA9WhZRF0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1595/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4870
+
+------------------------------------------------------------------------
+r4870 | mseaborn@chromium.org | Wed Apr 13 17:36:16 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_bad/nacl.scons?r1=4870&amp;r2=4869&amp;pathrev=4870
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_gles_book/nacl.scons?r1=4870&amp;r2=4869&amp;pathrev=4870
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_file_system/nacl.scons?r1=4870&amp;r2=4869&amp;pathrev=4870
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_example_audio/nacl.scons?r1=4870&amp;r2=4869&amp;pathrev=4870
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=4870&amp;r2=4869&amp;pathrev=4870
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_example_2d/nacl.scons?r1=4870&amp;r2=4869&amp;pathrev=4870
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_proxy/nacl.scons?r1=4870&amp;r2=4869&amp;pathrev=4870
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/chrome_extension/nacl.scons?r1=4870&amp;r2=4869&amp;pathrev=4870
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_example_audio/audio.cc?r1=4870&amp;r2=4869&amp;pathrev=4870
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_core/nacl.scons?r1=4870&amp;r2=4869&amp;pathrev=4870
+
+IRT: Allow PPAPI tests to be built to use the integrated runtime
+
+Move the list of PPAPI libraries to use into SConstruct and change
+various nacl.scons files to use it.
+
+The only ones I didn't change yet are those tests that use
+PpapiPluginMain().
+
+When linking against libppapi_stub, ppapi_proxy::DebugPrintf is no
+longer available so we have to fix tests/ppapi_example_audio/audio.cc.
+ * Use NaClLog() instead of DebugPrintf().
+ * Fix up the "-Wformat" warnings that result.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1595
+TEST="./scons irt=1" builds successfully on x86 and ARM
+
+Review URL: http://codereview.chromium.org/6831001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-14T00:40:53.000Z</ns0:updated><ns0:published>2011-04-14T00:40:53.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1595#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1595/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

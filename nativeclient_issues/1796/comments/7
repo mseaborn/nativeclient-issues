@@ -1,0 +1,49 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEEFQH47eCl7ImA9WhZWGE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1796/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Further investigation reveals that the Mac bug has more subtle effects than I first thought.
+
+When a socket FD gets prematurely garbage collected, it does not get severed from the other endpoint.  Instead, two things happen:
+ * The socket's incoming queue is emptied.
+ * The socket can still be used to receive later incoming messages, but if the queue is empty, reading will not block but will instead return an empty string, and poll() will return SIGHUP.
+
+Sending messages in the other direction is not affected: the socket can still be used to send data.  The other endpoint's queue is not emptied and the other endpoint will still block properly.  (However, POLLOUT is unset on the broken socket, which is misleading because writing works, and it is inconsistent with select()'s status.)
+
+Attached is a test program which demonstrates this.
+
+On Linux this produces the following (correct) output:
+    Test writing through transferred socket...
+    select=rw poll=5 POLLIN POLLOUT: got=8 data="howdyfoo" - PASS
+    select=w poll=4 POLLOUT: read() would block - skipping - PASS
+    Test reading through transferred socket...
+    select=rw poll=5 POLLIN POLLOUT: got=10 data="helloworld" - PASS
+    select=rw poll=5 POLLIN POLLOUT: got=4 data="blah" - PASS
+    select=w poll=4 POLLOUT: read() would block - skipping - PASS
+    select=w poll=4 POLLOUT: read() would block - skipping - PASS
+    select=w poll=4 POLLOUT: read() would block - skipping - PASS
+    select=w poll=4 POLLOUT: read() would block - skipping - PASS
+    select=w poll=4 POLLOUT: read() would block - skipping - PASS
+    select=rw poll=5 POLLIN POLLOUT: got=5 data="blah2" - PASS
+
+On Mac (on both 10.5 and 10.6) it produces the following output:
+    Test writing through transferred socket...
+    select=rw poll=5 POLLIN POLLOUT: got=8 data="howdyfoo" - PASS
+    select=w poll=4 POLLOUT: read() would block - skipping - PASS
+    Test reading through transferred socket...
+    select=rw poll=17 POLLIN POLLHUP: got=5 data="world" - FAIL
+    select=rw poll=17 POLLIN POLLHUP: got=4 data="blah" - PASS
+    select=rw poll=17 POLLIN POLLHUP: got=0 data="" - FAIL
+    select=rw poll=17 POLLIN POLLHUP: got=0 data="" - FAIL
+    select=rw poll=17 POLLIN POLLHUP: got=0 data="" - FAIL
+    select=rw poll=17 POLLIN POLLHUP: got=0 data="" - FAIL
+    select=rw poll=17 POLLIN POLLHUP: got=0 data="" - FAIL
+    select=rw poll=17 POLLIN POLLHUP: got=5 data="blah2" - PASS
+
+
+Implications for NaCl:
+
+This means the bug may not affect NaCl as much as I suggested in comment 6:
+ * Item 2 (sending a SocketAddress descriptor across a ConnectedSocket) should work because the resulting descriptor will still be able to send messages (which is what imc_connect() relies on), even if it cannot receive (which does not need to work for SocketAddresses).
+ * Item 3 (nacl_process_host.cc) will still be broken:  the browser creates a socket pair and sends one socket to the renderer and one to sel_ldr.  This socketpair is only used to exchange one message (via NaClSendServiceAddressTo()+ServiceRuntime::GetSocketAddress()).  The socket sent to sel_ldr will be OK (since it is only used for sending) but the socket sent to the renderer will be broken (since it is used for receiving).
+
+The fact that broken sockets still partially work explains some curious workaround code in native_client/src/shared/imc/osx/nacl_imc.cc.  Its recvmsg() calls in ReceiveDatagram() are inside retry loops which try the call kRecvMsgRetries == 8 times, retrying if recvmsg() returns an empty string.  However, this makes little sense:  A limited number of retries is not enough on a broken socket -- the code would have to poll forever to receive a message reliably.  Furthermore, before the change I made for issue 344, ReceiveDatagram() would never be given a broken socket.
+</ns0:content><ns0:updated>2011-05-19T12:03:31.000Z</ns0:updated><ns0:published>2011-05-19T12:03:31.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1796#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1796/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

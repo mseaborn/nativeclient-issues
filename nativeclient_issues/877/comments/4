@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcCRn47eCl7ImA9Wx5XEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/877/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">We had a miscommunication, it seems.
+
+bsy sez, "the text region must not end at more than 32-bytes from the end of a 64KiB boundary."
+
+Bug 747 (i.e. me) sez, "NaCl binaries are required to have room between the end-of-text and start-of-data -- 32 bytes of room, to be precise (see NACL_HALT_SLED_SIZE in nacl_config.h)."
+
+The current gold changes literally follow what I said there: jvoung's binary leaves 64KiB between end-of-text and the start of the next section.  But the sel_ldr expects the text segment to *include* the padding.  So yes, it tries to write unmapped memory and segfaults.</ns0:content><ns0:updated>2010-09-10T23:07:47.000Z</ns0:updated><ns0:published>2010-09-10T23:07:47.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by cbiffle@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=877#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/877/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

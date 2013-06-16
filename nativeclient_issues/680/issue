@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkYEQX47eCl7ImA9WxFbFk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/680</ns0:id><ns0:author>
+			<ns0:name>msn...@google.com</ns0:name><ns0:uri>/u/105190905030319373792/</ns0:uri></ns0:author><ns0:content type="html">Environment variable NACL_CRASH_TEST provides a way for malware to cause all NaCl applications to stop working. If any malicious software is able to insert NACL_CRASH_TEST into the environment that is used when Chrome is started, then all NaCl applications will crash.
+
+
+&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+NaCl tip of tree
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+NaCl tip of tree
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Linux
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Chrome tip of tree
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Put NACL_CRASH_TEST=1 into the environment (e.g., with &amp;quot;export&amp;quot;)
+2. Start Chrome in the same session
+3. Navigate to a NaCl application
+
+What is the expected output?
+The NaCl application should run.
+
+What do you see instead?
+The NaCl application crashes.
+</ns0:content><ns0:updated>2010-07-08T20:15:00.000Z</ns0:updated><ns0:published>2010-07-08T19:35:22.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Defining NACL_CRASH_TEST causes crash</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Linux</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/680/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=680" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/680" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-07-08T20:15:00.000Z</ns2:closedDate><ns2:id>680</ns2:id></ns0:entry>

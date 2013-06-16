@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0QHQX47eCl7ImA9WhVQEE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/32</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8133
+
+------------------------------------------------------------------------
+r8133 | pasko@google.com | Thu Mar 29 08:31:39 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/gen-decoder.cc?r1=8133&amp;r2=8132&amp;pathrev=8133
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/gen-decoder-flags.cc?r1=8133&amp;r2=8132&amp;pathrev=8133
+
+validator_ragel: eliminate blah-flags.cc that was included twice
+
+This is a refactoring/cleanup/readability change.  Including a file twice is not
+a good style, but without doing so it is hard to declare fields in a struct and
+at the same time generate code that uses them without repeating the names twice.
+
+Replace named bit fields with std::set of strings.  The magic of definition for
+"condrep" etc. goes away.
+
+Some downsides:
+1. increased memory footprint.  It should be fine for a generator script which
+   could have been written in Python with even bigger performance/memory
+   sacrifices.
+2. less static checking (old version complained on misprints in flag names at
+   compile time). New version would complain at runtime, it's fine since the run
+   time is very small and deterministic.
+
+As a side change removed conditional compilation in many places (maybe too many)
+because it complicated reading in vim: it puzzles the internal bracket matcher
+making it harder to understand function boundaries, also affects syntax
+highlighting.  Code disabled with "#if 0" will be possible to revive from
+revision history.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2597
+TEST=make check
+
+Review URL: https://chromiumcodereview.appspot.com/9875014
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-03-29T15:35:30.000Z</ns0:updated><ns0:published>2012-03-29T15:35:30.000Z</ns0:published><ns2:updates /><ns0:title>Comment 32 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c32" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/32" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUAHRn47eCl7ImA9WhZQEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/416/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4909
+
+------------------------------------------------------------------------
+r4909 | robertm@google.com | Mon Apr 18 06:33:30 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/buildbot/buildbot_pnacl1.sh?r1=4909&amp;r2=4908&amp;pathrev=4909
+
+Add an initial PNaCl shared library test.
+This only tests arm and x86-32 and uses "mixed-mode" linking where
+we link a semi-sandboxed shared lib against a non-sandboxed main image
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=416
+
+TEST= gcl try  ld -b  nacl-lucid64-pnacl1
+Review URL: http://codereview.chromium.org/6823089
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-18T13:35:37.000Z</ns0:updated><ns0:published>2011-04-18T13:35:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=416#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/416/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

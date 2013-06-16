@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYGRH47eCl7ImA9WhZXFUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1595/comments/full/22</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5169
+
+------------------------------------------------------------------------
+r5169 | mcgrathr@chromium.org | Wed May 04 14:16:41 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/REVISIONS?r1=5169&amp;r2=5168&amp;pathrev=5169
+
+Update tools/REVISIONS for binutils, glibc
+
+This brings in the linker script conditionalization changes needed
+for ongoing IRT enablement work.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1595
+TEST=none
+
+R=khim@google.com,mseaborn@chromium.org,pasko@google.com,eaeltsin@google.com,bradchen@google.com
+
+Review URL: http://codereview.chromium.org/6941003
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-04T21:22:05.000Z</ns0:updated><ns0:published>2011-05-04T21:22:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 22 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1595#c22" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1595/comments/full/22" rel="self" type="application/atom+xml" /></ns0:entry>

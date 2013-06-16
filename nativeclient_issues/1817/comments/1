@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IGQ347eCl7ImA9WhZWGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1817/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mmorten...@google.com</ns0:name><ns0:uri>/u/100268164290167392978/</ns0:uri></ns0:author><ns0:content type="html">I was able to see chrome --enable-nacl-debug --no-sandbox work.  
+I also found that some recent chrome 13 builds are flaky wrt to NativeClient.
+
+Alex helped me get up to speed on being able to step through chrome processes in the Chrome / NaCl processes.
+What I found with my recent sync of chrome that I built on Windows is ... that chrome rev 85894 (13.0.771.0) works.
+I can run chrome with --enable-nacl-debug --no-sandbox and then load the nexes built with top-of-tree NaClSDK.
+The sel_ldr process hangs, but unlike what Mike and I saw last week, port 4014 gets opened.
+I then ran 
+   rsp_proxy (an exe Mike L created for Windows) that forwards the 4014 port from the loopback interface
+and started gdb on linux and connect to &lt;MyWindowsIp&gt;:4014 and it works.
+
+Doing some digging, I found that my existing chrome 13  (13.0.767.1-85531 dev-m) does not work properly on Windows,
+and Matt verified that on his Windows box.  It says it loads the nexe, but the buttons never work.
+
+The version I built does load nexe and the debug stub works (85894 - 13.0.771.0 ) and this 
+version (downloaded rather than built) also works: 13.0.770.0 - 85880.
+
+
+
+For the SDK used the 'head' of the nacl_sdk tree (not the 0.3 release) but the very latest SDK (rev 863) with the updates Matt and others had checked in for Chrome 13 (src= instead of nacl=).</ns0:content><ns0:updated>2011-05-19T21:45:22.000Z</ns0:updated><ns0:published>2011-05-19T21:45:22.000Z</ns0:published><ns2:updates>
+			<ns2:status>Started</ns2:status></ns2:updates><ns0:title>Comment 1 by mmorten...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1817#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1817/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0MFQX47eCl7ImA9WhZTE0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1225/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">barebones_negindex should be fixed from fixing issue 1541.
+
+The remaining failures for x86-32 are likely just driver changes to get it to respect the asked-for removal of optimization (which I assume was to prevent inlining).
+
+x86-64 has the exact same test failures as x86-32.
+
+On the other hand, ARM has a bunch of compile-time-failures when compiling the PPAPI programs (e.g., ppapi_hello_triangle.nexe):
+
+stderr        : llc: /mnt/data/build/slave/hardy64-toolchain_arm-untrusted/build/native_client/hg/llvm/llvm-trunk/lib/CodeGen/SelectionDAG/ScheduleDAGSDNodes.cpp:301: void llvm::ScheduleDAGSDNodes::BuildSchedUnits(): Assertion `N-&gt;getNodeId() == -1 &amp;&amp; "Node already inserted!"' failed.
+0  llc             0x0000000000df88ff
+1  llc             0x0000000000df9707
+2  libpthread.so.0 0x00007f91bcf2e8f0
+3  libc.so.6       0x00007f91bc21da75 gsignal + 53
+4  libc.so.6       0x00007f91bc2215c0 abort + 384
+5  libc.so.6       0x00007f91bc216941 __assert_fail + 241
+6  llc             0x00000000007efd2f llvm::ScheduleDAGSDNodes::BuildSchedUnits() + 1087
+7  llc             0x00000000007f1711 llvm::ScheduleDAGSDNodes::BuildSchedGraph(llvm::AliasAnalysis*) + 17
+8  llc             0x00000000007ec392
+9  llc             0x0000000000a5672a llvm::ScheduleDAG::Run(llvm::MachineBasicBlock*, llvm::ilist_iterator&lt;llvm::MachineInstr&gt;) + 1722
+10 llc             0x00000000008941cb llvm::SelectionDAGISel::CodeGenAndEmitDAG() + 1435
+11 llc             0x0000000000896895 llvm::SelectionDAGISel::SelectBasicBlock(llvm::ilist_iterator&lt;llvm::Instruction const&gt;, llvm::ilist_iterator&lt;llvm::Instruction const&gt;, bool&amp;) + 229
+12 llc             0x0000000000896ca5 llvm::SelectionDAGISel::SelectAllBasicBlocks(llvm::Function const&amp;) + 965
+13 llc             0x0000000000897b88 llvm::SelectionDAGISel::runOnMachineFunction(llvm::MachineFunction&amp;) + 568
+14 llc             0x00000000009d2fe4 llvm::MachineFunctionPass::runOnFunction(llvm::Function&amp;) + 52
+15 llc             0x0000000000d28163 llvm::FPPassManager::runOnFunction(llvm::Function&amp;) + 595
+16 llc             0x0000000000d28213 llvm::FPPassManager::runOnModule(llvm::Module&amp;) + 67
+17 llc             0x0000000000d27cdf llvm::MPPassManager::runOnModule(llvm::Module&amp;) + 543
+18 llc             0x0000000000d27e25 llvm::PassManagerImpl::run(llvm::Module&amp;) + 149
+19 llc             0x0000000000d27efd llvm::PassManager::run(llvm::Module&amp;) + 13
+20 llc             0x0000000000531651 llc_main(int, char**) + 4433
+21 libc.so.6       0x00007f91bc208c4d __libc_start_main + 253
+22 llc             0x000000000052ebd9
+Stack dump:
+0.	Program arguments: /usr/local/google/home/nacl5/native_client/toolchain/linux_arm-untrusted/arm-none-linux-gnueabi/bin/llc -march=arm -mcpu=cortex-a8 -mattr=-neon -mattr=+vfp2 -arm-reserve-r9 -sfi-disable-cp -arm_static_tls -asm-verbose=false -sfi-store -sfi-stack -sfi-branch -sfi-data -no-inline-jumptables -mtriple=armv7a-none-linux-gnueabi -filetype=asm /usr/local/google/home/nacl5/native_client/scons-out/nacl-arm-pnacl/obj/tests/ppapi_example_audio/ppapi_example_audio.nexe---linked.opt.pexe -o /usr/local/google/home/nacl5/native_client/scons-out/nacl-arm-pnacl/obj/tests/ppapi_example_audio/ppapi_example_audio.nexe---linked.s 
+1.	Running pass 'Function Pass Manager' on module '/usr/local/google/home/nacl5/native_client/scons-out/nacl-arm-pnacl/obj/tests/ppapi_example_audio/ppapi_example_audio.nexe---linked.opt.pexe'.
+2.	Running pass 'ARM Instruction Selection' on function '@1841'
+
+
+**** I fear that this may be bad interaction with the "-strip" option, so whoever is looking at this should remember to try "opt" without the "-strip" option. We certainly want to be able to use "-strip" though (see issue 1435)
+
+</ns0:content><ns0:updated>2011-03-17T19:50:10.000Z</ns0:updated><ns0:published>2011-03-17T19:50:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1225#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1225/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

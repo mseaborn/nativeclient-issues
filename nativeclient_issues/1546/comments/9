@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcCQX47eCl7ImA9WhZXEEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1546/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Here's an ancient patch (applies to maybe svn -r 4590?) to the toolchain builder (back when the llvm.nexe was built by nacl-gcc), to make a version that links to libtcmalloc_minimal.a. You have to dump the built 32-bit or 64-bit libtcmalloc_minimal.a somewhere in toolchain/linux_x86/nacl64/lib32 or lib64
+http://codereview.chromium.org/6901112/
+
+Ideally we would build a bitcode version of this and hook it up to the llvm self build.
+
+Here is the accompanying ancient patch to tcmalloc to port it to nacl-gcc newlib. Sorry, I haven't cleaned it up, so it includes massive diffs to the configure file too...
+http://codereview.chromium.org/6893109/
+
+Most of the port was just newlib/nacl vs linux-isms.
+
+As noted in the above posts, you will also have to modify the llvm copy of nacl_file.cpp to get rid of some strdup/free calls so that tcmalloc does not complain.
+
+Other note: 64-bit builds may be easier to profile.</ns0:content><ns0:updated>2011-04-29T16:21:00.000Z</ns0:updated><ns0:published>2011-04-29T16:21:00.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>dsch...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 9 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1546#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1546/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8HR347eCl7ImA9WhVVFEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2673/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8512
+
+------------------------------------------------------------------------
+r8512 | kschimpf@google.com | Mon May 07 11:17:03 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/dgen_test_output.py?r1=8512&amp;r2=8511&amp;pathrev=8512
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode.cc?r1=8512&amp;r2=8511&amp;pathrev=8512
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/dgen_core.py?r1=8512&amp;r2=8511&amp;pathrev=8512
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/dgen_decoder_output.py?r1=8512&amp;r2=8511&amp;pathrev=8512
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode_named.cc?r1=8512&amp;r2=8511&amp;pathrev=8512
+
+Add column bit pattern comments to tests in generated decoder parsers.
+This makes it easier to see what conditions are being tested wrt the
+corresponding table being implemented.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2673
+Review URL: https://chromiumcodereview.appspot.com/10315017
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-05-07T18:20:36.000Z</ns0:updated><ns0:published>2012-05-07T18:20:36.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2673#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2673/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

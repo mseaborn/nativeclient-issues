@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0ACRn47eCl7ImA9Wx9VEEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1351/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4248
+
+------------------------------------------------------------------------
+r4248 | noelallen@google.com | Wed Jan 26 18:31:44 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/branches/648/src/native_client/src/shared/ppapi_proxy/browser_graphics_2d.cc?r1=4248&amp;r2=4247&amp;pathrev=4248
+ M http://src.chromium.org/viewvc/chrome/branches/648/src/native_client/src/shared/ppapi_proxy/plugin_graphics_2d.cc?r1=4248&amp;r2=4247&amp;pathrev=4248
+
+Merge 4234 - Fix PPB_Graphics2D.PaintImageData proxy.  Allow NULL as a parameter for
+the bounding rectangle, as this is specified in the Pepper description.
+BUG=1351
+TEST=pi_generator in SDK
+
+Review URL: http://codereview.chromium.org/6248020
+
+TBR=sehr@google.com
+Review URL: http://codereview.chromium.org/6280019
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-27T02:36:07.000Z</ns0:updated><ns0:published>2011-01-27T02:36:07.000Z</ns0:published><ns2:updates /><ns0:title>Comment 13 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1351#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1351/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

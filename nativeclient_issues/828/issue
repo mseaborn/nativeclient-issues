@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0MDRn47eCl7ImA9WhdbEko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/828</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Steps to reproduce:
+ * open() a file with O_RDONLY (or receive a read-only FD from somewhere).
+ * mmap() the FD with PROT_READ|PROT_WRITE and MAP_PRIVATE.
+
+On Linux/Mac, this succeeds and creates a copy-on-write mapping that
+will not affect the underlying file.  This works because
+NaClHostDescMap() in src/shared/platform/linux/nacl_host_desc.c passes
+MAP_PRIVATE through to the host OS.
+
+On Windows, this fails.  NaClCommonSysMmap() gives a LOG_FATAL error.
+This is because NaClHostDescMap() ignores the MAP_PRIVATE flag, and
+the read-only file handle cannot be mapped as writable.
+
+To fix this, we should either
+ * change the Windows implementation to copy-on-write or copy-on-mmap(), or
+ * change the Unix implementation to disallow copy-on-write.
+
+At a minimum, no syscall should cause LOG_FATAL errors.
+
+See also issue 724.
+
+I discovered this while testing for issue 824.
+
+Currently nacl-glibc's dynamic linker depends on using MAP_PRIVATE for
+dynamic objects' data segments, so the current version will not work
+on Windows.</ns0:content><ns0:updated>2011-10-10T18:31:17.000Z</ns0:updated><ns0:published>2010-08-18T13:24:18.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Copy-on-write mmap() is supported on Unix but not Windows</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>PlatformDifference</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>CoreRuntime</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-17</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/828/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=828" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/828" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>828</ns2:id></ns0:entry>

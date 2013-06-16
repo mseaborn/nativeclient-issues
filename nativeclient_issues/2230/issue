@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEQEQn47eCl7ImA9WhdbGEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2230</ns0:id><ns0:author>
+			<ns0:name>ncb...@google.com</ns0:name><ns0:uri>/u/100032148147647801554/</ns0:uri></ns0:author><ns0:content type="html">The following tests have been disabled on the Chrome bots:
+
+'run_pm_manifest_file_chrome_browser_test'
+'run_srpc_basic_chrome_browser_test'
+'run_srpc_hw_data_chrome_browser_test'
+'run_srpc_hw_chrome_browser_test'
+'run_srpc_manifest_file_chrome_browser_test'
+'run_srpc_nameservice_chrome_browser_test'
+'run_srpc_nrd_xfer_chrome_browser_test'
+
+
+They failed on 32-bit Linux:
+
+http://build.chromium.org/p/chromium/builders/Linux%20Tests%20%28dbg%29%282%29/builds/12214/steps/nacl_integration/logs/stdio
+
+
+One hung the renderer, after printing this:
+
+b0e58750: Plugin::LoadNaClModuleCommon (service_runtime=0xb8655240)
+b0e58750: ServiceRuntime::Start (nacl_desc=0xb85d0e90)
+b0e58750: ServiceRuntime::InitCommunication (this=0xb8655240, subprocess=0xb87b6410)
+
+One had a load error:
+
+NaCl module load failed: ServiceRuntime: command channel creation failed
+</ns0:content><ns0:updated>2011-10-17T17:25:03.000Z</ns0:updated><ns0:published>2011-09-02T23:56:19.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>SRPC tests disabled in Chrome - investigation needed.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-16</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>FlakeyBots</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2230/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2230" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2230" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-10-17T17:25:03.000Z</ns2:closedDate><ns2:id>2230</ns2:id></ns0:entry>

@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0EEQn47eCl7ImA9WhdQF00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2098/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 3a3c6ca41dbbc48caca5cb2d89214b2bf907d364
+ Email: ncbray@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Create the sel_ldr process ASAP to increase parallelism during plugin startup.
+
+By necessity this CL also fixes a bug in the srpc_hw_fd test where a nexe was programatically loaded into an embed tag, despite the embed tag also specifying a nexe using src=.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2098
+TEST= none
+
+Review URL: http://codereview.chromium.org/7658005
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6486 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	src/trusted/plugin/plugin.cc
+M	src/trusted/plugin/plugin.h
+M	src/trusted/plugin/service_runtime.cc
+M	src/trusted/plugin/service_runtime.h
+M	tests/srpc_hw/srpc_hw_fd.html</ns0:content><ns0:updated>2011-08-18T21:06:43.000Z</ns0:updated><ns0:published>2011-08-18T21:06:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2098#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2098/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

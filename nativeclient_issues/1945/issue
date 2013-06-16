@@ -1,0 +1,8 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEQBRH47eCl7ImA9WhRTFE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1945</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I'm splitting this out from issue 503.
+
+I need to commit http://codereview.chromium.org/7082010/ which stops NaCl for consuming swap space for the whole dynamic code area on Windows.
+
+Before I do this I would like to verify more thoroughly my assumption that VirtualAlloc() does not temporarily make a page readable.</ns0:content><ns0:updated>2011-11-04T18:45:55.000Z</ns0:updated><ns0:published>2011-06-22T23:46:07.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>Dynamic loading: Reduce consumption of swap space on Windows</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1945/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1945" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1945" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>1945</ns2:id></ns0:entry>

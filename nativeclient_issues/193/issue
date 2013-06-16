@@ -1,0 +1,66 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUHSH47eCl7ImA9WhVTEE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/193</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The minimum file size for a NaCl executable with the current linker scripts and sel_ldr rules is 
+currently about 64k*3 = 192k.  (This is not including the minimum code that nacl-newlib links, which 
+brings it up to about 260k.)
+
+The reason for this is that each of the three PT_LOAD segments in the executable are aligned to start 
+on 64k boundaries.
+
+For example:
+
+$ objdump -p scons-out/nacl-x86-32/obj/tests/hello_world/exit.nexe
+Program Header:
+    PHDR off    0x00000000 vaddr 0x00000000 paddr 0x00000000 align 2**2
+         filesz 0x000000b4 memsz 0x000000b4 flags r--
+    LOAD off    0x00010000 vaddr 0x00020000 paddr 0x00020000 align 2**16
+         filesz 0x000028e0 memsz 0x000028e0 flags r-x
+    LOAD off    0x00020000 vaddr 0x00030000 paddr 0x00030000 align 2**16
+         filesz 0x000104b4 memsz 0x000104b4 flags r--
+    LOAD off    0x00040000 vaddr 0x00050000 paddr 0x00050000 align 2**16
+         filesz 0x000008c4 memsz 0x0000096c flags rw-
+
+$ du -h --apparent-size scons-out/nacl-x86-32/obj/tests/hello_world/exit.nexe
+260K	scons-out/nacl-x86-32/obj/tests/hello_world/exit.nexe
+$ du -h scons-out/nacl-x86-32/obj/tests/hello_world/exit.nexe
+32K	scons-out/nacl-x86-32/obj/tests/hello_world/exit.nexe
+
+We could get rid of this padding by using much the same trick that ELF normally uses.
+
+Typical ELF files have two segments:  a read-only text segment (code and data) and a writable segment 
+(data).  On disc the segments are adjacent (with no padding), and so there will usually be one on-disc 
+page that contains parts of both segments (assuming the text segment is not a whole number of pages in 
+size).  However, the segment load addresses will be set so that this page gets mapped twice: once in 
+the text segment (read-execute) and once in the data segment (read-write).
+
+Example:
+$ objdump -p /usr/lib/libXdamage.so
+...
+    LOAD off    0x00000000 vaddr 0x00000000 paddr 0x00000000 align 2**12
+         filesz 0x0000117c memsz 0x0000117c flags r-x
+    LOAD off    0x0000117c vaddr 0x0000217c paddr 0x0000217c align 2**12
+         filesz 0x00000158 memsz 0x00000168 flags rw-
+[Note that the offset is 0x117c but the load address is 0x217c.  This is with 4k pages on i386.]
+
+We can use the same trick, in more places.  The NaCl code segment can share a file page with the read-
+only data segment.  The loader will have to pad the code to the end of the page with NOPs -- sel_ldr 
+already does this.
+
+The code segment can also share a file page with the ELF header.  The loader would have to overwrite 
+the ELF header with NOPs when loading the code.
+
+Having to pad pages on load would not be ideal if we were mmap'ing executables into memory, but we 
+already seem to be obliged to copy data rather than mapping it.
+
+There is a trade-off here between file size and memory usage.
+
+Suppose the code segment shares a page with a 200 byte ELF header.  This will always reduce the file 
+size by ~64k, but one extra page will get allocated if moving the code segment along 200 bytes causes 
+it to span one more page (if code_segment_size % page_size &amp;gt; page_size - 200).  For this measurement, 
+page size will be 4k on Linux and either 4k or 64k on Windows depending on how Windows internally 
+allocates pages (as opposed to address space).
+
+File size matters less if servers are set up to serve gzipped data.
+</ns0:content><ns0:updated>2012-02-23T21:23:59.000Z</ns0:updated><ns0:published>2009-12-04T17:04:05.000Z</ns0:published><ns2:status>Accepted</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Statically-linked executables contain excessive zero-fill padding</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>Performance</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/193/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=193" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/193" rel="self" type="application/atom+xml" /><ns2:stars>6</ns2:stars><ns2:id>193</ns2:id></ns0:entry>

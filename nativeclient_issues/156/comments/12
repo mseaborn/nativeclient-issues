@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUCSH47eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/156/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=1064
+
+------------------------------------------------------------------------
+r1064 | mseaborn@google.com | Thu Dec 03 02:16:02 PST 2009
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/arm/sel_ldr_arm.c?r1=1064&amp;r2=1063&amp;pathrev=1064
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86/nacl_app.c?r1=1064&amp;r2=1063&amp;pathrev=1064
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_addrspace.c?r1=1064&amp;r2=1063&amp;pathrev=1064
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=1064&amp;r2=1063&amp;pathrev=1064
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/elf_util.h?r1=1064&amp;r2=1063&amp;pathrev=1064
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=1064&amp;r2=1063&amp;pathrev=1064
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/arm/sel_validate_image.c?r1=1064&amp;r2=1063&amp;pathrev=1064
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr-inl.h?r1=1064&amp;r2=1063&amp;pathrev=1064
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86/sel_ldr_x86.c?r1=1064&amp;r2=1063&amp;pathrev=1064
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=1064&amp;r2=1063&amp;pathrev=1064
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86/sel_validate_image.c?r1=1064&amp;r2=1063&amp;pathrev=1064
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=1064&amp;r2=1063&amp;pathrev=1064
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/elf_util.c?r1=1064&amp;r2=1063&amp;pathrev=1064
+
+Refactor: Replace text_region_bytes with static_text_end
+
+text_region_bytes almost always appears in the context "NACL_TRAMPOLINE_END + nap-&gt;text_region_bytes", so we may as well store that value instead, which we call nap-&gt;static_text_end.
+
+This simplifies the code and also has the advantage that it puts the knowledge that the text segment starts at NACL_TRAMPOLINE_END in fewer places.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=156
+
+Review URL: http://codereview.chromium.org/449054
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T21:44:29.000Z</ns0:updated><ns0:published>2011-01-21T21:44:29.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=156#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/156/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

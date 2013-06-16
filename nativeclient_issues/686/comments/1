@@ -1,0 +1,72 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE8FR347eCl7ImA9WxFbGUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/686/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The problem is that Mac OS X has a global limit on the number of
+semaphores that can be created.  Semaphores are not freed if a process
+exits uncleanly because they are named by strings that are allocated
+in a global namespace.
+
+There are multiple bugs here:
+
+1) The error path in NaClSemCtor() calls NaClDescDtor() wrongly,
+causing the misleading "non-zero reference count" error.
+
+2) NaCl allows NaCl processes to exhaust the global semaphore limit.
+This should be fixable by moving NaCl's sem_unlink() call from
+NaClSemDtor() to immediately after the sem_open() call.  This should
+work because NaCl never shares semaphores by name.  In fact, NaCl
+nevers shares them by FD either.
+
+3) NaCl is vulnerable to exhaustion of the semaphore limit.  This
+could be solved by not using sem_open() for semaphores.
+
+
+The problem can be reproduced by this program:
+
+// sem-leak.c
+
+#include &lt;stdio.h&gt;
+#include &lt;semaphore.h&gt;
+#include &lt;unistd.h&gt;
+
+int main() {
+  char name[100];
+  int i = 0;
+  while(1) {
+    sprintf(name, "leaked-%i", i++);
+    sem_t *sem = sem_open(name, O_CREAT, 0777);
+    if (sem == SEM_FAILED) {
+      printf("i=%i\n", i);
+      perror("sem_open");
+      return 1;
+    }
+    sem_close(sem);
+  }
+  return 0;
+}
+
+
+Here is the antidote, which frees the leaked semaphores without
+requiring a reboot:
+
+// sem-free.c
+
+#include &lt;stdio.h&gt;
+#include &lt;semaphore.h&gt;
+#include &lt;unistd.h&gt;
+
+int main() {
+  char name[100];
+  int i = 0;
+  while(1) {
+    sprintf(name, "leaked-%i", i++);
+    int rc = sem_unlink(name);
+    if (rc != 0) {
+      printf("i=%i\n", i);
+      perror("sem_unlink");
+      return 1;
+    }
+  }
+  return 0;
+}
+</ns0:content><ns0:updated>2010-07-12T13:53:36.000Z</ns0:updated><ns0:published>2010-07-12T13:53:36.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Test</ns2:label><ns2:summary>NaCl can exhaust global semaphore resource limit on Mac OS X</ns2:summary></ns2:updates><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=686#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/686/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

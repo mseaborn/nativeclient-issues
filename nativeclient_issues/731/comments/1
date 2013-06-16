@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMDQ347eCl7ImA9Wx5TFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/731/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">&gt; Replacement sequences of code can be inserted through the same
+&gt; nacl_dyncode_copy API used for initial insertion.  The second phase
+&gt; of replacement validation is triggered when the target address is in
+&gt; use.
+
+I think the syscall's caller should have to opt in to this behaviour,
+otherwise there is potential for it to mask bugs in programs that use
+dynamic loading.  We could add a flags argument to nacl_dyncode_copy
+(which, properly done, involves adding a new syscall, but we can
+remove the old version soon after).
+
+&gt; The one remaining issue is finding a way to replace the instruction
+&gt; in a thread-safe way, such that the switch between old and new
+&gt; instructions occurs at an instruction boundary.  (Avoid possibility
+&gt; that you get some corrupted instruction which is composed of bytes
+&gt; partially from the original code, and partially from the new code.)
+
+This could be a serious obstacle, especially if it's slow.  Presumably
+the reason V8 does code modification is that it's fast, and doing it
+slowly (via a NaCl syscall + validation step) would defeat the
+purpose?
+</ns0:content><ns0:updated>2010-07-29T16:21:12.000Z</ns0:updated><ns0:published>2010-07-29T16:21:12.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>b...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=731#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/731/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

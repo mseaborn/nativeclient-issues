@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE4FQH47eCl7ImA9WhRSE0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1565/comments/full/41</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7160
+
+------------------------------------------------------------------------
+r7160 | pdox@google.com | Mon Nov 14 15:15:54 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/toolchain/nacl.scons?r1=7160&amp;r2=7159&amp;pathrev=7160
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=7160&amp;r2=7159&amp;pathrev=7160
+
+Merge with LLVM up to r144148.
+
+Merge was larger than usual because sandboxed translator was broken for a
+few days due to bug PR11314. (http://llvm.org/bugs/show_bug.cgi?id=11314)
+
+Merge was trivial except for:
+1) Extra parameter "isInvariant" added to SelectionDAG::getLoad(), set to false in all our localmods.
+2) A few trivial conflicts (adjacent code)
+3) Forced to disable ARM sandboxed_translator EH tests. This has re-opened issue 1565.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1565
+Review URL: http://codereview.chromium.org/8497033
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-11-14T23:21:51.000Z</ns0:updated><ns0:published>2011-11-14T23:21:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 41 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1565#c41" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1565/comments/full/41" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EMQH47eCl7ImA9Wx5UEEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/649/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdroid1@gmail.com</ns0:name><ns0:uri>/u/bugdroid1@gmail.com/</ns0:uri></ns0:author><ns0:content type="html">Commit: ef76cee2917920d209e00d3f617cc4e05655b031
+ Email: khim@chromium.org
+
+Add futex emulation
+
+This allows various threading constructs (mutexes, condvars etc.)
+to work without busy-waiting.
+
+Mostly finished but only very lightly tested.
+
+I don't like the size of patch and the fact that it includes many
+dark, untested corners I like even less, but sadly it's not
+really possible to write more incremental patch since you can not
+mix two implementations of mutexes.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=649
+TEST=run_thread_stack_alloc_test run_race_test
+  (run_voronoi mostly passes but with a checksum mismatch)
+
+Review URL: http://codereview.chromium.org/3384028
+
+M	elf/Makefile
+M	elf/Versions
+M	elf/dl-fini.c
+M	elf/dl-init.c
+M	nptl/descr.h
+M	nptl/pthread_create.c
+M	nptl/sysdeps/unix/sysv/linux/fork.c
+M	resolv/Makefile
+A	sysdeps/nacl/futex_emulation.c
+A	sysdeps/nacl/futex_emulation.h
+M	sysdeps/nacl/lowlevellock.h
+A	sysdeps/nacl/sysdep.h
+M	sysdeps/unix/sysv/linux/i386/sysdep.h</ns0:content><ns0:updated>2010-10-14T11:28:01.000Z</ns0:updated><ns0:published>2010-10-14T11:28:01.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdroid1@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=649#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/649/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

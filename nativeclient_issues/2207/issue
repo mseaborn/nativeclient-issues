@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUNQH47eCl7ImA9WhdUFE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2207</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;[Please summarize the enhancement so it will be comprehensible to someone&lt;/b&gt;
+&lt;b&gt;from outside the Native Client team. A good summary will include:]&lt;/b&gt;
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+Currently, PNaCl translators accept byval, but pnacl-gcc tends to avoid using it when passing structures by value. At the same time, clang uses byval.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+It means that generally, we can't achieve compatibility between clang and pnacl-gcc output, because one function declaration would be translated to the different bitcode.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+
+We need to decide what to do with that.
+
+- Do we want such kind of compatibility?
+- Do we want to continue using pnacl-gcc when clang port is ready?
+- Do we want to allow byval or explicitly disable that?
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+byval decision must be documented here: http://www.chromium.org/nativeclient/pnacl/bitcode-abi
+
+
+</ns0:content><ns0:updated>2011-09-30T17:04:51.000Z</ns0:updated><ns0:published>2011-08-29T23:41:21.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PNaCl bitcode ABI and byval: needs decision</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2207/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2207" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2207" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-09-30T17:04:51.000Z</ns2:closedDate><ns2:id>2207</ns2:id></ns0:entry>

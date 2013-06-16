@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0EBSX47eCl7ImA9WhZWE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1804/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bbu...@google.com</ns0:name><ns0:uri>/u/106710594185928520364/</ns0:uri></ns0:author><ns0:content type="html">In order to continue working, I tried commenting out the code where the crash originates:
+
+
+void NaClProcessHost::OnProcessLaunched() {
+/*  // TODO(mseaborn): Opening the IRT file every time a NaCl process is
+  // launched probably does not work with auto-update on Linux.  We
+  // might need to open the file on startup.  If so, we would need to
+  // ensure that NaCl's ELF loader does not use lseek() on the shared
+  // IRT file descriptor, otherwise there would be a race condition.
+  FilePath plugin_dir;
+  if (!PathService::Get(chrome::DIR_INTERNAL_PLUGINS, &amp;plugin_dir)) {
+    LOG(ERROR) &lt;&lt; "Failed to locate the plugins directory";
+    delete this;
+    return;
+  }
+  FilePath irt_path = plugin_dir.Append(GetIrtLibraryFilename());
+  base::FileUtilProxy::CreateOrOpenCallback* callback =
+      callback_factory_.NewCallback(&amp;NaClProcessHost::OpenIrtFileDone);
+  if (!base::FileUtilProxy::CreateOrOpen(
+           BrowserThread::GetMessageLoopProxyForThread(BrowserThread::FILE),
+           irt_path,
+           base::PLATFORM_FILE_OPEN | base::PLATFORM_FILE_READ,
+           callback)) {
+    delete callback;
+    delete this;
+  }*/
+}
+
+This allowed me to get the plugin working and loading nexes. It still hangs when it tries to load the service runtime (in ServiceRuntime::StartFromBrowser).
+
+These comments apply to the Mac version.</ns0:content><ns0:updated>2011-05-14T00:07:38.000Z</ns0:updated><ns0:published>2011-05-14T00:07:38.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bbu...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1804#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1804/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

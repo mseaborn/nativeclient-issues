@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcERX47eCl7ImA9WxBQFU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/251/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">You can disable overcommit:
+
+http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-
+2.6.git;a=blob;f=Documentation/vm/overcommit-
+accounting;h=21c7b1f8f32b2881d8835f0d0164939ac48b3b93;hb=HEAD
+
+It's system-global variable so you can not do this on buildbots...</ns0:content><ns0:updated>2010-01-15T06:13:24.000Z</ns0:updated><ns0:published>2010-01-15T06:13:24.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by k...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=251#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/251/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

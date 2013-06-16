@@ -1,0 +1,82 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4ESX47eCl7ImA9WhRXFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2512</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">This is the bug originally reported at http://www.linux.org.ru/news/games/7164841#comment-7165560
+
+There seem to be several issues, but I mostly care about last two lines in the log line, where nacl_helper_bootstrap segfaults.
+
+I understand that the quality of this bug report is low (because it's not reproducible and there're some unknown details of the target configuration), but I'm just fine close the bug, if there's no evidence what happened.
+
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+see browser version
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+linux (unknown distributive, sorry)
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+google chrome beta 17
+
+
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+
+[28,3474323200:21:44:14.531730] Native Client module will be loaded at base address 0x00007ef500000000
+[28,3474323200:21:44:14.562264] Entered NaClMakeDispatchThunk
+[28,3474323200:21:44:14.562452] NaCl_page_alloc_randomized: 0x8dee0f6c
+[28,3474323200:21:44:14.562464] NaCl_page_alloc_randomized: hint 0xdee0f6c0000
+[28,3474323200:21:44:14.562483] NaClMakeDispatchThunk: got addr 0xdee0f6c0000
+[28,3474044672:21:44:19.344350] munmap: rounded length to 0x2350000
+[28,3474044672:21:44:19.349666] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:19.349792] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:19.809471] munmap: rounded length to 0x490000
+[28,3474044672:21:44:19.810284] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:19.810417] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:19.838036] munmap: rounded length to 0x10000
+[28,3474044672:21:44:19.838298] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:19.838741] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:19.847102] munmap: rounded length to 0x10000
+[28,3474044672:21:44:19.847358] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:19.847470] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:19.853780] munmap: rounded length to 0x10000
+[28,3474044672:21:44:19.854066] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:19.854179] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:19.873156] munmap: rounded length to 0x20000
+[28,3474044672:21:44:19.873413] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:19.873529] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:19.936587] munmap: rounded length to 0x50000
+[28,3474044672:21:44:19.940615] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:19.940732] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:19.958322] munmap: rounded length to 0x10000
+[28,3474044672:21:44:19.958574] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:19.958750] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:20.098178] munmap: rounded length to 0xf0000
+[28,3474044672:21:44:20.098595] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:20.098734] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:20.142201] munmap: rounded length to 0x50000
+[28,3474044672:21:44:20.142582] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:20.142732] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:20.160859] munmap: rounded length to 0x10000
+[28,3474044672:21:44:20.161817] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:20.161978] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:20.348364] munmap: rounded length to 0x1b0000
+[28,3474044672:21:44:20.348873] invalid mmap flags 04022, ignoring extraneous bits
+[28,3474044672:21:44:20.349027] invalid mmap flags 04022, ignoring extraneous bits
+[21,466257664:00:44:20.356705] PluginReverseInterface::StartupInitializationComplete
+[21,466257664:00:44:20.357179] PluginReverseInterface::StartupInitializationComplete: invoking CB
+UnityModule.
+StartDownload() failed -1
+StartDownload() failed -1
+Failed creating m_Graphics3D!
+[28,3474044672:21:44:21.014673] invalid mmap flags 0400042, ignoring extraneous bits
+pp::URLLoader::ReadResponseBody() completed 1665757.
+pp::URLLoader::ReadResponseBody() completed 33020447.
+UnityBundleStartMemory
+WebScripting::Create
+InitializeGfxDevice
+[21,466257664:00:44:27.025771] PluginReverseInterface::ReportCrash
+[21,466257664:00:44:27.029146] PluginReverseInterface::ReportCrash: invoking CB
+[SRPC:HOST:21,693700992:00:44:27.029700] NaClSrpcRpcWait(channel=0x7fe42d968c70): EOF is received instead of response. Probably, the other side (usually, nacl module or browser plugin) crashed.
+dmesg
+
+[86963.033126] nacl_helper_boo[9130]: segfault at 7ef500000020 ip 00007ef50fc24048 sp 00007ef5ffffe6f0 error 4 in .com.google.Chrome.2qQ3yz (deleted)[7ef50fc00000+190000]</ns0:content><ns0:updated>2011-12-23T19:18:28.000Z</ns0:updated><ns0:published>2011-12-23T19:13:00.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>segfault in nacl_helper_bootstrap [linux]</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2512/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2512" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2512" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:id>2512</ns2:id></ns0:entry>

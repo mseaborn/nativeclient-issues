@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08ERH47eCl7ImA9WhdXEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2166/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">the intended use of the virtual function, from src/trusted/service_runtime/name_service/name_service.h, L122-:
+
+  /*
+   * Enumerate always succeeds and returns the number of bytes
+   * written.  To see if the buffer was large enough, check that the
+   * number of bytes written is less than the supplied buffer size.
+   * NB: if the number of bytes is equal to the buffer size, even if
+   * the last byte is a NUL we cannot know that there aren't more
+   * entries.  (A partially written entry is only one possibility; it
+   * could happen that the initial entries exactly fit the buffer, but
+   * there are more.)
+   */
+
+however, the implementation of the Enumerate virtual function in reverse_services doesn't follow this, and stops writing if the next string would have exhausted the buffer rather than copying bytes until the end of the buffer, and so the actually written byte count isn't useful for too-small-buffer detection.</ns0:content><ns0:updated>2011-08-23T17:50:05.000Z</ns0:updated><ns0:published>2011-08-23T17:50:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2166#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2166/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

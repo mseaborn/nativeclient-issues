@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0IFRX47eCl7ImA9Wx5bEks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1075</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The test in tests/threads/thread_test.c for pthread_exit() (currently
+in TestTSD() for some reason) doesn't pass.
+
+Most of the time, pthread_join() hangs.  From sel_ldr log output, I
+can see that the parent thread is blocked on cond_wait() as expected,
+but the child thread does mutex_lock(), mutex_unlock() and
+thread_exit() without calling cond_signal().
+
+On some runs, I have seen this test spin instead, with repeated
+mutex_lock()/mutex_unlock() calls.
+
+This seems to be specific to pthread_exit(): the test works if the
+thread returns instead of calling pthread_exit().</ns0:content><ns0:updated>2010-10-28T12:38:34.000Z</ns0:updated><ns0:published>2010-10-21T15:59:59.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>nacl-glibc: pthread_exit() does not work yet</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-GLibC</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1075/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1075" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1075" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-10-28T12:38:34.000Z</ns2:closedDate><ns2:id>1075</ns2:id></ns0:entry>

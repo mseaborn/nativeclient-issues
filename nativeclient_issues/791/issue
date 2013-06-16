@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIBQn47eCl7ImA9Wx5RF08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/791</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Assigning to the plugin object's &amp;quot;src&amp;quot; attribute is supposed to
+terminate the existing process (if there is one) and launch another.
+
+However, there is a race condition if you assign to &amp;quot;src&amp;quot; twice within
+the same event loop turn.  The processes only get launched after the
+executable has been asynchronously fetched, but ShutDownSubprocess()
+is called when the fetch is initiated, not when it completes.
+
+This means we leak:
+
+* The process.  There's a chance that it could carry on running after
+  the plugin/browser/renderer is shut down, because the plugin won't
+  kill it.  However, there is a fallback: sel_ldr will shut down when
+  it notices its command socket is closed.
+
+* The ServiceRuntime and SelLdrLauncher objects (confirmed with
+  valgrind).
+
+* The async receive thread.  Leaking this is memory-unsafe.
+
+This is a good example of why implementing a monolithic interface in
+trusted code is a bad idea and leads to bugs, and why the plugin
+should expose minimal, decoupled interfaces instead.  See issue 746.</ns0:content><ns0:updated>2010-08-25T09:12:33.000Z</ns0:updated><ns0:published>2010-08-05T15:07:27.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Plugin: Race condition in assigning to "src" causes leaks</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Plugins</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/791/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=791" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/791" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-08-25T09:12:33.000Z</ns2:closedDate><ns2:id>791</ns2:id></ns0:entry>

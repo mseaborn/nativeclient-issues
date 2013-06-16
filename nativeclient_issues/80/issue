@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkEDSX47eCl7ImA9WxJSFUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/80</ns0:id><ns0:author>
+			<ns0:name>shashank...@gmail.com</ns0:name><ns0:uri>/u/114617452444567019345/</ns0:uri></ns0:author><ns0:content type="html">Team: Edge
+Owner:Shashank
+Email:shashank7s@yahoo.co.in 
+Tested OS: Microsoft windows XP professional Windows,Linux(Ubuntu)
+Tested Os Version:5.1.2600 Service Pack 2 Build 2600
+Tested OS Configuration: Standalone Workstation
+Tested OS Build Type:Multiprocessor Free
+Tested Browser: Firefox 3.0.10
+Nacl Version: nacl_windows_46_2009_03_12.tgz
+
+Native Client has an security leakage in Remote Comuter and Guest Computer
+also fails in virtual environment . It is possible to get environment
+variables in client machine, which include 
+
+1.user varibles such as all the temp file location and path set by user    
+   includeing it's user name and also
+
+2.System variables such as 
+    * CompSpec c:\windows\system32\cmd.exe
+    * Fp-No-Host_c yes/no
+    * No of processor 2/4/6.....
+    * os info. windows NT/98/vista etc.
+    * all system variables path &amp;amp; some system software path suach oracle 
+      9i,10g etc.
+    * how many type path extension our os support such as  
+      exe,com,bat.cmd,vbe,vbs,js,jse etc.
+    * PROCESSOR_ARCHITECTURE x86
+    * PROCESSOR_IDENTIFIER- x86 Family 6 Model 14 Stepping 12, GenuineIntel
+    * PROCESSOR_LEVEL in my pc -6
+    * PROCESSOR_REVISION 0e0c
+    * QUEX_PATH-C:\Program Files\quex/quex-0.38.2/
+    * temp file location and windows directory etc. 
+      so on.
+
+
+</ns0:content><ns0:updated>2009-05-05T17:31:18.000Z</ns0:updated><ns0:published>2009-05-05T11:41:09.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:owner>
+			<ns2:uri>/u/108782782163151845439/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>[security-contest-submission]: submitted By Edge</ns0:title><ns2:label>Security-Contest</ns2:label><ns2:label>Type-Other</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/80/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=80" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/80" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2009-05-05T17:31:18.000Z</ns2:closedDate><ns2:id>80</ns2:id></ns0:entry>

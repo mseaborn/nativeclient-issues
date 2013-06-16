@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEABQX47eCl7ImA9WhVSFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2650/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">We actually have pretty strict prefix behavior in our new validator: we only allow prefixes which make sense for the given instruction.
+
+That is: we have PER-INSTRUCTION limitations. For example for ADD instruction you can specify four distinct prefixes:
+DATA16
+LOCK
+XACQUIRE (aka REPNZ)
+XRELEASE (aka REPZ aka REP)
+You can even specify three prefixes together (for example DATA16 LOCK XACQUIRE ADD &lt;something&gt; makes perfect sense - and produce the effect not achievable with any other means), but it makes no sense to specify XACQUIRE and XRELEASE simultaneously.
+
+For MOV instruction you can specify only DATA16 and XRELEASE, neither LOCK nor XACQUIRE are allowed - but, again, both prefixes at the same time make sense.
+
+This is how our validator currently works: it allows full set of prefixes which actually change the meaning of the instruction in documented way. Unfortunately old validator includes some additional arbitrary rules (as explained in the first message). We plan to implement these restrictions as they are implemented right now and then remove some or all of them after separate discussion. This will make some things impossible to implement, but the most important case (data16 lock) is supported by old validator and our strategy WRT other combinations should be subject of separate discussion.
+</ns0:content><ns0:updated>2012-03-13T18:19:10.000Z</ns0:updated><ns0:published>2012-03-13T18:19:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by k...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2650#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2650/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,44 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUECQH47eCl7ImA9WhZbE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1633/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 213253c20c4d945d378de4a05d2df0b01673b9a2
+ Email: mseaborn@chromium.org@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Fix inner sandbox escape via KiUserExceptionDispatcher on x86-64 Windows
+
+Patch NTDLL.DLL's KiUserExceptionDispatcher within the sel_ldr process
+so that faults in untrusted code do not cause this routine to run on
+the untrusted stack.  See comments in the code for more explanation.
+
+In this version, the patched KiUserExceptionDispatcher should exit
+immediately.  Distinguishing faults in trusted code could be done, but
+is left for later.
+
+Update the exit statuses in command_tester.py.  Change CommandTest()
+so that subarch=64 gets passed through to command_tester.py on
+non-sel_ldr tests so that command_tester.py picks the correct
+status_map entry.
+
+The duplication in sel_main.c/sel_main_chrome.c is regrettable: this
+could do with refactoring to share code for running qualification
+tests too.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1633
+TEST=run_patch_exception_dispatcher_test checks Windows behaviour;
+  crash tests such as run_execute_data_test show that our HLT
+    instruction is triggered (indirectly via command_tester.py statuses)
+
+Review URL: http://codereview.chromium.org/7186001
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@5703 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	SConstruct
+M	src/trusted/service_runtime/arch/x86_64/service_runtime_x86_64.gyp
+M	src/trusted/service_runtime/build.scons
+M	src/trusted/service_runtime/nacl_signal.h
+M	src/trusted/service_runtime/sel_main.c
+M	src/trusted/service_runtime/sel_main_chrome.c
+A	src/trusted/service_runtime/win/exception_dispatcher_exit_fast.S
+A	src/trusted/service_runtime/win/patch_exception_dispatcher.c
+A	src/trusted/service_runtime/win/patch_exception_dispatcher_test.c
+A	src/trusted/service_runtime/win/patch_exception_dispatcher_test.stdout
+M	tools/command_tester.py</ns0:content><ns0:updated>2011-06-17T20:47:41.000Z</ns0:updated><ns0:published>2011-06-17T20:47:41.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1633#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1633/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

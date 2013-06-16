@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkQCRH47eCl7ImA9WhdTFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1680/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=6026
+
+------------------------------------------------------------------------
+r6026 | polina@google.com | Wed Jul 13 09:23:42 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_test_example/nacl.scons?r1=6026&amp;r2=6025&amp;pathrev=6026
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppp_instance/ppapi_ppp_instance.html?r1=6026&amp;r2=6025&amp;pathrev=6026 (from /trunk/src/native_client/tests/ppapi_test_example/ppapi_test_example.html revision 5923)
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppp_instance/nacl.scons?r1=6026&amp;r2=6025&amp;pathrev=6026 (from /trunk/src/native_client/tests/ppapi_test_example/nacl.scons revision 5923)
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppp_instance/ppapi_ppp_instance.nmf?r1=6026&amp;r2=6025&amp;pathrev=6026 (from /trunk/src/native_client/tests/ppapi_test_example/ppapi_test_example.nmf revision 5923)
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/plugin_ppapi.cc?r1=6026&amp;r2=6025&amp;pathrev=6026
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=6026&amp;r2=6025&amp;pathrev=6026
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppp_instance/ppapi_ppp_instance.cc?r1=6026&amp;r2=6025&amp;pathrev=6026
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_test_lib/test_interface.h?r1=6026&amp;r2=6025&amp;pathrev=6026
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_test_lib/module_instance.cc?r1=6026&amp;r2=6025&amp;pathrev=6026
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppp_instance/ppapi_ppp_instance.js?r1=6026&amp;r2=6025&amp;pathrev=6026
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppp_instance?r1=6026&amp;r2=6025&amp;pathrev=6026
+
+PPP_Instance: proxy verification.
+Add a basic browser_test using ppapi_test_lib.
+This uncovered a bug where we forgot to call nexe's DidDestroy() method when trusted plugin was being destroyed. However, the fix causes some odd pyauto_tests failures. Hence in the name of incremental progress, it has been commented out and a TODO was added to address the issue in a separate CL.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1680
+TEST=scons ppapi_ppp_instance_browser_test
+Review URL: http://codereview.chromium.org/7324008
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-07-13T16:26:05.000Z</ns0:updated><ns0:published>2011-07-13T16:26:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1680#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1680/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCSX47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1705</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">NaClDescImcShmMap() and NaClDescIoDescMap() implement the NaClDesc Map() method for shared memory descriptors and file descriptors respectively.
+
+The functions have significant differences, which is surprising.
+
+Differences:
+
+ 1) NaClDescIoDescMap() is stricter in that it requires NACL_ABI_MAP_FIXED, whereas NaClDescImcShmMap() doesn't.
+
+ 2) NaClDescImcShmMap() is stricter in that it unmaps and maps one page at a time.  This is to reduce the risk from the Windows race condition (issue 140).  It reduces the risk that something will get mapped into the hole.  NaClDescIoDescMap() does not apply the same trick: it unmaps/maps in one go, which is riskier on Windows.
+
+See:
+native_client/src/trusted/desc/nacl_desc_imc_shm.c
+native_client/src/trusted/desc/nacl_desc_io.c</ns0:content><ns0:updated>2011-07-29T00:12:48.000Z</ns0:updated><ns0:published>2011-04-20T21:20:25.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:state>open</ns2:state><ns0:title>NaClDescImcShmMap() and NaClDescIoDescMap() are inconsistent</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1705/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1705" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1705" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1705</ns2:id></ns0:entry>

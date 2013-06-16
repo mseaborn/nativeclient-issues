@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUICSX47eCl7ImA9WhRSFEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2248/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7192
+
+------------------------------------------------------------------------
+r7192 | robertm@google.com | Wed Nov 16 14:43:09 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pnacl_ld_example/Makefile.pnacl?r1=7192&amp;r2=7191&amp;pathrev=7192
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=7192&amp;r2=7191&amp;pathrev=7192
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/DEPS?r1=7192&amp;r2=7191&amp;pathrev=7192
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_pnacl.sh?r1=7192&amp;r2=7191&amp;pathrev=7192
+
+2nd try for arm trusted TC update.
+First one was here: http://codereview.chromium.org/8528042
+We also handle the ad hoc shlib tests now.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2248
+Review URL: http://codereview.chromium.org/8577005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-11-16T22:46:08.000Z</ns0:updated><ns0:published>2011-11-16T22:46:08.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2248#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2248/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

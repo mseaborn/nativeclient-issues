@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEQHQ347eCl7ImA9WhZXEkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1755/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5116
+
+------------------------------------------------------------------------
+r5116 | jvoung@google.com | Sun May 01 14:40:24 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/utman.sh?r1=5116&amp;r2=5115&amp;pathrev=5116
+
+Bump pnacl newlib rev for clock patch.
+http://codereview.chromium.org/3320015/
+
+toolchain/pnacl_linux_x86_64/bin/pnacl-nm toolchain/pnacl_linux_x86_64/libs-bitcode/libc.a  | grep "lib_a-clock.o" -A 3
+lib_a-clock.o:
+         U __nacl_read_tp
+	 00000000 T _dummy_clock
+
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1755
+TBR= robertm@google.com,pdox@google.com
+Review URL: http://codereview.chromium.org/6905162
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-01T21:45:32.000Z</ns0:updated><ns0:published>2011-05-01T21:45:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1755#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1755/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

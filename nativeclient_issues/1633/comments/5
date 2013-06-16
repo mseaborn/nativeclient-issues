@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUIHRn47eCl7ImA9WhZQE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1633/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4948
+
+------------------------------------------------------------------------
+r4948 | bsy@google.com | Wed Apr 20 14:02:47 PDT 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_stack_safety.h?r1=4948&amp;r2=4947&amp;pathrev=4948
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_tls_64.c?r1=4948&amp;r2=4947&amp;pathrev=4948
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_tls.h?r1=4948&amp;r2=4947&amp;pathrev=4948
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=4948&amp;r2=4947&amp;pathrev=4948
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_hook.c?r1=4948&amp;r2=4947&amp;pathrev=4948
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.c?r1=4948&amp;r2=4947&amp;pathrev=4948
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_stack_safety.c?r1=4948&amp;r2=4947&amp;pathrev=4948
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=4948&amp;r2=4947&amp;pathrev=4948
+
+stack safety api.  on windows, threads get a TLS variable that
+specifies whether they might be executing on an untrusted stack.  an
+exception handler may (future work) check this using in-line code to
+decide whether to abort or not.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1633
+TEST= none
+Review URL: http://codereview.chromium.org/6880040
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-20T21:05:37.000Z</ns0:updated><ns0:published>2011-04-20T21:05:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1633#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1633/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

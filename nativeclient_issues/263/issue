@@ -1,0 +1,55 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4MSH47eCl7ImA9WxFWFkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/263</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">nacl-gcc generates an instruction for TLS variable access that NaCl does 
+not allow.  This occurs when compiling for the Initial-Exec TLS model with 
+-fPIC.  This affects the glibc build.
+
+Steps to reproduce:
+
+$ cat &amp;gt;tls-ref.c &amp;lt;&amp;lt;END
+__thread int x __attribute__((tls_model(&amp;quot;initial-exec&amp;quot;)));
+int *get_addr() { return &amp;amp;x; }
+END
+$ nacl-gcc -fPIC -O1 -S tls-ref.c -o -
+
+The generated code includes:
+
+	call	__i686.get_pc_thunk.cx
+	addl	$_GLOBAL_OFFSET_TABLE_, %ecx
+	movl	x@GOTNTPOFF(%ecx), %eax
+	addl	%gs:0, %eax    // ncval rejects this instruction
+
+If we compile without -O1 we get:
+
+	call	__i686.get_pc_thunk.cx
+	addl	$_GLOBAL_OFFSET_TABLE_, %ecx
+	movl	%gs:0, %edx
+	movl	x@GOTNTPOFF(%ecx), %eax
+	leal	(%edx,%eax), %eax
+
+Note that glibc requires building with -O1 because it requires some 
+functions to be inlined.
+
+ncval currently only allows use of %gs in a &amp;quot;mov&amp;quot; instruction, not in an 
+&amp;quot;add&amp;quot;.
+
+Some options:
+
+1) Change nacl-gcc not to generate &amp;quot;addl %gs:0, %eax&amp;quot;.
+This will make TLS access a teeny bit slower.
+It looks like this can be done by disabling &amp;quot;*add_tp_si&amp;quot; in i386.md.
+
+2) Change ncval to permit &amp;quot;addl %gs:0, %eax&amp;quot;.
+This involves changing:
+-  BadPrefixMask[NACLi_386L]  = ~(kPrefixDATA16 | kPrefixLOCK);
++  BadPrefixMask[NACLi_386L]  = ~(kPrefixDATA16 | kPrefixSEGGS | 
+kPrefixLOCK);
+in ncvalidate.c.
+
+3) A workaround:  Disable glibc's use of the Initial Exec TLS model,
+which is an optimisation.
+</ns0:content><ns0:updated>2010-06-04T21:46:29.000Z</ns0:updated><ns0:published>2010-01-18T15:21:26.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>gcc generates "addl %gs:0, %eax" for TLS access</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>glibc</ns2:label><ns2:label>Milestone-SDK-Win-Dev</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/263/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=263" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/263" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>565</ns2:id></ns2:blocking><ns2:closedDate>2010-06-04T21:46:29.000Z</ns2:closedDate><ns2:id>263</ns2:id></ns0:entry>

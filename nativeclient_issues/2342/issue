@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIEQ347eCl7ImA9WhRVE00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2342</ns0:id><ns0:author>
+			<ns0:name>jo...@unity3d.com</ns0:name><ns0:uri>/u/116362082051371563851/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+
+pepper_14
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+
+Mac OS X 10.7.1
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+
+Chrome 14.0.835.202
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+
+Create a 16 bit RGBA texture using 
+glTexImage2D (0, 0, GL_RGBA, xSize, ySize, 0, GL_RGBA, GL_UNSIGNED_SHORT_4_4_4_4, data)
+
+&lt;b&gt;What is the expected output?&lt;/b&gt;
+
+The texture displays correctly (as it does when showing it on other GLES2.0 platforms like iOS or Android using the same settings).
+
+&lt;b&gt;What do you see instead?&lt;/b&gt;
+
+The texture displays incorrectly. It seems that the channels are mixed up, areas which should be transparent show as cyan, so maybe the red and alpha channels are swapped? Possibly an endian issue?</ns0:content><ns0:updated>2012-01-11T18:45:02.000Z</ns0:updated><ns0:published>2011-10-06T14:37:41.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:state>closed</ns2:state><ns0:title>16 bit RGBA textures show up wrong</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2342/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2342" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2342" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-01-11T18:45:02.000Z</ns2:closedDate><ns2:id>2342</ns2:id></ns0:entry>

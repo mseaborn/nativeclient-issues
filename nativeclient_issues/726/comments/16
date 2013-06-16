@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ANSH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/726/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3539
+
+------------------------------------------------------------------------
+r3539 | cbiffle@google.com | Fri Oct 22 15:32:07 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/platform_qual_test.c?r1=3539&amp;r2=3538&amp;pathrev=3539
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=3539&amp;r2=3538&amp;pathrev=3539
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/build.scons?r1=3539&amp;r2=3538&amp;pathrev=3539
+
+Re-enables platform_qual_test.  The platform_qual_test has been dead code for roughly a year.  It has rotted.  Here I fix it up, enable it to compile on non-x86 platforms, and hook it into a test suite so this won't happen again.
+
+Also added a PLATFORM_QUALIFICATION_DISABLED env flag to centrally control this stuff.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=726
+TEST= run_platform_qual_test
+Review URL: http://codereview.chromium.org/3966006
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:16:39.000Z</ns0:updated><ns0:published>2011-01-21T23:16:39.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=726#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/726/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

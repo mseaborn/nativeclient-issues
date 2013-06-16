@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkQCQX47eCl7ImA9Wx5UEEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1027/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">One way to fix this is to introduce syscalls for joinable threads:
+
+ * thread_create() can be changed to return a thread descriptor.
+ * Add a thread_join() syscall which internally pthread_join()s the
+   host system's thread.
+ * close() on the thread descriptor would internally pthread_detach()
+   the host system's thread.
+
+This would contrast with Linux's syscall API, where thread exit sets a
+memory location (specified via CLONE_CHILD_CLEARTID) and signals a
+futex on that memory location.
+
+The primary advantage of Linux's interface is that it makes
+pthread_join() a little faster *if* the thread has already exited
+(because pthread_join() does not need to do a syscall after checking
+the memory location).
+
+The disadvantage of Linux's interface is that it is hard to
+virtualise: We cannot implement this interface in terms of libpthread
+(or presumably Windows' threading interfaces) without creating an
+ephemeral resource leak.  Even for a Linux-specific implementation,
+the Linux libpthread already uses the CLONE_CHILD_CLEARTID location
+and we cannot share this location.  (In contrast, a descriptor can, in
+principle, be shared.)
+
+It looks like NaCl needs to have a join syscall in order to be sure
+that the host system's thread has exited fully.</ns0:content><ns0:updated>2010-10-14T13:52:40.000Z</ns0:updated><ns0:published>2010-10-14T13:52:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1027#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1027/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

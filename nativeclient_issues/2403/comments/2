@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4HQn47eCl7ImA9WhRTFEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2403/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7114
+
+------------------------------------------------------------------------
+r7114 | jvoung@google.com | Fri Nov 04 16:17:11 PDT 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/callingconv_case_by_case/call_structs.cc?r1=7114&amp;r2=7113&amp;pathrev=7114
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/callingconv_case_by_case/nacl.scons?r1=7114&amp;r2=7113&amp;pathrev=7114
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=7114&amp;r2=7113&amp;pathrev=7114
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/callingconv_case_by_case/utils.h?r1=7114&amp;r2=7113&amp;pathrev=7114
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/callingconv_case_by_case/for_each_type.h?r1=7114&amp;r2=7113&amp;pathrev=7114
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/callingconv_case_by_case/return_structs.cc?r1=7114&amp;r2=7113&amp;pathrev=7114
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/callingconv_case_by_case?r1=7114&amp;r2=7113&amp;pathrev=7114
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/callingconv_case_by_case/useful_structs.h?r1=7114&amp;r2=7113&amp;pathrev=7114
+
+First cut at a case-by-case calling convention test. This tests passing
+individual data types (by value) between functions built by different
+compilers. Generally it follows the following flow:
+
+  PNaCl -&gt; PNaCl -&gt; nacl-gcc -&gt; nacl-gcc -&gt; PNaCl
+
+Also test returning such data types (same as above, with arrows reversed).
+See useful_structs.h and for_each_type.h for each of the data types
+tested (includes things like structs with member function pointers,
+packed structs which may be misaligned, etc.).
+
+Run "CC file.c -E -o - -DMODULE1 | indent | less" to see the preprocessed code with nicer indentation.
+
+Since this does not vary the NUMBER of arguments, we will need other separate tests for (1) var-args, (2) cases when the call uses up all registers, (3) mixing each of these cases, etc. Perhaps those can be added to the random test generator.
+
+NOTE: There exist bugs in passing C++ classes between PNaCl -&gt; NaCl-gcc,
+but not in returning them (even with the current compatibility flag), and with PNaCl's sandboxing for x86-64 when an alloca is aligned 32 bytes.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2274
+
+Related bugs:
+http://code.google.com/p/nativeclient/issues/detail?id=1902
+http://code.google.com/p/nativeclient/issues/detail?id=1819
+http://code.google.com/p/nativeclient/issues/detail?id=2403
+http://code.google.com/p/nativeclient/issues/detail?id=2399
+http://code.google.com/p/nativeclient/issues/detail?id=2356
+
+TEST= run_return_structs_test, run_call_structs_test
+
+Review URL: http://codereview.chromium.org/8341083
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-11-04T23:22:13.000Z</ns0:updated><ns0:published>2011-11-04T23:22:13.000Z</ns0:published><ns2:updates>
+			<ns2:summary>For arg pointers to non-trivial c++ objects, pnacl-clang should not have "byval"</ns2:summary></ns2:updates><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2403#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2403/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

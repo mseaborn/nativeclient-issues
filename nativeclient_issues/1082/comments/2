@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU8EQX47eCl7ImA9Wx5bEkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1082/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">The problem is somewhat more severe that I thought before.
+
+As we have to keep the fixed distance between code and data, and thus pad code if data is bigger and vice versa, the 16mb limit applies to data of all libraries except the last one, which is much more likely to be hit.
+
+This can be worked around by teaching nacl_dyncode_alloc to bypass the executable while allocating more code and data, somewhat ugly but doable.
+
+BTW, what was the reason for loading the executable at high addresses and loader at low addresses, exactly the opposite way standard systems do??? This is not impossible to work around, but it still creates a lot of annoying fixes here and there we were able to avoid if not doing so...
+</ns0:content><ns0:updated>2010-10-28T19:23:20.000Z</ns0:updated><ns0:published>2010-10-28T19:23:20.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Pri-3</ns2:label><ns2:label>Pri-1</ns2:label><ns2:ccUpdate>b...@google.com</ns2:ccUpdate><ns2:ccUpdate>cbif...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 2 by eaelt...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1082#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1082/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

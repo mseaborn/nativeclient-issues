@@ -1,0 +1,51 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEAGSX47eCl7ImA9WhRaE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2365</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+
+PNaCl client components are not packaged with chrome and are instead fetched from a webserver/listed in the NMF (see tests/pnacl_client_translator). However, the components are likely too large to be placed in the normal installer.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+
+Not easy to use the client side translator, send out updates to the translator, etc.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+
+If we delay-install PNaCl with the chrome &amp;quot;component updater&amp;quot; [1] we won't have to add to the (upfront) chrome install size. This may also be a way to duplicate the x86 IRTs for PNaCl without increasing the (upfront) chrome installer size.
+
+The downside is that the files won't necessarily be available on the platform right away (must wait for the component updater to run). Perhaps with the appropriate UI plus a mechanism to force-install PNaCl when it is first demanded, this would work.
+
+For testing, we would need a local hookup so that it doesn't need to be &amp;quot;downloaded&amp;quot;. Perhaps this is as simple as having the test harness copy some files to the expected install location.
+
+Naive impression of the necessary steps (not necessarily in order):
+
+(1) Script the packaging of LLC, LD, LLI, libs, IRT into a CRX file.
+  - The installer will unpack the CRX to a custom location.
+
+(2) Have a script to upload these CRX files to a well known URL, and have a mechanism for bumping the CRX version when we want to make a new &amp;quot;release&amp;quot;.  We will need to talk to someone about which URL is best (or choose a different URL for now).
+  - Note, the URL may be changed to pick only the files needed for the specific arch (vs downloading ARM components on an x86-64 device, etc.).
+  - We need a way to store the CRX private key (gives us authority to update the CRX) [2].
+
+(3) Make a component updater subclass for PNaCl in the chrome tree.
+
+(4) Add some a way to opt into registering and testing this the component updater for chrome, so that not all chrome users will need to have it. E.g., add a flag in about:flags to chrome.
+
+(5) Have pnacl_coordinator open files where the component updater unpacks the CRX instead of downloading them from the developer's server.
+  - Need an IPC to open such files on the plugin's behalf in the browser process. See PPB_NACL_PRIVATE_INTERFACE?
+
+(6) Do the same to open pnacl IRTs that were unpacked from the CRX. Also see PPB_NACL_PRIVATE_INTERFACE.
+
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+
+Using the PNaCl client-side components does not require extra NMF goo / uploading components to the developer's server.
+
+
+---Footnotes---
+
+[1] see http://code.google.com/p/chromium/issues/detail?id=61602
+and its unit tests: http://www.google.com/codesearch/p?hl=en#OAMlx_jo-ck/src/chrome/browser/component_updater/component_updater_service_unittest.cc&amp;amp;q=UpdateUrl&amp;amp;exact_package=chromium&amp;amp;ct=rc&amp;amp;cd=10&amp;amp;sq=
+and example usage for some black list: http://codereview.chromium.org/8056013/
+
+[2] http://code.google.com/chrome/extensions/crx.html
+</ns0:content><ns0:updated>2012-02-15T19:05:28.000Z</ns0:updated><ns0:published>2011-10-17T20:40:44.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/110088500044003719179/</ns2:uri><ns2:username>jsc...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Package/Install PNaCl client-side components with Chrome</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2365/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2365" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2365" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2365</ns2:id></ns0:entry>

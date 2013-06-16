@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUAR347eCl7ImA9WhZQEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1685/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>mcgra...@chromium.org</ns0:name><ns0:uri>/u/109286297231979736865/</ns0:uri></ns0:author><ns0:content type="html">Victor makes a good point!  We certainly can't enable the optimizations on 64-bit, where we don't support the standard IE sequence at all.  We could enable all the rewrites for 32-bit, though.
+
+It's certainly true that enabling these rewrites should not be the thing we are doing in a hurry, regardless.  We can much more easily and reliably make sure that the unoptimized sequences are ones we can validate.
+
+The only validator change yet suggested is to grok another nop variant (66 90).
+That one is certainly safe and harmless.
+</ns0:content><ns0:updated>2011-04-18T20:57:26.000Z</ns0:updated><ns0:published>2011-04-18T20:57:26.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by mcgra...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1685#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1685/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

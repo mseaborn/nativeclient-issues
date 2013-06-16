@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkABQX47eCl7ImA9WhdSEkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1536</ns0:id><ns0:author>
+			<ns0:name>sa...@google.com</ns0:name><ns0:uri>/u/111227428049549265840/</ns0:uri></ns0:author><ns0:content type="html">What version?
+Revision 4535 of native_client
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+OS X and Linux 64-bit
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Chrome 11.0.679.0 (Developer Build 75530)
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Create a 2d graphics context by calling PPB_Graphics2D::Create
+2. Pass the 2d graphics context as the parameter for PPB_Graphics2D::IsGraphics2D
+3. The return value is PP_FALSE
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+PP_TRUE
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+Call to PluginResource::GetAs&amp;lt;PluginGraphics2D&amp;gt;(resource).get() w/in PluginGraphics2D::IsGraphics2D in plugin_ppb_graphics_2d.cc seems to return the wrong value.
+</ns0:content><ns0:updated>2011-07-21T01:12:30.000Z</ns0:updated><ns0:published>2011-03-15T20:49:28.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PPB_Graphics2D::IsGraphics2D returns unexpected value</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>Mstone-14</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1536/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1536" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1536" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-21T01:12:30.000Z</ns2:closedDate><ns2:id>1536</ns2:id></ns0:entry>

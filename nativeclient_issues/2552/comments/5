@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4EQH47eCl7ImA9WhRaE08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2552/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7803
+
+------------------------------------------------------------------------
+r7803 | dschuff@google.com | Wed Feb 15 09:58:49 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/spec2k/run_all.sh?r1=7803&amp;r2=7802&amp;pathrev=7803
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/file_up_down_load.sh?r1=7803&amp;r2=7802&amp;pathrev=7803
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_pnacl.sh?r1=7803&amp;r2=7802&amp;pathrev=7803
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/run.py?r1=7803&amp;r2=7802&amp;pathrev=7803
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/scripts/common-tools.sh?r1=7803&amp;r2=7802&amp;pathrev=7803
+
+Script changes toward running ARM SPEC on hardware
+The general idea is to test the pandabot reliability with some new functionality
+ before moving stuff from the main waterfall over.
+This CL has several related changes: common-tools.sh and run.py are modified to
+ be runnable on pandaboards without qemu
+run_all.sh has an updated version of the code to archive the arm SPEC build to be
+ run on hardware (running the archive does work but the automation will be a
+ future CL)
+buildbot_pnacl.sh and file_up_down_load.sh have change that allow 2 different
+ archives per revision to be used (one for the arm TCB and one for spec).
+
+R= jvoung, bradnelson
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2552
+TEST=
+
+Review URL: https://chromiumcodereview.appspot.com/9391009
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-02-15T18:01:41.000Z</ns0:updated><ns0:published>2012-02-15T18:01:41.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2552#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2552/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

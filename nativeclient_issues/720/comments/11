@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUYCQH47eCl7ImA9Wx5UF0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/720/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">Plan/sketch for adding dwarf based unwinding/exception handling to work
+
+* get this test to work:
+./scons run_unwind_trace_test bitcode=1 platform=arm sdl=none
+This requires serious surgery in llvm-gcc-4.2/gcc/unwind-dw2.c and friends.
+Currently there are a ton of stubbed out functions for _Unwind_XXX.
+Maybe gcc knows about an ARM target already that uses dwarf already (instead of arms own scheme) which would make things a lot simpler.
+Simultaenously, llvm's backend needs to be instructed to emit Dwarf  unwind tables 
+instead of the ARM ones. This should be easier especially if there is an ARM flavor
+that uses Dwarf already.
+
+*get all exception handing tests to work, e.g.
+./scons toolchain_tests bitcode=1 platform=arm sdl=none
+
+This should be pretty straight forward hacking in llvm-gcc-4.2/libstdc++-v3/libsupc++/ - it really should work out of the box since this code is supposed to be platform neutral.
+</ns0:content><ns0:updated>2010-10-22T14:19:21.000Z</ns0:updated><ns0:published>2010-10-22T14:19:21.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=720#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/720/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

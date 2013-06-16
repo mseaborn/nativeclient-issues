@@ -1,0 +1,72 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYAQ347eCl7ImA9WhVTEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1114</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I am testing imc_sendmsg() on a socket newly created with imc_connect()+imc_accept(), when there is thread listening on the other endpoint using imc_recvmsg().  (This is different from issue 1113, where there is no listener.)
+
+On both Windows and Mac, we can successfully send 128k messages.  129k messages are rejected with EIO.  (This limit is enforced by sel_ldr.  See NACL_ABI_IMC_USER_BYTES_MAX.)
+
+On Linux, we can send 121k messages, but 122k messages return EMSGSIZE.
+
+This is because, on Linux, IMC sockets are implemented using message-based SOCK_SEQPACKET sockets, which have a size limit.  David Sehr tells me that this limit varies between kernel versions, and is affected by the &amp;quot;rmem_default&amp;quot; setting.
+
+On Windows/Mac, IMC sockets are implemented using stream-based sockets, where there is no size limit because we are implementing messages in terms of streams ourselves.
+
+We could fix this by changing NaCl to use, on Linux, the same stream-based implementation of IMC ConnectedSockets that is used on Windows and Mac.
+
+
+I tested this by adding the following code to socket_transfer_test.c:
+
+void *Receiver(void *arg) {
+  int sock_fd = (int) arg;
+  while (1) {
+    char buf[100];
+    if (receive_message(sock_fd, buf, sizeof(buf), NULL, 0, NULL) &amp;lt; 0)
+      break;
+  }
+  return NULL;
+}
+
+// in main():
+  printf(&amp;quot;Test big message...\n&amp;quot;);
+  for(i = 0; i &amp;lt; 100 * 1024 * 1024; i += 1024) {
+    int size = i;
+    int sock_pair[2];
+    pthread_t tid;
+    int sent;
+    char *buf = malloc(size);
+    make_socket_pair(sock_pair);
+    pthread_create(&amp;amp;tid, NULL, Receiver, (void *) sock_pair[1]);
+    printf(&amp;quot;sending %i (%ik)...\n&amp;quot;, size, size / 1024);
+    errno = 0;
+    sent = send_message(sock_pair[0], buf, size, NULL, 0);
+    printf(&amp;quot;  sent=%i errno=%i\n&amp;quot;, sent, errno);
+    free(buf);
+    close(sock_pair[0]);
+    close(sock_pair[1]);
+    pthread_join(tid, NULL);
+    if (sent != size)
+      break;
+  }
+  return 1;
+
+
+Results:
+
+linux:
+sending 123904 (121k)...
+  sent=123904 errno=0
+sending 124928 (122k)...
+  sent=-1 errno=132
+
+mac:
+sending 131072 (128k)...
+  sent=131072 errno=0
+sending 132096 (129k)...
+  sent=-1 errno=5
+
+windows:
+sending 131072 (128k)...
+  sent=131072 errno=0
+sending 132096 (129k)...
+  sent=-1 errno=5
+</ns0:content><ns0:updated>2012-02-24T17:55:42.000Z</ns0:updated><ns0:published>2010-10-28T15:34:30.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>imc_sendmsg() can send 128k messages on Mac and Windows, but not on Linux</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>PlatformDifference</ns2:label><ns2:label>Component-IRT</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1114/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1114" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1114" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1114</ns2:id></ns0:entry>

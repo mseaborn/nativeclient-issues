@@ -1,0 +1,47 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0EDRX47eCl7ImA9WhZTFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1538/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bjarke.w...@gmail.com</ns0:name><ns0:uri>/u/111895975545066954541/</ns0:uri></ns0:author><ns0:content type="html">It doesn't seem that the chromium-browser package contains any .so files (neither does the other packages; except chromium-codecs-ffmpeg-extra containing libffmpegsumo.so). On the other hand it seems that the binary is statically linked:
+
+$ aptitude search chromium
+  p   chromium                                   - transitional dummy package for chromium-bsu
+  i   chromium-browser                           - Chromium browser
+  p   chromium-browser-dbg                       - chromium-browser debug symbols
+  i A chromium-browser-inspector                 - page inspector for the chromium-browser
+  i A chromium-browser-l10n                      - chromium-browser language packages
+  p   chromium-bsu                               - fast paced, arcade-style, scrolling space shooter
+  p   chromium-bsu-data                          - data pack for the Chromium B.S.U. game
+  p   chromium-codecs-ffmpeg                     - Free ffmpeg codecs for the Chromium Browser
+  p   chromium-codecs-ffmpeg-dbg                 - chromium-codecs-ffmpeg debug symbols
+  i   chromium-codecs-ffmpeg-extra               - Extra ffmpeg codecs for the Chromium Browser
+  p   chromium-codecs-ffmpeg-extra-dbg           - chromium-codecs-ffmpeg-extra debug symbols
+  p   chromium-codecs-ffmpeg-nonfree             - dummy upgrade package
+  p   chromium-codecs-ffmpeg-nonfree-dbg         - dummy upgrade package
+  p   chromium-data                              - transitional dummy package for chromium-bsu-data
+  v   chromium-testsuite                         -
+  v   chromium-testsuite-dbg                     -
+$ dpkg -L chromium-browser
+  /.
+  /usr
+  /usr/lib
+  /usr/lib/chromium-browser
+  /usr/lib/chromium-browser/plugins
+  /usr/lib/chromium-browser/resources
+  /usr/lib/chromium-browser/chrome.pak
+  /usr/lib/chromium-browser/chromium-browser
+  /usr/lib/chromium-browser/chromium-browser-sandbox
+  /usr/lib/chromium-browser/xdg-settings
+  /usr/lib/chromium-browser/xdg-mime
+  /usr/lib/chromium-browser/resources.pak
+  /usr/lib/chromium-browser/locales
+  /usr/lib/chromium-browser/locales/en-US.pak
+  [ ... 39 files in /usr/share skipped ... ]
+  /usr/bin
+  /usr/bin/chromium-browser
+  /etc
+  /etc/chromium-browser
+  /etc/chromium-browser/policies
+  /etc/chromium-browser/policies/managed
+  /etc/chromium-browser/policies/recommended
+  /etc/chromium-browser/default
+$ ldd /usr/bin/chromium-browser
+    not a dynamic executable</ns0:content><ns0:updated>2011-03-19T02:27:54.000Z</ns0:updated><ns0:published>2011-03-19T02:27:54.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bjarke.w...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1538#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1538/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

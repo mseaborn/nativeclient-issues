@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUIFQ347eCl7ImA9WhRRF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2413/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: fb17b04aca7f1a3785d13dae4906fd2844d871e0
+ Email: jvoung@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+DEPS-in third_party/ply from chromium to allow running the IDL generator from the NaCl tree (to run the PNaCl shim generator).
+
+NOTE: ultimately we will generate the shim in the chrome tree (to get the latest interfaces). However, this step allows us to debug the PNaCl shim in the NaCl tree until we migrate to chrome.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2413
+TEST= gclient sync
+
+R=robertm@google.com,noelallen@google.com
+
+Review URL: http://codereview.chromium.org/8725043
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@7324 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	DEPS</ns0:content><ns0:updated>2011-12-01T21:05:12.000Z</ns0:updated><ns0:published>2011-12-01T21:05:12.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2413#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2413/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

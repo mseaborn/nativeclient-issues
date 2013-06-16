@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYMSH47eCl7ImA9WhZRF0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1595/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4859
+
+------------------------------------------------------------------------
+r4859 | mcgrathr@chromium.org | Wed Apr 13 09:43:10 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/DEPS?r1=4859&amp;r2=4858&amp;pathrev=4859
+
+Update toolchain DEPS for -mtls-use-call option.
+
+The new toolchain supplies -mtls-use-call and builds the
+newlib-based target libraries (libstdc++ et al) with it.
+This is needed for the integrated runtime build to properly
+segregate IRT-private TLS from user TLS.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1595
+TEST= trybots
+
+R=mseaborn@google.com,khim@google.com,pasko@google.com,eaeltsin@google.com
+
+Review URL: http://codereview.chromium.org/6834008
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-13T16:46:29.000Z</ns0:updated><ns0:published>2011-04-13T16:46:29.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1595#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1595/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

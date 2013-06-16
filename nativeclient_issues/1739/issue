@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEMMRX47eCl7ImA9WhZbF0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1739</ns0:id><ns0:author>
+			<ns0:name>jasonw...@google.com</ns0:name><ns0:uri>/u/110605953789916471800/</ns0:uri></ns0:author><ns0:content type="html">on macmini102-m3 (the 10.5 buildbot)
+The command line:
+As of rev 5055
+
+python2.5 /b/build/slave/mac10.5-m32-n32-opt/build/native_client/tests/pyauto_nacl/multiple_nexes.py /b/build/slave/mac10.5-m32-n32-opt/build/native_client/chromebinaries/mac_x86-32 -v --http-data-dir=native_client/scons-out/nacl-x86-32/staging --chrome-flags=&amp;quot;--register-pepper-plugins=/b/build/slave/mac10.5-m32-n32-opt/build/native_client/scons-out/opt-mac-x86-32/staging/ppNaClPlugin;application/x-nacl --no-sandbox&amp;quot;
+
+fails somewhat reliably (so far 3/3 tries on a shell on the macmini failed)
+
+
+
+</ns0:content><ns0:updated>2011-06-22T22:41:24.000Z</ns0:updated><ns0:published>2011-04-27T19:03:54.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Multiple flaky failures on Macs was: multiple_nexes.py fails on Mac</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Test</ns2:label><ns2:label>FlakeyBots</ns2:label><ns2:label>Mstone-14</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1739/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1739" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1739" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>1796</ns2:id></ns2:blockedOn><ns2:closedDate>2011-06-22T22:41:24.000Z</ns2:closedDate><ns2:id>1739</ns2:id></ns0:entry>

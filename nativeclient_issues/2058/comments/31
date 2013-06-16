@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUMERH47eCl7ImA9WhdRFUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2058/comments/full/31</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">The purpose of _GLOBAL_REENT and its lazy initialization in newlib.
+
+In newlib the list of all files (FILE*) known to a program must be reachable from struct _reent _GLOBAL_REENT via __sglue list.  All routines changing the way the program views files (like opening, closing, seeking, flushing) is performed explicitly within the _GLOBAL_REENT structure (using __sfp() locked with __sfp_lock_acquire(), __sfp_lock_release()).
+
+All other instantiated _reent structures are thread-local and accessed as _REENT.  They are mostly used to keep thread-local values for errno, but besides that can also be used to keep some thread-local state, like strtok().
+
+There is no other way to reach thread local memory in newlib other than with _REENT.  There are some pointers in _REENT that should rather be global.  The three pointers: _stdin, _stdout, _stderr must point at the respective parts in _GLOBAL_REENT, there must be only a single buffer for each of the streams in the program, not thread-local buffers.
+
+The _GLOBAL_REENT.__sglue structure is the root of the chain of all files known to the program.  The _REENT.__sglue does not need to know about all of the files (_GLOBAL_REENT is referenced explicitly on all manipulations with the global file list), it just needs to know about stdin/stdout/stderr, hence _REENT.__sglue._iobs should point to the [stdin, stdout, stderr] array in _GLOBAL_REENT.
+
+For example, fflush(fp) would flush the FILE* fp using the lock in the file, it will use _REENT for saving errno.  On the other hand, when fflush(NULL) is invoked, it would use _GLOBAL_REENT to traverse all files and flush them.
+
+There is a problem with _REENT/_GLOBAL_REENT initialization via __sinit() in multithreaded programs.
+
+Originally newlib initializes all _reent structures lazily.  One reason is to save memory for lightweight threads. Another reason might be to not link in stdio if a program does not use it (other nontrivial decisions were made in favor of the same idea, see comment for _cleanup_r() in findfp.c)
+
+For the sake of an experiment I tried to eagerly initialize _REENT in Native Client&#8217;s __newlib_thread_init() hook, but it resulted in a segmentation fault when initializing a lock via nc_thread_mutex_init() in the main thread. The cause is uninitialized __nc_irt_mutex (non-IRT case), although __pthread_initialize() has finished.  I did not investigate it further.
+
+Cygwin seems to initialize _REENT._sglue with a race condition, since the _GLOBAL_REENT that we depend on might be initialized at the same time.  The double checked locking antipattern is used across newlib code for intializing _reent lazily (checking for _reent.__sdidinit).  Additionally, fwalk.c relies on __sglue being initialized, but does not bother to check if it has been initialized.</ns0:content><ns0:updated>2011-08-05T12:30:05.000Z</ns0:updated><ns0:published>2011-08-05T12:30:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 31 by pa...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2058#c31" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2058/comments/full/31" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkcERn47eCl7ImA9WhRXFEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2504</ns0:id><ns0:author>
+			<ns0:name>mcgra...@chromium.org</ns0:name><ns0:uri>/u/109286297231979736865/</ns0:uri></ns0:author><ns0:content type="html">The status quo is that the SDK uses native_client/SConstruct's
+&amp;quot;install_headers&amp;quot; target to populate the include directories with the
+header files that come from the native_client source tree (as opposed to
+the toolchain tarballs, or ppapi, or some other such place).  That ties
+into some old scons cruft that doesn't have a coherent definition of which
+header files really belong in the SDK.
+
+Rather than decrufting the old scons stuff, we're moving away from scons
+anyway, so the SDK build procedure should just grow a new and sensible way
+to install headers.
+
+Here's what I think is the list of headers we want from the native_client
+tree:
+
+In top-level include/, but for newlib toolchain only:
+	pthread.h	from src/untrusted/pthread/
+	semaphore.h 	from src/untrusted/pthread/
+
+In nacl/:
+	dynamic_annotations.h	(?)	src/untrusted/valgrind/
+	nacl_dyncode.h			src/untrusted/nacl/
+	nacl_startup.h			src/untrusted/nacl/
+	nacl_thread.h		(?)	src/untrusted/nacl/
+	pnacl.h				src/untrusted/nacl/
+	irt.h				src/untrusted/irt/
+	irt_ppapi.h			src/untrusted/irt/
+
+The latter two are not installed by scons install_headers, but should be
+public.  There are several others that are installed by scons
+install_headers today but should be private.</ns0:content><ns0:updated>2011-12-20T21:53:27.000Z</ns0:updated><ns0:published>2011-12-20T21:53:27.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>SDK has some nacl/ headers it doesn't want, lacks some it does want</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>Mstone-18</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2504/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2504" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2504" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2504</ns2:id></ns0:entry>

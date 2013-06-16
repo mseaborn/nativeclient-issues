@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEHR347eCl7ImA9WhdbEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2346</ns0:id><ns0:author>
+			<ns0:name>dsch...@google.com</ns0:name><ns0:uri>/u/104270846665912603141/</ns0:uri></ns0:author><ns0:content type="html">This primarily affects the regparm attribute and fastcc calling convention:
+Background:
+
+fastcc is a calling convention invented by LLVM and intended only to be used for internal and non-interoperable code, and is subject to change:
+http://llvm.org/docs/LangRef.html#callingconv
+A bitcode-&amp;gt;bitcode pass changes functions to use fastcc when safe (TODO: find which pass). On x86, it passes the first 2 arguments in ECX and EDX. The 'nest' parameter (used to support nested-function trampolines) is passed in EAX. (3 floats/doubles may also be passed in XMM0-2 if available). On x86-64 it is ignored/identical to the C calling convention. On ARM, it is also identical except for vectors when VFP2 is available (do we use VFP2?).
+
+regparm is an attribute which can be specified on functions, which takes an parameter n, and causes the first n arguments to be passed in registers (EAX, EDX, and ECX). There is also an 'sseregparm' attribute which passes the first 3 float args in SSE registers if available). Both LLVM and GCC support it natively. on targets other than x86-32 it is ignored. LLVM implements it by having the frontend mark the first n arguments in the function declaration with the 'inreg' attribute. The backend then does the appropriate target-dependent thing.
+
+regparm is used in glibc's internal functions, but not exposed to the user*. Because of the requirement that plt entries use indirect jumps, nacl's glibc uses regparm(2) rather than the regparm(3) used natively. However gcc still supports regparm(3) and it can be used anywhere PLT calls or similar trampoline-style insertions are not required.
+
+*regparm is exposed to the user in one location: the functions called by the pthread_cleanup_push/pop macros in pthread.h have attribute regparm(1).
+
+Discussion:
+fastcc:
+currently the compilation callback supports the fastcc calling convention by returning through eax rather than ecx (and on non-x86 it is identical to C calling conv). In lib/Transforms/IPO/GlobalOpt.cpp, functions for which F-&amp;gt;hasLocalLinkage(), !isVarArg() and !hasAddressTaken(), have themselves and their callees converted to use the fastcc convention. This bears some investigation but seems safe to leave as is.
+
+regparm:
+A full implementation of regparm(3) will not work with lazy JIT for the same reason it cannot be used with PLTs (the compilation callback must clobber a register). More specifically, lazily-JITed regparm(3) functions cannot be called.
+
+One option is to reject regparm in the frontend (current behavior)and forbid or ignore the 'inreg' argument attribute in the backend. Because source may exist with this attribute, it would be nice not to do this, and we would additionally have to require that nacl-gcc never expose these functions to interoperable code. (it would also require changing glibc and the pthread header).
+A variant is to treat regparm(1-2) normally in clang and LLVM and reject 3. This would require no changes to glibc, but would prevent compiling against any gcc-built library which exposed it externally.
+
+Another option is to accept all regparm arguments in the frontend and lower them to bitcode normally (marking 3 arguments as 'inreg'). Then the LLVM backend could ignore the third inreg argument and pass it in memory when JITing. External functions (e.g. in DSOs built by nacl-gcc or pre-translated by PNaCl) with regparm(3) can be called by JITed code because they are dlopened into the JIT's memory space and the JIT can find them before it generates calls to them. This entails a little more complexity but allows the most performance.
+Note that this option requires respecting the 3rd inreg argument for pre-translated code; if we accept regparm(3) in headers in the frontend then we are promising to be able to call external functions which expect it, and we don't want there to be a difference between pre-translated PNaCl DSOs and gcc-built DSOs.
+
+additional reference:
+http://gcc.gnu.org/onlinedocs/gcc/Function-Attributes.html
+</ns0:content><ns0:updated>2011-10-07T23:03:56.000Z</ns0:updated><ns0:published>2011-10-07T22:21:40.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>Decide how to support fastcc and regparm calling conventions</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2346/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2346" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2346" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>2346</ns2:id></ns0:entry>

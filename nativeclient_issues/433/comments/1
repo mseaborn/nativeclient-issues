@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUIMRX47eCl7ImA9WxFSEUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/433/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>grego...@google.com</ns0:name><ns0:uri>/u/114685308157308201595/</ns0:uri></ns0:author><ns0:content type="html">The srpc_bad_service test runs on all platforms as part of our small tests (recent 
+Linux log: http://build.chromium.org/buildbot/nacl/builders/hardy32-m32-n32-
+dbg/builds/435/steps/small_tests/logs/stdio). It seems that the tests passes 
+everywhere. How is your system different?
+
+Also please add more details about the revisions you are using and the OS (is it 64-bit 
+Linux?)</ns0:content><ns0:updated>2010-04-13T21:19:44.000Z</ns0:updated><ns0:published>2010-04-13T21:19:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by grego...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=433#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/433/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

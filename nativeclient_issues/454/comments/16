@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEGR347eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/454/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2170
+
+------------------------------------------------------------------------
+r2170 | mseaborn@chromium.org | Fri Apr 30 02:22:38 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/data_not_executable/nacl.scons?r1=2170&amp;r2=2169&amp;pathrev=2170
+
+Disable hanging execute_data test on ARM
+
+The test can be re-enabled when the kernel is upgraded on the Buildbot
+slave.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=454
+
+Review URL: http://codereview.chromium.org/1792012
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:23:46.000Z</ns0:updated><ns0:published>2011-01-21T22:23:46.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=454#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/454/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

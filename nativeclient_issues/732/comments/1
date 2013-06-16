@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQAQn47eCl7ImA9Wx5TFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/732/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">In a good vs a bad binary, the only difference is that the good one has a "sfi_store_preamble sp, " at the beginning of every function, and the bad doesn't. See attached:
+
+&gt; diff good_simple_tt.nexe.bc.s. bad_simple_tt.nexe.bc.s
+
+386d385
+&lt; 	sfi_store_preamble sp, 
+432d430
+&lt; 	sfi_store_preamble sp, 
+451d448
+&lt; 	sfi_store_preamble sp, 
+...
+
+For reference, to run the binaries from the native_client directory:
+
+&gt; toolchain/linux_arm-trusted/qemu-arm -cpu cortex-a8 -L toolchain/linux_arm-trusted/arm-2009q3/arm-none-linux-gnueabi/libc scons-out/opt-linux-arm/staging/sel_ldr -Q -f good_simple_tt.nexe
+</ns0:content><ns0:updated>2010-07-29T17:09:03.000Z</ns0:updated><ns0:published>2010-07-29T17:09:03.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=732#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/732/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

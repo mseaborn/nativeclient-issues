@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08ERH47eCl7ImA9Wx9REE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1235/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">@sehr:  We are already restricting assignments to %rip, %rsp and %r15, so I don't see why we can't also restrict reading from them. :-)
+
+This should mostly be a matter of disallowing reading from %rip, %rsp and %r15, but allowing reading from %eip and %esp.  (%r15d will always be zero so is uninteresting.  %rbp/%ebp should not matter because its contents are not trusted.)
+
+Another tricky part is indirect jumps.  After doing:
+
+  and    $0xffffffffffffffe0,%r11d
+  add    %r15,%r11
+  jmpq   *%r11
+
+the base address is left in %r11.  Maybe we could reserve %r11 (or another register) for this purpose and only allow it to be used as part of this sequence, so that the base address cannot be read from it.
+
+What I like about PNaCl is that it leaves open the possibility of tweaking the sandbox rules like this. :-)</ns0:content><ns0:updated>2010-12-10T18:30:05.000Z</ns0:updated><ns0:published>2010-12-10T18:30:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1235#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1235/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,83 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUFRn47eCl7ImA9Wx5VFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/885/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>dsprin...@google.com</ns0:name><ns0:uri>/u/112723007196297768207/</ns0:uri></ns0:author><ns0:content type="html">I captured this from the e-mail thread.  Unless I hear otherwise, I'll use this as the spec:
+
+
+Hi team,
+
+I read through the thread and talked to a few people about how the client gets the appropriate nexe. The goal right now is to find a solution that works for M8 and doesn't obviously paint us into a corner. Here is a proposal. I apologize for the verbosity.
+
+Server-side solutions, such as serving a different nexe depending on an HTTP header, will require a level of control over the web server that the developer often does not have. For this reason I feel we should avoid this group of solutions. Client-based URL mangling (e.g., actually requesting hello-x86-64.nexe when the embed tag says hello.nexe) seem confusing and un-idiomatic, so I'd rather avoid it if possible. Including a Javascript to do the client-side rewrites is slightly more transparent, but still not pretty.
+
+That leaves having some sort of manifest file that describes where to find the nexes. The major drawbacks of having a manifest file are (a) roundtrip time and (b) complexity. As for roundtrip time I checked with Mike Belshe, and we should expect 200 ms for a 1k payload on DSL/cable (300-400 ms on dial-up; 300-800 ms on 3G). In other words this is really minor compared to the compilation time or download time for any non-trivial application. Also, as Viktor pointed out, RFC 2397 (data URIs) can be used to eliminate the roundtrip altogether.
+
+As far as the complexity is concerned, I think we will very likely need a manifest file (i.e., some place to keep meta data) in the future anyway. In addition to containing a map from architecture strings to nexe URLs, I can imagine that the manifest file could contain
+&#8211; preferred/suggested translation server URLs
+&#8211; a list of assets/libraries to load dynamically or to preload
+&#8211; application policies (who gets to compile it? who gets to run it?)
+&#8211; signatures
+&#8211; version information
+&#8211; possibly more
+
+Concretely, a NaCl app could get embedded like this:
+
+&lt;embed name="nacl_module"
+         id="hello_world"
+         width=0 height=0
+         nacl="hello.nmf"
+         type="application/x-nacl-manifest"
+ /&gt;
+
+Here is what hello.nmf might look like:
+{
+  "nexes": [
+    "x86-64": "hello-x86-64.nexe",
+    "x86-32": "hello-x86-32.nexe",
+    "arm": "hello-arm.nexe"
+  ]
+}
+I propose JSON for the manifest file because it's a format web developers know, and the Chrome code base already has a JSON parser that we can steal.
+
+The keys in the "nexes" map are strings that we pick (let's pick as few as possible initially; it is easier to add new ones than to remove strings that have already launched). When PNaCl is ready, we can introduce a "pnacl" string for LLVM modules. The values are URLs relative to the .nmf file's location or absolute.
+
+To make it simple for developers, we could consider having a small tool that (1) names the nexes according to some canonical (recommended) scheme, (2) produces the manifest file to reflect that naming, and (3) produces &lt;embed ...&gt; snippets both in regular URL form and data URI form.
+
+
+Packaging, libraries, compilation, loading, and caching
+
+We have two primary delivery methods: via Chrome Web Store and embedded in a page.
+
+For M8 the plan is to enable NaCl only for apps provided through the Web Store. To achieve this we only enable NaCl modules in Chrome if they're embedded in an HTML file in a .crx that declares "native_client" in the permissions section of its manifest (http://code.google.com/chrome/extensions/manifest.html#permissions). (Developers can still enable NaCl generally via a flag, of course.)
+
+Generally, applications can be pre-compiled (current format), compiled from LLVM by a service, or compiled from LLVM by the client. Except for very small applications and technically discerning users, I don't see much of a case for sending LLVMs to the client (until we have an LLVM VM on the client :-)). The good news about the other two is that both pre-compiled and service-compiled executables can be cached and gzip'ed by appropriately configured proxies and web servers, respectively. The manifest file can easily be extended to support compilation by a service.
+
+Next, applications can either be completely self-contained bundles or load their assets/libraries dynamically. Currently, Chrome Web Store's .crx files provide a convenient way to package an app, and this seems sufficient for now. Should we later need to bundle apps that are not delivered through the store, we'll need to design a packaging format (say, a .jar-style zip file called .nacl), but I think it's fine that we punt on this decision for now. Again, the manifest file can point both to resources in the .crx file and general URLs. In the future you can imagine a manifest file that simply lists all the URLs of LLVM modules and libraries and the URL of a translation service. We pass this information to the translation service and get the already-compiled cached binaries. E.g., something like this:
+
+{
+  "modules": [
+    "hello.nexe",
+    "http://google.com/native/lib/libX.nexe",
+    "http://l33t-h4ck3rs.lt/lib-spambot.nexe"
+  ],
+  "translation_services": [
+    "https://native.google.com/"
+  ]
+}
+
+
+Licensing and signing
+
+I have not worked out the details of this yet. I can imagine using the manifest file to contain file signatures that a trusted translation service would check.
+
+Licensing needs to be worked out separately. Chrome Web Store currently contemplates two ways of controlling licenses: (1) you need to pay before you can download the app and (2) you can download the app freely because the app manages licensing itself. Case 2 is easy for us. Case 1 will require some work, but I expect that Chrome Web Store will handle most of it. If the app developer puts just one required asset in the .crx file that the store provides, everything else can still be dynamically fetched from elsewhere (and use translation services).
+
+*
+
+I believe this covers the basics for now. Again, the intent is to design something that is flexible, yet feasible for M8 (which is scarily soon). Right now, we need to support just one thing: a manifest file with a "nexes" field as shown above.
+
+I suggest that I and whoever gets to implement this chat with the CWS/Extensions team as soon as possible. 
+
+Comments?
+
+</ns0:content><ns0:updated>2010-10-08T22:16:57.000Z</ns0:updated><ns0:published>2010-10-08T22:16:57.000Z</ns0:published><ns2:updates>
+			<ns2:status>Started</ns2:status></ns2:updates><ns0:title>Comment 15 by dsprin...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=885#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/885/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

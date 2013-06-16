@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYFQn47eCl7ImA9Wx9SFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1026/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">We now have a trybot that builds and tests a NaCl toolchain on Linux!
+
+It runs the same build &amp; test as the "hardy64-glibc" toolchain
+Buildbot.  Specifically, it builds both the newlib- and glibc-based
+toolchains, and it runs the Scons tests on the glibc-based toolchain.
+However, it does an incremental build, so it will only rebuild
+binutils, gcc, newlib, glibc etc. if their dependencies change.  So in
+most cases it should be quick to respond (10 minutes for a build
+currently).  However, if many people pass different "-r" values to
+"gcl try", it may have more work to do and take longer to catch up (45
+minutes per rebuild currently).
+
+So please look out for results from "nacl-modular-toolchain" in the
+trybot e-mails, and don't ignore failures from it without
+investigating.  If the trybot gives you incomprehensible results or is
+often slow to respond, please let me know.
+
+Now that there is a trybot for this, any change that breaks the
+nacl-glibc Buildbot is likely to close the tree or be reverted! :-)
+</ns0:content><ns0:updated>2010-12-04T01:28:33.000Z</ns0:updated><ns0:published>2010-12-04T01:28:33.000Z</ns0:published><ns2:updates>
+			<ns2:status>Fixed</ns2:status></ns2:updates><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1026#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1026/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

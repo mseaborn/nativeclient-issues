@@ -1,0 +1,61 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkAFQH47eCl7ImA9WhZbEUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/566/comments/full/18</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5671
+
+------------------------------------------------------------------------
+r5671 | bsy@google.com | Wed Jun 15 16:26:26 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/service_runtime.h?r1=5671&amp;r2=5670&amp;pathrev=5671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/reverse_service/reverse_service.cc?r1=5671&amp;r2=5670&amp;pathrev=5671
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/manifest_name_service_proxy/build.scons?r1=5671&amp;r2=5670&amp;pathrev=5671
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/nameservice/srpc_nameservice_test.c?r1=5671&amp;r2=5670&amp;pathrev=5671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/reverse_service/reverse_service.h?r1=5671&amp;r2=5670&amp;pathrev=5671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/service_runtime.cc?r1=5671&amp;r2=5670&amp;pathrev=5671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=5671&amp;r2=5670&amp;pathrev=5671
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/nameservice/srpc_nameservice_test.html?r1=5671&amp;r2=5670&amp;pathrev=5671
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/manifest_name_service_proxy?r1=5671&amp;r2=5670&amp;pathrev=5671
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/manifest_name_service_proxy/manifest_name_service_proxy.gyp?r1=5671&amp;r2=5670&amp;pathrev=5671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/name_service/default_name_service.c?r1=5671&amp;r2=5670&amp;pathrev=5671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/simple_service/nacl_simple_service.c?r1=5671&amp;r2=5670&amp;pathrev=5671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/name_service/name_service.c?r1=5671&amp;r2=5670&amp;pathrev=5671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=5671&amp;r2=5670&amp;pathrev=5671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/threading/nacl_thread_interface.c?r1=5671&amp;r2=5670&amp;pathrev=5671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=5671&amp;r2=5670&amp;pathrev=5671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/name_service/name_service.h?r1=5671&amp;r2=5670&amp;pathrev=5671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=5671&amp;r2=5670&amp;pathrev=5671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=5671&amp;r2=5670&amp;pathrev=5671
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/reverse_service/reverse_control_rpc.h?r1=5671&amp;r2=5670&amp;pathrev=5671
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/manifest_name_service_proxy/manifest_proxy.c?r1=5671&amp;r2=5670&amp;pathrev=5671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/nameservice/nacl.scons?r1=5671&amp;r2=5670&amp;pathrev=5671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_thread_interface.c?r1=5671&amp;r2=5670&amp;pathrev=5671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=5671&amp;r2=5670&amp;pathrev=5671
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/nameservice/srpc_nameservice.nmf?r1=5671&amp;r2=5670&amp;pathrev=5671
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/reverse_service/manifest_rpc.h?r1=5671&amp;r2=5670&amp;pathrev=5671
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/manifest_name_service_proxy/manifest_proxy.h?r1=5671&amp;r2=5670&amp;pathrev=5671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/multiple_sandboxes/nacl.scons?r1=5671&amp;r2=5670&amp;pathrev=5671
+
+this patch adds the manifest proxy server to sel_ldr and the manifest
+proxy service stubs to reverse_service in the plugin.  the service
+stubs are not hooked up, and just logs and sends back bogus replies.
+this patch also adds an SRPC-based (irt=0) test to tests/nameservice/
+so that the nexe would run in the browser and thereby trigger the RPCs
+to the plugin to exercise the name service and manifest sub-name
+service functionality.
+
+the plan is that the RPC service stubs in the plugin will be replaced
+with Pepper calls that uses the trusted interface to extract the
+underlying file descriptor and pass it back to the untrusted IRT code,
+initially for read-only access.  the IRT can use the descriptor to
+emulate the Pepper file object read/write API using read/write service
+runtime syscalls, rather than doing bulk data transfers via RPCs,
+providing a short-circuited I/O path.  for read/write access (later),
+hooking up quota management callbacks (also via reverse channels) will
+be necessary, but quota calls are control plane traffic, and bulk data
+plane traffic should continue to go through service runtime syscalls.
+
+TEST= tests/nameservice/srpc_nameservice_test
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1534 http://code.google.com/p/nativeclient/issues/detail?id=566
+Review URL: http://codereview.chromium.org/7108031
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-06-15T23:31:51.000Z</ns0:updated><ns0:published>2011-06-15T23:31:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 18 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=566#c18" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/566/comments/full/18" rel="self" type="application/atom+xml" /></ns0:entry>

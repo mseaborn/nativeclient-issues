@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYAQX47eCl7ImA9WhdWFEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1711/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">For nacl svn rev 6643, we have:
+
+  Expected Passes    : 4257
+  Expected Failures  : 71
+  Unsupported Tests  : 776
+  Unresolved Tests   : 1
+  Unexpected Failures: 523
+
+To reproduce, sync and build llvm. Then go the build directory and run "make check".
+Example:
+
+- tools/llvm/utman.sh all
+- (cd toolchain/hg-build-newlib/llvm; make check 2&gt;&amp;1 | tee log.checkfails)
+
+Some of the fails are because we didn't properly condition upon NaCl vs any other OS. Patch set 1 of CL: http://codereview.chromium.org/7841019/ changes this to:
+
+  Expected Passes    : 4569
+  Expected Failures  : 69
+  Unsupported Tests  : 776
+  Unresolved Tests   : 1
+  Unexpected Passes  : 2
+  Unexpected Failures: 211
+
+</ns0:content><ns0:updated>2011-09-07T17:55:40.000Z</ns0:updated><ns0:published>2011-09-07T17:55:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1711#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1711/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

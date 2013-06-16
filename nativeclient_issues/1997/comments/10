@@ -1,0 +1,121 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0AHRn47eCl7ImA9WhdWFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1997/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 904d43875f46da4495a13e080312fd2235f13ef5
+ Email: kschimpf@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Turn on using the partial decoder tables for the x86-64 validator. Shrinks size of the x86-64 sel_ldr by 12%.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1997
+Review URL: http://codereview.chromium.org/7828059
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6656 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	src/trusted/validator/x86/decoder/build.scons
+M	src/trusted/validator/x86/decoder/ncval_x86_decoder.gyp
+M	src/trusted/validator/x86/ncval_reg_sfi/build.scons
+A	src/trusted/validator/x86/ncval_reg_sfi/ncval_decode_tables.c
+A	src/trusted/validator/x86/ncval_reg_sfi/ncval_decode_tables.h
+M	src/trusted/validator/x86/ncval_reg_sfi/ncval_reg_sfi.gyp
+M	src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter.c
+M	src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter.h
+M	src/trusted/validator_x86/build.scons
+M	src/trusted/validator_x86/nccopycode.c
+M	src/trusted/validator_x86/ncdis_segments.c
+M	src/trusted/validator_x86/ncval.c
+D	src/trusted/validator_x86/ncval_decode_tables.c
+D	src/trusted/validator_x86/ncval_decode_tables.h
+A	src/trusted/validator_x86/testdata/64/3DNow.vd-rval
+A	src/trusted/validator_x86/testdata/64/AhNotSubRsp.vd-rval
+A	src/trusted/validator_x86/testdata/64/add_cs_gs_prefix.vd-rval
+A	src/trusted/validator_x86/testdata/64/add_mult_prefix.vd-rval
+A	src/trusted/validator_x86/testdata/64/add_rsp_r15.vd-rval
+A	src/trusted/validator_x86/testdata/64/addrex.vd-rval
+A	src/trusted/validator_x86/testdata/64/addrex2.vd-rval
+A	src/trusted/validator_x86/testdata/64/ambig-segment.vd-rval
+A	src/trusted/validator_x86/testdata/64/bad66.vd-rval
+A	src/trusted/validator_x86/testdata/64/bsf-mask.vd-rval
+A	src/trusted/validator_x86/testdata/64/bsr-mask.vd-rval
+A	src/trusted/validator_x86/testdata/64/bt.vd-rval
+A	src/trusted/validator_x86/testdata/64/call-ex.vd-rval
+A	src/trusted/validator_x86/testdata/64/call0.vd-rval
+A	src/trusted/validator_x86/testdata/64/call1.vd-rval
+A	src/trusted/validator_x86/testdata/64/call_aligned.vd-rval
+A	src/trusted/validator_x86/testdata/64/call_long.vd-rval
+A	src/trusted/validator_x86/testdata/64/call_not_aligned.vd-rval
+A	src/trusted/validator_x86/testdata/64/call_not_aligned_16.vd-rval
+A	src/trusted/validator_x86/testdata/64/call_short.vd-rval
+A	src/trusted/validator_x86/testdata/64/change-subregs.vd-rval
+A	src/trusted/validator_x86/testdata/64/cmpxchg.vd-rval
+A	src/trusted/validator_x86/testdata/64/cpuid.vd-rval
+A	src/trusted/validator_x86/testdata/64/dup-prefix.vd-rval
+A	src/trusted/validator_x86/testdata/64/extensions.vd-rval
+A	src/trusted/validator_x86/testdata/64/fpu.vd-rval
+A	src/trusted/validator_x86/testdata/64/fs_use.vd-rval
+A	src/trusted/validator_x86/testdata/64/hlt.vd-rval
+A	src/trusted/validator_x86/testdata/64/inc67.vd-rval
+A	src/trusted/validator_x86/testdata/64/incno67.vd-rval
+A	src/trusted/validator_x86/testdata/64/indirect_jmp_masked.vd-rval
+A	src/trusted/validator_x86/testdata/64/indirect_jmp_not_masked.vd-rval
+A	src/trusted/validator_x86/testdata/64/invalid_base.vd-rval
+A	src/trusted/validator_x86/testdata/64/invalid_base_store.vd-rval
+A	src/trusted/validator_x86/testdata/64/invalid_width_index.vd-rval
+A	src/trusted/validator_x86/testdata/64/jmp0.vd-rval
+A	src/trusted/validator_x86/testdata/64/jump_atomic.vd-rval
+A	src/trusted/validator_x86/testdata/64/jump_not_atomic.vd-rval
+A	src/trusted/validator_x86/testdata/64/jump_not_atomic_1.vd-rval
+A	src/trusted/validator_x86/testdata/64/jump_outside.vd-rval
+A	src/trusted/validator_x86/testdata/64/jump_overflow.vd-rval
+A	src/trusted/validator_x86/testdata/64/jump_underflow.vd-rval
+A	src/trusted/validator_x86/testdata/64/lea-add-rsp.vd-rval
+A	src/trusted/validator_x86/testdata/64/lea-rsp.vd-rval
+A	src/trusted/validator_x86/testdata/64/lea.vd-rval
+A	src/trusted/validator_x86/testdata/64/legacy.vd-rval
+A	src/trusted/validator_x86/testdata/64/mmx.vd-rval
+A	src/trusted/validator_x86/testdata/64/mov-esi-nop-use.vd-rval
+A	src/trusted/validator_x86/testdata/64/mov-lea-rbp-bad-1.vd-rval
+A	src/trusted/validator_x86/testdata/64/mov-lea-rbp-bad-2.vd-rval
+A	src/trusted/validator_x86/testdata/64/mov-lea-rbp-bad-3.vd-rval
+A	src/trusted/validator_x86/testdata/64/mov-lea-rbp-bad-4.vd-rval
+A	src/trusted/validator_x86/testdata/64/mov-lea-rbp-bad-5.vd-rval
+A	src/trusted/validator_x86/testdata/64/mov-lea-rbp.vd-rval
+A	src/trusted/validator_x86/testdata/64/mov-lea-rsp.vd-rval
+A	src/trusted/validator_x86/testdata/64/mov_esp_add_rsp_r15.vd-rval
+A	src/trusted/validator_x86/testdata/64/mov_rbp_2_rsp.vd-rval
+A	src/trusted/validator_x86/testdata/64/movlps-ex.vd-rval
+A	src/trusted/validator_x86/testdata/64/movsbw.vd-rval
+A	src/trusted/validator_x86/testdata/64/mv_ebp_add_crossing.vd-rval
+A	src/trusted/validator_x86/testdata/64/mv_ebp_add_rbp_r15.vd-rval
+A	src/trusted/validator_x86/testdata/64/mv_ebp_alone.vd-rval
+A	src/trusted/validator_x86/testdata/64/nacl_illegal.vd-rval
+A	src/trusted/validator_x86/testdata/64/nops.vd-rval
+A	src/trusted/validator_x86/testdata/64/pop-rbp.vd-rval
+A	src/trusted/validator_x86/testdata/64/prefix-2.vd-rval
+A	src/trusted/validator_x86/testdata/64/prefix-3.vd-rval
+A	src/trusted/validator_x86/testdata/64/prefix-single.vd-rval
+A	src/trusted/validator_x86/testdata/64/push-memoff.vd-rval
+A	src/trusted/validator_x86/testdata/64/rbp67.vd-rval
+A	src/trusted/validator_x86/testdata/64/read_const_ptr.vd-rval
+A	src/trusted/validator_x86/testdata/64/rep_tests.vd-rval
+A	src/trusted/validator_x86/testdata/64/return.vd-rval
+A	src/trusted/validator_x86/testdata/64/rex_not_last.vd-rval
+A	src/trusted/validator_x86/testdata/64/rip-relative.vd-rval
+A	src/trusted/validator_x86/testdata/64/rip67.vd-rval
+A	src/trusted/validator_x86/testdata/64/segment_aligned.vd-rval
+A	src/trusted/validator_x86/testdata/64/segment_assign.vd-rval
+A	src/trusted/validator_x86/testdata/64/segment_not_aligned.vd-rval
+A	src/trusted/validator_x86/testdata/64/segment_store.vd-rval
+A	src/trusted/validator_x86/testdata/64/sse.vd-rval
+A	src/trusted/validator_x86/testdata/64/stack_regs.vd-rval
+A	src/trusted/validator_x86/testdata/64/stosd-bad.vd-rval
+A	src/trusted/validator_x86/testdata/64/stosd.vd-rval
+A	src/trusted/validator_x86/testdata/64/stosd67.vd-rval
+A	src/trusted/validator_x86/testdata/64/stosdno67.vd-rval
+A	src/trusted/validator_x86/testdata/64/strings.vd-rval
+A	src/trusted/validator_x86/testdata/64/sub-add-rsp.vd-rval
+A	src/trusted/validator_x86/testdata/64/sub-rsp.vd-rval
+A	src/trusted/validator_x86/testdata/64/ud2.vd-rval
+A	src/trusted/validator_x86/testdata/64/update-rsp.vd-rval
+A	src/trusted/validator_x86/testdata/64/valid_and_store.vd-rval
+A	src/trusted/validator_x86/testdata/64/valid_base_only.vd-rval
+A	src/trusted/validator_x86/testdata/64/valid_lea_store.vd-rval
+A	src/trusted/validator_x86/testdata/64/x87.vd-rval</ns0:content><ns0:updated>2011-09-08T16:35:37.000Z</ns0:updated><ns0:published>2011-09-08T16:35:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1997#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1997/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

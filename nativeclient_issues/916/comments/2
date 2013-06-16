@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEIHSX47eCl7ImA9Wx5WGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/916/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I think the reason glibc uses "-include" instead of "include" is this:
+Suppose you change Makerules or make_sysd_rules.py so that the
+generated sysd-rules is syntactically invalid.  If you then fix these
+files and re-run, make will still exit with an error, and you will
+have to manually delete sysd-rules and re-run.
+
+This doesn't seem like a good enough reason to ignore errors, though.
+</ns0:content><ns0:updated>2010-09-30T14:22:18.000Z</ns0:updated><ns0:published>2010-09-30T14:22:18.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=916#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/916/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

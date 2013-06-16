@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCRn47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/535</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">Currently, a runtime sandbox violation -- such as a bad address in a load/store, an unaligned 
+indirect jump/call target, or a misaligned return from trusted code -- has different behavior on 
+each of our platforms.  On our pure-SFI platforms (ARM and x86-64), the address is simply 
+coerced into a valid value, without regard to correctness.  While this is a reasonable performance 
+concession for deployed apps, it makes debugging difficult.
+
+Developers should be able to produce a version of their NaCl module that generates precise 
+faults whenever the sandbox is violated.  I call this the &amp;quot;precise sandbox.&amp;quot;  On ARM, for example, 
+this would include
+- Whenever an out-of-bounds address is used in a store.
+- Whenever an indirect jump/call target is misaligned (including returns within untrusted code).
+- Whenever the service runtime is called with a misaligned return address.
+
+At first glance, this looks like it'd require changes in the compiler, validator, and runtime.
+- The compiler must generate slightly different sequences that fault precisely and predictably.  An 
+instruction that can invoke a debugger, and which is recognizable, would be best.  This could 
+also be a call to a 'bail' trampoline.
+- If this sequence causes a program to look invalid, the validator must be updated to recognize it 
+(perhaps under control of a flag).  (We could optionally require such executables to run without 
+validation, but this may mask other problems!)
+- The runtime's NaClSandboxCodeAddr function would need to be replaced by one that faults.  
+(This change might as well be on all the time!)</ns0:content><ns0:updated>2011-07-29T00:12:47.000Z</ns0:updated><ns0:published>2010-05-28T16:53:46.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/104834035110555747685/</ns2:uri><ns2:username>ile...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/elijahtaylor@google.com/</ns2:uri><ns2:username>elijahtaylor@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Support a "precise sandbox" where sandbox violations generate precise faults</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Usability</ns2:label><ns2:label>Debugging</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/535/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=535" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/535" rel="self" type="application/atom+xml" /><ns2:stars>4</ns2:stars><ns2:id>535</ns2:id></ns0:entry>

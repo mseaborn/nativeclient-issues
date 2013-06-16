@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIEQX47eCl7ImA9WhVREUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2667</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">./scons bitcode=1 platform=x86-32 pnacl_generate_pexe=1 run_pm_manifest_file_chrome_browser_test
+
+passes on a 64-bit linux machine    (running 32-bit chrome, 32-bit nacl)
+fails on a 32-bit linux/mac machine (running 32-bit chrome, 32-bit nacl)
+
+TODO: figure out why.
+
+
+PPAPI_PROXY_PLUGIN : PPP_Messaging::HandleMessage^M
+PPAPI_PROXY_BROWSER: PPP_Messaging::HandleMessage: No error^M
+worker_thread_start: worker 0x10046078^M
+RunToCompletion: Dequeuing...^M
+RunToCompletion: found work 0x10046630^M
+RunToCompletion: scanning for init^M
+RunToCompletion: comparing against init^M
+ns = 37^M
+RunToCompletion:  invoking table entry 0^M
+RunToCompletion: posting reply NaClSrpcClientCtor succeeded^M
+^M
+PPAPI_PROXY_PLUGIN : PPB_Core::IsMainThread^M
+PPAPI_PROXY_BROWSER: PPB_Core::CallOnMainThread_upcall: delay_in_milliseconds=0^M
+PPAPI_PROXY_BROWSER: RunRemoteCallback: result=0^M
+PPAPI_PROXY_PLUGIN : CompletionCallbackTable::RemoveCallback id: 1^M
+[ 23781 ms] |||| ^M
+[ 23781 ms] |||| [SERVER_ERROR] Did not hear from the test for 20.0 seconds.^M
+[ 23781 ms] |||| Heard from Javascript 19.1 seconds ago.^M
+[ 23781 ms] |||| The renderer probably hung or crashed.^M
+KILLING the browser^M
+Unhandled exception in thread started by ^M
+Error in sys.excepthook:^M
+^M
+Original exception was:^M
+^M
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)^M
+[  FAILED  ] nacl_newlib.run_pm_manifest_file_chrome_browser_test (1950 ms)^M
+
+
+In a good run, it would have continued on from there with an AnchoredResource dtor:
+
+
+[26782,0:19:38:54.046530] is_abandoned: 0^M
+[26782,0:19:38:54.046570] ~AnchoredResource: this 0x10066f00^M
+PPAPI_PROXY_PLUGIN : PPB_GetInterface(&amp;amp;#39;PPB_Var;1.1&amp;amp;#39;)^M
+PPAPI_PROXY_PLUGIN : PPB_GetInterface(&amp;amp;#39;PPB_Var;1.1&amp;amp;#39;): 0x3ef05084^M
+PPAPI_PROXY_PLUGIN : PPB_Var::VarFromUtf8: data=&amp;amp;#39;NaClSrpcClientCtor succeeded^M
+&amp;amp;#39;^M
+PPAPI_PROXY_PLUGIN : PPB_Var::VarToUtf8: as_id=2^M
+...</ns0:content><ns0:updated>2012-03-19T20:55:00.000Z</ns0:updated><ns0:published>2012-03-16T20:45:50.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>run_pm_manifest_file_chrome_browser_test fails when clang (8042) is newer than llc (7898)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2667/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2667" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2667" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2667</ns2:id></ns0:entry>

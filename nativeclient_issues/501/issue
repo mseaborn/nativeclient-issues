@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0EERn47eCl7ImA9WhVQE0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/501</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">suppose we have the following code sequence in a 16-byte block:
+
+L:  r &amp;lt;- mem[loc]
+    r &amp;lt;- r &amp;amp; ~0xc000000f
+    j *r
+    nop
+
+words at L+4 and L+8 is a pseudo-atomic sequence.  a thread A executes this 
+sequence, so it is in A's processor's icache.  next, A deletes this code, 
+replacing it with HLTs.  then A inserts over this memory the following:
+
+L:  r &amp;lt;- mem[loc]
+    r &amp;lt;- r+1
+X:  r &amp;lt;- r+2
+    r &amp;lt;- r+3
+
+R:  r &amp;lt;- mem[loc']
+    j X
+    nop
+    nop
+
+which should validate -- assume that L and R are in two separate cache 
+lines -- and then runs the code in R.  the flush of the dcache, when the 
+icache is not snoopy, means nothing.  when it runs the code in R, that new 
+code is loaded into the icache, but the jump would land in the stale code, 
+breaking the pseudo-atomic sequence and allowing a wild jump, e.g., return-
+to-libc style of attack.
+
+mulithreading isn't even required.  no symmetric multiprocessor with two 
+separate icaches -- just one core with careful cache management suffices, 
+as long as the icache does not snoop on the dcache.
+
+what's needed is dsb to make data writes globally visible as before, and 
+then an icache flush (affecting all cores/processors), between the tail and  
+the head writes.  this is required for security.  after the head writes 
+another dsb/icache-flush should be done for robustness/correctness.</ns0:content><ns0:updated>2012-04-01T20:20:07.000Z</ns0:updated><ns0:published>2010-05-18T06:07:02.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Dynamic code insertion/deletion is tricky on ARM</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Security</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>DynamicLoading</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>SharedLibrary</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/501/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=501" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/501" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:blocking>
+			<ns2:id>502</ns2:id></ns2:blocking><ns2:closedDate>2012-04-01T20:20:07.000Z</ns2:closedDate><ns2:id>501</ns2:id></ns0:entry>

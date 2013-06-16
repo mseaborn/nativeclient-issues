@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0cBQX47eCl7ImA9WhZQFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1172</ns0:id><ns0:author>
+			<ns0:name>kuz...@gmail.com</ns0:name><ns0:uri>/u/114514558579102469412/</ns0:uri></ns0:author><ns0:content type="html">chrome 9.0.576.0 dev 
+
+&amp;quot;\Local Settings\Application Data\Google\Chrome\Application\chrome.exe&amp;quot; --no-sandbox --enable-nacl
+
+1,open http://naclports.googlecode.com/svn/trunk/src/gallery/pi_generator/pi_generator.html
+2,refresh it times see crash
+
+(a88.a8c): Access violation - code c0000005 (!!! second chance !!!)
+eax=0012f378 ebx=015dad50 ecx=0012f328 edx=00000001 esi=0111e848 edi=00000000
+eip=020be6af esp=0012f328 ebp=0012f418 iopl=0         nv up ei pl nz ac pe nc
+cs=001b  ss=0023  ds=0023  es=0023  fs=003b  gs=0000             efl=00000216
+chrome_1c30000!plugin::LoadNaClAppNotify::RunFromFile+0x7a:
+020be6af ff7708          push    dword ptr [edi+8]    ds:0023:00000008=????????
+0:000&amp;gt; .exr -1
+ExceptionAddress: 020be6af (chrome_1c30000!plugin::LoadNaClAppNotify::RunFromFile+0x0000007a)
+   ExceptionCode: c0000005 (Access violation)
+  ExceptionFlags: 00000000
+NumberParameters: 2
+   Parameter[0]: 00000000
+   Parameter[1]: 00000008
+Attempt to read from address 00000008</ns0:content><ns0:updated>2011-04-21T21:24:10.000Z</ns0:updated><ns0:published>2010-11-15T04:02:40.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>chrome_1c30000!plugin::LoadNaClAppNotify::RunFromFile crash</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1172/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1172" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1172" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-04-21T21:24:10.000Z</ns2:closedDate><ns2:id>1172</ns2:id></ns0:entry>

@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUcGSH47eCl7ImA9WhRVGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2097/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7607
+
+------------------------------------------------------------------------
+r7607 | mseaborn@chromium.org | Tue Jan 17 15:26:10 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/inbrowser_crash_test/nacl.scons?r1=7607&amp;r2=7606&amp;pathrev=7607
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/inbrowser_crash_test/crash_dump_tester.py?r1=7607&amp;r2=7606&amp;pathrev=7607
+
+Breakpad: Enable crash dump tests on Mac OS X
+
+Also remove an unused import.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2097
+TEST=run_inbrowser_crash_in_syscall_test... disable_dynamic_plugin_loading=1
+
+Review URL: https://chromiumcodereview.appspot.com/9112051
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-01-17T23:30:29.000Z</ns0:updated><ns0:published>2012-01-17T23:30:29.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2097#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2097/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

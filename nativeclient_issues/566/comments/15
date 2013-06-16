@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEBSX47eCl7ImA9WhZTF04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/566/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>pol...@google.com</ns0:name><ns0:uri>/u/101953680983947802512/</ns0:uri></ns0:author><ns0:content type="html">Sang is working on proxying PPB_FileRef and PPB_FileIO PPAPI interfaces. We aim to have these available as dev/experimental interface in Baltic. Sang, please add pointers to relevant CLs.
+
+Nicholas and I also looked into alternative POSIX-like approaches a-la NaClFile from NPAPI version of the plugin. This is very experimental at this point. We are still working out the interface and implementation details. So far the following CLs have been checked in.
+
+Proxy support for prefetching URLs as NaClDesc:
+http://codereview.chromium.org/6538041/
+
+Proxy test + place holders for testing untrusted interface:
+http://codereview.chromium.org/6538069/</ns0:content><ns0:updated>2011-03-21T18:37:38.000Z</ns0:updated><ns0:published>2011-03-21T18:37:38.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>nfulla...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 15 by pol...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=566#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/566/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

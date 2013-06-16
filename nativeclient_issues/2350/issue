@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEQBRn47eCl7ImA9WhVTEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2350</ns0:id><ns0:author>
+			<ns0:name>jasonw...@google.com</ns0:name><ns0:uri>/u/110605953789916471800/</ns0:uri></ns0:author><ns0:content type="html">
+src/include/nacl_compiler_annotations.h:34:# define UNREFERENCED_PARAMETER(P) (P)
+src/include/nacl_compiler_annotations.h:36:# define UNREFERENCED_PARAMETER(P) do { (void) P; } while (0)
+src/shared/srpc/nacl_srpc_internal.h:75:# define UNREFERENCED_PARAMETER(P) (P)
+src/shared/srpc/nacl_srpc_internal.h:77:# define UNREFERENCED_PARAMETER(P) do { (void) P; } while (0)
+src/third_party/dlmalloc/malloc.c:719:# define UNREFERENCED_PARAMETER(P) (P)
+src/third_party/dlmalloc/malloc.c:721:# define UNREFERENCED_PARAMETER(P) do { (void) P; } while (0)
+tools/srpcgen.py:59:#define UNREFERENCED_PARAMETER(P) do { (void) P; } while (0)
+</ns0:content><ns0:updated>2012-02-24T17:59:17.000Z</ns0:updated><ns0:published>2011-10-11T20:16:03.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>Why do we have multiple definitions of UNREFERENCED_PARAMETER</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Mstone-21</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>PlatformDifference</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2350/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2350" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2350" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2350</ns2:id></ns0:entry>

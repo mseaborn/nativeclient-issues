@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck8FQX47eCl7ImA9WhVTFU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2623/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">A clue is that running this test leaves behind a nacl64.exe process, which is bad in itself.  Debugging this process shows that it has two threads, both of which are blocked:
+
+Thread 1:
+
+ 	ntdll.dll!ZwWaitForSingleObject()  + 0xa bytes	
+ 	KernelBase.dll!WaitForSingleObjectEx()  + 0x9c bytes	
+&gt;	nacl64.exe!NaCl::ConditionVariable::TimedWaitRel(NaCl::Lock &amp; user_lock={...}, NaCl::TimeDelta max_time={...})  Line 75 + 0x1a bytes	C++
+ 	nacl64.exe!NaCl::ConditionVariable::Wait(NaCl::Lock &amp; user_lock={...})  Line 104	C++
+ 	nacl64.exe!NaClCondVarWait(NaClCondVar * cvp=0x000000000022d368, NaClMutex * mp=0x000000000022d360)  Line 84	C++
+ 	nacl64.exe!NaClXCondVarWait(NaClCondVar * cvp=0x000000000022d368, NaClMutex * mp=0x000000000022d360)  Line 81 + 0xf bytes	C
+ 	nacl64.exe!NaClWaitForStartModuleCommand(NaClApp * nap=0x000000000022d2d0)  Line 1155	C
+ 	nacl64.exe!NaClMainForChromium(int handle_count=1, void * const * handles=0x00000000003ef580, int debug=0)  Line 232 + 0xd bytes	C
+ 	nacl64.exe!NaClListener::OnStartSelLdr(std::vector&lt;int,std::allocator&lt;int&gt; &gt; * handles=[1](4))  Line 132	C++
+
+Thread 2:
+
+ 	ntdll.dll!NtFsControlFile()  + 0xa bytes	
+ 	KernelBase.dll!ConnectNamedPipe()  + 0x6f bytes	
+&gt;	nacl64.exe!nacl::ReceiveDatagram(void * handle=0x0000000000000148, nacl::MessageHeader * message=0x00000000028ff4e8, int flags=0)  Line 530 + 0x10 bytes	C++
+ 	nacl64.exe!NaClReceiveDatagram(void * socket=0x0000000000000148, NaClMessageHeader * message=0x00000000028ff4e8, int flags=0)  Line 59	C++
+ 	nacl64.exe!NaClDescImcBoundDescAcceptConn(NaClDesc * vself=0x00000000003e9ae0, NaClDesc * * result=0x00000000028ff598)  Line 95 + 0x16 bytes	C
+ 	nacl64.exe!NaClSimpleServiceAcceptConnection(NaClSimpleService * self=0x0000000001ef00c0, NaClSimpleServiceConnection * * out=0x00000000028ff608)  Line 258 + 0x26 bytes	C
+ 	nacl64.exe!NaClSimpleServiceAcceptAndSpawnHandler(NaClSimpleService * self=0x0000000001ef00c0)  Line 306 + 0x1b bytes	C
+ 	nacl64.exe!NaClSecureServiceAcceptAndSpawnHandler(NaClSimpleService * vself=0x0000000001ef00c0)  Line 1583 + 0xb bytes	C
+ 	nacl64.exe!AcceptThread(NaClThreadInterface * tif=0x0000000001ef0150)  Line 358 + 0x10 bytes	C
+ 	nacl64.exe!NaClThreadInterfaceStart(void * data=0x0000000001ef0150)  Line 26 + 0xd bytes	C
+ 	nacl64.exe!_callthreadstartex()  Line 348 + 0x17 bytes	C
+
+I suspect David's SelLdrLauncher refactoring may have caused this, which consists of these changes:
+http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7867
+http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7884
+http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7885
+http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7895
+
+[CC'ing current NaCl sheriff]
+</ns0:content><ns0:updated>2012-02-29T15:53:30.000Z</ns0:updated><ns0:published>2012-02-29T15:53:30.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>bradc...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2623#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2623/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

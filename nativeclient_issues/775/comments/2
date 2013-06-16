@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMCSX47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/775/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2916
+
+------------------------------------------------------------------------
+r2916 | eugenis@google.com | Thu Aug 05 04:01:12 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/posix/nacl_desc_conn_cap.c?r1=2916&amp;r2=2915&amp;pathrev=2916
+
+Fix one uninitialized and one incorrectly initialized arguments in sendmsg syscall.
+Found with Valgrind.
+
+BUG=775
+Review URL: http://codereview.chromium.org/3026044
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:54:28.000Z</ns0:updated><ns0:published>2011-01-21T22:54:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=775#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/775/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0YBSX47eCl7ImA9WxFaFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/696</ns0:id><ns0:author>
+			<ns0:name>ali00000...@gmail.com</ns0:name><ns0:uri>/u/113506611525348822942/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+Building using gclient
+Revision 2690
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Ubuntu Linux 9.10
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. cd native_client/tests/earth
+2. make release nacl run
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+Expected an indication of success.
+
+Output:
+
+/mnt/hgfs/arianne/home/code/research/starlight/nacl/native_client/src/third_party/nacl_sdk/linux/sdk/nacl-sdk/bin/nacl-g++ earth.cc  -I/mnt/hgfs/arianne/home/code/research/starlight/nacl/native_client/..  -Wall -Werror -O3 -fomit-frame-pointer    -lav -lsrpc -lpthread -lm -o earth_release.nexe 
+make: /mnt/hgfs/arianne/home/code/research/starlight/nacl/native_client/src/third_party/nacl_sdk/linux/sdk/nacl-sdk/bin/nacl-g++: Command not found
+make: *** [earth_release.nexe] Error 127
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+NACL_BIN_PATH in native_client/common/Makefile.mk is:
+ 
+$(NATIVE_CLIENT)/src/third_party/nacl_sdk/$(PLATFORM)/sdk/nacl-sdk/bin
+
+should be:
+
+$(NATIVE_CLIENT)/toolchain/$(PLATFORM)_x86/sdk/nacl-sdk/bin
+</ns0:content><ns0:updated>2010-07-19T22:39:18.000Z</ns0:updated><ns0:published>2010-07-14T23:54:39.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>native_client/common/Makefile.mk assumes incorrect NACL_BIN_PATH</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/696/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=696" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/696" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:id>696</ns2:id></ns0:entry>

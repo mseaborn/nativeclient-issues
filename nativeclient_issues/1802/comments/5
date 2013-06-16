@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QESH47eCl7ImA9WhZbF0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1802/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5748
+
+------------------------------------------------------------------------
+r5748 | bsy@google.com | Wed Jun 22 15:19:50 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/nacl_log.c?r1=5748&amp;r2=5747&amp;pathrev=5748
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/nacl_log.h?r1=5748&amp;r2=5747&amp;pathrev=5748
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/elf_util.c?r1=5748&amp;r2=5747&amp;pathrev=5748
+
+This CL enables module-specific logging verbosity levels.
+
+Each source file using logging should define NACL_LOG_MODULE_NAME to
+be a string that is the name of the module before including
+nacl_log.h.  At runtime, NACLVERBOSTY may be set to a comma-separated
+list of name=level values, with the first being just a number for the
+global verbosity level (when NACL_LOG_MODULE_NAME is not set).
+
+Tested by running srpc_hw with NACLVERBOSITY=0,elf_util=4 and with
+NACLVERBOSITY=4,elf_util=0 and observing the logging output
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1802
+TEST= manual.
+Review URL: http://codereview.chromium.org/7211036
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-06-22T22:21:49.000Z</ns0:updated><ns0:published>2011-06-22T22:21:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1802#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1802/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04AR347eCl7ImA9WhVVFkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2741</ns0:id><ns0:author>
+			<ns0:name>jbau...@chromium.org</ns0:name><ns0:uri>/u/110174592293525866339/</ns0:uri></ns0:author><ns0:content type="html">A bunch of NaCl syscalls are taking way too much time, because ref counting is taking forever. For example, in mini ninjas for every NaClCommonSysMutex_Lock I see probably 4 WaitForSingleObject and ReleaseMutex calls. They're taking around 40% of the application time.
+
+Switching the NaCl::LockImpl from using a Mutex to a CRITICAL_SECTION probably doubles the framerate in Mini Ninjas (right after the loading screen, when the window is small) because it avoids all of those syscalls. Apparently the code originally was using CRITICAL_SECTION, but it was changed to Mutex in the distant past for some reason.
+
+Switching to just using atomic instructions for refcounts would be even better. See base::AtomicRefCount.
+
+
+</ns0:content><ns0:updated>2012-05-10T02:12:26.000Z</ns0:updated><ns0:published>2012-04-18T23:27:24.000Z</ns0:published><ns2:status>Accepted</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>NaClRefCountRef and NaClRefCountUnref really shouldn't be using Mutex on Windows</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-20</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2741/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2741" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2741" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>2741</ns2:id></ns0:entry>

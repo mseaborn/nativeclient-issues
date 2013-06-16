@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEAQn47eCl7ImA9WhdQFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2127/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: d314a9f30af987bdd208ec72f530aca2d320c1ee
+ Email: halyavin@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Extend IRT with nacl_irt_resource_open interface.
+
+We need to solve the problem that we need to provide pointers to PPP_Initialize and PPP_GetInterface in the program before manifest file loading is working and so this program can be loaded.
+
+In this CL, we split PpapiPluginMain in two parts so that ld.so can call the first part, load program, and then call the second part to provide pointers to these functions. This way is preferable since it make code in ld.so simplier.
+
+New IRT interface provides a single function that returns a file descriptor by file name. The name service and manifest service channels are initialized at first use of this function. If an error happens during initialization, the function returns EIO.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2127
+TEST= run_irt_manifest_file_chrome_browser_test
+Review URL: http://codereview.chromium.org/7605029
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6453 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	src/shared/ppapi_proxy/plugin_globals.cc
+M	src/shared/ppapi_proxy/ppruntime.h
+M	src/untrusted/irt/irt.h
+A	src/untrusted/irt/irt_entry_ppapi.c
+M	src/untrusted/irt/irt_interfaces.c
+M	src/untrusted/irt/irt_interfaces.h
+A	src/untrusted/irt/irt_manifest.c
+M	src/untrusted/irt/nacl.scons
+A	tests/manifest_file/irt_manifest_file.nmf
+A	tests/manifest_file/irt_manifest_file_test.cc
+A	tests/manifest_file/irt_manifest_file_test.html
+M	tests/manifest_file/nacl.scons</ns0:content><ns0:updated>2011-08-17T09:17:23.000Z</ns0:updated><ns0:published>2011-08-17T09:17:23.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2127#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2127/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

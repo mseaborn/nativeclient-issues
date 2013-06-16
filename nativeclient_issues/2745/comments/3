@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEMGR347eCl7ImA9WhVVFEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2745/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8510
+
+------------------------------------------------------------------------
+r8510 | robertm@google.com | Mon May 07 10:37:33 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pnacl_ld_experiments/hello1.c?r1=8510&amp;r2=8509&amp;pathrev=8510
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pnacl_ld_experiments/Makefile?r1=8510&amp;r2=8509&amp;pathrev=8510
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pnacl_ld_experiments/keep_alive.x?r1=8510&amp;r2=8509&amp;pathrev=8510
+
+Build and call into a shared version of newlib.
+
+Added some more uses.
+Needed quite a few workarounds, will file bugs for those.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2745
+TEST= manual 
+Review URL: https://chromiumcodereview.appspot.com/10377018
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-05-07T17:40:26.000Z</ns0:updated><ns0:published>2012-05-07T17:40:26.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2745#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2745/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

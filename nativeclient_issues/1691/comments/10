@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0ANSX47eCl7ImA9WhdQFkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1691/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=6485
+
+------------------------------------------------------------------------
+r6485 | mcgrathr@chromium.org | Thu Aug 18 13:30:31 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_standard.py?r1=6485&amp;r2=6484&amp;pathrev=6485
+
+Revert "Drop 'chrome_browser_tests without IRT' step from buildbots"
+
+This reverts r6100, aside from changing the comment.
+
+Bennet points out that for development it is worthwhile to have a non-IRT
+test model supported going forward.  Otherwise we cannot test any part of
+the plugin without doing full integration tests of IRT support and
+everything about it.
+
+I think we want to reorganize how we collect the tests so that we can meet
+that need in some way cleaner than preserving the irt=0 scons option as
+such.  But for now, we are going back to leaving that option available and
+testing it on the bots.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1691
+TEST= trybots
+
+R=ncbray@google.com
+
+Review URL: http://codereview.chromium.org/7672007
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-08-18T20:36:38.000Z</ns0:updated><ns0:published>2011-08-18T20:36:38.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1691#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1691/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

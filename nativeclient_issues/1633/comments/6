@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU8GRn47eCl7ImA9WhZXFEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1633/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5148
+
+------------------------------------------------------------------------
+r5148 | bsy@google.com | Tue May 03 17:07:05 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_all_modules.c?r1=5148&amp;r2=5147&amp;pathrev=5148
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_stack_safety.h?r1=5148&amp;r2=5147&amp;pathrev=5148
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_stack_safety.c?r1=5148&amp;r2=5147&amp;pathrev=5148
+
+win32 doesn't like TLS variables being used from DLLs, so switch to
+using the TlsAlloc API.  there is now a module init/fini pair for
+this, which is invoked from NaClAllModulesInit().
+
+we still don't know whether TlsGetValue can be reliably open-coded in
+the exception handler, but our suspicions are that this is the case.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1633
+Review URL: http://codereview.chromium.org/6909010
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-04T00:10:27.000Z</ns0:updated><ns0:published>2011-05-04T00:10:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1633#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1633/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

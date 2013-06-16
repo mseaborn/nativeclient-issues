@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08ESH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1058/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3563
+
+------------------------------------------------------------------------
+r3563 | kschimpf@google.com | Tue Oct 26 10:03:17 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/modeled_insts.txt?r1=3563&amp;r2=3562&amp;pathrev=3563
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/bad66.val?r1=3563&amp;r2=3562&amp;pathrev=3563
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nacl_disallows.enum?r1=3563&amp;r2=3562&amp;pathrev=3563
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/32/modeled_insts.txt?r1=3563&amp;r2=3562&amp;pathrev=3563
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode_forms.c?r1=3563&amp;r2=3562&amp;pathrev=3563
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/bad66.dis?r1=3563&amp;r2=3562&amp;pathrev=3563
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/32/ncdis_iter_test.internal?r1=3563&amp;r2=3562&amp;pathrev=3563
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/bad66.rval?r1=3563&amp;r2=3562&amp;pathrev=3563
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/ncdis_iter_test.internal?r1=3563&amp;r2=3562&amp;pathrev=3563
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_trans.c?r1=3563&amp;r2=3562&amp;pathrev=3563
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/ncdis_iter_test.input?r1=3563&amp;r2=3562&amp;pathrev=3563
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncopcode_opcode_flags.enum?r1=3563&amp;r2=3562&amp;pathrev=3563
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode_tablegen.c?r1=3563&amp;r2=3562&amp;pathrev=3563
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/bad66.hex?r1=3563&amp;r2=3562&amp;pathrev=3563
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_illegal.c?r1=3563&amp;r2=3562&amp;pathrev=3563
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_state.c?r1=3563&amp;r2=3562&amp;pathrev=3563
+
+Don't allow Data 16 prefix (66) unless it is needed (i.e. explicitly opt-in)
+for the instruction, in the x86-64 validator. This change makes sure that
+multiple byte instructions that have both 66 and No prefix variants, will
+not incorrectly decode to the wrong instruction.
+
+Also fixes:
+
+(1) Simplifies Modrm Opcode flags so that OpcodeUsesModRm is defined for
+all instructions that refer to a ModRm byte. When checking at runtime,
+no longer need to check both OpcodeInModRm and OpcodeUsesModRm.
+
+(2) Fix cases where FS/GS segment prefixes must be added to an immediate
+address, due to the use of the the 64/65 prefixes.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1058
+TEST=src/trusted/validator_x86/testdata/64/modeled_insts.txt
+TEST=src/trusted/validator_x86/testdata/64/bad66.dis
+TEST=src/trusted/validator_x86/testdata/64/bad66.val
+TEST=src/trusted/validator_x86/testdata/64/bad66.rval
+TEST=src/trusted/validator_x86/testdata/64/ncdis_iter_test.internal
+TEST=src/trusted/validator_x86/testdata/64/ncdis_iter_test.input
+
+Review URL: http://codereview.chromium.org/4137001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:16:49.000Z</ns0:updated><ns0:published>2011-01-21T23:16:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1058#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1058/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

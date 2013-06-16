@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUEARn47eCl7ImA9WhRSGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2335/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">Looks like we still carry few headers which are not public interfaces and this still makes it impossible to build toolchain about scons artifacts:
+
+$  wget http://gsdview.appspot.com/nativeclient-archive2/toolchain/7252/naclsdk_linux_x86.tgz -O- -o/dev/null| tar xSvpf naclsdk_linux_x86.tgz | grep include/.*nacl.*h | grep -v 'c[+][+]'
+sdk/nacl-sdk/x86_64-nacl/include/sys/nacl_imc_api.h
+sdk/nacl-sdk/x86_64-nacl/include/sys/nacl_nice.h
+sdk/nacl-sdk/x86_64-nacl/include/sys/nacl_name_service.h
+sdk/nacl-sdk/x86_64-nacl/include/sys/nacl_kern_rpc.h
+sdk/nacl-sdk/x86_64-nacl/include/sys/nacl_syscalls.h
+sdk/nacl-sdk/x86_64-nacl/include/bits/nacl_imc_api.h
+sdk/nacl-sdk/x86_64-nacl/include/bits/nacl_syscalls.h
+</ns0:content><ns0:updated>2011-11-21T09:27:27.000Z</ns0:updated><ns0:published>2011-11-21T09:27:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by k...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2335#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2335/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

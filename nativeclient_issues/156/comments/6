@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4GQ347eCl7ImA9WxFXGUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/156/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">There is a problem with option (ii).  glibc-supplied libraries are not
+the only libraries that will link against ld.so.  Normal programs will
+link against it too, because ld.so provides ___tls_get_addr, which
+libraries using TLS can use.  ld.so is not on the library search path
+but is added by /usr/lib/libc.so (which is a linker script).
+
+(Note that things are a little different in FreeBSD's libc, where
+___tls_get_addr is provided by both ld.so and libc.so, and normal
+programs get it from libc.so.)
+
+I am reluctant to have nacl-glibc ship two copies of ld.so with 1 byte
+difference.
+
+There is clearly no security problem with changing sel_ldr to accept
+ET_DYN objects and treat them like ET_EXEC objects, as in option
+(iii).  However, the question is what it means to have an ET_DYN
+object with a start address of 0x20000.  Does it mean "load the
+segment at 0x20000" (as with ET_EXEC normally) or "load the segment at
+X + 0x20000 for any X" (as with ET_DYN normally)?
+
+My concern is that a future sel_ldr might want to support ET_DYN
+executables properly, and choose the start address itself.  There is
+already a good reason for doing this: it would be desirable to load
+ld.so at a high address so that the main executable can be loaded at
+0x20000 (see
+http://code.google.com/p/nativeclient/wiki/InitialDynamicLoad).
+</ns0:content><ns0:updated>2010-05-27T14:02:02.000Z</ns0:updated><ns0:published>2010-05-27T14:02:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=156#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/156/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

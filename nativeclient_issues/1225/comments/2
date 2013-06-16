@@ -1,0 +1,47 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUENQX47eCl7ImA9WhZTEk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1225/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Tried removing "env.set('SKIP_OPT', '1')" in the pnacl driver's "Incarnation_ld"
+
+One of the failing tests is barebones_negindex:
+
+scons-out/opt-linux-x86-32/staging/sel_ldr scons-out/nacl-x86-32-pnacl/obj/tests/barebones/barebones_negindex.nexe
+[21571,4147140304:17:40:24.147545] seek failure segment 3
+Error while loading "scons-out/nacl-x86-32-pnacl/obj/tests/barebones/barebones_negindex.nexe": ELF executable segment header parameter error
+Using the wrong type of nexe (nacl-x86-32 on an x86-64 or vice versa)
+or a corrupt nexe file may be responsible for this error.
+
+Segment 3 is the data segment, which for the optimized version is "empty" (FileSiz = 0, MemSize=nonzero), while for the unoptimized version is non-empty (FileSiz = 4, MemSize=nonzero).
+
+Other failing tests:
+
+scons-out/nacl-x86-32-pnacl/test_results/nullptr.out failed: Error 255
+FAIL: address zero readable, contains 00
+
+Test comment:
+/* NOTE: this is a global to keep a smart compiler (llvm)
+ *       from partially evaluating it
+ */
+unsigned char *byteptr = 0;
+Is probably not good enough...
+
+scons-out/nacl-x86-32-pnacl/test_results/return_address.out failed: Error 255
+(the tests assertion about return address fails)
+
+scons-out/nacl-x86-32-pnacl/test_results/stack_frame_noopt_frame.out failed: Error 255
+(hmm, this one probably should set opt to be off, based on the name)
+
+scons-out/nacl-x86-32-pnacl/test_results/unwind_trace_noopt_frame.out failed: Error 255
+(hmm, this one probably should set opt to be off, based on the name)
+
+scons-out/nacl-x86-32-pnacl/test_results/unwind_trace_noopt_noframe.out failed: Error 255
+(hmm, this one probably should set opt to be off, based on the name)
+
+scons-out/nacl-x86-32-pnacl/test_results/stack_frame_noopt_noframe.out failed: Error 255
+(hmm, this one probably should set opt to be off, based on the name)
+
+scons-out/nacl-x86-32-pnacl/test_results/stack_frame_opt_frame.out failed: Error 255
+(the test's stack frame layout assertions don't match)
+
+scons-out/nacl-x86-32-pnacl/test_results/stack_frame_opt_noframe.out failed: Error 255
+(the test's stack frame layout assertions don't match)</ns0:content><ns0:updated>2011-03-16T01:08:10.000Z</ns0:updated><ns0:published>2011-03-16T01:08:10.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>jvo...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 2 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1225#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1225/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0EERX47eCl7ImA9WhdQF00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2098/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=6486
+
+------------------------------------------------------------------------
+r6486 | ncbray@google.com | Thu Aug 18 14:03:34 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/plugin/service_runtime.h?r1=6486&amp;r2=6485&amp;pathrev=6486
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/plugin/plugin.cc?r1=6486&amp;r2=6485&amp;pathrev=6486
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/plugin/plugin.h?r1=6486&amp;r2=6485&amp;pathrev=6486
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/srpc_hw/srpc_hw_fd.html?r1=6486&amp;r2=6485&amp;pathrev=6486
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/plugin/service_runtime.cc?r1=6486&amp;r2=6485&amp;pathrev=6486
+
+Create the sel_ldr process ASAP to increase parallelism during plugin startup.
+
+By necessity this CL also fixes a bug in the srpc_hw_fd test where a nexe was programatically loaded into an embed tag, despite the embed tag also specifying a nexe using src=.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2098
+TEST= none
+
+Review URL: http://codereview.chromium.org/7658005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-08-18T21:06:44.000Z</ns0:updated><ns0:published>2011-08-18T21:06:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2098#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2098/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

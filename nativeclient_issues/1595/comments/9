@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4HSH47eCl7ImA9WhZRFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1595/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4847
+
+------------------------------------------------------------------------
+r4847 | mcgrathr@chromium.org | Tue Apr 12 13:37:00 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/Makefile.gcc?r1=4847&amp;r2=4846&amp;pathrev=4847
+
+Use -mtls-use-call in libstdc++ build.
+
+This adds -mtls-use-call to the compilation flags used for libraries
+in the GCC build, particularly libstdc++ is of interest.  This is needed
+for for the integrated runtime blob, which will link in libstdc++ and
+must segregate IRT-private TLS uses from user TLS.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1595
+TEST= local builds of toolchain and then {small,medium,large}_tests using it
+
+R=mseaborn@google.com,khim@google.com,pasko@google.com,eaeltsin@google.com
+
+Review URL: http://codereview.chromium.org/6825080
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-12T20:42:19.000Z</ns0:updated><ns0:published>2011-04-12T20:42:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1595#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1595/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

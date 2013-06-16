@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0YBSX47eCl7ImA9WhZVGEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1877</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">This code is a bit confusing, but if I read this correctly, it assumes that there will be a failure on Write that did not happen?  There is an assumption that a socket pair which is returned, will have the second element garbage collected because it is unreferenced?
+
+
+/System/Library/Frameworks/Python.framework/Versions/2.5/Resources/Python.app/Contents/MacOS/Python /b/build/slave/mac10.5-newlib-opt/build/native_client/tools/command_tester.py --name /b/build/slave/mac10.5-newlib-opt/build/native_client/scons-out/opt-mac-x86-32/test_results/python_imc_test.out --report /b/build/slave/mac10.5-newlib-opt/build/native_client/scons-out/opt-mac-x86-32/test_results/python_imc_test.out --time_warning 2 --time_error 20 --perf_env_description x86-32_nnacl_newlib_static_irt --osenv PYTHONPATH=/b/build/slave/mac10.5-newlib-opt/build/native_client/scons-out/opt-mac-x86-32/obj/src/trusted/python_bindings,PYTHON_ARCH=i386 arch -arch i386 /System/Library/Frameworks/Python.framework/Versions/2.5/Resources/Python.app/Contents/MacOS/Python /b/build/slave/mac10.5-newlib-opt/build/native_client/src/trusted/python_bindings/test_python_imc.py
+======================================================================
+setting environment
+======================================================================
+[PYTHONPATH] = [/b/build/slave/mac10.5-newlib-opt/build/native_client/scons-out/opt-mac-x86-32/obj/src/trusted/python_bindings]
+[PYTHON_ARCH] = [i386]
+======================================================================
+running ['arch', '-arch', 'i386', '/System/Library/Frameworks/Python.framework/Versions/2.5/Resources/Python.app/Contents/MacOS/Python', '/b/build/slave/mac10.5-newlib-opt/build/native_client/src/trusted/python_bindings/test_python_imc.py']
+======================================================================
+PYTHONPATH=/b/build/slave/mac10.5-newlib-opt/build/native_client/scons-out/opt-mac-x86-32/obj/src/trusted/python_bindings PYTHON_ARCH=i386 arch -arch i386 /System/Library/Frameworks/Python.framework/Versions/2.5/Resources/Python.app/Contents/MacOS/Python /b/build/slave/mac10.5-newlib-opt/build/native_client/src/trusted/python_bindings/test_python_imc.py
+Test /b/build/slave/mac10.5-newlib-opt/build/native_client/scons-out/opt-mac-x86-32/test_results/python_imc_test.out took 0.316667 secs
+
+ERROR: Command returned normal 1, expecting ['normal'] 0 for darwin
+======================================================================
+Stdout
+======================================================================
+
+======================================================================
+Stderr
+======================================================================
+[59344,2688218912:10:06:32.614895] AcceptConn method is not implemented for object of type NACL_DESC_IMC_SOCKET
+.[59344,2688218912:10:06:32.615191] ConnectAddr method is not implemented for object of type NACL_DESC_IMC_SOCKET
+.....F.....
+======================================================================
+FAIL: test_send_error (__main__.ImcTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File &amp;quot;/b/build/slave/mac10.5-newlib-opt/build/native_client/src/trusted/python_bindings/test_python_imc.py&amp;quot;, line 149, in test_send_error
+    self.assertRaises(Exception, lambda: sock.imc_sendmsg(&amp;quot;data&amp;quot;, ()))
+AssertionError: Exception not raised
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.058s
+
+FAILED (failures=1)
+
+python_imc_test.out: FAILED
+scons: *** [scons-out/opt-mac-x86-32/test_results/python_imc_test.out] Error 255
+/System/Library/Frameworks/Python.framework/Versions/2.5/Resources/Python.app/Contents/MacOS/Python /b/build/slave/mac10.5-newlib-opt/build/native_client/tools/command_tester.py --name /b/build/slave/mac10.5-newlib-opt/build/native_client/scons-out/opt-mac-x86-32/test_results/gtest_output.xml.out --report /b/build/slave/mac10.5-newlib-opt/build/native_client/scons-out/opt-mac-x86-32/test_results/gtest_output.xml.out --time_warning 2 --time_error 20 --perf_env_description x86-32_nnacl_newlib_static_irt /b/build/slave/mac10.5-newlib-opt/build/native_client/scons-out/opt-mac-x86-32/obj/src/trusted/service_runtime/service_runtime_tests --gtest_output=xml:scons-out/opt-mac-x86-32/test_results/gtest_output.xml.out
+======================================================================
+
+
+  </ns0:content><ns0:updated>2011-05-31T20:52:38.000Z</ns0:updated><ns0:published>2011-05-31T20:27:10.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Random python_imc failure on test send error</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Arch-</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1877/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1877" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1877" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-05-31T20:52:38.000Z</ns2:closedDate><ns2:id>1877</ns2:id><ns2:mergedInto>
+			<ns2:id>1462</ns2:id></ns2:mergedInto></ns0:entry>

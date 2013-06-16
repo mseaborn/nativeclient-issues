@@ -1,0 +1,87 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU4NRX47eCl7ImA9WxBSFUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/229/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">You need label because otherwise you can't write correct code:
+
+--
+$ cat test.c
+int foo;
+
+int *bar() {
+  return &amp;foo;
+}
+$ gcc -m32 -march=i386 -fPIC -S test.c ; cat test.s
+        .file   "a.c"
+        .text
+.globl bar
+        .type   bar, @function
+bar:
+        pushl   %ebp
+        movl    %esp, %ebp
+        call    .L3
+.L3:
+        popl    %ecx
+        addl    $_GLOBAL_OFFSET_TABLE_+[.-.L3], %ecx
+        movl    foo@GOT(%ecx), %eax
+        leave
+        ret
+        .size   bar, .-bar
+        .comm   foo,4,4
+        .ident  "GCC: (GNU) 4.2.4 (Ubuntu 4.2.4-1ubuntu4)"
+        .section        .note.GNU-stack,"",@progbits
+--
+Note how L3 is not only used as target for call, but also used as "operand" in the 
+next addl instruction! The fact that it's linker-time operand, not runtime operand 
+does not change the situation much: we need this label not only to generate "call", 
+but also to generate the following instructions!
+
+As for "works only with single byte instruction" - forget about it. Or may be not...
+
+I was sure L3: marks beginning of the "popl %ecx" instruction (and then the 
+instruction must be one-byte long for the whole scheme to work), but apparently it 
+marks the end of the previous instruction:
+--
+$ cat test.s
+    mov %eax, 1
+L1:
+    call 100
+    jmp L1
+$ nacl-as -o test.o test.s ; objdump -Dr test.o
+
+b.o:     file format elf32-i386
+
+Disassembly of section .text:
+
+00000000 &lt;L1-0x5&gt;:
+   0:   a3 01 00 00 00          mov    %eax,0x1
+
+00000005 &lt;L1&gt;:
+   5:   eb 14                   jmp    1b &lt;L1+0x16&gt;
+   7:   90                      nop
+   8:   90                      nop
+   9:   90                      nop
+   a:   90                      nop
+   b:   90                      nop
+   c:   90                      nop
+   d:   90                      nop
+   e:   90                      nop
+   f:   90                      nop
+  10:   90                      nop
+  11:   90                      nop
+  12:   90                      nop
+  13:   90                      nop
+  14:   90                      nop
+  15:   90                      nop
+  16:   90                      nop
+  17:   90                      nop
+  18:   90                      nop
+  19:   90                      nop
+  1a:   90                      nop
+  1b:   e8 60 00 00 00          call   80 &lt;NACLALIGN+0x7b&gt;
+                        1c: R_386_PC32  *ABS*
+  20:   eb e3                   jmp    5 &lt;L1&gt;
+--
+As you can see L1 marks here NOT the address of call, but the end of "movl" - this is 
+suboptimal and we should probably fix it but then scheme with "call .L; .L:" will not 
+validate anymore if the instruction marked by L is not single-byte instruction like 
+pop %ecx.
+</ns0:content><ns0:updated>2009-12-22T20:33:14.000Z</ns0:updated><ns0:published>2009-12-22T20:33:14.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by k...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=229#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/229/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

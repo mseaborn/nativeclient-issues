@@ -1,0 +1,44 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU8HSX47eCl7ImA9WhZTFEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1295/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4577
+
+------------------------------------------------------------------------
+r4577 | rsimha@google.com | Fri Mar 18 14:25:37 PDT 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pyauto_nacl?r1=4577&amp;r2=4576&amp;pathrev=4577
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=4577&amp;r2=4576&amp;pathrev=4577
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/DEPS?r1=4577&amp;r2=4576&amp;pathrev=4577
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/build/sync_zip.py?r1=4577&amp;r2=4576&amp;pathrev=4577
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/build/download_chrome.py?r1=4577&amp;r2=4576&amp;pathrev=4577
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/build/sync_file.py?r1=4577&amp;r2=4576&amp;pathrev=4577
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/build/chromebinaries.py?r1=4577&amp;r2=4576&amp;pathrev=4577
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pyauto_nacl/nacl.scons?r1=4577&amp;r2=4576&amp;pathrev=4577
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pyauto_nacl/sanity.py?r1=4577&amp;r2=4576&amp;pathrev=4577
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pyauto_nacl/pyauto_nacl.py?r1=4577&amp;r2=4576&amp;pathrev=4577
+
+Sanity NaCl test that uses PyAuto
+
+Note: This patch rolls forward the chrome_rev version in DEPS, due to the fact
+that download_chrome.py now downloads a couple of new files. If there are
+problems due to the new chrome_rev, the DEPS change can be rolled back
+independently without having to revert the entire patch.
+
+This patch does the following:
+1) Updates download_chrome.py and chromebinaries.py to:
+   - Download the pyautolib binaries from the chromium continuous build directory.
+   - Create a symlink in the binary directory to "Chromium Framework.framework"
+     so it can be loaded by pyautolib (Mac).
+2) Adds an entry in the NaCl DEPS file for the chrome pyauto libraries.
+3) Adds a simple end-to-end test that brings up chrome with NaCl enabled via pyauto.
+
+This patch does not do the following (coming up in future patches):
+1) Load a nexe or a plugin from the command line.
+2) Bring up an HTTP server to serve files.
+
+BUG=nacl1295
+TEST=python sanity.py &lt;pyautolib path&gt; -v --no-http-server --chrome_flags "&lt;flags&gt;"
+
+Review URL: http://codereview.chromium.org/6598017
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-03-18T21:30:38.000Z</ns0:updated><ns0:published>2011-03-18T21:30:38.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1295#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1295/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

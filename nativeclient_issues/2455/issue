@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkADQX47eCl7ImA9WhVXEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2455</ns0:id><ns0:author>
+			<ns0:name>jasonw...@google.com</ns0:name><ns0:uri>/u/110605953789916471800/</ns0:uri></ns0:author><ns0:content type="html">This is normally not a problem. However, within CrOS chroot, an ebuild file normally can not run gclient - so these external dependencies that is satisfied by gclient are missing.
+
+Unfortunately, the pnacl build scripts call out to SCons to install the headers, which then blocks the ebuild from completing successfully with errors like:
+
+&amp;lt;pre&amp;gt;
+======================================================================
+IOError: [Errno 2] No such file or directory: '/home/jasonwkim/0GitNaCl/ppapi/ppapi_cpp.gypi':
+  File &amp;quot;/home/jasonwkim/0GitNaCl/native_client/SConstruct&amp;quot;, line 3654:
+    BuildEnvironments(selected_envs)
+  File &amp;quot;./site_scons/site_init.py&amp;quot;, line 174:
+    e.ExecuteDefer()
+  File &amp;quot;/home/jasonwkim/0GitNaCl/third_party/scons-2.0.1/engine/SCons/Environment.py&amp;quot;, line 222:
+    return self.method(*nargs, **kwargs)
+  File &amp;quot;/home/jasonwkim/0GitNaCl/native_client/site_scons/site_tools/defer.py&amp;quot;, line 172:
+    func(env)
+  File &amp;quot;./site_scons/site_init.py&amp;quot;, line 103:
+    exports={'env': ec}, duplicate=0)
+  File &amp;quot;/home/jasonwkim/0GitNaCl/third_party/scons-2.0.1/engine/SCons/Script/SConscript.py&amp;quot;, line 551:
+    return _SConscript(self.fs, *files, **subst_kw)
+  File &amp;quot;/home/jasonwkim/0GitNaCl/third_party/scons-2.0.1/engine/SCons/Script/SConscript.py&amp;quot;, line 260:
+    exec _file_ in call_stack[-1].globals
+  File &amp;quot;/home/jasonwkim/0GitNaCl/native_client/src/shared/ppapi/nacl.scons&amp;quot;, line 20:
+    env.File('$SOURCE_ROOT/ppapi/ppapi_cpp.gypi').abspath)
+  File &amp;quot;/home/jasonwkim/0GitNaCl/native_client/site_scons/gyp_extract.py&amp;quot;, line 17:
+    return eval(open(gyp_filename).read(), {}, {})
+
+**********************************************************************
+COMMAND EXECUTION REPORT
+**********************************************************************
+&amp;lt;/pre&amp;gt;</ns0:content><ns0:updated>2012-04-10T17:59:30.000Z</ns0:updated><ns0:published>2011-11-19T23:43:56.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:state>closed</ns2:state><ns0:title>SCons generates depencies on ../ppapi even if it is doing something completely isolated like install_headers step</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-Chrome</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2455/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2455" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2455" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>135</ns2:id></ns2:blocking><ns2:closedDate>2012-04-10T17:59:30.000Z</ns2:closedDate><ns2:id>2455</ns2:id></ns0:entry>

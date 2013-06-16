@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYDRH47eCl7ImA9WhdaGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/50</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">And here is the place in the code where the offending memory access is supposed to have happened, apparently in V8 heap management code:
+   0x7f9728ab0088 &lt;v8::internal::Heap::DoScavenge(v8::internal::ObjectVisitor*, v8::internal::Address)+4294965688&gt;:	callq  0x7f972d1c7630
+     &lt;__asan_report_load1(uintptr_t)&gt;
+   0x7f9728ab008d &lt;v8::internal::Heap::DoScavenge(v8::internal::ObjectVisitor*, v8::internal::Address)+4294965693&gt;:	mov    %rcx,%rdi
+   0x7f9728ab0090 &lt;v8::internal::Heap::DoScavenge(v8::internal::ObjectVisitor*, v8::internal::Address)+4294965696&gt;:	
+    callq  0x7f972d1c75a0 &lt;__asan_report_load8(uintptr_t)&gt;
+   0x7f9728ab0095:	data32 nopw %cs:0x0(%rax,%rax,1)
+   0x7f9728ab00a0 &lt;v8::internal::Heap::IteratePointersInDirtyMapsRegion(v8::internal::Address, v8::internal::Address, v8::internal::ObjectSlotCallback)&gt;:	
+    push   %rbp
+   0x7f9728ab00a1 &lt;v8::internal::Heap::IteratePointersInDirtyMapsRegion(v8::internal::Address, v8::internal::Address, v8::internal::ObjectSlotCallback)+1&gt;:	
+    push   %r15
+</ns0:content><ns0:updated>2011-10-28T20:19:35.000Z</ns0:updated><ns0:published>2011-10-28T20:19:35.000Z</ns0:published><ns2:updates /><ns0:title>Comment 50 by bradc...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2394#c50" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/50" rel="self" type="application/atom+xml" /></ns0:entry>

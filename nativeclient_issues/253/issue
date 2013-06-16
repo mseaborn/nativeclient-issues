@@ -1,0 +1,73 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUECRn47eCl7ImA9WhRbGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/253</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Windows has different default floating point flags (at least for programs 
+compiled with Visual Studio) from Linux.  Linux sets extended precision as 
+the default and Windows does not.  The program below produces different 
+output when run under sel_ldr.
+
+On Linux:
+$ sel_ldr floating-point-nacl
+flags=37f
+  d=2.000000
+flags=27f (double precision)
+  d=0.000000
+flags=37f (extended precision)
+  d=2.000000
+
+On Windows:
+$ ./sel_ldr floating-point-nacl
+[2596,2852:12:25:59.608000] NaClHostDescStatCommon: how did NaCl app open a 
+file
+ with st_mode = 020000?
+flags=27f
+  d=0.000000
+flags=27f (double precision)
+  d=0.000000
+flags=37f (extended precision)
+  d=2.000000
+[2596,2852:12:25:59.608000] Exit syscall handler: 0
+
+(Note: I had to munge sel_ldr.exe's PE headers to make it a console app in 
+order to get any output on the screen, but this is a separate issue.)
+
+Test program:
+
+#include &amp;lt;stdio.h&amp;gt;
+
+/* From glibc's #include &amp;lt;fpu_control.h&amp;gt; */
+/* Type of the control word.  */
+typedef unsigned int fpu_control_t __attribute__ ((__mode__ (__HI__)));
+/* Macros for accessing the hardware control word.  */
+#define _FPU_GETCW(cw) __asm__ (&amp;quot;fnstcw %0&amp;quot; : &amp;quot;=m&amp;quot; (*&amp;amp;cw))
+#define _FPU_SETCW(cw) __asm__ (&amp;quot;fldcw %0&amp;quot; : : &amp;quot;m&amp;quot; (*&amp;amp;cw))
+
+void test()
+{
+  double x = 9007199254740994.0; /* 2^53 + 2 */
+  double y = 1.0 - 1/65536.0;
+  double z = x + y;
+  double d = z - x;
+  printf(&amp;quot;  d=%f\n&amp;quot;, d);
+}
+
+int main()
+{
+  fpu_control_t flags;
+
+  _FPU_GETCW(flags);
+  printf(&amp;quot;flags=%x\n&amp;quot;, flags);
+  test();
+
+  flags = (flags &amp;amp; ~0x300) | 0x200;
+  _FPU_SETCW(flags);
+  printf(&amp;quot;flags=%x (double precision)\n&amp;quot;, flags);
+  test();
+
+  flags = (flags &amp;amp; ~0x300) | 0x300;
+  _FPU_SETCW(flags);
+  printf(&amp;quot;flags=%x (extended precision)\n&amp;quot;, flags);
+  test();
+
+  return 0;
+}
+</ns0:content><ns0:updated>2012-02-10T00:27:47.000Z</ns0:updated><ns0:published>2010-01-15T13:06:13.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:state>closed</ns2:state><ns0:title>Portability issue: Default x87 flags are set differently on Windows and Linux </ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>PlatformDifference</ns2:label><ns2:label>Mstone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/253/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=253" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/253" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-02-10T00:27:47.000Z</ns2:closedDate><ns2:id>253</ns2:id></ns0:entry>

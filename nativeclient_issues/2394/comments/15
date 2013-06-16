@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIBR347eCl7ImA9WhdaFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>s...@google.com</ns0:name><ns0:uri>/u/108394971971967673680/</ns0:uri></ns0:author><ns0:content type="html">Examples are such as that at lines 129-130:
+  // NULL size -&gt; Internal error in rpc method.
+  graphics2d = ppb-&gt;Create(pp_instance(), NULL, kAlwaysOpaque);
+
+All eight of the examples that produce the
+number != -14
+log lines come from tests passing NULL where a valid pointer is expected.
+
+The proxy passes these through as pointers to character arrays with a constant size.
+
+The SRPC library passes them through as iov entries with NULL and non-zero size, which results in imc_sendmsg returning -NACL_ABI_EFAULT (-14) and an error message being printed out.  The library then marks the RPC as having NACL_SRPC_RESULT_INTERNAL, which is printed as "Internal error in rpc method".</ns0:content><ns0:updated>2011-10-26T22:35:56.000Z</ns0:updated><ns0:published>2011-10-26T22:35:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by s...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2394#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

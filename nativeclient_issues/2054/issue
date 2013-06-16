@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEIER347eCl7ImA9WhRaE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2054</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">Currently, it's really hard to answer &amp;quot;Why does my NaCl module not loading?&amp;quot;.
+
+Nick Bray has recently given an excellent introduction to the hell:
+&amp;quot;
+I cannot stress how awesome this is for debugging:
+
+Open the Javascript console (ctrl+shift+j or option+apple+j)
+Type in document.getElementById('id').lastError where 'id' is the id=
+of the nexe.
+
+If it's undefined, NaCl is disabled / broken.  If it's '', the nexe
+loaded fine.  If it's an error string, it'll give a hint where things
+went wrong.
+&amp;quot;
+
+At the same time, Chrome has awesome about:gpu that shows:
+- features enabled/disabled
+- exact reason to disable a feature (including links to bugs in the issue tracker)
+- version information
+- detailed driver information
+- profiler (!)
+
+I think we can start with something pretty simple (for example, just automating the answer on the question &amp;quot;why doesn't it load?&amp;quot;), but later we'll need to integrate there as much developer tools as possible.</ns0:content><ns0:updated>2012-02-15T20:08:26.000Z</ns0:updated><ns0:published>2011-07-19T20:08:36.000Z</ns0:published><ns2:status>Moved</ns2:status><ns2:owner>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101359714341338829292/</ns2:uri><ns2:username>col...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101701583982903801272/</ns2:uri><ns2:username>awat...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>about:nacl in Chrome</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Mstone-16</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>MigrateToChromium</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2054/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2054" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2054" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2012-02-15T20:08:26.000Z</ns2:closedDate><ns2:id>2054</ns2:id></ns0:entry>

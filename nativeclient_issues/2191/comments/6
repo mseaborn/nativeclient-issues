@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0YGQ347eCl7ImA9WhdUEUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2191/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>dmichael@chromium.org</ns0:name><ns0:uri>/u/dmichael@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">This test is timing out on Windows 7, blocking a DEPS roll. See, e.g.:
+http://build.chromium.org/p/tryserver.nacl/builders/nacl-win64_glibc_opt/builds/2867/steps/chrome_browser_tests%20using%20GYP/logs/stdio
+"""
+[ 51898 ms] |||| [bad_ppp_instance_didcreate BEGIN]
+[ 52639 ms] |||| GET /ppapi_bad_ppp_instance_didcreate.nmf (/ppapi_bad_ppp_instance_didcreate.nmf)
+[ 53000 ms] |||| GET /ppapi_bad_ppp_instance_didcreate_x86-64.nexe (/ppapi_bad_ppp_instance_didcreate_x86-64.nexe)
+[ 60123 ms] |||| 
+[ 60123 ms] |||| [SERVER_ERROR] The test took over 60.0 seconds.  This is probably a runaway test.
+KILLING the browser
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+[  FAILED  ] nacl.run_ppapi_bad_browser_test (437 ms)
+"""
+I'm going to try to disable it for glibc on windows, undoing some of:
+http://codereview.chromium.org/7979018
+</ns0:content><ns0:updated>2011-09-27T16:32:02.000Z</ns0:updated><ns0:published>2011-09-27T16:32:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by dmichael@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2191#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2191/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

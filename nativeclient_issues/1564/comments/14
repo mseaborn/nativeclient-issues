@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0IMSH47eCl7ImA9WhZSFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1564/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>pdox%goo...@gtempaccount.com</ns0:name><ns0:uri>/u/104735739662288482898/</ns0:uri></ns0:author><ns0:content type="html">The last remaining problem turns out to be a remnant of the previous problem.
+
+mov    -0x8(%r15,%r14,1),%rdi
+inc    %ecx
+mov    %r14d,%r14d
+mov    %ecx,-0x4(%r15,%r14,1)
+mov    %edi,%edi
+mov    (%r15,%rdi,1),%eax
+mov    %eax,%eax
+mov    0x10(%r15,%rax,1),%ecx
+mov    %rdi,%rsi
+shr    $0x20,%rsi
+
+Here, %rdi's upper bits are being trashed before being used by the shr instruction.
+
+It turns out the prior fix, while fixing most instances of the problem, did not fix all of them. This is because the new zero_extend dag node was not inserted at the correct place in the topological sort bug. When it came time to match it, this pattern leaf:
+
+def def32 : PatLeaf&lt;(i32 GR32:$src), [{
+  return N-&gt;getOpcode() != ISD::TRUNCATE &amp;&amp;
+         N-&gt;getOpcode() != TargetOpcode::EXTRACT_SUBREG &amp;&amp;
+         N-&gt;getOpcode() != ISD::CopyFromReg &amp;&amp;
+         N-&gt;getOpcode() != X86ISD::CMOV;
+}]&gt;;
+
+ended up matching when it shouldn't have. (since N had already been matched, it had an opcode of MOV64rm instead of EXTRACT_SUBREG).
+</ns0:content><ns0:updated>2011-04-01T09:19:49.000Z</ns0:updated><ns0:published>2011-04-01T09:19:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by pdox%goo...@gtempaccount.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1564#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1564/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

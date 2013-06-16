@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkAERn47eCl7ImA9WhZVEks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/503/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5418
+
+------------------------------------------------------------------------
+r5418 | mseaborn@chromium.org | Tue May 24 13:23:03 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_addrspace.c?r1=5418&amp;r2=5417&amp;pathrev=5418
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=5418&amp;r2=5417&amp;pathrev=5418
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/win/sel_memory.c?r1=5418&amp;r2=5417&amp;pathrev=5418
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/sel_ldr_x86_64.c?r1=5418&amp;r2=5417&amp;pathrev=5418
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/sel_ldr_x86_32.c?r1=5418&amp;r2=5417&amp;pathrev=5418
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/linux/sel_memory.c?r1=5418&amp;r2=5417&amp;pathrev=5418
+
+sel_ldr: Use PROT_NONE/PAGE_NOACCESS when reserving address space
+
+This reduces platform differences by doing what is already done for
+x86-64 Windows, where NaClAllocatePow2AlignedMemory() uses MEM_RESERVE
+when reserving address space which makes the pages inaccessible.
+
+This reduces the chance that pages are accidentally left mapped as
+read+write+execute.
+
+We change NaCl_page_alloc() to use PROT_NONE (on Unix) and
+PAGE_NOACCESS (on Windows) instead of using read+write+execute
+permissions.  This function is only used in two places:
+
+ 1) For reserving address space on 32-bit systems (x86-32 and ARM).
+ 2) For NaClMakePcrelThunk(), which is only used on Mac where __PIC__
+    is defined by default.  We change this function to mprotect() the
+    page before using it.
+
+The NaCl_mprotect() call in sel_ldr_standard.c must now be done on all
+platforms.  We tighten it up so that it does not change the
+protections on zero page.  This means NaClFillTrampolineRegion() must
+be cleaned up so that it does not fill zero page with HLTs.  This
+brings the x86-64 implementation into line with the x86-32 and ARM
+implementations.  It should also save 64k of memory on x86-64.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=503
+TEST=existing tests
+
+Review URL: http://codereview.chromium.org/3007026
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-24T20:25:07.000Z</ns0:updated><ns0:published>2011-05-24T20:25:07.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=503#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/503/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

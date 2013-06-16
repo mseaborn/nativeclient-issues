@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0AGR347eCl7ImA9WhVTFEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2620/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">If I run the linker with "ulimit -v 100000" there is no problem.  strace shows that it is doing the syscalls below.  It appears to have a fallback when the memory can't be allocated:
+
+mmap(NULL, 1073643520, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = -1 ENOMEM (Cannot allocate memory)
+brk(0x40fd4000)                         = 0xfed000
+mmap(NULL, 1073774592, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = -1 ENOMEM (Cannot allocate memory)
+mmap(NULL, 134217728, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = -1 ENOMEM (Cannot allocate memory)
+mmap(NULL, 67108864, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x2b8814cb4000
+munmap(0x2b8814cb4000, 67108864)        = 0
+lseek(4, 8192, SEEK_SET)                = 8192
+
+
+gdb shows that the large allocation comes from the following stack backtrace:
+
+#0  mmap64 () at ../sysdeps/unix/syscall-template.S:82
+#1  0x00002aaaab44b22a in sYSMALLOc (av=&lt;optimized out&gt;, nb=&lt;optimized out&gt;) at malloc.c:3026
+#2  _int_malloc (av=0x2aaaab74de40, bytes=1073659904) at malloc.c:4746
+#3  0x00002aaaab44b58e in *__GI___libc_malloc (bytes=1073659904) at malloc.c:3660
+#4  0x00002aaaaad024d6 in bfd_zmalloc () from /usr/lib/libbfd-2.20.1-system.20100303.so
+#5  0x00002aaaaad0506e in bfd_malloc_and_get_section () from /usr/lib/libbfd-2.20.1-system.20100303.so
+#6  0x00002aaaaad4df9d in bfd_elf32_checksum_contents () from /usr/lib/libbfd-2.20.1-system.20100303.so
+#7  0x00000000004242c7 in ?? ()
+#8  0x00002aaaaad27c8f in _bfd_elf_write_object_contents () from /usr/lib/libbfd-2.20.1-system.20100303.so
+#9  0x00002aaaaad0327f in bfd_close () from /usr/lib/libbfd-2.20.1-system.20100303.so
+#10 0x000000000041853c in ?? ()
+#11 0x00002aaaab3edc4d in __libc_start_main (main=&lt;optimized out&gt;, argc=&lt;optimized out&gt;, 
+    ubp_av=&lt;optimized out&gt;, init=&lt;optimized out&gt;, fini=&lt;optimized out&gt;, rtld_fini=&lt;optimized out&gt;, 
+    stack_end=0x7fffffffe468) at libc-start.c:226
+
+
+I found that if I pass "--build-id=none" to the linker, the large allocations go away.
+</ns0:content><ns0:updated>2012-02-29T04:28:46.000Z</ns0:updated><ns0:published>2012-02-29T04:28:46.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2620#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2620/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEDR347eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/617/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3212
+
+------------------------------------------------------------------------
+r3212 | mseaborn@chromium.org | Tue Sep 07 08:34:41 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/build.py?r1=3212&amp;r2=3211&amp;pathrev=3212
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=3212&amp;r2=3211&amp;pathrev=3212
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/nacl.scons?r1=3212&amp;r2=3211&amp;pathrev=3212
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/tls.c?r1=3212&amp;r2=3211&amp;pathrev=3212
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/mmap.c?r1=3212&amp;r2=3211&amp;pathrev=3212
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/syscall_bindings_trampoline.h?r1=3212&amp;r2=3211&amp;pathrev=3212
+
+Fix more libraries so that we can run extra_sdk_update against nacl-glibc
+
+Change SConstruct to exclude the libraries we don't want when using
+nacl-glibc.  We keep libnacl because it will be useful for providing
+the NaCl-specific syscalls.
+
+Fix missing #includes:
+ * &lt;stdint.h&gt; for uint32_t etc.
+ * &lt;time.h&gt; for clock_t
+
+Fix mmap.c and tls.c because it doesn't hurt to do so, even if we will
+drop them later in favour of glibc's versions.  But drop lock.c
+because it is definitely newlib-specific and won't compile against
+glibc.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=617
+TEST=python build.py -b
+
+Review URL: http://codereview.chromium.org/3320002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:57:56.000Z</ns0:updated><ns0:published>2011-01-21T22:57:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=617#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/617/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

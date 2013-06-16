@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUMFRn47eCl7ImA9WhRRFkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2453</ns0:id><ns0:author>
+			<ns0:name>pucchaka...@chromium.org</ns0:name><ns0:uri>/u/108072576157181000797/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+On what operating system - Win7/64 bit
+What browser are you using - Chrome 16.0.912.41 (Official Build 110024)
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Follow the steps from 1-5 in the NACL SDK test plan.
+2. Run the scons in step 6 and start the local host.
+3. Launch Chrome and go to URL localhost:5103 and start running the examples simultaneously by opening in several tabs.
+4. Try closing the tabs in between and verify the behavior.
+
+&lt;b&gt;What is the expected output?&lt;/b&gt;
+No tab should crash or Aw Snap should be shown.
+
+&lt;b&gt;What do you see instead?&lt;/b&gt;
+Aw Snap is shown for the rest of the tabs when the other example tabs are closed in between.
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-11-30T22:50:17.000Z</ns0:updated><ns0:published>2011-11-17T17:35:52.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:owner>
+			<ns2:uri>/u/101571556652463395731/</ns2:uri><ns2:username>dsprin...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Aw Snap is seen on the tabs when the examples are running on local host</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2453/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2453" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2453" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2011-11-30T22:50:17.000Z</ns2:closedDate><ns2:id>2453</ns2:id></ns0:entry>

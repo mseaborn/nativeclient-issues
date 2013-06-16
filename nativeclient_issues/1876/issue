@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEMBRX47eCl7ImA9WhZUEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1876</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Allocating the x86-64 sandbox's address space is taking about 1 second on Windows, and this accounts for the majority of the startup time.
+
+Below are the timings from the buildbots:
+
+From vista-64-newlib-opt:
+RESULT browser_startup_time.out: MakeDynText_x86-64_nnacl_newlib_static_irt= 15.000000 millisecs
+RESULT browser_startup_time.out: AllocAddrSpace_x86-64_nnacl_newlib_static_irt= 1005.000000 millisecs
+RESULT browser_startup_time.out: ValidateImg_x86-64_nnacl_newlib_static_irt= 35.000000 millisecs
+RESULT browser_startup_time.out: DynRegionValidate_x86-64_nnacl_newlib_static_irt= 157.000000 millisecs
+RESULT browser_startup_time.out: Total_x86-64_nnacl_newlib_static_irt= 1511.000000 millisecs
+
+From win7-64-bare-newlib-opt:
+RESULT browser_startup_time.out: MakeDynText_x86-64_nnacl_newlib_static_irt= 17.000000 millisecs
+RESULT browser_startup_time.out: AllocAddrSpace_x86-64_nnacl_newlib_static_irt= 1082.000000 millisecs
+RESULT browser_startup_time.out: ValidateImg_x86-64_nnacl_newlib_static_irt= 29.000000 millisecs
+RESULT browser_startup_time.out: DynRegionValidate_x86-64_nnacl_newlib_static_irt= 131.000000 millisecs
+RESULT browser_startup_time.out: Total_x86-64_nnacl_newlib_static_irt= 1353.000000 millisecs
+
+
+In contrast, it's a lot faster on x86-32 Windows and x86-64 Linux:
+
+From win7-32-bare-newlib-opt:
+RESULT browser_startup_time.out: MakeDynText_x86-32_nnacl_newlib_static_irt= 15.000000 millisecs
+RESULT browser_startup_time.out: AllocAddrSpace_x86-32_nnacl_newlib_static_irt= 24.000000 millisecs
+RESULT browser_startup_time.out: ValidateImg_x86-32_nnacl_newlib_static_irt= 18.000000 millisecs
+RESULT browser_startup_time.out: DynRegionValidate_x86-32_nnacl_newlib_static_irt= 75.000000 millisecs
+RESULT browser_startup_time.out: Total_x86-32_nnacl_newlib_static_irt= 306.000000 millisecs
+
+From lucid-64-newlib-opt:
+RESULT browser_startup_time.out: MakeDynText_x86-64_nnacl_newlib_static_irt= 2.027000 millisecs
+RESULT browser_startup_time.out: AllocAddrSpace_x86-64_nnacl_newlib_static_irt= 0.033000 millisecs
+RESULT browser_startup_time.out: ValidateImg_x86-64_nnacl_newlib_static_irt= 31.615000 millisecs
+RESULT browser_startup_time.out: DynRegionValidate_x86-64_nnacl_newlib_static_irt= 136.287000 millisecs
+RESULT browser_startup_time.out: Total_x86-64_nnacl_newlib_static_irt= 231.000000 millisecs
+
+
+The reason for the slowness is that sel_ldr is doing about 20 times more VirtualAlloc() calls than it needs to.
+
+NaClAllocatePow2AlignedMemory() allocates the sandbox's 4GB address space plus 80GB of guard regions.  It maps each 64k page using a separate VirtualAlloc() call because each page in the sandbox has to be independently remappable.  However, the pages in the guard regions never need to be remapped, so each of the two guard regions could be mapped with a single VirtualAlloc() call.
+</ns0:content><ns0:updated>2011-06-03T20:20:54.000Z</ns0:updated><ns0:published>2011-05-31T18:28:45.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Address space allocation is slow on 64-bit Windows</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Performance</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1876/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1876" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1876" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-06-03T20:20:54.000Z</ns2:closedDate><ns2:id>1876</ns2:id></ns0:entry>

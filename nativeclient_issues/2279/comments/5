@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEAASH47eCl7ImA9WhdVF08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2279/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">David,
+
+I understand that nothing has changed, but many people don't aware of the status and I also seem to miss the full understanding what has been done.
+
+From what I know:
+
+1. Scons invocation like
+
+./scons platform=x86-64 pnacl_use_clang=1 bitcode=1 small_tests -j16
+
+will build and run small tests with Clang using the downloaded PNaCl toolchain (that includes Clang, llvm-gcc and newlib/compiler-rt/libstdcpp build with llvm-gcc)
+
+2. To build a toolchain with Clang, the canonical line is still in use:
+
+tools/llvm/utman.sh all
+
+It will build llvm-gcc, clang, and untrusted libraries (newlib/compiler-rt/libstdcpp).
+
+The next step of the integration (that will probable eliminate test failure) is to build newlib/libstdcpp with Clang, because nobody promises that llvm-gcc and clang produce the compatible bitcode. Moreover, there're known differences, like http://code.google.com/p/nativeclient/issues/detail?id=2207
+
+3. If I hack the driver and utman.sh to use Clang instead of llvm-gcc (as suggested by David Meyer), newlib will built w/o any problems, and I have a very hacky CL (that I don't intend to submit) that builds libstdcpp with Clang:
+
+http://codereview.chromium.org/7977033/
+
+I am unable to produce the proper CL, because our toolchain compilation is messed up. We don't need to build llvm-gcc at all, if we want to use Clang-based toolchain.
+
+David M., could you please suggest the right approach to that?
+Should it be an argument to utman.sh or I need to introduce other build script?
+
+Robert, I think it does not make sense to look at that failing test, because libstdcpp and newlib is still built with llvm-gcc, so it's not guaranteed to work. I'm surprised that so much tests pass.</ns0:content><ns0:updated>2011-09-22T21:25:49.000Z</ns0:updated><ns0:published>2011-09-22T21:25:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2279#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2279/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

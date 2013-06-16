@@ -1,0 +1,62 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk4HQ347eCl7ImA9WhZVFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/503/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5481
+
+------------------------------------------------------------------------
+r5481 | mseaborn@chromium.org | Fri May 27 04:11:23 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_text.c?r1=5481&amp;r2=5480&amp;pathrev=5481
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_addrspace.c?r1=5481&amp;r2=5480&amp;pathrev=5481
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=5481&amp;r2=5480&amp;pathrev=5481
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=5481&amp;r2=5480&amp;pathrev=5481
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/dynamic_code_loading/dyncode_demand_alloc_test.c?r1=5481&amp;r2=5480&amp;pathrev=5481
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/dynamic_code_loading/dyncode_demand_alloc_test.stdout?r1=5481&amp;r2=5480&amp;pathrev=5481
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/imc/win/nacl_shm.cc?r1=5481&amp;r2=5480&amp;pathrev=5481
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_imc_shm.c?r1=5481&amp;r2=5480&amp;pathrev=5481
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/dynamic_code_loading/nacl.scons?r1=5481&amp;r2=5480&amp;pathrev=5481
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=5481&amp;r2=5480&amp;pathrev=5481
+
+Dynamic loading: Fill pages with halts only when they are needed
+
+This will save memory and improve startup time.
+
+Pages from the dyncode shared memory segment are mapped as
+unreadable/non-executable to start with.  When a page is needed, we
+fill it with halt instructions and then make it accessible (readable
+and executable) by untrusted code.
+
+We maintain a bitmap of pages that have been allocated in this way.
+We track allocations at 64k granularity, even though we could use 4k
+on Unix, so that the observable behaviour on Linux/Mac is the same as
+on Windows.  Also it makes the bitmap a bit smaller (512 bytes for a
+256MB dynamic code area).  Although we could use a list of ranges,
+using a bitmap is simpler.
+
+Specific changes:
+
+ * nacl_desc_imc_shm.c: Move the check for PROT_NONE into the
+   Windows-specific code (win/nacl_shm.cc).  We need PROT_NONE on
+   Unix, and it works fine there.
+
+ * sel_ldr_standard.c: Re-order the setup so that NaClAppLoadFile()'s
+   NaCl_mprotect() call does not undo the PROT_NONE/PAGE_NOACCESS
+   permissions we carefully set up in nacl_text.c.  Similarly, remove
+   the NaCl_mprotect() call in sel_addrspace.c that was undoing the
+   damage that NaClAppLoadFile() did.
+
+ * Add a test that checks that unallocated dynamic code pages are
+   inaccessible.
+
+Note that on Windows, this change only saves RAM, not swap space.
+Since we do not yet pass SEC_RESERVE to CreateFileMapping() in
+nacl_shm.cc, we are still reserving swap space for the whole dynamic
+code area.  This can be fixed but it involves some trickier code on
+Windows.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=503
+TEST=run_dynamic_load_test
+
+Review URL: http://codereview.chromium.org/7068021
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-27T11:15:32.000Z</ns0:updated><ns0:published>2011-05-27T11:15:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=503#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/503/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

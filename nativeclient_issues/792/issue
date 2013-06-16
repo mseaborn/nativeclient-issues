@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkAHRH47eCl7ImA9Wx5WE0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/792</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The set_module() method in plugin_npapi.cc does not check whether
+module_ is non-NULL before overwriting it, so any previous NPModule
+object will leak.
+
+The consequence is not just a memory leak.  Since ~NPModule() joins on
+a thread, failing to call it in NPP_Destroy() is not memory safe --
+this is basically a repeat of issue 668.
+
+This can be triggered by assigning to &amp;quot;src&amp;quot; twice to launch an
+executable that supports NPAPI-over-SRPC.
+
+Normally it is not possible to assign to &amp;quot;src&amp;quot; after a process using
+NPAPI-over-SRPC has been launched, because npruntime seems to override
+the &amp;quot;src&amp;quot; attribute.  However, there is a race condition that allows
+two NPAPI-over-SRPC processes to be launched through the same plugin
+instance in one go: see issue 791.</ns0:content><ns0:updated>2010-09-24T08:58:55.000Z</ns0:updated><ns0:published>2010-08-05T15:10:46.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Plugin: NPModule leaks if you assign to "src" twice</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Plugins</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/792/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=792" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/792" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-09-23T22:40:21.000Z</ns2:closedDate><ns2:id>792</ns2:id></ns0:entry>

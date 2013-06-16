@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYBSH47eCl7ImA9Wx5UF0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/316</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">
+The EventQueuePut() code in src /trusted/plugin/srpc/video.cc
+and  src/trusted/sel_universal/multimedia_handler.cc
+and the corresponding code on the consumer side in
+src/untrusted/av/nacl_av.c
+
+have races that need to be fixed
+
+
+</ns0:content><ns0:updated>2010-10-22T16:49:19.000Z</ns0:updated><ns0:published>2010-02-25T01:22:38.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>consumer/producer communication btwn plugin and nacl_av has races</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/316/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=316" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/316" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-10-22T16:49:19.000Z</ns2:closedDate><ns2:id>316</ns2:id></ns0:entry>

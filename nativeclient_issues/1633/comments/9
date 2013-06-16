@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUCR347eCl7ImA9WhZUFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1633/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: a99f059fabdef0ed109643146eee4cd6882ae54d
+ Email: mseaborn@chromium.org@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Exit status tests: Refactor checks and make them stricter
+
+Be stricter when accepting signal numbers that have been encoded into
+exit() statuses, such as (-11)&amp;0xff=245 for signal 11.  Don't accept
+both 245 and -11; only accept 245.  Do the munging when creating
+status_map rather than later.  Being stricter here requires extracting
+QEMU's stderr signal message separately from sel_ldr's stderr signal
+message.
+
+Always use lists in status_map: this avoids the need for a conditional
+later on.
+
+Remove the global variable GlobalSigType and use a local variable
+instead (expected_sigtype).  Inline GetSigType().  Move the win32
+special case.
+
+Combine duplicated code paths: CheckExitStatusNoSignals() and
+CheckExitStatusWithSignals() become CheckExitStatus().
+MassageExitStatus() has been inlined.
+
+Similarly, inline ExitStatusIsOK() and ExitStatusIsOKNoSignals().
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1633
+TEST=all process-death tests
+  + test the error path by running run_signal_handler_test with '-S' removed
+
+Review URL: http://codereview.chromium.org/7134058
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@5606 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	tools/command_tester.py</ns0:content><ns0:updated>2011-06-10T00:37:46.000Z</ns0:updated><ns0:published>2011-06-10T00:37:46.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1633#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1633/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

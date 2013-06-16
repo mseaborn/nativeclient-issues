@@ -1,0 +1,95 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUcFR347eCl7ImA9WhdWGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2186</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">(Performance defect from syoyofujita &amp;lt;at&amp;gt; gmail.com)
+
+&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+0.5
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+N/A
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Mac OS X Snow Leopard
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Chrome 14 beta
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Download and run aobench as both a trusted and untrusted plugin (see http://code.google.com/p/aobench)
+2. Compare results
+&lt;b&gt;3.&lt;/b&gt;
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+The performance results for trusted vs. untrusted modules should be comparable.
+
+Instead, the NaCl module gets ~10x worse performance than the trusted plugin.
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+
+(E-mail from Syoyo Fujita:)
+
+I've recently downloaded NaCl SDK 0.5, and ported aobench
+http://code.google.com/p/aobench/ to SDK 0.5, based on pi_generator
+example.
+But performance is quite bad. 10x slow compared to native program.
+
+- Native: 0.4 secs (gcc -O2)
+- NaCl: 4.3 secs (Chrome 14 beta on SnowLeopard)
+
+When I used NaCl few years ago(That using libSDL), NaCl aobench
+performance was mostly competitive to the native one.
+
+Is there any reason to prevent the full performance of NaCl
+application in current SDK 0.5 or Chrome 14 beta?
+
+I am not so familiar with Pappi, but my humble bet is that
+pi_generator example might cause frequent thread locking between main
+thread and render thread,
+which might result in slowing down the performance of NaCl application
+using Pappi 2D API.
+
+FYI, main render thread in NaCl aobench is as follows,
+
+void* AobenchInstance::Render(void* param) {
+ int count = 0;  // The number of points put inside the inscribed quadrant.
+ unsigned int seed = 1;
+ AobenchInstance* aobench = static_cast&amp;lt;AobenchInstance*&amp;gt;(param);
+ srand(seed);
+
+ for (int i = 1; i &amp;lt;= kMaxCount &amp;amp;&amp;amp; !aobench-&amp;gt;quit(); ++i) {
+   ScopedPixelLock scoped_pixel_lock(aobench);
+   uint32_t* pixel_bits = scoped_pixel_lock.pixels();
+   if (pixel_bits == NULL) {
+     // Note that if the pixel buffer never gets initialized, this won't ever
+     // paint anything.  Which is probably the right thing to do.  Also, this
+     // clause means that the image will not get the very first few Pi dots,
+     // since it's possible that this thread starts before the pixel buffer is
+     // initialized.
+     continue;
+   }
+
+   // Assume w == h
+   int w = aobench-&amp;gt;width();
+   if ((count % 1000) == 0) {  // Without this, image were not
+updated correctly on the Browser. @todo { any good idea? }
+       struct timeval startTime;
+       struct timeval endTime;
+
+       gettimeofday(&amp;amp;startTime, NULL);
+
+       // aorender() takes too much time(10 secs or more)
+       aorender(pixel_bits, w, w);
+
+       gettimeofday(&amp;amp;endTime, NULL);
+
+       double elapsed = (double) (endTime.tv_sec - startTime.tv_sec)
+             + (double) (endTime.tv_usec - startTime.tv_usec) / (double) 1.0e6;
+
+       aobench-&amp;gt;elapsed() = elapsed;
+
+   }
+   count++;
+}</ns0:content><ns0:updated>2011-09-12T15:56:56.000Z</ns0:updated><ns0:published>2011-08-24T15:55:28.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:state>closed</ns2:state><ns0:title>10x worse performance on aobench with NaCl module vs. trusted module</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-16</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-IRT</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Performance</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2186/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2186" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2186" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2011-08-24T19:21:25.000Z</ns2:closedDate><ns2:id>2186</ns2:id></ns0:entry>

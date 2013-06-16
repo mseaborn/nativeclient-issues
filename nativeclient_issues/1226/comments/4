@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQNRX47eCl7ImA9Wx9REEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1226/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>k...@chromium.org</ns0:name><ns0:uri>/u/112268664018567406585/</ns0:uri></ns0:author><ns0:content type="html">The initial code was written by me and Evgeny (I wrote assembler code and Evgeny wrote some quick-and-dirty loader to test .NEXEs; sel_ldr was created later).
+
+We've decided to use 64 bit word for a very simple reason: x86-64 architecture does not have popl command: stack is supposed to ONLY be manipulated as sequence of 64-bit numbers if 64bit mode.
+
+Note: 32bit int will be passes as half of 8byte "slot" on stack in x86-64 mode for this very reason.
+
+We've wanted minimal change from what x86-64 ABI specifies:
+http://www.x86-64.org/documentation/abi.pdf
+
+Note that there are "initial process stack" part (in 3.4 "initial process initialization") which describes state of the stack and registers after process start - and it EXPLICITLY different from the what main(argc, argv, envp) should see.
+
+Note: _start (I mean "ELF entry point") was NEVER supposed to be called as "normal" function.</ns0:content><ns0:updated>2010-12-10T21:59:54.000Z</ns0:updated><ns0:published>2010-12-10T21:59:54.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by k...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1226#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1226/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

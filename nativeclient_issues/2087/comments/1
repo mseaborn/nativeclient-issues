@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8GQ347eCl7ImA9WhdSFk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2087/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=6205
+
+------------------------------------------------------------------------
+r6205 | bsy@google.com | Mon Jul 25 17:02:44 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/platform.gyp?r1=6205&amp;r2=6204&amp;pathrev=6205
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/srpc/srpc.gyp?r1=6205&amp;r2=6204&amp;pathrev=6205
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/imc/imc.gyp?r1=6205&amp;r2=6204&amp;pathrev=6205
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/nacl_base/nacl_base.gyp?r1=6205&amp;r2=6204&amp;pathrev=6205
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/gdb_rsp/gdb_rsp.gyp?r1=6205&amp;r2=6204&amp;pathrev=6205
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/perf_counter/perf_counter.gyp?r1=6205&amp;r2=6204&amp;pathrev=6205
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/weak_ref/weak_ref.gyp?r1=6205&amp;r2=6204&amp;pathrev=6205
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/nonnacl_util/nonnacl_util.gyp?r1=6205&amp;r2=6204&amp;pathrev=6205
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/desc.gyp?r1=6205&amp;r2=6204&amp;pathrev=6205
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/simple_service/simple_service.gyp?r1=6205&amp;r2=6204&amp;pathrev=6205
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/third_party_mod/jsoncpp/jsoncpp.gyp?r1=6205&amp;r2=6204&amp;pathrev=6205
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/reverse_service/reverse_service.gyp?r1=6205&amp;r2=6204&amp;pathrev=6205
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/gio/gio.gyp?r1=6205&amp;r2=6204&amp;pathrev=6205
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/threading/threading.gyp?r1=6205&amp;r2=6204&amp;pathrev=6205
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/manifest_name_service_proxy/manifest_name_service_proxy.gyp?r1=6205&amp;r2=6204&amp;pathrev=6205
+
+switched gyp files to use variables win_target x64 everywhere.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2087
+Review URL: http://codereview.chromium.org/7466040
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-07-26T00:07:02.000Z</ns0:updated><ns0:published>2011-07-26T00:07:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2087#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2087/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

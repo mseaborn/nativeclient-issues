@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEHQ347eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/860/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3170
+
+------------------------------------------------------------------------
+r3170 | mseaborn@chromium.org | Wed Sep 01 07:08:29 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/build.py?r1=3170&amp;r2=3169&amp;pathrev=3170
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/pthread/nacl.scons?r1=3170&amp;r2=3169&amp;pathrev=3170
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/treemappers.py?r1=3170&amp;r2=3169&amp;pathrev=3170
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/btarget.py?r1=3170&amp;r2=3169&amp;pathrev=3170
+
+Modular build: Test nacl-glibc by running run_hello_world_test
+
+The recent full-gcc change means that hello_world.nexe now requires
+libgcc_s.so.  However, gcc installs this in "lib32" which is not where
+the Scons build expects to find libraries.  Add a fixup step to rename
+"lib32" to "lib".
+
+Add linker_scripts to full-gcc's dependencies so that libgcc_s.so gets
+built correctly.
+
+SconsBuild(): Remove the workaround of specifying the toolchain (input
+dir) via PATH and the output dir via naclsdk_mode.  Instead, specify
+the toolchain (input dir) via naclsdk_mode and the output dir via
+extra_sdk_lib_destination/extra_sdk_include_destination (which were
+recently added).
+
+Fix the install_pthread target to heed extra_sdk_include_destination.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=860
+TEST=python build.py -b
+
+Review URL: http://codereview.chromium.org/3220007
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:57:12.000Z</ns0:updated><ns0:published>2011-01-21T22:57:12.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=860#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/860/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

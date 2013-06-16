@@ -1,0 +1,58 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QFSX47eCl7ImA9WhZXFkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1779</ns0:id><ns0:author>
+			<ns0:name>bradnelson@google.com</ns0:name><ns0:uri>/u/bradnelson@google.com/</ns0:uri></ns0:author><ns0:content type="html">Running the egyptian cotton tests repeatedly on a bare metal 64-bit windows 7 box. I hit this:
+
+ERROR: Command returned normal -1, expecting ['normal'] 0 for win64
+======================================================================
+Stdout
+======================================================================
+................................................................
+................................................................
+................................................................
+................................................................255
+................................................................
+................................................................
+................................................................
+................................................................511
+................................................................
+................................................................
+................................................................
+................................................................767
+................................................................
+................................................................
+....PASSED
+
+======================================================================
+Stderr
+======================================================================
+[24716,36896:04:47:04.138000] NaClTimeInternalInit: timeBeginPeriod(1)
+[24716,36896:04:47:04.138000] Unix epoch start is  11644473600000ms in Windows e
+poch time
+[24716,36896:04:47:04.139000]                      Ask: 0000001600000000
+[24716,36896:04:47:04.139000]            orig memory at 000000013f510000
+[24716,36896:04:47:04.904000]           Aligned memory: 0000000200000000
+[24716,38776:04:47:05.084000] NaClAbiStatHostDescStatXlateCtor: Unusual NaCl des
+criptor type (not constructible). The NaCl app has a file with st_mode = 010000.
+ (This is normal for std{in,out,err}, or other inherited/injected files.)
+
+RESULT egyptian_cotton_test.out: FAILED= 1.716011 secs
+scons: *** [scons-out\nacl-x86-64\test_results\egyptian_cotton_test.out] Error -
+1
+scons: building terminated because of errors.
+
+**********************************************************************
+ERROR REPORT: 1 failures
+**********************************************************************
+
+scons-out\nacl-x86-64\test_results\egyptian_cotton_test.out failed: Error -1
+
+Traceback (most recent call last):
+  File &amp;quot;rep.py&amp;quot;, line 5, in &amp;lt;module&amp;gt;
+    'platform=x86-64', 'run_egyptian_cotton_test'])
+  File &amp;quot;/usr/lib/python2.6/subprocess.py&amp;quot;, line 498, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['./scons.bat', '--mode=dbg-win,nacl', '
+platform=x86-64', 'run_egyptian_cotton_test']' returned non-zero exit status 2</ns0:content><ns0:updated>2011-05-06T16:28:38.000Z</ns0:updated><ns0:published>2011-05-06T16:16:57.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>egyptian cotton failure on: Unusual NaCl descriptor type</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1779/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1779" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1779" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-05-06T16:28:38.000Z</ns2:closedDate><ns2:id>1779</ns2:id><ns2:mergedInto>
+			<ns2:id>1763</ns2:id></ns2:mergedInto></ns0:entry>

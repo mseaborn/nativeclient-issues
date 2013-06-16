@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUADQn47eCl7ImA9WhdTEUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1988/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5975
+
+------------------------------------------------------------------------
+r5975 | mseaborn@chromium.org | Fri Jul 08 19:14:12 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=5975&amp;r2=5974&amp;pathrev=5975
+
+Scons: Move the creation of some trusted envs into functions
+
+This will make it easier to instantiate some of these envs twice, for
+x86-32 and x86-64.  Since this differentiation happens early on, in
+pre_base_env, I will need to move that instantiation into a function
+too, in a later change.
+
+It is also cleaner to move this code out of the Python top level.  It
+groups the code and prevents unexpected side-effects via assigning to
+global variables.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1988
+TEST=trybots
+
+Review URL: http://codereview.chromium.org/7328034
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-07-09T02:16:13.000Z</ns0:updated><ns0:published>2011-07-09T02:16:13.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1988#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1988/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

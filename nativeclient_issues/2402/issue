@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU4MRX47eCl7ImA9WhRUEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2402</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+Tree is broken due to WebKit issue and we have a possible fix to WebKit
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+It would take at least two days to get this patch into Chrome's LKGR 
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+We need to test against patched Chrome
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+Tree is green
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+Everyone would be happy
+
+
+The plan is:
+
+1. Roll Chrome DEPS
+2. Build patched Chrome of this revision (Linux x86-64 first)
+3. Upload Chrome version to some location
+4. Patch buildbot scripts to get Chrome binary from the hacky location
+5. Put more versions of Chrome (Linux x86-32, Mac, Windows)
+6. Fix any other regressions if any
+</ns0:content><ns0:updated>2012-01-20T18:26:24.000Z</ns0:updated><ns0:published>2011-10-31T19:28:15.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Run tests against patched version of Chrome</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2402/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2402" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2402" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-01-20T18:26:24.000Z</ns2:closedDate><ns2:id>2402</ns2:id></ns0:entry>

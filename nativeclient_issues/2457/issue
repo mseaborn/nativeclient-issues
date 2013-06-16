@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0MASX47eCl7ImA9WhRREE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2457</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">standard toolchain.  in trying to repro anand's bug, i had to cut-n-paste in the command line from a scons compile:
+
+/mm/bsy/nacl/svn3/native_client/toolchain/linux_x86_newlib/bin/x86_64-nacl-gcc -m64 -std=gnu99 -O3 -Werror -Wall -Wno-variadic-macros -Wswitch-enum -g -fno-stack-protector -fdiagnostics-show-option -pedantic -D__linux__ -mtls-use-call -DNACL_BLOCK_SHIFT=5 -DNACL_BLOCK_SIZE=32 -DNACL_BUILD_ARCH=x86 -DNACL_BUILD_SUBARCH=64 -D__STDC_LIMIT_MACROS=1 -D__STDC_FORMAT_MACROS=1 -D_GNU_SOURCE=1 -D_BSD_SOURCE=1 -D_POSIX_C_SOURCE=199506 -D_XOPEN_SOURCE=600 -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DDYNAMIC_ANNOTATIONS_PREFIX=NACL_ -Iscons-out/nacl_irt-x86-64/include -I/mm/bsy/nacl/svn3/ppapi/native_client/scons-out/nacl_irt-x86-64/include -I/mm/bsy/nacl/svn3 -I/mm/bsy/nacl/svn3/ppapi -Isrc/untrusted/pthread -I/mm/bsy/nacl/svn3/ppapi/native_client/src/untrusted/pthread -c -o junk/test.o junk/test.c
+/mm/bsy/nacl/svn3/native_client/toolchain/linux_x86_newlib/bin/x86_64-nacl-g++ -m64 -B/mm/bsy/nacl/svn3/native_client/scons-out/nacl-x86-64/lib/ -Wl,-rpath-link,scons-out/nacl-x86-64/lib -Wl,-rpath-link,/mm/bsy/nacl/svn3/ppapi/native_client/scons-out/nacl-x86-64/lib -Wl,-rpath-link,toolchain/linux_x86_newlib/x86_64-nacl/lib -Wl,-rpath-link,/mm/bsy/nacl/svn3/ppapi/native_client/toolchain/linux_x86_newlib/x86_64-nacl/lib -Wl,-rpath-link,scons-out/nacl-x86-64/lib -Wl,-rpath-link,/mm/bsy/nacl/svn3/ppapi/native_client/scons-out/nacl-x86-64/lib junk/test.o -Lscons-out/nacl-x86-64/lib -L/mm/bsy/nacl/svn3/ppapi/native_client/scons-out/nacl-x86-64/lib -Ltoolchain/linux_x86_newlib/x86_64-nacl/lib -L/mm/bsy/nacl/svn3/ppapi/native_client/toolchain/linux_x86_newlib/x86_64-nacl/lib -Lscons-out/nacl-x86-64/lib -L/mm/bsy/nacl/svn3/ppapi/native_client/scons-out/nacl-x86-64/lib -lppapi -lppapi_cpp -o test.nexe
+
+because if we try to run the TC gcc directly we get:
+
+$ /mm/bsy/nacl/svn3/native_client/toolchain/linux_x86_newlib/bin/x86_64-nacl-gcc -m64 -c -o junk/test.o junk/test.cjunk/test.c:2:21: error: pthread.h: No such file or directory
+junk/test.c: In function &#8216;main&#8217;:
+junk/test.c:9: error: &#8216;pthread_mutex_t&#8217; undeclared (first use in this function)
+junk/test.c:9: error: (Each undeclared identifier is reported only once
+junk/test.c:9: error: for each function it appears in.)
+junk/test.c:9: error: expected &#8216;;&#8217; before &#8216;mutex&#8217;
+junk/test.c:10: error: &#8216;mutex&#8217; undeclared (first use in this function)
+
+
+why doesn't nacl-gcc and friends just know where the various include paths to use?  if i successfully got a .o file, a vanilla use of nacl-gcc to generate a nexe yields:
+
+$ /mm/bsy/nacl/svn3/native_client/toolchain/linux_x86_newlib/bin/x86_64-nacl-g++ -m64 junk/test.o -o junk/test.nexe/mm/bsy/nacl/svn3/native_client/toolchain/linux_x86_newlib/bin/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/bin/ld: crt1.o: No such file: No such file or directory
+collect2: ld returned 1 exit status
+
+so similarly, why doesn't the nacl-g++ driver know where crt1.o could be found?</ns0:content><ns0:updated>2011-11-22T22:37:28.000Z</ns0:updated><ns0:published>2011-11-22T22:37:28.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>toolchain a pain to use</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2457/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2457" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2457" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2457</ns2:id></ns0:entry>

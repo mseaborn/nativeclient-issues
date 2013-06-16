@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYMQX47eCl7ImA9WhdRFE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/746</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Currently the only way to launch a process from the NaCl plugin is by creating an &amp;lt;embed&amp;gt; element.  There are two choices:
+ 1) Create an &amp;lt;embed&amp;gt; element with the &amp;quot;src&amp;quot; attribute pre-set.
+ 2) Create an &amp;lt;embed&amp;gt; element and then set &amp;quot;src&amp;quot;, which triggers the launch of a process.
+
+As a programmatic interface, this is quite awkward.  It will be especially awkward when using dynamic linking, when &amp;quot;src&amp;quot; always points to the dynamic linker and the real executable must be specified elsewhere.
+
+
+We should provide a function/method call for launching a process as well.  This will provide several advantages:
+
+* We can decouple fetching the executable from launching it as a subprocess.  The launch() function can take an FD as acquired through __urlAsNaClDesc().
+  * This allows web apps to get better feedback on the progress of fetching/launching, and whether these steps have failed.
+  * This allows launching of executables fetched by other means, e.g. through cross-origin UMP fetching rather than just same-origin fetching, or launching an executable from an FD for a shared memory segment.
+
+* It would make it easier to specify what FDs the process should be launched with.  This would allow processes to be started sandboxed, without the web app's ambient authority.  Currently a process would have to sandbox itself by dropping FDs after startup.  See http://code.google.com/p/nativeclient/wiki/GuestCode.
+
+* It would make it easier to pass arguments to the process at startup, e.g. an argv string list.  Currently, the &amp;lt;embed&amp;gt; attributes are made available, but only to NaCl processes that use NPAPI proxying; and the namespace of attributes can clash with uses of attributes by the NaCl plugin.
+
+
+Sketch of possible interface:
+
+plugin = document.getElementById(&amp;quot;nacl_plugin&amp;quot;)
+plugin.__urlAsNaClDesc(&amp;quot;http://example.com/path/to/foo.nexe&amp;quot;,
+  {
+    onload: function (file_desc) {
+      process = plugin.__launchProcess(file_desc, [&amp;quot;arg1&amp;quot;, &amp;quot;arg2&amp;quot;, ...]);
+    },
+    onfail: function (error) {
+      // Deal with error...
+    },
+  });
+</ns0:content><ns0:updated>2011-08-03T21:49:40.000Z</ns0:updated><ns0:published>2010-07-30T17:29:45.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112723007196297768207/</ns2:uri><ns2:username>dsprin...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Plugin: Add method for launching a NaCl process programmatically</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/746/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=746" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/746" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-03T21:49:40.000Z</ns2:closedDate><ns2:id>746</ns2:id></ns0:entry>

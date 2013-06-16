@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYGQ347eCl7ImA9WhdTFUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1033</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+Currently, we have two options to load NaCl module into sel_ldr:
+
+1. Specify the module with the command line
+2. Use load_module:h: in trusted SRPC command channel
+
+The second case is useful for many cases (like I currently have) but it does not support arguments passing
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+In my case, I start sel_ldr from my code and try to GetSockAddr() from it. The default implementation use recvmsg with infinite timeout and it hangs if sel_ldr has quited because NaCl module is not found or not passed the validator.
+
+I have changed this to support timeouts with setsockopt() but recently got an issue with large NaCl module: it was large enough to be validated more than this timeout. My current fix is to increase the timeout but it's a weird hack, you know.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+
+I'd like to split sel_ldr start phase, NaCl module loading and NaCl module validation. This could be done with load_module:h: but I need a way to pass arguments to the NaCl module.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+I have implemented the proper way of loading NaCl modules in my code.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+It will make it easier to use NaCl on server
+</ns0:content><ns0:updated>2011-07-13T19:42:02.000Z</ns0:updated><ns0:published>2010-10-14T19:54:32.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:owner>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Add arguments passing support to load_module:h: </ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>ProcessArgsInit</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1033/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1033" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1033" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
+			<ns2:id>1050</ns2:id></ns2:blockedOn><ns2:closedDate>2011-07-13T19:42:02.000Z</ns2:closedDate><ns2:id>1033</ns2:id></ns0:entry>

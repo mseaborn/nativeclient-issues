@@ -1,0 +1,49 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMBRH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/642/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2834
+
+------------------------------------------------------------------------
+r2834 | mseaborn@chromium.org | Thu Jul 29 12:51:44 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/service_runtime.h?r1=2834&amp;r2=2833&amp;pathrev=2834
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/nonnacl_util/build.scons?r1=2834&amp;r2=2833&amp;pathrev=2834
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/nonnacl_util/sel_ldr_launcher_chrome.cc?r1=2834&amp;r2=2833&amp;pathrev=2834
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/nacl_entry_points.cc?r1=2834&amp;r2=2833&amp;pathrev=2834
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/plugin.cc?r1=2834&amp;r2=2833&amp;pathrev=2834
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/nacl_entry_points.h?r1=2834&amp;r2=2833&amp;pathrev=2834
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/nonnacl_util/sel_ldr_launcher.h?r1=2834&amp;r2=2833&amp;pathrev=2834
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/service_runtime.cc?r1=2834&amp;r2=2833&amp;pathrev=2834
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/nonnacl_util/nonnacl_util.gyp?r1=2834&amp;r2=2833&amp;pathrev=2834
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_main_chrome.c?r1=2834&amp;r2=2833&amp;pathrev=2834
+
+Plugin: Hook up async send/receive sockets in Chromium
+
+Add sel_ldr_launcher_chrome.cc to the Scons build so that it gets
+compile-tested in the standalone build.  This also reduces the number
+of #ifs.
+ * Move launch_nacl_process out of nacl_entry_points.cc because that
+   cannot be built in the standalone build because of its #includes.
+ * Add an extra conditional to the NaClHandlePass call.
+
+Rename the Chromium versions of Start() to StartUnderChromium() to be
+more greppable.
+
+Change StartUnderChromium() to use multiple FDs, and change
+sel_main_chrome.cc to accept these FDs.
+
+We stop using SelLdrLauncher's channel() method in the plugin, and
+pass this value to InitCommunication() as an argument.
+
+The new LaunchNaClProcess type happens to be the same as the old type,
+which creates a potential for confusion because the arguments are used
+differently.  Remove the argument from the old variant of
+RegisterInternalNaClPlugin() to avoid problems.  (This old variant is
+still called with no arguments by Chromium in the browser process.)
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=642
+TEST=nacl_ui_tests in Chromium
+
+Review URL: http://codereview.chromium.org/3044033
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:54:15.000Z</ns0:updated><ns0:published>2011-01-21T22:54:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 13 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=642#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/642/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

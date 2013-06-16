@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4NQX47eCl7ImA9WhRTFkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/177</ns0:id><ns0:author>
+			<ns0:name>or...@chromium.org</ns0:name><ns0:uri>/u/110455494792614626431/</ns0:uri></ns0:author><ns0:content type="html">Implement a friendly way of doing mouse capture.
+
+Mouse capture in linux/X11 in some cases forced me into rebooting my machine, 
+if no way to quit from application.  Mouse capture probably not needed for 
+internal demos.</ns0:content><ns0:updated>2011-11-07T20:49:50.000Z</ns0:updated><ns0:published>2009-12-03T00:14:42.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:owner>
+			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Mouse capture events in NaCl</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>OS-NaCl</ns2:label><ns2:label>GameTech</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>Mstone-16</ns2:label><ns2:label>MigrateToChromium</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/177/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=177" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/177" rel="self" type="application/atom+xml" /><ns2:stars>11</ns2:stars><ns2:blockedOn>
+			<ns2:id>41781</ns2:id><ns2:project>chromium</ns2:project></ns2:blockedOn><ns2:closedDate>2011-11-07T20:49:50.000Z</ns2:closedDate><ns2:id>177</ns2:id><ns2:mergedInto>
+			<ns2:id>95136</ns2:id><ns2:project>chromium</ns2:project></ns2:mergedInto></ns0:entry>

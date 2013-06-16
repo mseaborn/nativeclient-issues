@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIHRn47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/787/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2958
+
+------------------------------------------------------------------------
+r2958 | jvoung@google.com | Tue Aug 10 14:48:47 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/utman.sh?r1=2958&amp;r2=2957&amp;pathrev=2958
+
+Force the utman test functions to build the rest of the trusted side (mostly interested in sel_universal), so that the force_sel_ldr option is no longer needed. 
+
+This was an issue with some tests (e.g., run_srpc_basic), which required using sel_universal to get the right count of handles.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=787
+TEST=
+rm -rf scons-out
+tools/llvm/utman.sh clean &amp;&amp; tools/llvm/utman.sh all &amp;&amp; tools/llvm/utman.sh test-all (pending)
+Review URL: http://codereview.chromium.org/3145004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:55:37.000Z</ns0:updated><ns0:published>2011-01-21T22:55:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=787#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/787/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

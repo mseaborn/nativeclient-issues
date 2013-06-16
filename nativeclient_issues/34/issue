@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkECRX47eCl7ImA9WxVVEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/34</ns0:id><ns0:author>
+			<ns0:name>Keiki.SA...@gmail.com</ns0:name><ns0:uri>/u/105112195548306899582/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+nacl_*_0.1_28_2008_10_22.tgz
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+0.1 build 28
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Vista SP1, XP SP3, Mac OS X 10.5.6 and Ubuntu 8.10 on VirtualBox 2.1.0
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Firefox 3.0.5
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Open http://code.google.com/p/nativeclient/wiki/Downloads?tm=2
+2. Download any tgz files.
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+&amp;quot;nacl_*_0.1_28_2008_10_22.tgz&amp;quot; should be &amp;quot;nacl_*_0.1_28_2008_12_22.tgz&amp;quot;.
+This is TYPO, I guess.</ns0:content><ns0:updated>2009-03-02T19:04:24.000Z</ns0:updated><ns0:published>2008-12-23T07:53:58.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108782782163151845439/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>"nacl_*_0.1_28_2008_10_22.tgz" should be "nacl_*_0.1_28_2008_12_22.tgz"</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/34/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=34" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/34" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2009-03-02T19:04:24.000Z</ns2:closedDate><ns2:id>34</ns2:id></ns0:entry>

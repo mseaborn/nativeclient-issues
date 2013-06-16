@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8MQ347eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/484/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2273
+
+------------------------------------------------------------------------
+r2273 | mseaborn@chromium.org | Mon May 17 07:36:42 PDT 2010
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/btarget_test.py?r1=2273&amp;r2=2272&amp;pathrev=2273
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/example?r1=2273&amp;r2=2272&amp;pathrev=2273
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/build.py?r1=2273&amp;r2=2272&amp;pathrev=2273
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/example/hellow?r1=2273&amp;r2=2272&amp;pathrev=2273
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/dirtree.py?r1=2273&amp;r2=2272&amp;pathrev=2273
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/build_splitprefix.py?r1=2273&amp;r2=2272&amp;pathrev=2273
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/dirtree_test.py?r1=2273&amp;r2=2272&amp;pathrev=2273
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/example/configure?r1=2273&amp;r2=2272&amp;pathrev=2273
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/test_all.py?r1=2273&amp;r2=2272&amp;pathrev=2273
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/example/Makefile.in?r1=2273&amp;r2=2272&amp;pathrev=2273
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/btarget.py?r1=2273&amp;r2=2272&amp;pathrev=2273
+
+Modular build script: Rework to support incremental builds
+
+This introduces a build target graph, implemented in btarget.py.  The
+description of NaCl's toolchain modules in build.py is now simpler and
+more easily supports ad-hoc arrangements such as copying header files
+into the newlib source tree.
+
+btarget.py is the "trusted code base" as far as incrementality goes.
+Changes to btarget.py will not necessarily trigger rebuilds, but
+changes to build.py should.
+
+Changes to the input source (binutils, gcc etc.) will not yet trigger
+rebuilds, but changes to the build options (e.g. configure arguments)
+will.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=484
+
+Review URL: http://codereview.chromium.org/2090001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:28:02.000Z</ns0:updated><ns0:published>2011-01-21T22:28:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=484#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/484/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

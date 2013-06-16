@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYBRX47eCl7ImA9WhdXEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1738</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+
+Perhaps after the move to a new gallery(?), nexes in the gallery regressed to no longer being served with gzip encoding.
+
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+
+Visitors will notice slower startup, especially if we have do not fix issues like http://code.google.com/p/nativeclient/issues/detail?id=1709 before the next toolchain roll. Besides that, the browser cache will be filled with larger than necessary entries.
+
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+
+Double check server configuration for gzip encoding.
+
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+
+(1) Visit hello world from the gallery.
+
+(2) In chrome, open &amp;quot;about:cache&amp;quot;, or &amp;quot;chrome://view-http-cache/&amp;quot; if you prefer. In the case of hello world on a 64-bit machine, visit chrome://view-http-cache/http://nacl-gallery.appspot.com/hello_world/hello_world_x86_64.nexe
+
+(3) As part of the headers, &amp;quot;Content-Encoding: gzip&amp;quot; should appear. &amp;quot;Content-Length: XXX&amp;quot; should have XXX being smaller than usual. The response body  section should not contain tons of 0s (those 0s should have been compressed). In fact, you will probably not see readable bits in the response body like &amp;quot;.ELF..&amp;quot;
+
+As an example of (3), the HTML file for hello world is actually served with gzip encoding right now (chrome://view-http-cache/http://nacl-gallery.appspot.com/hello_world/hello_world.html). It does show &amp;quot;Content-Encoding: gzip&amp;quot;, and the response body is completely unreadable instead of being HTML text.
+
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+
+Visitors to the gallery will notice faster startup.
+
+
+- Misc:
+
+(a) It also appears that caching of nexes is only for a short period of time. For example, &amp;quot;Cache-Control: public, max-age=600&amp;quot; appears in the headers (so it is only cached for 10 minutes?). 
+(b) The life example in the gallery has &amp;quot;&amp;lt;meta HTTP-EQUIV=&amp;quot;Pragma&amp;quot; CONTENT=&amp;quot;no-cache&amp;quot;&amp;gt;&amp;quot;, while the other examples do not.
+</ns0:content><ns0:updated>2011-08-24T16:25:54.000Z</ns0:updated><ns0:published>2011-04-27T18:05:53.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/100268164290167392978/</ns2:uri><ns2:username>mmorten...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100268164290167392978/</ns2:uri><ns2:username>mmorten...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>nacl gallery may have regressed to not using gzip encoding</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1738/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1738" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1738" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-05T18:26:32.000Z</ns2:closedDate><ns2:id>1738</ns2:id></ns0:entry>

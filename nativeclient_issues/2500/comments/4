@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcHSH47eCl7ImA9WhRXEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2500/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 5a95f6d1fcf9e09ee7d221013a95ffc411f15fa5
+ Email: mseaborn@chromium.org@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Partly fix untrusted-code Gyp build's tracking of dependencies on header files
+
+Fix the invocation of scan_sources.py so that it will actually find
+header files.  scan_sources.py gets invoked from .gyp files' parent
+directories, so "-I.." is the wrong path for finding
+"native_client/src/..." headers.  Use the top-of-tree pathname
+instead.
+
+This should fix incremental builds on the buildbots, which always
+re-run Gyp.
+
+The untrusted-code Gyp build is still hella dodgy: If a developer adds
+a dependency on a header to a .c file and re-runs "make" without
+explicitly rerunning Gyp, the incremental build will fail to track the
+dependency.  But this is only an issue for local development and will
+not affect the buildbots.  It is also probably not fixable without
+changes to Gyp.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2500
+TEST=Manual test only: change nacl_srpc.h and check that
+  "make out/Debug/obj/gen/tc_newlib/lib64/libsrpc.a" rebuilds the library
+
+Review URL: http://codereview.chromium.org/8976017
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@7477 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	build/untrusted.gypi</ns0:content><ns0:updated>2011-12-17T06:40:39.000Z</ns0:updated><ns0:published>2011-12-17T06:40:39.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2500#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2500/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8DQ347eCl7ImA9Wx5bE0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/71</ns0:id><ns0:author>
+			<ns0:name>eta...@gmail.com</ns0:name><ns0:uri>/u/107912683965524509769/</ns0:uri></ns0:author><ns0:content type="html">I'm using the latest version of both the sdk and the runtime on windows XP
+professional english edition and mozilla firefox 3.0.8
+
+1st issue : the plugin tries to incorrectly install at C:\program
+files\mozilla firefox\plugins while my OS is at G:\.
+
+2nd issue : while trying to build with '.\scons.bat --mode=most' i get the
+following message :
+
+G:\nacl\googleclient\native_client/intermodule_comm/nacl_imc.h(50) : fatal
+error
+ C1083: Cannot open include file: 'windows.h': No such file or directory
+scons: *** [scons-out\dbg-win\obj\tests\npapi_bridge\base_object.obj] Error 2
+scons: building terminated because of errors.
+
+I do have the PSDK as i use it with VC Express. I think that i must pass
+somehow the path of it to scons. However I don't know how.</ns0:content><ns0:updated>2010-10-29T17:54:32.000Z</ns0:updated><ns0:published>2009-04-07T09:17:17.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>client plugin and building</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/71/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=71" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/71" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-10-29T17:54:32.000Z</ns2:closedDate><ns2:id>71</ns2:id></ns0:entry>

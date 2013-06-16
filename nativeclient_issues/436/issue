@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkIHSX47eCl7ImA9Wx5TF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/436</ns0:id><ns0:author>
+			<ns0:name>grego...@google.com</ns0:name><ns0:uri>/u/114685308157308201595/</ns0:uri></ns0:author><ns0:content type="html">Threads test sometimes fails on Windows - see a log at http://nacl-
+linux1.mtv.corp.google.com/nacl/builders/xp-m32-n32-
+dbg/builds/434/steps/small_tests/logs/stdio
+
+The failure occurs in TestIntrinsics.
+</ns0:content><ns0:updated>2010-08-02T18:42:18.000Z</ns0:updated><ns0:published>2010-04-15T16:50:09.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:owner>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/110803933729866443698/</ns2:uri><ns2:username>adono...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Threads test is flaky on Windows</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Test</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/436/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=436" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/436" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-08-02T18:42:18.000Z</ns2:closedDate><ns2:id>436</ns2:id><ns2:mergedInto>
+			<ns2:id>729</ns2:id></ns2:mergedInto></ns0:entry>

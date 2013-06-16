@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUAQX47eCl7ImA9WxFaEkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/501/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I did some experimentation a while ago and found that the ARM device I
+tested was not caching BKPT instructions.  At least, bringing BKPT
+instructions into the pipeline did not cause them to stay in the
+cache, whereas NOP instructions were kept in the cache.
+
+See the attached test program.
+
+With "#if 0" (using BKPT), the output is:
+got 1: not cached: got newly-written code
+got 1: cached from code written 1st time
+
+With "#if 1" (using NOP), the output is:
+got 99: cached from original
+got 99: cached from original
+
+This should mean that, at least on this CPU, we don't need the icache
+flush, because even if the CPU does predict execution of the BKPTs
+(which is unlikely in most use cases), it won't cache them.
+</ns0:content><ns0:updated>2010-07-15T17:50:40.000Z</ns0:updated><ns0:published>2010-07-15T17:50:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=501#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/501/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

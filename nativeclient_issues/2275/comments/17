@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQERn47eCl7ImA9WhRaE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2275/comments/full/17</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">The ARM/MIPS comparison would be useful for people who are familiar with the ARM ISA but not with MIPS. These days that is pretty common.
+
+Can you please explain with an example in the doc why a wrap-below address cannot occur?
+
+How is instruction set selected on MIPS? How can we be sure that untrusted code will not somehow enter microMIPS or 64-bit execution modes? Please cover this explicitly in the doc.
+
+Adding a "Non-goals" or "Is-not" section to the document would make it explicit and obvious to people that you are not doing 64-bit support etc.</ns0:content><ns0:updated>2012-02-15T19:15:07.000Z</ns0:updated><ns0:published>2012-02-15T19:15:07.000Z</ns0:published><ns2:updates /><ns0:title>Comment 17 by bradc...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2275#c17" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2275/comments/full/17" rel="self" type="application/atom+xml" /></ns0:entry>

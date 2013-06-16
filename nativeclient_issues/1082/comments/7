@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QHQH47eCl7ImA9Wx5bE0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1082/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The Sliding Segment Gap (SSG) schemes would require a lot of toolchain changes to implement, and have only a small advantage (reducing address space wastage) versus their disadvantages (either speed or ruling out mmapping code).  I don't believe it's worth implementing SSG, but even if it were, it's still more important to get a Big Segment Gap-based system working fully first.
+
+I've created issue 1126 to track the Sliding Segment Gap schemes.
+
+I've also created issue 1125 to track the Movable Segment Gap scheme.</ns0:content><ns0:updated>2010-10-29T14:08:51.000Z</ns0:updated><ns0:published>2010-10-29T14:08:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1082#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1082/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

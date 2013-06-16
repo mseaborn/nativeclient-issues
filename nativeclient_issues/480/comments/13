@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkUNRX47eCl7ImA9WhdTF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/480/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: ca7c456246121d7e17c22181f0a76eb5c79d3ac0
+ Email: bradchen@google.com@0039d316-1c4b-4281-b951-d872f2087c98
+
+Add a "clone" option to base/process_util.h:LaunchProcess(). Useful inside Linux sandbox.
+
+BUG=nativeclient:480
+TEST=base/process_util_unittest.cc
+
+
+Review URL: http://codereview.chromium.org/7401002
+
+git-svn-id: svn://svn.chromium.org/chrome/trunk/src@92771 0039d316-1c4b-4281-b951-d872f2087c98
+
+M	base/process_util.h
+M	base/process_util_posix.cc
+M	base/process_util_unittest.cc</ns0:content><ns0:updated>2011-07-15T23:58:14.000Z</ns0:updated><ns0:published>2011-07-15T23:58:14.000Z</ns0:published><ns2:updates /><ns0:title>Comment 13 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=480#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/480/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

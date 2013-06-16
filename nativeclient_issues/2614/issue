@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkINQX47eCl7ImA9WhVTEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2614</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Steve VanDeBogart reported this problem:
+
+&amp;quot;I'm trying to submit the following Chrome change: https://chromiumcodereview.appspot.com/9463018/
+However, it causes a conflict in src/trusted/desc/nacl_desc_wrapper.cc which includes both base/shared_memory.h and native_client/src/shared/platform/nacl_check.h leading to a double definition of CHECK and DCHECK.  Undefining them after shared_memory.h works but is kind of ugly.&amp;quot;
+
+I think we need to rename NaCl's CHECK and DCHECK to add a NACL_ prefix.
+</ns0:content><ns0:updated>2012-02-24T20:16:30.000Z</ns0:updated><ns0:published>2012-02-24T20:16:30.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>Rename NaCl's CHECK() and DCHECK() to not conflict with Chromium's versions</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2614/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2614" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2614" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2614</ns2:id></ns0:entry>

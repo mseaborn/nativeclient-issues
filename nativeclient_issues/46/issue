@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEYFRn47eCl7ImA9WxVVF04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/46</ns0:id><ns0:author>
+			<ns0:name>esmo...@gmail.com</ns0:name><ns0:uri>/u/105647772324253240440/</ns0:uri></ns0:author><ns0:content type="html">Same Origin Violations Via NaClNPN_OpenURL
+
+TEAM CJETM
+Affected OS: Linux, OSX, Windows
+Tested Browser: Firefox 3.0.6
+Nacl Version 0.1_38_2009_02_11
+
+According to the description the NPAPI CloudFS Test (staging/cloudfs.html)
+, it should be possible to open files above the directory where the nexe
+was opened. See excerpt below:
+
+-snip-
+Note that due to same-origin browsing constraints you can only look at
+files named from this directory, (native_client/scons-out/nacl/staging in
+the Native Client distribution). Suggestions: index.html, cloudfs.html,
+srcperf.html, mandel_tiled.html. This test will fail silently if you
+request URLs that violate same-origin access policy.
+-/snip-
+
+This is untrue. It is possible to access any file URL outside the same 
+directory the local file was opened in. In this case, 'same origin' really 
+means 'from the same top-level URL', and this behavior seems to be in 
+violation of the above description.
+
+Also note, requests for URL's that are clearly not under the same origin
+(i.e. 'http://whatever') still appear to get requested, but do not return
+results to the user. We are looking into this issue further.
+
+See attached poc.html file for reproduction (drop in staging dir).</ns0:content><ns0:updated>2009-03-11T00:41:57.000Z</ns0:updated><ns0:published>2009-03-06T20:10:23.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:state>closed</ns2:state><ns0:title>Same Origin Violations Via NaClNPN_OpenURL</ns0:title><ns2:label>Security-Contest</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/46/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=46" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/46" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2009-03-11T00:41:57.000Z</ns2:closedDate><ns2:id>46</ns2:id></ns0:entry>

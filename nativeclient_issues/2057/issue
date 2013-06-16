@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08ARn47eCl7ImA9WhdRGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2057</ns0:id><ns0:author>
+			<ns0:name>pol...@google.com</ns0:name><ns0:uri>/u/101953680983947802512/</ns0:uri></ns0:author><ns0:content type="html">Because we had no tests, we did not detect that PPP_Instance::DidDestroy on the nexe side was never called (see issue 2016 and 1680).
+
+We need a test that will verify that both DidDestroy and PPP_ShutdownModule on the untrusted side got triggered.
+
+This is tricky.
+PostMessage does not work because it is a per-instance interface, so once the instance is gone, messages will get thrown out.
+Crashing the nexe and relying on progress events also does not work because they are posted with CallOnMainThread and are also thrown once NaCl is gone.
+
+So the other two options are:
+1) printfs and golden files (undesirable)
+2) adding a special testing mode to the plugin that will allow us to shutdown the nexe without shutting down the plugin and/or post crash events synchronously, so the JS harness can detect them.
+3) something else?
+</ns0:content><ns0:updated>2011-08-10T13:10:47.000Z</ns0:updated><ns0:published>2011-07-20T00:11:17.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:owner>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Shutdown verification test</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>OS-</ns2:label><ns2:label>Arch-</ns2:label><ns2:label>MigrateToChromium</ns2:label><ns2:label>merge-merged-835</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2057/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2057" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2057" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-10T13:10:47.000Z</ns2:closedDate><ns2:id>2057</ns2:id></ns0:entry>

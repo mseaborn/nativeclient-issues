@@ -1,0 +1,48 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcBR347eCl7ImA9WhZSGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1529</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">Sample program:
+================================================
+#include &amp;lt;fcntl.h&amp;gt;                                                                                                                                                                             
+#include &amp;lt;stdio.h&amp;gt;                                                                                                                                                                             
+                                                                                                                                                                                               
+int main() {                                                                                                                                                                                   
+  printf(&amp;quot;fgetown: %d\n&amp;quot;, fstat(1, F_GETOWN));                                                                                                                                                 
+}
+================================================
+
+running on x86_64 nacl:
+
+shell&amp;gt; $SCONS_OUT/dbg-linux-x86-64/staging/sel_ldr -a -s -- $toolchain/nacl-sdk/nacl64/lib/runnable-ld.so --library-path $toolchain/nacl-sdk/nacl64/lib ./a.out
+
+DEBUG MODE ENABLED (bypass acl)
+[5651,3176183584:16:34:50.592704] BYPASSING ALL ACL CHECKS
+[5651,3176113920:16:34:50.843495] munmap: rounded length to 0x10000
+[5651,3176113920:16:34:50.843531] invalid mmap flags 04022, ignoring extraneous bits
+[5651,3176113920:16:34:50.843564] invalid mmap flags 04022, ignoring extraneous bits
+[5651,3176113920:16:34:50.843644] NaClHostDescOpen: open returned -1, errno 2
+[5651,3176113920:16:34:50.871211] munmap: rounded length to 0x10000
+[5651,3176113920:16:34:50.871233] invalid mmap flags 04022, ignoring extraneous bits
+[5651,3176113920:16:34:50.871247] invalid mmap flags 04022, ignoring extraneous bits
+[5651,3176113920:16:34:51.501589] munmap: rounded length to 0x1b0000
+[5651,3176113920:16:34:51.501711] invalid mmap flags 04022, ignoring extraneous bits
+[5651,3176113920:16:34:51.501728] invalid mmap flags 04022, ignoring extraneous bits
+./a.out: Symbol `' causes overflow in R_X86_64_32 relocation
+./a.out: Symbol `' causes overflow in R_X86_64_32 relocation
+./a.out: Symbol `' causes overflow in R_X86_64_32 relocation
+./a.out: Symbol `' causes overflow in R_X86_64_32 relocation
+./a.out: Symbol `' causes overflow in R_X86_64_32 relocation
+./a.out: Symbol `' causes overflow in R_X86_64_32 relocation
+./a.out: Symbol `' causes overflow in R_X86_64_32 relocation
+./a.out: Symbol `' causes overflow in R_X86_64_32 relocation
+./a.out: Symbol `' causes overflow in R_X86_64_32 relocation
+./a.out: Symbol `' causes overflow in R_X86_64_32 relocation
+./a.out: Symbol `' causes overflow in R_X86_64_32 relocation
+./a.out: Symbol `' causes overflow in R_X86_64_32 relocation
+./a.out: Symbol `' causes overflow in R_X86_64_32 relocation
+
+** Signal 11 from untrusted code: Halting at 7FC50195A76Eh</ns0:content><ns0:updated>2011-04-04T14:07:36.000Z</ns0:updated><ns0:published>2011-03-14T13:39:07.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:owner>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>nacl-glibc: fcntl() must not crash, return ENOSYS instead </ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1529/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1529" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1529" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>1498</ns2:id></ns2:blocking><ns2:closedDate>2011-04-04T14:07:36.000Z</ns2:closedDate><ns2:id>1529</ns2:id></ns0:entry>

@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQARH47eCl7ImA9Wx5UE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1053/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@google.com</ns0:name><ns0:uri>/u/mseaborn@google.com/</ns0:uri></ns0:author><ns0:content type="html">Actually, this was caused by a local change I made to SConstruct.  I changed it to use
+  -mmacosx-version-min=10.5
+in CCFLAGS instead of the current
+  -mmacosx-version-min=10.4
+
+Using the new version causes the executable to link against the symbol _sigaltstack$UNIX2003 instead of _sigaltstack (as shown by "nm").
+
+This seems to be a bug.  The man page says sigaltstack() can return ENOMEM if:
+"[ENOMEM]  The size of the alternate stack area is less than or equal to MINSIGSTKSZ."
+
+But clearly this shouldn't happen when *unregistering* a stack.  The man page also says "If SA_DISABLE is set in ss_flags, ss_sp and ss_size are ignored and the signal stack will be disabled."  (Incidentally, it *should* refer to SS_DISABLE.)
+
+The bug is obvious from looking at the source to Mac OS X's libc: compat-43/sigaltstk.c in Libc-594.9.1 contains:
+
+/* UNIX03 only */
+int     sigaltstack(const stack_t * __restrict nstack, stack_t * __restrict ostack) 
+{
+        if (nstack &amp;&amp; nstack-&gt;ss_size &lt; MINSIGSTKSZ) {
+                errno = ENOMEM;
+                return -1;
+        }
+        return __sigaltstack(nstack, ostack);
+}</ns0:content><ns0:updated>2010-10-17T19:22:25.000Z</ns0:updated><ns0:published>2010-10-17T19:22:25.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1053#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1053/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

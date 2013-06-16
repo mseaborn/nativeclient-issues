@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUEARX47eCl7ImA9WhdaEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2168</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">Comapre:
+
+$ cat test.c
+extern int foo(int);
+
+int bar(int i) {
+  return foo(i);
+}
+$ toolchain/linux_x86/bin/x86_64-nacl-gcc -O2 -S -o- test.c
+        .file   &amp;quot;test.c&amp;quot;
+        .text
+        .align 32
+.globl bar
+        .type   bar, @function
+bar:
+.LFB0:
+        .cfi_startproc
+        jmp     foo
+        .cfi_endproc
+.LFE0:
+        .size   bar, .-bar
+        .ident  &amp;quot;GCC: (GNU) 4.4.3 2011-08-18 (Native Client r6473, Git Commit a2490b96462a8cc20322c174e7ac5bee72f3d6bd)&amp;quot;
+        .section        .note.GNU-stack,&amp;quot;&amp;quot;,@progbits
+$ toolchain/linux_x86/bin/x86_64-nacl-gcc -Os -S -o- test.c
+        .file   &amp;quot;test.c&amp;quot;
+        .text
+.globl bar
+        .type   bar, @function
+bar:
+.LFB0:
+        .cfi_startproc
+        jmp     foo
+        .cfi_endproc
+.LFE0:
+        .size   bar, .-bar
+        .ident  &amp;quot;GCC: (GNU) 4.4.3 2011-08-18 (Native Client r6473, Git Commit a2490b96462a8cc20322c174e7ac5bee72f3d6bd)&amp;quot;
+        .section        .note.GNU-stack,&amp;quot;&amp;quot;,@progbits
+
+All indirectly-callable functions must be bundle-aligned, but short-term it's probably easier to align all functions.</ns0:content><ns0:updated>2011-10-20T18:00:44.000Z</ns0:updated><ns0:published>2011-08-19T06:49:39.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>nacl-gcc does not align tail functions on -Os mode</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86</ns2:label><ns2:label>CoreRuntime</ns2:label><ns2:label>Mstone-17</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2168/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2168" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2168" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-10-20T18:00:44.000Z</ns2:closedDate><ns2:id>2168</ns2:id></ns0:entry>

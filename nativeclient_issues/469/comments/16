@@ -1,0 +1,41 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkQFRH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/469/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2744
+
+------------------------------------------------------------------------
+r2744 | mseaborn@chromium.org | Wed Jul 21 08:14:01 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/nacl_entry_points.cc?r1=2744&amp;r2=2743&amp;pathrev=2744
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/nacl_entry_points.h?r1=2744&amp;r2=2743&amp;pathrev=2744
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=2744&amp;r2=2743&amp;pathrev=2744
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=2744&amp;r2=2743&amp;pathrev=2744
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_main_chrome.c?r1=2744&amp;r2=2743&amp;pathrev=2744
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=2744&amp;r2=2743&amp;pathrev=2744
+
+Make NaCl/Chromium startup interface easier to maintain
+
+Move Chromium's sel_main.cc into the NaCl source tree as
+sel_main_chrome.c, renaming SelMain() to NaClMainForChromium().  This
+makes the interface between NaCl and Chromium narrower.  It is better
+for sel_main.cc to be in the NaCl tree because it assumes a FD layout
+that is closely coupled to what the plugin expects.
+
+Change NaClMainForChromium() to take an array of FDs instead of just
+one, so that we can later make the plugin's
+setAsyncCallback()/sendAsyncMessage() work in Chromium without a
+further two-sided commit.  See:
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=642
+
+Add a new variant of RegisterInternalNaClPlugin() that takes a
+dictionary of functions.  This will allow us to change NaCl's
+nacl_imc_unistd.cc later so that it doesn't #include a Chromium header
+file to get MakeSharedMemorySegmentViaIPC().  We can pass a function
+pointer via this new mechanism instead.  See:
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=469
+
+TEST=Chromium's nacl_ui_tests
+
+Review URL: http://codereview.chromium.org/2806061
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:51:55.000Z</ns0:updated><ns0:published>2011-01-21T22:51:55.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=469#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/469/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0QFRn47eCl7ImA9WhdSEEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1783/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 88e1583e6a0cd83cf5c7177df3342633e943158f
+ Email: mseaborn@chromium.org@0039d316-1c4b-4281-b951-d872f2087c98
+
+NaCl: Allow the IRT library to be overridden via an environment variable
+
+This will allow the NaCl/Chromium integration bot to use a
+freshly-built IRT library rather than a potentially out-of-date
+prebuilt one that is downloaded by Chromium's DEPS file.
+
+We use an environment variable (rather than a command line option) for
+consistency with the env var that the standalone NaCl PPAPI plugin
+already accepts.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1783
+TEST=check that NaCl works when the env var is used and the IRT is not
+  present in out/Debug
+
+Review URL: http://codereview.chromium.org/7398016
+
+git-svn-id: svn://svn.chromium.org/chrome/trunk/src@92939 0039d316-1c4b-4281-b951-d872f2087c98
+
+M	chrome/browser/nacl_host/nacl_process_host.cc</ns0:content><ns0:updated>2011-07-19T17:08:37.000Z</ns0:updated><ns0:published>2011-07-19T17:08:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1783#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1783/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIHQH47eCl7ImA9WhVQE0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2639/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Yes, that document says:
+
+"When the parent/child association is made, the debugger thread responsible for establishing this dependence&#8212;the thread that attaches or starts the process to be debugged&#8212;becomes the parent thread to the process being debugged. Only the parent thread of a process being debugged is capable of receiving debug events for that process. Consequently, the parent thread is the only thread able to call the WaitForDebugEvent and ContinueDebugEvent functions. If another thread calls these functions, they simply return FALSE. The basis for the design of the sample application, DEBUGAPP.EXE, is inherent in this requirement."
+
+This is not made clear in the API docs, which just say:
+
+"Only the thread that created the process being debugged can call WaitForDebugEvent."
+- WaitForDebugEvent() docs at http://msdn.microsoft.com/en-us/library/windows/desktop/ms681423(v=vs.85).aspx
+
+The WaitForDebugEvent() page does not explain what happens if you didn't create the process but attached with DebugActiveProcess().
+
+The idea that the set-of-processes-being-debugged is thread-local, not process-global, is the only sensible way to interpret the API as it stands.
+
+I think we just need to add some comments to our code to make this clear, and maybe have a test to check that debugging multiple processes works.
+</ns0:content><ns0:updated>2012-04-01T21:58:51.000Z</ns0:updated><ns0:published>2012-04-01T21:58:51.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Pri-2</ns2:label><ns2:label>Pri-3</ns2:label><ns2:ownerUpdate>mseaborn@chromium.org</ns2:ownerUpdate><ns2:summary>Windows: Exception handling might not work in Chromium for multiple processes</ns2:summary></ns2:updates><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2639#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2639/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

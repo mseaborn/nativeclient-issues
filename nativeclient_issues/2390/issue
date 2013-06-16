@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUBQ347eCl7ImA9WhdaFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2390</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+r7030, set Chrome DEPS to r107314
+
+./scons platform=x86-64 smoke_tests
+
+**********************************************************************
+ERROR REPORT: 3 failures
+**********************************************************************
+
+run_ppapi_emu_file_test (scons-out/nacl-x86-64/test_results/ppapi_emu_file.out) failed: Error 255
+
+run_ppapi_simple_audio_test (scons-out/nacl-x86-64/test_results/ppapi_simple_audio.out) failed: Error 255
+
+run_ppapi_simple_graphics2d_test (scons-out/nacl-x86-64/test_results/ppapi_simple_graphics2d.out) failed: Error 255
+
+This is because PPP_Instance_DidChangeView:iII: has changed the signature (in Chrome tree), but the sel_universal tests (living in the Chrome tree) have not been updated, because they run in the Native Client tree. This inconsistency was the main cause for this failure.</ns0:content><ns0:updated>2011-10-26T19:27:32.000Z</ns0:updated><ns0:published>2011-10-26T17:40:10.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>sel_universal tests are broken</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2390/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2390" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2390" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-10-26T19:27:32.000Z</ns2:closedDate><ns2:id>2390</ns2:id></ns0:entry>

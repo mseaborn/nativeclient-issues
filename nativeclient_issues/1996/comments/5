@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU4BQH47eCl7ImA9WhdSE0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1996/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=6189
+
+------------------------------------------------------------------------
+r6189 | mball@google.com | Fri Jul 22 21:00:38 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/tramp_64.S?r1=6189&amp;r2=6188&amp;pathrev=6189
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=6189&amp;r2=6188&amp;pathrev=6189
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/tramp_64.h?r1=6189&amp;r2=6188&amp;pathrev=6189
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/sel_ldr_x86_64.c?r1=6189&amp;r2=6188&amp;pathrev=6189
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/sel_ldr_x86_32.c?r1=6189&amp;r2=6188&amp;pathrev=6189
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=6189&amp;r2=6188&amp;pathrev=6189
+
+Revert "fill pcrel and dispatch code thunk region with halts before generating"
+Revert "change x86-64 trampoline to call code in a dispatch code thunk that"
+
+These are r6185 and r6187.
+
+The first of these broke srpc_ns_browser_test in "chrome_browser_tests
+using GYP" on 64-bit Windows, but we don't yet know why.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1996
+TEST=bots
+
+Review URL: http://codereview.chromium.org/7488038
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-07-23T04:05:51.000Z</ns0:updated><ns0:published>2011-07-23T04:05:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1996#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1996/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

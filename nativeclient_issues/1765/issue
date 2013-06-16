@@ -1,0 +1,54 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU8CRn47eCl7ImA9WhZXFUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1765</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I am trying to update NaCl's DEPS as follows:
+-  &amp;quot;chrome_rev&amp;quot;: &amp;quot;82632&amp;quot;,
++  &amp;quot;chrome_rev&amp;quot;: &amp;quot;83890&amp;quot;,
+
+However, NaCl's chrome-downloading step fails as follows:
+
+Downloading http://build.chromium.org/f/chromium/continuous/linux/2011-05-03/83890/chrome-linux.test/pyautolib.py to /tmp/nacl_chrome_download_gnz2y2/pyautolib.py...
+Download failed on http://build.chromium.org/f/chromium/continuous/linux/2011-05-03/83890/chrome-linux.test/pyautolib.py, retrying... (0)
+Download failed on http://build.chromium.org/f/chromium/continuous/linux/2011-05-03/83890/chrome-linux.test/pyautolib.py, retrying... (1)
+Download failed on http://build.chromium.org/f/chromium/continuous/linux/2011-05-03/83890/chrome-linux.test/pyautolib.py, retrying... (2)
+Download failed on http://build.chromium.org/f/chromium/continuous/linux/2011-05-03/83890/chrome-linux.test/pyautolib.py, retrying... (3)
+Download failed on http://build.chromium.org/f/chromium/continuous/linux/2011-05-03/83890/chrome-linux.test/pyautolib.py, retrying... (4)
+Download failed on http://build.chromium.org/f/chromium/continuous/linux/2011-05-03/83890/chrome-linux.test/pyautolib.py, retrying... (5)
+Download failed on http://build.chromium.org/f/chromium/continuous/linux/2011-05-03/83890/chrome-linux.test/pyautolib.py, retrying... (6)
+Download failed on http://build.chromium.org/f/chromium/continuous/linux/2011-05-03/83890/chrome-linux.test/pyautolib.py, retrying... (7)
+Download failed on http://build.chromium.org/f/chromium/continuous/linux/2011-05-03/83890/chrome-linux.test/pyautolib.py, retrying... (8)
+Download failed on http://build.chromium.org/f/chromium/continuous/linux/2011-05-03/83890/chrome-linux.test/pyautolib.py, giving up.
+Traceback (most recent call last):
+  File &amp;quot;build/download_chrome.py&amp;quot;, line 124, in &amp;lt;module&amp;gt;
+    Main()
+  File &amp;quot;build/download_chrome.py&amp;quot;, line 104, in Main
+    sync_file.SyncFile(pyautopy_url, tempdir)
+  File &amp;quot;/home/mseaborn/devel/nacl-trunk/src/native_client/build/sync_file.py&amp;quot;, line 11, in SyncFile
+    username=username, password=password)
+  File &amp;quot;/home/mseaborn/devel/nacl-trunk/src/native_client/build/http_download.py&amp;quot;, line 78, in HttpDownload
+    src = urllib2.urlopen(url)
+  File &amp;quot;/usr/lib/python2.6/urllib2.py&amp;quot;, line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File &amp;quot;/usr/lib/python2.6/urllib2.py&amp;quot;, line 397, in open
+    response = meth(req, response)
+  File &amp;quot;/usr/lib/python2.6/urllib2.py&amp;quot;, line 510, in http_response
+    'http', request, response, code, msg, hdrs)
+  File &amp;quot;/usr/lib/python2.6/urllib2.py&amp;quot;, line 435, in error
+    return self._call_chain(*args)
+  File &amp;quot;/usr/lib/python2.6/urllib2.py&amp;quot;, line 369, in _call_chain
+    result = func(*args)
+  File &amp;quot;/usr/lib/python2.6/urllib2.py&amp;quot;, line 518, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+urllib2.HTTPError: HTTP Error 404: Not Found
+
+
+There are two problems here:
+ 1) The script retries even on a 404 error.
+ 2) pyautolib.py is not published by recent Chromium builds.
+
+The latter has changed between these two builds:
+
+http://build.chromium.org/f/chromium/continuous/linux/2011-04-23/82790/chrome-linux.test/ (file present)
+http://build.chromium.org/f/chromium/continuous/linux/2011-04-24/82814/chrome-linux.test/ (file missing)
+</ns0:content><ns0:updated>2011-05-05T01:11:07.000Z</ns0:updated><ns0:published>2011-05-03T21:36:37.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/elijahtaylor@google.com/</ns2:uri><ns2:username>elijahtaylor@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Can't update chrome_rev: pyautolib.py has disappeared</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>Test</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1765/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1765" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1765" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-05-05T01:11:07.000Z</ns2:closedDate><ns2:id>1765</ns2:id></ns0:entry>

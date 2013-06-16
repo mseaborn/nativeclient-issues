@@ -1,0 +1,56 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0YNSX47eCl7ImA9WhRQF0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2392</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+
+r7030, trying to roll Chrome DEPS to 107314
+
+./scons platform=x86-64 run_pyauto_surfaway_test 
+
+fails with
+
+
+======================================================================
+ERROR: surfaway.NaClTest.testSurfAwayPPBCore: &amp;quot;None&amp;quot;
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File &amp;quot;/usr/local/google/home/krasin/nacl-deps2/native_client/tests/pyauto_nacl/surfaway.py&amp;quot;, line 109, in testSurfAwayPPBCore
+    self.surfAway('ppapi_ppb_core.html', 'PPAPI')
+  File &amp;quot;/usr/local/google/home/krasin/nacl-deps2/native_client/tests/pyauto_nacl/surfaway.py&amp;quot;, line 32, in surfAway
+    self.surfAwayMulti(page, title_word, 5)
+  File &amp;quot;/usr/local/google/home/krasin/nacl-deps2/native_client/tests/pyauto_nacl/surfaway.py&amp;quot;, line 24, in surfAwayMulti
+    nacl_utils.VerifyAllTestsPassed(self)
+  File &amp;quot;/usr/local/google/home/krasin/nacl-deps2/native_client/tests/pyauto_nacl/nacl_utils.py&amp;quot;, line 73, in VerifyAllTestsPassed
+    tab_index)
+  File &amp;quot;/usr/local/google/home/krasin/nacl-deps2/native_client/tests/pyauto_nacl/nacl_utils.py&amp;quot;, line 37, in AssertTrueOrLogTab
+    print browser.ExecuteJavascript(js, 0, tab_index),
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 1254-1272: ordinal not in range(128)
+
+======================================================================
+ERROR: surfaway.NaClTest.testSurfAwayPPBFileSystem: &amp;quot;None&amp;quot;
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File &amp;quot;/usr/local/google/home/krasin/nacl-deps2/native_client/tests/pyauto_nacl/surfaway.py&amp;quot;, line 118, in testSurfAwayPPBFileSystem
+    self.surfAway('ppapi_ppb_file_system.html', 'PPAPI')
+  File &amp;quot;/usr/local/google/home/krasin/nacl-deps2/native_client/tests/pyauto_nacl/surfaway.py&amp;quot;, line 32, in surfAway
+    self.surfAwayMulti(page, title_word, 5)
+  File &amp;quot;/usr/local/google/home/krasin/nacl-deps2/native_client/tests/pyauto_nacl/surfaway.py&amp;quot;, line 23, in surfAwayMulti
+    nacl_utils.WaitForNexeLoad(self)
+  File &amp;quot;/usr/local/google/home/krasin/nacl-deps2/native_client/tests/pyauto_nacl/nacl_utils.py&amp;quot;, line 54, in WaitForNexeLoad
+    expect_retval=1, timeout=90),
+  File &amp;quot;/usr/local/google/home/krasin/nacl-deps2/native_client/tests/pyauto_nacl/../../../chrome/test/pyautolib/pyauto.py&amp;quot;, line 647, in WaitUntil
+    retval = function(*args)
+  File &amp;quot;/usr/local/google/home/krasin/nacl-deps2/native_client/tests/pyauto_nacl/nacl_utils.py&amp;quot;, line 53, in &amp;lt;lambda&amp;gt;
+    browser.FindInPage('[SHUTDOWN]', tab_index=tab_index)['match_count'],
+  File &amp;quot;/usr/local/google/home/krasin/nacl-deps2/native_client/tests/pyauto_nacl/../../../chrome/test/pyautolib/pyauto.py&amp;quot;, line 2516, in FindInPage
+    return self._GetResultFromJSONRequest(cmd_dict, windex=windex)
+  File &amp;quot;/usr/local/google/home/krasin/nacl-deps2/native_client/tests/pyauto_nacl/../../../chrome/test/pyautolib/pyauto.py&amp;quot;, line 783, in _GetResultFromJSONRequest
+    'Perhaps the browser crashed.' % cmd_dict)
+JSONInterfaceError: Automation call {'match_case': False, 'tab_index': 0, 'search_string': '[SHUTDOWN]', 'command': 'FindInPage', 'forward': True, 'find_next': False} received empty response.  Perhaps the browser crashed.
+
+
+The first failure is related to non-ascii symbols in the output (the issue that is probably already known in Chrome) and the second failure is unclear.
+</ns0:content><ns0:updated>2011-12-13T17:59:58.000Z</ns0:updated><ns0:published>2011-10-26T17:54:10.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>run_pyauto_surfaway_test is broken</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Mstone-17</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2392/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2392" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2392" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>2394</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2395</ns2:id></ns2:blockedOn><ns2:closedDate>2011-12-13T17:59:58.000Z</ns2:closedDate><ns2:id>2392</ns2:id></ns0:entry>

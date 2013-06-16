@@ -1,0 +1,49 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkIGRX47eCl7ImA9WhZWGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1478/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5375
+
+------------------------------------------------------------------------
+r5375 | jvoung@google.com | Thu May 19 18:15:12 PDT 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/browser_startup_time?r1=5375&amp;r2=5374&amp;pathrev=5375
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=5375&amp;r2=5374&amp;pathrev=5375
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/process_perf_output.py?r1=5375&amp;r2=5374&amp;pathrev=5375
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/browser_startup_time/browser_startup_time.js?r1=5375&amp;r2=5374&amp;pathrev=5375
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/browser_tester/browserdata/nacltest.js?r1=5375&amp;r2=5374&amp;pathrev=5375
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/browser_startup_time/browser_startup_time.nmf?r1=5375&amp;r2=5374&amp;pathrev=5375
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/browser_startup_time/browser_startup_time.html?r1=5375&amp;r2=5374&amp;pathrev=5375
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/test_lib.py?r1=5375&amp;r2=5374&amp;pathrev=5375
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/browser_startup_time/nacl.scons?r1=5375&amp;r2=5374&amp;pathrev=5375
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/command_tester.py?r1=5375&amp;r2=5374&amp;pathrev=5375
+
+Add a browser startup performance test. This uses the breakdown the
+sel_ldr time and logs it (as well as page load-start till module ready).
+
+Also measure the file size of the to-be-downloaded nexe (non-gzipped).
+
+Together, these two measurements could give a better picture of
+IRT vs non-IRT startup for the first visit. For second, third, etc.
+(cached visits), see the first set of measurements.
+
+NOTE: Stdout and stderr are not streamed out for this browser test
+(unlike other browser tests).
+
+Example output:
+
+./scons platform=x86-32 performance_tests irt=1 | grep "RESULT"
+RESULT browser_startup: MakeDynText_x86-32_nnacl_newlib_static_irt= 280.893000 millisecs
+RESULT browser_startup: ValidateImg_x86-32_nnacl_newlib_static_irt= 27.331000 millisecs
+RESULT browser_startup: DynRegionValidate_x86-32_nnacl_newlib_static_irt= 101.827000 millisecs
+RESULT browser_startup: Total_x86-32_nnacl_newlib_static_irt= 518.000000 millisecs
+RESULT browser_startup_size.out: SIZE_x86-32_nnacl_newlib_static_irt= 1259.746 kilobytes
+RESULT hello_world_test.out: TOTAL_x86-32_nnacl_newlib_static_irt= 0.010000 secs
+RESULT hello_world_size.out: SIZE_x86-32_nnacl_newlib_static_irt= 311.657 kilobytes
+
+NOTE: the last few entries about hello_world do not actually use the IRT.
+
+BUG = http://code.google.com/p/nativeclient/issues/detail?id=1478 
+TEST = trybots
+Review URL: http://codereview.chromium.org/7005014
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-20T01:22:04.000Z</ns0:updated><ns0:published>2011-05-20T01:22:04.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1478#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1478/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

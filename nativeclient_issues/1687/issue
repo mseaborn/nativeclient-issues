@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0YNQX47eCl7ImA9WhVTFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1687</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">ncval_annotate gives much more useful output than ncval.  ncval_annotate will show the disassembly of instructions that fail validation and show source code line numbers based on debugging info.
+
+&amp;quot;How do I interpret ncval's output?&amp;quot; is getting to be an FAQ.  The docs should be updated to say to run ncval_annotate.
+
+Similarly, sel_ldr will give the following output:
+
+[45689,2953891840:10:47:33.091431] VALIDATION FAILED.
+[45689,2953891840:10:47:33.091527] Run sel_ldr in debug mode to ignore validation failure.
+[45689,2953891840:10:47:33.091537] Run ncval &amp;lt;module-name&amp;gt; for validation error details.
+
+This could be updated to say to run ncval_annotate too.
+</ns0:content><ns0:updated>2012-02-29T01:33:10.000Z</ns0:updated><ns0:published>2011-04-18T18:53:09.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:cc>
+			<ns2:uri>/u/104626697121361476101/</ns2:uri><ns2:username>gw...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Docs should say to run ncval_annotate rather than ncval</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1687/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1687" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1687" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-05T18:26:10.000Z</ns2:closedDate><ns2:id>1687</ns2:id><ns2:mergedInto>
+			<ns2:id>116194</ns2:id><ns2:project>chromium</ns2:project></ns2:mergedInto></ns0:entry>

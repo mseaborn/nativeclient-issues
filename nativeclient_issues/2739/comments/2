@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUAQX47eCl7ImA9WhVXF0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2739/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8313
+
+------------------------------------------------------------------------
+r8313 | mseaborn@chromium.org | Wed Apr 18 18:13:04 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=8313&amp;r2=8312&amp;pathrev=8313
+
+Scons: Remove manifest_map cache from the manifest file generator
+
+manifest_map was there to avoid conflicts when two tests used the same
+manifest file, but now most manifest files are generated so the
+conflicts no longer occur.
+
+This change removes some icky global state.  This allows nacl_env and
+nacl_irt_test_env to coexist when running chrome_browser_tests, which
+makes the following work:
+
+  ./scons run_pm_manifest_file_chrome_browser_test_irt --mode=dbg-host,nacl,nacl_irt_test
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2739
+TEST=see above
+
+Review URL: https://chromiumcodereview.appspot.com/10119025
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-04-19T01:17:20.000Z</ns0:updated><ns0:published>2012-04-19T01:17:20.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2739#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2739/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

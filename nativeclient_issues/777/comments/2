@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQNQX47eCl7ImA9Wx5TGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/777/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">The problem with both test families is that they use assembler which is not compatible with pnacl.
+
+regarding: 
+    tests/syscall_return_sandboxing
+
+I think it would be best to convert this to a test that involves canned binaries.
+This way it can be run even if there is no untrusted toolchain present.
+
+regarding:
+    tests/dynamic_code_loading
+
+we could chose the same route as above or approximate the current test
+by copying an existing  C function rather than an assembler template.
+But I am not sure how much of the coverage of the existing test can be obtained
+that way.</ns0:content><ns0:updated>2010-08-03T13:49:50.000Z</ns0:updated><ns0:published>2010-08-03T13:49:50.000Z</ns0:published><ns2:updates>
+			<ns2:label>Arch-PNaCl</ns2:label></ns2:updates><ns0:title>Comment 2 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=777#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/777/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

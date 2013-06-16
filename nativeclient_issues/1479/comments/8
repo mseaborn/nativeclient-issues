@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMCQn47eCl7ImA9WhZaE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1479/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 7ab09c177c401602a4e0edca7d67b57633cebfd0
+ Email: jvoung@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Add SCons method for getting a stripped nexe, and measure the size of the browser_startup_time nexe when stripped (w/ and w/out gzip).
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1479
+TEST= ./scons run_browser_startup_stripped_size_test
+Review URL: http://codereview.chromium.org/7211023
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@5858 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	SConstruct
+M	site_scons/site_tools/component_setup.py
+M	site_scons/site_tools/naclsdk.py
+M	tests/browser_startup_time/nacl.scons</ns0:content><ns0:updated>2011-06-29T20:47:43.000Z</ns0:updated><ns0:published>2011-06-29T20:47:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1479#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1479/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

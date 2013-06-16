@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUEMQ347eCl7ImA9WhVSFko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/675</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Bennet has suggested that the plugin should support a co-operative
+graceful shutdown mechanism whereby the plugin asks the NaCl
+subprocess to shut down and waits for it:
+
+&amp;gt; we should have the ability to do a &amp;quot;soft shutdown&amp;quot; or __shutdown
+&amp;gt; from src/untrusted/srpc/accept_loop.c
+
+&amp;gt; whether soft shutdown is done by the NaCl module explicitly asking
+&amp;gt; the plugin for the notification after ld.so is done, or by default
+&amp;gt; for all SRPC servers as it is now, doesn't matter (except for code
+&amp;gt; churn).  apps that persist data probably want to have the ability to
+&amp;gt; clean up (not everything can be done atomically, and we don't want
+&amp;gt; to force app developers to all use transaction logs) on surf-away or
+&amp;gt; similar events.  a comment along these lines suffices for now, but
+&amp;gt; it's an important TODO item so app developers can build robust apps.
+
+&amp;gt; http://www.zachleat.com/web/2008/04/22/dont-let-the-door-hit-you-onunload-and-onbeforeunload/
+&amp;gt; 
+&amp;gt; perhaps it's fixed, but not sure we can count on it.
+&amp;gt; 
+&amp;gt; i was intending the plugin to call __shutdown.  we can implement
+&amp;gt; shutdown via onunload and ignore the possibility of supporting
+&amp;gt; non-chrome browsers and users who might get bitten by it, but i
+&amp;gt; don't think it's a lot of engineering effort to do it in the plugin
+&amp;gt; and provide a better user -- and developer -- experience.
+
+(From http://codereview.chromium.org/2829035/show)
+
+We would need to check what calls can be used from NPP_Destroy() when
+the plugin instance is being shut down.
+
+Obviously asynchronous calls will not be usable at the point because
+the callbacks will never get invoked, which limits the usefulness of
+such a mechanism.
+</ns0:content><ns0:updated>2012-03-13T21:21:22.000Z</ns0:updated><ns0:published>2010-07-06T16:55:20.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Plugin: support co-operative shutdown for NaCl subprocesses</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Plugins</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/675/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=675" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/675" rel="self" type="application/atom+xml" /><ns2:stars>0</ns2:stars><ns2:closedDate>2012-03-13T21:21:22.000Z</ns2:closedDate><ns2:id>675</ns2:id></ns0:entry>

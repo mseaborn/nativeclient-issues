@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4HQX47eCl7ImA9WhVTEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1474</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">While resurrecting this CL http://codereview.chromium.org/6043007
+I ran into some problems with  sel_ldr_sled_tests.
+Those problems were not there when I started working on this which leads me to be believe that we may have a regression.
+
+Concretely it seems that the 'too_small' family of test do not have a text segment which is &amp;quot;too small&amp;quot;, e.g.
+
+readelf -l scons-out/nacl-x86-32/obj/src/trusted/service_runtime/nacl_text_too_small_pad_ro_dyn_test.nexe
+
+Elf file type is EXEC (Executable file)
+Entry point 0x20100
+There are 4 program headers, starting at offset 52
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  PHDR           0x000000 0x00000000 0x00000000 0x000b4 0x000b4 R   0x4
+  LOAD           0x010000 0x00020000 0x00020000 0x10000 0x10000 R E 0x10000
+  LOAD           0x020000 0x00100000 0x00100000 0x0000c 0x0000c R   0x10000
+  LOAD           0x02000c 0x00000000 0x00000000 0x00000 0x00000 RW  0x10000
+
+
+The test currently do pass. So I could be completely wrong.
+
+
+
+
+
+</ns0:content><ns0:updated>2012-02-24T18:42:10.000Z</ns0:updated><ns0:published>2011-02-25T16:51:41.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>sel_ldr_sled_tests  might be  silently broken</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-20</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1474/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1474" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1474" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1474</ns2:id></ns0:entry>

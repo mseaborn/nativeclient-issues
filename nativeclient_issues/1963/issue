@@ -1,0 +1,70 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8FSH47eCl7ImA9WhdTFUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1963</ns0:id><ns0:author>
+			<ns0:name>mmorten...@google.com</ns0:name><ns0:uri>/u/100268164290167392978/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+  0.4
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+  
+&lt;b&gt;On what operating system?&lt;/b&gt;
+  Windows
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+  n/a
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+I am using the NaCl SDK latest svn repo.  I am building
+   VSX plugin -- based on the experimental/visual_studio_plugin dirs
+   .nexes -- built using the NaClSDK repo toolchain tools 
+
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Compile a nexe in the VSX plugin
+2. Attached screenshot shows the local variables at breakpoint, which are correct.
+
+Here's part of the debug.txt log showing the READ of x and y:
+  TX host:$mcffffffb0,04#56
+  [INFO] DebugHost::Transact...Start=114338514 stopPending=0
+  RX [+$78563412#a4] [DebugPipe::GetPacket]
+  ----- The line above was to read x (0x12345678)
+
+  TX host:$mcffffffb4,04#5a
+  [INFO] DebugHost::Transact...Start=114338514 stopPending=0
+  RX [+$cdab0000#4a] [DebugPipe::GetPacket]
+  ----- The line above was to read y (0xABCD)
+
+3. NOW, uncomment the DoStuff function and compile/run again.  At this point, local variables are all screwed up, as shown in 'bad' attached screenshot.
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+ -- Defining a function above main() should not affect/mess up/interfere with getting local variables in main.
+
+Here are the queries for local variables now:
+   TX host:$mcffffffeb,04#8b
+   [INFO] DebugHost::Transact...Start=116258029 stopPending=0
+   RX [+$004e6143#c7] [DebugPipe::GetPacket]
+   ===== Z (unint) that shows 1130450432, 0x43614E00
+
+   TX host:$mcffffffdb,04#8a
+   [INFO] DebugHost::Transact...Start=116258029 stopPending=0
+   RX [+$ff000000#ec] [DebugPipe::GetPacket]
+   ===== argc (0xFF or 255)
+
+   Queries that get back a 0 (x,y,z ?):
+   TX host:$mcffffffdf,04#8e
+   [INFO] DebugHost::Transact...Start=116258013 stopPending=0
+   RX [+$00000000#80] [DebugPipe::GetPacket]
+
+   TX host:$mcffffffe3,04#5c
+   [INFO] DebugHost::Transact...Start=116258013 stopPending=0
+   RX [+$00000000#80] [DebugPipe::GetPacket]
+
+   TX host:$mcffffffe7,04#60
+   [INFO] DebugHost::Transact...Start=116258029 stopPending=0
+   RX [+$00000000#80] [DebugPipe::GetPacket]
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-07-13T22:06:59.000Z</ns0:updated><ns0:published>2011-06-29T21:34:26.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/109474787648168037085/</ns2:uri><ns2:username>mli...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109474787648168037085/</ns2:uri><ns2:username>mli...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112723007196297768207/</ns2:uri><ns2:username>dsprin...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113823374410613289742/</ns2:uri><ns2:username>garia...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>VSX:  Reading local variables (in main) breaks when a function is defined above main</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1963/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1963" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1963" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-13T22:06:59.000Z</ns2:closedDate><ns2:id>1963</ns2:id></ns0:entry>

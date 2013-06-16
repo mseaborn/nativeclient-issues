@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIDR347eCl7ImA9WhRVEk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2197/comments/full/32</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7542
+
+------------------------------------------------------------------------
+r7542 | dschuff@google.com | Tue Jan 10 10:32:44 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/known_eh_failures_pnacl.txt?r1=7542&amp;r2=7541&amp;pathrev=7542
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/scripts/parse_llvm_testsuite_report.py?r1=7542&amp;r2=7541&amp;pathrev=7542
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/known_failures_pnacl.txt?r1=7542&amp;r2=7541&amp;pathrev=7542
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/toolchain_config.py?r1=7542&amp;r2=7541&amp;pathrev=7542
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/toolchain_tester.py?r1=7542&amp;r2=7541&amp;pathrev=7542
+
+Add attributes to torture tests and test configurations
+to specify arch, opt mode etc on excluded tests
+
+Tests are only excluded if the current test configuration has all the same
+attributes specified by the exclude. Tests with no attributes always match.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2197
+TEST=self
+
+Review URL: http://codereview.chromium.org/9167013
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-01-10T18:36:16.000Z</ns0:updated><ns0:published>2012-01-10T18:36:16.000Z</ns0:published><ns2:updates /><ns0:title>Comment 32 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2197#c32" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2197/comments/full/32" rel="self" type="application/atom+xml" /></ns0:entry>

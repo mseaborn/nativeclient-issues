@@ -1,0 +1,126 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4AR347eCl7ImA9WhdWE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/593</ns0:id><ns0:author>
+			<ns0:name>r...@codeaurora.org</ns0:name><ns0:uri>/u/110611514349750114994/</ns0:uri></ns0:author><ns0:content type="html">Hi,
+We have been working to find the root cause of the segfault on writing to cerr. This is a continuation of effort towards resolving issue 236 (http://code.google.com/p/nativeclient/issues/detail?id=236)
+
+The underlying cause seems to be that compiler generates wrong constant offsets for indexing into the global file descriptor tables in the TDB to access stdin, stdout and stderr. The offending code is in ios_init.cc in ios_base::Init::Init(), which initializes cout, cin, cerr. 
+
+It is interesting to note that the compiler generates correct offsets for accessing stdin, stdout, stderr when accessed for fwrite in a c++ app. 
+
+
+More info below:
+
+The following code is from ios_init.cc in libstdc++. I have intermixed it with its assembly dump, manually. 
+
+
+ ios_base::Init::Init()
+ {
+    if (__gnu_cxx::__exchange_and_add(&amp;amp;_S_refcount, 1) == 0)
+    {
+    // Standard streams default to synced with &amp;quot;C&amp;quot; operations.
+    _S_synced_with_stdio = true;
+ 
+    new (&amp;amp;buf_cout_sync) stdio_sync_filebuf&amp;lt;char&amp;gt;(stdout);
+   3684c:       e59f8444        ldr     r8, [pc, #1092] ; get reference to buf_cout_sync
+   [...]
+   3685c:       ebffa61b        bl      200d0 &amp;lt;__aeabi_read_tp&amp;gt;
+   36860:       e1a05000        mov     r5, r0		  ; get thread ptr, store in r5
+   36864:       e7950004        ldr     r0, [r5, r4]    ; r4 contains offset retrieved from GOT for getting
+                                                        ; base of global file descriptor table
+   36868:       e5906008        ldr     r6, [r0, #8]    ; access to stdout with wrong offset !!.. should be [r0, #4] 
+                                                        ; now points to stderr, hence cout &amp;quot;appears&amp;quot; to work
+   [...]
+   368c4:       e5886020        str     r6, [r8, #32]   ; store it in _M_File member of stdio_sync_filebuf&amp;lt;char&amp;gt;
+                                                        ; read by cout object
+   [...]
+
+    new (&amp;amp;buf_cin_sync) stdio_sync_filebuf&amp;lt;char&amp;gt;(stdin);
+   368c8:       e7951004        ldr     r1, [r5, r4]    ; get to the base of the table as above
+   [...]
+   368d8:       e59f83c4        ldr     r8, [pc, #964]  ; get reference to buf_cin_sync
+   [...]
+   368e0:       e5916004        ldr     r6, [r1, #4]    ; access to stdin with wrong offset !!.. should be [r0, #0] 
+                                                        ; now points to stdout
+   [...]
+   3692c:       e5886020        str     r6, [r8, #32]   ; store it in _M_File member of stdio_sync_filebuf&amp;lt;char&amp;gt;
+                                                        ; read by cin object
+
+    new (&amp;amp;buf_cerr_sync) stdio_sync_filebuf&amp;lt;char&amp;gt;(stderr);
+   36934:       e7951004        ldr     r1, [r5, r4]    ; get to the base of the table as above
+  [...]
+   36940:       e59f5360        ldr     r5, [pc, #864]  ; get reference to buf_cerr_sync
+  [...]
+   36948:       e591400c        ldr     r4, [r1, #12]   ; access to stderr with wrong offset !!.. should be [r0, #8] 
+                                                        ; now points to NULL, causes segfault when accessed later
+  [...]
+   3699c:       e5854020        str     r4, [r5, #32]   ; store it in _M_File member of stdio_sync_filebuf&amp;lt;char&amp;gt;
+                                                        ; read by cerr object, causes NULL ptr dereference.. segfault
+   
+
+    // The standard streams are constructed once only and never
+    // destroyed.
+    new (&amp;amp;cout) ostream(&amp;amp;buf_cout_sync);
+    new (&amp;amp;cin) istream(&amp;amp;buf_cin_sync);
+    new (&amp;amp;cerr) ostream(&amp;amp;buf_cerr_sync);
+    new (&amp;amp;clog) ostream(&amp;amp;buf_cerr_sync);
+    cin.tie(&amp;amp;cout);
+    cerr.flags(ios_base::unitbuf);
+    [...]
+     
+The following is the code snippet with corresponding assembly dump of using fwrite to write directly to stdout, stderr. The compiler generates the correct offset and we get desired output.
+
+Correct Offset into the global file descriptor table in fwrite case: stderr has offset of +8, stdout has offset of +4     
+
+    fwrite(temp0, 1, sizeof(temp0), stderr);
+   2028c:       ebffff8f        bl      200d0 &amp;lt;__aeabi_read_tp&amp;gt;
+   20290:       e1a08000        mov     r8, r0
+   20294:       e7980007        ldr     r0, [r8, r7]
+   20298:       e5903008        ldr     r3, [r0, #8]
+   2029c:       e1a00004        mov     r0, r4
+   202a0:       e1a00000        nop                     ; (mov r0, r0)
+   202a4:       e1a00000        nop                     ; (mov r0, r0)
+   202a8:       e1a00000        nop                     ; (mov r0, r0)
+   202ac:       eb00273b        bl      29fa0 &amp;lt;fwrite&amp;gt;
+
+    fwrite(temp1, 1, sizeof(temp1), stdout);
+   202b0:       e7980007        ldr     r0, [r8, r7]
+   202b4:       e5903004        ldr     r3, [r0, #4]
+   202b8:       e3a01001        mov     r1, #1
+   202bc:       e1a02005        mov     r2, r5
+   202c0:       e1a00006        mov     r0, r6
+   202c4:       e1a00000        nop                     ; (mov r0, r0)
+   202c8:       e1a00000        nop                     ; (mov r0, r0)
+   202cc:       eb002733        bl      29fa0 &amp;lt;fwrite&amp;gt;
+
+Any suggestions to solve this are welcome.
+
+&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+Using the prebuilt ARM SDK downloaded by scons.
+URL: http://nativeclient.googlecode.com/svn/trunk/src/native_client
+Repository Root: http://nativeclient.googlecode.com/svn
+Repository UUID: fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+Revision: 2380
+Node Kind: directory
+Schedule: normal
+Last Changed Author: espindola@google.com
+Last Changed Rev: 2380
+Last Changed Date: 2010-05-27 13:17:25 -0400 (Thu, 27 May 2010)
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Linux myhost 2.6.31.12 #11 PREEMPT Fri May 7 15:46:05 EDT 2010 armv7l GNU/Linux
+Distributor ID: Ubuntu
+Description:    Ubuntu 9.10
+Release:        9.10
+Codename:       karmic
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+None, running from command line
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Run a NACL-ARM C++ app which writes to cerr
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+Expected: String output from stderr
+Observed: Segfault
+</ns0:content><ns0:updated>2011-09-06T22:42:26.000Z</ns0:updated><ns0:published>2010-06-11T20:30:38.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Segfault on write to cerr in a NACL-ARM C++ app. </ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/593/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=593" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/593" rel="self" type="application/atom+xml" /><ns2:stars>0</ns2:stars><ns2:closedDate>2011-09-06T22:34:12.000Z</ns2:closedDate><ns2:id>593</ns2:id></ns0:entry>

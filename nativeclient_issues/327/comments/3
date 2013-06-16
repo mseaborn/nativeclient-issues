@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0EGQX47eCl7ImA9WxBbGU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/327/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>msn...@google.com</ns0:name><ns0:uri>/u/105190905030319373792/</ns0:uri></ns0:author><ns0:content type="html">Notes about the current state of the Mac outer sandbox.  There are several things that come into play to 
+enable the sandbox.
+
+1. /dev/random must be opened in the SandboxWarmup() function in chrome/common/sandbox_mac.mm by 
+calling GetUrandomFD().
+
+2. process_type switches::kNaClLoaderProcess must be put into a sandbox (probably the renderer sandbox) in 
+chrome/common/sandbox_init_wrapper_mac.cc. (This actually puts the sel_ldr process into the outer 
+sandbox).
+
+3. Due to the current use of Unix sockets for communication between the plugin and sel_ldr, the use of Unix 
+sockets, specifically the use of bind() and connect(), must be allowed in chrome/renderer/renderer.sb.  This is 
+done by adding these two lines:
+(allow network-inbound (from unix-socket))
+(allow network-outbound (to unix-socket))
+This is not an acceptable long-term solution for the Mac Chrome team.
+
+4. Once these changes are made, the insertion of the "--no-sandbox" switch for tests on Mac can be removed 
+from chrome/test/nacl/nacl_test.cc.
+
+Item 3 requires some re-architecture of the NaCl reliance on Unix sockets for communication. The probable 
+solution is to use a socketpair instead. I believe that fixing item 3 for the Mac will also fix the same problem 
+with the Linux seccomp sandbox.
+</ns0:content><ns0:updated>2010-03-18T17:00:20.000Z</ns0:updated><ns0:published>2010-03-18T17:00:20.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by msn...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=327#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/327/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

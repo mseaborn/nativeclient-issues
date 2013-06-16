@@ -1,0 +1,34 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkYER347eCl7ImA9WhVWFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2752</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Summary: PNaCl switched from an old newlib to a newer newlib at Rev 8387, which is now shared with the nacl-gcc toolchain.  However, this is now triggering some size regressions. 
+
+A rough investigation showed that part of this is new code that:
+
+(1) checks locale
+(2) converts japanese to unicode (jp2uc.c): http://newlib.sourcearchive.com/documentation/1.15.0/jp2uc_8c-source.html
+
+Anyway this might be a &amp;quot;Won't Fix&amp;quot; and we will bump the perf expectation limits for now, but we should figure out what the &amp;quot;best practice&amp;quot; for locale / language translation in NaCl should be in the future.
+
+
+Details: see the rise in transfer size for 181.mcf, and several other spec benchmarks like 252.eon:
+
+http://build.chromium.org/f/client/perf/nacl-lucid_64-newlib-x86_32-pnacl-spec/spec2k/report.html?history=150&amp;amp;rev=8400&amp;amp;graph=transfersize_mcf
+
+131464 bytes before vs 157032 bytes after, for the stripped pexe with similar increases for the non-stripped pexe.
+
+Overall, libc.a for newlib went from 1400352 to 1708168 and libm.a went from 458936 to 523230, so it doesn't seem unreasonable the this due to newlib and not other toolchain changes.
+
+For MCF:
+
+llvm-bcanalyzer says that a whole chunk of difference is due to new data blocks: 8899.12B (old) vs 26038.62B (new).  There's also a bunch of new code: 110032.88B (old) vs  118144.12B (new)
+
+There is this new array variable &amp;quot;d02f4&amp;quot;, which is 3390 x i16, &amp;quot;b02cf&amp;quot; array 2965 x i16 and a1, ..., a8 (100 to 200 bytes each), all of which appears to be used for japanese -&amp;gt; unicode conversion: http://newlib.sourcearchive.com/documentation/1.15.0/jp2uc_8c-source.html
+
+Total, that's about 14KB in arrays.
+
+
+For EON:
+
+When comparing the bitcode at a function-by-function level, we see that strftime now depends on sniprintf (an extra 80KB of llvm text assembly).  Moreover, some of the output routines now call setlocale() and loadlocale() (50K of llvm text assembly each), etc...
+
+</ns0:content><ns0:updated>2012-04-27T23:41:46.000Z</ns0:updated><ns0:published>2012-04-27T20:29:42.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>Newlib size regression (partly due to extra locale code, japanese to unicode conversion)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2752/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2752" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2752" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2752</ns2:id></ns0:entry>

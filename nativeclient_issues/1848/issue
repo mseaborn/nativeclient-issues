@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUIDRX47eCl7ImA9WhRRGEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1848</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Linux/Mac's mmap() syscall can atomically replace a memory mapping.  However, Windows does not (as far as we know) provide an API for doing the same.  Consequently, on Windows, NaCl's mmap() call works by unmapping pages from an address and then remapping at this address.
+
+This creates an observable difference from untrusted code in the multi-threaded case.  If a thread is writing to an address that is remapped, there is a small window during which the address is unwritable.
+
+The attached test program demonstrates this.  It crashes when run through sel_ldr on Windows but will run forever under sel_ldr on Unix.
+
+See also issue 140 (this covers whether there is a race condition that creates a vulnerability).
+
+A fix would be to stop untrusted threads during mmap(), but that could be quite expensive.</ns0:content><ns0:updated>2011-12-03T00:52:54.000Z</ns0:updated><ns0:published>2011-05-25T17:04:11.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:state>closed</ns2:state><ns0:title>NaCl's mmap() syscall is atomic on Unix but not on Windows</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>PlatformDifference</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1848/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1848" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1848" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-12-03T00:52:54.000Z</ns2:closedDate><ns2:id>1848</ns2:id></ns0:entry>

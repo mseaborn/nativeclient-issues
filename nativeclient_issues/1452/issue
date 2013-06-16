@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUAR347eCl7ImA9WhZTGUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1452</ns0:id><ns0:author>
+			<ns0:name>mmorten...@google.com</ns0:name><ns0:uri>/u/100268164290167392978/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using?  721
+What version of the runtime are you using?  Pepper2 released in sdk 721
+On what operating system?  Windows 7 (64 bit)
+What browser are you using?  n/a
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Download version 721 of NativeClient SDK
+2. Go into examples\hello_world
+3. Type 'make test'
+
+Note that 'make test64' works but there are errors about Unix epoch start.
+Typing 'make test' or 'make test32' failed and also showed these errors.
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+The expected output is to have strings like this
+ Check: &amp;quot;FortyTwo()&amp;quot; == &amp;quot;42&amp;quot; passed
+ Check: &amp;quot;ReverseText(empty_string)&amp;quot; == &amp;quot;empty_string&amp;quot; passed
+ Check: &amp;quot;ReverseText(palindrome)&amp;quot; == &amp;quot;palindrome&amp;quot; passed
+ Check: &amp;quot;ReverseText(alphabet)&amp;quot; == &amp;quot;alphabet_backwards&amp;quot; passed
+
+without this:
+
+[6564,3672:17:38:00.591000] NaClTimeInternalInit: timeBeginPeriod(1)
+[6564,3672:17:38:00.592000] Unix epoch start is  11644473600000ms in Windows epoch time
+[6564,3672:17:38:00.597000]                      Ask: 0000001600000000
+[6564,3672:17:38:00.599000]            orig memory at 0000000140130000
+[6564,3672:17:38:01.415000]           Aligned memory: 0000000200000000
+[6564,7372:17:38:01.489000] NaClAbiStatHostDescStatXlateCtor: how did NaCl app open a file with st_mode = 020000?
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+nacl-sel_ldr and nacl-sel_ldr64 are built and bundled with the SDK.  Could be an error with either building or bundling them...or something else of course.</ns0:content><ns0:updated>2011-03-23T21:54:06.000Z</ns0:updated><ns0:published>2011-02-17T17:54:27.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:state>closed</ns2:state><ns0:title>nacl-sel_ldr does not work in SDK on Windows 64</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Milestone-Baltic-Brill-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1452/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1452" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1452" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-03-23T21:54:06.000Z</ns2:closedDate><ns2:id>1452</ns2:id></ns0:entry>

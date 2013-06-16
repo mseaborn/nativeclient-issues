@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UNSH47eCl7ImA9WhVTF0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2397</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Suppose trusted code allocates its sigaltstack in address range X to Y.  On x86-32 Linux, if untrusted code sets %esp to X+0x2000 and then faults, the trusted signal handler will run with an initial stack address of X+0x2000 instead of the expected address of Y.
+
+This is bad because the trusted signal handler could run out of stack.  Untrusted code can cause this to happen by guessing the sigaltstack address, or by chance.
+
+This happens because of how Linux handles nested signal handler invocations in the presence of sigaltstack.  If %esp is within the signal stack's range when the signal occurs, Linux assumes the signal stack is already in use, and it doesn't reset %esp to the top of the signal stack when running the signal handler.
+
+The problem here is that Linux does not know about x86 segments, beyond restoring them to defaults when running the signal handler.  It does not know that %esp should not be interpreted as an address in the process's full address space.
+
+(The problem could have been avoided if the in-use state of the sigaltstack were stored as an explicit part of process state, like signal masks, which are saved and restored via the signal frame and the sigreturn syscall.)
+
+The signal handler is not enabled by default yet, but this might become a problem when we enable Breakpad (crash reporting).
+</ns0:content><ns0:updated>2012-03-03T03:28:19.000Z</ns0:updated><ns0:published>2011-10-27T11:25:13.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>x86-32 Linux: Untrusted code can cause signal handler to run with insufficient stack</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-17</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>FaultHandler</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2397/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2397" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2397" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>2096</ns2:id></ns2:blocking><ns2:blocking>
+			<ns2:id>2537</ns2:id></ns2:blocking><ns2:id>2397</ns2:id></ns0:entry>

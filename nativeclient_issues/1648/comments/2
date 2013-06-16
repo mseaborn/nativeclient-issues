@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEMBSH47eCl7ImA9WhZRFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1648/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>jvo...@chromium.org</ns0:name><ns0:uri>/u/110851735162594575631/</ns0:uri></ns0:author><ns0:content type="html">Seems to be fixed upstream:
+
+f:
+        sub     sp, sp, #12
+        str     r0, [sp, #8]
+        sub     r0, r0, #1
+        cmp     r0, #0
+        mov     r1, #0
+        str     r0, [sp, #8]
+        movgt   r1, #1
+        str     r1, [sp, #4]
+        str     r1, [sp]
+        ldr     r0, [sp, #4]
+        add     sp, sp, #12
+        bx      lr
+</ns0:content><ns0:updated>2011-04-12T22:14:19.000Z</ns0:updated><ns0:published>2011-04-12T22:14:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by jvo...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1648#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1648/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

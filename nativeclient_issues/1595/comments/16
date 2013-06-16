@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUADSX47eCl7ImA9WhZQEkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1595/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4938
+
+------------------------------------------------------------------------
+r4938 | mseaborn@chromium.org | Tue Apr 19 15:50:40 PDT 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt_stub/thread_creator.h?r1=4938&amp;r2=4937&amp;pathrev=4938
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt/irt_entry.c?r1=4938&amp;r2=4937&amp;pathrev=4938
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_globals.h?r1=4938&amp;r2=4937&amp;pathrev=4938
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt_stub/nacl.scons?r1=4938&amp;r2=4937&amp;pathrev=4938
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=4938&amp;r2=4937&amp;pathrev=4938
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/nacl.scons?r1=4938&amp;r2=4937&amp;pathrev=4938
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_globals.cc?r1=4938&amp;r2=4937&amp;pathrev=4938
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt_stub/plugin_main_irt.c?r1=4938&amp;r2=4937&amp;pathrev=4938
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_example_audio/audio.cc?r1=4938&amp;r2=4937&amp;pathrev=4938
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_ppb_audio.h?r1=4938&amp;r2=4937&amp;pathrev=4938
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt_stub/thread_creator.c?r1=4938&amp;r2=4937&amp;pathrev=4938
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_ppb_audio.cc?r1=4938&amp;r2=4937&amp;pathrev=4938
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_threading.cc?r1=4938&amp;r2=4937&amp;pathrev=4938
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppruntime.h?r1=4938&amp;r2=4937&amp;pathrev=4938
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt/irt_ppapi.h?r1=4938&amp;r2=4937&amp;pathrev=4938
+
+IRT: Allow the PPB_Audio interface to work with the IRT
+
+Allow a user application to provide its own thread create/join
+functions for creating the audio thread.
+
+Change the IRT's AT_SYSINFO to contain a reference to a query
+function rather than the ppapi_start() function.
+
+Add a "NaClLogModuleInit()" call to the test: previously it relies on
+libppruntime to initialise logging, but the test does not link against
+libppruntime when building it to use the IRT.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1595
+TEST="run_ppapi_example_audio_test irt=1"
+
+Review URL: http://codereview.chromium.org/6883028
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-19T22:56:18.000Z</ns0:updated><ns0:published>2011-04-19T22:56:18.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1595#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1595/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

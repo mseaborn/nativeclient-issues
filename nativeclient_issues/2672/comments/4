@@ -1,0 +1,8 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0EESH47eCl7ImA9WhVRE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2672/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">I'd lean toward leaving it out of newlib, just to make the switch from our own newlib repo to Roland's new newlib repo easier.
+
+We can put it in libnacl alongside __nacl_read_tp (which would already be omitted for glibc to avoid clashing with the version in the glibc repo), if we really want to support this for newlib.  However, that would mean we would need to keep the symbol alive in bitcode (for newlib) for all architectures (even though it's only used for x86-64), since this is only injected by the linker's TLS rewrites for x86-64...
+
+
+Other: simpler reproducer is just "./scons platform=x86-64 bitcode=1 nacl_pic=1 run_tls_test -j10"</ns0:content><ns0:updated>2012-03-21T17:40:09.000Z</ns0:updated><ns0:published>2012-03-21T17:40:09.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2672#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2672/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

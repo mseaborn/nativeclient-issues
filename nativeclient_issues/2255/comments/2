@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUUNR347eCl7ImA9WhdbGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2255/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">I don't see the compiler issue here. Please verify:
+
+The source of the bug seems to be:
+
+  gsize mask;
+  guint64 r;
+  __asm__("bsfq %1,%0\n\t" : "=r" (r) : "rm" (mask));
+
+Here argument %0 must be 64-bit. With O0, mask is a memory location -20(%rbp), which does not encode size and thus asm is happy. With O1 and up, mask is a register, thus the code is:
+
+  bsfq %ecx,%rcx
+
+and asm complains about %ecx used where 64-bit operand is required.
+
+This seems because gsize under NaCl is 32-bit. As the code in question seems to be 64-bit specific, it can be fixed explicitly like this:
+
+  gsize mask;
+
+  guint64 r;
+  guint64 m = mask;
+  __asm__("bsfq %1,%0\n\t" : "=r" (r) : "rm" (m));
+
+</ns0:content><ns0:updated>2011-10-17T09:21:36.000Z</ns0:updated><ns0:published>2011-10-17T09:21:36.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by eaelt...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2255#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2255/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

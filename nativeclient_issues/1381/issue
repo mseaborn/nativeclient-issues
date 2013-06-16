@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUcBRn47eCl7ImA9WhdbEEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1381</ns0:id><ns0:author>
+			<ns0:name>r...@google.com</ns0:name><ns0:uri>/u/102570435830224995286/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+HEAD
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+N/A - problem is linking
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Goobuntu linux
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+N/A
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+N/A
+
+I am working on porting the cfitsio library to NaCl.  Within naclports, there is a small Makefile patch to allow the package to build it's default target (a library).  When I now move on to working with the other targets in the cfitsio package (a handful of binary utilities), I run into a &amp;quot;Please report this bug.&amp;quot; problem.
+
+Steps to reproduce:
+- Check out HEAD of depot_tools, naclports and nacl-sdk
+- Set your NACL_SDK_ROOT directory to &amp;lt;nacl-sdk location&amp;gt;/src
+- Go to the cfitsio directory within naclports: &amp;quot;cd &amp;lt;naclports location&amp;gt;/src/packages/scripts/cfitsio&amp;quot;
+- Run &amp;quot;./nacl-cfitsio.sh&amp;quot;, which builds/installs the library  (if this fails, please let me know)
+- Go to the working directory: &amp;quot;cd &amp;lt;naclports location&amp;gt;/src/packages/repository/cfitsio/cfitsio-build&amp;quot;
+- Try and build the testprog target: &amp;quot;make testprog&amp;quot; (problem also arises with targets: fpack, funpack, speed, fitscopy, imcopy, cookbook)
+
+Expected Output:
+Successful build of testprog
+
+Actual Output:
+$ make testprog
+/usr/local/google/users/roat/nacl-sdk/src/toolchain/linux_x86/bin/nacl-gcc -c -g -O2 -Dg77Fortran -fPIC -DPACKAGE_NAME=\&amp;quot;\&amp;quot; -DPACKAGE_TARNAME=\&amp;quot;\&amp;quot; -DPACKAGE_VERSION=\&amp;quot;\&amp;quot; -DPACKAGE_STRING=\&amp;quot;\&amp;quot; -DPACKAGE_BUGREPORT=\&amp;quot;\&amp;quot; -DPACKAGE_URL=\&amp;quot;\&amp;quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MATH_H=1 -DHAVE_LIMITS_H=1 -D_LARGEFILE_SOURCE=1 -D_FILE_OFFSET_BITS=64 -DHAVE_LONGLONG=1 ../testprog.c
+/usr/local/google/users/roat/nacl-sdk/src/toolchain/linux_x86/bin/nacl-gcc -g -O2 -Dg77Fortran -fPIC -DPACKAGE_NAME=\&amp;quot;\&amp;quot; -DPACKAGE_TARNAME=\&amp;quot;\&amp;quot; -DPACKAGE_VERSION=\&amp;quot;\&amp;quot; -DPACKAGE_STRING=\&amp;quot;\&amp;quot; -DPACKAGE_BUGREPORT=\&amp;quot;\&amp;quot; -DPACKAGE_URL=\&amp;quot;\&amp;quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MATH_H=1 -DHAVE_LIMITS_H=1 -D_LARGEFILE_SOURCE=1 -D_FILE_OFFSET_BITS=64 -DHAVE_LONGLONG=1 -o testprog testprog.o -L. -lcfitsio -lm
+/usr/local/google/users/roat/nacl-sdk/src/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/ld: BFD (GNU Binutils) 2.20.1.20100303 20110124 (Native Client r4216) internal error, aborting at ../../../SRC/binutils/bfd/elf32-i386.c line 3844 in elf_i386_relocate_section
+
+/usr/local/google/users/roat/nacl-sdk/src/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/ld: Please report this bug.
+
+collect2: ld returned 1 exit status
+make: *** [testprog] Error 1</ns0:content><ns0:updated>2011-10-07T19:50:57.000Z</ns0:updated><ns0:published>2011-02-03T02:39:50.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>internal error, aborting at ../../../SRC/binutils/bfd/elf32-i386.c line 3844 in elf_i386_relocate_section</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1381/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1381" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1381" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-10-07T19:50:57.000Z</ns2:closedDate><ns2:id>1381</ns2:id></ns0:entry>

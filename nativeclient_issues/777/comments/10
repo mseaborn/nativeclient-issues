@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkAFSX47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/777/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3326
+
+------------------------------------------------------------------------
+r3326 | mseaborn@chromium.org | Mon Sep 20 14:22:34 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/syscall_return_sandboxing/sandboxed_arm.S?r1=3326&amp;r2=3325&amp;pathrev=3326
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/syscall_return_sandboxing/nacl.scons?r1=3326&amp;r2=3325&amp;pathrev=3326
+
+Re-enable syscall_return_sandboxing test to work on ARM
+
+All this needed was a data bundle marker.  The test must have
+originally passed through fluke, because the .word value happened to
+be an allowed instruction.  I imagine it got disabled when the .word
+value changed.
+
+The test's use of assembly was not why it got disabled for PNaCl -- in
+fact, there is a special case in llvm-fake.py to handle it.
+
+Also address the TODO in nacl.scons.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=777
+TEST=run_syscall_return_sandboxing_test
+
+Review URL: http://codereview.chromium.org/3436015
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:58:38.000Z</ns0:updated><ns0:published>2011-01-21T22:58:38.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=777#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/777/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

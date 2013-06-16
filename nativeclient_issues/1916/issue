@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEAGSX47eCl7ImA9WhRaE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1916</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">The problem I am seeing is that running &amp;quot;objdump -d&amp;quot; on an arm  nexe often results in
+
+
+00020060 &amp;lt;__nacl_startup&amp;gt;:
+   20060:	e92d4df0 	.word	0xe92d4df0
+   20064:	e24dd008 	.word	0xe24dd008
+   20068:	e3cdd103 	.word	0xe3cdd103
+   2006c:	e3000010 	.word	0xe3000010
+   20070:	e3004000 	.word	0xe3004000
+   20074:	e3400005 	.word	0xe3400005
+
+while running the it against the object file yields the more useful output:
+
+00000000 &amp;lt;__nacl_startup&amp;gt;:
+       0:	e92d4df0 	push	{r4, r5, r6, r7, r8, sl, fp, lr}
+       4:	e24dd008 	sub	sp, sp, #8	; 0x8
+       8:	e3cdd103 	bic	sp, sp, #-1073741824	; 0xc0000000
+       c:	e3000000 	movw	r0, #0	; 0x0
+      10:	e3004000 	movw	r4, #0	; 0x0
+      14:	e3400000 	movt	r0, #0	; 0x0
+      18:	e3404000 	movt	r4, #0	; 0x0
+  
+
+NOTE: since arm binaries can have readonly date interleaved with instructions, there is a special mechanism 
+to annotate regions of the text section with whether they are data or code and which instruction set is used
+for the code. Maybe this gets messed up during linking somehow.
+</ns0:content><ns0:updated>2012-02-15T19:05:28.000Z</ns0:updated><ns0:published>2011-06-13T19:22:57.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>pnacl arm: cannot disassemble object files using "objdump -d"</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1916/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1916" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1916" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1916</ns2:id></ns0:entry>

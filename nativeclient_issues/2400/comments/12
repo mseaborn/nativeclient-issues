@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0ANQX47eCl7ImA9WhRTEks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2400/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">Cr @HEAD does not exhibit the hang, or if it does it's at a much lower probability.  in trying to bisection Cr's revision number to figure out at which revision did the hang probability suddenly decrease, i have come to believe that gclient update -r &lt;rev&gt; and make chrome results in incomplete rebuilds, since a client which started at 107928 where the hang probability was reasonably high to a later revision where the hang probability was low, and *back* to 107928 resulted in a chrome binary where the hang probability was low too.  a clean build -- removing out/Release completely -- got me back to a binary that would occasionally hang.  but maybe this is all to do with the phase of the moon, or whatever.  so, i'm rerunning my bisections with completely clean builds of chrome.
+
+oh, a run of Cr @109728 yielded the following log output:
+
+LAUNCHING: /mm/bsy/nacl/svn0/native_client/chromebinaries/linux_x86-64/chrome --disable-web-resources --disable-preconnect --no-first-run --no-default-browser-check --enable-logging --log-level=1 --safebrowsing-disable-auto-update --explicitly-allowed-ports=47520 --user-data-dir=/tmp/browserprofile_YlDY8y --register-pepper-plugins=/mm/bsy/nacl/svn0/native_client/scons-out/opt-linux-x86-64/staging/libppNaClPlugin.so;application/x-nacl --no-sandbox http://127.0.0.1:47520/ppapi_ppp_instance.html
+I'M THE SESSION LEADER!
+PID 29963
+The program 'chrome' received an X Window System error.
+This probably reflects a bug in the program.
+The error was 'BadRequest (invalid request code or no such operation)'.
+  (Details: serial 13 error_code 1 request_code 155 minor_code 19)
+  (Note to programmers: normally, X errors are reported asynchronously;
+   that is, you will receive the error a while after causing it.
+   To debug your program, run it with the --sync command line
+   option to change this behavior. You can then get a meaningful
+   backtrace from your debugger if you break on the gdk_x_error() function.)
+[   504 ms] |||| 
+[   504 ms] |||| [SERVER_ERROR] Browser process ended during test (return code -11)
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+[  FAILED  ] nacl.run_ppapi_ppp_instance_browser_test (280 ms)
+
+
+scons: *** [scons-out/nacl-x86-64/test_results/ppapi_ppp_instance_browser_test.out] Error 255
+scons: building terminated because of errors.
+
+*very* bad mojo.</ns0:content><ns0:updated>2011-11-02T21:36:30.000Z</ns0:updated><ns0:published>2011-11-02T21:36:30.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2400#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2400/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

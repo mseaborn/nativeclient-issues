@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcGQ347eCl7ImA9WxFUE0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/639/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>espind...@google.com</ns0:name><ns0:uri>/u/101432766050863658364/</ns0:uri></ns0:author><ns0:content type="html">I don't fully know dependencies libgcc has on libc. It is a known "characteristic" (to not say bug) in it.
+
+The issues is not only with bitcode. For example, we now don't run internalize, so we keep all the bits of libc that are used by the program when we link the bitcode. And yet, there is no reason why a program has to depend on a particular symbol that the codegen decides to use (transitively).
+
+Keep in mind that we don't want to be the only ones providing toolchains. If we have *our* libgcc in the device, it is *our* responsibility to provide its dependencies.
+
+If it is possible to reduce the dependencies, that is the perfect solution. As I mentioned, I don't actually know what the exact dependencies are (like function foo in libgcc calls function bar in libc because ...).
+
+I will investigate that as part of fixing bug http://code.google.com/p/nativeclient/issues/detail?id=600.
+</ns0:content><ns0:updated>2010-06-23T17:27:02.000Z</ns0:updated><ns0:published>2010-06-23T17:27:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by espind...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=639#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/639/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

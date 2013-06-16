@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QEQH47eCl7ImA9WhZQGUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1736/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5072
+
+------------------------------------------------------------------------
+r5072 | bsy@google.com | Wed Apr 27 17:37:51 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/include/nacl_macros.h?r1=5072&amp;r2=5071&amp;pathrev=5072
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/win/nacl_syscall_impl.c?r1=5072&amp;r2=5071&amp;pathrev=5072
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/linux/nacl_syscall_impl.c?r1=5072&amp;r2=5071&amp;pathrev=5072
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/nanosleep/nacl.scons?r1=5072&amp;r2=5071&amp;pathrev=5072
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/nanosleep/nanosleep_test.c?r1=5072&amp;r2=5071&amp;pathrev=5072
+
+Add some slop to the elapsed time on windows (10 ms, specified in the
+nacl.scons file) so that waking slightly early is permitted.  This is
+a bit of a hack, since it affected the compiled portable binary based
+on the build environment.  This should be fine for our testing
+environment, since we do build and run the tests on the same host OS
+(modulo arm cross compiles, but even then it's both linux).
+
+Also added CHECKs to the syscall implementation files to verify that
+time-of-day microseconds field is within range prior to returning the
+time value to the untrusted code.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1736
+TEST= None.  This is a test.  We don't write tests to test tests.
+Review URL: http://codereview.chromium.org/6903078
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-28T00:41:41.000Z</ns0:updated><ns0:published>2011-04-28T00:41:41.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1736#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1736/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

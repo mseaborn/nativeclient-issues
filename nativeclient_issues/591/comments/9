@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4DRH47eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/591/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2541
+
+------------------------------------------------------------------------
+r2541 | mseaborn@chromium.org | Sat Jun 19 00:46:45 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncval_tests.c?r1=2541&amp;r2=2540&amp;pathrev=2541
+
+x86-32 validator test: Remove use of binary data in string literals
+
+Encode the test data as hex numbers inside strings literals instead of
+binary data inside string literals, and decode at run time.
+
+This means we don't need the "testsize" parameter, which had to be
+kept in sync with the test data manually.
+
+Remove the "(uint8_t *)" casts, since they are no longer needed.
+
+Include newline separators in the test data, in anticipation that they
+can be used to check that the validator locates the instruction
+boundaries correctly.
+
+TEST=validator_tests
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=591
+
+Review URL: http://codereview.chromium.org/2820003
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:29:35.000Z</ns0:updated><ns0:published>2011-01-21T22:29:35.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=591#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/591/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

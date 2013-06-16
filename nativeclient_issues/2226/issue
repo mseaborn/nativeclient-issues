@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUBSX47eCl7ImA9WhdWEk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2226</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">Memcheck reports on pm_manifest_file_test (chrome_browser_tests):
+
+Conditional jump or move depends on uninitialised value(s)
+  Worker::InitializeChannel(nacl::StringBuffer*) (tests/manifest_file/pm_manifest_file_test.cc:411)
+  Worker::RunToCompletion() (tests/manifest_file/pm_manifest_file_test.cc:391)
+  worker_thread_start(void*) (tests/manifest_file/pm_manifest_file_test.cc:615)
+  nc_thread_starter (src/untrusted/pthread/nc_thread.c:137)
+  nc_thread_starter (src/untrusted/valgrind/valgrind_interceptors.c:502)
+
+
+The uninitialized value comes from Worker::ns_channel_initialized_ flag.
+</ns0:content><ns0:updated>2011-09-05T15:40:58.000Z</ns0:updated><ns0:published>2011-09-01T10:55:35.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Channel may be left uninitialized in pm_manifest_file_test</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Test</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2226/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2226" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2226" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-09-01T11:13:30.000Z</ns2:closedDate><ns2:id>2226</ns2:id></ns0:entry>

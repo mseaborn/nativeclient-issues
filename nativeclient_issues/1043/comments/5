@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0UAQn47eCl7ImA9Wx5UEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1043/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">In private communication, Mark essentially pulled me around to his point of view on this.
+
+If we can simply nudge the stack pointer down to the required quantum in the thread-start function, it really doesn't matter what stack area the user/pthreads provided.  This is an odd responsibility for the sel_ldr to have, catching bugs in the threading library.  FWIW, nothing we do actually *requires* programs to adhere to the platform C calling convention, except in trampoline calls -- you could imagine porting something like Hotspot that deliberately breaks platform conventions in some of its internal calls.
+
+So I think I agree that the TCB should not concern itself with this.</ns0:content><ns0:updated>2010-10-15T19:00:43.000Z</ns0:updated><ns0:published>2010-10-15T19:00:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by cbiffle@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1043#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1043/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUHRn47eCl7ImA9WhZaEkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/480/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 0e0e9b100f7c66eaf74bebb6048fa70a361d4629
+ Email: bradchen@google.com@0039d316-1c4b-4281-b951-d872f2087c98
+
+I am submitting this with LGTMs from agl@ and evanm@. I'm marking this as TBR=jam@ because he is on vacation. He previously LGTMed the reverted CL (link below) and there are not substantive changes since then.
+
+Modify the Chrome Linux zygote to support a nacl_helper executable,
+facilitating a special address-space layout as required by NaCl on ARM
+and ATOM CPUs. In passing, simplify some shared elements of launching
+NaCl modules in Chrome.
+
+This is an update to a previously reverted CL. Please see
+http://codereview.chromium.org/6995121 for the earlier reviews.
+
+Patching nacl_helper CL into fresh branch.
+
+BUG=nativeclient:480
+TEST=nativeclient in-browser tests
+TBR=jam@chromium.org
+
+git-svn-id: svn://svn.chromium.org/chrome/trunk/src@90805 0039d316-1c4b-4281-b951-d872f2087c98
+
+M	base/process_util.h
+M	base/process_util_posix.cc
+M	chrome/app/chrome_main.cc
+A	chrome/common/nacl_fork_delegate_linux.h
+A	chrome/common/nacl_helper_linux.h
+M	chrome/common/nacl_types.h
+M	chrome/nacl.gypi
+A	chrome/nacl/nacl_fork_delegate_linux.cc
+A	chrome/nacl/nacl_helper_linux.cc
+D	chrome/nacl/nacl_launcher_thread.cc
+D	chrome/nacl/nacl_launcher_thread.h
+A	chrome/nacl/nacl_listener.cc
+A	chrome/nacl/nacl_listener.h
+M	chrome/nacl/nacl_main.cc
+M	content/browser/child_process_launcher.cc
+M	content/browser/zygote_host_linux.cc
+M	content/browser/zygote_host_linux.h
+M	content/browser/zygote_main_linux.cc
+M	content/common/content_switches.cc
+M	content/common/content_switches.h
+M	content/common/sandbox_methods_linux.h
+A	content/common/zygote_fork_delegate_linux.h</ns0:content><ns0:updated>2011-06-28T18:37:17.000Z</ns0:updated><ns0:published>2011-06-28T18:37:17.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=480#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/480/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

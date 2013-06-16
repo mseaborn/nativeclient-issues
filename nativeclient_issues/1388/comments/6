@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QNR347eCl7ImA9WhZRGU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1388/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4896
+
+------------------------------------------------------------------------
+r4896 | bsy@google.com | Fri Apr 15 16:11:54 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=4896&amp;r2=4895&amp;pathrev=4896
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.h?r1=4896&amp;r2=4895&amp;pathrev=4896
+
+added volatile keywords to several syscall processing functions to
+avoid compiler optimizations that could theoretically occur and
+compromise security by spilling live values into untrusted memory.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1388
+TEST= none
+Review URL: http://codereview.chromium.org/6833019
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-15T23:16:36.000Z</ns0:updated><ns0:published>2011-04-15T23:16:36.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1388#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1388/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

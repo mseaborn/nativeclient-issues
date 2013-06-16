@@ -1,0 +1,78 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE8DQn47eCl7ImA9WhdQFkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1899/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=6482
+
+------------------------------------------------------------------------
+r6482 | kschimpf@google.com | Thu Aug 18 11:36:34 PDT 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter.c?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/ncvalidate_iter.c revision 6441)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nacl_regs32.h?r1=6482&amp;r2=6481&amp;pathrev=6482
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_illegal.c?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/nc_illegal.c revision 6441)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter_verbose.c?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/ncvalidate_iter_verbose.c revision 6441)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_iter_internal.h?r1=6482&amp;r2=6481&amp;pathrev=6482
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_protect_base.h?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/nc_protect_base.h revision 6441)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter.h?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/ncvalidate_iter.h revision 6441)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_protect_base.c?r1=6482&amp;r2=6481&amp;pathrev=6482
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_iter.c?r1=6482&amp;r2=6481&amp;pathrev=6482
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncval.c?r1=6482&amp;r2=6481&amp;pathrev=6482
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_illegal.h?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/nc_illegal.h revision 6441)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_iter_verbose.c?r1=6482&amp;r2=6481&amp;pathrev=6482
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_protect_base.h?r1=6482&amp;r2=6481&amp;pathrev=6482
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_iter.h?r1=6482&amp;r2=6481&amp;pathrev=6482
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi?r1=6482&amp;r2=6481&amp;pathrev=6482
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/README?r1=6482&amp;r2=6481&amp;pathrev=6482
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_memory_protect.c?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/nc_memory_protect.c revision 6441)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/nacl_regs64.h?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/nacl_regs64.h revision 6458)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_jumps.c?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/nc_jumps.c revision 6441)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/nacl_regs.h?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/nacl_regs.h revision 6458)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_utils.c?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/ncvalidate_utils.c revision 6441)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_memory_protect.h?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/nc_memory_protect.h revision 6441)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/ncvalidator_registry.c?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/ncvalidator_registry.c revision 6441)
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=6482&amp;r2=6481&amp;pathrev=6482
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_memory_protect.c?r1=6482&amp;r2=6481&amp;pathrev=6482
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_jumps.h?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/nc_jumps.h revision 6441)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_utils.h?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/ncvalidate_utils.h revision 6441)
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/nc_inst_trans.c?r1=6482&amp;r2=6481&amp;pathrev=6482
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/ncvalidator_registry.h?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/ncvalidator_registry.h revision 6441)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_memory_protect.h?r1=6482&amp;r2=6481&amp;pathrev=6482
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_illegal.c?r1=6482&amp;r2=6481&amp;pathrev=6482
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nacl_regsgen.c?r1=6482&amp;r2=6481&amp;pathrev=6482
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/validator_x86.gyp?r1=6482&amp;r2=6481&amp;pathrev=6482
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_cpu_checks.c?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/nc_cpu_checks.c revision 6441)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nacl_regs64.h?r1=6482&amp;r2=6481&amp;pathrev=6482
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_illegal.h?r1=6482&amp;r2=6481&amp;pathrev=6482
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nacl_regs.h?r1=6482&amp;r2=6481&amp;pathrev=6482
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/README?r1=6482&amp;r2=6481&amp;pathrev=6482
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/build.scons?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/build.scons revision 6441)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_cpu_checks.h?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/nc_cpu_checks.h revision 6441)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_cpu_checks.c?r1=6482&amp;r2=6481&amp;pathrev=6482
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/ncval_reg_sfi.gyp?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/validator_x86.gyp revision 6458)
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/64/ncvalidate.c?r1=6482&amp;r2=6481&amp;pathrev=6482
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/build.scons?r1=6482&amp;r2=6481&amp;pathrev=6482
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_jumps.c?r1=6482&amp;r2=6481&amp;pathrev=6482
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/64/ncvalidate_verbose.c?r1=6482&amp;r2=6481&amp;pathrev=6482
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncval_driver.c?r1=6482&amp;r2=6481&amp;pathrev=6482
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/64/validator_x86_64.gyp?r1=6482&amp;r2=6481&amp;pathrev=6482
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter_internal.h?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/ncvalidate_iter_internal.h revision 6441)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_utils.c?r1=6482&amp;r2=6481&amp;pathrev=6482
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_cpu_checks.h?r1=6482&amp;r2=6481&amp;pathrev=6482
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncvalidator_registry.c?r1=6482&amp;r2=6481&amp;pathrev=6482
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_jumps.h?r1=6482&amp;r2=6481&amp;pathrev=6482
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_opcode_histogram.c?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/nc_opcode_histogram.c revision 6441)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/nacl_regs32.h?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/nacl_regs32.h revision 6458)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_utils.h?r1=6482&amp;r2=6481&amp;pathrev=6482
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncenuminsts.c?r1=6482&amp;r2=6481&amp;pathrev=6482
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncvalidator_registry.h?r1=6482&amp;r2=6481&amp;pathrev=6482
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_opcode_histogram.h?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/nc_opcode_histogram.h revision 6441)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_opcode_histogram.c?r1=6482&amp;r2=6481&amp;pathrev=6482
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nc_opcode_histogram.h?r1=6482&amp;r2=6481&amp;pathrev=6482
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_protect_base.c?r1=6482&amp;r2=6481&amp;pathrev=6482 (from /trunk/src/native_client/src/trusted/validator_x86/nc_protect_base.c revision 6441)
+
+Move register sfi x86-64 validator to its own directory. Adds
+README files for both the decoder and the moved validator.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1899
+Review URL: http://codereview.chromium.org/7631032
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-08-18T18:41:13.000Z</ns0:updated><ns0:published>2011-08-18T18:41:13.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1899#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1899/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

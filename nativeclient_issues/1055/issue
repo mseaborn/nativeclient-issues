@@ -1,0 +1,80 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIBQn47eCl7ImA9WhZXFU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1055</ns0:id><ns0:author>
+			<ns0:name>ile...@google.com</ns0:name><ns0:uri>/u/104834035110555747685/</ns0:uri></ns0:author><ns0:content type="html">See output below. I attached, then set a breakpoint. The breakpoint is set successfully and it is hit, but the debugger never transmits S05.
+
+[4292,3852:23:58:38.291000] NaClTimeInternalInit: timeBeginPeriod(1)
+[4292,3852:23:58:38.291000] Unix epoch start is  11644473600000ms in Windows epo
+ch time
+[4292,3852:23:58:38.295000]                      Ask: 0000001600000000
+[4292,3852:23:58:38.295000]            orig memory at 0000000140270000
+[4292,3852:23:58:38.950000]           Aligned memory: 0000000200000000
+[4292,3852:23:58:39.098000] nacl_debug(302) : Debugging started.
+[4292,2440:23:58:39.099000] Caught signal 5 on thread 988h.
+[4292,3172:23:58:40.417000] RX $qSupported#37
+[4292,3172:23:58:40.418000] TX +
+[4292,3172:23:58:40.419000] TX $PacketSize=7cf;qXfer:libraries:read+;qXfer:featu
+res:read+#44
+[4292,3172:23:58:40.420000] RX $qXfer:features:read:target.xml:0,7cf#4b
+[4292,3172:23:58:40.421000] TX +
+[4292,3172:23:58:40.422000] TX $l&amp;lt;target&amp;gt;&amp;lt;architecture&amp;gt;i386:x86-64&amp;lt;/architecture
+&amp;gt;&amp;lt;/target&amp;gt;#87
+[4292,3172:23:58:40.423000] RX $qfThreadInfo#bb
+[4292,3172:23:58:40.423000] TX +
+[4292,3172:23:58:40.423000] TX $m988#16
+[4292,3172:23:58:40.424000] RX $qsThreadInfo#c8
+[4292,3172:23:58:40.424000] TX +
+[4292,3172:23:58:40.425000] TX $l#6c
+[4292,3172:23:58:40.425000] RX $Hg988#58
+[4292,3172:23:58:40.426000] TX +
+[4292,3172:23:58:40.426000] TX $OK#9a
+[4292,3172:23:58:40.427000] RX $g#67
+[4292,3172:23:58:40.428000] TX +
+[4292,3172:23:58:40.429000] TX $00000000000000000000000000000000e0684b0200000000
+805a1440010000000000000000000000e0684b0200000000d0ffffff0c000000d0ffffff0c000000
+d0ffffff0c0000000000000000000000000000000000000046020000000000000000000000000000
+00000000000000000000000000000000000000000c000000800002000c000000060200003300cdcd
+2b00cdcd2b00cdcd2b00cdcd5300cdcd2b00cdcd#f5
+[4292,3172:23:58:40.431000] RX $?#3f
+[4292,3172:23:58:40.431000] TX +
+[4292,3172:23:58:40.432000] TX $S05#b8
+[4292,3172:23:58:40.468000] RX $qXfer:features:read:target.xml:0,7cf#4b
+[4292,3172:23:58:40.468000] TX +
+[4292,3172:23:58:40.470000] TX $l&amp;lt;target&amp;gt;&amp;lt;architecture&amp;gt;i386:x86-64&amp;lt;/architecture
+&amp;gt;&amp;lt;/target&amp;gt;#87
+[4292,3172:23:58:41.913000] RX $c#63
+[4292,3172:23:58:41.914000] TX +
+[4292,2440:23:58:41.916000] NaClAbiStatHostDescStatXlateCtor: how did NaCl app o
+pen a file with st_mode = 020000?
+[4292,3172:23:58:43.915000] RX $&#9829;#03
+[4292,3172:23:58:43.916000] TX +
+[4292,3172:23:58:43.918000] TX $S00#b3
+[4292,3172:23:58:43.920000] RX $qfThreadInfo#bb
+[4292,3172:23:58:43.922000] TX +
+[4292,3172:23:58:43.923000] TX $m988#16
+[4292,3172:23:58:43.925000] RX $qsThreadInfo#c8
+[4292,3172:23:58:43.926000] TX +
+[4292,3172:23:58:43.927000] TX $l#6c
+[4292,3172:23:58:43.928000] RX $Hg988#58
+[4292,3172:23:58:43.929000] TX +
+[4292,3172:23:58:43.930000] TX $OK#9a
+[4292,3172:23:58:43.930000] RX $g#67
+[4292,3172:23:58:43.931000] TX +
+[4292,3172:23:58:43.932000] TX $405a14400100000000000000000000002800000000000000
+805a144001000000e8030000000000000000000000000000a0ffffff0c000000c8fb6e0200000000
+2a00000000000000000000000000000000000000000000000000000000000000f0fb6e0200000000
+d8ffffff0c000000e0ffffff00000000000000000c0000009a00127700000000460200003300cdcd
+2b00cdcd2b00cdcd2b00cdcd5300cdcd2b00cdcd#54
+[4292,3172:23:58:43.935000] RX $?#3f
+[4292,3172:23:58:43.935000] TX +
+[4292,3172:23:58:43.936000] TX $S00#b3
+[4292,3172:23:58:43.939000] RX $mc00020380,1#ba
+[4292,3172:23:58:43.939000] TX +
+[4292,3172:23:58:43.940000] TX $c7#9a
+[4292,3172:23:58:43.941000] RX $Mc00020380,1:cc#9a
+[4292,3172:23:58:43.942000] TX +
+[4292,3172:23:58:43.943000] TX $OK#9a
+[4292,3172:23:58:43.944000] RX $c#63
+[4292,3172:23:58:43.944000] TX +
+[4292,2440:23:58:43.945000] Caught signal 5 on thread 988h.</ns0:content><ns0:updated>2011-05-04T17:02:33.000Z</ns0:updated><ns0:published>2010-10-18T00:01:02.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109474787648168037085/</ns2:uri><ns2:username>mli...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Break does not result in signal</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>VSX</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>Milestone-Baltic-Sea-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1055/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1055" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1055" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-05-04T17:02:33.000Z</ns2:closedDate><ns2:id>1055</ns2:id></ns0:entry>

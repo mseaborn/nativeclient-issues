@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQNSH47eCl7ImA9Wx9UGUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1418</ns0:id><ns0:author>
+			<ns0:name>dmichael@google.com</ns0:name><ns0:uri>/u/dmichael@google.com/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using?  N/A
+What version of the runtime are you using?  N/A
+On what operating system?  Windows
+What browser are you using?  Chrome 10.0.648.54
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1.  Install Windows Chrome 10 from an installer  (e.g., in corp: http://www.corp.google.com/~chrome-eng/ChromeSigning/10.0.648.54/win/)
+2.  Turn on NaCl and restart your browser.
+3.  Try to load nexes, e.g. from:  http://commondatastorage.googleapis.com/nativeclient-mirror/nacl/gallery/index.html
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+The gallery examples should work, but they don't.
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+If you look in the directory where Chrome is installed, e.g.:
+C:\Users\myusername\AppData\Local\Google\Chrome\Application\10.0.648.54
+... you should see ppGoogleNaClPluginChrome.dll, but you won't.
+
+It does have nacl64.dll and nacl64.exe, just not the plugin.
+
+The plug-in _does_ exist in the zip file I pulled from:
+http://chrome-master2.mtv.corp.google.com/official_builds/10.0.648.54/win/
+</ns0:content><ns0:updated>2011-02-18T01:43:19.000Z</ns0:updated><ns0:published>2011-02-11T20:18:15.000Z</ns0:published><ns2:status>Done</ns2:status><ns2:owner>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Chrome 10 Windows installer is missing NaCl plugin</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Milestone-Baltic-Algae</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1418/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1418" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1418" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-02-18T01:43:19.000Z</ns2:closedDate><ns2:id>1418</ns2:id></ns0:entry>

@@ -1,0 +1,56 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUIBRn47eCl7ImA9WhVTFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1914</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The default behaviour of a process on Windows (when launched from the
+file browser or command line) is that an unhandled crash pops up a
+dialog box saying (on Windows 7) &amp;quot;foo.exe has stopped working&amp;quot;.
+
+This dialog is often undesirable, especially on the buildbots, since
+it causes the process to hang:
+
+ * NaCl crash tests: issue 476, issue 464 and issue 458.  The response
+   was to manually set DontShowUI globally, which isn't the right way
+   to handle this.
+ * Scons/Python crash on Windows: issue 1201.  This made the Scons
+   build appear to hang, and Buildbot would time out.
+ * Chromium's renderer process produced this dialog box by crashing on
+   exit (issue 1446), though this didn't cause a hang (fixed in
+   http://src.chromium.org/viewvc/chrome?view=rev&amp;amp;revision=80782).
+
+The proper way to prevent the dialog box is to use SetErrorMode() with
+SEM_FAILCRITICALERRORS/SEM_NOGPFAULTERRORBOX.  Note that this is
+inherited by child processes.
+
+Things to do:
+
+ 1) Disable with dialog with SetErrorMode() in Scons or in the
+    Buildbot scripts.
+
+    I need this so that I can run sel_ldr without &amp;quot;-S&amp;quot; by default in
+    the tests without it hanging on crashes.  (I need this for issue
+    1633.)
+
+    Arguably Scons is a better place to do this, so that small_tests
+    does not hang by default.  I can put in a Scons option to override
+    this for cases where the crash dialog is useful (since it can
+    launch the debugger).
+
+    Arguably standalone sel_ldr should not disable the dialog itself
+    in case the dialog is useful for debugging.
+
+ 2) Disable the dialog for NaCl-in-Chromium.  Web apps should not be
+    able to cause crash dialogs to pop up.
+
+ 3) Test that the dialog is disabled for NaCl-in-Chromium.
+
+    This probably means that the test runner should *enable* the
+    dialog when launching Chromium in order to check that Chromium
+    overrides this.
+
+    We need to add a crash test to chrome_browser_tests.
+
+ 4) Remove sel_ldr's obsolete code for disabling dialogs:
+    WINDOWS_EXCEPTION_TRY and WINDOWS_EXCEPTION_CATCH can be removed.
+    Whoever added these presumably wasn't aware of SetErrorMode().
+</ns0:content><ns0:updated>2012-02-28T18:25:57.000Z</ns0:updated><ns0:published>2011-06-10T23:39:48.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Turn Windows crash dialogs on/off in appropriate places (with SetErrorMode())</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1914/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1914" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1914" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-12-01T23:44:58.000Z</ns2:closedDate><ns2:id>1914</ns2:id></ns0:entry>

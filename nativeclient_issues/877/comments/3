@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkANRH47eCl7ImA9Wx5XEUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/877/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">the text region must not end at more than 32-bytes from the end of a 64KB
+boundary.  the last 32 bytes of the text region is reserved for a HLT sled.
+ there were some recent changes to this code, though i thought it was just
+to generate explicit warnings when this safety / paranoia property does not
+hold.  it used to be the case that the linker script ensured that there's at
+least 32-bytes available, but that went away, i think, sometime around when
+we switched to gold.  (sehr might know more details.)
+
+as to this bug -- the service runtime should definitely not segfault -- i
+don't know.  i'm still trying to get back to the point where i can bulld any
+NaCl code, let alone write new code or test.
+
+sigh.
+
+-bsy</ns0:content><ns0:updated>2010-09-10T22:46:35.000Z</ns0:updated><ns0:published>2010-09-10T22:46:35.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=877#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/877/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

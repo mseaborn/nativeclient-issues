@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkENR347eCl7ImA9WhRUFUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2554/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Looks worthwhile to (1) update Ivan's CL to the latest LLVM rev we have and incorporate it.
+Also, remember to search for and remove the following LOCALMODS from BitcodeReader.cpp:
+  (2) swap le32 for "arm".
+  (3) ignoring the datalayout in the bitcode.
+
+Results so far:
+
+*) (1) + (2) means that the bitcode will actually say le32.  Unfortunately, I did not notice any difference in the way optimizations happen w.r.t. the one unittest "byval-alignment.c".
+
+*) (1) + (2) + (3) means the bitcode will say le32 and also state a datalayout. Now all of a sudden, optimizations happen very differently. The one unittest "byval-alignment.c" passes! In addition lua, AMGmk, flops also now pass on arm. Spec2k continues to work on arm, x8632, x8664.  Not all rainbows: sandboxed llc.arm.nexe still miscompiles at that bad rev unless we turn off opt in the frontend.
+
+
+Misc: May want to re-check the vector alignment values, but I think that was already known to be an issue.</ns0:content><ns0:updated>2012-01-25T18:04:56.000Z</ns0:updated><ns0:published>2012-01-25T18:04:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2554#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2554/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

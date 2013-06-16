@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ABQn47eCl7ImA9WhZUEEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1400</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? 0_1_712_0
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+On what operating system? Linux
+What browser are you using? 10.0.648.45 (Official Build 74092)
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Get the SDK.
+2. Change pi_generator.cc in the following way:
+ 2a. Add pp::Module::Get()-&amp;gt;core()-&amp;gt;CallOnMainThread(0, pp::CompletionCallback(MyCallback, pi_generator), 0); at the beginning of ComputePi()
+ 2b. Add
+        void MyCallback(void* data, int32_t result) {
+           printf(&amp;quot;Hello from main thread\n&amp;quot;);
+        }
+     somewhere.
+
+3. Check if the demo still works (make; python httpd.py; browse to the page in chrome)
+
+Nope, it does not.
+I see 
+src/shared/ppapi_proxy/plugin_core.cc:97: reached untested code
+in the browser output, and the page becomes unresponsive.
+</ns0:content><ns0:updated>2011-06-02T21:55:53.000Z</ns0:updated><ns0:published>2011-02-08T14:32:56.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>CallOnMainThread freezes the browser tab in SDK 0_1_712_0</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1400/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1400" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1400" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2011-06-02T21:55:53.000Z</ns2:closedDate><ns2:id>1400</ns2:id></ns0:entry>

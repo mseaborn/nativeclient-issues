@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0MDRn47eCl7ImA9WhRQGEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2491</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Pre-emptive, low priority bug. Currently we have not seen any bugs from not updating compiler-rt (currently rev 132756).
+
+However, there was some discussion about having compiler-rt in the llvm + clang checkouts:
+http://lists.cs.uiuc.edu/pipermail/cfe-dev/2011-December/019059.html
+
+Summary:
+- They might include some misc LLVM runtime libraries in there. For now, this is just native libraries for profiling and ASAN, which is not actually essential to translating .pexes to .nexes.
+  - However, it might be nice to export these developer tools with PNaCl, if they actually make sense in the NaCl sandbox.
+
+- This might be a bit weird since we build compiler-rt 3 times, one for each arch, but they propose building it is part of LLVM and we don't want to build LLVM 3 times.
+
+</ns0:content><ns0:updated>2011-12-13T22:31:17.000Z</ns0:updated><ns0:published>2011-12-13T22:31:17.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>Include compiler-rt in pnacl upstream merges </ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2491/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2491" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2491" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2491</ns2:id></ns0:entry>

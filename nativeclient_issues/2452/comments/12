@@ -1,0 +1,48 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0QNSX47eCl7ImA9WhRVFE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2452/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7586
+
+------------------------------------------------------------------------
+r7586 | pdox@google.com | Thu Jan 12 22:13:31 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/driver_tools.py?r1=7586&amp;r2=7585&amp;pathrev=7586
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pnacl_ld_example/Makefile.pnacl?r1=7586&amp;r2=7585&amp;pathrev=7586
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/testdata-thumb/compile_tests.sh?r1=7586&amp;r2=7585&amp;pathrev=7586
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/pnacl_packaging/pnacl_component_crx_gen.py?r1=7586&amp;r2=7585&amp;pathrev=7586
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/file_up_down_load.sh?r1=7586&amp;r2=7585&amp;pathrev=7586
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/torture_test.sh?r1=7586&amp;r2=7585&amp;pathrev=7586
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=7586&amp;r2=7585&amp;pathrev=7586
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-ld.py?r1=7586&amp;r2=7585&amp;pathrev=7586
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/testdata/compile_tests.sh?r1=7586&amp;r2=7585&amp;pathrev=7586
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/driver_env.py?r1=7586&amp;r2=7585&amp;pathrev=7586
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build-glibc.sh?r1=7586&amp;r2=7585&amp;pathrev=7586
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/spec2k/run_all.sh?r1=7586&amp;r2=7585&amp;pathrev=7586
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/spec2k/Makefile.common?r1=7586&amp;r2=7585&amp;pathrev=7586
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/site_scons/site_tools/naclsdk.py?r1=7586&amp;r2=7585&amp;pathrev=7586
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-nativeld.py?r1=7586&amp;r2=7585&amp;pathrev=7586
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_selector.py?r1=7586&amp;r2=7585&amp;pathrev=7586
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-driver.py?r1=7586&amp;r2=7585&amp;pathrev=7586
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_toolchain_arm_untrusted.sh?r1=7586&amp;r2=7585&amp;pathrev=7586
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_pnacl_merge.sh?r1=7586&amp;r2=7585&amp;pathrev=7586
+
+Combines newlib and glibc builds.
+
+After this CL, the PNaCl install directory will look like this:
+
+ newlib/ - Newlib toolchain
+ glibc/ - GlibC toolchain
+ pkg/ - Common stuff (LLVM &amp; binutils)
+
+ lib-x86-32/ - Native libraries X86-32
+ lib-x86-64 - Native libraries X86-64
+ lib-arm/ - Native libraries ARM
+
+ tools-sb/ - Sandboxed translator
+ tools-arm/ - ARM sel_ldr
+ tools-x86/ - arm-ncval for x86
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2452
+Review URL: http://codereview.chromium.org/9158034
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-01-13T06:16:38.000Z</ns0:updated><ns0:published>2012-01-13T06:16:38.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2452#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2452/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

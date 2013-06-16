@@ -1,0 +1,67 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYFR347eCl7ImA9WhVTEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1864</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? r885 from SVN
+On what operating system? Ubuntu 10.04 Linux 64-bit
+What browser are you using? N/A
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Run the SDK build bot and examine the output of the installer test
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+The expectation is that valgrind shows that no bytes are leaked.
+
+Instead, the output shows 608 leaked bytes with a program that does nothing more than just return 0.
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+Here's the output
+
+Verify that Valgrind works properly (Linux 64-bit only) ... Running ['/mnt/data/b/build/slave/linux-sdk/build/src/scons-out/sdk_installer/toolchain/linux_x86/bin/nacl64-gcc', '-o', '/mnt/data/b/build/slave/linux-sdk/build/src/scons-out/sdk_installer/true.nexe', '-m64', '-O0', '-Wl,-u,have_nacl_valgrind_interceptors', '-g', '/mnt/data/b/build/slave/linux-sdk/build/src/scons-out/sdk_installer/true.c', '-lvalgrind']
+
+Running ['/mnt/data/b/build/slave/linux-sdk/build/src/scons-out/sdk_installer/third_party/valgrind/memcheck.sh', '/mnt/data/b/build/slave/linux-sdk/build/src/scons-out/sdk_installer/toolchain/linux_x86/bin/nacl64-sel_ldr', '-Q', '/mnt/data/b/build/slave/linux-sdk/build/src/scons-out/sdk_installer/true.nexe']
+==6948== Memcheck, a memory error detector
+==6948== Copyright (C) 2002-2010, and GNU GPL'd, by Julian Seward et al.
+==6948== Using Valgrind-3.7.0.SVN and LibVEX; rerun with -h for copyright info
+==6948== Command: /mnt/data/b/build/slave/linux-sdk/build/src/scons-out/sdk_installer/toolchain/linux_x86/bin/nacl64-sel_ldr -Q /mnt/data/b/build/slave/linux-sdk/build/src/scons-out/sdk_installer/true.nexe
+==6948== 
+PLATFORM QUALIFICATION DISABLED BY -Q - Native Client's sandbox will be unreliable!
+*********************** NaCl nacl_file: /mnt/data/b/build/slave/linux-sdk/build/src/scons-out/sdk_installer/true.nexe
+Valgrind: ignoring NaCl's mmap(84G)
+==6948== Warning: set address range perms: large range [0x4500f000, 0x100000000) (noaccess)
+==6948== Warning: set address range perms: large range [0x1600000000, 0x164500f000) (noaccess)
+*********************** NaCl nacl_mmap: b00020000 1f360 10000 0
+*********************** NaCl nacl_mmap: b00040000 10474 30000 0
+*********************** NaCl nacl_mmap: b00060000 ac4 50000 0
+*********************** NaCl mem_start: 0xB00000000
+Segment at 0xB00020000 belongs to the loader
+Segment at 0xB00040000 belongs to the loader
+Segment at 0xB00060000 belongs to the loader
+==6948== Warning: client switching stacks?  SP change: 0x4051e28 --&amp;gt; 0xbffffffd0
+==6948==          to suppress, use: --max-stackframe=51472163240 or greater
+==6948== Warning: client switching stacks?  SP change: 0xbffffff18 --&amp;gt; 0x4051df8
+==6948==          to suppress, use: --max-stackframe=51472163104 or greater
+==6948== Warning: client switching stacks?  SP change: 0x4051d58 --&amp;gt; 0xbffffff40
+==6948==          to suppress, use: --max-stackframe=51472163304 or greater
+==6948==          further instances of this message will not be shown.
+==6948== 
+==6948== HEAP SUMMARY:
+==6948==     in use at exit: 3,217 bytes in 32 blocks
+==6948==   total heap usage: 52 allocs, 20 frees, 503,080 bytes allocated
+==6948== 
+==6948== LEAK SUMMARY:
+==6948==    definitely lost: 608 bytes in 1 blocks
+==6948==    indirectly lost: 0 bytes in 0 blocks
+==6948==      possibly lost: 304 bytes in 1 blocks
+==6948==    still reachable: 2,305 bytes in 30 blocks
+==6948==         suppressed: 0 bytes in 0 blocks
+==6948== Rerun with --leak-check=full to see details of leaked memory
+==6948== 
+==6948== For counts of detected and suppressed errors, rerun with: -v
+==6948== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 4 from 4)
+</ns0:content><ns0:updated>2012-02-24T17:05:16.000Z</ns0:updated><ns0:published>2011-05-26T22:38:11.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Valgrind detects 608 bytes are leaked when running simple nexe with sel_ldr</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Mstone-21</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1864/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1864" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1864" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1864</ns2:id></ns0:entry>

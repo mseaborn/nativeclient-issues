@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0YEQ347eCl7ImA9WxVVEEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>andrew%fernandes.org@gtempaccount.com</ns0:name><ns0:uri>/u/andrew%25fernandes.org@gtempaccount.com/</ns0:uri></ns0:author><ns0:content type="html">Speaking as someone living in a country with two official languages (Canada - English
+and French) I think forcing English developer support is a *bad* idea.
+
+Hard-coded paths make everyone's life more difficult. You lose developers who should
+be testing and enhancing, and alienate people. Think of all those great Estonian
+hackers and cryptographers (no, I'm not kidding, there are some great people there)
+who won't look at your source because their OS has spoken Estonian for years...
+
+Also, you'll be finding those hard-coded English paths FOREVER. Been there and done
+that; I speak from experience.
+
+Rather than full i18n support, a small step might be to just have one config file
+where all those pesky "C:\Windows" things can be configured. Just my $0.02 (CAD).</ns0:content><ns0:updated>2009-03-03T01:51:42.000Z</ns0:updated><ns0:published>2009-03-03T01:51:42.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by andrew%fernandes.org@gtempaccount.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

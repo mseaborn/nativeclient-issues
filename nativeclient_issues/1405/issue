@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHRH47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1405</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">Valgrind interceptors (untrusted/valgrind/valgrind_interceptors.c) must be changed to accommodate to the differencies between newlib and glibc.
+
+A single example: in newlib we intercept internal functions _malloc_r and _free_r because there are cases when memory allocated from inside newlib with one of these functions is deallocated from the user code with normal free(). We also have special handling for some functions from nc_threads.
+
+We should get rid of all these newlib hacks and replace them with glibc hacks. It's really hard to predict how much work this will take.</ns0:content><ns0:updated>2011-07-29T00:12:15.000Z</ns0:updated><ns0:published>2011-02-09T12:56:11.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Update Valgrind interceptors to work with glibc</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1405/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1405" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1405" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>1404</ns2:id></ns2:blockedOn><ns2:blocking>
+			<ns2:id>1403</ns2:id></ns2:blocking><ns2:closedDate>2011-06-29T11:24:05.000Z</ns2:closedDate><ns2:id>1405</ns2:id></ns0:entry>

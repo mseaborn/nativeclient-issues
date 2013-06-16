@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUBRX47eCl7ImA9WhZUE0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1888</ns0:id><ns0:author>
+			<ns0:name>mmorten...@google.com</ns0:name><ns0:uri>/u/100268164290167392978/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+   0.4
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+   NaCl rev 5524
+&lt;b&gt;On what operating system?&lt;/b&gt;
+   Windows
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+   13.0.782.10 (87958)
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Launch chrome with --enable-nacl-debug --no-sandbox
+2. Make sure you have a server running to load nexes
+3. Navigate to a page that contains an untrusted nexe
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+The nexe should halt until the debugger (i.e. gdb from a Linux machine) sends a continue command.  It does not, even though the debug port (4014) gets opened.  Instead, the nexe loads and runs.
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-06-06T16:04:14.000Z</ns0:updated><ns0:published>2011-06-06T15:35:18.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/100268164290167392978/</ns2:uri><ns2:username>mmorten...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109474787648168037085/</ns2:uri><ns2:username>mli...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>--enable-nacl-debug does not break on entry</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-</ns2:label><ns2:label>Arch-</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1888/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1888" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1888" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-06-06T16:04:14.000Z</ns2:closedDate><ns2:id>1888</ns2:id></ns0:entry>

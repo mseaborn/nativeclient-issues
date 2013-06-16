@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcDQ347eCl7ImA9WxFWFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/510</ns0:id><ns0:author>
+			<ns0:name>s...@google.com</ns0:name><ns0:uri>/u/108394971971967673680/</ns0:uri></ns0:author><ns0:content type="html">ncval fails for all of the npruntime tests.
+&amp;gt; npapi_geturl.nexe
+&amp;gt; npapi_hw.nexe
+&amp;gt; npapi_pi.nexe
+&amp;gt; npapi_runtime.nexe
+&amp;gt; npapi_test.nexe
+&amp;gt; pepper_plugin.nexe
+
+Cliff tracked this down to two auto-generated methods in the npruntime 
+library.  Specifically, NPN_InvokeDefaultDispatcher and 
+NPN_ConstructDispatcher in the file:
+
+scons-out/nacl_extra_sdk-
+arm/gen/native_client/src/shared/npruntime/npnavigator_rpc_server.cc
+
+Both methods invoke other methods that have large numbers of parameters, 
+possibly tripping the register allocator to spill and restore r9.</ns0:content><ns0:updated>2010-06-02T14:47:52.000Z</ns0:updated><ns0:published>2010-05-19T23:13:17.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101432766050863658364/</ns2:uri><ns2:username>espind...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105190905030319373792/</ns2:uri><ns2:username>msn...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101432766050863658364/</ns2:uri><ns2:username>espind...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Calling a function with too many arguments causes r9 spill/restore</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Milestone-Chromium-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/510/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=510" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/510" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-06-02T14:47:52.000Z</ns2:closedDate><ns2:id>510</ns2:id></ns0:entry>

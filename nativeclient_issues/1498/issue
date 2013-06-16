@@ -1,0 +1,92 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0cEQ347eCl7ImA9WhRSGEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1498</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">
+Original GlibC exports a number of functions (=symbols) via a number of
+libraries (dynamic and static): libc, libpthread, libnss_*, libdl, ..
+
+Also GlibC provides a dynamic linker that loads executables, required libraries
+and performs dynamic linking according to platform-dependent ABIs. General assumptions about loaded objects made in the dynamic linker (file formats, linking rules, etc) are outside the focus of this issue.
+
+GlibC also guarantees forward compatibility for libraries and executables: once
+a binary was linked with an old version of GlibC libraries, the same binary is
+quaranteed to dynamically link and run with newer set of libraries.
+
+To meet the ABI compatibility requirement, once released, nacl-glibc will
+have to be forward-compatible on ABI level.
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+
+nacl-glibc is able to run scons tests (including threaded) with minor
+exceptions.  The code was ported with the purpose to only make the system work,
+exposed interfaces haven't been considered yet.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+
+There are multiple problems.
+
+Problem 1: Completeness.
+
+Nacl-glibc is not complete to serve as an ABI boundary for dynamically linked
+executables/libraries.  For instance, SRPC library is linked statically into the
+tests, a test like this would directly invoke NaCl syscalls.  To maintain ABI
+compatibility all future NaCl platforms would have to present the same syscalls
+with identical semantics.  Keeping syscalls stable is harder than keeping glibc
+interfaces stable (no versioning mechanisms, security concerns).  A proper
+solution would be either to present a libsrpc.so in nacl-glibc or make the
+functionality directly into libc.so.
+
+Problem 2: Excess Functionality.
+
+Nacl-glibc exports functions (=symbols) that currently do not make sense in
+Native Client (networking, file access, etc.), but later some of those may in
+turn start providing the actual functionality (file access, functions that
+depend on file access).  It would be convenient for developers to be able to
+invoke all the excess functionality and receive ENOSYS errors in return since it
+greatly simplifies porting Un*x/Linux programs to Native Client - no
+compile-time errors.
+
+Problem 3: Legacy Functions Exported.
+
+GlibC provides some (legacy) functions for binary compatibility with programs
+compiled since 1997.  Some of these functions were deprecated recently and a
+significant amount of programs are still not ported to the new replacements.
+Some of the legacy functions won't be used when a program is being compiled with
+modern GlibC headers.  Decision needs to be made on case-by case basis which
+legacy functions to keep.  For the initial release of nacl-glibc we would like
+to un-export *all* as many legacy functions as possible to make ABI
+compatibility testing easier.  Some can be converted to failing with ENOSYS if
+it's easier to implement and test.  Later we would make decisions which
+functions to enable back.  Enabling parts of public API is significantly easier
+than disabling.
+
+Problem 4: ABI Compatibility Testing.
+
+GlibC exports a large amount of symbols in it's dynamic libraries:
+libc.so: ~2000 symbols
+libm.so: ~300 symbols
+libpthread.so: ~240 symbols
+librt.so: ~60 symbols
+libthread_db.so: ~50 symbols
+
+None of these are currently tested to verify that old NaCl binaries work with
+new incarnations of nacl-glibc.  GlibC testsuite can help with this.  What
+coverage would it provide?
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+
+Decide the set of functions that we support initially (based on popularity in
+a modern Linux distribution).  Unexport/NOSYS others.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+
+ABI compatibility tests are in place and running regularly.
+</ns0:content><ns0:updated>2011-11-21T12:36:42.000Z</ns0:updated><ns0:published>2011-03-04T19:00:15.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104389777848534510881/</ns2:uri><ns2:username>erik...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100177598732114324016/</ns2:uri><ns2:username>mcgra...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>prepare nacl-glibc external interfaces for ABI stability</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1498/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1498" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1498" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
+			<ns2:id>1248</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1529</ns2:id></ns2:blockedOn><ns2:id>1498</ns2:id></ns0:entry>

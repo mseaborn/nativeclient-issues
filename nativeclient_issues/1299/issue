@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUcHSH47eCl7ImA9Wx9UGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1299</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">mandel_nav.nexe fails to statically link with nacl-glibc on x86-64:
+
+$ ./scons --mode=dbg-linux,nacl --nacl_glibc naclsdk_mode=custom:tools/modular-build/out/input-prefix/glibc_toolchain platform=x86-64 nacl_static_link=1 --verbose
+...
+/home/mseaborn/devel/nacl-trunk/src/native_client/tools/modular-build/out/input-prefix/glibc_toolchain/bin/nacl64-g++ -o scons-out/nacl-x86-64-glibc/obj/tests/mandel_nav/mandel_nav.nexe -static -T ldscripts/elf64_nacl.x.static -lc -m64 scons-out/nacl-x86-64-glibc/obj/tests/mandel_nav/mandel_nav.o -Ltools/modular-build/out/input-prefix/glibc_toolchain/nacl64/lib -Lscons-out/nacl-x86-64-glibc/lib -lav -lsrpc -lgoogle_nacl_imc_c -lpthread
+/home/mseaborn/devel/nacl-trunk/src/native_client/tools/modular-build/out/input-prefix/glibc_toolchain/original-bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/ld: scons-out/nacl-x86-64-glibc/obj/tests/mandel_nav/mandel_nav.nexe: section `.tbss' can't be allocated in segment 2
+LOAD: .rodata __libc_subfreeres __libc_atexit __libc_thread_subfreeres .eh_frame .gcc_except_table .tdata .tbss
+/home/mseaborn/devel/nacl-trunk/src/native_client/tools/modular-build/out/input-prefix/glibc_toolchain/original-bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/ld: final link failed: Bad value
+collect2: ld returned 1 exit status
+
+
+This can be reproduced with a much smaller test case:
+
+#include &amp;lt;pthread.h&amp;gt;
+
+struct foo { int x; } __attribute__((aligned(8)));
+__thread struct foo tls_var;
+/* Alternative:
+   __thread double tls_var; */
+
+int main(int argc, char* argv[]) {
+  pthread_create(0, 0, 0, 0);
+  return 0;
+}
+
+
+This is strongly related to issue 1240, which manifests itself at runtime.
+</ns0:content><ns0:updated>2011-02-17T22:50:39.000Z</ns0:updated><ns0:published>2011-01-07T11:46:44.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:state>closed</ns2:state><ns0:title>8-aligned TLS variables fail to statically link with nacl-glibc on x86-64</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Milestone-Baltic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1299/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1299" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1299" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-02-01T15:12:39.000Z</ns2:closedDate><ns2:id>1299</ns2:id></ns0:entry>

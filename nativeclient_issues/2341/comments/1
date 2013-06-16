@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEIDQX47eCl7ImA9WhdUGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2341/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">At the moment I'm working on the related toolchain stuff.
+
+__tls_get_addr call is an inherent part of global-dynamic and local-dynamic TLS code sequences. This is what compiler should deliver to the linker for making TLS optimization possible. However, if the code goes into the shared library, dynamic TLS code sequence can not be optimized.
+
+If the code goes into executable, linker can optimize dynamic TLS access code into initial-exec or local-exec TLS access code, that does not require __tls_get_addr. Unfortunately, we'll replace __tls_get_addr with __nacl_read_tp, as we don't have direct access to thread pointer, thus each TLS access sequence will still have a call. Even more disappointing, __nacl_read_tp results can't be reused, simply because the guy who deals with them is the linker, and not the compiler front/backend.
+
+At the moment, TLS rewrite is fully disabled, but the CL that enables it for x86_64 is coming soon. However, I'm doing this mainly to prevent dynamic relocations occur in statically linked programs and also to avoid quirks we introduced where regular code expects TLS rewrite to happen. In our case, the performance benefit from rewriting dynamic TLS code to exec TLS code is mostly from replacing __tls_get_addr with __nacl_read_tp, which is neglectable I think. Sorry for the bad news.
+</ns0:content><ns0:updated>2011-10-06T00:56:10.000Z</ns0:updated><ns0:published>2011-10-06T00:56:10.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>eaelt...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 1 by eaelt...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2341#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2341/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

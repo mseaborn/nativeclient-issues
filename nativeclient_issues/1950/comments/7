@@ -1,0 +1,47 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcDQn47eCl7ImA9WhdTFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1950/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=6006
+
+------------------------------------------------------------------------
+r6006 | kschimpf@google.com | Tue Jul 12 09:57:28 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/fs_use.val?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/modeled_insts.txt?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncopcode_opcode_flags_impl.h?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/32/modeled_insts.txt?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode_forms.c?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/dup-prefix.rval?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/nc_opcode_table_64.h?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/build.scons?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_jumps.c?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/nc_opcode_table_32.h?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/prefix-single.dis?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/prefix-3.rval?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/prefix-2.rval?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/32/ncdis_iter_test.internal?r1=6006&amp;r2=6005&amp;pathrev=6006
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_def_jumps.c?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/fs_use.rval?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/ncdis_iter_test.internal?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/prefix-single.rval?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncopcode_opcode_flags.h?r1=6006&amp;r2=6005&amp;pathrev=6006
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_def_jumps.h?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncopcode_opcode_flags.enum?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/prefix-single.hex?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_illegal.c?r1=6006&amp;r2=6005&amp;pathrev=6006
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/ambig-segment.rval?r1=6006&amp;r2=6005&amp;pathrev=6006
+
+Fix handling of segment prefixes on jump instructions.
+
+Note: This CL has been fed through private_tests/enuminsts to
+make sure there isn't any x86-64 nacl-legal instruction that doesn't
+match what xed expects.
+
+bug= http://code.google.com/p/nativeclient/issues/detail?id=1950
+TEST=src/trusted/validator_x86/testdata/64/prefix-single.hex
+TEST=src/trusted/validator_x86/testdata/64/prefix-single.rval
+TEST=src/trusted/validator_x86/testdata/64/modeled_insts.txt
+TEST=src/trusted/validator_x86/testdata/64/ncdis_iter_test.internal
+Review URL: http://codereview.chromium.org/7273054
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-07-12T17:01:13.000Z</ns0:updated><ns0:published>2011-07-12T17:01:13.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1950#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1950/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQDQX47eCl7ImA9WhVWFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/790</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">On Linux/Mac, the plugin is doing waitpid() to wait for the sel_ldr
+subprocess to exit.  See sel_ldr_launcher_linux.cc.
+
+However, the code does not check for errors from waitpid().  This
+means the code can rot, and in fact the waitpid() call won't be
+working in Chromium at the moment.  This is because the plugin's
+process does not fork() sel_ldr -- this is done by the zygote process
+-- and you can't wait for a process that is not your child using
+waitpid().
+
+Since we are not checking waitpid(), we don't know if the kill() call
+is really successful (and we are not checking the result of kill()
+either).  See also issue 789.</ns0:content><ns0:updated>2012-04-26T21:56:10.000Z</ns0:updated><ns0:published>2010-08-05T13:54:49.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Plugin: waitpid() does not work inside Chromium</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>Mstone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/790/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=790" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/790" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-04-26T21:56:10.000Z</ns2:closedDate><ns2:id>790</ns2:id></ns0:entry>

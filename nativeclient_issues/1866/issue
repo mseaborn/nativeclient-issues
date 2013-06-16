@@ -1,0 +1,57 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHRH47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1866</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">ThreadSanitizer reports a data race on verbosity level in src/shared/platform/nacl_log.c.
+
+There is a promise in the same file that verbosity level will only be changed before the threads are spawned (see nacl_log.c:22). It does not hold when there is a GTest test case with more than one test, because verbosity will be reinitialized on every SelLdrTest::SetUp.
+
+ThreadSanitizer report follows.
+
+&amp;gt; src/third_party/valgrind/tsan.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/obj/src/trusted/service_runtime/service_runtime_tests --gtest_output=xml:scons-out/dbg-linux-x86-64/test_results/gtest_output.xml.out
+
+...
+
+INFO: T1 has been created by T0. Use --announce-threads to see the creation stack.
+INFO: T0 is program's main thread
+WARNING: Possible data race during write of size 4 at 0x6E89D0: {{{
+   T0 (L{L2}):
+    #0  NaClLogSetVerbosity_mu nativeclient/native_client/src/shared/platform/nacl_log.c:222
+    #1  NaClLogSetVerbosity nativeclient/native_client/src/shared/platform/nacl_log.c:239
+    #2  NaClLogModuleInitExtended nativeclient/native_client/src/shared/platform/nacl_log.c:176
+    #3  NaClLogModuleInit nativeclient/native_client/src/shared/platform/nacl_log.c:181
+    #4  NaClPlatformInit nativeclient/native_client/src/shared/platform/platform_init.c:13
+    #5  NaClNrdAllModulesInit nativeclient/native_client/src/trusted/desc/nrd_all_modules.c:21
+    #6  SelLdrTest::SetUp nativeclient/native_client/src/trusted/service_runtime/sel_ldr_test.cc:24
+    #7  testing::Test::Run nativeclient/testing/gtest/src/gtest.cc:2080
+    #8  testing::internal::TestInfoImpl::Run nativeclient/testing/gtest/src/gtest.cc:2304
+    #9  testing::TestCase::Run nativeclient/testing/gtest/src/gtest.cc:2412
+    #10 testing::internal::UnitTestImpl::RunAllTests nativeclient/testing/gtest/src/gtest.cc:4013
+    #11 testing::UnitTest::Run nativeclient/testing/gtest/src/gtest.cc:3680
+  Concurrent read(s) happened at (OR AFTER) these points:
+   T1 (L{}):
+    #0  NaClLog nativeclient/native_client/src/shared/platform/nacl_log.c:373
+    #1  NaClDescImcBoundDescAcceptConn nativeclient/native_client/src/trusted/desc/posix/nacl_desc_imc_bound_desc.c:95
+    #2  NaClSimpleServiceAcceptConnection nativeclient/native_client/src/trusted/simple_service/nacl_simple_service.c:257
+    #3  NaClSimpleLtdServiceAcceptConnection nativeclient/native_client/src/trusted/simple_service/nacl_simple_ltd_service.c:85
+    #4  NaClSimpleServiceAcceptAndSpawnHandler nativeclient/native_client/src/trusted/simple_service/nacl_simple_service.c:299
+    #5  AcceptThread nativeclient/native_client/src/trusted/simple_service/nacl_simple_service.c:348
+    #6  NaClThreadInterfaceStart nativeclient/native_client/src/trusted/threading/nacl_thread_interface.c:21
+  Address 0x6E89D0 is 0 bytes inside data symbol &amp;quot;verbosity&amp;quot;
+  Locks involved in this report (reporting last lock sites): {L2}
+   L2 (0x72BFE0)
+    #0  pthread_mutex_lock /mnt/data/build/slave/full_linux_build/build/tsan/ts_valgrind_intercepts.c:935
+    #1  NaClMutexLock nativeclient/native_client/src/shared/platform/linux/lock.c:24
+    #2  NaClXMutexLock nativeclient/native_client/src/shared/platform/nacl_sync_checked.c:26
+    #3  NaClLogLock nativeclient/native_client/src/shared/platform/nacl_log.c:194
+    #4  NaClLogSetVerbosity nativeclient/native_client/src/shared/platform/nacl_log.c:238
+    #5  NaClLogModuleInitExtended nativeclient/native_client/src/shared/platform/nacl_log.c:176
+    #6  NaClLogModuleInit nativeclient/native_client/src/shared/platform/nacl_log.c:181
+    #7  NaClPlatformInit nativeclient/native_client/src/shared/platform/platform_init.c:13
+    #8  NaClNrdAllModulesInit nativeclient/native_client/src/trusted/desc/nrd_all_modules.c:21
+    #9  SelLdrTest::SetUp nativeclient/native_client/src/trusted/service_runtime/sel_ldr_test.cc:24
+    #10 testing::Test::Run nativeclient/testing/gtest/src/gtest.cc:2080
+    #11 testing::internal::TestInfoImpl::Run nativeclient/testing/gtest/src/gtest.cc:2304
+   Race verifier data: 0x465029,0x46537C
+}}}
+</ns0:content><ns0:updated>2011-07-29T00:12:15.000Z</ns0:updated><ns0:published>2011-05-27T11:33:20.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/114701340294105671768/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Data race on verbosity level in nacl_log.c</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1866/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1866" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1866" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-05-27T17:31:01.000Z</ns2:closedDate><ns2:id>1866</ns2:id></ns0:entry>

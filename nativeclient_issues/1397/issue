@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUDQX47eCl7ImA9WhZREU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1397</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Downloading the toolchain from the native_client tree gives an error on Mac OS X 10.5:
+
+$ python build/download_toolchains.py 
+Downloading http://commondatastorage.googleapis.com/nativeclient-archive2/toolchain/latest/naclsdk_mac_x86.tgz to toolchain/.tmp/.tgz...
+Extracting from toolchain/.tmp/.tgz...
+PaxHeader/sdk
+sdk//
+sdk/PaxHeader/nacl-sdk
+sdk/nacl-sdk//
+sdk/nacl-sdk/PaxHeader/bin
+sdk/nacl-sdk/bin//
+sdk/nacl-sdk/PaxHeader/COPYING
+sdk/nacl-sdk/COPYING
+...
+sdk/nacl-sdk/bin/PaxHeader/nacl64-strings
+sdk/nacl-sdk/bin/nacl64-strings
+sdk/nacl-sdk/bin/PaxHeader/nacl64-strip
+sdk/nacl-sdk/bin/nacl64-strip
+Update complete.
+Traceback (most recent call last):
+  File &amp;quot;build/download_toolchains.py&amp;quot;, line 122, in &amp;lt;module&amp;gt;
+    main(sys.argv[1:])
+  File &amp;quot;build/download_toolchains.py&amp;quot;, line 112, in main
+    Retry(os.rmdir, os.path.join(dst_tmp, 'sdk'))
+  File &amp;quot;build/download_toolchains.py&amp;quot;, line 54, in Retry
+    op(*args)
+OSError: [Errno 66] Directory not empty: 'toolchain/.tmp/sdk'
+
+$ find toolchain/.tmp/
+toolchain/.tmp/
+toolchain/.tmp//PaxHeader
+toolchain/.tmp//PaxHeader/sdk
+toolchain/.tmp//sdk
+toolchain/.tmp//sdk/PaxHeader
+toolchain/.tmp//sdk/PaxHeader/nacl-sdk
+
+
+It looks like this happens because the tar file uses an extension (PaxHeader) that is not supported by the tar tool on 10.5.</ns0:content><ns0:updated>2011-04-06T22:17:50.000Z</ns0:updated><ns0:published>2011-02-04T22:06:02.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>build/download_toolchains.py fails on Mac OS X 10.5</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Mac</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1397/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1397" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1397" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-04-06T22:17:50.000Z</ns2:closedDate><ns2:id>1397</ns2:id></ns0:entry>

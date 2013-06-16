@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0INSX47eCl7ImA9WhdTFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1994/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I believe the problem is the mprotect() call in SerializeAllProcessors() in nccopycode.c.  This function calls mprotect() on a page returned by valloc(), which is probably illegal.  In general, mprotect()ing pages returned by malloc() and its variants is illegal.  Often you can get away with it.  In this case, I suspect Mac OS X's libc is extending the memory mapping while copying the existing protection flags (PROT_NONE).  In try_realloc_large_or_huge_in_place() it does:
+
+    /*
+     * Ask for allocation at a specific address, and mark as realloc
+     * to request coalescing with previous realloc'ed extensions.
+     */
+    err = vm_allocate(mach_task_self(), &amp;addr, new_size - old_size, VM_MAKE_TAG(VM_MEMORY_REALLOC));
+
+Here's the backtrace:
+
+(gdb) bt
+#0  0x90d5ba98 in szone_free_definite_size ()
+#1  0x90d5ab88 in free ()
+#2  0x0002fb71 in NCValidateFreeState at src/trusted/validator/x86/ncval_seg_sfi/ncvalidate.c:489
+#3  0x00030c49 in NCValidateSegmentPair at src/trusted/validator/x86/ncval_seg_sfi/ncvalidate.c:1032
+#4  0x0002d780 in NaCl_ApplyValidatorCodeReplacement_x86_32 at src/trusted/validator/x86/32/ncvalidate.c:110
+#5  0x00015e56 in NaClValidateCodeReplacement at src/trusted/service_runtime/sel_validate_image.c:63
+#6  0x0000eec5 in NaClTextSysDyncode_Modify at src/trusted/service_runtime/nacl_text.c:890
+#7  0x0000c347 in NaClSysDyncode_Modify at scons-out/dbg-mac-x86-32/gen/native_client/src/trusted/service_runtime/nacl_syscall_handlers.c:641
+
+The fault occurs while accessing the first byte of the page immediately above the g_squashybuffer page.
+
+This crash goes away if you remove the mprotect() call or change it to always mprotect to PROT_READ|PROT_WRITE.
+
+A minimal fix would be to use mmap() instead.  This SerializeAllProcessors() function looks rather dodgy so we should probably look at it more closely.
+
+(I'm setting 'Component-TCB' because this isn't really a validator issue, even if it lives in the 'validator' directory.)
+</ns0:content><ns0:updated>2011-07-12T21:19:58.000Z</ns0:updated><ns0:published>2011-07-12T21:19:58.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Component-TCB-Validator</ns2:label><ns2:label>Component-TCB</ns2:label></ns2:updates><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1994#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1994/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

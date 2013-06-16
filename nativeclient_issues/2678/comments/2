@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYGRX47eCl7ImA9WhVREkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2678/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">After some investigation from Nick and some hints from Bennet and Mark, it looks like the problem is tickled by NaClFlushCacheForDoublyMappedCode for executable mappings:
+
+in src/include/concurrency_ops.h, if we patch the code with:
+
+  __builtin___clear_cache(writable_addr, writable_addr + size);
+  // BEGIN-PATCH
+  for (size_t i = 0; i &lt; size; i += 4096) {
+    *((volatile uint8_t *)(&amp;executable_addr[i]));
+  }
+  // END-PATCH
+  __builtin___clear_cache(executable_addr, executable_addr + size);
+
+to force the executable segment to be paged in, the hangs do not happen.  Otherwise, they do happen.  They also do not hang if the flush of the executable segment is commented out.
+
+This appears to be the same kernel bug noticed in 2214, but it is still there in ubuntu oneiric (Ubuntu 11.10 (GNU/Linux 3.0.0-1207-omap4 armv7l).
+
+From 2214:
+
+'See the thread "arm_syscall cacheflush breakage on VIPT platforms":
+http://thread.gmane.org/gmane.linux.ports.arm.kernel/66272
+(first post by Imre Deak &lt;imre.deak &lt;at&gt; nokia.com&gt;, 2009-09-28)'
+
+
+
+</ns0:content><ns0:updated>2012-03-20T23:28:44.000Z</ns0:updated><ns0:published>2012-03-20T23:28:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2678#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2678/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

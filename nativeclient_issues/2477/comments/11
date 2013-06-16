@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMEQH47eCl7ImA9WhRaEk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2477/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7796
+
+------------------------------------------------------------------------
+r7796 | bsy@google.com | Tue Feb 14 07:43:49 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/sys_private.c?r1=7796&amp;r2=7795&amp;pathrev=7796
+
+fixed typo in sys_private.c
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2477
+TEST= None (forthcoming w/ TC updates and then DEPS rolls)
+Review URL: https://chromiumcodereview.appspot.com/9350065
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-02-14T15:46:41.000Z</ns0:updated><ns0:published>2012-02-14T15:46:41.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2477#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2477/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

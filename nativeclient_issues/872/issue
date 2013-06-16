@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4DSH47eCl7ImA9Wx5XEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/872</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">code to reproduce:
+===============================================
+extern char* foo(char*, const char*);
+void bar (int plt)
+{
+  static const char msg[2][32] = { &amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;};
+  char msgbuf[sizeof (msg[0])];
+
+  foo (msgbuf, msg[plt]);
+}
+===============================================
+
+nacl64-gcc -S tst.c -O1 -fPIC
+
+in tst.o:
+bar:
+.LFB0:
+        .cfi_startproc
+        naclsspq        $40, %r15
+        .cfi_def_cfa_offset 48
+        movl    %edi, %esi
+        sall    $5, %esi
+        addl    $msg.1595, %esi
+        movq    %rsp, %rdi
+        call    foo@PLT
+...
+msg.1595:
+        .string &amp;quot;a&amp;quot;
+        .zero   30
+        .string &amp;quot;b&amp;quot;
+        .zero   30
+
+with -O0 the code seems to be a correct PIC
+
+P.S.: found when compiling glibc elf/dl-reloc.c</ns0:content><ns0:updated>2010-09-10T17:16:19.000Z</ns0:updated><ns0:published>2010-09-08T14:51:49.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>nacl64-gcc sometimes generates non-PIC code with -fPIC -O1</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/872/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=872" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/872" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2010-09-10T17:16:19.000Z</ns2:closedDate><ns2:id>872</ns2:id></ns0:entry>

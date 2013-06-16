@@ -1,0 +1,47 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIHSX47eCl7ImA9WhdUGUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2316/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: d523a85ba8c48783a5ab7e5cf58b45586af605ba
+ Email: robertm@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Update license header in spec testting scripts.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2316
+Review URL: http://codereview.chromium.org/8176002
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6854 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	tests/spec2k/164.gzip/run.ref.sh
+M	tests/spec2k/164.gzip/run.train.sh
+M	tests/spec2k/175.vpr/run.ref.sh
+M	tests/spec2k/175.vpr/run.test.sh
+M	tests/spec2k/175.vpr/run.train.sh
+M	tests/spec2k/176.gcc/run.ref.sh
+M	tests/spec2k/176.gcc/run.train.sh
+M	tests/spec2k/177.mesa/run.ref.sh
+M	tests/spec2k/177.mesa/run.train.sh
+M	tests/spec2k/179.art/run.ref.sh
+M	tests/spec2k/179.art/run.train.sh
+M	tests/spec2k/181.mcf/run.ref.sh
+M	tests/spec2k/181.mcf/run.train.sh
+M	tests/spec2k/183.equake/run.ref.sh
+M	tests/spec2k/183.equake/run.train.sh
+M	tests/spec2k/186.crafty/run.ref.sh
+M	tests/spec2k/186.crafty/run.test.sh
+M	tests/spec2k/186.crafty/run.train.sh
+M	tests/spec2k/188.ammp/run.ref.sh
+M	tests/spec2k/188.ammp/run.train.sh
+M	tests/spec2k/197.parser/run.ref.sh
+M	tests/spec2k/197.parser/run.train.sh
+M	tests/spec2k/252.eon/run.ref.sh
+M	tests/spec2k/252.eon/run.train.sh
+M	tests/spec2k/253.perlbmk/run.ref.sh
+M	tests/spec2k/253.perlbmk/run.train.sh
+M	tests/spec2k/254.gap/run.ref.sh
+M	tests/spec2k/254.gap/run.train.sh
+M	tests/spec2k/255.vortex/run.ref.sh
+M	tests/spec2k/255.vortex/run.train.sh
+M	tests/spec2k/256.bzip2/run.ref.sh
+M	tests/spec2k/256.bzip2/run.train.sh
+M	tests/spec2k/300.twolf/run.ref.sh
+M	tests/spec2k/300.twolf/run.test.sh
+M	tests/spec2k/300.twolf/run.train.sh</ns0:content><ns0:updated>2011-10-06T16:12:18.000Z</ns0:updated><ns0:published>2011-10-06T16:12:18.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2316#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2316/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

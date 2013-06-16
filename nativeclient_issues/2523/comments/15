@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUcASH47eCl7ImA9WhRbFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2523/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 65a94a156828064168ffb1234df2b3da8b1406e5
+ Email: pdox@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+PNaCl: Miscellaneous driver cleanup.
+
+Code removed:
+* Remove unused "experimental" features from pnacl-ar, pnacl-as, pnacl-ranlib.
+* Remove pnacl-bclink (equivalent to pnacl-ld -r).
+
+pnacl-as.py:
+* Update the names of variables in pnacl-as to reflect the change from binutils-as to llvm-mc.
+* Have -v and --version print a custom message identifying the assembler.
+
+driver_tools.py:
+Introduce configuration file "driver.conf" which lives in the bin/ directory, and can set arbitrary variables in the driver on startup.
+This replaces the existing newlib.cfg/glibc.cfg mechanism for setting LIBMODE.
+
+driver_log.py:
+Remove unused variable 'prefix' in Log, make Log.reset() the only place where the log is initialized, and simplify reset() by removing the addfle logic.
+
+R= jvoung,robertm
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2523
+Review URL: https://chromiumcodereview.appspot.com/9113076
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@7749 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	pnacl/build.sh
+M	pnacl/driver/driver_env.py
+M	pnacl/driver/driver_log.py
+M	pnacl/driver/driver_tools.py
+M	pnacl/driver/pnacl-ar.py
+M	pnacl/driver/pnacl-as.py
+M	pnacl/driver/pnacl-bclink.py
+M	pnacl/driver/pnacl-ranlib.py</ns0:content><ns0:updated>2012-02-08T02:10:49.000Z</ns0:updated><ns0:published>2012-02-08T02:10:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2523#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2523/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

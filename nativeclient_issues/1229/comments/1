@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQBRn47eCl7ImA9Wx9SF0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1229/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">Hi Mark,
+
+my current understanding is that POSIX-over-imc should be implemented with the following way:
+
+1. sel_ldr to add more syscalls available for NaCl module (like getcwd).
+2. These syscalls will return ENOSYS in the usual environment like the browser.
+3. If sel_ldr is started with the support of posix, these syscalls will become available for NaCl module: 
+ -- syscall request comes to the trusted part,
+ -- it asks the launcher (via IMC or SRPC) if it's possible to invoke this syscall (getcwd, open, accept, bind, etc), 
+ -- the launcher decides and answers back,
+ -- the trusted part returns ENOSYS/EACCESS if it's not allowed to perform a syscall and executes the syscall otherwise.
+
+This scheme would allow to make minimal changes to nacl-glibc (since we will provide syscalls as syscalls), will solve the problem of open/opendir/readdir/etc syscalls which are already provided by sel_ldr (so, we'll not decide what to do: ask by imc or invoke a syscall) and (the most important for me) will let to speed up posix support in NaCl, because it's critical for server-side.
+
+What do you think, Mark? I can explain with more examples/pictures if my words were not clear (I guess that).</ns0:content><ns0:updated>2010-12-08T06:05:57.000Z</ns0:updated><ns0:published>2010-12-08T06:05:57.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1229#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1229/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

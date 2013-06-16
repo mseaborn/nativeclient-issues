@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ACRn47eCl7ImA9WhdWFUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2180</ns0:id><ns0:author>
+			<ns0:name>assafRa...@gmail.com</ns0:name><ns0:uri>/u/100260242131676702826/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? native_client_sdk_0_5_1031
+On what operating system? ubuntu-10.10
+What browser are you using? Google Chrome 14.0.835.94 beta-m
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Install ubuntu-10.10 (or just use this image: virtual box http://goo.gl/rPPfI)
+2. Install Chrome
+3. Try to run any of the native_client_sdk_0_5_1031 samples
+4. You will get this error: &amp;quot;lastError: NaCl module load failed: Insufficient memory to load file&amp;quot;
+
+&lt;b&gt;What is the expected output?&lt;/b&gt;
+For the NaCl model to run.
+
+&lt;b&gt;What do you see instead?&lt;/b&gt;
+An error
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-09-09T18:09:27.000Z</ns0:updated><ns0:published>2011-08-23T13:27:40.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:state>closed</ns2:state><ns0:title>NaCl doesn't work on ubuntu-10.10 using Chrome </ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2180/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2180" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2180" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-09-09T18:09:27.000Z</ns2:closedDate><ns2:id>2180</ns2:id><ns2:mergedInto>
+			<ns2:id>92964</ns2:id><ns2:project>chromium</ns2:project></ns2:mergedInto></ns0:entry>

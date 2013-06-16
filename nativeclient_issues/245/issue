@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYEQ347eCl7ImA9WxBQE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/245</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">When returning from trusted to untrusted code, we must sanitize the return 
+address before taking it.  This ensures that untrusted code cannot use the 
+syscall interface to vector execution to an arbitrary address.  This role 
+is entrusted to the function NaClSandboxAddr, in sel_ldr.h.  Unfortunately, 
+since r572, this function has been a no-op on x86.
+
+
+-- What happened?
+
+During a routine refactoring, code that once read
+  aligned_tramp_ret = tramp_ret &amp;amp; ~(nap-&amp;gt;align_boundary - 1);
+
+was changed to read
+  return addr &amp;amp; ~(uintptr_t)((1 &amp;lt;&amp;lt; nap-&amp;gt;align_boundary) - 1);
+
+Besides the variable renames (which were intentional and correct), a shift 
+was introduced, treating nap-&amp;gt;align_boundary as the log2 of bundle size.  
+
+We didn't notice this because NaCl on x86 uses a 32-byte bundle size.  On 
+x86 with gcc, (1 &amp;lt;&amp;lt; 32) == 1.  (I believe the standard leaves this behavior 
+undefined, but I'm rusty.)  Thus, the entire sandboxing sequence became a 
+no-op.
+
+This change had four listed reviewers and was explicitly LGTM'd by two.  
+Nobody appears to have noticed the change.
+
+
+-- Impact
+
+There is a potential for untrusted code on 32-bit x86 to unalign its 
+instruction stream by constructing a return address and making a syscall.  
+This could subvert the validator.  A similar vulnerability may affect x86-
+64.
+
+ARM is not affected for historical reasons: the ARM implementation masks 
+the untrusted return address using a different method.</ns0:content><ns0:updated>2010-01-13T02:01:42.000Z</ns0:updated><ns0:published>2010-01-13T02:01:05.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>NaCl/x86 appears to leave return addresses unaligned when returning through the springboard.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Component-TrustedRT</ns2:label><ns2:label>Arch-x86</ns2:label><ns2:label>Security</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/245/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=245" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/245" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2010-01-13T02:01:42.000Z</ns2:closedDate><ns2:id>245</ns2:id></ns0:entry>

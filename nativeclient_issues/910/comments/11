@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04FR347eCl7ImA9Wx9UF00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/910/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4305
+
+------------------------------------------------------------------------
+r4305 | neb@chromium.org | Mon Feb 14 09:46:39 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/plugin_ppapi.cc?r1=4305&amp;r2=4304&amp;pathrev=4305
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/plugin_ppapi.h?r1=4305&amp;r2=4304&amp;pathrev=4305
+
+A hack to force Chrome to enable compositing.
+
+Currently, there is a restriction in Chrome that a plugin must create and bind a 3D surface in DidChangeView. nexes are not even loaded by then. We hack around by creating and binding a dummy context in DidChangeView, and then destroy it afterwards.
+
+BUG=910
+TEST=chrome actually draws a triangle in hello_triangle gl example
+
+Review URL: http://codereview.chromium.org/6500004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-02-14T17:51:56.000Z</ns0:updated><ns0:published>2011-02-14T17:51:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=910#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/910/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

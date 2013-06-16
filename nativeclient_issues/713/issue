@@ -1,0 +1,82 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4CRH47eCl7ImA9Wx5TEkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/713</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Various tests fail on Mac OS X 10.6:
+
+$ ./scons --mode=dbg-mac,nacl small_tests -j4
+...
+/usr/bin/python /Users/mseaborn/devel/nacl/native_client/tools/command_tester.py --name /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/test_results/plugin_unittest.out --report /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/test_results/plugin_unittest.out --time_warning 2 --time_error 20 /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/plugin/plugin_unittest /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/plugin/npGoogleNaClPlugin
+======================================================================
+running ['/Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/service_runtime/format_string_test']
+======================================================================
+/Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/service_runtime/format_string_test
+Test /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/test_results/format_string_test.out took 51.501734 secs
+ERROR: should have taken less than 20.000000 secs
+RESULT: /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/test_results/format_string_test.out FAILED
+scons: *** [scons-out/dbg-mac-x86-32/test_results/format_string_test.out] Error 255
+======================================================================
+running ['/Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/plugin/plugin_unittest', '/Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/plugin/npGoogleNaClPlugin']
+======================================================================
+/Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/plugin/plugin_unittest /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/plugin/npGoogleNaClPlugin
+command returned unexpected exit status 1
+======================================================================
+Stdout
+======================================================================
+
+======================================================================
+Stderr
+======================================================================
+Couldn't open: dlopen(/Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/plugin/npGoogleNaClPlugin, 6): no suitable image found.  Did find:
+	/Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/plugin/npGoogleNaClPlugin: can't map
+
+RESULT: /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/test_results/plugin_unittest.out FAILED
+======================================================================
+running ['/Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/plugin/string_encoding_test']
+======================================================================
+/Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/plugin/string_encoding_test
+Test /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/test_results/string_encoding_test.out took 0.017529 secs
+RESULT: /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/test_results/string_encoding_test.out PASSED
+scons: *** [scons-out/dbg-mac-x86-32/test_results/plugin_unittest.out] Error 255
+======================================================================
+running ['/Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/service_runtime/gio_shm_unbounded_test']
+======================================================================
+/Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/service_runtime/gio_shm_unbounded_test
+Test /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/test_results/gio_shm_unbounded_test.out took 52.506973 secs
+ERROR: should have taken less than 20.000000 secs
+RESULT: /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/test_results/gio_shm_unbounded_test.out FAILED
+scons: *** [scons-out/dbg-mac-x86-32/test_results/gio_shm_unbounded_test.out] Error 255
+======================================================================
+running ['/Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/service_runtime/service_runtime_tests', '--gtest_output=xml:scons-out/dbg-mac-x86-32/test_results/gtest_output.xml.out']
+======================================================================
+/Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/service_runtime/service_runtime_tests --gtest_output=xml:scons-out/dbg-mac-x86-32/test_results/gtest_output.xml.out
+Test /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/test_results/gtest_output.xml.out took 48.163700 secs
+ERROR: should have taken less than 20.000000 secs
+RESULT: /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/test_results/gtest_output.xml.out FAILED
+scons: *** [scons-out/dbg-mac-x86-32/test_results/gtest_output.xml.out] Error 255
+======================================================================
+running ['/Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/service_runtime/obj_proxy_test', '-n', '2048']
+======================================================================
+/Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/obj/src/trusted/service_runtime/obj_proxy_test -n 2048
+Test /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/test_results/obj_proxy_test.out took 55.862879 secs
+RESULT: /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/test_results/obj_proxy_test.out PASSED
+scons: building terminated because of errors.
+
+**********************************************************************
+ERROR REPORT: 4 failures
+**********************************************************************
+
+scons-out/dbg-mac-x86-32/test_results/format_string_test.out failed: Error 255
+
+scons-out/dbg-mac-x86-32/test_results/plugin_unittest.out failed: Error 255
+
+scons-out/dbg-mac-x86-32/test_results/gio_shm_unbounded_test.out failed: Error 255
+
+scons-out/dbg-mac-x86-32/test_results/gtest_output.xml.out failed: Error 255
+
+
+$ sw_vers 
+ProductName:	Mac OS X
+ProductVersion:	10.6.4
+BuildVersion:	10F569
+</ns0:content><ns0:updated>2010-07-27T16:26:05.000Z</ns0:updated><ns0:published>2010-07-22T19:01:50.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105190905030319373792/</ns2:uri><ns2:username>msn...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Various test failures on Mac OS X 10.6</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Mac</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/713/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=713" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/713" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-07-27T16:26:05.000Z</ns2:closedDate><ns2:id>713</ns2:id></ns0:entry>

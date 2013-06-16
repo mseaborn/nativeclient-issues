@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQDRH47eCl7ImA9WhdSGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1353/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 79865c5c624215aed8749dfb9e78469c7413408b
+ Email: polina@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+PPAPI proxy: do not check for NULL interfaces and NULL interface methods in untrusted PPP proxy. NULL interface methods are illegal and do not need special handling (e.g. comparing to invalid pointers). NULL interfaces will prevent the rpc server functions to be called in the first place. Use interface getters from plugin_globals.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1353
+TEST=bots + modified ppapi_bad_browser_test
+Review URL: http://codereview.chromium.org/7541005
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6263 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	src/shared/ppapi_proxy/plugin_globals.cc
+M	src/shared/ppapi_proxy/plugin_globals.h
+M	src/shared/ppapi_proxy/plugin_ppp_find_rpc_server.cc
+M	src/shared/ppapi_proxy/plugin_ppp_input_event_rpc_server.cc
+M	src/shared/ppapi_proxy/plugin_ppp_instance_rpc_server.cc
+M	src/shared/ppapi_proxy/plugin_ppp_messaging_rpc_server.cc
+M	src/shared/ppapi_proxy/plugin_ppp_printing_rpc_server.cc
+M	src/shared/ppapi_proxy/plugin_ppp_scrollbar_rpc_server.cc
+M	src/shared/ppapi_proxy/plugin_ppp_selection_rpc_server.cc
+M	src/shared/ppapi_proxy/plugin_ppp_widget_rpc_server.cc
+M	src/shared/ppapi_proxy/plugin_ppp_zoom_rpc_server.cc
+M	tests/ppapi_browser/bad/ppapi_bad_event_replay_crash.cc</ns0:content><ns0:updated>2011-07-30T00:56:15.000Z</ns0:updated><ns0:published>2011-07-30T00:56:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1353#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1353/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

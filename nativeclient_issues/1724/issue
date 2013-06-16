@@ -1,0 +1,67 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYNQn47eCl7ImA9WhZQF0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1724</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">The first run of the debug_stub/debug_stub_test.py leaks a sel_ldr process which makes subsequent invocations of the debug_stub_test to lockup when run via tools/command_tester.py.  For now I am disabling the test.
+
+Run just standalone you can see:
+
+chrome-bot@vm23-m3:/b/build/slave/hardy64-m64-n64-coverage/build/native_client$ ps -af
+UID        PID  PPID  C STIME TTY          TIME CMD
+1001      2940  6065  0 16:05 pts/1    00:00:00 ps -af
+chrome-bot@vm23-m3:/b/build/slave/hardy64-m64-n64-coverage/build/native_client$ NACL_SEL_LDR=/mnt/data/build/slave/hardy64-m64-n64-coverage/build/native_client/scons-out/coverage-linux-x86-64/staging/sel_ldr DEBUGGER_TEST_PROG=/mnt/data/build/slave/hardy64-m64-n64-coverage/build/native_client/scons-out/nacl-x86-64/obj/tests/debug_stub/debugger_test.nexe /usr/bin/python /mnt/data/build/slave/hardy64-m64-n64-coverage/build/native_client/tests/debug_stub/debug_stub_test.py -v
+test_getting_registers (__main__.DebugStubTest) ... [2943,1344694016:16:05:27.946642] nacl_debug(221) : Debugging started.
+[2943,1087199568:16:05:27.946926] Caught signal 5 on thread B82h.
+[2943,1074596176:16:05:28.108480] RX $c#63
+[2943,1074596176:16:05:28.108570] TX +
+[2943,1087199568:16:05:28.108725] Caught signal 11 on thread B82h.
+[2943,1074596176:16:05:28.208796] TX $S0b#e5
+[2943,1074596176:16:05:28.209603] RX +$g#67
+[2943,1074596176:16:05:28.209643] TX +
+[2943,1074596176:16:05:28.209694] TX $220000000000001133000000000000224400000000000033550000000000004466000000000000557700000000000066d0ffffffa97f0000c0ffffffa97f000088000000000000779900000000000088aa00000000000099bb000000000000aacc000000000000bbdd000000000000ccee000000000000dd00000000a97f000034040200a97f000002020100330000000000000000000000e50acbe40000000000000000#b0
+[2943,1074596176:16:05:28.288274] RX $m7fa9ffffffc0,8#ff
+[2943,1074596176:16:05:28.288319] TX +
+[2943,1074596176:16:05:28.288369] TX $cc0c00000000b0bb#2f
+[2943,1074596176:16:05:28.368257] RX $m7fa900000000,8#88
+[2943,1074596176:16:05:28.368295] TX +
+[2943,1074596176:16:05:28.368338] TX $E03#a8
+ERROR
+
+======================================================================
+ERROR: test_getting_registers (__main__.DebugStubTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File &amp;quot;/mnt/data/build/slave/hardy64-m64-n64-coverage/build/native_client/tests/debug_stub/debug_stub_test.py&amp;quot;, line 143, in test_getting_registers
+    proc.kill()
+AttributeError: 'Popen' object has no attribute 'kill'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.503s
+
+FAILED (errors=1)
+[2943,1087199568:16:05:28.412585] Caught signal 11 on thread B82h.
+chrome-bot@vm23-m3:/b/build/slave/hardy64-m64-n64-coverage/build/native_client$ 
+chrome-bot@vm23-m3:/b/build/slave/hardy64-m64-n64-coverage/build/native_client$ 
+chrome-bot@vm23-m3:/b/build/slave/hardy64-m64-n64-coverage/build/native_client$ ps -af
+UID        PID  PPID  C STIME TTY          TIME CMD
+1001      2943     1  0 16:05 pts/1    00:00:00 /mnt/data/build/slave/hardy64-m64-n64-coverage/build/native_client/scons-out/coverage-linux-x86-64/staging/sel_ldr -g /mnt/data/build/slave/hardy64-m64-n64-coverage/build/native_client/scons-ou
+1001      2948  6065  0 16:05 pts/1    00:00:00 ps -af
+chrome-bot@vm23-m3:/b/build/slave/hardy64-m64-n64-coverage/build/native_client$ NACL_SEL_LDR=/mnt/data/build/slave/hardy64-m64-n64-coverage/build/native_client/scons-out/coverage-linux-x86-64/staging/sel_ldr DEBUGGER_TEST_PROG=/mnt/data/build/slave/hardy64-m64-n64-coverage/build/native_client/scons-out/nacl-x86-64/obj/tests/debug_stub/debugger_test.nexe /usr/bin/python /mnt/data/build/slave/hardy64-m64-n64-coverage/build/native_client/tests/debug_stub/debug_stub_test.py -v
+test_getting_registers (__main__.DebugStubTest) ... ERROR
+
+======================================================================
+ERROR: test_getting_registers (__main__.DebugStubTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File &amp;quot;/mnt/data/build/slave/hardy64-m64-n64-coverage/build/native_client/tests/debug_stub/debug_stub_test.py&amp;quot;, line 107, in test_getting_registers
+    EnsurePortIsAvailable()
+  File &amp;quot;/mnt/data/build/slave/hardy64-m64-n64-coverage/build/native_client/tests/debug_stub/debug_stub_test.py&amp;quot;, line 50, in EnsurePortIsAvailable
+    sock.bind(('', SEL_LDR_RSP_TCP_PORT))
+  File &amp;quot;&amp;lt;string&amp;gt;&amp;quot;, line 1, in bind
+error: (98, 'Address already in use')
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)
+chrome-bot@vm23-m3:/b/build/slave/hardy64-m64-n64-coverage/build/native_client$ 
+</ns0:content><ns0:updated>2011-04-26T06:09:53.000Z</ns0:updated><ns0:published>2011-04-22T23:09:47.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/109474787648168037085/</ns2:uri><ns2:username>mli...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Hardy coverage bot locking debug_stub test due to sel_ldr hang</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1724/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1724" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1724" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-04-26T06:09:53.000Z</ns2:closedDate><ns2:id>1724</ns2:id></ns0:entry>

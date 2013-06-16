@@ -1,0 +1,55 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEQAQX47eCl7ImA9WxFUEkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/635</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">after upgrading the ARM llc backend closer to tip of tree
+we now see the code generated below.
+This is nice as it will allow us to get rid of our own
+handcoded intrinsics but some more validator work will be needed.
+
+espindola: points out that the mcr instruction is obsolete and for armv7 
+a different instruction will be emitted.
+
+NEW
+
+ 00021ed0 &amp;lt;nc_spinlock_lock&amp;gt;:
+    21ed0:       e3a01000        mov     r1, #0  ; 0x0
+    21ed4:       e3a02001        mov     r2, #1  ; 0x1
+    21ed8:       ee071f9a        mcr     15, 0, r1, cr7, cr10, {4}     &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;
+    21edc:       e1903f9f        ldrex   r3, [r0]
+    21ee0:       e1530001        cmp     r3, r1
+    21ee4:       1a000002        bne     21ef4 &amp;lt;nc_spinlock_lock+0x24&amp;gt;
+    21ee8:       e180cf92        strex   ip, r2, [r0]                          &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;
+    21eec:       e35c0000        cmp     ip, #0  ; 0x0
+    21ef0:       1afffff9        bne     21edc &amp;lt;nc_spinlock_lock+0xc&amp;gt;
+    21ef4:       ee071f9a        mcr     15, 0, r1, cr7, cr10, {4}       &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;
+    21ef8:       e3530000        cmp     r3, #0  ; 0x0
+    21efc:       e1a00000        .word   0xe1a00000
+    21f00:       03cee13f        biceq   lr, lr, #-1073741809    ; 0xc000000f
+    21f04:       012fff1e        bxeq    lr
+    21f08:       eafffff2        b       21ed8 &amp;lt;nc_spinlock_lock+0x8&amp;gt;
+    21f0c:       e1a00000        nop                     (mov r0,r0)
+
+OLD
+
+
+*00020e50 &amp;lt;nc_spinlock_lock&amp;gt;:
+    20e50:       e3cdd103        bic     sp, sp, #-1073741824    ; 0xc0000000
+    20e54:       e92d4010        push    {r4, lr}
+    20e58:       e1a04000        mov     r4, r0
+    20e5c:       e1a00004        mov     r0, r4
+    20e60:       e3a01000        mov     r1, #0  ; 0x0
+    20e64:       e3a02001        mov     r2, #1  ; 0x1
+    20e68:       e1a00000        .word   0xe1a00000
+    20e6c:       ebfffc9f        bl      200f0 &amp;lt;__sync_val_compare_and_swap_4&amp;gt;
+    20e70:       e3500000        cmp     r0, #0  ; 0x0
+*   20e74:       1afffff8        bne     20e5c &amp;lt;nc_spinlock_lock+0xc&amp;gt;
+    20e78:       e8bd4010        pop     {r4, lr}
+    20e7c:       e1a00000        .word   0xe1a00000
+    20e80:       e3cee13f        bic     lr, lr, #-1073741809    ; 0xc000000f
+    20e84:       e12fff1e        bx      lr
+    20e88:       e1a00000        nop                     (mov r0,r0)
+    20e8c:       e1a00000        nop                     (mov r0,r0)
+ 
+
+</ns0:content><ns0:updated>2010-06-22T22:39:00.000Z</ns0:updated><ns0:published>2010-06-22T17:42:10.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>ARM compiler needs sandboxing for strex</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>Component-DevTools</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/635/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=635" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/635" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-06-22T22:39:00.000Z</ns2:closedDate><ns2:id>635</ns2:id></ns0:entry>

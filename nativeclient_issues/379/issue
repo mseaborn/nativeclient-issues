@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUNQn47eCl7ImA9WxFSGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/379</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">The untrusted toolchain build speed is &amp;gt; 1h which makes it impossible
+to iterate quickly.
+
+There are some low hanging fruit - like building just the backend &amp;quot;llc-sfi&amp;quot;
+instead of all of &amp;quot;tools-only&amp;quot;
+
+And some more difficult ones like pruning &amp;quot;phase2&amp;quot; which is only used to
+produce libgcc.a and the c++ runtime.</ns0:content><ns0:updated>2010-04-21T16:11:33.000Z</ns0:updated><ns0:published>2010-03-25T01:49:43.000Z</ns0:published><ns2:status>Done</ns2:status><ns2:owner>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>reduce ARM untrusted toolchain build duration</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/379/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=379" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/379" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-04-21T16:11:33.000Z</ns2:closedDate><ns2:id>379</ns2:id></ns0:entry>

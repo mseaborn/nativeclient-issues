@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUDQX47eCl7ImA9WxFbEkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/658</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The plugin's logic for shutting down its sel_ldr subprocess is
+currently relatively complicated.  There are two ways of shutting
+sel_ldr down:
+
+1) Ask sel_ldr to exit.  There are actually two ways of doing this:
+a) Send the &amp;quot;hard_shutdown&amp;quot; message.
+   This is done by the HardShutdown() method in the plugin.
+   HardShutdown() is called by Shutdown().
+b) Drop the connection to the trusted half of sel_ldr.
+   When NaClSecureChannelThread() gets EOF on the connection,
+   it does _exit(0).
+   This should happen if the renderer/browser crashes.
+
+2) Kill the sel_ldr process.  This is done by KillChild(), using
+   kill()/SIGKILL on Unix and TerminateProcess() on Windows.
+   KillChild() is called from MultimediaShutdown()
+   (though this code path might not be accessible -- see issue 657).
+
+Furthermore, on Unix at least, the plugin needs to do waitpid() to
+collect the subprocess's exit status, in order to prevent a zombie
+process from being left behind.  This is done by ~SelLdrLauncher(),
+which is called by ~ServiceRuntime().  (I think the Windows equivalent
+is CloseHandle().)
+
+Suggestions:
+
+* Remove &amp;quot;hard_shutdown&amp;quot; and always use kill().
+
+* Move the waitpid() call to be in the same code path as kill() for
+  clarity.
+
+* In light of issue 652, this should be done from NPP_Destroy(), not
+  from a Deallocate() function.
+</ns0:content><ns0:updated>2010-07-04T15:11:10.000Z</ns0:updated><ns0:published>2010-06-29T15:53:11.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Simplify plugin's logic for terminating sel_ldr</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Plugins</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/658/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=658" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/658" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-07-04T15:11:10.000Z</ns2:closedDate><ns2:id>658</ns2:id></ns0:entry>

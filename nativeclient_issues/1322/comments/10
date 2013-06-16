@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkAGRX47eCl7ImA9Wx9WFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1322/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bbu...@google.com</ns0:name><ns0:uri>/u/106710594185928520364/</ns0:uri></ns0:author><ns0:content type="html">Indeed, the problem is that the plugins are loaded when the browser process threads are started, and about:flags state is loaded as part of the profile. I discussed this with Brett and Darin, and they thought that the flags state was analogous to command line switches, and so should not be part of the profile, but rather the browser's local state, which is read before starting the threads.
+
+They directed me to Miranda Callahan (NYC) and I got the following response:
+
+"this is a change I agree with, yes -- we were actually just discussing
+this very change last week.  I think it could be done quickly, but
+cc-ing Nico, who implemented it, in case he knows of some hidden
+issues.  If Nico can't think of anything, I can try to get a patch in
+this weekend."</ns0:content><ns0:updated>2011-01-20T21:58:44.000Z</ns0:updated><ns0:published>2011-01-20T21:58:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bbu...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1322#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1322/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

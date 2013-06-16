@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEIARH47eCl7ImA9WhVREkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2678/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">dmesg shows the following every once in a while when the process is hung:
+
+
+&gt; [  481.501373] INFO: task nacl_helper_boo:890 blocked for more than 120 seconds.
+&gt; [  481.501373] "echo 0 &gt; /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+&gt; [  481.517272] nacl_helper_boo D c060d6f4     0   890      1 0x00000001
+&gt; [  481.517272] [&lt;c060d6f4&gt;] (__schedule+0x4e4/0x5bc) from [&lt;c060f588&gt;] (__down_write_nested+0xbc/0xd4)
+&gt; [  481.517272] [&lt;c060f588&gt;] (__down_write_nested+0xbc/0xd4) from [&lt;c01287a4&gt;] (sys_mmap_pgoff+0x6c/0xc0)
+&gt; [  481.517272] [&lt;c01287a4&gt;] (sys_mmap_pgoff+0x6c/0xc0) from [&lt;c0053220&gt;] (ret_fast_syscall+0x0/0x30)
+&gt; [  481.517425] INFO: task nacl_helper_boo:893 blocked for more than 120 seconds.
+&gt; [  481.524993] "echo 0 &gt; /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+&gt; [  481.533386] nacl_helper_boo D c060d6f4     0   893      1 0x00000001
+&gt; [  481.533447] [&lt;c060d6f4&gt;] (__schedule+0x4e4/0x5bc) from [&lt;c060f4b4&gt;] (__down_read+0xc0/0xd8)
+&gt; [  481.533477] [&lt;c060f4b4&gt;] (__down_read+0xc0/0xd8) from [&lt;c0612368&gt;] (do_page_fault.part.2+0x80/0x1e0)
+&gt; [  481.533508] [&lt;c0612368&gt;] (do_page_fault.part.2+0x80/0x1e0) from [&lt;c0612564&gt;] (do_page_fault+0x9c/0xac)
+&gt; [  481.533508] [&lt;c0612564&gt;] (do_page_fault+0x9c/0xac) from [&lt;c004e410&gt;] (do_DataAbort+0x34/0x98)
+&gt; [  481.533538] [&lt;c004e410&gt;] (do_DataAbort+0x34/0x98) from [&lt;c060ff90&gt;] (__dabt_svc+0x70/0xa0)
+&gt; [  481.533569] Exception stack(0xed31dec0 to 0xed31df08)
+&gt; [  481.533569] dec0: 00080000 0008a000 00000020 0000001f ed485000 0008a000 00080000 ed484fc0
+&gt; [  481.533599] dee0: 00000000 ed31c000 00000000 b6ba4000 00080000 ed31df08 c00573d4 c005f3dc
+&gt; [  481.533630] df00: 80000013 ffffffff
+&gt; [  481.533660] [&lt;c060ff90&gt;] (__dabt_svc+0x70/0xa0) from [&lt;c005f3dc&gt;] (v7_coherent_kern_range+0x20/0x80)
+&gt; [  481.533691] [&lt;c005f3dc&gt;] (v7_coherent_kern_range+0x20/0x80) from [&lt;c00573d4&gt;] (arm_syscall+0x140/0x294)
+&gt; [  481.533691] [&lt;c00573d4&gt;] (arm_syscall+0x140/0x294) from [&lt;c0053220&gt;] (ret_fast_syscall+0x0/0x30)
+
+</ns0:content><ns0:updated>2012-03-20T23:35:45.000Z</ns0:updated><ns0:published>2012-03-20T23:35:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2678#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2678/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

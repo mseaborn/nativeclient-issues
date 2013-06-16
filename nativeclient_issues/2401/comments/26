@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4ESX47eCl7ImA9WhVSEk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2401/comments/full/26</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7976
+
+------------------------------------------------------------------------
+r7976 | bradnelson@google.com | Thu Mar 08 10:19:06 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/nacl.scons?r1=7976&amp;r2=7975&amp;pathrev=7976
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt_interfaces.c?r1=7976&amp;r2=7975&amp;pathrev=7976
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt.h?r1=7976&amp;r2=7975&amp;pathrev=7976
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/untrusted_crash_dump/nacl.scons?r1=7976&amp;r2=7975&amp;pathrev=7976
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=7976&amp;r2=7975&amp;pathrev=7976
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/untrusted_crash_dump/untrusted_crash_dump_test.c?r1=7976&amp;r2=7975&amp;pathrev=7976
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/untrusted_crash_dump/untrusted_crash_dump_test.py?r1=7976&amp;r2=7975&amp;pathrev=7976
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/crash_dump/untrusted_crash_dump.c?r1=7976&amp;r2=7975&amp;pathrev=7976
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt_interfaces.h?r1=7976&amp;r2=7975&amp;pathrev=7976
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt_dev_exception_handling.c?r1=7976&amp;r2=7975&amp;pathrev=7976
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt.gyp?r1=7976&amp;r2=7975&amp;pathrev=7976
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/crash_dump/untrusted_crash_dump.h?r1=7976&amp;r2=7975&amp;pathrev=7976
+
+Add dev irt interface for exception handling, and use it.
+
+We DO NOT have a stable exception handling interface.
+However, to get stack trace functionality into the hands of
+developers running chrome for debugging, we would like to provide
+samples of using the current interface.
+
+Currently the exception handling syscalls return ENOSYS when
+exception handling is not turned on. However, if these calls are used
+directly is shipping code, future changes to the syscall interface may
+make them return other values, even if the interface has changed.
+Instead we will add a dev irt interface and have all the samples use
+that.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2401
+TEST=untrusted_crash_dump*
+R=mcgrathr@chromium.org,mseaborn@chromium.org
+
+Review URL: https://chromiumcodereview.appspot.com/9581036
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-03-08T18:21:48.000Z</ns0:updated><ns0:published>2012-03-08T18:21:48.000Z</ns0:published><ns2:updates /><ns0:title>Comment 26 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2401#c26" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2401/comments/full/26" rel="self" type="application/atom+xml" /></ns0:entry>

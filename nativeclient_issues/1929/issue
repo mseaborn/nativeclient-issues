@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0cESH47eCl7ImA9WhZbGUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1929</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">If the pthread_create() call in native_client/tests/egyptian_cotton/egyptian_cotton.c fails, the program will still return an exit status of 0.
+
+This is because the cleanup_exit path contains code like this which overwrites 'rv':
+
+  if (0 != (rv = pthread_mutex_unlock(&amp;amp;gBarrierMu))) {
+    ...
+  }
+
+I noticed this when investigating a problem on Mac (with a 64-bit kernel) where the test produced this output:
+
+[1999,2952933376:18:34:39.894512] No tls for thread, num_thread 1
+[1999,2952933376:18:34:39.907828] NaClCreateAdditionalThread: could not allocate thread index.  Returning EAGAIN per POSIX specs.
+Thread creation failed at thread 0, error 11 (No more processes)
+PASSED
+
+One lesson is that tests usually should not try to clean up if they fail.  They should exit quickly.
+
+Mea culpa - I reviewed the change that caused this problem but didn't notice the problem.
+</ns0:content><ns0:updated>2011-06-25T00:16:49.000Z</ns0:updated><ns0:published>2011-06-20T19:25:55.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>egyptian_cotton_test can report success even when it has failed</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Test</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>FlakeyBots</ns2:label><ns2:label>Mstone-14</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1929/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1929" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1929" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-06-25T00:16:49.000Z</ns2:closedDate><ns2:id>1929</ns2:id></ns0:entry>

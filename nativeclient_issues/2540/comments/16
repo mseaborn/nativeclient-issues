@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQNQ347eCl7ImA9WhRVGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2540/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 63651e95b9218d29529eeab5b56af503094aa81a
+ Email: mseaborn@chromium.org@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Syscall list: Use NaClCommonSysImc_SocketPair() directly
+
+Stop going via the OS-specific files for this syscall.
+
+This is one special case I'm addressing before doing this for the
+other syscalls.
+
+In order for the function's type to match the type listed in
+SYSCALL_LIST, we remove the "volatile" qualifier, which none of the
+other syscall functions use for pointers in their type signatures.
+
+Furthermore, it is more accurate to use "uint32_t" for the function's
+argument because this is an untrusted pointer.  This is cleaner
+because it avoids the need to cast the argument to
+NaClUserToSysAddrRange().
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2540
+TEST='run_simple_srpc_test_nexe' covers this syscall
+
+Review URL: https://chromiumcodereview.appspot.com/9232014
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@7622 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	src/trusted/service_runtime/linux/nacl_syscall_impl.c
+M	src/trusted/service_runtime/nacl_syscall_common.c
+M	src/trusted/service_runtime/nacl_syscall_common.h
+M	src/trusted/service_runtime/nacl_syscall_handlers_gen.py
+M	src/trusted/service_runtime/win/nacl_syscall_impl.c</ns0:content><ns0:updated>2012-01-18T23:13:12.000Z</ns0:updated><ns0:published>2012-01-18T23:13:12.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2540#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2540/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

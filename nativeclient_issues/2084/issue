@@ -1,0 +1,126 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0cBSX47eCl7ImA9WhdbEEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2084</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+N/A
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+NaCl r6194
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Ubuntu Lucid 64-bit
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Chrome M14 r93797
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Run any Linux integration bot
+&lt;b&gt;2.&lt;/b&gt;
+&lt;b&gt;3.&lt;/b&gt;
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+
+[ RUN        ] reload.NaClTest.testReloadSRPCURLContentAsNaclResourceDescriptor: &amp;quot;None&amp;quot;
+third_party/tcmalloc/chromium/src/system-alloc.cc:422] (null) failed.
+third_party/tcmalloc/chromium/src/system-alloc.cc:422] (null) failed.
+---&amp;gt; pyauto reload: start testing srpc_url_as_nacl_desc.html
+localhost - - [25/Jul/2011 11:56:20] code 404, message Not Found
+Traceback (most recent call last):
+  File &amp;quot;/usr/lib/python2.6/SocketServer.py&amp;quot;, line 281, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File &amp;quot;/usr/lib/python2.6/SocketServer.py&amp;quot;, line 307, in process_request
+    self.finish_request(request, client_address)
+  File &amp;quot;/usr/lib/python2.6/SocketServer.py&amp;quot;, line 320, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File &amp;quot;/mnt/data/b/build/slave/lucid64-nacl-chrome/build/src/net/tools/testserver/testserver.py&amp;quot;, line 359, in __init__
+    put_handlers)
+  File &amp;quot;/mnt/data/b/build/slave/lucid64-nacl-chrome/build/src/net/tools/testserver/testserver.py&amp;quot;, line 260, in __init__
+    self, request, client_address, socket_server)
+  File &amp;quot;/usr/lib/python2.6/SocketServer.py&amp;quot;, line 615, in __init__
+    self.handle()
+  File &amp;quot;/usr/lib/python2.6/BaseHTTPServer.py&amp;quot;, line 329, in handle
+    self.handle_one_request()
+  File &amp;quot;/usr/lib/python2.6/BaseHTTPServer.py&amp;quot;, line 323, in handle_one_request
+    method()
+  File &amp;quot;/mnt/data/b/build/slave/lucid64-nacl-chrome/build/src/net/tools/testserver/testserver.py&amp;quot;, line 283, in do_GET
+    if handler():
+  File &amp;quot;/mnt/data/b/build/slave/lucid64-nacl-chrome/build/src/net/tools/testserver/testserver.py&amp;quot;, line 931, in FileHandler
+    self.wfile.write(data)
+  File &amp;quot;/usr/lib/python2.6/socket.py&amp;quot;, line 300, in write
+    self.flush()
+  File &amp;quot;/usr/lib/python2.6/socket.py&amp;quot;, line 286, in flush
+    self._sock.sendall(buffer)
+error: [Errno 104] Connection reset by peer
+localhost - - [25/Jul/2011 11:56:20] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:21] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:22] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:23] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:25] code 404, message Not Found
+third_party/tcmalloc/chromium/src/system-alloc.cc:422] (null) failed.
+localhost - - [25/Jul/2011 11:56:27] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:29] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:30] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:32] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:33] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:35] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:35] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:37] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:38] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:40] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:41] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:43] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:44] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:46] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:47] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:47] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:48] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:49] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:49] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:51] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:52] code 404, message Not Found
+localhost - - [25/Jul/2011 11:56:54] code 404, message Not Found
+---&amp;gt; pyauto reload: finished testing srpc_url_as_nacl_desc.html
+[         OK ] reload.NaClTest.testReloadSRPCURLContentAsNaclResourceDescriptor
+
+======================================================================
+ERROR: reload.NaClTest.testReloadGetURL: &amp;quot;None&amp;quot;
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File &amp;quot;/mnt/data/b/build/slave/lucid64-nacl-chrome/build/src/native_client/tests/pyauto_nacl/reload.py&amp;quot;, line 93, in testReloadGetURL
+    self.reloader('ppapi_geturl.html', 'PPAPI')
+  File &amp;quot;/mnt/data/b/build/slave/lucid64-nacl-chrome/build/src/native_client/tests/pyauto_nacl/reload.py&amp;quot;, line 61, in reloader
+    self.reloadMulti(page, title_word, 5, 0, 0)
+  File &amp;quot;/mnt/data/b/build/slave/lucid64-nacl-chrome/build/src/native_client/tests/pyauto_nacl/reload.py&amp;quot;, line 51, in reloadMulti
+    nacl_utils.WaitForNexeLoad(self)
+  File &amp;quot;/mnt/data/b/build/slave/lucid64-nacl-chrome/build/src/native_client/tests/pyauto_nacl/nacl_utils.py&amp;quot;, line 54, in WaitForNexeLoad
+    expect_retval=1, timeout=90),
+  File &amp;quot;/mnt/data/b/build/slave/lucid64-nacl-chrome/build/src/native_client/tests/pyauto_nacl/../../../chrome/test/pyautolib/pyauto.py&amp;quot;, line 576, in WaitUntil
+    retval = function(*args)
+  File &amp;quot;/mnt/data/b/build/slave/lucid64-nacl-chrome/build/src/native_client/tests/pyauto_nacl/nacl_utils.py&amp;quot;, line 53, in &amp;lt;lambda&amp;gt;
+    browser.FindInPage('[SHUTDOWN]', tab_index=tab_index)['match_count'],
+
+  File &amp;quot;/mnt/data/b/build/slave/lucid64-nacl-chrome/build/src/native_client/tests/pyauto_nacl/../../../chrome/test/pyautolib/pyauto.py&amp;quot;, line 2198, in FindInPage
+    return self._GetResultFromJSONRequest(cmd_dict, windex=windex)
+  File &amp;quot;/mnt/data/b/build/slave/lucid64-nacl-chrome/build/src/native_client/tests/pyauto_nacl/../../../chrome/test/pyautolib/pyauto.py&amp;quot;, line 642, in _GetResultFromJSONRequest
+    'Perhaps the browser crashed.' % cmd_dict)
+JSONInterfaceError: Automation call {'match_case': False, 'tab_index': 0, 'search_string': '[SHUTDOWN]', 'command': 'FindInPage', 'forward': True, 'find_next': False} received empty response.  Perhaps the browser crashed.
+
+----------------------------------------------------------------------
+Ran 15 tests in 595.205s
+
+FAILED (errors=1)
+Tests can be disabled by editing /mnt/data/b/build/slave/lucid64-nacl-chrome/build/src/native_client/tests/pyauto_nacl/PYAUTO_TESTS. Ref: http://dev.chromium.org/developers/testing/pyauto
+Test /mnt/data/b/build/slave/lucid64-nacl-chrome/build/src/native_client/scons-out/nacl-x86-64/test_results/pyauto_reload.out took 41.600000 secs
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+pyauto_reload.out: FAILED
+scons: *** [scons-out/nacl-x86-64/test_results/pyauto_reload.out] Error 255
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-10-07T19:17:38.000Z</ns0:updated><ns0:published>2011-07-25T20:06:43.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/mball@google.com/</ns2:uri><ns2:username>mball@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pyauto_reload failure on chrome integration bots</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-16</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2084/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2084" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2084" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-10-07T19:17:38.000Z</ns2:closedDate><ns2:id>2084</ns2:id></ns0:entry>

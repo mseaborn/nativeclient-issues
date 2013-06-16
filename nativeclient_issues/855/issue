@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcNQH47eCl7ImA9Wx5WE08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/855</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I tried building nacl-glibc on Mac OS X.  It fails because glibc's
+build system assumes a case sensitive filesystem, and OS X uses a case
+insensitive filesystem by default.  (It is possible to create a case
+sensitive FS on the Mac, but apparently it tends to break some
+programs.)
+
+In each subdirectory of the build dir, glibc creates two files,
+&amp;quot;stamp.os&amp;quot; and &amp;quot;stamp.oS&amp;quot;.  (&amp;quot;.os&amp;quot; is for object files that will be
+linked into a &amp;quot;.so&amp;quot; object such as &amp;quot;libc.so&amp;quot;.  &amp;quot;.oS&amp;quot; is for object
+files that will be included in a &amp;quot;_nonshared.a&amp;quot; library such as
+&amp;quot;libc_nonshared.a&amp;quot;.)
+
+The contents of &amp;quot;stamp.oS&amp;quot; overwrite &amp;quot;stamp.os&amp;quot;, which breaks things.
+
+I expect the solution will be to fix the glibc build and rename the
+&amp;quot;.oS&amp;quot; suffix to something else.</ns0:content><ns0:updated>2010-09-24T09:21:31.000Z</ns0:updated><ns0:published>2010-08-27T10:17:59.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>glibc fails to build on Mac OS X due to case insensitive filesystem</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Milestone-Chromium-9</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/855/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=855" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/855" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-09-24T09:21:31.000Z</ns2:closedDate><ns2:id>855</ns2:id></ns0:entry>

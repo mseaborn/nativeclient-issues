@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUGQn47eCl7ImA9WhdXEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1853/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Flag for choosing between a call to__aeabi_read_tp and doing it inline was added, and irt is built with that flag. So, I believe this is fixed.
+
+./scons --mode=opt-host,nacl -j 10 irt irt_core platform=arm
+./scons --mode=opt-host,nacl_irt_test -j 10 irt_tests platform=arm -k bitcode=1
+
+Mostly works, except for a few tests (which might be broken on ARM anyway). For example, as part of "irt_tests" it tried to run the computed_goto_test, which was just recently fixed by Sehr (needs a DEPs update).
+</ns0:content><ns0:updated>2011-08-24T17:50:23.000Z</ns0:updated><ns0:published>2011-08-24T17:50:23.000Z</ns0:published><ns2:updates>
+			<ns2:status>Fixed</ns2:status></ns2:updates><ns0:title>Comment 6 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1853#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1853/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

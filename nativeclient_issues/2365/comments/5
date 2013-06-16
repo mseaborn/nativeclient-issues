@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcHQH47eCl7ImA9WhRXEEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2365/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7471
+
+------------------------------------------------------------------------
+r7471 | jvoung@google.com | Fri Dec 16 14:15:55 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/pnacl_packaging/pnacl_manifest_template.json?r1=7471&amp;r2=7470&amp;pathrev=7471
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pnacl_support_extension/nacl.scons?r1=7471&amp;r2=7470&amp;pathrev=7471
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=7471&amp;r2=7470&amp;pathrev=7471
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pnacl_client_translator/nacl.scons?r1=7471&amp;r2=7470&amp;pathrev=7471
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/pnacl_packaging/pnacl_component_crx_gen.py?r1=7471&amp;r2=7470&amp;pathrev=7471
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/browser_tester/browsertester/browserlauncher.py?r1=7471&amp;r2=7470&amp;pathrev=7471
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pnacl_support_extension?r1=7471&amp;r2=7470&amp;pathrev=7471
+
+Make unpacked pnacl support extension visible to browser tests.  This will remove the support files from the user's manifest and stop pulling from the user's server.
+
+Keep old Layout-Files-On-Server
+routine until the coordinator actually uses the extension instead of webserver.
+
+- Add a dest option to the crx gen to dump the result in scons-out
+  instead of somewhere in the toolchain directory.
+- Add a lib-override option to allow some of the support libs
+  to be overrriden by freshly built libs instead (e.g., to match
+  freshly pulled in headers), instead of libs from the toolchain
+  tarball.
+
+R=robertm@google.com,sehr@google.com
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2365
+TEST= trybots
+Run browser test with "--interactive" flag and inspect the "Tools &gt; Extensions" menu.
+
+Review URL: http://codereview.chromium.org/8918032
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-12-16T22:20:31.000Z</ns0:updated><ns0:published>2011-12-16T22:20:31.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2365#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2365/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

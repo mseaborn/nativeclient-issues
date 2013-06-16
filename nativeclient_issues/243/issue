@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIDR347eCl7ImA9Wx9UGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/243</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">sample code:
+
+static struct ppp* zzz[16 * 2 + 1];
+int main() {
+  for (int i = -16; i &amp;lt;= 16; i++)
+    zzz[i + 16] = NULL;
+  return 0;
+}
+
+GCC -O2 generates this assembly:
+        movl    $-16, %eax
+.L2:
+        mov     %eax, %edx
+        addl    $1, %eax
+        cmpl    $17, %eax
+        movl    $0, %nacl:_ZL3zzz+64(%r15,%rdx,4)
+        jne     .L2
+
+here %rdx is all zeros in significant half and a signed 32-bit value(-16)
+in least significant half. offset+%r15+%rdx does not make an integer
+overflow resulting in incorrect address.
+
+
+ways to go:
+* restrict memory operations to use only registers as operands .. preceding
+lea (same performance considerations)
+
+* disallow distributivity transformations on address expressions (heavy
+performance implications, how does the sentence translate into GCC internals?)
+
+* try one of the above combined with induction variable range detection and
+apply restriction to not-always-positive indices (hard! induction variable
+is a gimple abstraction, while the final optimization seems to be sitting
+in rtl)</ns0:content><ns0:updated>2011-02-18T00:06:16.000Z</ns0:updated><ns0:published>2010-01-12T17:32:27.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>NaCl x86-64 GCC -O2 uses sign-extended 32 bit index as a pointer, not compatible with 64bit unsigned extension by SFI</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Milestone-Arctic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/243/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=243" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/243" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-11-03T12:45:59.000Z</ns2:closedDate><ns2:id>243</ns2:id></ns0:entry>

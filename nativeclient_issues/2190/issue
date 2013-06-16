@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUcMRH47eCl7ImA9WhRRGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2190</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The dyncode_delete() system call makes use of the following function:
+
+int NaClMinimumThreadGeneration(struct NaClApp *nap) {
+  int i, rv = 0;
+  NaClXMutexLock(&amp;amp;nap-&amp;gt;threads_mu);
+  for (i = 0; i &amp;lt; nap-&amp;gt;num_threads; ++i) {
+    struct NaClAppThread *thread = NaClGetThreadMu(nap, i);
+    NaClXMutexLock(&amp;amp;thread-&amp;gt;mu);
+    if (i == 0 || rv &amp;gt; thread-&amp;gt;dynamic_delete_generation) {
+      rv = thread-&amp;gt;dynamic_delete_generation;
+    }
+    NaClXMutexUnlock(&amp;amp;thread-&amp;gt;mu);
+  }
+  NaClXMutexUnlock(&amp;amp;nap-&amp;gt;threads_mu);
+  return rv;
+}
+
+This is incorrect in two ways:
+ 1) Some items in the array can be NULL, if a thread has exited, and the code should check for this.
+ 2) The code uses nap-&amp;gt;num_threads but it should use nap-&amp;gt;threads.num_entries.
+
+Luckily this should only crash safely.  If (1) were fixed without fixing (2), the function could return incorrect values, which might be used to bypass dyncode_delete()'s safety checks.
+
+I'll post a test case which demonstrates the crash.
+</ns0:content><ns0:updated>2011-12-02T17:31:25.000Z</ns0:updated><ns0:published>2011-08-24T21:51:52.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/elijahtaylor@google.com/</ns2:uri><ns2:username>elijahtaylor@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>NULL pointer dereference from dyncode_delete() when enumerating threads</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Mstone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2190/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2190" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2190" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-12-02T17:31:25.000Z</ns2:closedDate><ns2:id>2190</ns2:id></ns0:entry>

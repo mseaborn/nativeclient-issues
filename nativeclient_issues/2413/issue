@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcHRn47eCl7ImA9WhRQEUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2413</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">All irt functions are accessed through the 
+XXX_GetInterace() functions which return arrays of function pointers.
+
+It would be quite easy for the pnacl TC to redirect calls to 
+XXX_GetInterace() to an alternative version, say XXX_GetInterace_pnacl().
+
+The function pointers in the arrays returned by XXX_GetInterace_pnacl()
+would be simple wrappers, e.g. in the PPB case:
+
+result PPB_some_fun_pnacl_wrapper(arg1, arg2) __attribute__(pnacl_cc) 
+{
+   return PPB_some_fun(arg1, arg2);  
+}
+
+PPB_some_fun follows  nacl-gcc  calling conventions and can also be found
+in function pointer arrays returned by the standard XXX_GetInterace.
+</ns0:content><ns0:updated>2011-12-06T18:27:17.000Z</ns0:updated><ns0:published>2011-11-03T16:20:00.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100177598732114324016/</ns2:uri><ns2:username>mcgra...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>explore feasibility of dual entry points for irt to accommodate pnacl calling convention differences</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-IRT</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2413/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2413" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2413" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-12-06T18:27:17.000Z</ns2:closedDate><ns2:id>2413</ns2:id></ns0:entry>

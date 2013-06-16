@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCRn47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/511</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Currently, sel_ldr is set to expire after a date that is fixed into the 
+source code.  After this date, it stops working.  This is very unfriendly to 
+developers.  It means that we do not have reproducible builds.  A test that 
+passed one day can fail the next day, without warning.
+
+Suppose you are debugging a NaCl program, and you want to check whether a 
+problem has been caused by a recent change to NaCl.  The expiry date 
+frustrates this, because testing against an older sel_ldr will fail.
+
+The expiration check should be removed from sel_ldr.
+
+As a compromise, an expiry check could be put into the Firefox plugin 
+instead, since this is the only mechanism that will download code from the 
+Web that doesn't have an auto-update mechanism.  However, expiring the 
+Firefox plugin has similar problems, though to a lesser degree.  It is harder 
+to do automated testing of the Firefox plugin, but not impossible, since our 
+Scons build does it -- and so expiry of the plugin would break the full Scons 
+build.
+</ns0:content><ns0:updated>2011-07-29T00:12:47.000Z</ns0:updated><ns0:published>2010-05-20T16:18:49.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Expiration of sel_ldr is unfriendly to developers</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/511/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=511" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/511" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-10-15T23:41:12.000Z</ns2:closedDate><ns2:id>511</ns2:id></ns0:entry>

@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0AMQH47eCl7ImA9Wx9SEEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/938/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>pol...@google.com</ns0:name><ns0:uri>/u/101953680983947802512/</ns0:uri></ns0:author><ns0:content type="html">The PPAPI interface promises us a POSIX descriptor
+http://code.google.com/p/ppapi/source/browse/trunk/c/dev/ppb_file_io_trusted_dev.h
+But the only test I am aware of for this just checks that the value is &gt; 0, but does not actually try to use it with POSIX functions.
+http://code.google.com/p/ppapi/source/browse/trunk/tests/test_url_loader.cc
+
+PPAPI/Chrome developers just confirmed that the API comments, not the code, is wrong. On Windows we should indeed handle an OS-specific handle. POSIX file descriptors (aka CRT handles) are handled by C Runtime library on Windows, not the OS. Since Chrome executable and Plugin DLL link in their own version, they will have two different arrays to track file descriptors, so they can't exchange them.
+ 
+NaCl can convert an operating system handle to a CRT handle by using the CRT function _open_osfhandle().</ns0:content><ns0:updated>2010-11-29T23:03:01.000Z</ns0:updated><ns0:published>2010-11-29T23:03:01.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>bbu...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 14 by pol...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=938#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/938/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE8CRn47eCl7ImA9WhRaE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2442</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">We have various crash tests that test that NaCl exits safely when untrusted code does something bad.  Currently crash tests are awkward to write because:
+
+ 1) Each crash case to be tested requires a separate process invocation (e.g. of sel_ldr), and hence a separate CommandSelLdrTestNacl() declaration in Scons.  In constrast, one sel_ldr invocation can run many non-crash tests, which don't require separate declarations in Scons.
+
+ 2) The declaration of the test has to be split across multiple places:
+     a) A declaration in a .scons file containing the expected exit status.
+     b) A golden file containing a string like &amp;quot;About to crash...&amp;quot;.  (Without this, there's a risk that the test accidentally passes due to an unintended crash during test setup.)
+     c) A C program that prints &amp;quot;About to crash...&amp;quot; and tests the crash case.
+
+I propose to address (2) by having the test program print its intended exit status to stderr.  command_tester.py will be extended to look for this information on stderr and check that it matches.  This will remove the need for the golden file and remove the exit status from the .scons file.
+
+I've used this technique in the seccomp-sandbox's test suite.  See intend_exit_status() in:
+http://code.google.com/p/seccompsandbox/source/browse/trunk/tests/test_syscalls.cc
+(Note that that version sends the intended status via a separate pipe rather than via stderr.)
+</ns0:content><ns0:updated>2012-02-15T23:01:07.000Z</ns0:updated><ns0:published>2011-11-14T22:59:32.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Make crash tests easier to write and less coupled to Scons</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Test</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2442/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2442" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2442" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2442</ns2:id></ns0:entry>

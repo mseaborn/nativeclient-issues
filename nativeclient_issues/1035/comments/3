@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0AMQH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1035/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3505
+
+------------------------------------------------------------------------
+r3505 | mseaborn@chromium.org | Wed Oct 20 03:31:24 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_signal_common.c?r1=3505&amp;r2=3504&amp;pathrev=3505
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/signal_handler/nacl.scons?r1=3505&amp;r2=3504&amp;pathrev=3505
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/posix/nacl_signal.c?r1=3505&amp;r2=3504&amp;pathrev=3505
+
+Fix vulnerability in x86-32 signal handler and re-enable tests
+
+Fix the x86-32 signal handler to correctly restore %gs when a fault
+occurs in untrusted code.  Otherwise, the signal handler will probably
+crash, or could be vulnerable to exploit.
+
+Fix incorrect setting of %fs to %es's old value (a copy-and-paste
+error).
+
+Remove setting of registers on return which is not necessary because
+the kernel restores registers from the signal stack frame.
+
+Add back explanatory comments that were removed in r3432.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1035
+TEST=run_signal_handler_test
+
+Review URL: http://codereview.chromium.org/3839006
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:16:21.000Z</ns0:updated><ns0:published>2011-01-21T23:16:21.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1035#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1035/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

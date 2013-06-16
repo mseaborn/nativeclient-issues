@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQAQ347eCl7ImA9WhdaFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">Windows is also affected:
+http://build.chromium.org/p/client.nacl/builders/xp-bare-newlib-opt/builds/1436/steps/pyauto_tests/logs/stdio
+
+ERROR: surfaway.NaClTest.testSurfAwayPPBCore: "None"
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\b\build\slave\xp-bare-newlib-opt\build\native_client\tests\pyauto_nacl\surfaway.py", line 111, in testSurfAwayPPBCore
+    self.surfAway('ppapi_ppb_core.html', 'PPAPI')
+  File "C:\b\build\slave\xp-bare-newlib-opt\build\native_client\tests\pyauto_nacl\surfaway.py", line 32, in surfAway
+    self.surfAwayMulti(page, title_word, 5)
+  File "C:\b\build\slave\xp-bare-newlib-opt\build\native_client\tests\pyauto_nacl\surfaway.py", line 24, in surfAwayMulti
+    nacl_utils.VerifyAllTestsPassed(self)
+  File "C:\b\build\slave\xp-bare-newlib-opt\build\native_client\tests\pyauto_nacl\nacl_utils.py", line 73, in VerifyAllTestsPassed
+    tab_index)
+  File "C:\b\build\slave\xp-bare-newlib-opt\build\native_client\tests\pyauto_nacl\nacl_utils.py", line 37, in AssertTrueOrLogTab
+    print browser.ExecuteJavascript(js, 0, tab_index),
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 1254-1274: ordinal not in range(128)</ns0:content><ns0:updated>2011-10-26T19:29:02.000Z</ns0:updated><ns0:published>2011-10-26T19:29:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2394#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

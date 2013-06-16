@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEcFRn47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1149/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3775
+
+------------------------------------------------------------------------
+r3775 | pasko@google.com | Wed Nov 24 07:55:00 PST 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=3775&amp;r2=3774&amp;pathrev=3775
+
+Turn on {open,read,close}dir tests with glibc.
+
+Original ReviewURL: http://codereview.chromium.org/5280003/
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1149
+TEST=run_dir_test
+
+Review URL: http://codereview.chromium.org/5337004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:20:17.000Z</ns0:updated><ns0:published>2011-01-21T23:20:17.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1149#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1149/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

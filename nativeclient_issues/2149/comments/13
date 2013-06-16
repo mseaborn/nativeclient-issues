@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0cHQX47eCl7ImA9WhRWF00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2149/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">There is currently an Aw Snap while freeing something in the destructor for PnaclFileDescPair:
+
+
+PLUGIN 1325704582892888: PnaclCoordinator::~PnaclCoordinator (this=0x7f5dcd6be080)
+PLUGIN 1325704582892900: PnaclFileDescPair::~PnaclFileDescPair
+==12214== ERROR: AddressSanitizer attempting free on address which was not malloc()-ed: 0x7f5dcd2d9100
+    #0 0x7f5de0757604 (/usr/local/google/home/chromium1/src/out/Release/chrome+0x7cbf604)
+    #1 0x7f5dcacb326b (/usr/local/google/home/chromium1/src/out/Release/libppGoogleNaClPluginChrome.so+0x5726b)
+    #2 0x7f5dcacb6d77 (/usr/local/google/home/chromium1/src/out/Release/libppGoogleNaClPluginChrome.so+0x5ad77)
+...
+
+
+where:
+
+   57262:       48 83 ef 80             sub    $0xffffffffffffff80,%rdi
+   57266:       e8 45 71 03 00          callq  8e3b0 &lt;NaClDescUnref&gt;
+   5726b:       49 8d 7e 60             lea    0x60(%r14),%rdi
+
+The NaClDescUnref is "NaClDescUnref(reinterpret_cast&lt;NaClDesc*&gt;(&amp;rng_desc_));"
+
+Maybe NaClDescUnref isn't the right way to destroy the rng_desc that was made via:
+
+(NaClDescRngCtor(&amp;rng_desc_)
+
+???
+</ns0:content><ns0:updated>2012-01-04T19:23:50.000Z</ns0:updated><ns0:published>2012-01-04T19:23:50.000Z</ns0:published><ns2:updates /><ns0:title>Comment 13 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2149#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2149/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

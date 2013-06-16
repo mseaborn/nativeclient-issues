@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYGR347eCl7ImA9Wx5QFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/516/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">llvm.eh.sjlj.longjmp and llvm.eh.sjlj.setjmp appear to be unsupported for x86 and arm on non-darwin environments at this moment:
+
+http://www.llvm.org/bugs/show_bug.cgi?id=1642
+
+==============
+target datalayout = "e-p:64:64:64-i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-f32:32:32-f64:64:64-v64:64:64-v128:128:128-a0:0:64-s0:64:64-f80:128:128-n8:16:32:64"
+target triple = "x86_64-unknown-linux-gnu"
+
+; NOTE: just borrowing the struct from setjmp/longjmp for x86-64.
+; The official struct is "a pointer to a five word buffer"
+%struct.__jmp_buf_tag = type { [8 x i64], i32, %struct.anon }
+%struct.anon = type { [16 x i64] }
+
+define void @second() nounwind {
+entry:
+  %bufp = getelementptr inbounds [1 x %struct.__jmp_buf_tag]* @buf, i32 0, i32 0
+  %jmp_buf = bitcast %struct.__jmp_buf_tag* %bufp to i8*
+  call void @llvm.eh.sjlj.longjmp(i8* %jmp_buf)
+  unreachable
+
+return:                                           ; No predecessors!
+  ret void
+}
+===========
+
+returns a mostly empty function with "llc -march=x86-64 test_jmp.ll -o test_jmp.s"
+</ns0:content><ns0:updated>2010-09-03T00:18:46.000Z</ns0:updated><ns0:published>2010-09-03T00:18:46.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=516#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/516/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

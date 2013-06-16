@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHQ347eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/229</ns0:id><ns0:author>
+			<ns0:name>mseaborn@google.com</ns0:name><ns0:uri>/u/mseaborn@google.com/</ns0:uri></ns0:author><ns0:content type="html">This is about how shared libraries are compiled.
+
+x86 doesn't have PC-relative addressing modes so x86 compilers have to use
+some tricks to copy the value of %eip into a general purpose register,
+which is necessary for finding the address of the GOT (Global Offset Table).
+
+The old trick is:
+	call .Label
+.Label:
+	popl %ecx
+
+The new trick is:
+	call __i686.get_pc_thunk.cx
+where
+__i686.get_pc_thunk.cx:
+        movl    (%esp), %ecx
+        ret
+
+gcc uses the new version when compiling for -march=i686 or higher because
+it is supposed to interact better with return branch prediction, which
+makes sense.  The old version does a call with no corresponding return
+which has potential to confuse branch predictors.
+
+However, compiling the new version for NaCl adds NOP padding to the call.
+
+The old version can be more compact in NaCl, but making it compact would
+require that the validator allows unaligned calls.  I think currently the
+validator forbids unaligned call instructions as a linting service. 
+Unaligned calls are not unsafe, and this one is legit because the return
+address is never jumped to.
+
+The fact that we never use &amp;quot;ret&amp;quot; might already be defeating return branch
+prediction.
+
+We should measure the performance of the two code sequences.
+</ns0:content><ns0:updated>2011-07-29T00:12:12.000Z</ns0:updated><ns0:published>2009-12-22T12:15:48.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:state>open</ns2:state><ns0:title>Choice of how to compile GOT references on i386 with -fPIC</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-NaCl</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/229/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=229" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/229" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>229</ns2:id></ns0:entry>

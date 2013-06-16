@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4BRH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/957/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3416
+
+------------------------------------------------------------------------
+r3416 | eugenis@google.com | Thu Oct 07 04:06:40 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/third_party/valgrind/bin/tsan?r1=3416&amp;r2=3415&amp;pathrev=3416
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/third_party/valgrind/bin/memcheck?r1=3416&amp;r2=3415&amp;pathrev=3416
+
+Update memcheck and tsan binaries to work around the .got.plt issue.
+
+TSan r2490 with valgrind-variant r62 + r68 (cherry-picked).
+
+BUG: http://code.google.com/p/nativeclient/issues/detail?id=957
+TEST: ./scons --verbose MODE=nacl,dbg-linux platform=x86-64 sdl=none buildbot=memcheck run_thread_test
+Review URL: http://codereview.chromium.org/3599018
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:02:35.000Z</ns0:updated><ns0:published>2011-01-21T23:02:35.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=957#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/957/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

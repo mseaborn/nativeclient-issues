@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUNRX47eCl7ImA9WhVQFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2712</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+currently nacl_host_stat_t is a platform-determined typedef for stat, stat64, or _stati64
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+the rest of the platform library provides abstracted platform neutral types and are easier to use.  in order to expose inodes on windows, access to a 64-bit ino_t is needed (e.g., nacl_abi_ino_t), but windows _stati64 provides only a 16-bit ino_t, a holdover from DOS.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+switch NaClHostDescStat and NaClHostDescFstat to use nacl_abi_stat structures.  also make inode-value selection of real host inode numbers and a &amp;quot;mask&amp;quot; value explicitly part of the API, since getdents dirent parsing is necessarily already done in the platform library, and re-doing it elsewhere is a pain.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+
+exposing inode numbers for system bringup will be easier (autoconf style programs can be nexes).  since this is enabled only by -a, no impact on end users.</ns0:content><ns0:updated>2012-04-05T17:51:34.000Z</ns0:updated><ns0:published>2012-04-05T05:39:41.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>platform stat functions should use abstracted platform neutral "abi" stat structure</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2712/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2712" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2712" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>2510</ns2:id></ns2:blocking><ns2:id>2712</ns2:id></ns0:entry>

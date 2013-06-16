@@ -1,0 +1,34 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkUNQH47eCl7ImA9WxVaFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/29</ns0:id><ns0:author>
+			<ns0:name>patrick.horn</ns0:name><ns0:uri>/u/patrick.horn/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? nacl-gcc (GCC) 4.2.2
+What version of the runtime are you using? 0.1 (9308700)
+On what operating system? OSX 10.5.5
+What browser are you using? Firefox 3.0.1
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Create a plugin using the NPAPI interface
+2. Create a NPVariant: STRINGN_TO_NPVARIANT(buffer, len, myarg)
+3. Call NPN_InvokeDefault(myInstance, someCallbackNPObject, &amp;amp;myarg, 1, &amp;amp;myret)
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Documentation is sparse on npapi, but I am using this page as a reference:
+http://dev.opera.com/articles/view/the-opera-plug-in-interface/#NPString 
+
+Simple example: Say I am using window.alert as my callback function
+STRINGN_TO_NPVARIANT(&amp;quot;ABCDEFG&amp;quot;, 1, arg)
+pops up an alert saying &amp;quot;AB&amp;quot; in the browser.
+
+To get a string of length 1, I must do:
+STRINGN_TO_NPVARIANT(&amp;quot;ABCDEFG&amp;quot;, 0, arg)
+which correctly shows up as &amp;quot;A&amp;quot;
+
+Of course, the expected example is &amp;quot;A&amp;quot; in the first case and the empty
+string &amp;quot;&amp;quot; in the second case.
+
+
+The workaround to subtract one from the string length works, but will
+likely be incompatible with some versions.
+</ns0:content><ns0:updated>2009-04-13T23:11:31.000Z</ns0:updated><ns0:published>2008-12-14T11:22:30.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/103445551378707684693/</ns2:uri><ns2:username>shiki%go...@gtempaccount.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>STRINGN_TO_NPVARIANT off-by-one error</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/29/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=29" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/29" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2009-04-13T23:11:31.000Z</ns2:closedDate><ns2:id>29</ns2:id></ns0:entry>

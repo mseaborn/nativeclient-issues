@@ -1,0 +1,82 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0cHQH47eCl7ImA9WhZQEEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1492/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">Well, the definitions come from libstdc++-v3/config/os/newlib subdirectory and they are quite obviously correct:
+http://gcc.gnu.org/viewcvs/trunk/libstdc%2B%2B-v3/config/os/newlib/ctype_base.h?view=markup
+
+The problem here is the corrupted nacl-g++ configuration but I don't know who or what have destroyed it since fresh SDK does not exhibit these symptoms:
+
+/tmp$ wget http://build.chromium.org/f/client/nacl_archive/sdk/ArcticSea/721/naclsdk_linux.tgz
+--2011-04-17 16:48:56--  http://build.chromium.org/f/client/nacl_archive/sdk/ArcticSea/721/naclsdk_linux.tgz
+Resolving build.chromium.org... 74.125.248.71
+Connecting to build.chromium.org|74.125.248.71|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 60349903 (58M) [application/x-gzip]
+Saving to: `naclsdk_linux.tgz'
+
+100%[=================================================================================================================================================================&gt;] 60,349,903   748K/s   in 85s     
+
+2011-04-17 16:50:21 (692 KB/s) - `naclsdk_linux.tgz' saved [60349903/60349903]
+
+
+/tmp$ tar xSpf naclsdk_linux.tgz 
+
+/tmp/native_client_sdk_0_1_721_0/examples/sine_synth$ make
+../../toolchain/linux_x86/bin/nacl-g++ -Wall -Wno-long-long -pthread -Werror -m32 -I../.. -O2 -c -o sine_synth_x86_32.o sine_synth.cc
+../../toolchain/linux_x86/bin/nacl-g++ sine_synth_x86_32.o -lppruntime -lppapi_cpp -lgoogle_nacl_platform -lgio -lpthread -lsrpc -m32 -o sine_synth_x86_32.nexe
+../../toolchain/linux_x86/bin/nacl-strip sine_synth_x86_32.nexe -o sine_synth_x86_32.nexe
+../../toolchain/linux_x86/bin/nacl-g++ -Wall -Wno-long-long -pthread -Werror -m64 -I../.. -O2 -c -o sine_synth_x86_64.o sine_synth.cc
+../../toolchain/linux_x86/bin/nacl-g++ sine_synth_x86_64.o -lppruntime -lppapi_cpp -lgoogle_nacl_platform -lgio -lpthread -lsrpc -m64 -o sine_synth_x86_64.nexe
+../../toolchain/linux_x86/bin/nacl-strip sine_synth_x86_64.nexe -o sine_synth_x86_64.nexe
+Creating sine_synth.nmf...
+/usr/bin/python ../generate_nmf.py --nmf sine_synth.nmf \
+	 --x86-64 sine_synth_x86_64.nexe --x86-32 sine_synth_x86_32.nexe
+../../toolchain/linux_x86/bin/nacl-g++ -Wall -Wno-long-long -pthread -Werror -m32 -I../.. -g -c -o sine_synth_x86_32_dbg.o sine_synth.cc
+../../toolchain/linux_x86/bin/nacl-g++ sine_synth_x86_32_dbg.o -lppruntime -lppapi_cpp -lgoogle_nacl_platform -lgio -lpthread -lsrpc -m32 -o sine_synth_x86_32_dbg.nexe
+../../toolchain/linux_x86/bin/nacl-g++ -Wall -Wno-long-long -pthread -Werror -m64 -I../.. -g -c -o sine_synth_x86_64_dbg.o sine_synth.cc
+../../toolchain/linux_x86/bin/nacl-g++ sine_synth_x86_64_dbg.o -lppruntime -lppapi_cpp -lgoogle_nacl_platform -lgio -lpthread -lsrpc -m64 -o sine_synth_x86_64_dbg.nexe
+Creating sine_synth_dbg.nmf...
+/usr/bin/python ../generate_nmf.py --nmf sine_synth_dbg.nmf \
+	 --x86-64 sine_synth_x86_64_dbg.nexe \
+	 --x86-32 sine_synth_x86_32_dbg.nexe
+
+I think something (or someone?) added -I/usr/include to nacl-gcc's spec file or otherwise corrupted SDK installation. gcc -v should reveal it:
+
+
+/tmp/native_client_sdk_0_1_721_0/examples/sine_synth$ ../../toolchain/linux_x86/bin/nacl-g++ -v -Wall -Wno-long-long -pthread -Werror -m32 -I../.. -O2 -c -o sine_synth_x86_32.o sine_synth.cc
+Using built-in specs.
+Target: nacl64
+Configured with: ../../SRC/gcc/configure CC='gcc -m32' CFLAGS='-O2 -Dinhibit_libc -D__gthr_posix_h -DNACL_ALIGN_BYTES=32 -DNACL_ALIGN_POW2=5' LDFLAGS= 'CFLAGS_FOR_TARGET=-O2 -g' 'CXXFLAGS_FOR_TARGET=-O2 -g' --disable-decimal-float --disable-libgomp --disable-libmudflap --disable-libssp --disable-libstdcxx-pch --prefix=/mnt/data/build/slave/hardy32-toolchain_x86/build/native_client/tools/sdk/nacl-sdk --target=nacl64 --disable-shared --enable-languages=c,c++,objc --enable-threads=nacl --enable-tls --with-newlib
+Thread model: nacl
+gcc version 4.4.3 20110124 (Native Client r4216) (GCC) 
+COLLECT_GCC_OPTIONS='-v' '-Wall' '-Wno-long-long' '-pthread' '-Werror' '-m32' '-I../..' '-O2' '-c' '-o' 'sine_synth_x86_32.o' '-mtune=generic'
+ /tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../libexec/gcc/nacl64/4.4.3/cc1plus -quiet -v -I../.. -imultilib 32 -iprefix /tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/ -D_GNU_SOURCE sine_synth.cc -quiet -dumpbase sine_synth.cc -m32 -mtune=generic -auxbase-strip sine_synth_x86_32.o -O2 -Wall -Wno-long-long -Werror -version -o /tmp/cci82Y0h.s
+ignoring nonexistent directory "/tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/sys-include"
+ignoring duplicate directory "/tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/../../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3"
+ignoring duplicate directory "/tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/../../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/32"
+ignoring duplicate directory "/tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/../../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/backward"
+ignoring duplicate directory "/tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/../../lib/gcc/nacl64/4.4.3/include"
+ignoring duplicate directory "/tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/../../lib/gcc/nacl64/4.4.3/include-fixed"
+ignoring nonexistent directory "/tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/../../lib/gcc/nacl64/4.4.3/../../../../nacl64/sys-include"
+ignoring duplicate directory "/tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/../../lib/gcc/nacl64/4.4.3/../../../../nacl64/include"
+#include "..." search starts here:
+#include &lt;...&gt; search starts here:
+ ../..
+ /tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3
+ /tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/32
+ /tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/backward
+ /tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/include
+ /tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/include-fixed
+ /tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include
+End of search list.
+GNU C++ (GCC) version 4.4.3 20110124 (Native Client r4216) (nacl64)
+	compiled by GNU C version 4.2.4 (Ubuntu 4.2.4-1ubuntu4), GMP version 4.3.1, MPFR version 2.4.1.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 26e49784c8dfc3c4a797798b6f19d99d
+COLLECT_GCC_OPTIONS='-v' '-Wall' '-Wno-long-long' '-pthread' '-Werror' '-m32' '-I../..' '-O2' '-c' '-o' 'sine_synth_x86_32.o' '-mtune=generic'
+ /tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/as -V -Qy --32 -o sine_synth_x86_32.o /tmp/cci82Y0h.s
+GNU assembler version 2.20.1 (nacl64) using BFD version (GNU Binutils) 2.20.1.20100303 20110124 (Native Client r4216)
+COMPILER_PATH=/tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../libexec/gcc/nacl64/4.4.3/:/tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../libexec/gcc/:/tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/
+LIBRARY_PATH=/tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/32/:/tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib32/:/tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/:/tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/:/tmp/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/
+COLLECT_GCC_OPTIONS='-v' '-Wall' '-Wno-long-long' '-pthread' '-Werror' '-m32' '-I../..' '-O2' '-c' '-o' 'sine_synth_x86_32.o' '-mtune=generic'
+</ns0:content><ns0:updated>2011-04-17T12:57:11.000Z</ns0:updated><ns0:published>2011-04-17T12:57:11.000Z</ns0:published><ns2:updates>
+			<ns2:status>Invalid</ns2:status></ns2:updates><ns0:title>Comment 8 by k...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1492#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1492/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

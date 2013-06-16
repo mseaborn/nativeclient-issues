@@ -1,0 +1,56 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08FQ347eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/882/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3565
+
+------------------------------------------------------------------------
+r3565 | bsy@google.com | Tue Oct 26 10:12:34 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/nacl_log.c?r1=3565&amp;r2=3564&amp;pathrev=3565
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/elf_fuzzer.py?r1=3565&amp;r2=3564&amp;pathrev=3565
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/elf.py?r1=3565&amp;r2=3564&amp;pathrev=3565
+
+Initial implementation/prototype for a fuzzer that generates nexes
+from an existing nexe by modifying the phr entries, and then passes
+the modified nexe to sel_ldr.  Any that cause a crash -- that's not
+due to abort() -- will be saved in a destination directory.
+
+I'm running it right now on opt-linux-x86-64 using all
+nacl-x86-64/staging/*.nexe files as fuzzing templates.  I'll leave
+this going in a window and see if anything pops up.  A smarter fuzzing
+using boundary condition heuristics would be a good idea, though
+if/when we go that route that will be in another CL.  There are
+placeholders in this code for selecting the fuzzing algorithm to be
+used.
+
+This fuzzer seems to be too slow.  On my desktop, the progress
+indicator shows that we're getting fewer than 60 nexes per second (25
+dots * 64 runs/dot / 27 seconds), which is abysmal.  This is not
+parallel -- i should be able to spawn 4-8 sel_ldr's in parallel
+(depending on /proc/cpuinfo), and gain a 4-8x right there -- though
+just running the requisite number of instances of the fuzzer is
+an easy/trivial way to parallelize.
+
+Even then, I think we may need to integrate the fuzzing into sel_ldr
+(or use a separate main function) to achieve higher fuzzing rates, I
+think, since the process creation, nexe file I/O, etc overhead is
+hurting performance.  However, there are probably several internal
+code paths that abort in ways from which it would be difficult for an
+integrated fuzzer to recover, plus we'd need to reconstitute the
+NaClAppDtor method to clean stuff up so that the integrated fuzzer can
+clean up after a failure and spawn another NaClApp object.
+
+Manually tested to see that LOG_FATAL crashes are detected (and
+ignored).
+
+We will want to take the saved LOG_FATAL aborts and make the
+responsible code paths return errors back up the call stack.  After
+that, it will be much easier to more of the fuzzing in-process.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=882 https://tracker.corp.google.com/story/show/307434
+TEST=None.  This is a testing tool.  Manually tested.
+
+
+Review URL: http://codereview.chromium.org/3969002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:16:52.000Z</ns0:updated><ns0:published>2011-01-21T23:16:52.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=882#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/882/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

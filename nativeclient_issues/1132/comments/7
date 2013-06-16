@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkIESH47eCl7ImA9Wx9UGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1132/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4331
+
+------------------------------------------------------------------------
+r4331 | mseaborn@chromium.org | Wed Feb 16 14:13:21 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/Makefile?r1=4331&amp;r2=4330&amp;pathrev=4331
+
+tools/Makefile: Fix mistakes in earlier change, r4328
+
+These caused the toolchain build to fail on Linux.
+
+Make sure we include tools/REVISIONS to get the new Git commit IDs.
+(I thought "git checkout ''" would fail and so catch this mistake, but
+actually this command seems to be a no-op in this case.)
+
+Correct case: "src" -&gt; "SRC".  (I tested on a Mac with a
+case-insensitive filesystem which did not catch this mistake.)
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1132
+TEST="cd tools &amp;&amp; make SDKLOC=`pwd`/sdk-dest" on Linux
+
+Review URL: http://codereview.chromium.org/6531010
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-02-16T22:15:09.000Z</ns0:updated><ns0:published>2011-02-16T22:15:09.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1132#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1132/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

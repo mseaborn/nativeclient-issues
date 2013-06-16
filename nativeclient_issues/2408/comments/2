@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0cFQH47eCl7ImA9WhRTEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2408/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">Caching size issues make some sense.  Here are the relative sizes of the libraries in question:
+
+
+x86-64:
+total 21096
+-rwxr-xr-x 1 mball eng 10053037 2011-10-20 09:31 libc.so.40b700e4
+-rw-r--r-- 1 mball eng   525030 2011-10-20 09:34 libgcc_s.so.1
+-rwxr-xr-x 1 mball eng  1481242 2011-10-20 09:30 libm.so.40b700e4
+-rwxr-x--- 1 mball eng   728629 2011-10-28 14:08 libppapi_cpp.so
+-rwxr-x--- 1 mball eng   338211 2011-10-28 14:08 libppapi_gles2.so
+-rwxr-xr-x 1 mball eng  1340370 2011-10-20 09:30 libpthread.so.40b700e4
+-rwxr-xr-x 1 mball eng  5929237 2011-10-20 09:34 libstdc++.so.6
+-rwxr-xr-x 1 mball eng  1189339 2011-10-20 09:31 runnable-ld.so
+
+
+libc is the largest at about 10MB.  libstdc++ is next largest at just under 6MB, so the limit is probably somewhere between those two values.  We'll definitely want to cache libc if at all possible since everything uses it.
+
+Component-IRT was a bit of a guess.  Component-GLibC could arguably fit as well, but there is no perfect match.</ns0:content><ns0:updated>2011-11-01T17:36:51.000Z</ns0:updated><ns0:published>2011-11-01T17:36:51.000Z</ns0:published><ns2:updates>
+			<ns2:label>Component-GLibC</ns2:label></ns2:updates><ns0:title>Comment 2 by mball@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2408#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2408/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

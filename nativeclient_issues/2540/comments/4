@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4FQH47eCl7ImA9WhRVGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2540/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7604
+
+------------------------------------------------------------------------
+r7604 | mseaborn@chromium.org | Tue Jan 17 14:02:11 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_handlers_gen.py?r1=7604&amp;r2=7603&amp;pathrev=7604
+
+Syscall list: Add compile time check that SYSCALL_LIST's types match C code
+
+If I change SYSCALL_LIST to contain
+    ('NaClSysDup', ['int64_t oldfd']),
+instead of
+    ('NaClSysDup', ['int oldfd']),
+then compilation fails with a type error in AssertSameType_NaClSysDup.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2540
+TEST=see above
+
+Review URL: https://chromiumcodereview.appspot.com/9240020
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-01-17T22:05:11.000Z</ns0:updated><ns0:published>2012-01-17T22:05:11.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2540#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2540/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

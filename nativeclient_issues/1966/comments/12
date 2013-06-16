@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUcARn47eCl7ImA9WhRQEUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1966/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7373
+
+------------------------------------------------------------------------
+r7373 | robertm@google.com | Tue Dec 06 09:34:15 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-as.py?r1=7373&amp;r2=7372&amp;pathrev=7373
+
+Augmented pnacl-as to handle .S files, so we can remove .s/.S support from pnacl-clang.
+Also, make import statements style guide compliant
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1966
+Review URL: http://codereview.chromium.org/8769054
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-12-06T17:37:27.000Z</ns0:updated><ns0:published>2011-12-06T17:37:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1966#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1966/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

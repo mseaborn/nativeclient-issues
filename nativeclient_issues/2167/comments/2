@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUEQn47eCl7ImA9WhdQF0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2167/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">Source code for all hermetic cygwin packages can be found here:
+http://gsdview.appspot.com/nativeclient-mirror/nacl/cygwin_mirror/packages.src/
+
+Archived binaries are here:
+http://gsdview.appspot.com/nativeclient-mirror/nacl/cygwin_mirror/packages/
+
+MD5SUMs for verification can be found here:
+Versions before 1.7.9-0.1:
+http://code.google.com/p/nativeclient-sdk/source/browse/trunk/src/build_tools/setup.ini?r=790
+Versions starting from 1.7.9-0.2:
+http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/hermetic_cygwin/setup.ini?view=markup
+
+The files were taken from 1.7.9-0.1.
+
+So we DO have a trail. Perhaps not the best of tails, but still.
+
+As for "it's possible to upload files without verification for everyone with the ability to send jobs to NaCl bots"... this is true for ALL files stored on googlestorage: toolchains, IRT binaries, etc.
+
+Thus, practically speaking, the only problem is the fact that neither directory nor filenames include version info. Should be easily fixable if someone think it's important.
+</ns0:content><ns0:updated>2011-08-19T21:43:23.000Z</ns0:updated><ns0:published>2011-08-19T21:43:23.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by k...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2167#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2167/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

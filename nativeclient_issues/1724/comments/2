@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE8DQ347eCl7ImA9WhZQFUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1724/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4997
+
+------------------------------------------------------------------------
+r4997 | noelallen@google.com | Fri Apr 22 16:55:38 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/debug_stub/nacl.scons?r1=4997&amp;r2=4996&amp;pathrev=4997
+
+Debug Stub test hand Coverage bot
+
+For some reason on the coverage bot, the debug_stub test hangs.  Doing a
+coverage run, you can validate that the first execution of the test
+runs correctly, but the next execution hangs.  Using 'ps -af' we see
+that the first execution leaks a sel_ldr invocation.  It appears
+this leaked invocation blocks a port, causing the next invocation to
+fail in such a way, that when it's run with command_loader, it will
+timeout instead of terminating immediately.
+
+BUG= nacl1724
+Review URL: http://codereview.chromium.org/6896040
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-23T00:01:12.000Z</ns0:updated><ns0:published>2011-04-23T00:01:12.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1724#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1724/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

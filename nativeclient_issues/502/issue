@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0AHQH47eCl7ImA9WhVQE0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/502</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">A syscall for loading code dynamically was added in
+http://code.google.com/p/nativeclient/issues/detail?id=318
+
+However, there is not yet any facility for unloading code.
+
+There are a couple of possible interfaces for unloading code:
+
+// Unload given a memory range:
+int dyncode_unload(void *start, size_t size);
+
+// Unload given a descriptor:
+int dyncode_copy(void *dest, void *source, size_t size); /* returns FD */
+void dyncode_unload(int fd);
+
+NaCl allows code to be dynamically loaded in chunks, and it must ensure that chunks are 
+unloaded as units too.  It is not safe to unload only part of a chunk, because chunks can 
+contain internal jumps to non-bundle-aligned addresses.  It would not be safe to unload a 
+subrange of a chunk if there are dangling jumps pointing inside bundles in this subrange.
+
+The descriptor-based interface is preferable because it makes it easier to be sure that 
+chunks are unloaded as units.  To ensure this with the range-based interface would require 
+more complicated data structures in the trusted code.
+
+Use cases:
+
+* Dynamic libraries: We would need dyncode_unload() in order to implement a dlclose() that 
+doesn't leak memory.  However, few programs do repeated dlopen()/dlclose() calls of new 
+libraries and require this not to leak.
+
+* JIT compilers: This is the main use case.  A dynamically-optimising JIT would need to 
+unload code in order not to run out of space.  Such a system is likely to load code in many 
+small chunks, so we might need a large descriptor table.
+
+* Runtime thunk creation for closures (as done by the Go runtime): I'm told that Go currently 
+leaks closures.  This could be fixed with code unloading.  Alternatively, it could be fixed 
+by having each thunk fetch its data portion from the data segment.  Thunks can be reused 
+after being garbage collected, and the data portion can be changed without changing the code 
+portion.
+</ns0:content><ns0:updated>2012-04-01T20:22:11.000Z</ns0:updated><ns0:published>2010-05-18T10:05:11.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Add support for dynamic code unloading</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>DynamicLoading</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/502/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=502" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/502" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:blockedOn>
+			<ns2:id>501</ns2:id></ns2:blockedOn><ns2:closedDate>2012-04-01T20:22:11.000Z</ns2:closedDate><ns2:id>502</ns2:id></ns0:entry>

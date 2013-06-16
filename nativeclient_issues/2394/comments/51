@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UMSX47eCl7ImA9WhdaGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/51</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">Reconstructing the call stack: 
+0x7f9728ab0090 &lt;v8::internal::Heap::DoScavenge(v8::internal::ObjectVisitor*, v8::internal::Address)+4294965696&gt;:	
+    callq  0x7f972d1c75a0 &lt;__asan_report_load8(uintptr_t)&gt;
+
+   0x7f9728aaff5e &lt;v8::internal::Heap::IteratePointersInDirtyRegion(v8::internal::Address, v8::internal::Address, v8::internal::ObjectSlotCallback)+190&gt;:	
+    cmpb   $0x0,(%rbx)
+
+   0x7f9728accd1f &lt;v8::internal::Heap::IterateDirtyRegions(uint32_t, v8::internal::Address, v8::internal::Address, v8::internal::DirtyRegionCallback, v8::internal::ObjectSlotCallback)+191&gt;:	test   %al,%al
+
+   0x7f9728aafd67 &lt;v8::internal::Heap::IterateDirtyRegions(v8::internal::DirtyRegionCallback, v8::internal::ObjectSlotCallback, v8::internal::Heap::ExpectedPageWatermarkState)+759&gt;:	mov    (%rbx),%cl
+
+   0x7f9728aae2d1 &lt;v8::internal::Heap::Scavenge()+2753&gt;:	
+    movabs $0x100000000000,%rbx
+
+   0x7f9728aabeb1 &lt;v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::internal::GCTracer*)+2753&gt;:	cmpb   $0x0,0x0(%rbp)
+
+   0x7f9728aab261 &lt;v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollector)+449&gt;:	mov    %al,%r12b
+
+
+   0x7f9728a97da6
+     &lt;v8::internal::ForceSetProperty(PropertyAttributes, v8::internal::Handle&lt;v8::internal::JSObject&gt;, v8::internal::Handle&lt;v8::internal::Object&gt;, v8::internal::Handle&lt;v8::internal::Object&gt;)+390&gt;:	mov    %r12,%rdi
+</ns0:content><ns0:updated>2011-10-28T20:54:48.000Z</ns0:updated><ns0:published>2011-10-28T20:54:48.000Z</ns0:published><ns2:updates /><ns0:title>Comment 51 by bradc...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2394#c51" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/51" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUCRX47eCl7ImA9WhdWEk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/392/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: df6d19d7ed9290b112afab64135ece83357173c5
+ Email: jvoung@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Prune pnacl tarball a bit more.
+
+- Prune the universal build artifacts (~130MB).
+- Move prune-translator-install to the untrusted_sdk step so that
+  there is still a way to build it without pruning.
+- Strip the binutils binaries also in the prune() function. The gold binary
+  had about 30MB of debug strings.
+
+Misc:
+- Get rid of binutils configure flag --enable-checking, which does not seem
+  to be needed anymore.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=392
+TEST= tools/llvm/utman.sh untrusted_sdk /tmp/tarball.tar.gz
+Review URL: http://codereview.chromium.org/7828036
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6618 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	buildbot/buildbot_toolchain_arm_untrusted.sh
+M	tools/llvm/utman.sh</ns0:content><ns0:updated>2011-09-05T15:41:04.000Z</ns0:updated><ns0:published>2011-09-05T15:41:04.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=392#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/392/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

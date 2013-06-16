@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkMHQX47eCl7ImA9WhdbGUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2311/comments/full/25</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 8e1f995d19371d6f7f2e9791b636dc6945d81bf7
+ Email: pdox@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Lower the f32 output precision for llvm_math_intrinsics from 6 digits to 5 digits after the decimal point. For expf/exp2f, lower even further to 4 digits.
+
+This is because:
+
+1) This more accurately matches the actual float precision.
+2) GlibC and Newlib's math functions don't match beyond these digits.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2311
+Review URL: http://codereview.chromium.org/8315003
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6967 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	tests/toolchain/llvm_math_intrinsics.c
+M	tests/toolchain/llvm_math_intrinsics.stdout</ns0:content><ns0:updated>2011-10-18T20:07:10.000Z</ns0:updated><ns0:published>2011-10-18T20:07:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 25 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2311#c25" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2311/comments/full/25" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMFQ347eCl7ImA9WhdaEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2379</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">If I try to load a NaCl app with a recursive manifest like this:
+
+test.nmf:
+{
+  &amp;quot;program&amp;quot;: {
+    &amp;quot;x86-64&amp;quot;: {&amp;quot;url&amp;quot;: &amp;quot;test.nmf&amp;quot;}
+  }
+}
+
+, I get the following in JS console:
+
+NativeClient: NaCl module load failed: Too many program header entries in ELF file
+
+Misleading.
+</ns0:content><ns0:updated>2011-10-21T12:33:32.000Z</ns0:updated><ns0:published>2011-10-21T10:41:17.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Bad diagnostic message for an nexe load failure</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-3</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2379/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2379" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2379" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2379</ns2:id></ns0:entry>

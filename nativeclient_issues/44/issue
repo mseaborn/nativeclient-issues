@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0ADR347eCl7ImA9WxVaE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/44</ns0:id><ns0:author>
+			<ns0:name>chris.ro...@gmail.com</ns0:name><ns0:uri>/u/109476958443797771315/</ns0:uri></ns0:author><ns0:content type="html">TEAM CJETM
+Affected OS: Linux, OSX, Windows
+Tested Browser: Firefox 3.0.6
+Nacl Version nacl_linux_0.1_38_2009_02_11.tgz
+
+There is an uninitialized memory bug that may lead to code execution in the
+SharedMemory::New function in shared_memory.cc. This function can receive a
+length of 2147483648, which is casted to type off_t, so it becomes
+-2147483648. A heap buffer (imc_desc/desc) is then created without being
+wiped. The function NaClDescImcShmCtor is then called which is supposed to
+initialize the vtbl pointer in the heap buffer but returns 0 prematurely
+because 'length' became less then 0 when casted to type off_t in
+SharedMemory::New. This leaves the desc-&amp;gt;vtbl pointer uninitialized. This
+NaClDescImcShmCtor 0 return value is never checked and NaCl goes on to call
+a function pointer in that vtable, which lands in an arbitrary spot. It may
+be possible to control this execution and execute arbitrary code by
+controlling the contents of the heap via heap spray. To fix this issue
+memset the imc_desc heap buffer and check the return value of
+NaClDescImcShmCtor before continuing.
+</ns0:content><ns0:updated>2009-04-10T17:49:36.000Z</ns0:updated><ns0:published>2009-03-04T20:21:50.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/110254776827258378715/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Uninitialized vtable may lead to arbitrary code execution</ns0:title><ns2:label>Security-Contest</ns2:label><ns2:label>Type-Defect</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/44/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=44" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/44" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2009-04-10T17:49:36.000Z</ns2:closedDate><ns2:id>44</ns2:id></ns0:entry>

@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYHSH47eCl7ImA9WhdXEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2179</ns0:id><ns0:author>
+			<ns0:name>assafRa...@gmail.com</ns0:name><ns0:uri>/u/100260242131676702826/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? native_client_sdk_0_5_1031
+On what operating system?  Windows XP Professional (5.1, Build 2600) Service Pack 3 (2600.xpsp_sp3_gdr.101209-1647)
+What browser are you using? Google Chrome 14.0.835.94 beta-m
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. You need a computer with Xp 32, NVIDIA GeForce 7600 GT, Driver Version: 6.14.0012.5721 (English) 
+2. Setup Chrome on that computer so you can run NaCl webpages.
+3. Open this page http://goo.gl/2BW4F
+4. Start the second sample (Bump mapping)
+5. Blue screen 
+
+&lt;b&gt;What is the expected output?&lt;/b&gt;
+Anything but a blue screen.
+
+&lt;b&gt;What do you see instead?&lt;/b&gt;
+A blue screen.
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+The code is the latest OGRE trunk code, if you want to compile it on your own - read this page: http://goo.gl/Y03ka
+If you want a zip of the webpage with the issue + nexe file - here you go: http://goo.gl/te4Sv
+
+Upgrading to the latest GeForce driver (Driver Version: 6.14.0012.8026 ) and it solve the blue screen, but the sample still runs very slow.
+
+I guess we do something that GL doesn't like there, with the old driver you blue screen, with the new driver it is only slow...
+
+I attached the dxdiag files of the computer with the old and new drivers.
+
+Good luck with this issue. 
+
+I am willing to help you out in any way, the computer is one of the computers I have here at home, so I have access to it - if you want me to test anything.
+</ns0:content><ns0:updated>2011-08-23T15:25:39.000Z</ns0:updated><ns0:published>2011-08-23T13:20:52.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:state>closed</ns2:state><ns0:title>Using opengl in a NaCl nexe program can cause a windows blue screen</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2179/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2179" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2179" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-23T15:03:25.000Z</ns2:closedDate><ns2:id>2179</ns2:id><ns2:mergedInto>
+			<ns2:id>93899</ns2:id><ns2:project>chromium</ns2:project></ns2:mergedInto></ns0:entry>

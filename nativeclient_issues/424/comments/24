@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEMQH47eCl7ImA9WhZQFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/424/comments/full/24</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4978
+
+------------------------------------------------------------------------
+r4978 | jasonwkim@google.com | Thu Apr 21 16:27:44 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/utman.sh?r1=4978&amp;r2=4977&amp;pathrev=4978
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/driver.py?r1=4978&amp;r2=4977&amp;pathrev=4978
+
+Add the hidden ARM switch to the driver.
+Note that until MC_DIRECT=1, this switch does nothing.
+So for now, both PIC and SPEC2k are run with the old .s -&gt; .o path.
+Bumpimg LLVM_REV at the same time.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=424
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1588
+TEST=utman.sh test-arm
+TEST=utman.sh test-arm-pic
+Review URL: http://codereview.chromium.org/6877128
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-21T23:31:21.000Z</ns0:updated><ns0:published>2011-04-21T23:31:21.000Z</ns0:published><ns2:updates /><ns0:title>Comment 24 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=424#c24" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/424/comments/full/24" rel="self" type="application/atom+xml" /></ns0:entry>

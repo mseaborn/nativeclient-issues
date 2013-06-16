@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ICQH47eCl7ImA9WhdSEkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1751/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=6144
+
+------------------------------------------------------------------------
+r6144 | jvoung@google.com | Wed Jul 20 18:21:33 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/build/toolchainbinaries.py?r1=6144&amp;r2=6143&amp;pathrev=6144
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/buildbot/buildbot_pnacl1.sh?r1=6144&amp;r2=6143&amp;pathrev=6144
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/buildbot/buildbot_toolchain_arm_untrusted.sh?r1=6144&amp;r2=6143&amp;pathrev=6144
+
+Attempt to run tests on pnacl mac builder again.
+Tested on my mac laptop. It doesn't appear to flake out, but I don't know
+what the fix was... maybe it was fixed after some upstream merges.
+
+- Also, just use the scons bit browser_headless=1 instead of xvfb-run,
+  since xvfb-run isn't available on the Mac.
+- Also download the built pnacl mac tarball, since the tests pass.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1751
+TEST= nuke scons-out run tests, repeat. Also try mac toolchain trybot.
+Review URL: http://codereview.chromium.org/7471012
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-07-21T01:26:01.000Z</ns0:updated><ns0:published>2011-07-21T01:26:01.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1751#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1751/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

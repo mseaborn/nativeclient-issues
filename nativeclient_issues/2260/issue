@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEEHRX47eCl7ImA9WhdVEk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2260</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">We need to port Clang to PNaCl.
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+Clang can't produce PNaCl-conformant bitcode
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+We have to use llvm-gcc which is pretty outdated
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+We need to port Clang to PNaCl.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+Clang toolchain passes PNaCl tests
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+We can get rid of llvm-gcc and simplify the toolchain.
+</ns0:content><ns0:updated>2011-09-17T02:30:34.000Z</ns0:updated><ns0:published>2011-09-16T22:24:55.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:owner>
+			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Port Clang to PNaCl</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2260/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2260" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2260" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-09-16T22:31:07.000Z</ns2:closedDate><ns2:id>2260</ns2:id><ns2:mergedInto>
+			<ns2:id>404</ns2:id></ns2:mergedInto></ns0:entry>

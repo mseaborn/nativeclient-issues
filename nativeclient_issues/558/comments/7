@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQMSH47eCl7ImA9WxFWFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/558/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>espind...@google.com</ns0:name><ns0:uri>/u/101432766050863658364/</ns0:uri></ns0:author><ns0:content type="html">Bennet, not allowing things we don't need in normally a good thing, but in this case
+we are being more picky about headers than about other things that would present a
+similar problem.
+
+For example, it looks like you are concerned that an nexe might somehow get access to
+those headers, even if they are not being loaded. A valid concern, since bugs may
+exist and one may cause us to load more than we need. On the other hand, we don't
+check for example that the PT_LOAD headers cover all of the file, do we? A bad nexe
+can hide as much data from us by just not putting it in any segment.
+
+The same in true for any other tools, and as mark pointed out, the verifier rejecting
+a nexe will not prevent another tool from looking at it.
+
+So, the general statements are correct, but I think we should look at the particular
+issue. There are a lot more checks that we could do just to be more picky about the
+ELF objects, but they don't add enough value to justify the complexity. This might be
+such a case. The issues it has caused
+
+*) Having to special case PT_TLS (a very small issue, that is true)
+*) Mark having to hack the loader to fit the verifier view of what ELF looks like.
+*) I haven't done a "svn blame", but I suspect that part of the reason why the code
+was convoluted was because it was trying to do more than it needed. Granted, it is
+possible to have a simpler implementation that does the same, but to be more picky
+you will always need more code in the TCB.
+*) Anyone trying to build a new toolchain for NaCl will likely hit these problems again.</ns0:content><ns0:updated>2010-06-04T13:33:09.000Z</ns0:updated><ns0:published>2010-06-04T13:33:09.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by espind...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=558#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/558/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

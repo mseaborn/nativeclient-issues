@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMCQH47eCl7ImA9WhVSEUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2554/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Background: Currently, the frontend generates LE32.  Once we hit the bitcode linker, because there is no LLVM backend/target for LE32, the bitcode linker will fail.  To work around this, we switch it to "ARM" as the bitcode is read-in by the bitcode linker / almost every LLVM tool.
+
+* The original reason for looking into this was fear of miscompiles from ARM-isms.
+* So far, it looks like most of the optimization passes only use the data layout, which is compatible. However, we should look into this more seriously.
+
+Other reasons switch to LE32:
+
+* The *LINKED* bitcode files will look cleaner / more official. It won't say ARM anymore. We could validate that bitcode is LE32 before translation, rather than accept random x86/ARM bitcode.
+
+* By defining a target (to make the bitcode linker happy), we also end up with a separate / NULL ASM Parser, etc. (instead of the ARM one), so *perhaps* we get to reject inline asm for free (though very late).
+
+</ns0:content><ns0:updated>2012-03-07T21:07:41.000Z</ns0:updated><ns0:published>2012-03-07T21:07:41.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2554#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2554/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

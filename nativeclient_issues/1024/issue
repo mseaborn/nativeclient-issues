@@ -1,0 +1,58 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0AFQn47eCl7ImA9WhdbEks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1024</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">re-running gclient update fails to download toolchain even after explicitly removing the toolchain directory.
+
+________ running '/usr/bin/python native_client/build/download_toolchains.py --x86-version 3431 --arm-version 3465' in '/usr/local/google/home/bsy/nacl/svn1'
+Downloading http://build.chromium.org/buildbot/nacl_archive/nacl/toolchain/3465/naclsdk_linux_arm-trusted.tgz to native_client/toolchain/linux_arm-trusted/.tgz...
+Traceback (most recent call last):
+  File &amp;quot;native_client/build/download_toolchains.py&amp;quot;, line 120, in &amp;lt;module&amp;gt;
+    main(sys.argv[1:])
+  File &amp;quot;native_client/build/download_toolchains.py&amp;quot;, line 105, in main
+    sync_tgz.SyncTgz(url, dst)
+  File &amp;quot;/usr/local/google/home/bsy/nacl/svn1/native_client/build/sync_tgz.py&amp;quot;, line 60, in SyncTgz
+    username=username, password=password)
+  File &amp;quot;/usr/local/google/home/bsy/nacl/svn1/native_client/build/http_download.py&amp;quot;, line 75, in HttpDownload
+    src = urllib2.urlopen(url)
+  File &amp;quot;/usr/lib/python2.6/urllib2.py&amp;quot;, line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File &amp;quot;/usr/lib/python2.6/urllib2.py&amp;quot;, line 391, in open
+    response = self._open(req, data)
+  File &amp;quot;/usr/lib/python2.6/urllib2.py&amp;quot;, line 409, in _open
+    '_open', req)
+  File &amp;quot;/usr/lib/python2.6/urllib2.py&amp;quot;, line 369, in _call_chain
+    result = func(*args)
+  File &amp;quot;/usr/lib/python2.6/urllib2.py&amp;quot;, line 1161, in http_open
+    return self.do_open(httplib.HTTPConnection, req)
+  File &amp;quot;/usr/lib/python2.6/urllib2.py&amp;quot;, line 1136, in do_open
+    raise URLError(err)
+urllib2.URLError: &amp;lt;urlopen error [Errno 110] Connection timed out&amp;gt;
+Error: /usr/bin/python native_client/build/download_toolchains.py --x86-version 3431 --arm-version 3465 in /usr/local/google/home/bsy/nacl/svn1 returned 1
+[bsy@salt-mines/2010-10-13 12:27:01]/usr/local/google/home/bsy/nacl/svn1/native_client 435
+$ ../../../nacl/depot_tools/gclient update
+
+________ running 'svn update /usr/local/google/home/bsy/nacl/svn1/native_client' in '/usr/local/google/home/bsy/nacl/svn1'
+At revision 3468.
+Syncing projects:   3% ( 1/28) 
+________ running 'svn update /usr/local/google/home/bsy/nacl/svn1/supplement.DEPS' in '/usr/local/google/home/bsy/nacl/svn1'
+At revision 3468.
+Syncing projects:   6% ( 2/33) 
+________ running 'svn update /usr/local/google/home/bsy/nacl/svn1/nativeclient-sdk' in '/usr/local/google/home/bsy/nacl/svn1'
+At revision 593.
+Syncing projects: 100% (33/33), done.
+[bsy@salt-mines/2010-10-13 12:27:37]/usr/local/google/home/bsy/nacl/svn1/native_client 435
+$ rm -fr toolchain/
+[bsy@salt-mines/2010-10-13 12:28:27]/usr/local/google/home/bsy/nacl/svn1/native_client 436
+$ ../../../nacl/depot_tools/gclient update
+
+________ running 'svn update /usr/local/google/home/bsy/nacl/svn1/native_client' in '/usr/local/google/home/bsy/nacl/svn1'
+At revision 3468.
+Syncing projects:   3% ( 1/28) 
+________ running 'svn update /usr/local/google/home/bsy/nacl/svn1/supplement.DEPS' in '/usr/local/google/home/bsy/nacl/svn1'
+At revision 3468.
+Syncing projects:   6% ( 2/33) 
+________ running 'svn update /usr/local/google/home/bsy/nacl/svn1/nativeclient-sdk' in '/usr/local/google/home/bsy/nacl/svn1'
+At revision 593.
+Syncing projects: 100% (33/33), done.
+[bsy@salt-mines/2010-10-13 12:28:33]/usr/local/google/home/bsy/nacl/svn1/native_client 436
+$ 
+</ns0:content><ns0:updated>2011-10-10T15:48:33.000Z</ns0:updated><ns0:published>2010-10-13T19:36:21.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:state>open</ns2:state><ns0:title>failed toolchain update when running gclient update recovery requires explicit runhook</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>Mstone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1024/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1024" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1024" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>1024</ns2:id></ns0:entry>

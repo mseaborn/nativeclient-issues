@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEMGSX47eCl7ImA9WhRaE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1962</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">We saw approximately a 10ms regression as we forced loading of the NaCl DLL on Windows.  
+See: http://code.google.com/p/nativeclient/issues/detail?id=1414
+http://code.google.com/p/chromium/issues/detail?id=87555
+
+Of these 10ms, we have reduced this by about 5-7ms by removing a Windows only start up latency due to calibration of high resolution timing.
+See: http://codereview.chromium.org/7260009
+
+The remaining time we believe can be attributed to general loading costs of the DLL.  Since the DLL is always loaded not only when a NEXE is used, pages are paying that cost without need.
+
+Some possible solutions are to link statically, or to run NaCl out of process.
+
+</ns0:content><ns0:updated>2012-02-15T20:07:08.000Z</ns0:updated><ns0:published>2011-06-29T21:10:43.000Z</ns0:published><ns2:status>Moved</ns2:status><ns2:cc>
+			<ns2:uri>/u/117420925389613150407/</ns2:uri><ns2:username>aba...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>loading NaCl plugin regresses Chrome startup by 3-5ms</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Performance</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-</ns2:label><ns2:label>MigrateToChromium</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>Mstone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1962/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1962" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1962" rel="self" type="application/atom+xml" /><ns2:stars>5</ns2:stars><ns2:closedDate>2012-02-15T20:07:08.000Z</ns2:closedDate><ns2:id>1962</ns2:id></ns0:entry>

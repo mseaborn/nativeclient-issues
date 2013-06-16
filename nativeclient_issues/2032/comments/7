@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUYGRX47eCl7ImA9WhdSF0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2032/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=6226
+
+------------------------------------------------------------------------
+r6226 | krasin@chromium.org | Wed Jul 27 13:03:57 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=6226&amp;r2=6225&amp;pathrev=6226
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/linux/nacl_os_qualify.c?r1=6226&amp;r2=6225&amp;pathrev=6226
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/osx/nacl_os_qualify.c?r1=6226&amp;r2=6225&amp;pathrev=6226
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/unittests/trusted/platform_qualify/kernel_version_test.cc?r1=6226&amp;r2=6225&amp;pathrev=6226
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/kernel_version.h?r1=6226&amp;r2=6225&amp;pathrev=6226
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/unittests/trusted/platform_qualify?r1=6226&amp;r2=6225&amp;pathrev=6226
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/platform_qualify.gyp?r1=6226&amp;r2=6225&amp;pathrev=6226
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/unittests/trusted/platform_qualify/build.scons?r1=6226&amp;r2=6225&amp;pathrev=6226
+
+platform_qualify: disable x86-32 Linux older than 2.6.27 due to the modify_ldt bug.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2032
+Review URL: http://codereview.chromium.org/7471050
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-07-27T20:05:24.000Z</ns0:updated><ns0:published>2011-07-27T20:05:24.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2032#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2032/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

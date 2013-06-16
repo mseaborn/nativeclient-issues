@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIDR347eCl7ImA9Wx9UGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1171</ns0:id><ns0:author>
+			<ns0:name>jamesfen...@gmail.com</ns0:name><ns0:uri>/u/105008541472586726939/</ns0:uri></ns0:author><ns0:content type="html">Support for user supplied main() function in nacl applications provides highest level of flexibility and make porting of QT/FLTK and other GUI applications much easier.
+By encouraging users to use Module/Instance/Paint_Manager paradigm in PPAPI 2, we are losing one of the most important feature in PPAPI 1.
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+PPAPI 1 support user defined main() function, but PPAPI 2 seems not.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+Most GUI applications has their own control flow, to accommodate PPAPI 2 control flow, these applications need some major changes.
+If PPAPI 2 continues to support main(), we can easily add an adaptive layer on top of application without changing application itself to port them.
+This will make porting GUI applications almost effortless.  
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+PPAPI 2 can expose entry point for main() function.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+User can implement their own message loop in their own main() function.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+We will see much more QT/FLTK applications ported to NACL.
+</ns0:content><ns0:updated>2011-02-18T00:06:16.000Z</ns0:updated><ns0:published>2010-11-14T03:38:18.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>PPAPI 2 seems to deprecate user supplied main() support</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-AppPlatform</ns2:label><ns2:label>Milestone-Arctic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1171/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1171" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1171" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-01-06T22:16:45.000Z</ns2:closedDate><ns2:id>1171</ns2:id></ns0:entry>

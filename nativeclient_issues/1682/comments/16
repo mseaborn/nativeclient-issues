@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkAESH47eCl7ImA9WhdXE0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1682/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 8d1948349e6f0c3b27a6e753d9acb19e1b634c7b
+ Email: polina@google.com@4ff67af0-8c30-449e-8e8b-ad334ec8d88c
+
+NaCl PPAPI Proxy: wrap up with crash detection. Clean-up handling code to skip remote shutdown calls when the nexe is known to be dead. Add a test for crashing on other than the main thread, which depending on thread timing might happen when the main thread is servicing a PPP call or waiting for the next one. Add another test that will fail on a CHECK for an unsupported Pepper call off the main thread.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1780, http://code.google.com/p/nativeclient/issues/detail?id=2105, http://code.google.com/p/nativeclient/issues/detail?id=1682 
+TEST=scons run_ppapi_crash_browser_test
+Review URL: http://codereview.chromium.org/7741036
+
+git-svn-id: http://src.chromium.org/svn/trunk/src/ppapi@98507 4ff67af0-8c30-449e-8e8b-ad334ec8d88c
+
+M	native_client/src/shared/ppapi_proxy/browser_globals.cc
+M	native_client/src/shared/ppapi_proxy/browser_ppp.cc
+M	native_client/src/shared/ppapi_proxy/browser_ppp.h
+M	native_client/src/shared/ppapi_proxy/plugin_ppp_messaging_rpc_server.cc
+M	native_client/src/trusted/plugin/plugin.cc
+M	native_client/tests/ppapi_browser/crash/nacl.scons
+M	native_client/tests/ppapi_browser/crash/ppapi_crash.html
+A	native_client/tests/ppapi_browser/crash/ppapi_crash_off_main_thread.cc
+A	native_client/tests/ppapi_browser/crash/ppapi_crash_off_main_thread.nmf
+A	native_client/tests/ppapi_browser/crash/ppapi_crash_ppapi_off_main_thread.cc
+A	native_client/tests/ppapi_browser/crash/ppapi_crash_ppapi_off_main_thread.nmf</ns0:content><ns0:updated>2011-08-26T22:45:09.000Z</ns0:updated><ns0:published>2011-08-26T22:45:09.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1682#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1682/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08ARX47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/863/comments/full/21</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3595
+
+------------------------------------------------------------------------
+r3595 | mseaborn@chromium.org | Fri Oct 29 07:27:54 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=3595&amp;r2=3594&amp;pathrev=3595
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/life/nacl.scons?r1=3595&amp;r2=3594&amp;pathrev=3595
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/earth/nacl.scons?r1=3595&amp;r2=3594&amp;pathrev=3595
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/mandel_nav/nacl.scons?r1=3595&amp;r2=3594&amp;pathrev=3595
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/voronoi/nacl.scons?r1=3595&amp;r2=3594&amp;pathrev=3595
+
+Disable building libav-using tests when using nacl-glibc
+
+This fixes a failure on Buildbot introduced by r3586.
+
+r3586 meant that libav-using programs now need to use
+__kNaClSrpcHandlers, but this is not available with nacl-glibc.
+So disable building these tests.
+
+This change partially reverts r3589 and r3590, which disabled running
+these tests but not building them.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=863
+TEST=python build.py scons_compile_tests scons_tests -b
+
+Review URL: http://codereview.chromium.org/4216002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:17:24.000Z</ns0:updated><ns0:published>2011-01-21T23:17:24.000Z</ns0:published><ns2:updates /><ns0:title>Comment 21 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=863#c21" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/863/comments/full/21" rel="self" type="application/atom+xml" /></ns0:entry>

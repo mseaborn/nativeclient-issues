@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8FRH47eCl7ImA9WhRTF00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2279</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+The initial port of Clang to produce PNaCl-compatible bitcode is done. Clang can't be used as a replacement of llvm-gcc for now.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+We can't benefit from Clang port w/o the integration with the tools.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+ We need to integrate it with our existing tools (such as utman.sh).
+
+Some integration has been already done by David Meyer. This bug is to track the outstanding issues.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+It's possible to build PNaCl toolchain that contains Clang and does not contain llvm-gcc.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+llvm-gcc can be thrown out. It's not maintained by LLVM team.
+</ns0:content><ns0:updated>2011-11-07T23:33:35.000Z</ns0:updated><ns0:published>2011-09-22T19:29:31.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Integrate Clang with PNaCl codebase</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2279/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2279" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2279" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>2292</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2293</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2306</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2332</ns2:id></ns2:blockedOn><ns2:blocking>
+			<ns2:id>404</ns2:id></ns2:blocking><ns2:blocking>
+			<ns2:id>2295</ns2:id></ns2:blocking><ns2:closedDate>2011-11-07T23:33:35.000Z</ns2:closedDate><ns2:id>2279</ns2:id></ns0:entry>

@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYMQX47eCl7ImA9WhZbF0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1941/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 055213ea60cb14bb55d03009e32250ce4f61fe81
+ Email: dschuff@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Resubmit of r5708 and r5709 r5709 tickled what is probably an upstream bug in llc (1941) and broke the ARM bot. For now we leave in the redundant opt args until we merge closer to tip.
+
+In addition, one other related change: In the stock LLVM toolchain, the user
+requests LTO by specifying -O4 to gcc in the compile phase. This causes llvm-gcc
+to leave the resulting .o file as bitcode rather than translating it.
+Then, at link time, LTO is performed whenever the input .o files are bitcode
+(regardless of any -O options given at link time).
+Since our input files at link time are always bitcode, we can't use this
+mechanism and must specify when we want LTO. However we can at least accept
+the O4 switch for compatibility rather than throwing an error. If we want
+more compatibility in the future, we could put some metadata in the bitcode saying that the user requested LTO at compile time.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1941
+
+Review URL: http://codereview.chromium.org/7233013
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@5752 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	site_scons/site_tools/naclsdk.py
+M	tests/toolchain/nacl.scons
+M	tools/llvm/driver/pnacl-gcc.py
+M	tools/llvm/driver/pnacl-ld.py</ns0:content><ns0:updated>2011-06-22T23:43:00.000Z</ns0:updated><ns0:published>2011-06-22T23:43:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1941#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1941/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkYEQn47eCl7ImA9WhVSGUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2663</ns0:id><ns0:author>
+			<ns0:name>elijahtaylor@google.com</ns0:name><ns0:uri>/u/elijahtaylor@google.com/</ns0:uri></ns0:author><ns0:content type="html">If you build a shared object with no bss data, it is not loadable in Native Client.  Even though there is no bss section, a PT_LOAD segment is created for it.  Since there is no bss emitted, the offset for this PT_LOAD is not aligned properly and the shared object is rejected.
+
+Test case:
+
+test.c:
+void foo() {}
+
+build:
+x86_64-nacl-gcc -fPIC -shared -Wl,-soname,libtest.so -o libtest.so test.c
+
+
+
+objdump -p libtest.so (note the last LOAD):
+
+
+libtest.so:     file format elf64-nacl
+
+Program Header:
+    LOAD off    0x0000000000010000 vaddr 0x0000000000000000 paddr 0x0000000000000000 align 2**16
+         filesz 0x00000000000000e0 memsz 0x00000000000000e0 flags r-x
+    LOAD off    0x0000000000020000 vaddr 0x0000000010000000 paddr 0x0000000010000000 align 2**16
+         filesz 0x0000000000000188 memsz 0x0000000000000188 flags r--
+    LOAD off    0x0000000000030000 vaddr 0x0000000010010000 paddr 0x0000000010010000 align 2**16
+         filesz 0x0000000000010150 memsz 0x0000000000010150 flags rw-
+    LOAD off    0x0000000000040150 vaddr 0x0000000000000000 paddr 0x0000000000000000 align 2**16
+         filesz 0x0000000000000000 memsz 0x0000000000000000 flags rw-
+...
+</ns0:content><ns0:updated>2012-03-17T02:08:23.000Z</ns0:updated><ns0:published>2012-03-15T21:25:34.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>Shared objects with no bss section are not loadable in NaCl</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-20</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Component-GCC</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2663/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2663" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2663" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>2663</ns2:id></ns0:entry>

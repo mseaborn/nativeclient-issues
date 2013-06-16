@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEYNQ347eCl7ImA9WhVTEEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/249</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">Currently, x86 and ARM have slightly different (complicated!) routines for 
+sandboxing untrusted return addresses.  (See NaClSandboxCodeAddr in 
+sel_ldr.h.)  Since r1318, both architectures compute this on the fly using 
+information in the NaClApp structure.
+
+We don't need to do this work every time.  The application's headers 
+specify its bundle size and code region, and these cannot change after 
+load.  We could compute the appropriate mask at load time, stash it 
+somewhere (probably in NaClApp), and use it when needed.
+
+This would simplify the return-from-trusted-code path somewhat, and 
+slightly improve its performance.  It would probably also allow us to merge 
+the two sandboxing routines together, which I avoided in r1318 for 
+performance reasons (not wanting to make the x86 routine do extra work).</ns0:content><ns0:updated>2012-02-24T00:09:52.000Z</ns0:updated><ns0:published>2010-01-13T23:16:30.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/mseaborn@google.com/</ns2:uri><ns2:username>mseaborn@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>sel_ldr should precompute the mask it applies to untrusted return addresses</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/249/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=249" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/249" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>249</ns2:id></ns0:entry>

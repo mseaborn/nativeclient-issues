@@ -1,0 +1,81 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUDSH47eCl7ImA9WhRbF04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2560</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">Issue with the compiler driver on Windows for glibc.  If I try to compile and line on one line, I will get various failures including:
+
+E:\b\build\slave\naclsdkm-windows64\build\src\out\pepper_18\examples\dlopen&amp;gt;\b\build\slave\naclsdkm-windows64\build\src\out\pepper_18\toolchain\win_x86_glibc\bi
+n\i686-nacl-g++.exe -o DBG\dlopen_x86_32.nexe dlopen.cc -m32 -O0 -g -pthread -Wno-long-long -Wall -Wswitch-enum -ldl -lppapi_cpp -lppapi
+cc1plus: error: unrecognized command line option &amp;quot;-lstdc++&amp;quot;
+
+
+However by turning on the '-v' verbose switch, it actually builds an output file:
+
+E:\b\build\slave\naclsdkm-windows64\build\src\out\pepper_18\examples\dlopen&amp;gt;\b\build\slave\naclsdkm-windows64\build\src\out\pepper_18\toolchain\win_x86_glibc\bi
+n\i686-nacl-g++.exe -o DBG\dlopen_x86_32.nexe dlopen.cc -m32 -O0 -g -pthread -Wno-long-long -Wall -Wswitch-enum -ldl -lppapi_cpp -lppapi -v
+Using built-in specs.
+Target: x86_64-nacl
+Configured with: /cygdrive/c/b/build/slave/win7-glibc/build/native_client/tools/SRC/gcc/configure CC='gcc -m32' CFLAGS='-O2  -Dinhibit_libc -D__gthr_posix_h' LD
+FLAGS='-s ' 'CFLAGS_FOR_TARGET=-O2 -g ' 'CXXFLAGS_FOR_TARGET=-O2 -g ' --prefix=/cygdrive/c/b/build/slave/win7-glibc/build/native_client/tools/toolchain/win_x86
+--disable-decimal-float --disable-libgomp --disable-libmudflap --disable-libssp --disable-libstdcxx-pch --target=x86_64-nacl --with-gmp=/cygdrive/c/b/build/slav
+e/win7-glibc/build/native_client/tools/BUILD/.gcc-extra-install-gmp --with-mpfr=/cygdrive/c/b/build/slave/win7-glibc/build/native_client/tools/BUILD/.gcc-extra-
+install-mpfr --with-ppl=/cygdrive/c/b/build/slave/win7-glibc/build/native_client/tools/BUILD/.gcc-extra-install-ppl --with-host-libstdcxx='-lpwl -lstdc++ -lm' -
+-with-cloog=/cygdrive/c/b/build/slave/win7-glibc/build/native_client/tools/BUILD/.gcc-extra-install-cloog-ppl --disable-ppl-version-check --enable-shared --enab
+le-languages=c,c++,objc,obj-c++,fortran --enable-threads=posix --enable-tls
+Thread model: posix
+gcc version 4.4.3 20120109 (Native Client r7537, Git Commit 82ea71ed9cd3ffbdb1c2292a143a0a54fce8e142) (GCC)
+COLLECT_GCC_OPTIONS='-o' 'DBG\dlopen_x86_32.nexe' '-m32' '-O0' '-g' '-pthread' '-Wno-long-long' '-Wall' '-Wswitch-enum' '-ldl' '-lppapi_cpp' '-lppapi' '-v' '-ls
+tdc++' '-lm' '-shared-libgcc' '-mtune=generic'
+ /libexec/../libexec/gcc/x86_64-nacl/4.4.3/cc1plus.exe -quiet -v -imultilib 32 -iprefix /libexec/../lib/gcc/x86_64-nacl/4.4.3/ -D_GNU_SOURCE dlopen.cc -quiet -d
+umpbase dlopen.cc -m32 -mtune=generic -auxbase dlopen -g -O0 -Wno-long-long -Wall -Wswitch-enum -version -o /cygdrive/c/Users/CHROME~2/AppData/Local/Temp/ccYOQh
+ew.s
+ignoring nonexistent directory &amp;quot;/libexec/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/sys-include&amp;quot;
+ignoring duplicate directory &amp;quot;/libexec/../lib/gcc/../../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/include/c++/4.4.3&amp;quot;
+ignoring duplicate directory &amp;quot;/libexec/../lib/gcc/../../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/include/c++/4.4.3/x86_64-nacl/32&amp;quot;
+ignoring duplicate directory &amp;quot;/libexec/../lib/gcc/../../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/include/c++/4.4.3/backward&amp;quot;
+ignoring duplicate directory &amp;quot;/libexec/../lib/gcc/../../lib/gcc/x86_64-nacl/4.4.3/include&amp;quot;
+ignoring duplicate directory &amp;quot;/libexec/../lib/gcc/../../lib/gcc/x86_64-nacl/4.4.3/include-fixed&amp;quot;
+ignoring nonexistent directory &amp;quot;/libexec/../lib/gcc/../../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/sys-include&amp;quot;
+ignoring duplicate directory &amp;quot;/libexec/../lib/gcc/../../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/include&amp;quot;
+#include &amp;quot;...&amp;quot; search starts here:
+#include &amp;lt;...&amp;gt; search starts here:
+ /libexec/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/include/c++/4.4.3
+ /libexec/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/include/c++/4.4.3/x86_64-nacl/32
+ /libexec/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/include/c++/4.4.3/backward
+ /libexec/../lib/gcc/x86_64-nacl/4.4.3/include
+ /libexec/../lib/gcc/x86_64-nacl/4.4.3/include-fixed
+ /libexec/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/include
+End of search list.
+GNU C++ (GCC) version 4.4.3 20120109 (Native Client r7537, Git Commit 82ea71ed9cd3ffbdb1c2292a143a0a54fce8e142) (x86_64-nacl)
+        compiled by GNU C version 4.5.2, GMP version 5.0.2, MPFR version 3.0.1.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 8b67228a2558d07ca36b36c2711dc890
+COLLECT_GCC_OPTIONS='-o' 'DBG\dlopen_x86_32.nexe' '-m32' '-O0' '-g' '-pthread' '-Wno-long-long' '-Wall' '-Wswitch-enum' '-ldl' '-lppapi_cpp' '-lppapi' '-v' '-ls
+tdc++' '-lm' '-shared-libgcc' '-mtune=generic'
+ /libexec/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/bin/as.exe -V -Qy --32 -o /cygdrive/c/Users/CHROME~2/AppData/Local/Temp/ccU8PFKP.o /cygdrive/c/Us
+ers/CHROME~2/AppData/Local/Temp/ccYOQhew.s
+GNU assembler version 2.20.1 (x86_64-nacl) using BFD version (GNU Binutils) 2.20.1.20100303 20120109 (Native Client r7537, Git Commit f412ed57de094c8c33ff23e523
+e977a67d19fa5d)
+COMPILER_PATH=/libexec/../libexec/gcc/x86_64-nacl/4.4.3/:/libexec/../libexec/gcc/:/libexec/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/bin/
+LIBRARY_PATH=/libexec/../lib/gcc/x86_64-nacl/4.4.3/32/:/libexec/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/lib/../lib32/:/libexec/../lib/gcc/x86_64-na
+cl/4.4.3/:/libexec/../lib/gcc/:/libexec/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/lib/
+COLLECT_GCC_OPTIONS='-o' 'DBG\dlopen_x86_32.nexe' '-m32' '-O0' '-g' '-pthread' '-Wno-long-long' '-Wall' '-Wswitch-enum' '-ldl' '-lppapi_cpp' '-lppapi' '-v' '-ls
+tdc++' '-lm' '-shared-libgcc' '-mtune=generic'
+ /libexec/../libexec/gcc/x86_64-nacl/4.4.3/collect2.exe --no-add-needed --eh-frame-hdr -m elf_nacl -dynamic-linker /lib/ld-nacl-x86-32.so.1 -o DBG\dlopen_x86_32
+.nexe /libexec/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/lib/../lib32/crt1.o /libexec/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/lib/../lib
+32/crti.o /libexec/../lib/gcc/x86_64-nacl/4.4.3/32/crtbegin.o -L/libexec/../lib/gcc/x86_64-nacl/4.4.3/32 -L/libexec/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86
+_64-nacl/lib/../lib32 -L/libexec/../lib/gcc/x86_64-nacl/4.4.3 -L/libexec/../lib/gcc -L/libexec/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/lib /cygdriv
+e/c/Users/CHROME~2/AppData/Local/Temp/ccU8PFKP.o -ldl -lppapi_cpp -lppapi -lstdc++ -lm -lgcc_s -lgcc -lpthread -lc -lgcc_s -lgcc /libexec/../lib/gcc/x86_64-nacl
+/4.4.3/32/crtend.o /libexec/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/lib/../lib32/crtn.o
+cygwin warning:
+  MS-DOS style path detected: DBG\dlopen_x86_32.nexe
+  Preferred POSIX equivalent is: DBG/dlopen_x86_32.nexe
+  CYGWIN environment variable option &amp;quot;nodosfilewarning&amp;quot; turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+/cygdrive/c/Users/CHROME~2/AppData/Local/Temp/ccU8PFKP.o:(.rodata+0x124): warning: warning: pthread_cancel is not implemented and will always fail
+
+E:\b\build\slave\naclsdkm-windows64\build\src\out\pepper_18\examples\dlopen&amp;gt;
+
+
+Building in two parts, compile /w -c, and link /w *.obj LDFLAGS, works as well.   This is not an issue on Linux or Mac.</ns0:content><ns0:updated>2012-02-08T21:57:59.000Z</ns0:updated><ns0:published>2012-01-26T03:30:02.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Windows compiler driver incorrectly handling parameters single line build.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-19</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-Windows</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2560/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2560" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2560" rel="self" type="application/atom+xml" /><ns2:stars>4</ns2:stars><ns2:id>2560</ns2:id></ns0:entry>

@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUENSX47eCl7ImA9Wx9aEEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1475/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Some newer set of numbers with a port of tcmalloc statically linked in:
+
+Linux-gcc x86-64             real	0m0.946s
+Linux-gcc w/ tcmalloc        real	0m0.585s
+Nacl-gcc x86-64              real	0m7.066s
+Nacl-gcc  w/ tcmalloc        real	0m2.062s
+
+So yes, I think it was spending a lot of time in locking. 
+
+Simpler way to arrive at this conclusion: one important thing I forgot was that the top functions I showed before were only within the untrusted code, which was only 21% of the time. It spent another 18% in pthread_mutex_lock, 12% in pthread_mutex_unlock, 9.5% in sel_ldr NaClLog, 6% in sel_ldr NaClSyscallCSegHook, etc... With tc-malloc, the untrusted time is 57% and only 0.1% of the time is pthread_mutex_lock, 0.05% in unlock. There is still the NaClLog and NaClSyscallCSegHook which are now 9% and 7%.
+
+Misc: tc-malloc adds another 1MB uncompressed (or +350K compressed) to the nexe with static linking.
+
+TODO: try using this for the sandboxed version of LLVM.</ns0:content><ns0:updated>2011-03-01T21:08:18.000Z</ns0:updated><ns0:published>2011-03-01T21:08:18.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1475#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1475/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

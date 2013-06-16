@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08DR347eCl7ImA9WhVRFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2685/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Yeah, I think this is the problem (tried it out on a simple example). Clang knows how to handle the "@file"s.  I assume binutils does too.
+
+Option A: So, this might mean we could just pass @file along to the underlying tool, but that might not work.
+
+The driver normally goes through argv itself.  Maybe @file contains flags specific to the driver, and if we treat it as uninterpreted, the driver will never see such flags.  It also tries classify arguments as source files, archives, linker scripts, native ELF, bitcode, etc...  What FileType would we use for these @files, which may actually represent all sorts of files?
+
+
+Option B: Read in @file in the driver, and expand argv.  Unfortunately, this might mean that argv will be long again.  I think this is okay from within the Python driver, but not okay when we get to invoking the underlying tool.  If we say shell=False when doing subprocess.Popen, then at least it won't be the cmd.exe limit (8K), it will be the CreateProcess limit (32K).
+
+
+Option C: Read in @file1 and expand argv to inform the driver of whatever it wants to be informed of, and but then try to create a separate tempfile @file2 with the final commandlines before trying to invoke the underlying tools.  We probably slap in all sorts of other commandline options like "-I" so we could have made the commandline too long ourselves.</ns0:content><ns0:updated>2012-03-22T22:37:56.000Z</ns0:updated><ns0:published>2012-03-22T22:37:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2685#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2685/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

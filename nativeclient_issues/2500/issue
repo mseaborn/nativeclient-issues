@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkQCQX47eCl7ImA9WhVTFUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2500</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The untrusted-code Gyp build does not handle incremental builds correctly: it misses header file dependencies.
+
+I found that if I change nacl_srpc.h, &amp;quot;make chrome&amp;quot; does not rebuild the IRT.
+
+When I look in the Gyp-generated srpc_lib.target.mk, &amp;quot;nacl_srpc.h&amp;quot; is not listed.  The scan_sources.py invocation has not returned nacl_srpc.h.
+
+I think scan_sources.py is being invoked incorrectly.  Gyp runs it from src/shared/srpc, but it's run with the arguments &amp;quot;-I.&amp;quot; and &amp;quot;-I..&amp;quot; -- the wrong include path.  There seems to be an assumption that scan_sources.py is run from the &amp;quot;native_client&amp;quot; directory or Chromium's &amp;quot;src&amp;quot; directory.
+
+This is blocking an update of NaCl's revision in Chromium's DEPS:  Roland's cleanup change (http://src.chromium.org/viewvc/native_client?view=rev&amp;amp;revision=7401) does not get rebuilt properly.  Different parts of the IRT get different layouts of &amp;quot;struct NaClSrpcChannel&amp;quot; which causes a check to fail at run time.</ns0:content><ns0:updated>2012-02-29T21:19:20.000Z</ns0:updated><ns0:published>2011-12-17T01:28:01.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Untrusted-code Gyp build ignores header file changes in incremental builds</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2500/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2500" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2500" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2500</ns2:id></ns0:entry>

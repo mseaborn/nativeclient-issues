@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQFSH47eCl7ImA9WhZRFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1641/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4825
+
+------------------------------------------------------------------------
+r4825 | bsy@google.com | Mon Apr 11 17:13:13 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/nacl_sync.cc?r1=4825&amp;r2=4824&amp;pathrev=4825
+
+this CL changes the ARM implementation of NaClCondVarWait to poll,
+waking up every 10ms.  since spurious wakeups are okay, this should
+not change semantics, just degrade performance.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1641
+Review URL: http://codereview.chromium.org/6820044
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-12T00:15:19.000Z</ns0:updated><ns0:published>2011-04-12T00:15:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1641#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1641/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

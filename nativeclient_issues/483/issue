@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYNRH47eCl7ImA9WxFXFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/483</ns0:id><ns0:author>
+			<ns0:name>luisbe...@gmail.com</ns0:name><ns0:uri>/u/110266832136751352839/</ns0:uri></ns0:author><ns0:content type="html">I'm trying to use the integrated native client plugin on latest beta of Google Chrome, but when I open a simple 
+sample without any graphic or sound, like &amp;quot;Hello World&amp;quot; from &amp;quot;./native_client/tests/srpc_hw&amp;quot; I got:
+
+&amp;quot;Load failed: ABI version mismatch: expected 7, got ?&amp;quot;
+
+I've tested on :
+
+Windows XP 32 BIT Service Pack 2 and Mac OS X Snow Leopard 10.6.3
+Google Chrome 5.0.375.29 beta
+Source with prebuilt binaries and toolchain: Mac (37M - sha1 41015a8ccf92cdee1dfbb94dc0620f023cdef85b)
+Source with prebuilt binaries and toolchain: Windows (65M - sha1 7b25967190ec141256ca1764c26979cb01abb777)
+
+Steps:
+
+1. Launch simple http server from native client source on tools/httpd.py
+2. Open Google Chrome with &amp;quot;--enable-nacl&amp;quot; on Windows and &amp;quot;--enable-nacl --no-sandbox&amp;quot; on Mac OS X
+3. Go to http://localhost:5103/scons-out/nacl-x86-32/staging/srpc_hw.html
+
+What I need to do to run the hello world sample without error ?
+
+</ns0:content><ns0:updated>2010-05-21T20:36:35.000Z</ns0:updated><ns0:published>2010-05-06T20:58:05.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>I can't run hello world sample on Native Client integrated on Google Chrome 5.0.375.29 beta - "ABI version mismatch"</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Priority-Medium</ns2:label><ns2:label>Milestone-Chromium-6</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/483/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=483" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/483" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2010-05-21T20:36:35.000Z</ns2:closedDate><ns2:id>483</ns2:id></ns0:entry>

@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQEQX47eCl7ImA9WhZbEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1793</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+0.4.846 (personal svn build)
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+N/A
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Ubuntu 10.04 64-bit
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+ 12.0.742.30 (Official Build 84361) dev
+ 13.0.758.0 (Official Build 84514)
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Build examples in the SDK
+2. Start httpd.py in examples directory
+3. Enable Native Client through the about:flags and about:plugins pages
+4. Navigate to http://localhost:5103/geturl/geturl.html
+5. Click on the 'Get URL' button'
+
+What is the expected output? 
+The 'Module loading status' should say SUCCESS.
+The dialog box above the Get URL button should have valid HTML
+
+What do you see instead?
+The 'Module loading status' is NO-STATUS
+The dialog box above the 'Get URL' button has this error message:
+exception: TypeError: Cannot call method 'getUrl' of null
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+The other examples work without issue.
+The nexe is getting loaded, based on evidence from the httpd.py output:
+
+localhost - - [10/May/2011 10:05:29] &amp;quot;GET /geturl/geturl.html HTTP/1.1&amp;quot; 200 -
+localhost - - [10/May/2011 10:05:29] &amp;quot;GET /geturl/geturl_x86_64.nexe HTTP/1.1&amp;quot; 200 -
+</ns0:content><ns0:updated>2011-06-14T20:28:20.000Z</ns0:updated><ns0:published>2011-05-10T17:34:20.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mball@google.com/</ns2:uri><ns2:username>mball@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>GetURL Example does not work in SDK 0.4</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Milestone-Baltic-Brill-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1793/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1793" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1793" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-06-14T20:28:20.000Z</ns2:closedDate><ns2:id>1793</ns2:id></ns0:entry>

@@ -1,0 +1,89 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08ASH47eCl7ImA9WhdUEEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1157</ns0:id><ns0:author>
+			<ns0:name>pol...@google.com</ns0:name><ns0:uri>/u/101953680983947802512/</ns0:uri></ns0:author><ns0:content type="html">Call to close() in fake_browser_ppapi test crashes.
+
+To reproduce:
+
+0) gclient sync native_client to --revision=3670 (or later)
+
+1) enable CLOSE() (mapped to close() in src/include/portability_io.h) 
+    call in tests/fake_browser_ppapi/fake_file_io.h:FileIO::~FileIO.
+
+2) build partial_sdk
+    scons --mode=nacl_extra_sdk extra_sdk_clean extra_sdk_update_header install_libpthread extra_sdk_update
+
+3) run the test (which will build all the necessary pieces)
+    scons --mode=dbg-mac,nacl run_fake_browser_ppapi_test
+
+4) rerun with gdb attached
+
+$ gdb scons-out/nacl-x86-32/obj/tests/fake_browser_ppapi/fake_browser_ppapi
+
+(gdb) b fake_browser_ppapi::FileIO::~FileIO
+
+(gdb) run scons-out/dbg-mac-x86-32/staging/ppNaClPlugin http://localhost:5103/basic_object.html &amp;quot;id=nacl_module;src=ppapi_basic_object.nexe&amp;quot; scons-out/nacl-x86-32/staging/
+
+Breakpoint 2, fake_browser_ppapi::FileIO::~FileIO (this=0x10a4f0) at fake_file_io.h:22
+22	  ~FileIO() {
+(gdb) p file_desc_
+$1 = -1
+(gdb) c
+Continuing.
+
+Breakpoint 2, fake_browser_ppapi::FileIO::~FileIO (this=0x10b830) at fake_file_io.h:22
+22	  ~FileIO() { 
+(gdb) p file_desc_
+$2 = 5
+(gdb) n
+23	     CLOSE(file_desc_);
+(gdb) n
+
+Program received signal EXC_BAD_ACCESS, Could not access memory.
+Reason: KERN_INVALID_ADDRESS at address: 0x00235e0e
+[Switching to process 700]
+0x00235e0e in ?? ()
+(gdb) 
+
+---------------------------------------------------
+
+Not clear if this is related to the same memory issues as the above problem, but I have also observed mprotect() crashes in sel_ldr at nexe loading.
+
+To reproduce:
+
+1) gclient sync to
+    chrome: --revision=64604
+    nacl:   --revision=3544 or 3593
+
+2) build chrome:
+    xcodebuild -project chrome.xcodeproj -configuration Debug -target chrome
+
+3) build PPAPI NaCl:
+    scons --mode=dbg-mac scons-out/dbg-mac-x86-32/staging/ppNaClPlugin.bundle/ sel_ldr sdl=none
+
+4) enable logging
+    export NACLVERBOSITY=4 # sel_ldr logging
+    export NACL_PLUGIN_DEBUG=1 # plugin loging
+
+5) start http server for accessing test html/nexe files
+    native_client/tools/httpd.py
+
+6) run chrome with PPAPI NaCl:
+    Debug/Chromium.app/Contents/MacOS/Chromium --enable-nacl --register-pepper-plugins=&amp;quot;/Users/polina/src-nacl/native_client/scons-out/dbg-mac-x86-32/staging/ppNaClPlugin.bundle;application/x-ppapi-nacl-srpc&amp;quot; --no-sandbox
+
+7) navigate to the test page
+    http://localhost:5103/scons-out/nacl-x86-64/staging/srpc_hw_ppapi.html 
+
+8) observe failure to load nexe with logging including the following status messages:
+
+[93597,2952826880:17:40:33.856392] mprotecting 0x02890000, 0x3ef70000, PROT_NONE
+[93597,2952826880:17:40:33.856438] NaClRefCountUnref(0x00500010).
+[93597,2952826880:17:40:33.856460] NaClRefCountUnref(0x00500010).
+[93597,2685854944:17:40:33.856478] NACL: Application output follows
+[93597,2952826880:17:40:33.856515] NaClDescIoDescDtor(0x00500010).
+[93597,2685854944:17:40:33.856555] Not running app code since errcode is Cannot protect pages (34)
+...
+a016e4e0: SrpcClient::Invoke (response=268)
+a016e4e0: SrpcClient::Invoke (err='Rpc application returned an error', return 0)
+a016e4e0: ServiceRuntime::Failure (error='service runtime: failed to send nexe')</ns0:content><ns0:updated>2011-09-27T03:57:29.000Z</ns0:updated><ns0:published>2010-11-12T08:08:31.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:cc>
+			<ns2:uri>/u/112723007196297768207/</ns2:uri><ns2:username>dsprin...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>close() failure in fake_ppapi_browser with PPAPI plugin on a Mac</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Mstone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1157/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1157" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1157" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-09-27T03:57:29.000Z</ns2:closedDate><ns2:id>1157</ns2:id></ns0:entry>

@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUIHSX47eCl7ImA9WxFVGEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/403</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">* see how bitcode compares to native code.
+* maybe explore std compression (gzip, bzip2, etc.) as well
+* explore impact of llvm's opt on bitcode size
+* explore impact of bitcode linking of newlib on size
+
+NOTE: ideally we would fix llvm-ld first, otherwise the bitcode size
+      will be inflated unless certain precautions are taken
+</ns0:content><ns0:updated>2010-06-18T17:52:18.000Z</ns0:updated><ns0:published>2010-04-07T19:26:15.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>get bitcode size stats</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>Pri-0</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/403/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=403" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/403" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2010-06-18T17:52:18.000Z</ns2:closedDate><ns2:id>403</ns2:id></ns0:entry>

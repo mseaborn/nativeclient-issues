@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4HR347eCl7ImA9Wx9UGEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1438/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4327
+
+------------------------------------------------------------------------
+r4327 | mseaborn@chromium.org | Wed Feb 16 12:38:41 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/build.py?r1=4327&amp;r2=4326&amp;pathrev=4327
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/Makefile?r1=4327&amp;r2=4326&amp;pathrev=4327
+
+Modular build: Fix binutils build on Mac OS X 10.6
+
+Apply the same "--disable-werror" that is in tools/Makefile.
+
+Also fix a typo.
+
+The warnings we are working around include:
+
+binutils/bfd/elf.c: In function '_bfd_elf_print_private_bfd_data':
+binutils/bfd/elf.c:1106: warning: format not a string literal and no format
+arguments
+binutils/bfd/elf.c:1148: warning: format not a string literal and no format
+arguments
+binutils/bfd/elf.c:1284: warning: format not a string literal and no format
+arguments
+binutils/bfd/elf.c:1309: warning: format not a string literal and no format
+arguments
+
+These are uses of gettext() in printf().
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1438
+TEST="python build.py -b binutils" on Mac
+
+Review URL: http://codereview.chromium.org/6529035
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-02-16T20:42:16.000Z</ns0:updated><ns0:published>2011-02-16T20:42:16.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1438#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1438/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,54 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0QFRX47eCl7ImA9WxVVEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/11</ns0:id><ns0:author>
+			<ns0:name>javawo...@gmail.com</ns0:name><ns0:uri>/u/117855594069550611069/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+Latest Version
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+Current of today.
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Ubuntu  2.6.27-9-generic #1 SMP Thu Nov 20 21:57:00 UTC 2008 i686 GNU/Linux
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Firefox 3 (Standard apt version)
+
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. cd ~/nacl/googleclient/native_client
+2. ./scons --mode=opt-linux,nacl     #build
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+~/nacl/googleclient/native_client$ ./scons --mode=opt-linux,nacl     #build
+scons: Reading SConscript files ...
+======================================================================
+Building nexe binaries using sdk at
+[/home/elton/nacl/googleclient/native_client/tools_bin/linux/sdk/nacl-sdk]
+======================================================================
+======================================================================
+SDL build enabled, this is somewhat experimental
+Using version in
+/home/elton/nacl/googleclient/native_client/../third_party/sdl/linux/v1_2_13
+======================================================================
+*** Solution file generation skipped (not supported on this platform).
+scons: done reading SConscript files.
+scons: Building targets ...
+________Compiling scons-out/opt-linux/obj/tests/npapi_bridge/plugin.o
+tests/npapi_bridge/plugin.cc: In static member function 'static bool
+ScriptablePluginObject::InitializeIdentifiers(NPObject*, const char*)':
+tests/npapi_bridge/plugin.cc:90: error: 'strlen' was not declared in this scope
+tests/npapi_bridge/plugin.cc: In static member function 'static void
+ScriptablePluginObject::Notify(const char*, void*, NaClDesc*)':
+tests/npapi_bridge/plugin.cc:191: error: 'strlen' was not declared in this
+scope
+tests/npapi_bridge/plugin.cc: In member function 'bool
+ScriptablePluginObject::FillRect(const NPVariant*, uint32_t, NPVariant*)':
+tests/npapi_bridge/plugin.cc:279: error: 'strlen' was not declared in this
+scope
+tests/npapi_bridge/plugin.cc:296: error: 'strlen' was not declared in this
+scope
+tests/npapi_bridge/plugin.cc:300: error: 'strlen' was not declared in this
+scope
+tests/npapi_bridge/plugin.cc:304: error: 'strlen' was not declared in this
+scope
+scons: *** [scons-out/opt-linux/obj/tests/npapi_bridge/plugin.o] Error 1
+</ns0:content><ns0:updated>2009-03-03T21:21:54.000Z</ns0:updated><ns0:published>2008-12-09T20:27:53.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:state>closed</ns2:state><ns0:title>Client compile error on Ubuntu</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/11/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/11" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2009-03-03T21:21:54.000Z</ns2:closedDate><ns2:id>11</ns2:id></ns0:entry>

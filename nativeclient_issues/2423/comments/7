@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUAR347eCl7ImA9WhRQGUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2423/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7445
+
+------------------------------------------------------------------------
+r7445 | pdox@google.com | Thu Dec 15 03:02:01 PST 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/scripts/libgcc-glibc.mvars?r1=7445&amp;r2=7444&amp;pathrev=7445 (from /trunk/src/native_client/pnacl/scripts/libgcc.mvars revision 7432)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/scripts/libgcc-newlib.mvars?r1=7445&amp;r2=7444&amp;pathrev=7445 (from /trunk/src/native_client/pnacl/scripts/libgcc.mvars revision 7432)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/support/bitcode/crtdummy.c?r1=7445&amp;r2=7444&amp;pathrev=7445
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/support/bitcode/crtbegin.c?r1=7445&amp;r2=7444&amp;pathrev=7445
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/scripts/libgcc.mvars?r1=7445&amp;r2=7444&amp;pathrev=7445
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=7445&amp;r2=7444&amp;pathrev=7445
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-driver.py?r1=7445&amp;r2=7444&amp;pathrev=7445
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-ld.py?r1=7445&amp;r2=7444&amp;pathrev=7445
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-translate.py?r1=7445&amp;r2=7444&amp;pathrev=7445
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/support/crtbegin.c?r1=7445&amp;r2=7444&amp;pathrev=7445
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/support/crti.c?r1=7445&amp;r2=7444&amp;pathrev=7445
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/support/crtend.c?r1=7445&amp;r2=7444&amp;pathrev=7445
+
+Use the PNaCl-built crtbegin.o/crtend.o/crti.bc for GlibC build.
+
+Currently, libgcc_s is being built using "single-threaded" mode, which means that no mutexes are used. Unfortunately, this causes flakiness. (especially in run_cond_wait_test). This CL switches to building libgcc_eh/libgcc_s in multi-threaded mode instead of single-threaded mode for the GlibC build. Ideally, the newlib version of libgcc_eh would also be thread-safe, but this goes beyond the scope of this CL. Bug has been filed: http://code.google.com/p/nativeclient/issues/detail?id=2492. To make this possible, "libgcc.mvars" has been split into libgcc-glibc.mvars and libgcc-newlib.mvars
+
+Also, added crtdummy.c to make sure the symbols in pnacl/support/bitcode/crtbegin.c are preserved.
+(bug in libLTO/gold: Constructors/destructors are not preserved unless there are references to symbols in the module).
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2423
+Review URL: http://codereview.chromium.org/8815006
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-12-15T11:07:26.000Z</ns0:updated><ns0:published>2011-12-15T11:07:26.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2423#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2423/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

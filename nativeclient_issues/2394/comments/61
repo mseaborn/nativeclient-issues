@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUACQ347eCl7ImA9WhRTEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/61</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">I see some new failures (new = after committing the first workaround on Thursday) which can be related or unrelated to this bug: http://build.chromium.org/p/client.nacl/builders/lucid-64-glibc-dbg/builds/1631/steps/chrome_browser_tests/logs/stdio
+
+Tests which fail:
+run_pm_exit254_status_chrome_browser_test
+run_pm_exitneg2_status_chrome_browser_test
+run_inbrowser_untrusted_crash_test
+and some more
+
+If you think you have a fix to this issue, it probably makes sense to verify if the behaviour of these tests have been changed or not.</ns0:content><ns0:updated>2011-10-31T17:56:02.000Z</ns0:updated><ns0:published>2011-10-31T17:56:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 61 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2394#c61" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/61" rel="self" type="application/atom+xml" /></ns0:entry>

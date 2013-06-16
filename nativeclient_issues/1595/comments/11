@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0cGRX47eCl7ImA9WhZRFko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1595/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4857
+
+------------------------------------------------------------------------
+r4857 | mseaborn@chromium.org | Wed Apr 13 00:11:11 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.h?r1=4857&amp;r2=4856&amp;pathrev=4857
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/threads/second_tls_test.c?r1=4857&amp;r2=4856&amp;pathrev=4857
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/win/nacl_syscall_impl.c?r1=4857&amp;r2=4856&amp;pathrev=4857
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/pthread/nc_thread.c?r1=4857&amp;r2=4856&amp;pathrev=4857
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/threads/nacl.scons?r1=4857&amp;r2=4856&amp;pathrev=4857
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/include/bits/nacl_syscalls.h?r1=4857&amp;r2=4856&amp;pathrev=4857
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt/irt_tls.c?r1=4857&amp;r2=4856&amp;pathrev=4857
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.c?r1=4857&amp;r2=4856&amp;pathrev=4857
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/linux/nacl_syscall_impl.c?r1=4857&amp;r2=4856&amp;pathrev=4857
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/pthread/pthread_internal.h?r1=4857&amp;r2=4856&amp;pathrev=4857
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/syscall_bindings_trampoline.h?r1=4857&amp;r2=4856&amp;pathrev=4857
+
+IRT: Introduce second TLS field so that off-main-thread PPAPI calls work
+
+Introduce two new syscalls for private use by the IRT library:
+ * second_tls_set
+ * second_tls_get
+
+Change the IRT's __nacl_read_tp() to allocate a TLS area on demand.
+This makes the two remaining parts of run_ppapi_core_browser_test
+pass:
+
+ * IsMainThread() now returns false instead of true when called from a
+   non-main-thread.  For this, we just need __thread variables to
+   work.
+
+ * CallOnMainThread() now works when called from a non-main-thread.
+   For this, we need pthread_mutex_lock() to work on non-main-threads.
+   We achieve this by ensuring that thread_id gets filled out for the
+   thread, since our current pthread_mutex_lock() wants to read that.
+   We introduce __nc_adopt_thread() for this purpose.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1595
+TEST="run_ppapi_core_browser_test irt=1 platform=x86-64" passes fully
+
+Review URL: http://codereview.chromium.org/6837004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-13T07:17:04.000Z</ns0:updated><ns0:published>2011-04-13T07:17:04.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1595#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1595/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

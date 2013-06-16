@@ -1,0 +1,55 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIHRn47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/802/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2962
+
+------------------------------------------------------------------------
+r2962 | kschimpf@google.com | Wed Aug 11 05:47:14 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_validate_image.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode_forms.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_iter_internal.h?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_cpu_checks.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_iter.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncval.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncopcode_desc.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/build.scons?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_jumps.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncval_driver.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_utils.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_cpu_checks.h?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_iter.h?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncopcode_desc.h?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncvalidator_registry.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdis.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_trans.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdis_segments.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_memory_protect.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_iter.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_opcode_histogram.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode_tablegen.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncop_exps.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_illegal.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_state.c?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_opcode_histogram.h?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncop_exps.h?r1=2962&amp;r2=2961&amp;pathrev=2962
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/validator_x86.gyp?r1=2962&amp;r2=2961&amp;pathrev=2962
+
+Fix the x86-64 bit validator library to assume that the output stream
+is defined by nacl log. Remove explicit references in the API to
+corresponding (file) streams.
+
+Note: This implies we must use Gio streams (since nacl logs do), which
+means that we must change print routines to work on Gio streams.
+
+Note: Also lift the creation of a nacl log to ncval and ncdis (sel_ldr
+already builds a nacl log stream).
+
+Note: Fix bug in nc_cpu_check.c that miscategorized when the summary
+should be applied.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=802
+
+Review URL: http://codereview.chromium.org/3134007
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:55:37.000Z</ns0:updated><ns0:published>2011-01-21T22:55:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=802#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/802/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

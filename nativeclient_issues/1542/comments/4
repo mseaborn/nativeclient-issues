@@ -1,0 +1,48 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0IEQn47eCl7ImA9WhZTF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1542/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4590
+
+------------------------------------------------------------------------
+r4590 | pdox@google.com | Mon Mar 21 23:29:59 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/utman.sh?r1=4590&amp;r2=4589&amp;pathrev=4590
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/driver.py?r1=4590&amp;r2=4589&amp;pathrev=4590
+
+Enable self-build for sandboxed llc.
+
+1) Add --pnacl-bcld-finish flag to driver which forces the
+driver to complete bitcode linking all the way through native
+linking. This ensures that symbol resolution is performed
+and missing symbols are detected. This is off by default,
+but is needed for llvm/configure. Eventually this option
+should be replaced by a cleaner solution which is always
+on.
+
+2) Add a mechanism to the driver for wrapping symbols in bitcode
+   when --wrap is given. This is needed because the normal linker
+   --wrap doesn't work with our model. (needs more design decisions,
+   if we want to support it). This is needed for the LLVM self-build
+   because we use --wrap on read,write,open,close,lseek.
+
+3) Added empty.o to native libraries. This is just an empty object
+   file for each architecture, which is needed for the barebones
+   tests to work with --pnacl-bcld-finish, because gold does not
+   have a way of detecting the architecture when the only inputs
+   are bitcode.
+
+4) Added new gcc driver flags: -MMD, -MP, -MD, -MF, -MT, -xc
+
+5) Made it so that pnacl-as interprets unknown files as assembly files (like gas)
+   (this is needed by llvm/configure)
+
+6) Added an argument to llvm-tool-sb-* which lets you pick which toolchain
+   to use to build the sandboxed LLVM (nacl or pnacl).
+
+7) Changed utman.sh so that it builds sandboxed llc using pnacl for x8632 and ARM.
+   For the moment, binutils is still built using nacl-gcc.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1542
+Review URL: http://codereview.chromium.org/6688021
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-03-22T06:31:43.000Z</ns0:updated><ns0:published>2011-03-22T06:31:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1542#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1542/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

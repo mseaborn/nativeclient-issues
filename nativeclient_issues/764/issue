@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQFSX47eCl7ImA9WhRaFU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/764</ns0:id><ns0:author>
+			<ns0:name>grego...@google.com</ns0:name><ns0:uri>/u/114685308157308201595/</ns0:uri></ns0:author><ns0:content type="html">The tests should check that the syscalls:
+- provide the documented functionality
+- report consistent errors (including setting the errno) when illegal arguments are provided or a runtime error occurs.
+</ns0:content><ns0:updated>2012-02-18T00:01:58.000Z</ns0:updated><ns0:published>2010-08-02T21:44:49.000Z</ns0:published><ns2:status>Done</ns2:status><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Add small tests for NaCl syscalls (umbrella bug)</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Test</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/764/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=764" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/764" rel="self" type="application/atom+xml" /><ns2:stars>0</ns2:stars><ns2:blockedOn>
+			<ns2:id>808</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>809</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>810</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>811</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>812</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>813</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>814</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>815</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>816</ns2:id></ns2:blockedOn><ns2:blocking>
+			<ns2:id>753</ns2:id></ns2:blocking><ns2:closedDate>2012-02-18T00:01:58.000Z</ns2:closedDate><ns2:id>764</ns2:id></ns0:entry>

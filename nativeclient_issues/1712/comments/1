@@ -1,0 +1,53 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEAFQ347eCl7ImA9WhZQFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1712/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">adding information from a native-client-discuss email thread.
+
+On 21.04.2011, at 22:42, Mark Seaborn wrote:
+
+On 21 April 2011 12:57, Bert Freudenberg &lt;bert@freudenbergs.de&gt; wrote:
+I confirmed the problem on another machine. Same issue, got a kernel panic. So both a quad-core MacBook Pro and a hex-core Mac Pro do not work.
+
+Can you get any information out of this kernel panic?  According to http://en.wikipedia.org/wiki/Kernel_panic#Mac_OS_X, "Debugging information is saved in NVRAM and written to a log file on reboot."
+
+Pasted below, does not look too helpful to me.
+
+Do you get the panic screen that is shown on that Wikipedia page?  The reason I ask is that when my Mac crashed as a result of running NaCl, it just froze and did not display a panic screen.  Also you described the problem as a freeze initially, which suggested that you did not get a panic screen.
+
+I got a kernel panic on one attempt. On others, the system just froze, and I did not see the panic screen. Sometimes just some apps would crash, but when I closed the NaCl tab I could continue to work.
+
+Does the problem occur immediately when running NaCl, or is there a delay?
+
+There is a delay. E.g., the Life example rendered for a couple of seconds before the freeze. I have not seen the Pi Generator render anything though with a 64 bit kernel. I have the impression that the graphical examples are quicker to demonstrate the problem.
+
+- Bert -
+
+Mon Apr 18 14:55:31 2011
+panic(cpu 4 caller 0xffffff80002cf17f): Double fault thread:0xffffff801e884750 at 0xffffff80002139f4, registers:
+CR0: 0x000000008001003b, CR2: 0xffffff810046ff98, CR3: 0x0000000018a8a000, CR4: 0x0000000000000660
+RAX: 0x0000000000000000, RBX: 0x000000000000000e, RCX: 0xffffff800065acf8, RDX: 0x0000000000000001
+RSP: 0xffffff810046ffa0, RBP: 0xffffff81004701a0, RSI: 0x0000000800000000, RDI: 0x0000000000000000
+R8:  0x0000000000000000, R9:  0x0000000000000000, R10: 0x0000000000000000, R11: 0xffffff80002cf341
+R12: 0x0000000000000001, R13: 0xffffff80002c3f90, R14: 0x0000000800000000, R15: 0xffffff8100470310
+RFL: 0x0000000000010246, RIP: 0xffffff80002139f4, CS:  0x0000000000000008, SS:  0x0000000000000010
+Error code: 0x0000000000000000
+
+Backtrace (CPU 4), Frame : Return Address
+0xffffff80f941aeb0 : 0xffffff8000204b99 
+0xffffff80f941afb0 : 0xffffff80002cf17f 
+0xffffff80f941
+ 
+Wed Apr 20 00:15:17 2011
+panic(cpu 10 caller 0xffffff80002cffca): Kernel trap at 0xffffff8000227ff6, type 13=general protection, registers:
+CR0: 0x000000008001003b, CR2: 0x00007fff70aa0870, CR3: 0x0000000048d40000, CR4: 0x0000000000000660
+RAX: 0xffffff8000697420, RBX: 0x00000000000432c8, RCX: 0xffffff800067d8e0, RDX: 0x0000000000000209
+RSP: 0xffffff8101143b90, RBP: 0xffffff8101143c70, RSI: 0xffffff8013b90900, RDI: 0x000000000000000b
+R8:  0xffffff80006436a0, R9:  0x0000000000000001, R10: 0x0000000000000055, R11: 0x0000000000000000
+R12: 0x3fffe888ffffff7f, R13: 0xffffff801b3ba508, R14: 0xffffff801de51f58, R15: 0x0000000000000010
+RFL: 0x0000000000010212, RIP: 0xffffff8000227ff6, CS:  0x0000000000000008, SS:  0x0000000000000010
+Error code: 0x0000000000000000
+
+Backtrace (CPU 10), Frame : Return Address
+0xffffff8101143830 : 0xffffff8000204b99 
+0xffffff8101143930 : 0xffffff80002cffca 
+0xffffff810
+ </ns0:content><ns0:updated>2011-04-21T21:51:52.000Z</ns0:updated><ns0:published>2011-04-21T21:51:52.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bradc...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1712#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1712/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,52 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUEAQ347eCl7ImA9WhRQGU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2474/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: a4a09c98512edd941d17afeab06d443b54fc6045
+ Email: bsy@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+NaCl-side changes for stdout/err redirection to postmessage.
+
+The DEPS change updates to the current Chrome LKGR (2011/12/12), but
+anything that is at least 113723 will do.  Plugin-side support for the
+postmessage tunnelling is required for this CL to work.
+
+The test suite outputs on either standard output or standard error
+from the main thread or from a background thread that runs after a
+usleep delay to ensure that the background processing occurs both
+during and after the main thread is processing the PostMessage that
+triggers the test case.
+
+Also fixes a minor bug in file_cmp_test.py, and a missing
+compare-against-golden and missing dependency issue in
+tests/redir/nacl.scons.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2474
+TEST= run_pm_redir_{stdout,stderr}_{fg,bg}_{0,1000,1000000}_chrome_browser_test
+Review URL: http://codereview.chromium.org/8926006
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@7440 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	SConstruct
+M	src/trusted/desc/nacl_desc_base.c
+M	src/trusted/desc/nacl_desc_base.h
+M	src/trusted/reverse_service/reverse_control_rpc.h
+M	src/trusted/reverse_service/reverse_service.cc
+M	src/trusted/reverse_service/reverse_service.h
+M	src/trusted/service_runtime/arch/x86_64/sel_ldr_x86_64.c
+M	src/trusted/service_runtime/build.scons
+M	src/trusted/service_runtime/nacl_config.h
+A	src/trusted/service_runtime/nacl_desc_postmessage.c
+A	src/trusted/service_runtime/nacl_desc_postmessage.h
+A	src/trusted/service_runtime/nacl_resource.c
+A	src/trusted/service_runtime/nacl_resource.h
+M	src/trusted/service_runtime/nacl_syscall_common.c
+M	src/trusted/service_runtime/sel_ldr.c
+M	src/trusted/service_runtime/sel_ldr.h
+M	src/trusted/service_runtime/sel_main.c
+M	src/trusted/service_runtime/service_runtime.gyp
+A	tests/postmessage_redir/nacl.scons
+A	tests/postmessage_redir/pm_redir.nmf
+A	tests/postmessage_redir/pm_redir_test.cc
+A	tests/postmessage_redir/pm_redir_test.html
+M	tests/redir/nacl.scons
+M	tools/browser_tester/browsertester/browserlauncher.py
+M	tools/file_cmp_test.py</ns0:content><ns0:updated>2011-12-14T23:00:42.000Z</ns0:updated><ns0:published>2011-12-14T23:00:42.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2474#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2474/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

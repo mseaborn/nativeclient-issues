@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcCQ347eCl7ImA9Wx5bFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1130</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">Run of gclient sync on an old client failed when updating tool chain.  Next run of gclient sync succeeds, but did not update toolchain.  gclient runhooks to force toolchain update then fails:
+sdk/nacl-sdk/share/man/man1/nacl64-windmc.1
+sdk/nacl-sdk/share/man/man1/nacl64-windres.1
+Downloading http://build.chromium.org/buildbot/nacl_archive/nacl/toolchain/3586/naclsdk_win_x86.tgz to native_client\toolchain\.tmp/.tgz...
+Extracting from native_client\toolchain\.tmp/.tgz...
+Update complete.
+Traceback (most recent call last):
+  File &amp;quot;native_client/build/download_toolchains.py&amp;quot;, line 120, in ?
+    main(sys.argv[1:])
+  File &amp;quot;native_client/build/download_toolchains.py&amp;quot;, line 109, in main
+    Retry(os.rename, os.path.join(dst_tmp, 'sdk', 'nacl-sdk'), dst)
+  File &amp;quot;native_client/build/download_toolchains.py&amp;quot;, line 48, in Retry
+    op(*args)
+OSError: [Errno 13] Permission denied
+Error: D:\depot_tools\python_bin\python.exe native_client/build/download_toolchains.py --x86-version 3586 --arm-version 3586 in D:\private_svn\nacl_clean2 returned 1
+
+No documents, directories, editors, etc are open.  The command prompt process is the only (user) process running.
+D:\private_svn\nacl_clean2&amp;gt;gclient runhooks</ns0:content><ns0:updated>2010-10-31T23:01:02.000Z</ns0:updated><ns0:published>2010-10-30T22:15:21.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>gclient sync failed, followed by failed runhooks.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-</ns2:label><ns2:label>Arch-</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1130/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1130" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1130" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-10-31T23:01:02.000Z</ns2:closedDate><ns2:id>1130</ns2:id></ns0:entry>

@@ -1,0 +1,49 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8GRH47eCl7ImA9WhZXGUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/772/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5224
+
+------------------------------------------------------------------------
+r5224 | jvoung@google.com | Mon May 09 12:15:40 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_text.c?r1=5224&amp;r2=5223&amp;pathrev=5224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=5224&amp;r2=5223&amp;pathrev=5224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/perf_counter/nacl_perf_counter_test.c?r1=5224&amp;r2=5223&amp;pathrev=5224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=5224&amp;r2=5223&amp;pathrev=5224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/perf_counter/nacl_perf_counter.c?r1=5224&amp;r2=5223&amp;pathrev=5224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=5224&amp;r2=5223&amp;pathrev=5224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/perf_counter/perf_counter.gyp?r1=5224&amp;r2=5223&amp;pathrev=5224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/build.scons?r1=5224&amp;r2=5223&amp;pathrev=5224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/multiple_sandboxes/nacl.scons?r1=5224&amp;r2=5223&amp;pathrev=5224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/perf_counter/nacl_perf_counter.h?r1=5224&amp;r2=5223&amp;pathrev=5224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=5224&amp;r2=5223&amp;pathrev=5224
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/perf_counter/build.scons?r1=5224&amp;r2=5223&amp;pathrev=5224
+
+Add measurements of various service_runtime startup stages.
+Example usage and output:
+
+NACLVERBOSITY=1 scons-out/opt-linux-x86-32/staging/sel_ldr -S -a -- /usr/local/google/home/nacl/native_client/toolchain/linux_x86/nacl64/lib32/runnable-ld.so --library-path /usr/local/google/home/nacl/native_client/toolchain/linux_x86/nacl64/lib32 scons-out/nacl-x86-32-glibc/obj/tests/hello_world/hello_world.nexe 2&gt;&amp;1 | grep "sec" | cut -d ' ' -f 1 --complement
+
+
+NaClPerfCounterInterval(SelMain __start__:SnapshotNaclFile): 2659 microsecs
+NaClPerfCounterInterval(NaClAppLoadFile __start__:*MakeDynText): 269230 microsecs
+NaClPerfCounterInterval(NaClAppLoadFile *MakeDynText:*ValidateImg): 13545 microsecs
+NaClPerfCounterInterval(NaClAppLoadFile __start__:EndLoadFile): 282985 microsecs
+NaClPerfCounterInterval(SelMain SnapshotNaclFile:AppLoadEnd): 283037 microsecs
+NaClPerfCounterInterval(SelMain AppLoadEnd:AppPrepLaunch): 282 microsecs
+NaClPerfCounterInterval(SelMain AppPrepLaunch:CreateMainThread): 84 microsecs
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 147 microsecs
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 73479 microsecs
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 15011 microsecs
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 4414 microsecs
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 126167 microsecs
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 682 microsecs
+NaClPerfCounterInterval(SelMain CreateMainThread:WaitForMainThread): 230144 microsecs
+NaClPerfCounterInterval(SelMain __start__:SelMainEnd): 516226 microsecs
+
+
+TEST = trybots
+BUG = http://code.google.com/p/nativeclient/issues/detail?id=772
+Review URL: http://codereview.chromium.org/6930057
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-09T19:20:25.000Z</ns0:updated><ns0:published>2011-05-09T19:20:25.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=772#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/772/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

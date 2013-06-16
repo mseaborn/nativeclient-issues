@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEIHRX47eCl7ImA9WhdRFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1302</ns0:id><ns0:author>
+			<ns0:name>dsprin...@google.com</ns0:name><ns0:uri>/u/112723007196297768207/</ns0:uri></ns0:author><ns0:content type="html">gc6.8 does not build in naclports on any of Mac, Windows or Linux.  Mac and Linux give this error:
+
+./nacl-install-all-bitsize.sh: line 39: ./nacl-gc6.8.sh: Permission denied
+
+</ns0:content><ns0:updated>2011-08-05T17:48:54.000Z</ns0:updated><ns0:published>2011-01-10T22:55:44.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:state>closed</ns2:state><ns0:title>gc6.8 does not build in naclports.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1302/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1302" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1302" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-05T17:48:54.000Z</ns2:closedDate><ns2:id>1302</ns2:id></ns0:entry>

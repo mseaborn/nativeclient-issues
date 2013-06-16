@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEADQH47eCl7ImA9WxBbEkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/234/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>adono...@google.com</ns0:name><ns0:uri>/u/110803933729866443698/</ns0:uri></ns0:author><ns0:content type="html">There's an additional compilation error in the gpu code that I found immediately 
+preceding the "ISupper" etc errors above.  In &lt;typeinfo&gt;, we get a #error:
+
+   "Inline implementation of type_info comparision requires merging of type_info 
+objects"
+
+I found a sleazy workaround which is to specify the following command-line flags to 
+the compiler front-end:
+
+-U__GXX_MERGED_TYPEINFO_NAMES
+-D__GXX_MERGED_TYPEINFO_NAMES=1
+-U__GXX_TYPEINFO_EQUALITY_INLINE
+-D__GXX_TYPEINFO_EQUALITY_INLINE=0
+
+(I did this by modifying argv in the llvm-fake.py script.)
+
+Of course, this doesn't necessarily result in correct code, but it allows us to make 
+progress.
+</ns0:content><ns0:updated>2010-03-10T20:26:11.000Z</ns0:updated><ns0:published>2010-03-10T20:26:11.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by adono...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=234#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/234/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

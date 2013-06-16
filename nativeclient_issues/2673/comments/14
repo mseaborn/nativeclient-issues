@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUAER347eCl7ImA9WhVVEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2673/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8506
+
+------------------------------------------------------------------------
+r8506 | kschimpf@google.com | Fri May 04 14:35:41 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode_named_classes.h?r1=8506&amp;r2=8505&amp;pathrev=8506
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/inst_classes_testers.h?r1=8506&amp;r2=8505&amp;pathrev=8506
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode_tests.cc?r1=8506&amp;r2=8505&amp;pathrev=8506
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/baseline_classes_statics.cc?r1=8506&amp;r2=8505&amp;pathrev=8506
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/dgen_test_output.py?r1=8506&amp;r2=8505&amp;pathrev=8506
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/inst_classes_testers.cc?r1=8506&amp;r2=8505&amp;pathrev=8506
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/armv7.table?r1=8506&amp;r2=8505&amp;pathrev=8506
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/dgen_core.py?r1=8506&amp;r2=8505&amp;pathrev=8506
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/baseline_classes.h?r1=8506&amp;r2=8505&amp;pathrev=8506
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/dgen_input.py?r1=8506&amp;r2=8505&amp;pathrev=8506
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode_named_decoder.h?r1=8506&amp;r2=8505&amp;pathrev=8506
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/baseline_classes.cc?r1=8506&amp;r2=8505&amp;pathrev=8506
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode_named.cc?r1=8506&amp;r2=8505&amp;pathrev=8506
+
+Add notion of class inheritance that can be used to find the tester
+class to use. That is, the tester class asssociated with the corresponding
+baseline instruction layout class.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2673
+Review URL: https://chromiumcodereview.appspot.com/10265003
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-05-04T21:41:46.000Z</ns0:updated><ns0:published>2012-05-04T21:41:46.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2673#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2673/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

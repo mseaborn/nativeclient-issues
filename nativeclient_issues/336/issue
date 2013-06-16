@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0IBQ347eCl7ImA9WxBUFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/336</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">After r1562, the ARM validator has become blind to some side effects of LDRD 
+-- specifically, base register writeback.  Qualcomm noticed this during fuzz 
+testing.
+
+The problem was simple programmer error: the LoadDouble{I,R} classes were 
+introduced inheriting from the Load{Immediate,Register} parent classes, but 
+deferred to the implementation of defs() on AbstractLoad -- skipping a level 
+in the inheritance hierarchy.  To be honest I didn't actually realize a C++ 
+compiler would let me do this.
+
+This could allow sp or r9 to be corrupted, and as such is a security 
+problem.</ns0:content><ns0:updated>2010-03-03T22:32:32.000Z</ns0:updated><ns0:published>2010-03-02T23:36:31.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>ARM validator underestimates side effects of LDRD after recent change</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-TrustedRT</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Security</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/336/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=336" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/336" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-03-03T22:32:32.000Z</ns2:closedDate><ns2:id>336</ns2:id></ns0:entry>

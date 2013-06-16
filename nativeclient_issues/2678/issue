@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04FSH47eCl7ImA9WhVRGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2678</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">The dynamic_load_test was seen to hang on ARM hardware.
+
+
+[ RUN      ] nacl_newlib.run_dynamic_load_test
+======================================================================
+running ['scons-out/opt-linux-arm/staging/nacl_helper_bootstrap', 'scons-out/opt-linux-arm/staging/sel_ldr', '--r_debug=0xXXXXXXXXXXXXXXXX', '--', 'scons-out/nacl-arm-pnacl-pic-clang/obj/tests/dynamic_code_loading/dynamic_load_test_arm.nexe']
+======================================================================
+scons-out/opt-linux-arm/staging/nacl_helper_bootstrap scons-out/opt-linux-arm/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -- scons-out/nacl-arm-pnacl-pic-clang/obj/tests/dynamic_code_loading/dynamic_load_test_arm.nexe
+
+command timed out: 1500 seconds without output, killing pid 22033
+process killed by signal 9
+program finished with exit code -1
+elapsedTime=1846.911551
+
+See: http://build.chromium.org/p/client.nacl/builders/oneiric_32-newlib-arm_hw-pnacl-panda-opt/builds/190/steps/annotate/logs/stdio
+
+
+There is some suspicion that the additional subtest &amp;quot;test_threaded_loads&amp;quot; added in:
+
+https://src.chromium.org/viewvc/native_client?view=rev&amp;amp;revision=8069
+
+may be revealing some additional threading issues.
+
+Since the test prints out how far it has gotten, it would be good to try that out on the HW bot first to see if it's really &amp;quot;test_threaded_loads&amp;quot; that is tickling the issue.</ns0:content><ns0:updated>2012-03-28T00:51:59.000Z</ns0:updated><ns0:published>2012-03-20T20:26:02.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>ARM: dynamic_load_test hangs during "test_threaded_loads"</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2678/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2678" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2678" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>2678</ns2:id></ns0:entry>

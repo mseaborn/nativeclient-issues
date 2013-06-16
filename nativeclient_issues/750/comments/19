@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUIHQ347eCl7ImA9WhZVGUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/750/comments/full/19</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">zygote_maps.txt holes look like:
+6fda0000-6fdd3000 rwxp 00000000 00:00 0 
+7092b000-7092e000 rw-p 00000000 00:00 0 
+70dd0000-71300000 rw-p 00000000 00:00 0 
+71565000-71566000 rw-p 00000000 00:00 0 
+
+krasin@krasin:~$ cat zygote_maps.txt  | grep "00:00 0" | sed 's/\([0-9a-f]*\)-\([0-9a-f]*\) .*/"print 0x\2-0x\1"/' | xargs -n1 python -c | sort -g
+4096
+4096
+4096
+4096
+4096
+4096
+4096
+4096
+4096
+4096
+4096
+4096
+4096
+4096
+8192
+8192
+8192
+8192
+12288
+12288
+12288
+12288
+16384
+16384
+24576
+77824
+131072
+208896
+299008
+647168
+1703936
+5439488
+
+it seems a little bit weird to me.</ns0:content><ns0:updated>2011-06-02T00:12:12.000Z</ns0:updated><ns0:published>2011-06-02T00:12:12.000Z</ns0:published><ns2:updates /><ns0:title>Comment 19 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=750#c19" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/750/comments/full/19" rel="self" type="application/atom+xml" /></ns0:entry>

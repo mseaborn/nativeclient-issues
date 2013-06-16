@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMFSX47eCl7ImA9WhZWFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1804/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The problem seems to be the following (rather low) limit in ipc/file_descriptor_set_posix.h:
+    MAX_DESCRIPTORS_PER_MESSAGE = 4,
+
+This limit is checked in FileDescriptorSet::AddAndAutoClose(), called via Message::WriteFileDescriptor().
+
+We'll be overflowing this limit on the Mac, because we send 5 descriptors:
+ a) 3 are sent by NaCl's service_runtime.cc
+ b) 1 for a shared memory segment for dynamic loading support (this is Mac-only)
+ c) 1 for the IRT file
+Since (b) is Mac-only, we do not overflow the limit on Linux.
+
+The reason this wasn't caught by the trybots when I added IRT support to nacl_process_host.cc must have been that the Gyp-foo that I initially used for installing the IRT binaries didn't put them in the right place.  (I fixed it in http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=84961)  So on these try runs, Chromium fell back to not using the IRT, which needed only 4 descriptors in the startup message.
+
+The fix should be to increase MAX_DESCRIPTORS_PER_MESSAGE.</ns0:content><ns0:updated>2011-05-16T18:26:58.000Z</ns0:updated><ns0:published>2011-05-16T18:26:58.000Z</ns0:published><ns2:updates>
+			<ns2:label>-OS-All</ns2:label><ns2:label>OS-Mac</ns2:label></ns2:updates><ns0:title>Comment 16 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1804#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1804/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,58 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEFRn47eCl7ImA9WhdbEEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/237</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">This issue affects shared libraries.
+
+The most general instruction sequence for accessing a thread-local variable 
+is for the General Dynamic (GD) TLS model.  This involves a call (to the 
+function ___tls_get_addr), which the NaCl assembler pads with no-ops as 
+usual.  In some situations the linker will try to rewrite this code to use 
+a more efficient instruction sequence.  This fails because the linker does 
+not expect to find NOPs in the middle of the instruction sequence.
+
+Here's a minimal example in which -fPIC code is linked into an executable:
+
+$ cat &amp;gt;tls-var.c &amp;lt;&amp;lt;END
+__thread int x;
+int main() { x = 0x100; return 0; }
+END
+$ nacl-gcc -fPIC tls-var.c -o prog
+/home/mseaborn/devel/nacl-
+trunk/src/native_client/src/third_party/nacl_sdk/linux/sdk/nacl-
+sdk/bin/../lib/gcc/nacl/4.2.2/../../../../nacl/bin/ld: /tmp/cco90Y1M.o: TLS 
+transition from R_386_TLS_GD to R_386_TLS_IE_32 against `x' at 0x29 in 
+section `.text' failed
+/tmp/cco90Y1M.o: could not read symbols: Bad value
+collect2: ld returned 1 exit status
+
+This is the object code that the linker sees:
+
+  26:   8d 04 1d 00 00 00 00    lea    0x0(,%ebx,1),%eax
+                        29: R_386_TLS_GD        x
+  2d:   8d b4 26 00 00 00 00    lea    0x0(%esi),%esi    # long no-op
+  34:   8d bc 27 00 00 00 00    lea    0x0(%edi),%edi    # long no-op
+  3b:   e8 fc ff ff ff          call   3c &amp;lt;main+0x3c&amp;gt;
+                        3c: R_386_PLT32 ___tls_get_addr
+
+Some options for dealing with this:
+
+ * Don't do anything.  Just require that people compile with the right
+   options, e.g. don't link -fPIC code into executables.  The linker
+   shouldn't be rewriting GD sequences unless you're doing something
+   unusual or wrong.
+
+ * Change the linker to recognise the NOPs in the GD sequence and
+   either rewrite it or skip it.
+
+ * Disable rewriting GD sequences in the linker.  Maybe add a
+   --no-tls-optimize option (as PowerPC has) and make it the default.
+
+ * Use Alexandre Oliva's new &amp;quot;gnu2&amp;quot; TLS model.  In this model the
+   linker still does rewriting, but it only rewrites individual
+   instructions, so it doesn't matter if NOPs have been inserted.
+   Support for this is in binutils and gcc (-mtls-dialect=gnu2) but
+   it's not the default yet.
+</ns0:content><ns0:updated>2011-10-07T20:16:57.000Z</ns0:updated><ns0:published>2009-12-30T00:20:43.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Linker fails to rewrite TLS GD instruction sequence that is padded with NOPs</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>OS-NaCl</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>SharedLibrary</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/237/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=237" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/237" rel="self" type="application/atom+xml" /><ns2:stars>7</ns2:stars><ns2:id>237</ns2:id></ns0:entry>

@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUCRH47eCl7ImA9WhdQEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1246</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">nacl-glibc is defining ssize_t differently on x86-32 and x86-64.  It is &amp;quot;int&amp;quot; on 32-bit and &amp;quot;long int&amp;quot; on 64-bit:
+
+$ echo '#include &amp;lt;stdlib.h&amp;gt;' | .../bin/nacl64-gcc - -E -o - -m32 | grep ssize_t
+__extension__ typedef int __ssize_t;
+typedef __ssize_t ssize_t;
+
+$ echo '#include &amp;lt;stdlib.h&amp;gt;' | .../bin/nacl64-gcc - -E -o - -m64 | grep ssize_t
+typedef long int __ssize_t;
+typedef __ssize_t ssize_t;
+
+
+Though the types are the same size they are treated as different.  This code will produce an error:
+
+// int-equiv.c:
+int foo();
+long int foo();
+
+int-equiv.c:3: error: conflicting types for &#8216;foo&#8217;
+int-equiv.c:2: note: previous declaration of &#8216;foo&#8217; was here
+
+
+A result of this is that tests/srpc_message/srpc_message.c fails to compile on x86-64 because it contains a declaration for imc_sendmsg() that differs from the declaration in nacl_syscalls.h.  One uses ssize_t, the other uses int.
+</ns0:content><ns0:updated>2011-08-12T08:04:25.000Z</ns0:updated><ns0:published>2010-12-11T20:38:59.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>nacl-glibc's ssize_t differs between x86-32 and x86-64</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1246/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1246" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1246" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blocking>
+			<ns2:id>1248</ns2:id></ns2:blocking><ns2:closedDate>2011-08-12T08:04:25.000Z</ns2:closedDate><ns2:id>1246</ns2:id></ns0:entry>

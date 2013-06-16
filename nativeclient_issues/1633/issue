@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE8HQX47eCl7ImA9WhdTFUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1633</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">In issue 1545 I described how the handler registered with AddVectoredExceptionHandler() could be vulnerable to an attack, since it runs on the untrusted stack.
+
+It turns out that sel_ldr is vulnerable to this attack even without registering a handler through AddVectoredExceptionHandler().  The list of vectored exception handlers is maintained by user space code, not by the kernel.  When a fault occurs, the kernel passes control to a userland fault handler (KiUserExceptionDispatcher in ntdll.dll) without changing what stack the handler runs on.  This handler traverses the vectored exception handler list, even if the list is empty.
+
+KiUserExceptionDispatcher calls functions which return using &amp;quot;ret&amp;quot;.  It is possible to hijack those function returns from untrusted code by starting another thread which repeatedly writes to the first thread's stack.  This works because the second thread continues to run while KiUserExceptionDispatcher is executing on the first thread.
+
+I have a working test program which can escape the inner sandbox and execute a Windows syscall directly on Windows 7.
+
+
+I can think of two ways we might address this:
+
+ 1) Use the Windows debugging interface (DebugActiveProcess() etc.) to catch faults in the sel_ldr process from outside the process.
+     * Would this really prevent the kernel from jumping to code in the sel_ldr process after a fault occurs?
+     * What happens if the debugger process dies?  Does the debuggee then resume unhindered (as with ptrace() on Linux), or is it terminated or suspended?
+     * Does this work without administrator privileges and in the Chrome sandbox?
+     * Can we rely on the answers to these questions staying the same on future versions of Windows?
+
+ 2) Change the x86-64 sandboxing model so that %rsp never points into untrusted address space.
+     * We would have to use another register as the stack pointer.  We would have to use MOV, ADD and SUB instead of PUSH, POP and CALL.
+     * This is similar to the seccomp-sandbox's strategy for preventing its trusted threads from being compromised by signals.  The trusted threads have %esp/%rsp set to zero so that the kernel cannot use this to write a signal stack frame.
+</ns0:content><ns0:updated>2011-07-13T21:33:50.000Z</ns0:updated><ns0:published>2011-04-08T22:13:00.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/cpu@chromium.org/</ns2:uri><ns2:username>cpu@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110088500044003719179/</ns2:uri><ns2:username>jsc...@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Inner sandbox escape on 64-bit Windows via KiUserExceptionDispatcher</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Security</ns2:label><ns2:label>Mstone-14</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1633/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1633" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1633" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-13T21:33:50.000Z</ns2:closedDate><ns2:id>1633</ns2:id></ns0:entry>

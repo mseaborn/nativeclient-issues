@@ -1,0 +1,41 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0ECQn47eCl7ImA9WhZTGE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1565/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">A few more data points:
+
+./script.sh  scons-out/nacl-x86-64-pnacl/obj/tests/barebones/barebones_switch.nexe---linked.pexe  toolchain/linux_arm-untrusted/tools-sb/arm/srpc/bin/llc
+
+fails like so:
+
+qemu: SIGSEGV pc=0x60874bf1 address=40000000 w=0 oldset=0x00000000
+
+** Signal 11 from untrusted code: Halting at BEB92Ch
+[19055,1880383488:20:21:55.833006] RPC call failed: Internal error in rpc method.
+[19055,1880383488:20:21:55.836537] Command [rpc] failed.
+
+0xBEB92C is an address in __adddf3 (part of libgcc)
+
+===
+
+/script.sh  scons-out/nacl-x86-64-pnacl/obj/tests/barebones/barebones_exit.nexe---linked.pexe  toolchain/linux_arm-untrusted/tools-sb/arm/srpc/bin/llc 
+
+15&gt; 16&gt; 17&gt; 18&gt; 19&gt; 20&gt; qemu: Unsupported syscall: 308
+
+So it looks like we are running into some qemu issue here.
+
+===
+
+./script.sh  scons-out/nacl-x86-64-pnacl/obj/tests/barebones/barebones_addr_modes.nexe---linked.pexe  toolchain/linux_arm-untrusted/tools-sb/arm/srpc/bin/llc 
+
+
+** Found a common subexpression: %vreg46&lt;def&gt; = ADDri %vreg50, 100, pred:14, pred:%noreg, opt:%noreg; GPR:%vreg46,%vreg50
+*** Not profitable, avoid CSE!
+qemu: SIGSEGV pc=0x607f95d5 address=5a5a5a66 w=0 oldset=0x00000000
+
+** Signal 11 from untrusted code: Halting at 54EEC8h
+[19151,1880383488:20:25:55.905196] RPC call failed: Internal error in rpc method.
+[19151,1880383488:20:25:55.908693] Command [rpc] failed.
+
+
+0x54EEC8 is an address in "__unnamed_11672"
+
+</ns0:content><ns0:updated>2011-03-22T20:27:43.000Z</ns0:updated><ns0:published>2011-03-22T20:27:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1565#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1565/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

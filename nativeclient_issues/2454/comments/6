@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IER347eCl7ImA9WhRQEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2454/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7361
+
+------------------------------------------------------------------------
+r7361 | pdox@google.com | Mon Dec 05 16:29:32 PST 2011
+
+Changed paths:
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/support/pnacl_abi.S?r1=7361&amp;r2=7360&amp;pathrev=7361
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/support/pnacl_abi.c?r1=7361&amp;r2=7360&amp;pathrev=7361 (from /trunk/src/native_client/pnacl/support/pnacl_abi.S revision 7348)
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=7361&amp;r2=7360&amp;pathrev=7361
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-driver.py?r1=7361&amp;r2=7360&amp;pathrev=7361
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-ld.py?r1=7361&amp;r2=7360&amp;pathrev=7361
+
+Convert pnacl_abi.o into pnacl_abi.bc (a bitcode stub).
+
+Changes:
+1) Roll UPSTREAM_REV to pull in: http://codereview.chromium.org/8787015/
+2) Renamed pnacl_abi.S to pnacl_abi.c, and modified to make it produce C.
+3) Added a compiler flag to produce stubs from C.
+4) Adjust build.sh to produce pnacl_abi.bc
+5) Change the driver to use pnacl_abi.bc
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2454
+Review URL: http://codereview.chromium.org/8785019
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-12-06T00:31:46.000Z</ns0:updated><ns0:published>2011-12-06T00:31:46.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2454#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2454/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

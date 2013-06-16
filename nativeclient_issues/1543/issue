@@ -1,0 +1,51 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkINSX47eCl7ImA9WhZRFUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1543</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+775
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+N/A
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Windows Vista and 7
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+N/A
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Checkout SDK version 775 (or so) using SVN
+2. Run:  gcl try --bot win
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+This should result in a valid trybot run on Windows
+
+
+Instead, it gives the error the error (see attached file winbot_failure.txt for more):
+
+WindowsError: [Error 3] The system cannot find the path specified: u'E:\\b\\build\\slave\\naclsdk-windows\\build\\src\\build_tools\\hermetic_cygwin\\usr\\share\\groff\\current\\*.*'
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+
+This error occurs during the 'Update' phase while running 'gclient revert --nohooks' on the repository.  From my understanding, this utility goes through and removes all the files within the subversion repository that aren't supposed to be there.  In the process it attempts to remove the build_tools\hermetic_cygwin directory, which happens to contain some Windows NT 'Junction' files, which are somewhat like unix symbolic links.  Here is a dir listing in the groff directory on my Windows box after reproducing the failure:
+
+
+ Directory of D:\src\nacl-sdk\src\build_tools\hermetic_cygwin\usr\share\groff
+
+03/16/2011  03:27 PM    &amp;lt;JUNCTION&amp;gt;     current [D:\Workspace\nacl-sdk\src\build_tools\hermetic_cygwin\usr\share\groff\1.20.1]
+01/11/2011  12:45 PM    &amp;lt;DIR&amp;gt;          site-font
+01/11/2011  12:45 PM    &amp;lt;DIR&amp;gt;          site-tmac
+
+
+Notice that the 1.20.1 directory has already been deleted.  As a result, attempting to get a directory listing of 'current' fails because the directory is no longer there.  This seems to crash gclient during the revert operation.
+
+
+What gclient needs to do is somehow recognize that (in this case) the 'current' directory is a junction, and run something analogous to 'rmdir current', which will successfully remove the junction, instead of running something like 'del current/*.*'.
+
+
+As a 'quick fix' it may be possible to add the hermetic_cygwin directory to the svn:ignore attribute of build_tools, which will tell gclient sync to ignore this directory and not delete it.</ns0:content><ns0:updated>2011-04-11T16:49:58.000Z</ns0:updated><ns0:published>2011-03-16T22:11:30.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mball@google.com/</ns2:uri><ns2:username>mball@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100972469698553520658/</ns2:uri><ns2:username>mar...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112723007196297768207/</ns2:uri><ns2:username>dsprin...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>'gclient revert --nohooks' fails on Windows SDK trybot</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Milestone-Baltic-Brill-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1543/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1543" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1543" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-03-18T15:32:15.000Z</ns2:closedDate><ns2:id>1543</ns2:id></ns0:entry>

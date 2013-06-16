@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEMCSX47eCl7ImA9WhZREE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1596/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">We fairly consistently see now two trusted programs failing:
+* format_string_test
+* env_cleanser_test
+both defined in
+src/trusted/service_runtime/build.scons
+
+The failure looks like:
+
+mnt/data/b/build/slave/lucid64-pnacl2/build/native_client/../out/Release/format_string_test
+exception: [Errno 2] No such file or directory
+Command failed
+format_string_test
+
+
+Raising priority</ns0:content><ns0:updated>2011-04-05T16:54:28.000Z</ns0:updated><ns0:published>2011-04-05T16:54:28.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Pri-3</ns2:label><ns2:label>Pri-0</ns2:label></ns2:updates><ns0:title>Comment 6 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1596#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1596/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

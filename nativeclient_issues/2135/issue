@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEQDQ347eCl7ImA9WhdRGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2135</ns0:id><ns0:author>
+			<ns0:name>jon.rafk...@gmail.com</ns0:name><ns0:uri>/u/102802567359168439989/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? 0.5
+On what operating system? ubuntu 11.04
+What browser are you using? 15.0.838.0 (Developer Build 94616 Linux) Ubuntu 11.04
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Compile program using the NACL sdk 0.5 and use the SDL audio api
+2. Run program in chrome 15
+3. Notice no sound is heard
+
+&lt;b&gt;What is the expected output?&lt;/b&gt;
+Sound
+
+&lt;b&gt;What do you see instead?&lt;/b&gt;
+No sound
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-08-08T22:26:12.000Z</ns0:updated><ns0:published>2011-08-05T17:33:25.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:cc>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>audio in chromium 15 does not work</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Pepper</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2135/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2135" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2135" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-08T22:26:12.000Z</ns2:closedDate><ns2:id>2135</ns2:id></ns0:entry>

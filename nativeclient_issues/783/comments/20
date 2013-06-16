@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0ECQn47eCl7ImA9Wx5VEEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/783/comments/full/20</ns0:id><ns0:author>
+			<ns0:name>pdox%goo...@gtempaccount.com</ns0:name><ns0:uri>/u/104735739662288482898/</ns0:uri></ns0:author><ns0:content type="html">On further examination, this issue is more complex.
+
+I have confirmed that sel_ldr invokes _start with SP 4-byte aligned. (but not necessarily 8-byte aligned).
+
+However, normally, _start is provided by "src/untrusted/stubs/crt1_arm.S"
+This function currently aligns the stack mod 8, before calling __nacl_startup.
+
+The barebones test, however, do not use crt1. Instead, they provide their own _start function. (in tests/barebones/fake_startup.c). This _start does not properly align SP, which is why only the barebones tests are affected by the misalignment.
+
+Here is the relevant code from crt1_arm.S:
+
+_start:
+    mov r11, #0 /* clear frame pointer */
+    mov r14, #0 /* clear link register */
+    nop
+    nop
+    /* TODO(robertm): We should be doing this in sel_ldr. */
+    ldr r0, [sp] /* get argc */
+    add r1, sp, #4 /* get argv */
+    add r2, r1, r0, lsl #2 /* get envp */
+    add r2, r2, #4
+
+    /* record the eviron pointer for getenv, etc. */
+    movw r3, #:lower16:environ
+    movt r3, #:upper16:environ
+    bic r3, r3, #0xC0000000
+    str r2, [r3]
+
+    bic r3, sp, #7 /* aligned stack value in r3 */
+    teq r3, sp  /* update sp if sp != r3, this will make it 8 aligned  */
+    pushne {r1}
+    bl __nacl_startup
+
+    /* unreachable */
+    bkpt    0x7777
+</ns0:content><ns0:updated>2010-10-03T00:27:43.000Z</ns0:updated><ns0:published>2010-10-03T00:27:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 20 by pdox%goo...@gtempaccount.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=783#c20" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/783/comments/full/20" rel="self" type="application/atom+xml" /></ns0:entry>

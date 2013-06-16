@@ -1,0 +1,53 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkAERX47eCl7ImA9WhVTFEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2596/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">The problem can be reproduced with this patch
+
+
+svn diff pnacl/build.sh 
+Index: pnacl/build.sh
+===================================================================
+--- pnacl/build.sh      (revision 7904)
++++ pnacl/build.sh      (working copy)
+@@ -284,7 +284,7 @@
+ fi
+ 
+ # Current milestones in each repo
+-readonly UPSTREAM_REV=${UPSTREAM_REV:-e4f2dfee8e5b}
++readonly UPSTREAM_REV=${UPSTREAM_REV:-c4f743e3fbac}
+ 
+ readonly NEWLIB_REV=346ea38d142f
+ readonly BINUTILS_REV=5d2062481770
+@@ -292,7 +292,7 @@
+ 
+ readonly LLVM_PROJECT_REV=${LLVM_PROJECT_REV:-147864}
+ readonly LLVM_MASTER_REV=${LLVM_PROJECT_REV}
+-readonly CLANG_REV=${LLVM_PROJECT_REV}
++readonly CLANG_REV=150357
+ readonly DRAGONEGG_REV=${LLVM_PROJECT_REV}
+ 
+ # Repositories
+@@ -553,7 +553,7 @@
+   hg-bot-sanity "${name}" "${dir}"
+ 
+   # Make sure it is safe to update
+-  hg-assert-branch "${dir}" pnacl-sfi
++#  hg-assert-branch "${dir}" pnacl-sfi
+   hg-assert-safe-to-update "${name}" "${dir}" "${rev}"
+ 
+   if hg-at-revision "${dir}" "${rev}" ; then
+
+=====================
+pnacl/build.sh  everything
+
+should yield:
+
+
+In file included from /usr/local/google/home/robertm/nacl-gclient3/native_client/pnac l/git/gcc/libstdc++-v3/src/atomic.cc:28:
+ In file included from /usr/local/google/home/robertm/nacl-gclient3/native_client/pnac l/build/libstdcpp-newlib/pnacl-target/include/mutex:39:
+ /usr/local/google/home/robertm/nacl-gclient3/native_client/pnacl/build/libstdcpp-newl ib/pnacl-target/include/chrono:141:40: error: cannot cast from lvalue of type 'const  intmax_t' (aka 'const long long') to rvalue reference type 'long long &amp;&amp;'; types are  not compatible
+               static_cast&lt;_CR&gt;(__d.count()) / static_cast&lt;_CR&gt;(_CF::den)));
+
+
+
+
+</ns0:content><ns0:updated>2012-02-28T22:38:24.000Z</ns0:updated><ns0:published>2012-02-28T22:38:24.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2596#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2596/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcNQn47eCl7ImA9WhdWE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/415</ns0:id><ns0:author>
+			<ns0:name>adono...@google.com</ns0:name><ns0:uri>/u/110803933729866443698/</ns0:uri></ns0:author><ns0:content type="html">Under PNaCl, developers will mostly-statically link and deploy their bitcode 
+programs; some portion of the program is provided on the client side. (e.g. crt*.o 
+libraries, crt_platform library).  We must avoid a situation in which the versions 
+of these two parts become skewed.  This imposes important constraints on how we 
+make changes close to these interfaces.  
+
+Task: analyse the problems and come up with a set of rules for making changes in 
+these components, including upgrades, bugfixes, ports to new CPUs.
+
+
+Related:  NaCl syscall ABI changes (the set of syscalls, their semantics, addresses 
+and calling conventions) and PNaCl ABI changes are also subject to similar 
+constraints.  Enumerate and document them, and plan for change.</ns0:content><ns0:updated>2011-09-06T23:01:33.000Z</ns0:updated><ns0:published>2010-04-09T15:47:11.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:owner>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Investigate the problem of server vs. client version skew with PNaCl</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Mstone-16</ns2:label><ns2:label>Pri-1</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/415/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=415" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/415" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2011-09-06T23:01:33.000Z</ns2:closedDate><ns2:id>415</ns2:id><ns2:mergedInto>
+			<ns2:id>2196</ns2:id></ns2:mergedInto></ns0:entry>

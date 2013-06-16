@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE8NR347eCl7ImA9WhRSEkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2439</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">The measurements and links are all there, but it could be easier to find.
+
+- Links to browser_startup_time for glibc can be found on the main waterfall already, but are hard to find.
+
+- There's a perf dashboard that makes perf data easy to find. That currently only has a summary of newlib results, since that was all that was available at the time the dashboard was put together.
+
+*** We can put the two pieces together (add the glibc graphs to the dashboard too).
+
+
+Steps:
+- See past CL for setting up the dashboard webpages: http://codereview.chromium.org/7487009/
+- Make a similar CL that edits the webpage to have glibc entries.
+- Have Chase or other infrastructure people review that, and tell them when the CL is committed so that they can stage the new webpages.
+</ns0:content><ns0:updated>2011-11-14T18:54:56.000Z</ns0:updated><ns0:published>2011-11-14T18:54:56.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Add glibc browser_startup_time links to dashboard (as shortcut)</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2439/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2439" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2439" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2439</ns2:id></ns0:entry>

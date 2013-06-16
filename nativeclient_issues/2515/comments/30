@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0MEQH47eCl7ImA9WhRUFk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2515/comments/full/30</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7688
+
+------------------------------------------------------------------------
+r7688 | ncbray@google.com | Thu Jan 26 17:50:07 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/ncdis_examples1.internal?r1=7688&amp;r2=7687&amp;pathrev=7688
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_jumps.c?r1=7688&amp;r2=7687&amp;pathrev=7688
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/ncop_exps.h?r1=7688&amp;r2=7687&amp;pathrev=7688
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/ncdis_examples.internal?r1=7688&amp;r2=7687&amp;pathrev=7688
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/ncop_expr_node_kind.enum?r1=7688&amp;r2=7687&amp;pathrev=7688
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/gen/ncop_expr_node_kind.h?r1=7688&amp;r2=7687&amp;pathrev=7688
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/ncop_exps_inl.c?r1=7688&amp;r2=7687&amp;pathrev=7688
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_jumps_detailed.c?r1=7688&amp;r2=7687&amp;pathrev=7688
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/nc_inst_trans.c?r1=7688&amp;r2=7687&amp;pathrev=7688
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/ncdis_examples.vinternal?r1=7688&amp;r2=7687&amp;pathrev=7688
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/gen/ncop_expr_node_kind_impl.h?r1=7688&amp;r2=7687&amp;pathrev=7688
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_protect_base.c?r1=7688&amp;r2=7687&amp;pathrev=7688
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/ncop_exps.c?r1=7688&amp;r2=7687&amp;pathrev=7688
+
+Simplify the x86-64 validator's internal representation of constants.
+
+This change required expanding the value stored in each expression node from
+32 bits to 64 bits, which will use a little more memory but results in a
+simpler implementation.  This change also eliminates ambiguities about
+signedness and size of the value by routing accesses through getters.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2515
+TEST= ./scons platform=x86-64 validator_tests
+
+Review URL: https://chromiumcodereview.appspot.com/9235047
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-01-27T01:56:41.000Z</ns0:updated><ns0:published>2012-01-27T01:56:41.000Z</ns0:published><ns2:updates /><ns0:title>Comment 30 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2515#c30" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2515/comments/full/30" rel="self" type="application/atom+xml" /></ns0:entry>

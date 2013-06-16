@@ -1,0 +1,62 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIEQX47eCl7ImA9WhZQGEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1660/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5054
+
+------------------------------------------------------------------------
+r5054 | sehr@google.com | Tue Apr 26 21:05:27 PDT 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/progress_events?r1=5054&amp;r2=5053&amp;pathrev=5054
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/progress_events/nacl.scons?r1=5054&amp;r2=5053&amp;pathrev=5054 (from /trunk/src/native_client/tests/ppapi_browser/nacl.scons revision 5032)
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_bad?r1=5054&amp;r2=5053&amp;pathrev=5054
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/progress_events/ppapi_progress_events.html?r1=5054&amp;r2=5053&amp;pathrev=5054 (from /trunk/src/native_client/tests/ppapi_browser/ppapi_progress_events.html revision 5032)
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/ppapi_bad.cc?r1=5054&amp;r2=5053&amp;pathrev=5054 (from /trunk/src/native_client/tests/ppapi_bad/ppapi_bad.cc revision 5032)
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_geturl/nacl.scons?r1=5054&amp;r2=5053&amp;pathrev=5054
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/plugin_ppapi.h?r1=5054&amp;r2=5053&amp;pathrev=5054
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pnacl_client_translator/nacl.scons?r1=5054&amp;r2=5053&amp;pathrev=5054
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/plugin_async_messaging/nacl.scons?r1=5054&amp;r2=5053&amp;pathrev=5054
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/ppapi_bad.html?r1=5054&amp;r2=5053&amp;pathrev=5054 (from /trunk/src/native_client/tests/ppapi_bad/ppapi_bad.html revision 5032)
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/progress_events/ppapi_progress_events.nmf?r1=5054&amp;r2=5053&amp;pathrev=5054 (from /trunk/src/native_client/tests/ppapi_browser/ppapi_progress_events.nmf revision 5032)
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/nacl.scons?r1=5054&amp;r2=5053&amp;pathrev=5054
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/ppapi_bad_nexe.nmf?r1=5054&amp;r2=5053&amp;pathrev=5054
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/plugin.cc?r1=5054&amp;r2=5053&amp;pathrev=5054
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppapi_progress_events.cc?r1=5054&amp;r2=5053&amp;pathrev=5054
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/browser_interface.cc?r1=5054&amp;r2=5053&amp;pathrev=5054
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/plugin.h?r1=5054&amp;r2=5053&amp;pathrev=5054
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=5054&amp;r2=5053&amp;pathrev=5054
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_proxy/nacl.scons?r1=5054&amp;r2=5053&amp;pathrev=5054
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad?r1=5054&amp;r2=5053&amp;pathrev=5054
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/browser_dynamic_library/nacl.scons?r1=5054&amp;r2=5053&amp;pathrev=5054
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/nacl.scons?r1=5054&amp;r2=5053&amp;pathrev=5054
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppapi_progress_events.html?r1=5054&amp;r2=5053&amp;pathrev=5054
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_test_example/nacl.scons?r1=5054&amp;r2=5053&amp;pathrev=5054
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/progress_events/ppapi_progress_events.js?r1=5054&amp;r2=5053&amp;pathrev=5054 (from /trunk/src/native_client/tests/ppapi_browser/ppapi_progress_events.js revision 5032)
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/plugin_ppapi.cc?r1=5054&amp;r2=5053&amp;pathrev=5054
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_example_audio/nacl.scons?r1=5054&amp;r2=5053&amp;pathrev=5054
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc_hw/nacl.scons?r1=5054&amp;r2=5053&amp;pathrev=5054
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/nacl.scons?r1=5054&amp;r2=5053&amp;pathrev=5054
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/chrome_extension/nacl.scons?r1=5054&amp;r2=5053&amp;pathrev=5054
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/ppapi_bad_doesnotexist.nmf?r1=5054&amp;r2=5053&amp;pathrev=5054
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/ppapi_bad_crossorigin.nmf?r1=5054&amp;r2=5053&amp;pathrev=5054
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/bad/ppapi_bad_magic.nmf?r1=5054&amp;r2=5053&amp;pathrev=5054
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_file_system/nacl.scons?r1=5054&amp;r2=5053&amp;pathrev=5054
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppapi_progress_events.nmf?r1=5054&amp;r2=5053&amp;pathrev=5054
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/earth/nacl.scons?r1=5054&amp;r2=5053&amp;pathrev=5054
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/progress_events/ppapi_progress_events.cc?r1=5054&amp;r2=5053&amp;pathrev=5054 (from /trunk/src/native_client/tests/ppapi_browser/ppapi_progress_events.cc revision 5032)
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/browser_tester/browserdata/nacltest.js?r1=5054&amp;r2=5053&amp;pathrev=5054
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_browser/ppapi_progress_events.js?r1=5054&amp;r2=5053&amp;pathrev=5054
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_core/nacl.scons?r1=5054&amp;r2=5053&amp;pathrev=5054
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/inbrowser_test_runner/nacl.scons?r1=5054&amp;r2=5053&amp;pathrev=5054
+
+Make ppapi_bad.html work under the lightweight browser tester.  Make the
+lightweight browser tester use progress events for waiting when available.
+And make ppapi_bad use the progress event state machine tests for various
+failure scenarios.
+Lastly, I have moved the --enable_experimental_js flag setting into the
+scons files, as this was required to get proper error handling for one
+sub-test and was desired anyway.
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1660
+TEST=run_ppapi_bad_browser_test, run_ppapi_progress_events_browser_test
+Review URL: http://codereview.chromium.org/6894001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-27T04:11:40.000Z</ns0:updated><ns0:published>2011-04-27T04:11:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1660#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1660/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C04HSX47eCl7ImA9WhdbFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2358/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: bf121d5d1aeb2c63779a8a54689f5589f01af980
+ Email: mcgrathr@chromium.org@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Preserve x87 FPU control word across trampoline system calls
+
+The change to clear the x87/SSE/AVX state on system call return
+to prevent information leaks had the unintended consequence of
+breaking the ABI contract requirement that the FPU control word be
+preserved by callees, including system calls.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2358
+TEST= trybots and new tests/infoleak/test_fcw.c test
+
+R=bsy@google.com,sehr@google.com,dschuff@google.com
+
+Review URL: http://codereview.chromium.org/8295016
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6941 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	src/trusted/service_runtime/arch/x86/sel_rt.h
+M	src/trusted/service_runtime/arch/x86_32/nacl_switch_32.S
+M	src/trusted/service_runtime/arch/x86_32/nacl_syscall_32.S
+M	src/trusted/service_runtime/arch/x86_32/sel_rt_32.c
+M	src/trusted/service_runtime/arch/x86_32/sel_rt_32.h
+M	src/trusted/service_runtime/arch/x86_64/nacl_switch_64.S
+M	src/trusted/service_runtime/arch/x86_64/nacl_syscall_64.S
+M	src/trusted/service_runtime/arch/x86_64/sel_rt_64.c
+M	src/trusted/service_runtime/arch/x86_64/sel_rt_64.h
+M	tests/infoleak/nacl.scons
+A	tests/infoleak/test_fpu_control_word.c</ns0:content><ns0:updated>2011-10-15T01:25:38.000Z</ns0:updated><ns0:published>2011-10-15T01:25:38.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2358#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2358/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

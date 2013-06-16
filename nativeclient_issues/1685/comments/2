@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYCRn47eCl7ImA9WhZQEUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1685/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>k...@chromium.org</ns0:name><ns0:uri>/u/112268664018567406585/</ns0:uri></ns0:author><ns0:content type="html">Sadly standard linker can not do anything here because the actual output is different:
+
+$ nacl64-g++ -fPIC -O2 -c test.c -o test.o ; objdump -d test.o
+
+test.o:     file format elf64-x86-64
+
+Disassembly of section .text:
+
+0000000000000000 &lt;_Z3foov&gt;:
+   0:	66 48 8d 3d 00 00 00 	lea    0x0(%rip),%rdi        # 8 &lt;_Z3foov+0x8&gt;
+   7:	00 
+   8:	66 66 90             	xchg   %ax,%ax
+   b:	66 66 66 66 66 66 2e 	nopw   %cs:0x0(%rax,%rax,1)
+  12:	0f 1f 84 00 00 00 00 
+  19:	00 
+  1a:	48 e8 00 00 00 00    	rex.W callq  20 &lt;_Z3foov+0x20&gt;
+  20:	89 c0                	mov    %eax,%eax
+  22:	41 8b 14 07          	mov    (%r15,%rax,1),%edx
+  26:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 2d &lt;_Z3foov+0x2d&gt;
+  2d:	89 c0                	mov    %eax,%eax
+  2f:	41 89 14 07          	mov    %edx,(%r15,%rax,1)
+  33:	41 5b                	pop    %r11
+  35:	41 83 e3 e0          	and    $0xffffffffffffffe0,%r11d
+  39:	4d 01 fb             	add    %r15,%r11
+  3c:	41 ff e3             	jmpq   *%r11
+  3f:	90                   	nop
+
+Additional NOPs were inserted and 0x66 prefixes were pulled from CALL and added to NOP.
+
+It's relatively easy to fix (we can add yet-another-pseudoinstruction... nacltlscall to something) but it'll imply changes in assembler at least.
+</ns0:content><ns0:updated>2011-04-18T17:36:07.000Z</ns0:updated><ns0:published>2011-04-18T17:36:07.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by k...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1685#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1685/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

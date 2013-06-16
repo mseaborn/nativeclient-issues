@@ -1,0 +1,108 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8MRn47eCl7ImA9WhZSFk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1594</ns0:id><ns0:author>
+			<ns0:name>bradnelson@google.com</ns0:name><ns0:uri>/u/bradnelson@google.com/</ns0:uri></ns0:author><ns0:content type="html">We've been seeing the following. We should figure out why.
+
+make[7]: Leaving directory `/cygdrive/c/b/build/slave/win7-toolchain_x86/build/native_client/tools/BUILD/build-newlib-nacl64/nacl64/newlib'
+make[6]: Leaving directory `/cygdrive/c/b/build/slave/win7-toolchain_x86/build/native_client/tools/BUILD/build-newlib-nacl64/nacl64/newlib'
+make[5]: Leaving directory `/cygdrive/c/b/build/slave/win7-toolchain_x86/build/native_client/tools/BUILD/build-newlib-nacl64/nacl64/newlib'
+make[4]: Leaving directory `/cygdrive/c/b/build/slave/win7-toolchain_x86/build/native_client/tools/BUILD/build-newlib-nacl64'
+make[3]: Leaving directory `/cygdrive/c/b/build/slave/win7-toolchain_x86/build/native_client/tools/BUILD/build-newlib-nacl64'
+rm /cygdrive/c/b/build/slave/win7-toolchain_x86/build/native_client/tools/sdk/nacl-sdk/nacl64/include/pthread.h
+touch BUILD/stamp-nacl64-newlib
+make[2]: Leaving directory `/cygdrive/c/b/build/slave/win7-toolchain_x86/build/native_client/tools'
+make -f Makefile nc_threads
+make[2]: Entering directory `/cygdrive/c/b/build/slave/win7-toolchain_x86/build/native_client/tools'
+cd .. &amp;amp;&amp;amp; \
+	 ./scons.bat naclsdk_mode=custom:C:/b/build/slave/win7-toolchain_x86/build/native_client/tools/sdk/nacl-sdk \
+	  --mode=nacl_extra_sdk install_libpthread --verbose \
+	  targetplatform=x86-64
+scons: Reading SConscript files ...
+======================================================================
+SCONS ARGS:['C:\\b\\build\\slave\\win7-toolchain_x86\\build\\native_client\\\\..\\third_party\\scons-2.0.1\\script\\scons', 'naclsdk_mode=custom:C:/b/build/slave/win7-toolchain_x86/build/native_client/tools/sdk/nacl-sdk', '--mode=nacl_extra_sdk', 'install_libpthread', '--verbose', 'targetplatform=x86-64']
+======================================================================
+======================================================================
+Python Info:
+======================================================================
+win32
+2.6.2 (r262:71600, Apr 21 2009, 15:05:37) [MSC v.1500 32 bit (Intel)]
+======================================================================
+ENV:
+======================================================================
+PATH C:\b\build\slave\win7-toolchain_x86\build\native_client\..\third_party\python_26;.;C:\b\depot_tools;C:\b\depot_tools\python_bin;C:\Windows\system32;C:\Windows\system32\WBEM;C:\b\build_internal\tools
+======================================================================
+OS:
+======================================================================
+Windows 7 Enterprise
+ERRROR: processing sys info [Error 2] The system cannot find the file specified
+======================================================================
+The following environments have been configured
+======================================================================
+NACL_BUILD_FAMILY:  UNTRUSTED
+BUILD_TYPE:  nacl_extra_sdk
+TARGET_ROOT:  C:\b\build\slave\win7-toolchain_x86\build\native_client/scons-out/nacl_extra_sdk-x86-32-to-x86-64
+OBJ_ROOT:  C:\b\build\slave\win7-toolchain_x86\build\native_client/scons-out/nacl_extra_sdk-x86-32-to-x86-64/obj
+BUILD_TYPE_DESCRIPTION:  NaCl SDK extra library build
+BUILD_OS:  
+BUILD_ARCHITECTURE:  x86
+BUILD_SUBARCH:  32
+TARGET_OS:  win32
+TARGET_ARCHITECTURE:  x86
+TARGET_SUBARCH:  64
+EMULATOR:  
+CC: C:\b\build\slave\win7-toolchain_x86\build\native_client\tools\sdk\nacl-sdk\bin\nacl64-gcc
+ASPPCOM: C:\b\build\slave\win7-toolchain_x86\build\native_client\tools\sdk\nacl-sdk\bin\nacl64-gcc -m64 -DNACL_BUILD_ARCH=x86 -DNACL_BUILD_SUBARCH=32 -DNACL_BLOCK_SHIFT=5 -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DDYNAMIC_ANNOTATIONS_PREFIX=NACL_ -D__STDC_LIMIT_MACROS=1 -D__STDC_FORMAT_MACROS=1 -IC:\b\build\slave\win7-toolchain_x86\build -c -o
+set
+PROMPT=$P$G
+TMP=C:\Users\CHROME~1\AppData\Local\Temp
+COMSPEC=C:\Windows\system32\cmd.exe
+TEMP=C:\Users\CHROME~1\AppData\Local\Temp
+SystemDrive=C:
+SystemRoot=C:\Windows
+CYGWIN=nodosfilewarning 
+PATH=C:\b\build\slave\win7-toolchain_x86\build\native_client\tools\sdk\nacl-sdk\bin;C:\Windows\System32
+PATHEXT=.COM;.EXE;.BAT;.CMD
+C:\b\build\slave\win7-toolchain_x86\build\native_client\tools\sdk\nacl-sdk\bin\nacl64-gcc --v -c
+C:\b\build\slave\win7-toolchain_x86\build\native_client\tools\sdk\nacl-sdk\bin\nacl64-gcc -print-search-dirs
+Using built-in specs.
+Target: nacl64
+Configured with: ../../SRC/gcc/configure CC='gcc -m32' CFLAGS='-O2 -Dinhibit_libc -D__gthr_posix_h -DNACL_ALIGN_BYTES=32 -DNACL_ALIGN_POW2=5' LDFLAGS= 'CFLAGS_FOR_TARGET=-O2 -g' 'CXXFLAGS_FOR_TARGET=-O2 -g' --disable-decimal-float --disable-libgomp --disable-libmudflap --disable-libssp --disable-libstdcxx-pch --prefix= --target=nacl64 --disable-shared --disable-threads --enable-languages=c --without-headers
+Thread model: single
+gcc version 4.4.3 (GCC) 
+install: /libexec/../lib/gcc/nacl64/4.4.3/
+programs: =/libexec/../libexec/gcc/nacl64/4.4.3/:/libexec/../libexec/gcc/:/libexec/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/nacl64/4.4.3/:/libexec/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/
+libraries: =/libexec/../lib/gcc/nacl64/4.4.3/:/libexec/../lib/gcc/:/libexec/../lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/nacl64/4.4.3/:/libexec/../lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib64/:/libexec/../lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/
+C:\b\build\slave\win7-toolchain_x86\build\native_client\tools\sdk\nacl-sdk\bin\nacl64-gcc -print-libgcc-file-name
+/libexec/../lib/gcc/nacl64/4.4.3/libgcc.a
+
+======================================================================
+Warning: &amp;quot;--mode&amp;quot; did not specify both trusted and untrusted build environments.  As a result, many tests will not be run.
+======================================================================
+======================================================================
+B U I L D - O U T P U T:
+======================================================================
+scons: done reading SConscript files.
+scons: Building targets ...
+Install file: &amp;quot;src\untrusted\pthread\pthread.h&amp;quot; as &amp;quot;tools\sdk\nacl-sdk\nacl64\include\pthread.h&amp;quot;
+Install file: &amp;quot;src\untrusted\pthread\semaphore.h&amp;quot; as &amp;quot;tools\sdk\nacl-sdk\nacl64\include\semaphore.h&amp;quot;
+scons: done building targets.
+
+**********************************************************************
+COMMAND EXECUTION REPORT
+**********************************************************************
+   3 C:\b\build\slave\win7-toolchain_x86\build\native_client\tools\sdk\nacl-sdk\bin\nacl64-gcc
+   2 Install
+   1 set
+
+**********************************************************************
+ENVIRONMENT USAGE REPORT
+**********************************************************************
+   2  C:\b\build\slave\win7-toolchain_x86\build\native_client\scons-out\nacl_extra_sdk-x86-32-to-x86-64
+   4  nacl_extra_sdk-x86-32-to-x86-64
+make[2]: Leaving directory `/cygdrive/c/b/build/slave/win7-toolchain_x86/build/native_client/tools'
+make[1]: Leaving directory `/cygdrive/c/b/build/slave/win7-toolchain_x86/build/native_client/tools'
+The system cannot find the batch label specified - end
+make[2]: *** [nc_threads] Error 1
+make[1]: *** [dev-build] Error 2
+make: *** [build] Error 2
+</ns0:content><ns0:updated>2011-03-31T20:54:47.000Z</ns0:updated><ns0:published>2011-03-31T19:40:45.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>windows toolchain build fails intermittently with label error</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1594/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1594" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1594" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-03-31T20:54:47.000Z</ns2:closedDate><ns2:id>1594</ns2:id></ns0:entry>

@@ -1,0 +1,80 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0UARX47eCl7ImA9WhZRE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1595/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4806
+
+------------------------------------------------------------------------
+r4806 | mseaborn@chromium.org | Fri Apr 08 23:37:20 PDT 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt/irt_elf_utils.c?r1=4806&amp;r2=4805&amp;pathrev=4806
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt/irt_sbrk.c?r1=4806&amp;r2=4805&amp;pathrev=4806
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt/irt_entry.c?r1=4806&amp;r2=4805&amp;pathrev=4806
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt/nacl.scons?r1=4806&amp;r2=4805&amp;pathrev=4806
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_geturl/nacl_file_main.cc?r1=4806&amp;r2=4805&amp;pathrev=4806
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_proxy/user_main.cc?r1=4806&amp;r2=4805&amp;pathrev=4806
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt/irt_elf_utils.h?r1=4806&amp;r2=4805&amp;pathrev=4806
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt_stub/plugin_main_irt.c?r1=4806&amp;r2=4805&amp;pathrev=4806
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=4806&amp;r2=4805&amp;pathrev=4806
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/service_runtime.cc?r1=4806&amp;r2=4805&amp;pathrev=4806
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/tls.c?r1=4806&amp;r2=4805&amp;pathrev=4806
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt/irt_tls.c?r1=4806&amp;r2=4805&amp;pathrev=4806
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/browser_tester/browsertester/browserlauncher.py?r1=4806&amp;r2=4805&amp;pathrev=4806
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/browser_tester/browser_tester.py?r1=4806&amp;r2=4805&amp;pathrev=4806
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt/irt_ppapi.h?r1=4806&amp;r2=4805&amp;pathrev=4806
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/include/elf_auxv.h?r1=4806&amp;r2=4805&amp;pathrev=4806
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt_stub?r1=4806&amp;r2=4805&amp;pathrev=4806
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt_stub/nacl.scons?r1=4806&amp;r2=4805&amp;pathrev=4806
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=4806&amp;r2=4805&amp;pathrev=4806
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_globals.cc?r1=4806&amp;r2=4805&amp;pathrev=4806
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/include/elf.h?r1=4806&amp;r2=4805&amp;pathrev=4806
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_main.cc?r1=4806&amp;r2=4805&amp;pathrev=4806
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_core/nacl.scons?r1=4806&amp;r2=4805&amp;pathrev=4806
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppruntime.h?r1=4806&amp;r2=4805&amp;pathrev=4806
+
+IRT: Link libppruntime into the IRT library
+
+This allows some basic tests to work in the browser on x86-64.
+
+Add plugin_main_irt.c: this provides a stub main() for linking into
+user executables so that they can start PPAPI as supplied by the IRT
+library.  This uses an entry point listed in the auxv.
+
+Trusted plugin:
+ * Add an NACL_IRT_LIBRARY environment variable for supplying the IRT
+   path for testing purposes.
+ * Plumb this environment variable through tools/browser_tester.
+
+sel_ldr: Allow "-B" (IRT loading) to work when using "-R"
+(rpc_supplies_nexe), which the browser plugin uses.
+ * Move the file opening outside the "if (rpc_supplies_nexe)" block.
+ * Load the IRT library after NaClWaitForLoadModuleStatus() has
+   returned.
+
+ppapi_proxy: Change PluginMain() to be 'extern "C"' so that we can
+invoke it from the IRT code (which is in C).  Also rename it to
+PPAPIPluginMain().
+
+Split out the AT_* #defines from elf.h into elf_auxv.h, so that this
+can be #included from nacl_extra_sdk code without having to #define
+NACL_BLOCK_SHIFT, NACL_BUILD_ARCH etc. from Scons (which is
+problematic for PNaCl).
+
+Move find_auxv() and find_auxv_entry() into a separate file,
+irt_elf_utils.c, so that they can be shared between IRT and user code.
+Add "__" prefix to avoid namespace collisions in user code.
+
+IRT hermeticity:
+ * Heap:  Add irt_sbrk.c for isolating the IRT's heap.
+ * TLS:  Add irt_tls.c for isolating the IRT's thread-local storage.
+   Change tls.c to call the recently-added nacl_tls_init() instead of
+   using NACL_SYSCALL(), so that this call can be overridden by
+   irt_tls.c.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1595
+TEST="run_blob_library_loading_test" plus
+  "run_ppapi_core_browser_test irt=1 platform=x86-64"
+  -- most of this passes, except for the OffMainThread parts
+
+Review URL: http://codereview.chromium.org/6826004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-09T06:40:44.000Z</ns0:updated><ns0:published>2011-04-09T06:40:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1595#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1595/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

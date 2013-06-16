@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIHRX47eCl7ImA9Wx5UFUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1051/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Implemented in r3506.
+
+The current implementation requires OS X's pthread_getspecific() to be
+implemented in a particular way, and it checks for that
+implementation.  If this implementation changes, it might be to add
+TLS variables that are directly accessible via a register (as on Linux
+and Windows), which is fine -- that's what we'd like to use.
+
+Otherwise, it seems unlikely that pthread_getspecific() would change,
+but if it does, it will break the current implementation.
+
+If that ever happens, we could use a different strategy in
+nacl_syscall_64.S:
+
+Maintain a list of available stacks, and use an atomic instruction to
+pop a stack off the list.  Use this as the trusted stack to execute
+the NaCl syscall, and push it back onto the list when the syscall
+returns.  With a trusted stack restored, we can call
+pthread_getspecific() if necessary.
+
+Bennet suggested something like that here:
+http://groups.google.com/group/native-client-reviews/browse_frm/thread/478f098579d502ad/b620cc4272625fe9</ns0:content><ns0:updated>2010-10-20T15:28:54.000Z</ns0:updated><ns0:published>2010-10-20T15:28:54.000Z</ns0:published><ns2:updates>
+			<ns2:status>Fixed</ns2:status></ns2:updates><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1051#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1051/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

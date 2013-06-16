@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE8AQX47eCl7ImA9WhRVFEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1565/comments/full/45</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Bisection shows that the mis-compile for arm where we reliably segfault in llc.arm.nexe appears after this patch:
+
+http://llvm.org/viewvc/llvm-project?view=rev&amp;revision=147731
+
+Will probably try to extract the DenseMap code and try to repro from that.
+
+Other notes:
+- Attempts to repro in other tests like the llvm-test suite didn't show anything (anything NEW for arm).
+- Gcc torture test suite hasn't shown anything new either.
+- Random program generators like CSmith (http://embed.cs.utah.edu/csmith/) don't show any miscompiles after running 10,000 random tests (around 30KB - 200KB each).
+
+
+Also, there is another bug before 147731 (in the range 146722 to 147730), which makes 176.gcc's output differ after about 27,000 lines of assembly output (it makes 176.gcc allocate register rN+1 when it should allocate rN, or rN-1 instead of rN)...
+</ns0:content><ns0:updated>2012-01-13T20:34:00.000Z</ns0:updated><ns0:published>2012-01-13T20:34:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 45 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1565#c45" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1565/comments/full/45" rel="self" type="application/atom+xml" /></ns0:entry>

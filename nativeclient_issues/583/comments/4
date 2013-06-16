@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYGRn47eCl7ImA9Wx5REUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/583/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">There are two possible ways to fix this:
+
+1) Port render_sandbox_host_linux.cc and
+renderer_sandbox_support_linux.cc to work on Mac OS X.  These are
+currently used on Linux for getting SHM FDs.  Porting this might be
+difficult because it uses SOCK_SEQPACKET sockets, but OS X only has
+SOCK_STREAM sockets.
+
+2) Since NaCl only needs a single PROT_EXECable SHM FD per sel_ldr
+instance, we could instead pass this FD via the sel_ldr startup code
+(i.e. via the code path that includes chrome/nacl/nacl_thread.cc).
+
+I think (2) will be easier.  My plan is to do issue 469 first, so that
+the special case for pre-creating a single executable SHM FD per
+sel_ldr instance can be done on the Chromium side.</ns0:content><ns0:updated>2010-08-18T16:15:27.000Z</ns0:updated><ns0:published>2010-08-18T16:15:27.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>-mseab...@google.com</ns2:ccUpdate><ns2:ccUpdate>mseab...@chromium.org</ns2:ccUpdate></ns2:updates><ns0:title>Comment 4 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=583#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/583/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,77 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08MRX47eCl7ImA9WhZWGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1729/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5385
+
+------------------------------------------------------------------------
+r5385 | noelallen@google.com | Fri May 20 14:05:08 PDT 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncopcode_opcode_flags_impl.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncbadprefixmask_64.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncopcode_insts.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncopcode_prefix_impl.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncopcode_operand_kind.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncopcode_desc.c?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/nacl_disallows.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncop_expr_node_flag.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncop_expr_node_flag_impl.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/nc_subregs_32.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/nc_opcode_table_32.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncopcode_operand_kind_impl.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncopcode_desc.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncopcode_prefix.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode.c?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncopcode_opcode_flags.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen?r1=5385&amp;r2=5384&amp;pathrev=5385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86/service_runtime_x86.gyp?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncdisasmtab_64.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncdecodetab_64.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncopcode_operand_flag.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/validator_x86.gyp?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncop_expr_node_kind_impl.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_state_statics.c?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncbadprefixmask_32.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/nc_subregs_64.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/nc_opcode_table_64.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/build.scons?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/nacl_disallows_impl.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/service_runtime_x86_32.gyp?r1=5385&amp;r2=5384&amp;pathrev=5385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/trusted_test.py?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncopcode_insts_impl.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncval_driver.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncop_expr_node_kind.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncopcode_operand_flag_impl.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_trans.c?r1=5385&amp;r2=5384&amp;pathrev=5385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdis_util.c?r1=5385&amp;r2=5384&amp;pathrev=5385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncop_exps.c?r1=5385&amp;r2=5384&amp;pathrev=5385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncvalidate.c?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncdisasmtab_32.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncop_exps.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/gen/ncdecodetab_32.h?r1=5385&amp;r2=5384&amp;pathrev=5385
+
+Check in validator sources
+
+Modify scons to create 'valgen' target to generate
+  *.h and *_impl.h from *.enum files
+  ncdecode_table, ncdecode_tablegen executables
+  executable generated files
+Modify scons to create 'valclean' target to remove generated files.
+Modify sources which uses these files to grab them locally instead
+from the output 'gen' directory.
+Modify sources which use ncdecode_table files to now use *_32.h and
+*_64.h versions of the files.
+Removed generation steps from .gyp
+Removed dependency on generation steps from .gyp
+Added generated files to the repository
+Modified trusted_tests.py to remove ncids tests from .gyp
+
+TBD - We need to fix line lengths and copyright notice issues
+due to checking in generated code.
+see: http://code.google.com/p/nativeclient/issues/detail?id=1828
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1729
+TEST= build with try bots
+Review URL: http://codereview.chromium.org/7044028
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-20T21:11:24.000Z</ns0:updated><ns0:published>2011-05-20T21:11:24.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1729#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1729/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

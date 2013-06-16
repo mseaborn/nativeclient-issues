@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUUCQX47eCl7ImA9WhZbEEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1914/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5631
+
+------------------------------------------------------------------------
+r5631 | mseaborn@chromium.org | Mon Jun 13 17:55:42 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=5631&amp;r2=5630&amp;pathrev=5631
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=5631&amp;r2=5630&amp;pathrev=5631
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=5631&amp;r2=5630&amp;pathrev=5631
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.c?r1=5631&amp;r2=5630&amp;pathrev=5631
+
+sel_ldr: Remove obsolete code for preventing Windows crash dialogs
+
+This code does not help in most cases, anyway, since it does not
+prevent the crash dialog if a fault occurs in sandboxed x86-32 code,
+since we cannot catch faults in this case.
+
+Whoever added this code presumably was not aware of SetErrorMode(),
+which is a better way to disable the crash dialogs.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1914
+TEST=none
+
+Review URL: http://codereview.chromium.org/6995162
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-06-14T01:01:00.000Z</ns0:updated><ns0:published>2011-06-14T01:01:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1914#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1914/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

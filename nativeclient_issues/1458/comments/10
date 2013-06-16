@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMCQ347eCl7ImA9WhZRF0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1458/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">NaClAllocatePow2AlignedMemory is used during the 64-bit system's address space setup, to allocate the sandbox and the guard regions.  The remaining error probably indicates one of two things:
+
+1. We can't find 2^37 bytes of contiguous virtual address space in the 2^47 byte process, which seems unlikely, or
+2. OpenSUSE's memory management config is slightly different and we're trying to reserve the guard regions.  This would manifest as either 40+GiB of committed swap, or (in the more common cases where that isn't available) a failure to allocate.
+
+Whether or not Fedora is officially supported, this seems like a potential source of fragility on Linux, and we should try to reproduce it (as time allows, of course).
+
+This might also be a sign that we should shrink the 64-bit guard regions.  As Victor and I have both pointed out, we really only need 2GiB of negative guard, rather than the 40GiB we allocate today.  If this *does* turn out to be an address space fragmentation issue, this would reduce our footprint by nearly half.
+
+Adding Bennett to double-check me, removinng SDK tag as it now appears unrelated.</ns0:content><ns0:updated>2011-04-14T15:21:02.000Z</ns0:updated><ns0:published>2011-04-14T15:21:02.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Component-SDK</ns2:label><ns2:ccUpdate>b...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 10 by cbiffle@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1458#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1458/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

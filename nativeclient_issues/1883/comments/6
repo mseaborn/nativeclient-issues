@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0EBSH47eCl7ImA9WhZUE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1883/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I had assumed that we would need to map the read-write mapping of the dyncode area on startup before doing shmctl()+IPC_RMID.  Actually it turns out that SysV SHM's semantics are weird, and shmat() will still work after using IPC_RMID until the existing mappings are garbage collected.  The man page for shmctl() hints at this.
+
+The attached test program demonstrates this.
+
+However, this doesn't help much.  We would still have to map the whole 256MB area with each shmat() call, so we still risk running out of address space, unless we complicate things by splitting the dyncode area into chunks.  The failure mode changes a little, though:  this can cause address space exhaustion only if NaCl's dyncode_create() syscall is called at runtime.
+</ns0:content><ns0:updated>2011-06-06T19:47:39.000Z</ns0:updated><ns0:published>2011-06-06T19:47:39.000Z</ns0:published><ns2:updates>
+			<ns2:ownerUpdate>mseaborn@chromium.org</ns2:ownerUpdate></ns2:updates><ns0:title>Comment 6 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1883#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1883/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

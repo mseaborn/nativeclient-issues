@@ -1,0 +1,8 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0EDSX47eCl7ImA9WhdbEks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/540</ns0:id><ns0:author>
+			<ns0:name>dsch...@google.com</ns0:name><ns0:uri>/u/115616189878088181970/</ns0:uri></ns0:author><ns0:content type="html">Currently listed as a TODO(tuduce) on line 766 of 
+src/trusted/service_runtime/build.scons and line ~137 of trusted_test.py
+
+No indication on why test doesn't work (don't have windows machine 
+available)</ns0:content><ns0:updated>2011-10-10T18:01:18.000Z</ns0:updated><ns0:published>2010-06-02T23:27:08.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>Make sel_ldr_thread_death_test work in Windows</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Test</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-17</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/540/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=540" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/540" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>540</ns2:id></ns0:entry>

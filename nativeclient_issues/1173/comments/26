@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUIMQ347eCl7ImA9WhdSE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1173/comments/full/26</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 53211ed80dbb7375028786549cfedec7f8f83292
+ Email: mball@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Revert "Bmp newlib revision"
+
+This reverts commit r6166 6c20935ab3e2bd385d148aeb57823af944f8ca15.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1173
+TBR=eaeltsin
+
+Review URL: http://codereview.chromium.org/7491012
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6170 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	tools/REVISIONS</ns0:content><ns0:updated>2011-07-22T14:06:22.000Z</ns0:updated><ns0:published>2011-07-22T14:06:22.000Z</ns0:published><ns2:updates /><ns0:title>Comment 26 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1173#c26" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1173/comments/full/26" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEMNQX47eCl7ImA9Wx9aF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1509/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">BTW: The reason why this fails only on ARM is because of this hack in 
+ site_scons/site_tools/naclsdk.py
+
+ld_map = {
+      'arm':    pnacl_sdk_root + '/bin/pnacl-ld',
+      'x86-32': '${MAIN_DIR}/toolchain/linux_x86/bin/nacl-ld',
+      'x86-64': '${MAIN_DIR}/toolchain/linux_x86/bin/nacl64-ld'
+        }
+
+...
+ LINK=pnacl_sdk_ld + pnacl_sdk_ld_flags,
+ # Grrr... and sometimes we need raw assembly and the real ld.
+ LD=ld_map[arch],
+
+
+
+Beside the regular link command "LINK" we also make "LD" available in the pnacl env, but this is only use
+by  src/trusted/service_runtime/nacl.scons 
+I have signed up to get rid of the hacks in  src/trusted/service_runtime/nacl.scons but we need a mechanism for generating non-compliant nexes on all three archs, in particular we need to be able to create nexes where the gap between text and rodata segments is &lt; 32.</ns0:content><ns0:updated>2011-03-10T15:54:50.000Z</ns0:updated><ns0:published>2011-03-10T15:54:50.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1509#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1509/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4BRn47eCl7ImA9WhRbFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2352</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">See the logs at:
+http://build.chromium.org/p/tryserver.nacl/builders/nacl-lucid32_newlib_opt/builds/2948/steps/gyp_compile/logs/stdio
+
+We see that a pass is reported for the link:
+
+/mnt/data/b/build/slave/linux-pnacl-x86_64-newlib/build/native_client/toolchain/hg-build-newlib/llvm-gcc-arm/gcc/libgcc/unwind-dw2-fde.o---unwind-dw2-fde.c---.po:(.text+0xb5c): undefined reference to `abort'
+pnacl_support/x86-32/libgcc_eh.a(unwind-dw2-fde.o): In function `size_of_encoded_value':
+/mnt/data/b/build/slave/linux-pnacl-x86_64-newlib/build/native_client/toolchain/hg-build-newlib/llvm-gcc-arm/gcc/libgcc/unwind-dw2-fde.o---unwind-dw2-fde.c---.po:(.text+0x16fc): undefined reference to `abort'
+pnacl_support/x86-32/libgcc_eh.a(unwind-dw2-fde.o): In function `start_fde_sort':
+/mnt/data/b/build/slave/linux-pnacl-x86_64-newlib/build/native_client/toolchain/hg-build-newlib/llvm-gcc-arm/gcc/libgcc/unwind-dw2-fde.o---unwind-dw2-fde.c---.po:(.text+0x195c): undefined reference to `malloc'
+/mnt/data/b/build/slave/linux-pnacl-x86_64-newlib/build/native_client/toolchain/hg-build-newlib/llvm-gcc-arm/gcc/libgcc/unwind-dw2-fde.o---unwind-dw2-fde.c---.po:(.text+0x197c): undefined reference to `malloc'
+pnacl_support/x86-32/libgcc_eh.a(unwind-dw2-fde.o): In function `end_fde_sort':
+/mnt/data/b/build/slave/linux-pnacl-x86_64-newlib/build/native_client/toolchain/hg-build-newlib/llvm-gcc-arm/gcc/libgcc/unwind-dw2-fde.o---unwind-dw2-fde.c---.po:(.text+0x1d1c): undefined reference to `free'
+/mnt/data/b/build/slave/linux-pnacl-x86_64-newlib/build/native_client/toolchain/hg-build-newlib/llvm-gcc-arm/gcc/libgcc/unwind-dw2-fde.o---unwind-dw2-fde.c---.po:(.text+0x1d5c): undefined reference to `abort'
+[10052,4019448688:11:58:03.949239] PluginReverseInterface::ReportCrash
+[SRPC:HOST:10052,4019039088:11:58:03.949361] NaClSrpcRpcWait(channel=0xf8d2ae98): EOF is received instead of response. Probably, the other side (usually, nacl module or browser plugin) crashed.
+[10052,4019448688:11:58:03.949552] PluginReverseInterface::ReportCrash: crash_cb_ not valid, skipping
+[10052,4019243888:11:58:03.954308] PluginReverseInterface::ReportCrash
+[10052,4019243888:11:58:03.954609] PluginReverseInterface::ReportCrash: crash_cb_ not valid, skipping
+[  4966 ms] |||| [bad_pexe_undefined_syms PASS]
+[  4974 ms] |||| 
+[  4978 ms] |||| [nonexistent_pexe BEGIN]
+[  4987 ms] |||| GET /pnacl_bad_doesnotexist.nmf (/pnacl_bad_doesnotexist.nmf)
+[  4999 ms] |||| GET /non_existent.pexe (/non_existent.pexe)
+[  5012 ms] |||| [nonexistent_pexe PASS]
+
+
+But before that we see that we did not load the linker:
+
+[   662 ms] |||| GET /pnacl_support/x86-32/llc (/pnacl_support/x86-32/llc)
+[   690 ms] |||| GET /pnacl_support/x86-32/ld (/pnacl_support/x86-32/ld)
+[   691 ms] |||| GET /pnacl_support/x86-32/libcrt_platform.a (/pnacl_support/x86-32/libcrt_platform.a)
+[   692 ms] |||| GET /pnacl_support/x86-32/libgcc.a (/pnacl_support/x86-32/libgcc.a)
+[   693 ms] |||| GET /pnacl_support/x86-32/libgcc_eh.a (/pnacl_support/x86-32/libgcc_eh.a)
+[10052,4019448688:11:58:00.194049] PluginReverseInterface::StartupInitializationComplete
+[10052,4019448688:11:58:00.194534] PluginReverseInterface::StartupInitializationComplete: init_done_cb_ not valid, skipping.
+[SRPC:HOST:10052,4019379056:11:58:00.199688] NaClSrpcRpcWait(channel=0xf8cb4c98): EOF is received instead of response. Probably, the other side (usually, nacl module or browser plugin) crashed.
+[10052,4019448688:11:58:00.199766] PluginReverseInterface::ReportCrash
+[10052,4019448688:11:58:00.199973] PluginReverseInterface::ReportCrash: crash_cb_ not valid, skipping
+[  1216 ms] |||| [bad_pexe FAIL] ('NaCl module load failed: Could not load pnacl linker nexe' != 'NaCl module load failed: PnaclCoordinator compile failed.')
+[  1243 ms] |||| 
+
+So how did we get here?</ns0:content><ns0:updated>2012-02-06T20:42:37.000Z</ns0:updated><ns0:published>2011-10-12T20:55:00.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Unexpected failure in nacl.run_pnacl_bad_browser_test</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-</ns2:label><ns2:label>Arch-</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2352/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2352" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2352" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2012-02-06T20:42:37.000Z</ns2:closedDate><ns2:id>2352</ns2:id></ns0:entry>

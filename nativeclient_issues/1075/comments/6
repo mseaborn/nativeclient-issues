@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08GRn47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1075/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3571
+
+------------------------------------------------------------------------
+r3571 | mseaborn@chromium.org | Wed Oct 27 08:03:33 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/REVISIONS?r1=3571&amp;r2=3570&amp;pathrev=3571
+
+Update nacl-glibc revision
+
+This pulls in:
+c65ca58  Fix futexes: Ensure they get initialised only once
+ae4248f  pthread_join(): Fix race condition
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1075
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1097
+TEST=small_tests --nacl_glibc
+  (however, these changes are covered by run_thread_test which
+  does not yet pass fully)
+
+Review URL: http://codereview.chromium.org/4188003
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:17:07.000Z</ns0:updated><ns0:published>2011-01-21T23:17:07.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1075#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1075/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

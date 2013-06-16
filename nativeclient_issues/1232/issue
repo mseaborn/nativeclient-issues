@@ -1,0 +1,51 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4CR347eCl7ImA9WhZQFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1232</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">QEMU tests currently show minor differences in performance with and without llc flag &amp;quot;sfi-disable-cp&amp;quot;. Eventually, we should test with hardware, and if that actually shows a major difference do some more investigation / make some improvements. Otherwise, we can live with the differences (some of which are in favor of having no constant islands).
+
+Here are the QEMU numbers for now:
+
+========
+non-PIC
+========
+
+Columns: (bench, out of islands User, Sys, in islands User, Sys, comment)
+gcc 23.74 0.14 23.87 0.15
+mesa 476.99 0.30 495.25 1.76  (* no islands better? *)
+mcf 22.92 0.14 23.22 0.14
+vortex 78.13 0.31 80.22 0.35
+art 53.91 0.10 53.83 0.32
+ammp 1194.79 0.35 1210.12 2.57 (* no islands better? *)
+eon 125.09 0.30 124.22 0.45
+crafty 115.16 0.19 115.64 0.12
+perlbmk 514.68 1.85 547.30 0.42 (* no islands better? *)
+twolf 77.16 0.12 70.88 0.39  (* islands better? *)
+parser 49.02 0.13 48.57 0.12
+equake 511.92 0.20 512.09 1.93
+gzip 175.43 0.16 175.37 0.22
+gap 41.27 0.30 41.31 0.19
+bzip2 123.04 0.10 119.87 0.43 (* no islands better *)
+vpr 121.62 0.18 121.88 0.34
+
+========
+PIC
+========
+
+Same: (bench, out of islands User, Sys, in islands User, Sys, comment)
+gcc 25.14 0.21 24.28 0.17
+mesa 506.58 0.22 477.94 1.80 (* islands better *)
+mcf 25.01 0.22 24.93 0.14
+vortex 90.35 0.43 91.48 0.18
+art 54.33 0.16 53.95 0.26
+ammp 1202.52 3.27 1220.03 (* no islands better *)
+eon 127.90 0.29 125.02 0.72 (* islands better *)
+crafty 131.69 0.49 124.74 0.09 (* islands better *)
+perlbmk 560.65 0.42 564.88 2.08
+twolf 79.19 0.16 78.85 0.38
+parser 50.84 0.28 50.42 0.16
+equake 507.94 1.85 506.56 0.27
+gzip 192.85 0.75 182.31 0.17 (* islands better *)
+gap 44.64 0.27 45.06 0.17
+bzip2 128.06 0.46 128.89 0.10
+vpr 131.77 0.65 159.61 0.19 (* no islands better *)
+
+</ns0:content><ns0:updated>2011-04-21T21:22:46.000Z</ns0:updated><ns0:published>2010-12-08T21:16:18.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:state>closed</ns2:state><ns0:title>Investigate ARM performance with const pools in islands vs in data</ns0:title><ns2:label>Type-Task</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Milestone-Caviar</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1232/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1232" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1232" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-04-21T21:22:46.000Z</ns2:closedDate><ns2:id>1232</ns2:id></ns0:entry>

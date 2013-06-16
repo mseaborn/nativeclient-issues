@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHRH47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1907</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">mmap branch in tests/srpc/cat.c can read past the end of the mmap'ed area if the buffer provided for SRPC response is larger than the size of the mapping.
+
+Also, Memcheck on run_srpc_url_as_nacl_desc_chrome_browser_test reports the following:
+
+Syscall param socketcall.sendmsg(msg.msg_iov[i]) points to uninitialised byte(s)
+  0x5048F2D (/build/buildd/eglibc-2.11.1/nptl/../sysdeps/unix/syscall-template.S:82)
+  nacl::SendDatagram(int, nacl::MessageHeader const*, int) (native_client/src/shared/imc/linux/nacl_imc.cc:130)
+  NaClSendDatagram (native_client/src/shared/imc/nacl_imc_c.cc:43)
+  NaClDescImcDescSendMsg (native_client/src/trusted/desc/nacl_desc_imc.c:191)
+  NaClImcSendTypedMessage (native_client/src/trusted/desc/nrd_xfer.c:365)
+  NaClCommonSysImc_Sendmsg (native_client/src/trusted/service_runtime/nacl_syscall_common.c:1928)
+  NaClSysImc_Sendmsg (native_client/scons-out/dbg-linux-x86-64/gen/native_client/src/trusted/service_runtime/nacl_syscall_handlers.c:458)
+  NaClSysImc_SendmsgDecoder (native_client/scons-out/dbg-linux-x86-64/gen/native_client/src/trusted/service_runtime/nacl_syscall_handlers.c:920)
+  NaClSyscallCSegHook (native_client/src/trusted/service_runtime/nacl_syscall_hook.c:147)
+
+...
+
+Address 0xb10045883 is 811 bytes inside a block of size 4,096 alloc'd
+  _malloc_r (/mnt/data/b/build/slave/lucid64-toolchain_x86/build/native_client/src/untrusted/valgrind/valgrind_interceptors.c:189)
+  NaClSrpcReceiveAndDispatch (/mnt/data/b/build/slave/lucid64-toolchain_x86/build/native_client/src/shared/srpc/rpc_serialize.c:287)
+  NaClSrpcRpcWait (/mnt/data/b/build/slave/lucid64-toolchain_x86/build/native_client/src/shared/srpc/rpc_serialize.c:1147)
+  NaClSrpcServerLoop (/mnt/data/b/build/slave/lucid64-toolchain_x86/build/native_client/src/shared/srpc/rpc_server_loop.c:48)
+  NaClSrpcAcceptClientConnection (/mnt/data/b/build/slave/lucid64-toolchain_x86/build/native_client/src/shared/srpc/accept.c:28)
+  main (native_client/tests/srpc/cat.c:95)
+
+The part of the char array after the end of the file data is uninitialized.
+</ns0:content><ns0:updated>2011-07-29T00:12:15.000Z</ns0:updated><ns0:published>2011-06-09T11:35:40.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>One uninitialized read and one invalid read in tests/srpc/cat.c</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Tests</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1907/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1907" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1907" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1907</ns2:id></ns0:entry>

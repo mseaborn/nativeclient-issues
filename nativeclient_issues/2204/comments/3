@@ -1,0 +1,48 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkACSH47eCl7ImA9WhdXGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2204/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">An initial list of failures we should follow up on 
+
+These compile and run (zero exit code) with (nacl-)gcc -O0 but not with pnacl -O0:
+
+# signed/unsigned mixup
+20080506-1.c
+# alignment issues using __alignof__
+alloca-1.c
+# hangs compiler/translator
+pr20621-1.c
+# compiler hangs
+pr23135.c
+# modulo operation with negative numbers
+pr34070-1.c
+# signed/unsigned mixup
+pr34070-2.c
+# select function via ? - looks like a complete miscompile
+pr34768-1.c
+# long long with bitfields
+pr34971.c
+# signed/unsigned mixup
+pr35163.c
+# div weirdness
+pr36077.c
+# bitfield magic
+pr40404.c
+# long long miscompile
+pr42544.c
+# null pointers
+pr44555.c
+# sizeof integer overflow
+pr48197.c
+# var length array - segfault
+vla-dealloc-1.c
+
+These compile and run (zero exit code) with (nacl-)gcc -O3 but not with pnacl -O3
+# uses "&amp;&amp;" extension
+20071210-1.c
+# uses  __builtin_constant_p
+bcp-1.c
+# uses  __builtin_constant_p
+builtin-constant.c
+#int overflow
+pr45262.c
+</ns0:content><ns0:updated>2011-09-01T16:32:49.000Z</ns0:updated><ns0:published>2011-09-01T16:32:49.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>krasin@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 3 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2204#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2204/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

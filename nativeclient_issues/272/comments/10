@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEIMQH47eCl7ImA9WxBUEk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/272/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>dt...@codeaurora.org</ns0:name><ns0:uri>/u/102710273696022658094/</ns0:uri></ns0:author><ns0:content type="html">I started looking at this this week.
+I am using the ecvtbuf test case, passing in 3.14.
+I have isolated the issue to the conversion loop starting at line 520.
+It seems to have problems with the statement:  d.d -= L;
+From what I can see llc attempts to use the instruction
+	vnmla.f64	d0, d2, d3
+w/ d0=1.0, d2=0.1400, d3=10.0
+instead of getting the result of 0.400 in register d0, we end up with -2.14000.
+
+I will continue to look at this unless someone already has a solution.</ns0:content><ns0:updated>2010-02-26T23:23:01.000Z</ns0:updated><ns0:published>2010-02-26T23:23:01.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by dt...@codeaurora.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=272#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/272/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

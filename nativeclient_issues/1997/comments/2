@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYFR347eCl7ImA9WhdTFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1997/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=6050
+
+------------------------------------------------------------------------
+r6050 | kschimpf@google.com | Thu Jul 14 10:18:58 PDT 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_decode_tables.h?r1=6050&amp;r2=6049&amp;pathrev=6050
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_state.h?r1=6050&amp;r2=6049&amp;pathrev=6050
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_state_statics.c?r1=6050&amp;r2=6049&amp;pathrev=6050
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_state_tests.cc?r1=6050&amp;r2=6049&amp;pathrev=6050
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nccopycode.c?r1=6050&amp;r2=6049&amp;pathrev=6050
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_iter.c?r1=6050&amp;r2=6049&amp;pathrev=6050
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/build.scons?r1=6050&amp;r2=6049&amp;pathrev=6050
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdis_decode_tables.c?r1=6050&amp;r2=6049&amp;pathrev=6050
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_state_internal.h?r1=6050&amp;r2=6049&amp;pathrev=6050
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdis_decode_tables.h?r1=6050&amp;r2=6049&amp;pathrev=6050
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncenuminsts.c?r1=6050&amp;r2=6049&amp;pathrev=6050
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdis.c?r1=6050&amp;r2=6049&amp;pathrev=6050
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdis_segments.c?r1=6050&amp;r2=6049&amp;pathrev=6050
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_iter.c?r1=6050&amp;r2=6049&amp;pathrev=6050
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_iter.h?r1=6050&amp;r2=6049&amp;pathrev=6050
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_state.c?r1=6050&amp;r2=6049&amp;pathrev=6050
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/validator_x86.gyp?r1=6050&amp;r2=6049&amp;pathrev=6050
+
+Make the decoder tables used by the x86-64 decoder explicit. This is in preparation for building a partial decoder for the validator, based on the full decoder.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1997
+Review URL: http://codereview.chromium.org/7338007
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-07-14T17:21:56.000Z</ns0:updated><ns0:published>2011-07-14T17:21:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1997#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1997/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

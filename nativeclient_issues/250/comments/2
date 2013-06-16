@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMEQX47eCl7ImA9WxBXEEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/250/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">we may want to decouple localhost vs expiration.  expiration can be useful in the 
+(possibly too rare) scenario where a user unsubscribes from our update process but 
+leaves the binaries installed.  this is trivial in linux by removing 
+/etc/apt/sources.list.d/google-chrome.list, but might be harder for windows/osx where 
+omaha is used.  leaving expiration in puts an additional burden on us to update even 
+when there's no other software changes, and we should do the cost-benefits analysis 
+wrt bandwidth, engineering costs, etc (apt doesn't do incremental update, though we 
+should be able to organize the code so that the expiration is in a separate .so) 
+versus the additional user protection that we can provide.  when users are altering 
+their machine's configs, it's hard to make our protection fool proof....
+
+as for the localhost restriction, we definitely should not remove until we have had 
+our security code audits and after all p0 security bugs have been fixed.  it's a 
+judgement call for p1 and lower bugs -- as is the assignments of the bugs' priority / 
+criticality -- and we'll have to figure out the process.  we also need a way to set 
+up the ability to (temporarily) make high priority security bugs unreadable to the 
+public until they've been fixed, assuming that the security researchers are following 
+responsible disclosure etc.  such issues in the issue tracker should become public 
+after the fix has been live in the stable channel for a couple of days, so that most 
+people will have picked up the fix, and should not remain hidden for much longer.</ns0:content><ns0:updated>2010-01-20T19:06:40.000Z</ns0:updated><ns0:published>2010-01-20T19:06:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=250#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/250/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

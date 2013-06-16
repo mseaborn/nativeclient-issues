@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkAERH47eCl7ImA9WhdXEk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1423</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Computed gotos generate incorrect code in PNaCl: the code generator fails to align the labels.  Here is a test case (also at http://codereview.chromium.org/6512013):
+
+#include &amp;lt;assert.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+
+int test_computed_goto(int index) {
+  void *addr[] = { &amp;amp;&amp;amp;label1, &amp;amp;&amp;amp;label2 };
+  printf(&amp;quot;Jumping to address %p\n&amp;quot;, addr[index]);
+  goto *addr[index];
+ label1:
+  return 1234;
+ label2:
+  return 4567;
+}
+
+int main() {
+  assert(test_computed_goto(0) == 1234);
+  assert(test_computed_goto(1) == 4567);
+  return 0;
+}
+
+When run on ARM, this produces the output:
+
+Jumping to address 0x201e8
+
+and the process spins in an infinite loop.
+</ns0:content><ns0:updated>2011-08-24T23:31:45.000Z</ns0:updated><ns0:published>2011-02-13T02:32:16.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Computed gotos generate incorrect code in PNaCl</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1423/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1423" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1423" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-24T23:31:45.000Z</ns2:closedDate><ns2:id>1423</ns2:id></ns0:entry>

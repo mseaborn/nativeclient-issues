@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUFSH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/904/comments/full/19</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4082
+
+------------------------------------------------------------------------
+r4082 | nfullagar@google.com | Thu Jan 06 15:43:39 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_audio.cc?r1=4082&amp;r2=4081&amp;pathrev=4082
+
+fix for StopAudio() hang
+
+bug=http://code.google.com/p/nativeclient/issues/detail?id=904
+test=sine_synth
+
+Review URL: http://codereview.chromium.org/6058011
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:23:39.000Z</ns0:updated><ns0:published>2011-01-21T23:23:39.000Z</ns0:published><ns2:updates /><ns0:title>Comment 19 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=904#c19" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/904/comments/full/19" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,80 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUECQH47eCl7ImA9Wx9UGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/984</ns0:id><ns0:author>
+			<ns0:name>mli...@google.com</ns0:name><ns0:uri>/u/109474787648168037085/</ns0:uri></ns0:author><ns0:content type="html">hat steps will reproduce the problem?
+1. Checkout the SDK on windows.
+2. from src, run python build_tools\generate_installers.py
+
+What is the expected output?
+- A completed SDK installer for Windows.
+
+What do you see instead?
+
+File: failed opening file &amp;quot;packages.unpacked\naclsdk_win_x86.tgz\sdk\nacl-sdk\nacl64\lib\32\crt1.o&amp;quot;
+Error in script &amp;quot;make_native_client_sdk.nsi&amp;quot; on line 1577 -- aborting creation process
+
+Victor investigated this for me, and found that certain files are created in the compiler tarball with 000 perms:
+
+
+$ wget http://gsdview.appspot.com/nativeclient-archive/toolchain/latest/naclsdk_win_x86a.tgz
+--2010-06-16 00:06:11--  http://gsdview.appspot.com/nativeclient-archive/toolchain/latest/naclsdk_win_x86a.tgz
+&#1055;&#1088;&#1077;&#1086;&#1073;&#1088;&#1072;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1072;&#1076;&#1088;&#1077;&#1089;&#1072; gsdview.appspot.com... 74.125.39.141
+&#1059;&#1089;&#1090;&#1072;&#1085;&#1072;&#1074;&#1083;&#1080;&#1074;&#1072;&#1077;&#1090;&#1089;&#1103; &#1089;&#1086;&#1077;&#1076;&#1080;&#1085;&#1077;&#1085;&#1080;&#1077; &#1089; gsdview.appspot.com|74.125.39.141|:80... &#1089;&#1086;&#1077;&#1076;&#1080;&#1085;&#1080;&#1083;&#1080;&#1089;&#1100;.
+&#1047;&#1072;&#1087;&#1088;&#1086;&#1089; HTTP &#1087;&#1086;&#1089;&#1083;&#1072;&#1085;, &#1086;&#1078;&#1080;&#1076;&#1072;&#1085;&#1080;&#1077; &#1086;&#1090;&#1074;&#1077;&#1090;&#1072;... 302 Found
+&#1040;&#1076;&#1088;&#1077;&#1089;: http://commondatastorage.googleapis.com/nativeclient-archive/toolchain/latest/naclsdk_win_x86a.tgz [&#1087;&#1077;&#1088;&#1077;&#1093;&#1086;&#1076;]
+--2010-06-16 00:06:11--  http://commondatastorage.googleapis.com/nativeclient-archive/toolchain/latest/naclsdk_win_x86a.tgz
+&#1055;&#1088;&#1077;&#1086;&#1073;&#1088;&#1072;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1072;&#1076;&#1088;&#1077;&#1089;&#1072; commondatastorage.googleapis.com... 209.85.135.132
+&#1059;&#1089;&#1090;&#1072;&#1085;&#1072;&#1074;&#1083;&#1080;&#1074;&#1072;&#1077;&#1090;&#1089;&#1103; &#1089;&#1086;&#1077;&#1076;&#1080;&#1085;&#1077;&#1085;&#1080;&#1077; &#1089; commondatastorage.googleapis.com|209.85.135.132|:80... &#1089;&#1086;&#1077;&#1076;&#1080;&#1085;&#1080;&#1083;&#1080;&#1089;&#1100;.
+&#1047;&#1072;&#1087;&#1088;&#1086;&#1089; HTTP &#1087;&#1086;&#1089;&#1083;&#1072;&#1085;, &#1086;&#1078;&#1080;&#1076;&#1072;&#1085;&#1080;&#1077; &#1086;&#1090;&#1074;&#1077;&#1090;&#1072;... 200 OK
+&#1044;&#1083;&#1080;&#1085;&#1072;: 51187288 (49M) [application/x-tar]
+Saving to: &#171;naclsdk_win_x86a.tgz&#187;
+
+100%[========================================================================================================&amp;gt;] 51,187,288  1019K/s   &#1074; 89s      
+
+2010-06-16 00:07:46 (559 KB/s) - &#171;naclsdk_win_x86a.tgz&#187; saved [51187288/51187288]
+
+$ tar tSvpf naclsdk_win_x86a.tgz | grep -- ----------
+---------- chrome-bot/None     2104 2010-06-15 07:47 sdk/nacl-sdk/nacl64/lib/32/crt1.o
+---------- chrome-bot/None     1796 2010-06-15 07:47 sdk/nacl-sdk/nacl64/lib/32/crti.o
+---------- chrome-bot/None     1800 2010-06-15 07:47 sdk/nacl-sdk/nacl64/lib/32/crtn.o
+---------- chrome-bot/None     1400 2010-06-15 07:47 sdk/nacl-sdk/nacl64/lib/32/intrinsics.o
+---------- chrome-bot/None    39354 2010-06-15 07:46 sdk/nacl-sdk/nacl64/lib/32/libav.a
+---------- chrome-bot/None     6310 2010-06-15 07:47 sdk/nacl-sdk/nacl64/lib/32/libcrt_platform.a
+---------- chrome-bot/None    37886 2010-06-15 07:46 sdk/nacl-sdk/nacl64/lib/32/libgio.a
+---------- chrome-bot/None  1823996 2010-06-15 09:34 sdk/nacl-sdk/nacl64/lib/32/libgoogle_nacl_gpu.a
+---------- chrome-bot/None    21162 2010-06-15 09:34 sdk/nacl-sdk/nacl64/lib/32/libgoogle_nacl_imc.a
+---------- chrome-bot/None    31186 2010-06-15 09:34 sdk/nacl-sdk/nacl64/lib/32/libgoogle_nacl_imc_c.a
+---------- chrome-bot/None  1200660 2010-06-15 09:34 sdk/nacl-sdk/nacl64/lib/32/libgoogle_nacl_npruntime.a
+---------- chrome-bot/None   246738 2010-06-15 09:34 sdk/nacl-sdk/nacl64/lib/32/libgoogle_nacl_pgl.a
+---------- chrome-bot/None   132484 2010-06-15 09:34 sdk/nacl-sdk/nacl64/lib/32/libgoogle_nacl_platform.a
+---------- chrome-bot/None  9797054 2010-06-15 09:34 sdk/nacl-sdk/nacl64/lib/32/libgoogle_nacl_protobuf.a
+---------- chrome-bot/None   114706 2010-06-15 07:47 sdk/nacl-sdk/nacl64/lib/32/libnacl.a
+---------- chrome-bot/None   250262 2010-06-15 07:47 sdk/nacl-sdk/nacl64/lib/32/libnosys.a
+---------- chrome-bot/None    69204 2010-06-15 07:47 sdk/nacl-sdk/nacl64/lib/32/libpthread.a
+---------- chrome-bot/None   235310 2010-06-15 07:46 sdk/nacl-sdk/nacl64/lib/32/libsrpc.a
+---------- chrome-bot/None    28054 2010-06-15 07:47 sdk/nacl-sdk/nacl64/lib/32/libvalgrind.a
+---------- chrome-bot/None     2480 2010-06-15 07:47 sdk/nacl-sdk/nacl64/lib/32/reachable_function_symbols.o
+---------- chrome-bot/None     2984 2010-06-15 07:48 sdk/nacl-sdk/nacl64/lib/crt1.o
+---------- chrome-bot/None     2656 2010-06-15 07:48 sdk/nacl-sdk/nacl64/lib/crti.o
+---------- chrome-bot/None     2656 2010-06-15 07:48 sdk/nacl-sdk/nacl64/lib/crtn.o
+---------- chrome-bot/None    59638 2010-06-15 07:48 sdk/nacl-sdk/nacl64/lib/libav.a
+---------- chrome-bot/None     9366 2010-06-15 07:48 sdk/nacl-sdk/nacl64/lib/libcrt_platform.a
+---------- chrome-bot/None    53066 2010-06-15 07:48 sdk/nacl-sdk/nacl64/lib/libgio.a
+---------- chrome-bot/None  2769356 2010-06-15 09:36 sdk/nacl-sdk/nacl64/lib/libgoogle_nacl_gpu.a
+---------- chrome-bot/None    30058 2010-06-15 09:37 sdk/nacl-sdk/nacl64/lib/libgoogle_nacl_imc.a
+---------- chrome-bot/None    45374 2010-06-15 09:37 sdk/nacl-sdk/nacl64/lib/libgoogle_nacl_imc_c.a
+---------- chrome-bot/None  1755438 2010-06-15 09:37 sdk/nacl-sdk/nacl64/lib/libgoogle_nacl_npruntime.a
+---------- chrome-bot/None   335034 2010-06-15 09:36 sdk/nacl-sdk/nacl64/lib/libgoogle_nacl_pgl.a
+---------- chrome-bot/None   183444 2010-06-15 09:37 sdk/nacl-sdk/nacl64/lib/libgoogle_nacl_platform.a
+---------- chrome-bot/None 15234780 2010-06-15 09:36 sdk/nacl-sdk/nacl64/lib/libgoogle_nacl_protobuf.a
+---------- chrome-bot/None   160230 2010-06-15 07:48 sdk/nacl-sdk/nacl64/lib/libnacl.a
+---------- chrome-bot/None   359258 2010-06-15 07:49 sdk/nacl-sdk/nacl64/lib/libnosys.a
+---------- chrome-bot/None    96448 2010-06-15 07:48 sdk/nacl-sdk/nacl64/lib/libpthread.a
+---------- chrome-bot/None   343794 2010-06-15 07:48 sdk/nacl-sdk/nacl64/lib/libsrpc.a
+---------- chrome-bot/None    50470 2010-06-15 07:49 sdk/nacl-sdk/nacl64/lib/libvalgrind.a
+---------- chrome-bot/None     3480 2010-06-15 07:48 sdk/nacl-sdk/nacl64/lib/reachable_function_symbols.o
+
+Easy to see that all files created by SCONS got 000 permissions. tar will faithfully reproduce these permissions and on some systems this will lead to trouble.
+</ns0:content><ns0:updated>2011-02-18T00:07:41.000Z</ns0:updated><ns0:published>2010-10-11T19:29:16.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mball@google.com/</ns2:uri><ns2:username>mball@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112723007196297768207/</ns2:uri><ns2:username>dsprin...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Can't build SDK on Windows using generate_installer.py</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>TeamBoulder</ns2:label><ns2:label>Milestone-Arctic-Sea-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/984/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=984" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/984" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-01-11T21:54:45.000Z</ns2:closedDate><ns2:id>984</ns2:id></ns0:entry>

@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkINQn47eCl7ImA9Wx9VF0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1382/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Yes, this binutils change must have missed the case where there are
+mixed reference types for a TLS variable:
+http://git.chromium.org/gitweb/?p=nacl-toolchain.git;a=commitdiff;h=ccfe0f096c78e301d0b932ba85de64b129785b07
+
+&gt; Implementing rewriting seems to be the easiest way of fixing - will do.
+
+I would have thought it would be easier to disable the rewrite for
+this extra case than to attempt to do the rewrite, but it's up to you.</ns0:content><ns0:updated>2011-02-03T17:36:33.000Z</ns0:updated><ns0:published>2011-02-03T17:36:33.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1382#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1382/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

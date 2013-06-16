@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck8ARH47eCl7ImA9WhdRFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2132</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">svn rev 6303
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Modify the toolchain download to download the PNaCl windows toolchain
+2. build the debug version of the windows plugin (scons.bat --verbose -k -j8 --mode=dbg-host,nacl platform=x86-32 plugin)
+
+3. build the pnacl_example_browser_test (scons.bat --verbose -k -j10 --mode=dbg-host,nacl platform=x86-64 SILENT=1 bitcode=1 run_pnacl_example_browser_test)
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+I should work, like the rest of the chrome browser tests using pnacl on windows. Instead it crashes. The debugger shows that it cannot pull a char * from a var arg (gets a bad pointer back)
+
+Sample debug patch:
+
+Index: src/trusted/plugin/pnacl_srpc_lib.cc
+===================================================================
+--- src/trusted/plugin/pnacl_srpc_lib.cc        (revision 6303)
++++ src/trusted/plugin/pnacl_srpc_lib.cc        (working copy)
+@@ -34,8 +34,11 @@
+                                             const nacl::string&amp;amp; input_signature
+,
+                                             ...) {
+   SrpcParams params;
++  __debugbreak();
+   va_list vl;
+   va_start(vl, input_signature);
++  const char* orig_str = va_arg(vl, const char*);
++
+   bool result = VInvokeSrpcMethod(browser_interface,
+                                   subprocess,
+                                   method_name,
+
+when you step past the va_arg, it shows that &amp;quot;orig_str&amp;quot; is a bad pointer 0xcccccccc. I see the same thing without the debug code patched in and if I just let the browser crash and open up visual studio to debug it. It later tries to use this bad pointer in strdup, which will crash.
+
+
+May just need to rewrite this to not use var-args???
+
+
+</ns0:content><ns0:updated>2011-08-04T20:47:25.000Z</ns0:updated><ns0:published>2011-08-03T21:42:44.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pnacl_coordinator crashes in windows in var arg routines.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2132/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2132" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2132" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-04T20:47:25.000Z</ns2:closedDate><ns2:id>2132</ns2:id></ns0:entry>

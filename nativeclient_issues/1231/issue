@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AGSH47eCl7ImA9Wx9WF04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1231</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The following error has been seen on the hardy32-glibc-incr (incremental toolchain) buildbot:
+
+Traceback (most recent call last):
+  File &amp;quot;/mnt/data/b/build/slave/hardy32-glibc-incr/build/native_client/tools/modular-build/out/temp_source/nacl/native_client/tools/command_tester.py&amp;quot;, line 446, in &amp;lt;module&amp;gt;
+    sys.exit(main(sys.argv[1:]))
+  File &amp;quot;/mnt/data/b/build/slave/hardy32-glibc-incr/build/native_client/tools/modular-build/out/temp_source/nacl/native_client/tools/command_tester.py&amp;quot;, line 390, in main
+    command, stdin_data)
+  File &amp;quot;/mnt/data/b/build/slave/hardy32-glibc-incr/build/native_client/tools/modular-build/out/temp_source/nacl/native_client/tools/test_lib.py&amp;quot;, line 148, in RunTestWithInputOutput
+    timer = SubprocessCpuTimer()
+  File &amp;quot;/mnt/data/b/build/slave/hardy32-glibc-incr/build/native_client/tools/modular-build/out/temp_source/nacl/native_client/tools/test_lib.py&amp;quot;, line 107, in __init__
+    self._start_time = self._GetTime(None)
+  File &amp;quot;/mnt/data/b/build/slave/hardy32-glibc-incr/build/native_client/tools/modular-build/out/temp_source/nacl/native_client/tools/test_lib.py&amp;quot;, line 103, in _GetTime
+    return SubprocessCpuTimer._GetTimePosix()
+  File &amp;quot;/mnt/data/b/build/slave/hardy32-glibc-incr/build/native_client/tools/modular-build/out/temp_source/nacl/native_client/tools/test_lib.py&amp;quot;, line 74, in _GetTimePosix
+    t = os.times()
+OSError: [Errno 3848] Unknown error 3848
+
+
+This repeats with different errno values:
+
+OSError: [Errno 3062] Unknown error 3062
+
+OSError: [Errno 3062] Unknown error 3062
+
+OSError: [Errno 3013] Unknown error 3013
+
+OSError: [Errno 2998] Unknown error 2998
+
+OSError: [Errno 2380] Unknown error 2380
+
+OSError: [Errno 2346] Unknown error 2346
+
+(These are all taken, in order, from a single build.)
+</ns0:content><ns0:updated>2011-01-22T22:35:29.000Z</ns0:updated><ns0:published>2010-12-08T20:16:55.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>os.times() call in command_tester.py failing non-deterministically</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1231/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1231" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1231" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-01-22T22:35:29.000Z</ns2:closedDate><ns2:id>1231</ns2:id></ns0:entry>

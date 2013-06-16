@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0IHQn47eCl7ImA9WhdSEE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2029/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 827e92fa5acc61d80244cfa2af1060399ee8fcc6
+ Email: kschimpf@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Reduce the set of instructions that the x86-64 validator understands to be zero-extending masks to a control/memory address.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2029
+TEST=src/trusted/validator_x86/testdata/64/ncdis_iter_test.internal
+TEST=src/trusted/validator_x86/testdata/64/modeled_insts.txt
+Review URL: http://codereview.chromium.org/7373008
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6098 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	src/trusted/validator_x86/gen/nc_opcode_table_64.h
+M	src/trusted/validator_x86/ncopcode_operand_flag.enum
+M	src/trusted/validator_x86/testdata/64/modeled_insts.txt
+M	src/trusted/validator_x86/testdata/64/ncdis_iter_test.internal
+M	src/trusted/validator_x86/zero_extends.c</ns0:content><ns0:updated>2011-07-18T17:18:53.000Z</ns0:updated><ns0:published>2011-07-18T17:18:53.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2029#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2029/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

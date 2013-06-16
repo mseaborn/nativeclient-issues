@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkIGRX47eCl7ImA9WxFUGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/554</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">
+The following specbenchmarks fail in lto optimized mode, but work fine 
+otherwise:
+ 
+vortex (verify failure)
+crafty (verify failure)
+parser (miscompile:Cannot open file words/words.n.p:  - note the colon at 
+the end )
+vpr (floating point sanity check)
+perlbmk: assert &amp;quot;panic: top_env&amp;quot;
+
+c.f.:
+
+https://sites.google.com/a/google.com/nativeclient/project-pnacl/spec200k-
+benchmarks-and-tests
+</ns0:content><ns0:updated>2010-06-29T20:48:44.000Z</ns0:updated><ns0:published>2010-06-03T20:55:37.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101432766050863658364/</ns2:uri><ns2:username>espind...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u//</ns2:uri><ns2:username>espind...@gmail.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pnacl-arm lto optimization cause failures in spec </ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/554/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=554" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/554" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-06-29T20:48:44.000Z</ns2:closedDate><ns2:id>554</ns2:id></ns0:entry>

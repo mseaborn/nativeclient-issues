@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A04ASH47eCl7ImA9WhZVEk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/344/comments/full/27</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5413
+
+------------------------------------------------------------------------
+r5413 | mseaborn@chromium.org | Tue May 24 05:23:52 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/imc/osx/nacl_imc.cc?r1=5413&amp;r2=5412&amp;pathrev=5413
+
+IMC: Remove old #if'd-out workaround code for Mac
+
+Remove old code that is only enabled if OSX_BLEMISH_HEURISTIC == 0.
+
+It was confusing that there are two sets of workaround code in this
+file, and that the older workaround was enabled by setting
+OSX_BLEMISH_HEURISTIC == 0.
+
+There should be no good reason for keeping old code around via #ifs
+like this given that we have version control.
+
+This workaround was non-functional anyway:
+ * Before the imc_connect()/imc_accept() change that I made for
+   http://code.google.com/p/nativeclient/issues/detail?id=344, socket
+   descriptors were never transferred in messages in nacl_imc.cc, so
+   this workaround would never kick in.
+ * Even after that change, the Mac kernel bug would not break the
+   socket FDs that are transferred in nacl_imc.cc to the extent that
+   imc_connect()/imc_accept() would not work.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1834
+TEST=trybots (this is dead code removal)
+
+Review URL: http://codereview.chromium.org/7062010
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-24T12:25:49.000Z</ns0:updated><ns0:published>2011-05-24T12:25:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 27 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=344#c27" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/344/comments/full/27" rel="self" type="application/atom+xml" /></ns0:entry>

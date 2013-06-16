@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8DRX47eCl7ImA9WhZUE0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1883/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">I've measured the performance of this hack.
+
+100K fork/mprotect/write/exit loops are executed within 16 sec. So, it's about 160us for one fork on my machine (which is pretty fast, so we need to run the same benchmark on Chrome OS netbook)
+
+This should be fine for loading dynamic libraries, but this is probably be a problem for JITs like V8 (not sure)</ns0:content><ns0:updated>2011-06-06T22:21:14.000Z</ns0:updated><ns0:published>2011-06-06T22:21:14.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1883#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1883/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

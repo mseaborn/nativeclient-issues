@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUMNR347eCl7ImA9Wx5UF0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1080/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Based on looking at the OS X kernel sources, this appears to be a bug.  There is an ABI mismatch between the kernel and the userland headers.
+
+In xnu-1228.12.14/bsd/kern/uipc_usrreq.c, we have:
+
+	oldfds = (cm-&gt;cmsg_len - sizeof (*cm)) / sizeof (int);
+
+(This is the most recent version:
+http://www.opensource.apple.com/source/xnu/xnu-1504.7.4/bsd/kern/uipc_usrreq.c
+and the tarball is downloadable from here:
+http://www.opensource.apple.com/release/mac-os-x-1064/)
+
+This is calculating the number of FDs in the message.  However, sizeof(*cm) == sizeof(struct cmsghdr) == 12.  This is not using the padding that CMSG_DATA() and CMSG_LEN() use.  So, if we use CMSG_LEN(sizeof(int)), the kernel expects to get 2 FDs, not 1 FD.
+
+When I said "it does not actually send this FD", I was wrong.  My memset() workaround above will cause the stdin FD to be sent in the message.  The receiver will not notice this because it just checks for "cmsg-&gt;cmsg_len == CMSG_LEN(sizeof(int))" -- it thinks it is checking for 1 FD but it is actually checking for 2 FDs.  So, with the memset(), we will either be leaking FDs (copies of stdin), or we will fail if stdin has been closed.</ns0:content><ns0:updated>2010-10-22T11:38:16.000Z</ns0:updated><ns0:published>2010-10-22T11:38:16.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1080#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1080/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

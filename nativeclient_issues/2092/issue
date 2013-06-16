@@ -1,0 +1,135 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0ACR347eCl7ImA9WhdWFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2092</ns0:id><ns0:author>
+			<ns0:name>mcgra...@google.com</ns0:name><ns0:uri>/u/100177598732114324016/</ns0:uri></ns0:author><ns0:content type="html">The &amp;quot;args over IPC&amp;quot; hack in glibc does not mesh well with the IRT.  This
+currently prevents us from enabling the --mode=nacl_irt_test tests under
+--nacl_glibc (blocking issue 1890).
+
+This hack should just go away entirely when it's no longer needed as the
+only way to make dynamic library loading work.  It's not really worth
+trying to fix it before then.
+
+Here is some background on the details of the issues, for the record.
+
+* http://codereview.chromium.org/7285037/ enables the blob_library_loading
+  test under --nacl_glibc.  This fails because the glibc dynamic linker's
+  args-over-IPC hack gets confused by the presence of the IRT.
+
+  That's because this hack expects that either file descriptor 3 is an
+  IMC bound socket as provided by the plugin (so imc_accept succeeds),
+  or that it's not in use at all (so imc_accept fails with EBADF).
+
+  With the IRT (and without the plugin), this file descriptor instead gets
+  assigned to a mutex (or maybe it's a condition variable) allocated during
+  the IRT's own early initialization.  (Some unrelated IRT cleanup I may do
+  anyway would make this no longer be the case, but we're not there yet and
+  this doesn't alleviate the fragility of glibc's kludge.)  That means that
+  glibc's imc_accept call fails with EINVAL instead of EBADF.
+  (Incidentally, it would be more like normal accept if imc_accept used
+  ENOTSOCK for this case instead.  That wouldn't change the situation I'm
+  describing.)  The glibc code specifically expects an EBADF failure as the
+  indicator that it's not running under the plugin and thus should not
+  expect the args-over-IPC hack to be in use.
+
+  In glibc commit e8f1be8 (http://codereview.chromium.org/7301017), I
+  changed this startup hack to treat any kind of imc_accept failure as
+  an indication that the args-over-IPC hack is not in use.  This makes
+  the blob_library_loading test happy.  However...
+
+* The aforementioned glibc change breaks the two tests using
+  nacl_launcher.py (posix_over_imc_test and startup_message_test), which
+  are specifically testing the args-over-IPC hack.  That's because this
+  test harness simulates the plugin startup procedure to the nexe but not
+  very thoroughly.  It creates a dummy connected socket to pass in on file
+  descriptor 3 (which in the real plugin case gets a bound socket).
+
+  The dynamic linker startup code's imc_accept on this dummy socket
+  fails with EINVAL rather than EBADF.  In the status quo ante, this
+  meant that it would go on to do the args-over-IPC hack anyway.  With
+  the aforementioned glibc change, it instead punts and so fails to get
+  the arguments and environment that these tests require.  So...
+
+* http://codereview.chromium.org/7351029/ revamps nacl_launcher.py to do
+  a somewhat more thorough simulation of the plugin behavior.  This
+  involves passing the -X option to sel_ldr so it supplies a bound IMC
+  socket on the nexe's file descriptor 3, which in turn requires that
+  something (the test harness) perform the srpc start_module call on a
+  socket to the trusted service runtime.  (Yes, faking an srpc message
+  with hand-rolled bits coded in Python was highly entertaining.  I'm
+  still quivering, ooh ah.)
+
+  With this, file descriptor 3 has a bound socket so that the dynamic
+  linker startup's imc_accept succeeds as it would with the real plugin.
+  Hence, it goes on to do the args-over-IPC hack.
+
+  This makes the aforementioned two tests happy on my workstation.
+  However, on the trybot, the test just hangs (eventually triggering the
+  1500 second timeout).  (These tests are only run at all on 64-bit
+  Linux for boring reasons, so there is only one bot affected.)  I have
+  not figured out why this might be so, and since it only happens on the
+  bot, it may be quite tedious to debug it.
+
+  Hence, none of the aforementioned changes has actually gone in.  (The
+  glibc change went into glibc git and temporarily went into
+  tools/REVISIONS, but a toolchain DEPS roll never went in, and I've
+  since reverted tools/REVISIONS--though I have not reverted the change
+  in glibc git.)
+
+  Meanwhile...
+
+* The one glibc test actually affected by irt=1 vs irt=0 is
+  browser_dynamic_library_test.  This doesn't work under irt=1 because
+  of more quirks relating to--you guessed it--the args-over-IPC hack.
+  (It's also the case that glibc still doesn't use the IRT for all its
+  own NaCl syscalls, but that's merely unkosher and not an impediment to
+  using the IRT-based PPAPI instead of linking to libppruntime directly,
+  i.e. irt=1 vs irt=0.)
+
+  The status quo for glibc dynamic linking is that the only way it can
+  work is to run the dynamic linker (runnable-ld.so) as &amp;quot;the&amp;quot; nexe.
+  (This is just like running /lib64/ld-linux-x86-64.so.2 or
+  /lib/ld-linux.so.2 as a program on vanilla Linux--try it to see an
+  explanation.)  It then gets the name of the actual nexe you want to
+  run as a command-line argument.  It then opens that file by name,
+  loads it ands its shared libraries, and sends it off to the races.
+  (In the browser case, this can only work by using IPC to get access to
+  the files, which is enabled when glibc sees the environment variable
+  &amp;quot;NACL_FILE_RPC&amp;quot;.)
+
+  In the browser case, sel_ldr doesn't get any command-line arguments or
+  environment variables to give the nexe.  So instead, we have to rely
+  on the args-over-IPC hack to pass the command-line arguments including
+  the name of the nexe, and the environment variables NACL_FILE_RPC
+  (mentioned above) and NACL_LD_ACCEPTS_PLUGIN_CONNECTION.
+
+  This latter variable is checked by PpapiPluginMain in the untrusted
+  PPAPI proxy (libppruntime).  That tells it to send an IMC message of
+  &amp;quot;Init&amp;quot; on file descriptor 6, which triggers some Javascript code in
+  the test to call __startSrpcServices on the plugin.  That is necessary
+  because the initial srpc services socket was previously accepted (and
+  closed) by the aforementioned dynamic linker startup code--it only
+  does that because the plugin blocks waiting for that accept and close
+  before it will proceed with enough of its starting sequence that it
+  can let Javascript handle that Init message and send back the
+  args-over-IPC hack.
+
+  Hence, the SRPC communication that PPAPI needs is broken unless
+  NACL_LD_ACCEPTS_PLUGIN_CONNECTION is set in the environment that
+  PpapiPluginMain checks.  But, sel_ldr doesn't pass that in the initial
+  environment.  Now that PpapiPluginMain is in the IRT rather than in
+  the nexe itself, it sees the real initial environment from sel_ldr,
+  not the one supplied by the args-over-IPC hack (which is only known to
+  the glibc-controlled world in the nexe itself).
+
+As I mentioned parenthetically, the first issue would be alleviated if
+the IRT were made not to allocate any descriptors in its startup.  It
+really doesn't need the mutex and condvars it allocates there, and that
+cleanup is on my list anyway as part of streamlining the IRT code.
+
+The second issue is alleviated by the changes mentioned in the third
+point, but they don't work on the bot for some reason and it would take
+some more debugging to figure that out.
+
+The fourth point would be avoided if the args-over-IPC hack were done in
+the IRT itself rather than in the glibc dynamic linker's startup code.</ns0:content><ns0:updated>2011-09-08T18:16:06.000Z</ns0:updated><ns0:published>2011-07-26T17:53:42.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>glibc args over IPC does not work under IRT</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2092/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2092" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2092" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>1890</ns2:id></ns2:blocking><ns2:closedDate>2011-09-08T18:16:06.000Z</ns2:closedDate><ns2:id>2092</ns2:id></ns0:entry>

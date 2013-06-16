@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C04HRX47eCl7ImA9WhZVFEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1606</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">NaCl-Valgrind fails with the following assertion error on run_dynamic_load_test:
+
+*********************** NaCl nacl_file: /home/mseaborn/devel/nacl-trunk/src/native_client/scons-out/nacl-x86-64/obj/tests/dynamic_code_loading/dynamic_load_test.nexe
+Valgrind: ignoring NaCl's mmap(84G)
+==9499== Warning: set address range perms: large range [0x44e9c000, 0x100000000) (noaccess)
+==9499== Warning: set address range perms: large range [0x1600000000, 0x1644e9c000) (noaccess)
+*********************** NaCl mem_start: 0xB00000000
+
+valgrind: m_debuginfo/readelf.c:1339 (vgModuleLocal_read_elf_debug_info): Assertion 'rw_svma_limit != 0' failed.
+
+
+This still fails if I reduce the segment gap using the option:
+  -Wl,--section-start,.rodata=0x300000
+
+However, the assertion failure goes away if I reduce the segment gap further to:
+  -Wl,--section-start,.rodata=0x200000
+
+We are likely to switch to using a segment gap by default in the coming months, so Valgrind would need to be fixed if it is to be useful.
+
+The assertion failure comes from this file:
+http://valgrind-variant.googlecode.com/svn/trunk/valgrind/coregrind/m_debuginfo/readelf.c
+</ns0:content><ns0:updated>2011-05-26T12:12:14.000Z</ns0:updated><ns0:published>2011-04-05T04:35:47.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/114701340294105671768/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>NaCl-Valgrind fails when NaCl executable uses a large segment gap</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Test</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1606/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1606" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1606" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-05-26T12:12:14.000Z</ns2:closedDate><ns2:id>1606</ns2:id></ns0:entry>

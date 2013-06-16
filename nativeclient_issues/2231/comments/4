@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUARX47eCl7ImA9WhdWEkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2231/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: cc9e35fadd3a711fff485f9e8e8600d924b0489c
+ Email: halyavin@google.com@4ff67af0-8c30-449e-8e8b-ad334ec8d88c
+
+Fix compilation phase on glibc buildbots in Native Client.
+
+BUG= 95424
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2231
+TEST= ./scons -j16 --mode=nacl,dbg-host platform=x86-64 --nacl_glibc
+
+Review URL: http://codereview.chromium.org/7737025
+
+git-svn-id: http://src.chromium.org/svn/trunk/src/ppapi@99665 4ff67af0-8c30-449e-8e8b-ad334ec8d88c
+
+M	native_client/src/shared/ppapi_proxy/nacl.scons</ns0:content><ns0:updated>2011-09-05T18:10:44.000Z</ns0:updated><ns0:published>2011-09-05T18:10:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2231#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2231/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

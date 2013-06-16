@@ -1,0 +1,91 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0UBR347eCl7ImA9Wx5bF0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/244/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">[bsy@salt-mines/2010-11-02 10:28:49]/usr/local/google/home/bsy/nacl/svn3/native_client 498
+$ ../../../nacl/depot_tools/gclient update
+[ ... ]
+Downloading http://build.chromium.org/buildbot/nacl_archive/nacl/toolchain/3586/naclsdk_linux_arm-trusted.tgz to native_client/toolchain/linux_arm-trusted/.tgz...
+Extracting from native_client/toolchain/linux_arm-trusted/.tgz...
+[ ... ]
+
+[bsy@salt-mines/2010-11-02 10:28:49]/usr/local/google/home/bsy/nacl/svn3/native_client 498
+$ ar x toolchain/linux_arm-untrusted/libs-arm/libgcc.a _udivsi3.o
+[bsy@salt-mines/2010-11-02 10:30:13]/usr/local/google/home/bsy/nacl/svn3/native_client 499
+
+$ ./toolchain/linux_arm-trusted/arm-2009q3/bin/arm-none-linux-gnueabi-objdump -xdz _udivsi3.o 
+
+_udivsi3.o:     file format elf32-littlearm
+_udivsi3.o
+architecture: arm, flags 0x00000011:
+HAS_RELOC, HAS_SYMS
+start address 0x00000000
+private flags = 5000000: [Version5 EABI]
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000002f0  00000000  00000000  00000040  2**4
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .data         00000000  00000000  00000000  00000330  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000000  00000000  00000000  00000330  2**0
+                  ALLOC
+  3 .debug_frame  00000028  00000000  00000000  00000330  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+  4 .ARM.attributes 00000021  00000000  00000000  00000358  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+00000000 l    d  .text	00000000 .text
+00000000 l    d  .data	00000000 .data
+00000000 l    d  .bss	00000000 .bss
+00000000 l       .text	00000000 XmagicX
+0000000c l       *ABS*	00000000 pos
+0000027c l       .text	00000000 L11
+0000028c l       .text	00000000 L12
+00000000 l       *ABS*	00000000 shift
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    d  .ARM.attributes	00000000 .ARM.attributes
+00000020 g     F .text	00000298 __udivsi3
+00000020 g     F .text	00000000 __aeabi_uidiv
+00000000         *UND*	00000000 __div0
+000002c0 g     F .text	00000028 __aeabi_uidivmod
+
+
+
+Disassembly of section .text:
+
+00000000 &lt;XmagicX&gt;:
+   0:	e3cee2ff 	bic	lr, lr, #-268435441	; 0xf000000f
+   4:	e12fff1e 	bx	lr
+   8:	e3cee2ff 	bic	lr, lr, #-268435441	; 0xf000000f
+   c:	e12fff1e 	bx	lr
+  10:	e3cee2ff 	bic	lr, lr, #-268435441	; 0xf000000f
+  14:	e12fff1e 	bx	lr
+  18:	e3cee2ff 	bic	lr, lr, #-268435441	; 0xf000000f
+  1c:	e12fff1e 	bx	lr
+
+00000020 &lt;__aeabi_uidiv&gt;:
+  20:	e2512001 	subs	r2, r1, #1
+  24:	03cee2ff 	biceq	lr, lr, #-268435441	; 0xf000000f
+  28:	012fff1e 	bxeq	lr
+  2c:	3a00009b 	bcc	2a0 &lt;L12+0x14&gt;
+  30:	e1500001 	cmp	r0, r1
+  34:	9a000090 	bls	27c &lt;L11&gt;
+  38:	e1110002 	tst	r1, r2
+  3c:	0a000092 	beq	28c &lt;L12&gt;
+  40:	e16f3f10 	clz	r3, r0
+  44:	e16f2f11 	clz	r2, r1
+  48:	e0423003 	sub	r3, r2, r3
+  4c:	e273301f 	rsbs	r3, r3, #31
+  50:	e3a02000 	mov	r2, #0
+  54:	e320f000 	nop	{0}
+  58:	e320f000 	nop	{0}
+  5c:	e320f000 	nop	{0}
+  60:	e08f3203 	add	r3, pc, r3, lsl #4
+  64:	e2833008 	add	r3, r3, #8
+  68:	13c332ff 	bicne	r3, r3, #-268435441	; 0xf000000f
+  6c:	112fff13 	bxne	r3
+  70:	e1500f81 	cmp	r0, r1, lsl #31
+  74:	e0a22002 	adc	r2, r2, r2
+[ ... ]
+
+note the 0xf000000f masks should be 0xc000000f masks.</ns0:content><ns0:updated>2010-11-02T17:34:16.000Z</ns0:updated><ns0:published>2010-11-02T17:34:16.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Type-Enhancement</ns2:label><ns2:label>Type-Defect</ns2:label><ns2:status>Available</ns2:status></ns2:updates><ns0:title>Comment 6 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=244#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/244/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

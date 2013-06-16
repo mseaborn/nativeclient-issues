@@ -1,0 +1,98 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4FRn47eCl7ImA9WhZWEkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1646</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+0.3.799 (local SVN build)
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Ubuntu Linux 64-bit
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+N/A
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Run a try on the Linux trybot
+
+What is the expected output? 
+
+@@@BUILD_STEP build NaCl tools@@@
+scons: Reading SConscript files ...
+======================================================================
+Warning: &amp;quot;--mode&amp;quot; did not specify both trusted and untrusted build environments.  As a result, many tests will not be run.
+======================================================================
+======================================================================
+B U I L D - O U T P U T:
+======================================================================
+scons: done reading SConscript files.
+scons: Building targets ...
+________Compiling scons-out/opt-linux-x86-32/obj/src/trusted/service_runtime/sel_main.o
+________Compiling scons-out/opt-linux-x86-32/obj/src/trusted/service_runtime/dyn_array.o
+
+
+
+What do you see instead?
+
+@@@BUILD_STEP build NaCl tools@@@
+scons: Reading SConscript files ...
+======================================================================
+Warning: &amp;quot;--mode&amp;quot; did not specify both trusted and untrusted build environments.  As a result, many tests will not be run.
+======================================================================
+======================================================================
+B U I L D - O U T P U T:
+======================================================================
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: `sel_ldr' is up to date.
+scons: done building targets.
+scons: Reading SConscript files ...
+======================================================================
+Warning: &amp;quot;--mode&amp;quot; did not specify both trusted and untrusted build environments.  As a result, many tests will not be run.
+======================================================================
+SKIPPING test  text_overlaps_rodata
+SKIPPING test  text_overlaps_data
+======================================================================
+B U I L D - O U T P U T:
+======================================================================
+scons: done reading SConscript files.
+scons: Building targets ...
+________Compiling scons-out/opt-linux-x86-64/obj/src/trusted/service_runtime/sel_main.o
+In file included from /usr/include/features.h:378,
+                 from /usr/include/stdlib.h:25,
+                 from /mnt/data/build/slave/naclsdk-linux/build/src/build_tools/packages/native_client/native_client/src/include/portability.h:45,
+                 from src/trusted/service_runtime/sel_main.c:10:
+/usr/include/gnu/stubs.h:9:27: error: gnu/stubs-64.h: No such file or directory
+scons: *** [scons-out/opt-linux-x86-64/obj/src/trusted/service_runtime/sel_main.o] Error 1
+scons: building terminated because of errors.
+
+**********************************************************************
+ERROR REPORT: 1 failures
+**********************************************************************
+
+scons-out/opt-linux-x86-64/obj/src/trusted/service_runtime/sel_main.o failed: Error 1
+
+Traceback (most recent call last):
+  File &amp;quot;/mnt/data/build/slave/naclsdk-linux/build/src/build_tools/make_nacl_tools.py&amp;quot;, line 201, in &amp;lt;module&amp;gt;
+    main(sys.argv[1:])
+  File &amp;quot;/mnt/data/build/slave/naclsdk-linux/build/src/build_tools/make_nacl_tools.py&amp;quot;, line 197, in main
+    return BuildNaClTools(options)
+  File &amp;quot;/mnt/data/build/slave/naclsdk-linux/build/src/build_tools/make_nacl_tools.py&amp;quot;, line 153, in BuildNaClTools
+    Build(options)
+  File &amp;quot;/mnt/data/build/slave/naclsdk-linux/build/src/build_tools/make_nacl_tools.py&amp;quot;, line 93, in Build
+    assert p.wait() == 0
+AssertionError
+Traceback (most recent call last):
+  File &amp;quot;build_tools/generate_installers.py&amp;quot;, line 235, in &amp;lt;module&amp;gt;
+    main(sys.argv[1:])
+  File &amp;quot;build_tools/generate_installers.py&amp;quot;, line 154, in main
+    assert nacl_tools.wait() == 0
+AssertionError
+scons: *** [scons-out/build/obj/build_tools/generate_installers_dummy_target.txt] Error 1
+scons: building terminated because of errors.
+program finished with exit code 2
+elapsedTime=21.009410
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-05-13T12:48:37.000Z</ns0:updated><ns0:published>2011-04-12T19:49:15.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/mball@google.com/</ns2:uri><ns2:username>mball@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Linux trybot fails when building 64-bit sel_main.c</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1646/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1646" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1646" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-05-13T12:48:37.000Z</ns2:closedDate><ns2:id>1646</ns2:id></ns0:entry>

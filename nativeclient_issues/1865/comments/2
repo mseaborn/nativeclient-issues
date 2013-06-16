@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0YFRn47eCl7ImA9WhZVFU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1865/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5490
+
+------------------------------------------------------------------------
+r5490 | rsimha@google.com | Fri May 27 11:27:35 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=5490&amp;r2=5489&amp;pathrev=5490
+
+Enable pyauto tests on Windows and clean up logs
+
+This patch enables the pyauto NaCl tests on Windows. It also removes
+the -v flag from the pyauto command line in order to clean up the
+test logs and make them more readable.
+
+BUG=1865
+TEST=scons pyauto_tests
+
+Review URL: http://codereview.chromium.org/7076039
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-27T18:31:57.000Z</ns0:updated><ns0:published>2011-05-27T18:31:57.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1865#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1865/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

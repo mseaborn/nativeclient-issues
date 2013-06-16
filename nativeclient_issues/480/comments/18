@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08BRH47eCl7ImA9WhdSEEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/480/comments/full/18</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: b8d8d957d967e3bdc4c33ad9dcbc3c40baf590b7
+ Email: robertshield@chromium.org@0039d316-1c4b-4281-b951-d872f2087c98
+
+Revert 93021 - A ZygoteForkDelegate for Native Client.
+
+BUG=nativeclient:480
+TEST=native client chrome linux tests
+
+Review URL: http://codereview.chromium.org/7395024
+
+TBR=bradchen@google.com
+Review URL: http://codereview.chromium.org/7440001
+
+git-svn-id: svn://svn.chromium.org/chrome/trunk/src@93023 0039d316-1c4b-4281-b951-d872f2087c98
+
+M	chrome/app/chrome_main.cc
+D	chrome/common/nacl_fork_delegate_linux.h
+D	chrome/common/nacl_helper_linux.h
+M	chrome/common/nacl_types.h
+M	chrome/nacl.gypi
+D	chrome/nacl/nacl_fork_delegate_linux.cc
+D	chrome/nacl/nacl_helper_linux.cc
+A	chrome/nacl/nacl_launcher_thread.cc
+A	chrome/nacl/nacl_launcher_thread.h
+D	chrome/nacl/nacl_listener.cc
+D	chrome/nacl/nacl_listener.h
+M	chrome/nacl/nacl_main.cc</ns0:content><ns0:updated>2011-07-19T17:17:35.000Z</ns0:updated><ns0:published>2011-07-19T17:17:35.000Z</ns0:published><ns2:updates /><ns0:title>Comment 18 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=480#c18" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/480/comments/full/18" rel="self" type="application/atom+xml" /></ns0:entry>

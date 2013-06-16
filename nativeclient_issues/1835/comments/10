@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AARH47eCl7ImA9WhRUFE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1835/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>mi...@chromium.org</ns0:name><ns0:uri>/u/103069702669776774675/</ns0:uri></ns0:author><ns0:content type="html">Suspect related: http://build.chromium.org/p/chromium/builders/Mac%2010.5%20Tests%20%28dbg%29%281%29/builds/15457/steps/nacl_integration/logs/nacl_glibc.run_ppapi_ppb_scrollbar_browser_test
+
+nacl_glibc.run_ppapi_ppb_scrollbar_browser_test: 
+======================================================================
+running ['/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python', '/b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client/tools/browser_tester/browser_tester.py', '--browser_path', '/b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/xcodebuild/Debug/Chromium.app/Contents/MacOS/Chromium', '--url', 'ppapi_ppb_scrollbar.html', '--timeout', '20', '--file', '/b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client/scons-out/nacl-x86-32-glibc/staging/ppapi_ppb_scrollbar_x86-32.nexe', '--file', '/b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client/scons-out/nacl-x86-32-glibc/staging/ppapi_ppb_scrollbar.html', '--file', '/b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client/scons-out/nacl-x86-32-glibc/staging/ppapi_ppb_scrollbar.js', '--file', '/b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client/scons-out/nacl-x86-32-glibc/staging/ppapi_ppb_scrollbar_x86-32.nexe', '--serving_dir', '/b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client/toolchain/mac_x86/x86_64-nacl/lib32', '--serving_dir', '/b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client/scons-out/nacl-x86-32-glibc/lib', '--file', '/b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client/scons-out/nacl-x86-32-glibc/staging/ppapi_ppb_scrollbar.nmf']
+======================================================================
+/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python /b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client/tools/browser_tester/browser_tester.py --browser_path /b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/xcodebuild/Debug/Chromium.app/Contents/MacOS/Chromium --url ppapi_ppb_scrollbar.html --timeout 20 --file /b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client/scons-out/nacl-x86-32-glibc/staging/ppapi_ppb_scrollbar_x86-32.nexe --file /b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client/scons-out/nacl-x86-32-glibc/staging/ppapi_ppb_scrollbar.html --file /b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client/scons-out/nacl-x86-32-glibc/staging/ppapi_ppb_scrollbar.js --file /b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client/scons-out/nacl-x86-32-glibc/staging/ppapi_ppb_scrollbar_x86-32.nexe --serving_dir /b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client/toolchain/mac_x86/x86_64-nacl/lib32 --serving_dir /b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client/scons-out/nacl-x86-32-glibc/lib --file /b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client/scons-out/nacl-x86-32-glibc/staging/ppapi_ppb_scrollbar.nmf
+ENV: SHLVL=1 PWD=/b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client NACL_ENABLE_PPAPI_DEV=1 CYGWIN=nodosfilewarning PATH=/b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/native_client/toolchain/mac_x86/bin:/usr/local/bin:/opt/bin:/bin:/usr/bin:/sw/bin HOME=/Users/chrome-bot DISPLAY=/tmp/launch-6rNqiQ/:0 _=/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python
+LAUNCHING: /b/build/slave/Mac_10_5_Tests__dbg__1_/build/src/xcodebuild/Debug/Chromium.app/Contents/MacOS/Chromium --disable-web-resources --disable-preconnect --no-first-run --no-default-browser-check --enable-logging --log-level=1 --safebrowsing-disable-auto-update --explicitly-allowed-ports=54744 --user-data-dir=/tmp/browserprofile_TKFpKf --enable-nacl http://127.0.0.1:54744/ppapi_ppb_scrollbar.html
+PID 6816
+[0124/114450:INFO:breakpad_mac.mm(148)] Breakpad disabled
+[6817:-1607538912:4033616856158:WARNING:render_view_impl.cc(1512)] didStartLoading called while loading
+[  1352 ms] |||| GET /ppapi_ppb_scrollbar.html (/ppapi_ppb_scrollbar.html)
+[  1389 ms] |||| GET /nacltest.js (/nacltest.js)
+[  1390 ms] |||| GET /ppapi_ppb_scrollbar.js (/ppapi_ppb_scrollbar.js)
+[  2058 ms] |||| GET /ppapi_ppb_scrollbar.nmf (/ppapi_ppb_scrollbar.nmf)
+[  2200 ms] |||| [STARTUP]
+[6817:-1607538912:4034573368027:WARNING:render_view_impl.cc(1525)] DidStopLoading called while not loading
+[  2298 ms] |||| GET /favicon.ico (/favicon.ico)
+[  2309 ms] |||| GET /runnable-ld.so (/runnable-ld.so)
+[6816:-1607538912:4034719359213:INFO:CONSOLE(0)] "NativeClient: NaCl module load failed: ServiceRuntime: command channel creation failed", source:  (0)
+[  2451 ms] |||| 
+[  2451 ms] |||| [CLIENT_ERROR] nacl_module / test_nexe did not load. Status: DONE / 'NaCl module load failed: ServiceRuntime: command channel creation failed'
+[  2463 ms] |||| 
+[  2474 ms] |||| A nexe load error occured, aborting testing.
+[  2484 ms] |||| 
+[  2498 ms] |||| [SHUTDOWN] 0 passed, 0 failed, 1 errors
+KILLING the browser
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)</ns0:content><ns0:updated>2012-01-24T20:09:05.000Z</ns0:updated><ns0:published>2012-01-24T20:09:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by mi...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1835#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1835/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

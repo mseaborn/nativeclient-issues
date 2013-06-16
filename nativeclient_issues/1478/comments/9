@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UDSX47eCl7ImA9WhdSFk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1478/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=6198
+
+------------------------------------------------------------------------
+r6198 | jvoung@google.com | Mon Jul 25 13:16:33 PDT 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/browser_startup_time/hello_world.cc?r1=6198&amp;r2=6197&amp;pathrev=6198
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/browser_startup_time/browser_startup_time.js?r1=6198&amp;r2=6197&amp;pathrev=6198
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/browser_startup_time/browser_startup_time.html?r1=6198&amp;r2=6197&amp;pathrev=6198
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/browser_startup_time/nacl.scons?r1=6198&amp;r2=6197&amp;pathrev=6198
+
+Make browser_startup_*_tests standalone, rather than depend on
+ppapi test lib and test example. This will allow adding utility functions,
+etc. to ppapi test lib without triggering nexe size warnings.
+It also ensures that what we are measuring stays more consistent
+and comparable across SVN revisions.
+
+CONTEXT: We saw a spike at rev 6194, which added some functions
+to ppapi test lib and added a dependency on sstream code.
+This spike was large, but could be considered spurious, since it
+is possible for more and more functions to be added to ppapi test
+lib, while this test is really just measuring the size of
+of a "small" ppapi nexe.
+
+See this graph:
+
+http://build.chromium.org/f/client/perf/nacl-win7-64-bare-newlib-opt/nacl-perf/report.html?history=150&amp;rev=6195
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1478
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1479
+TEST= run_browser_startup*_test
+Review URL: http://codereview.chromium.org/7503003
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-07-25T20:21:18.000Z</ns0:updated><ns0:published>2011-07-25T20:21:18.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1478#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1478/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

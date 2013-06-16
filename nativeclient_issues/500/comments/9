@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkICRH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/500/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3005
+
+------------------------------------------------------------------------
+r3005 | gregoryd@google.com | Mon Aug 16 11:56:19 PDT 2010
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/prebuilt/srpc_hw.html?r1=3005&amp;r2=3004&amp;pathrev=3005
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/npapi/plugin_npapi.cc?r1=3005&amp;r2=3004&amp;pathrev=3005
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/plugin.cc?r1=3005&amp;r2=3004&amp;pathrev=3005
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/prebuilt/nacl_js_lib.js?r1=3005&amp;r2=3004&amp;pathrev=3005
+
+Fix multi-arch support for Chrome: start downloading the nexe when SetWindow is called instead of doing it during initialization. Note that Firefox does not call SetWindow, so to keep it working we need to handle the "nexes" property at different times in Chrome and in Firefox.
+Ideally we will probably want to switch all the tests to use multiarch support, but first we need to get one such test running on Chrome bots (see the link to a Chrome CL below).
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=500
+TEST=http://codereview.chromium.org/3171010/show
+
+
+Review URL: http://codereview.chromium.org/3145013
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:56:05.000Z</ns0:updated><ns0:published>2011-01-21T22:56:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=500#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/500/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

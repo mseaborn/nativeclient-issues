@@ -1,0 +1,48 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQCRX47eCl7ImA9WhZREkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1424</ns0:id><ns0:author>
+			<ns0:name>vladi...@neoaxisgroup.com</ns0:name><ns0:uri>/u/112736656195063058191/</ns0:uri></ns0:author><ns0:content type="html">Hello!
+
+A few words about my system.
+SDK version: 0.1.507.0
+OS: Windows 7 32bit
+Browser: Google Chrome 9.0.597.94
+
+I'm trying to use a dynamic linking in the native client. My project based on the &amp;quot;Hello World&amp;quot; example. 
+
+I changed &amp;quot;FourtyTwo&amp;quot; function in the &amp;quot;helloworld.cc&amp;quot;:
+static bool FortyTwo(NPVariant *result) {
+	if (result) {
+		INT32_TO_NPVARIANT(GetFourtyTwo(), *result);
+  }
+  return true;
+}
+
+Also I add to project &amp;quot;fourty_two.cc&amp;quot;:
+#include &amp;quot;fourty_two.h&amp;quot;
+
+int GetFourtyTwo() {
+  return 42;
+}
+
+and &amp;quot;fourty_two.h&amp;quot;:
+#define EXPORT extern &amp;quot;C&amp;quot; __attribute__ ((visibility(&amp;quot;default&amp;quot;)))
+EXPORT int GetFourtyTwo();
+
+Sript for compiling a dynamic library:
+libfourty_two_x86_32.so : $(OBJECTS_X86_32)
+	$(CC) $(LDFLAGS) -shared -m32 -o $@  $^
+
+Script for dynamic linking:
+hello_world_x86_32.nexe: $(OBJECTS_X86_32) libfourty_two
+	$(CPP) $(OBJECTS_X86_32) $(LDFLAGS) -L. -lfourty_two_x86_32 -m32 -o $@
+
+Everything is compiling fine, but in browser status &amp;quot;LOADING&amp;quot; never changing to &amp;quot;SUCCESS&amp;quot;. And, when I press a button, I get message &amp;quot;Cannot call method 'fortytwo' of null&amp;quot;.
+
+Also, when I was compiling my library like a static lib (.a), everything was working fine.
+
+All projects files are in attach.
+
+Please, help me or I'll never know how to use a dynamic linking in the NaCl.
+
+
+</ns0:content><ns0:updated>2011-04-08T18:29:24.000Z</ns0:updated><ns0:published>2011-02-13T14:50:54.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:state>closed</ns2:state><ns0:title>Problem with dynamic linking</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1424/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1424" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1424" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-04-08T18:29:24.000Z</ns2:closedDate><ns2:id>1424</ns2:id></ns0:entry>

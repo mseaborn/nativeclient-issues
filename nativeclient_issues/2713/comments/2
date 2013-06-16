@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ABSX47eCl7ImA9WhVQFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2713/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Attached next is another variant of this test, where:
+
+ - main calls lib1's function1() via a function pointer
+ - main never calls lib1's function(1) directly
+ - the nexe never gets a PLT entry for function1() since there was no direct call.  Thus when the nexe tries to use the function pointer, it jumps to 0 and segfaults.
+
+You can diff the first version of the attached test, and the new one, but the above is really the only difference.  Running this new one should be the same, but a different crash happens.</ns0:content><ns0:updated>2012-04-05T18:49:18.000Z</ns0:updated><ns0:published>2012-04-05T18:49:18.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2713#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2713/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

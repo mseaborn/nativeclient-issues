@@ -1,0 +1,34 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUECR347eCl7ImA9Wx9SFkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1066</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">A C++ function that can throw an exception is modeled in llvm with something like this:
+invcont:                                          ; preds = %entry
+  %4 = call arm_aapcs_vfpcc  i8* @__cxa_allocate_exception(i32 1) nounwind
+  store i8* %4, i8** %1, align 4
+  %5 = load i8** %1, align 4
+  %6 = bitcast i8* %5 to %struct.A*
+  %7 = invoke arm_aapcs_vfpcc  %struct.A* @_ZN1BC1Ev(%struct.A* %6)
+          to label %invcont1 unwind label %lpad18
+                                    ^^^^^^^^^^^^^^
+
+lpad18:                                           ; preds = %invcont
+  %eh_ptr19 = call i8* @llvm.eh.exception()
+  store i8* %eh_ptr19, i8** %eh_exception
+  %eh_ptr20 = load i8** %eh_exception
+  %eh_select21 = call i32 (i8*, i8*, ...)* @llvm.eh.selector(i8* %eh_ptr20, i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*), i8* bitcast (%struct.__class_type_info_pseudo* @_ZTI1C to i8*), i8** @llvm.eh.catch.all.value)
+  store i32 %eh_select21, i32* %eh_selector
+  br label %ppad34
+
+
+The basic blocks mentioned there are reachable via indirect jumps from the unwind system. It seems that we do not align those bbls to bundle beginnings.
+
+The  @llvm.eh.selector is encapsulating the generation of those bbls and some corresponding tables.
+
+more in a subsequent post to this issue
+
+
+
+
+
+
+</ns0:content><ns0:updated>2010-12-07T01:01:06.000Z</ns0:updated><ns0:published>2010-10-19T18:53:52.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>pnacl does not align landing pads for x86-32 (arm and x86-64 are likely also affected</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Milestone-Caviar</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1066/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1066" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1066" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-12-07T01:01:06.000Z</ns2:closedDate><ns2:id>1066</ns2:id></ns0:entry>

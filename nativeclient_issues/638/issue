@@ -1,0 +1,75 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHQ347eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/638</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">When I run the following Selenium test on 32-bit GHardy Linux, it fails consistently with a 'Connection reset by peer' error and then a 'Broken pipe' error:
+
+$ ./scons --mode=dbg-linux,nacl sysinfo= scons-out/nacl-x86-32/obj/tests/npapi_geturl/npapi_geturl_browser_test.out
+...
+INFO:selenium_tester:531:MainThread ############################################################
+INFO:selenium_tester:532:MainThread Testing http://localhost:46955/npapi_geturl.html
+INFO:selenium_tester:533:MainThread ############################################################
+DEBUG:selenium_tester:471:sel_rc [017] sel_serv:15:26:32.130 INFO - Command request: open[http://localhost:46955/npapi_geturl.html, False] on session 71a2542a52cf4aacbada4f4b30de7e1f
+INFO:selenium_tester:282:fileserver GET request /npapi_geturl.html -&amp;gt; npapi_geturl.html
+INFO:selenium_tester:226:fileserver sending /home/mseaborn/devel/nacl-trunk/src/native_client/tests/npapi_geturl/npapi_geturl.html (text/html)
+DEBUG:selenium_tester:209:fileserver &amp;quot;GET /npapi_geturl.html HTTP/1.1&amp;quot; 200 -
+INFO:selenium_tester:282:fileserver GET request /npapi_geturl.nexe -&amp;gt; npapi_geturl.nexe
+INFO:selenium_tester:226:fileserver sending /home/mseaborn/devel/nacl-trunk/src/native_client/scons-out/nacl-x86-32/obj/tests/npapi_geturl/npapi_geturl.nexe (application/x-object)
+DEBUG:selenium_tester:209:fileserver &amp;quot;GET /npapi_geturl.nexe HTTP/1.1&amp;quot; 200 -
+ERROR:selenium_tester:220:fileserver (104, 'Connection reset by peer')
+DEBUG:selenium_tester:209:fileserver code 404, message (104, 'Connection reset by peer')
+DEBUG:selenium_tester:209:fileserver &amp;quot;GET /npapi_geturl.nexe HTTP/1.1&amp;quot; 404 -
+ERROR:selenium_tester:231:fileserver (32, 'Broken pipe')
+DEBUG:selenium_tester:209:fileserver &amp;quot;GET /npapi_geturl.nexe HTTP/1.1&amp;quot; 404 -
+ERROR:selenium_tester:220:fileserver (32, 'Broken pipe')
+DEBUG:selenium_tester:209:fileserver code 404, message (32, 'Broken pipe')
+DEBUG:selenium_tester:209:fileserver &amp;quot;GET /npapi_geturl.nexe HTTP/1.1&amp;quot; 404 -
+----------------------------------------
+Exception happened during processing of request from ('127.0.0.1', 55657)
+Traceback (most recent call last):
+  File &amp;quot;/usr/lib/python2.5/SocketServer.py&amp;quot;, line 222, in handle_request
+    self.process_request(request, client_address)
+  File &amp;quot;/usr/lib/python2.5/SocketServer.py&amp;quot;, line 241, in process_request
+    self.finish_request(request, client_address)
+  File &amp;quot;/usr/lib/python2.5/SocketServer.py&amp;quot;, line 254, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File &amp;quot;/usr/lib/python2.5/SocketServer.py&amp;quot;, line 522, in __init__
+    self.handle()
+  File &amp;quot;/usr/lib/python2.5/BaseHTTPServer.py&amp;quot;, line 316, in handle
+    self.handle_one_request()
+  File &amp;quot;/usr/lib/python2.5/BaseHTTPServer.py&amp;quot;, line 310, in handle_one_request
+    method()
+  File &amp;quot;/home/mseaborn/devel/nacl-trunk/src/native_client/tools/selenium_tester.py&amp;quot;, line 283, in do_GET
+    self.HandleGetOrHeadRequest(filename, 1)
+  File &amp;quot;/home/mseaborn/devel/nacl-trunk/src/native_client/tools/selenium_tester.py&amp;quot;, line 259, in HandleGetOrHeadRequest
+    self.SendFile(f, send_body)
+  File &amp;quot;/home/mseaborn/devel/nacl-trunk/src/native_client/tools/selenium_tester.py&amp;quot;, line 232, in SendFile
+    self.SendData(str(err), code=404)
+  File &amp;quot;/home/mseaborn/devel/nacl-trunk/src/native_client/tools/selenium_tester.py&amp;quot;, line 221, in SendData
+    self.send_error(404, str(err))
+  File &amp;quot;/usr/lib/python2.5/BaseHTTPServer.py&amp;quot;, line 344, in send_error
+    self.send_response(code, message)
+  File &amp;quot;/usr/lib/python2.5/BaseHTTPServer.py&amp;quot;, line 368, in send_response
+    (self.protocol_version, code, message))
+  File &amp;quot;/usr/lib/python2.5/socket.py&amp;quot;, line 262, in write
+    self.flush()
+  File &amp;quot;/usr/lib/python2.5/socket.py&amp;quot;, line 249, in flush
+    self._sock.sendall(buffer)
+error: (32, 'Broken pipe')
+----------------------------------------
+INFO:selenium_tester:282:fileserver GET request /nacl_js_lib.js -&amp;gt; nacl_js_lib.js
+INFO:selenium_tester:226:fileserver sending /home/mseaborn/devel/nacl-trunk/src/native_client/tests/nacl_js_lib.js (text/plain)
+DEBUG:selenium_tester:209:fileserver &amp;quot;GET /nacl_js_lib.js HTTP/1.1&amp;quot; 200 -
+INFO:selenium_tester:282:fileserver GET request /favicon.ico -&amp;gt; favicon.ico
+DEBUG:selenium_tester:209:fileserver &amp;quot;GET /favicon.ico HTTP/1.1&amp;quot; 404 -
+DEBUG:selenium_tester:471:sel_rc [018] sel_serv:15:26:32.394 INFO - Got result: OK on session 71a2542a52cf4aacbada4f4b30de7e1f
+DEBUG:selenium_tester:471:sel_rc [019] sel_serv:15:26:32.398 INFO - Command request: waitForCondition[window.nacllib.getStatus() != 'WAIT', 20000] on session 71a2542a52cf4aacbada4f4b30de7e1f
+DEBUG:selenium_tester:471:sel_rc [020] sel_serv:15:26:32.489 INFO - Got result: OK on session 71a2542a52cf4aacbada4f4b30de7e1f
+DEBUG:selenium_tester:471:sel_rc [021] sel_serv:15:26:32.493 INFO - Command request: getEval[window.nacllib.getStatus(), ] on session 71a2542a52cf4aacbada4f4b30de7e1f
+DEBUG:selenium_tester:471:sel_rc [022] sel_serv:15:26:32.512 INFO - Got result: OK,ERROR on session 71a2542a52cf4aacbada4f4b30de7e1f
+DEBUG:selenium_tester:471:sel_rc [023] sel_serv:15:26:32.516 INFO - Command request: getEval[window.nacllib.getMessage(), ] on session 71a2542a52cf4aacbada4f4b30de7e1f
+DEBUG:selenium_tester:471:sel_rc [024] sel_serv:15:26:32.547 INFO - Got result: OK,The Native Client plugin was unable to load on session 71a2542a52cf4aacbada4f4b30de7e1f
+INFO:selenium_tester:547:MainThread STATUS: ERROR
+INFO:selenium_tester:548:MainThread MESSAGE: The Native Client plugin was unable to load
+INFO:selenium_tester:555:MainThread RESULT:http://localhost:46955/npapi_geturl.html  STATUS:FAILURE  TIME:0.424571  DETAILS:The Native Client plugin was unable to load
+WARNING:selenium_tester:561:MainThread ************* FAILURE *********
+...
+</ns0:content><ns0:updated>2011-07-29T00:12:12.000Z</ns0:updated><ns0:published>2010-06-23T14:31:20.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:state>closed</ns2:state><ns0:title>Selenium test fails consistently with "Broken pipe"</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Test</ns2:label><ns2:label>Component-FFPlugin</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/638/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=638" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/638" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-02-15T23:17:59.000Z</ns2:closedDate><ns2:id>638</ns2:id></ns0:entry>

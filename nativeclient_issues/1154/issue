@@ -1,0 +1,52 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkAARX47eCl7ImA9Wx9TEUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1154</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">On the new Buildbots, the Windows Scons build has been failing with the following non-deterministic error, which can occur on different build targets:
+
+scons: *** [scons-out\dbg-win-x86-32\obj\src\shared\imc\client.exe] ValueError : list.remove(x): x not in list
+Traceback (most recent call last):
+  File &amp;quot;e:\b\build\slave\xp-m32-n32-dbg\build\third_party\scons\scons-local\SCons\Action.py&amp;quot;, line 1034, in execute
+    result = self.execfunction(target=target, source=rsources, env=env)
+  File &amp;quot;e:\b\build\slave\xp-m32-n32-dbg\build\native_client\site_scons\site_tools\target_platform_windows.py&amp;quot;, line 129, in RunManifestExe
+    return RunManifest(target, source, env, cmd='$MANIFEST_COM')
+  File &amp;quot;e:\b\build\slave\xp-m32-n32-dbg\build\native_client\site_scons\site_tools\target_platform_windows.py&amp;quot;, line 116, in RunManifest
+    return_code, output = command_output.RunCommand(
+  File &amp;quot;e:\b\build\slave\xp-m32-n32-dbg\build\native_client\site_scons\site_tools\command_output.py&amp;quot;, line 121, in RunCommand
+    stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+  File &amp;quot;e:\b\build\slave\xp-m32-n32-dbg\build\third_party\python_24\lib\subprocess.py&amp;quot;, line 491, in __init__
+    _cleanup()
+  File &amp;quot;e:\b\build\slave\xp-m32-n32-dbg\build\third_party\python_24\lib\subprocess.py&amp;quot;, line 399, in _cleanup
+    inst.poll()
+  File &amp;quot;e:\b\build\slave\xp-m32-n32-dbg\build\third_party\python_24\lib\subprocess.py&amp;quot;, line 739, in poll
+    _active.remove(self)
+ValueError: list.remove(x): x not in list
+
+
+Another example:
+
+scons: *** [scons-out\opt-win-x86-64\obj\src\trusted\service_runtime\gio_shm_unbounded_test.exe] ValueError : list.remove(x): x not in list
+Traceback (most recent call last):
+  File &amp;quot;e:\b\build\slave\vista64-m64-n64-opt\build\third_party\scons\scons-local\SCons\Action.py&amp;quot;, line 1034, in execute
+    result = self.execfunction(target=target, source=rsources, env=env)
+  File &amp;quot;e:\b\build\slave\vista64-m64-n64-opt\build\native_client\site_scons\site_tools\target_platform_windows.py&amp;quot;, line 129, in RunManifestExe
+cl /Foscons-out\opt-win-x86-64\obj\src\trusted\service_runtime\fs\xdr.obj /c src\trusted\service_runtime\fs\xdr.c /nologo /W3 /EHsc /WX /O1 /MT /GS /DNACL_STANDALONE=1 /DNACL_BLOCK_SHIFT=5 /DNACL_BLOCK_SIZE=32 /DNACL_BUILD_ARCH=x86 /DNACL_BUILD_SUBARCH=64 /DNACL_TARGET_ARCH=x86 /DNACL_TARGET_SUBARCH=64 /DNACL_WINDOWS=1 /DNACL_OSX=0 /DNACL_LINUX=0 /D_WIN32_WINNT=0x0501 /D__STDC_LIMIT_MACROS=1 /DNOMINMAX=1 /DNDEBUG /DWIN32 /DWIN64 /D_LIB /IE:\b\build\slave\vista64-m64-n64-opt\build /Iscons-out\opt-win-x86-64 /IE:\b\build\slave\vista64-m64-n64-opt\build\gdb_utils\src /Z7
+    return RunManifest(target, source, env, cmd='$MANIFEST_COM')
+  File &amp;quot;e:\b\build\slave\vista64-m64-n64-opt\build\native_client\site_scons\site_tools\target_platform_windows.py&amp;quot;, line 116, in RunManifest
+    return_code, output = command_output.RunCommand(
+  File &amp;quot;e:\b\build\slave\vista64-m64-n64-opt\build\native_client\site_scons\site_tools\command_output.py&amp;quot;, line 121, in RunCommand
+    stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+  File &amp;quot;e:\b\build\slave\vista64-m64-n64-opt\build\third_party\python_24\lib\subprocess.py&amp;quot;, line 491, in __init__
+    _cleanup()
+  File &amp;quot;e:\b\build\slave\vista64-m64-n64-opt\build\third_party\python_24\lib\subprocess.py&amp;quot;, line 399, in _cleanup
+    inst.poll()
+  File &amp;quot;e:\b\build\slave\vista64-m64-n64-opt\build\third_party\python_24\lib\subprocess.py&amp;quot;, line 739, in poll
+    _active.remove(self)
+ValueError: list.remove(x): x not in list
+
+
+I suspect this is a concurrency bug in subprocess.py, because I think I have seen a similar bug in the past on Linux.
+
+That would mean this is a consequence of using &amp;quot;-j 8&amp;quot; on the Buildbots.
+
+Python 2.4 is quite old.  This is probably fixed in newer versions.
+</ns0:content><ns0:updated>2010-11-19T17:45:44.000Z</ns0:updated><ns0:published>2010-11-10T17:46:10.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>"list.remove(x): x not in list" error in Windows Scons build from subprocess.py</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1154/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1154" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1154" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-11-19T17:45:44.000Z</ns2:closedDate><ns2:id>1154</ns2:id></ns0:entry>

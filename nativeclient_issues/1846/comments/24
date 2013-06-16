@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0MCSX47eCl7ImA9WhZaEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1846/comments/full/24</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 7e6b9dffb279a0589af7f5e2375a57d7b287751e
+ Email: dspringer@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Add tests for PPB_Var in the proxy (part 2 of 2)
+
+Note to reviewers: This is the second half of the original PPB_Var CL (see: http://codereview.chromium.org/7134101/).  The companion CL is here: http://codereview.chromium.org/7155027/
+
+This CL adds the tests that were causing the integration bots to go red.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1846
+TEST=run_fake_browser_ppapi_test, chrome_browser_tests
+
+Review URL: http://codereview.chromium.org/7273008
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@5818 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	tests/fake_browser_ppapi/fake_host.cc
+M	tests/fake_browser_ppapi/fake_host.h
+M	tests/fake_browser_ppapi/fake_url_request_info.cc
+M	tests/fake_browser_ppapi/fake_url_request_info.h
+M	tests/fake_browser_ppapi/fake_url_util.cc
+M	tests/fake_browser_ppapi/fake_window.cc
+M	tests/fake_browser_ppapi/main.cc
+M	tests/ppapi_messaging/ppapi_messaging.c
+M	tests/ppapi_test_lib/get_browser_interface.cc
+M	tests/ppapi_test_lib/get_browser_interface.h
+M	tests/ppapi_test_lib/module_instance.cc
+M	tests/ppapi_test_lib/test_interface.cc</ns0:content><ns0:updated>2011-06-27T21:17:48.000Z</ns0:updated><ns0:published>2011-06-27T21:17:48.000Z</ns0:published><ns2:updates /><ns0:title>Comment 24 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1846#c24" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1846/comments/full/24" rel="self" type="application/atom+xml" /></ns0:entry>

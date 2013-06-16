@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0UBSX47eCl7ImA9WhZREU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1559</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Suppose you invoke:
+  sel_ldr hello_world.nexe -vvvv
+
+On Linux, the &amp;quot;-vvvv&amp;quot; is interpreted by sel_ldr as a trusted argument and it will increase the logging verbosity.
+
+On Windows, the &amp;quot;-vvvv&amp;quot; gets passed on to untrusted code, and you have to invoke:
+  sel_ldr -vvvv hello_world.nexe
+for the &amp;quot;-vvvv&amp;quot; to be interpreted by sel_ldr itself.
+
+This is because we use the system-provided getopt() implementation on Linux but we provide our own on Windows, and the two behave differently.
+
+This is a little confusing and I spent a while today debugging a test on Windows before realising that my sel_ldr argument wasn't getting used.
+</ns0:content><ns0:updated>2011-04-06T20:20:58.000Z</ns0:updated><ns0:published>2011-03-21T20:14:17.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>sel_ldr: getopt argument processing is inconsistent between Linux and Windows</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1559/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1559" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1559" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-04-06T20:20:58.000Z</ns2:closedDate><ns2:id>1559</ns2:id></ns0:entry>

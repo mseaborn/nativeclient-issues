@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0cDSX47eCl7ImA9WhRREEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2441</ns0:id><ns0:author>
+			<ns0:name>pucchaka...@chromium.org</ns0:name><ns0:uri>/u/108072576157181000797/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+On what operating system --&amp;gt; Win7/64 bit
+What browser are you using --&amp;gt; Chrome 16.0.912.36 (Official Build 109393)
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Go through the steps in Nacl SDK Test plan
+2. Start the local host server in Step 5
+3. Quit the server by using localhost:5103?quit=1 from the browser
+4. Info is shown that Server is shutting down on 5103
+5. Relaunch chrome and make sure that local host has been shut down.
+
+&lt;b&gt;What is the expected output?&lt;/b&gt;
+Local host should be shut down in a while.
+
+&lt;b&gt;What do you see instead?&lt;/b&gt;
+waited almost for 15-20 mins, to proceed to step 6 in which there is an another step to start the local host server. The server which was ran in Step 5 is not yet shut down.
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-11-23T19:04:38.000Z</ns0:updated><ns0:published>2011-11-14T22:27:24.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>Unable to stop the local host server</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2441/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2441" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2441" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2441</ns2:id></ns0:entry>

@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUFQX47eCl7ImA9WhZUE0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1889/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5568
+
+------------------------------------------------------------------------
+r5568 | mcgrathr@chromium.org | Mon Jun 06 14:31:24 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=5568&amp;r2=5567&amp;pathrev=5568
+
+Build IRT image with non-bitcode tools under bitcode=1
+
+Use the native newlib toolchain to build IRT images under bitcode=1 just as
+we do under --nacl_glibc.  This makes the image that tests built under
+bitcode=1 to use match the native-built image delivered into Chrome.
+
+The irt.nexe built with pnacl tools does not work right because the pnacl
+newlib is not yet built with -mtls-use-call (which the pnacl compiler does
+not yet support).  Moreover, there will only be one canonical IRT image
+built and we want the pnacl build to test pnacl-built nexes against that
+one rather than one built differently.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1889
+TEST=irt.nexe comes out identical with and without bitcode=1
+
+R=jvoung@google.com
+
+Review URL: http://codereview.chromium.org/7116001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-06-06T21:36:50.000Z</ns0:updated><ns0:published>2011-06-06T21:36:50.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1889#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1889/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkUGRH47eCl7ImA9WhRQEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1968/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">we are almost there, modulo some code cleanup this assert is what is blocking us:
+
+stdout        : 
+stderr        : llvm-mc: /usr/local/google/home/robertm/nacl-gclient4/native_client/pnacl/src/upstream/llvm/lib/Target/ARM/MCTargetDesc/ARMMCCodeEmitter.cpp:836: bool EvaluateAsPCRel(const llvm::MCExpr*): Assertion `0 &amp;&amp; "Unexpected expression type"' failed.
+0  llvm-mc         0x00000000005d044f
+1  llvm-mc         0x00000000005d26c2
+2  libpthread.so.0 0x00007f67fd88e8f0
+3  libc.so.6       0x00007f67fcb7da75 gsignal + 53
+4  libc.so.6       0x00007f67fcb815c0 abort + 384
+5  libc.so.6       0x00007f67fcb76941 __assert_fail + 241
+6  llvm-mc         0x0000000000523eaf
+7  llvm-mc         0x000000000053641c
+8  llvm-mc         0x000000000056ca1d
+9  llvm-mc         0x000000000057bbea
+10 llvm-mc         0x00000000004ffc24
+11 llvm-mc         0x000000000050da8f
+12 llvm-mc         0x000000000050ff61
+13 llvm-mc         0x00000000004097d3
+14 llvm-mc         0x000000000040a5f8
+15 libc.so.6       0x00007f67fcb68c4d __libc_start_main + 253
+16 llvm-mc         0x0000000000405069
+Stack dump:
+</ns0:content><ns0:updated>2011-12-06T20:43:45.000Z</ns0:updated><ns0:published>2011-12-06T20:43:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1968#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1968/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

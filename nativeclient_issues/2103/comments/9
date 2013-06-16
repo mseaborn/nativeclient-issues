@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0UBQn47eCl7ImA9WhdUGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2103/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 807d82b7d188208e2c372a03d6bc076c76b4e752
+ Email: bsy@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+native client side changes to enable exit status to be reported to JavaScript.
+
+this CL contains both the service runtime side changes and a test that
+verifies that, once the chromium-side changes to the plugin are
+checked in, a PPAPI event handler nexe that exits will have its exit
+status made available to JavaScript.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2103
+TEST= exit_status_tests
+Review URL: http://codereview.chromium.org/8139016
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6851 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	SConstruct
+M	src/trusted/reverse_service/reverse_control_rpc.h
+M	src/trusted/reverse_service/reverse_service.cc
+M	src/trusted/reverse_service/reverse_service.h
+M	src/trusted/service_runtime/nacl_syscall_common.c
+M	src/trusted/service_runtime/sel_ldr.h
+M	src/trusted/service_runtime/sel_ldr_standard.c
+A	tests/exit_status/nacl.scons
+A	tests/exit_status/pm_exit_status.nmf
+A	tests/exit_status/pm_exit_status_test.cc
+A	tests/exit_status/pm_exit_status_test.html</ns0:content><ns0:updated>2011-10-06T00:00:53.000Z</ns0:updated><ns0:published>2011-10-06T00:00:53.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2103#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2103/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

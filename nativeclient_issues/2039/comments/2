@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE8NQ347eCl7ImA9WhdSEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2039/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 1735ce237c467c08cd0285e3f491484846c408b7
+ Email: mseaborn@chromium.org@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Scons: Add the ability to disable tests from the command line
+
+The intention is to make it easier to disable tests selectively when
+updating the NaCl revision in Chromium's DEPS file.  We'll be able to
+disable a test without having to commit a change to the NaCl tree.
+
+This is for the cases in which there are chrome_browser_tests which
+pass in the NaCl tree but fail in Chromium build, e.g. because the
+NaCl buildbots use a release build of Chromium but the Chromium
+buildbots use a debug build.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2039
+TEST=looked at output from "large_tests disable_tests=run_debug_stub_test"
+ + ran chrome/test/nacl_test_injection/buildbot_nacl_integration.py locally
+
+Review URL: http://codereview.chromium.org/7397024
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6106 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	SConstruct
+M	build/buildbot_chrome_nacl_stage.py</ns0:content><ns0:updated>2011-07-18T22:08:12.000Z</ns0:updated><ns0:published>2011-07-18T22:08:12.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2039#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2039/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

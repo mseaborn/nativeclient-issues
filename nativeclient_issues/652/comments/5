@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUCQn47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/652/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2612
+
+------------------------------------------------------------------------
+r2612 | mseaborn@chromium.org | Wed Jun 30 14:34:06 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser/fake_browser_test.cc?r1=2612&amp;r2=2611&amp;pathrev=2612
+
+Plugin test: Fix incorrect usage of iterator on changing vector
+
+Don't try to iterate through an std::vector whose size can change
+during the iteration.
+
+This problem might be behind test failures on Ubuntu Jaunty.
+
+Note that the fact that the array changes size is a manifestation of
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=652
+
+Review URL: http://codereview.chromium.org/2800036
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:51:03.000Z</ns0:updated><ns0:published>2011-01-21T22:51:03.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=652#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/652/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

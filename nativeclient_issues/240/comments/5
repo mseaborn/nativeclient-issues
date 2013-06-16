@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0MHR347eCl7ImA9WxBUFEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/240/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">For context, the relevant file is 
+http://code.google.com/p/nativeclient/source/browse/trunk/src/native_client/src/shared/imc/nacl_
+imc_unistd.cc
+
+The code has been changed to do:
+int m = shm_open(name, O_RDWR | O_CREAT | O_EXCL, 0600);
+but you could actually use a mode of 0 instead of 0600.
+
+Also, you could unlink() the file before ftruncate()ing it.  That reduces the small chance of 
+leaking space.</ns0:content><ns0:updated>2010-03-01T17:43:56.000Z</ns0:updated><ns0:published>2010-03-01T17:43:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=240#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/240/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

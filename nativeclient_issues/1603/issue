@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUYDRn47eCl7ImA9WhZREkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1603</ns0:id><ns0:author>
+			<ns0:name>yokot...@gmail.com</ns0:name><ns0:uri>/u/105125559029543946517/</ns0:uri></ns0:author><ns0:content type="html">Hello!
+
+Please excuse me for my English - I write through google translator.
+
+Question to developers NaCl.
+I have an idea to create a NaCl-application that works with sound. Prerequisite is low latency input-output sound, and the ability to input-output sound card user to routing. Under low-latency I mean the figure to 10 milliseconds from the time the sound went to the input of your sound card, went to the NaCl-processing application, and entered the output of a sound card.
+
+Due with this question - whether there is support in NaCl ASIO (under Windows) and CoreAudio (under MacOS) host driver? Can you will do it? I think this feature would be very market demand SaaS services.</ns0:content><ns0:updated>2011-04-08T18:26:17.000Z</ns0:updated><ns0:published>2011-04-04T00:17:36.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:cc>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>ASIO/CoreAudio support in NaCl</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1603/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1603" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1603" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-04-08T18:26:17.000Z</ns2:closedDate><ns2:id>1603</ns2:id></ns0:entry>

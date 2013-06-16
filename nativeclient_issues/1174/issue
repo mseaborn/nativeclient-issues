@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHRX47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1174</ns0:id><ns0:author>
+			<ns0:name>esei...@google.com</ns0:name><ns0:uri>/u/118329321683865945653/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? native_client_sdk_0_1_507_1
+What version of the runtime are you using? n/a
+On what operating system? Mac 10.6.4
+What browser are you using? n/a
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+
+Compile this:
+
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;pthread.h&amp;gt;
+
+int main(int argc, char** argv) {
+  pthread_mutex_t mutex;
+  pthread_mutex_init(&amp;amp;mutex, 0);
+  pthread_mutex_lock(&amp;amp;mutex);
+  int rc = pthread_mutex_trylock(&amp;amp;mutex);
+  printf(&amp;quot;rc: %d\n&amp;quot;, rc);
+}
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+That program should output &amp;quot;rc: 16&amp;quot; since that would match the definition in errno.h.
+
+Instead it outputs &amp;quot;rc: -16&amp;quot;.
+</ns0:content><ns0:updated>2011-07-29T00:12:14.000Z</ns0:updated><ns0:published>2010-11-15T08:00:25.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/117420925389613150407/</ns2:uri><ns2:username>aba...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/117420925389613150407/</ns2:uri><ns2:username>aba...@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pthread_mutex_trylock returns -16 (-EBUSY) instead of EBUSY as expected</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-AppPlatform</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>ChromiumIPCBringup</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1174/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1174" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1174" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-12-01T08:20:19.000Z</ns2:closedDate><ns2:id>1174</ns2:id></ns0:entry>

@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIHQ347eCl7ImA9WhRaGUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1095</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">While porting GLibC to 64-bit NaCl, we discovered the following:
+
+Sometimes there is a need to create dynamic relocation to a local symbol - symbol that does not exist in dynamic symbol table.
+
+This can be solved in 2 ways:
+
+1. create relocation with an absolute value of the symbol. This is how native bintuils fix X86_64_64 relocations to local symbols - they simply create X86_64_RELATIVE and after that symbol name is not needed any more;
+
+2. all other kinds of relocations to local symbols are changed to relocations to sections.
+
+With way 2, there is a curious comment in bfd/elf64-x86-64.c that states that when rewriting relocations we should make them buggy by having section offset in relocation addend, because ld.so expects this.
+
+I'm currently unable to find the corresponding place in ld.so sources, and thus I don't fully understand how this stuff actually works. 
+
+For NaCl GLibC 64, we made a correct X86_64_32 relocation in this place, and it worked fine, but this still makes me nervous.
+
+Here is the binutils patch that introduced that intriguing comment:
+  http://sourceware.org/ml/binutils/2006-10/msg00080.html
+Discussion there mentions some specific kernel hacking as an origin.
+
+My next steps are to reproduce this with native compiler, probably this will help. And I can always try to reach the author of the patch.
+</ns0:content><ns0:updated>2012-02-22T22:42:12.000Z</ns0:updated><ns0:published>2010-10-26T11:51:02.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Check how NaCl binutils rewrite relocations from local symbols to sections</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1095/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1095" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1095" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1095</ns2:id></ns0:entry>

@@ -1,0 +1,77 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEcNRX47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/934/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3880
+
+------------------------------------------------------------------------
+r3880 | noelallen@google.com | Tue Dec 07 13:35:31 PST 2010
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppb_rpc_server.cc?r1=3880&amp;r2=3879&amp;pathrev=3880
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/trusted?r1=3880&amp;r2=3879&amp;pathrev=3880
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/trusted/srpcgen/ppb_rpc.h?r1=3880&amp;r2=3879&amp;pathrev=3880
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppapi_proxy.gyp?r1=3880&amp;r2=3879&amp;pathrev=3880
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppp_rpc_client.cc?r1=3880&amp;r2=3879&amp;pathrev=3880
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/nacl.scons?r1=3880&amp;r2=3879&amp;pathrev=3880
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/untrusted/srpcgen/upcall.h?r1=3880&amp;r2=3879&amp;pathrev=3880
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/untrusted?r1=3880&amp;r2=3879&amp;pathrev=3880
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/treemappers.py?r1=3880&amp;r2=3879&amp;pathrev=3880
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/untrusted/srpcgen/ppb_rpc.h?r1=3880&amp;r2=3879&amp;pathrev=3880
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/diff.py?r1=3880&amp;r2=3879&amp;pathrev=3880
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppp_rpc_server.cc?r1=3880&amp;r2=3879&amp;pathrev=3880
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/build.scons?r1=3880&amp;r2=3879&amp;pathrev=3880
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/trusted/srpcgen/upcall.h?r1=3880&amp;r2=3879&amp;pathrev=3880
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/upcall_client.cc?r1=3880&amp;r2=3879&amp;pathrev=3880
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/trusted/srpcgen?r1=3880&amp;r2=3879&amp;pathrev=3880
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/trusted/srpcgen/ppp_rpc.h?r1=3880&amp;r2=3879&amp;pathrev=3880
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/DEPS?r1=3880&amp;r2=3879&amp;pathrev=3880
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=3880&amp;r2=3879&amp;pathrev=3880
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppb_rpc_client.cc?r1=3880&amp;r2=3879&amp;pathrev=3880
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/upcall_server.cc?r1=3880&amp;r2=3879&amp;pathrev=3880
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/untrusted/srpcgen?r1=3880&amp;r2=3879&amp;pathrev=3880
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/untrusted/srpcgen/ppp_rpc.h?r1=3880&amp;r2=3879&amp;pathrev=3880
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppapi_proxy.mpy?r1=3880&amp;r2=3879&amp;pathrev=3880
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/srpcgen.py?r1=3880&amp;r2=3879&amp;pathrev=3880
+
+Check in SRCP generated files to avoid build issues in Chrome.
+  Build *.cc in same location as the first *.srpc file
+  Build *.h in same location plus 'trusted/srpcgen' or 'untrusted/srpcgen'
+  Remove SRPC generation from DEPS since this is not triggered by Chrome
+  Updated src\shared\ppapi_proxy\build.scons .\nacl.scons and ppapi_proxy.gyp
+  Add ability to run python from within multipy.py
+  Remove invocation of multipy (all done via scons)
+  Add scons build target for srpc called srpcgen (must be called manually)
+  Add scons target for automatically generating files to a out directory
+  Add test to diff the sources in the source tree with the always generated ones
+  Modified srpcgen to take an optional --include= switch to specify the included header
+  Delete obsolete ppapi_proxy.mpy
+  Checkin autogenerated trusted files
+  Remove copy of src/srpc dir in tools/modular-build/treemappers.py
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=934
+TEST=run_srpcgen_test (small_tests)
+
+Seems to be working now.   I check in sources for both trusted and untrusted.   
+  To generate trusted sources:   scons --mode=opt-X or --mode=dbg-X srpcgen
+  To generate untrusted sources: scons --mode=nacl_extra_sdk srpcgen
+
+All sources are checked in, in the same directory as the SRPC files that generated them.   
+In addition trusted sources are always generated to scons-out/xxxx/srpcgen/xxx and diff'd against the checked in sources to
+detect version skew.
+
+Once we get rid of GYP we should do the right thing and always generate.
+
+Interesting notes:
+   using a Command with names of source in the normal directory causes scons to assume they are in the build (scons-out/xxx) directory.
+   sometimes causing the compile step to miss a source, sometimes causing the compile step to generate the object file to the source dir.
+   Using DualLibrary, if the source file does not exist, the error you actually generate is that the accompanying "obj" does not exist.
+   CommandTest does not provide a standard mechanism declaring deps since it scrapes the command-line for deps.
+   CommandTest can not use extra_deps because these get turned off for Windows and Arm
+   Unable to find a way to get scons to generate a directory for me prior to a build step
+   Unable to order two dependencies, only by making them separate actions in an action list.
+
+   
+   
+
+Review URL: http://codereview.chromium.org/5468002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:21:34.000Z</ns0:updated><ns0:published>2011-01-21T23:21:34.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=934#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/934/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

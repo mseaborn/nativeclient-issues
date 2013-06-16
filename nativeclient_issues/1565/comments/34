@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0YHRX47eCl7ImA9WhRTEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1565/comments/full/34</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7058
+
+------------------------------------------------------------------------
+r7058 | robertm@google.com | Mon Oct 31 10:07:43 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/driver_tools.py?r1=7058&amp;r2=7057&amp;pathrev=7058
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_pnacl.sh?r1=7058&amp;r2=7057&amp;pathrev=7058
+
+Enable translator tests for ARM on the bots.
+
+Also disable sel_ldr validation when running llc-sb and ld-sb to save some time. Some numbers:
+
+time ./buildbot/buildbot_pnacl.sh    single-scons-test arm "--mode=opt-host,nacl -j8  use_sandboxed_translator=1" ""
+
+with validation:
+real    14m50.283s
+user    97m29.470s
+sys     2m51.270s
+
+without validation:
+real    9m23.967s
+user    60m3.290s
+sys     2m3.330s
+
+
+
+
+
+
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1565
+Review URL: http://codereview.chromium.org/8427002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-10-31T17:12:14.000Z</ns0:updated><ns0:published>2011-10-31T17:12:14.000Z</ns0:published><ns2:updates /><ns0:title>Comment 34 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1565#c34" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1565/comments/full/34" rel="self" type="application/atom+xml" /></ns0:entry>

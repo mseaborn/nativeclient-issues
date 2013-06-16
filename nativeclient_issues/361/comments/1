@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0UHQX47eCl7ImA9WxBbGUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/361/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">i modified a test to use a file:// URL for a nexe.  while the javascript code that 
+waits for the nexe to load just times out, it turns out that in Developer &gt; 
+JavaScript Console there's a nice error message:
+
+Not allowed to load local resource:
+ file:///pathspec...
+
+so i think chrome is disallowing the resource load even before the plugin is 
+instantiated.  i enabled NACL_PLUGIN_DEBUG environment variable and set the 
+SRPC_PLUGIN_DEBUG preprocessor symbol in src/trusted/plugin/srpc/utility.h and 
+there's no output on that page.  however, loading another test page w/ an unmodified 
+nexe path generated plenty of output, so the debugging code is active and working 
+fine.
+
+i'm going to mark this as WontFix, since we cannot have any kind of alert popup if 
+chrome won't even run our code.  (actually, it looks like 
+src/trusted/plugin/srpc/plugin.cc Plugin::Load has code already to call 
+PortablePluginInterface::Alert but, again, it's effectively dead code.)  since 
+there's a message in the JavaScript console and developers are likely to be looking 
+at that anyway, even though it's not an alert, i think it's good enough.</ns0:content><ns0:updated>2010-03-19T06:13:50.000Z</ns0:updated><ns0:published>2010-03-19T06:13:50.000Z</ns0:published><ns2:updates>
+			<ns2:status>WontFix</ns2:status></ns2:updates><ns0:title>Comment 1 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=361#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/361/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

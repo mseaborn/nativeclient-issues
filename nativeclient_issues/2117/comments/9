@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UDRH47eCl7ImA9WhdREEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2117/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>jsc...@chromium.org</ns0:name><ns0:uri>/u/110088500044003719179/</ns0:uri></ns0:author><ns0:content type="html">I just need to move the handle-closing policy out of AddPolicyForRenderer() so I can limit it to the renderer and worker processes. Unfortunately I don't expect to have access to a functional checkout until Monday. So, here's the change I'd make if someone wants to compile, test, and submit a CL.
+
+Index: src/content/common/sandbox_policy.cc
+===================================================================
+--- src/content/common/sandbox_policy.cc
++++ src/content/common/sandbox_policy.cc
+@@ -316,7 +316,6 @@
+   }
+
+   AddDllEvictionPolicy(policy);
+-  AddBaseHandleClosePolicy(policy);
+ }
+
+ // The Pepper process as locked-down as a renderer execpt that it can
+@@ -452,6 +451,10 @@
+       return 0;
+   } else {
+     AddPolicyForRenderer(policy);
++    if (type == ChildProcessInfo::RENDER_PROCESS ||
++        type == ChildProcessInfo::WORKER_PROCESS) {
++      AddBaseHandleClosePolicy(policy);
++    }
+
+     if (type_str != switches::kRendererProcess) {
+       // Hack for Google Desktop crash. Trick GD into not injecting its DLL into
+</ns0:content><ns0:updated>2011-07-31T01:21:15.000Z</ns0:updated><ns0:published>2011-07-31T01:21:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by jsc...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2117#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2117/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

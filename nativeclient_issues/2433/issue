@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QFRX47eCl7ImA9WhRVE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2433</ns0:id><ns0:author>
+			<ns0:name>jo...@unity3d.com</ns0:name><ns0:uri>/u/116362082051371563851/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;On what operating system?&lt;/b&gt;
+
+-Windows Vista, 64-bit
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+
+-Chrome 15 
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+
+-Open tumbler sample from http://www.gonacl.com/
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Instead of the 3d cube, we see a blank screen. Possibly a crash, I don't have the log, as this was reproduced by our QA team, I don't have a Vista machine to test myself.
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+Works as expected on Windows 7. But according to the system requirements here, &amp;quot;all versions&amp;quot; of windows should work (whatever that means):
+
+http://www.google.com/support/chrome/bin/answer.py?hl=en&amp;amp;answer=1647344
+
+If Vista is not supposed to be supported, maybe that page should be updated.
+</ns0:content><ns0:updated>2012-01-12T17:28:34.000Z</ns0:updated><ns0:published>2011-11-11T12:15:59.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101205782725797425170/</ns2:uri><ns2:username>anant...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Native Client does not work on Vista</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2433/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2433" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2433" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-01-12T16:55:43.000Z</ns2:closedDate><ns2:id>2433</ns2:id></ns0:entry>

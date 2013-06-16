@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUMHQH47eCl7ImA9WhZSFk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1592/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4706
+
+------------------------------------------------------------------------
+r4706 | sehr@google.com | Thu Mar 31 14:30:31 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/testdata/x86_32/mandel_v2.nexe?r1=4706&amp;r2=4705&amp;pathrev=4706
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/testdata/x86_64/mandel_v2.nexe?r1=4706&amp;r2=4705&amp;pathrev=4706
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/testdata/x86_64/fib_array_v2.nexe?r1=4706&amp;r2=4705&amp;pathrev=4706
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/testdata/x86_32/fib_array_v2.nexe?r1=4706&amp;r2=4705&amp;pathrev=4706
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/testdata/x86_32/fib_scalar_v2.nexe?r1=4706&amp;r2=4705&amp;pathrev=4706
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/testdata/x86_64/fib_scalar_v2.nexe?r1=4706&amp;r2=4705&amp;pathrev=4706
+
+Add new saved binaries for testing with SRPC symmetry change
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1592
+TEST=service runtime integration tests
+Review URL: http://codereview.chromium.org/6783035
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-03-31T21:37:11.000Z</ns0:updated><ns0:published>2011-03-31T21:37:11.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1592#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1592/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

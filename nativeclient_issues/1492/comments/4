@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0UCQn47eCl7ImA9Wx9aEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1492/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>jamesfen...@gmail.com</ns0:name><ns0:uri>/u/105008541472586726939/</ns0:uri></ns0:author><ns0:content type="html">In fact, the example sine_synth itself has same issue:
+cd ../sine_synth/
+[fengcao@myhost sine_synth]$ make all
+../../toolchain/linux_x86/bin/nacl-g++ -Wall -Wno-long-long -pthread -Werror -m32 -I../.. -O2 -c -o sine_synth_x86_32.o sine_synth.cc
+../../toolchain/linux_x86/bin/nacl-g++ -Wall -Wno-long-long -pthread -Werror -m64 -I../.. -O2 -c -o sine_synth_x86_64.o sine_synth.cc
+In file included from /home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/bits/locale_facets.h:43,
+                 from /home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/bits/basic_ios.h:39,
+                 from /home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/ios:45,
+                 from /home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/istream:40,
+                 from /home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/sstream:39,
+                 from sine_synth.cc:14:
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:44: error: &#8216;_U&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:45: error: &#8216;_L&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:46: error: &#8216;_U&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:46: error: &#8216;_L&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:47: error: &#8216;_N&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:48: error: &#8216;_X&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:48: error: &#8216;_N&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:49: error: &#8216;_S&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:50: error: &#8216;_P&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:50: error: &#8216;_U&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:50: error: &#8216;_L&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:50: error: &#8216;_N&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:50: error: &#8216;_B&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:51: error: &#8216;_P&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:51: error: &#8216;_U&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:51: error: &#8216;_L&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:51: error: &#8216;_N&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:52: error: &#8216;_C&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:53: error: &#8216;_P&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:54: error: &#8216;_U&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:54: error: &#8216;_L&#8217; was not declared in this scope
+/home/fengcao/Downloads/native_client_sdk_0_1_721_0/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/include/c++/4.4.3/nacl64/bits/ctype_base.h:54: error: &#8216;_N&#8217; was not declared in this scope
+make: *** [sine_synth_x86_64.o] Error 1
+</ns0:content><ns0:updated>2011-03-04T03:27:43.000Z</ns0:updated><ns0:published>2011-03-04T03:27:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by jamesfen...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1492#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1492/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

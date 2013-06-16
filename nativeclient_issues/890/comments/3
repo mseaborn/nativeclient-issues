@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE8CRX47eCl7ImA9Wx5VEUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/890/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">Few results from primary investigation for ix86 (32-bit):
+
+For -mtls-dialect=gnu (default) and -mtls-dialect=sun insns used for calling __tls_get_addr@PLT say they clobber scratch of class CREG, which is ecx (CREG class has only one member, ecx). This means my suspect about clobbering ecx seems to be wrong, as gcc knows ecx will not survive __tls_get_addr@PLT call.
+
+BTW, this test fails to compile, complaining on "unable to find a register to spill in class &#8216;CREG&#8217;":
+
+  __thread int var = 23;
+
+  int f() {
+    register int ecx asm ("%ecx") = 12345;
+    var = 1;
+    if (ecx != 12345) return -1;
+    return 0;
+  }
+
+For -mtls-dialect=gnu2, insns do not say they clobber CREG scratch, thus ecx may become really clobbered. This needs additional investigation.
+
+
+Now lowering the priority to Pri-2, as ix86 with default (gnu) tls dialect seems do be safe...
+</ns0:content><ns0:updated>2010-10-04T09:01:04.000Z</ns0:updated><ns0:published>2010-10-04T09:01:04.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Pri-1</ns2:label><ns2:label>Pri-2</ns2:label></ns2:updates><ns0:title>Comment 3 by eaelt...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=890#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/890/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

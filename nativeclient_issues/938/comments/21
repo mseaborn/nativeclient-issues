@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08EQn47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/938/comments/full/21</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3544
+
+------------------------------------------------------------------------
+r3544 | polina@google.com | Fri Oct 22 18:32:02 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/service_runtime.h?r1=3544&amp;r2=3543&amp;pathrev=3544
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_wrapper.cc?r1=3544&amp;r2=3543&amp;pathrev=3544
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/plugin_ppapi.cc?r1=3544&amp;r2=3543&amp;pathrev=3544
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/plugin.cc?r1=3544&amp;r2=3543&amp;pathrev=3544
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/browser_interface.cc?r1=3544&amp;r2=3543&amp;pathrev=3544
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/browser_interface.h?r1=3544&amp;r2=3543&amp;pathrev=3544
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/plugin.h?r1=3544&amp;r2=3543&amp;pathrev=3544
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/service_runtime.cc?r1=3544&amp;r2=3543&amp;pathrev=3544
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_wrapper.h?r1=3544&amp;r2=3543&amp;pathrev=3544
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/include/portability_io.h?r1=3544&amp;r2=3543&amp;pathrev=3544
+
+Plugin: Handle a nexe file descriptor in LoadNaClModule and pass it to 
+ServiceRuntime. This is only used by PPAPI Plugin. For now cheat a little and 
+get the file descriptor by extending the existing local file hack and opening
+the local file ourselves. URLLoader support will be done in a separate CL.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=938
+TESTED=manually using srpc tests on Linux
+
+
+Review URL: http://codereview.chromium.org/3613001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:16:43.000Z</ns0:updated><ns0:published>2011-01-21T23:16:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 21 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=938#c21" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/938/comments/full/21" rel="self" type="application/atom+xml" /></ns0:entry>

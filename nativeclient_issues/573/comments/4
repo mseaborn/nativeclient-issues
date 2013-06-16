@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8NSH47eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/573/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2470
+
+------------------------------------------------------------------------
+r2470 | mseaborn@chromium.org | Wed Jun 09 15:34:05 PDT 2010
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/stubout_mode/nacl.scons?r1=2470&amp;r2=2469&amp;pathrev=2470
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_validate_image.c?r1=2470&amp;r2=2469&amp;pathrev=2470
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/stubout_mode?r1=2470&amp;r2=2469&amp;pathrev=2470
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/stubout_mode/with_stubout.stdout?r1=2470&amp;r2=2469&amp;pathrev=2470
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=2470&amp;r2=2469&amp;pathrev=2470
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=2470&amp;r2=2469&amp;pathrev=2470
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=2470&amp;r2=2469&amp;pathrev=2470
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncvalidate.c?r1=2470&amp;r2=2469&amp;pathrev=2470
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=2470&amp;r2=2469&amp;pathrev=2470
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/stubout_mode/partly_invalid.c?r1=2470&amp;r2=2469&amp;pathrev=2470
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_internaltypes.h?r1=2470&amp;r2=2469&amp;pathrev=2470
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/stubout_mode/without_stubout.stdout?r1=2470&amp;r2=2469&amp;pathrev=2470
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncvalidate.h?r1=2470&amp;r2=2469&amp;pathrev=2470
+
+sel_ldr: Add "stub out mode" for replacing bad code with HLTs
+
+Add "-s" (stub out safely) debugging option for replacing
+non-validating instructions with HLTs.  This provides a way to fix
+non-validating code in a test-driven manner.
+
+This only overwrites instructions that are invalid when considered in
+isolation.  Other cases (such as jumps into the middle of
+instructions) are still rejected by sel_ldr when using this option.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=573
+TEST=run_stubout_mode_test
+
+Review URL: http://codereview.chromium.org/2744002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:28:19.000Z</ns0:updated><ns0:published>2011-01-21T22:28:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=573#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/573/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

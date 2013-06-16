@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIHSX47eCl7ImA9WhVVF0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2464</ns0:id><ns0:author>
+			<ns0:name>ncb...@google.com</ns0:name><ns0:uri>/u/100032148147647801554/</ns0:uri></ns0:author><ns0:content type="html">We have, over a long period of time, seen many tests fail with the error:
+
+NaCl module load failed: ServiceRuntime: command channel creation failed
+
+Currently this issue accounts for 15% of nacl_integration failures on the Chrome waterfall.  Drilling down to a per-test basis, it appears to be happening on 0.006% of the test runs.
+
+UMA reports this problem affects 1.22% of runs in the field, but those numbers are a little suspect.
+
+Our running hypothesis is that this is related to resource exhaustion
+( http://code.google.com/p/nativeclient/issues/detail?id=2091 ) but this isn't a very satisfying hypothesis because we can't prove it, we can't fix it, and it appears to be cross platform.
+
+We need to show exactly what the problem is (add telemetry?), and fix it if possible.</ns0:content><ns0:updated>2012-05-11T20:18:58.000Z</ns0:updated><ns0:published>2011-11-28T22:29:10.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Common flake: command channel creation failed</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2464/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2464" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2464" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>2776</ns2:id></ns2:blocking><ns2:id>2464</ns2:id></ns0:entry>

@@ -1,0 +1,54 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0AMRX47eCl7ImA9WxVaE0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/61</ns0:id><ns0:author>
+			<ns0:name>chris.ro...@gmail.com</ns0:name><ns0:uri>/u/109476958443797771315/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+What version of the runtime are you using? nacl_linux_46_2009_03_12.tgz
+On what operating system? Ubuntu Linux (latest release)
+What browser are you using? firefox 3.0.7 
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. ./scons --mode=most
+
+In nonnacl_util/linux/sel_mon.cc There is a missing format specifier on
+line 54 to the gtk_message_dialog_new() function. There should be a &amp;quot;%s&amp;quot; as
+the last argument. This would technically be a vulnerability but I don't
+see it being used anywhere that would allow a user to control the message
+being displayed, so I am filing it as a normal bug and compile error with
+this same file.
+
+    GtkWidget* dialog = gtk_message_dialog_new(NULL,
+        GtkDialogFlags(GTK_DIALOG_MODAL |
+                       GTK_DIALOG_DESTROY_WITH_PARENT),
+        GTK_MESSAGE_ERROR,
+        GTK_BUTTONS_YES_NO,
+        (2 &amp;lt;= argc) ? argv[1] : kDefaultMessage);
+
+Even when this is fixed I get compiler/linker errors.
+
+# ./scons --mode=dbg-linux
+scons: Reading SConscript files ...
+======================================================================
+Building nexe binaries using sdk at
+[/usr/src/nacl/googleclient/third_party/nacl_sdk/linux/sdk/nacl-sdk]
+======================================================================
+======================================================================
+SDL build enabled, this is somewhat experimental
+Using version in
+/usr/src/nacl/googleclient/native_client/../third_party/sdl/linux/v1_2_13
+======================================================================
+*** Solution file generation skipped (not supported on this platform).
+scons: done reading SConscript files.
+scons: Building targets ...
+________Compiling scons-out/dbg-linux/obj/nonnacl_util/linux/sel_mon.o
+________Linking scons-out/dbg-linux/obj/nonnacl_util/sel_mon
+/usr/src/nacl/googleclient/third_party/gtk/linux/lib/libgtk-x11-2.0.so:
+undefined reference to `gdk_screen_get_font_options_libgtk_only'
+/usr/src/nacl/googleclient/third_party/gtk/linux/lib/libgtk-x11-2.0.so:
+undefined reference to `gdk_screen_set_resolution_libgtk_only'
+/usr/src/nacl/googleclient/third_party/gtk/linux/lib/libgtk-x11-2.0.so:
+undefined reference to `gdk_screen_set_font_options_libgtk_only'
+/usr/src/nacl/googleclient/third_party/gtk/linux/lib/libgtk-x11-2.0.so:
+undefined reference to `gdk_screen_get_resolution_libgtk_only'
+#
+
+</ns0:content><ns0:updated>2009-04-10T21:43:04.000Z</ns0:updated><ns0:published>2009-03-15T16:28:02.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:state>closed</ns2:state><ns0:title>nonnacl_util/linux/sel_mon.cc Missing format specifier and compile bug</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/61/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=61" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/61" rel="self" type="application/atom+xml" /><ns2:stars>4</ns2:stars><ns2:closedDate>2009-04-10T21:43:04.000Z</ns2:closedDate><ns2:id>61</ns2:id></ns0:entry>

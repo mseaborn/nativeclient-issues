@@ -1,0 +1,86 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIFRH47eCl7ImA9WhRREEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2456</ns0:id><ns0:author>
+			<ns0:name>amis...@google.com</ns0:name><ns0:uri>/u/101568905635420902229/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+- Statically linked newlib from SVN r7033
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+- Linux x86-64
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+- None (using sel_ldr)
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+The following code will reproduce:
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;pthread.h&amp;gt;
+#include &amp;lt;errno.h&amp;gt;
+
+int main(int argc, char* argv[]) {
+ int i;
+
+ for (i = 0; i &amp;lt; 10; i++) {
+   pthread_mutex_t mutex;
+   if (pthread_mutex_init(&amp;amp;mutex, NULL) != 0) {
+     fprintf(stderr, &amp;quot;Unable to create mutex, error %d&amp;quot;, errno);
+     return -1;
+   }
+   if (pthread_mutex_destroy(&amp;amp;mutex) != 0) {
+     fprintf(stderr, &amp;quot;Unable to destroy mutex, error %d&amp;quot;, errno);
+     return -1;
+   }
+ }
+ return 0;
+}
+
+Run with sel_ldr -vvv:
+NaClNameServiceCreateDescEntry: entering SecureRandom, 2 (0x2)
+NaClPerfCounterInterval(SelMain __start__:SnapshotBlob): 9783
+microsecs
+NaClPerfCounterInterval(SelMain SnapshotBlob:SnapshotNaclFile): 2458
+microsecs
+Loading nacl file ./a.out (non-RPC)
+&amp;lt;snipped lots of random debugging stuff...&amp;gt;
+NaClCommonSysMutex_Create(0x7ffa6595ce10) = 14
+Entered NaClCommonSysMutex_Create(0x7ffa6595ce10)
+NaClCommonSysMutex_Create(0x7ffa6595ce10) = 15
+Entered NaClCommonSysClose(0x7ffa6595ce10, 15)
+Entered NaClCommonSysMutex_Create(0x7ffa6595ce10)
+NaClCommonSysMutex_Create(0x7ffa6595ce10) = 15
+Entered NaClCommonSysMutex_Create(0x7ffa6595ce10)
+NaClCommonSysMutex_Create(0x7ffa6595ce10) = 16
+Entered NaClCommonSysClose(0x7ffa6595ce10, 16)
+Entered NaClCommonSysMutex_Create(0x7ffa6595ce10)
+NaClCommonSysMutex_Create(0x7ffa6595ce10) = 16
+Entered NaClCommonSysMutex_Create(0x7ffa6595ce10)
+NaClCommonSysMutex_Create(0x7ffa6595ce10) = 17
+Entered NaClCommonSysClose(0x7ffa6595ce10, 17)
+Entered NaClCommonSysMutex_Create(0x7ffa6595ce10)
+NaClCommonSysMutex_Create(0x7ffa6595ce10) = 17
+Entered NaClCommonSysMutex_Create(0x7ffa6595ce10)
+NaClCommonSysMutex_Create(0x7ffa6595ce10) = 18
+Entered NaClCommonSysClose(0x7ffa6595ce10, 18)
+Entered NaClCommonSysMutex_Create(0x7ffa6595ce10)
+NaClCommonSysMutex_Create(0x7ffa6595ce10) = 18
+Entered NaClCommonSysMutex_Create(0x7ffa6595ce10)
+NaClCommonSysMutex_Create(0x7ffa6595ce10) = 19
+Entered NaClCommonSysClose(0x7ffa6595ce10, 19)
+Exit syscall handler: 0
+NaClAppThreadTeardown(0x7ffa6595ce10)
+ getting thread table lock
+ getting thread lock
+ removing thread from thread table
+ unlocking thread
+ announcing thread count change
+ unlocking thread table
+ unregistering signal stack
+ freeing thread object
+ NaClThreadExit
+ wakeup, nap-&amp;gt;running 0, nap-&amp;gt;exit_status 0
+NaClPerfCounterInterval(SelMain CreateMainThread:WaitForMainThread):
+7441 microsecs
+NaClPerfCounterInterval(SelMain __start__:SelMainEnd): 129329
+microsecs
+
+Note how two mutexes are created, but only one is closed. I expect to see every created mutex closed.</ns0:content><ns0:updated>2011-11-23T22:48:35.000Z</ns0:updated><ns0:published>2011-11-22T21:22:47.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>statically linked newlib leaks mutex fds in pthread_mutex_init/pthread_mutex_destroy.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Newlib</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2456/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2456" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2456" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-11-23T22:43:45.000Z</ns2:closedDate><ns2:id>2456</ns2:id></ns0:entry>

@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUAAQX47eCl7ImA9WhZRFUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1636/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">It doesn't matter what you path has in it before running this command because the httpd.cmd batch file will alter the path to put the hermetic cygwin in front of the path.  For comparison, here's the output from running httpd.cmd on the 0.1 SDK:
+
+D:\src\native_client_sdk_0_1_721_0\examples&gt;httpd.cmd
+
+D:\src\native_client_sdk_0_1_721_0\examples&gt;REM Relative path of CygWin
+
+D:\src\native_client_sdk_0_1_721_0\examples&gt;set CYGWIN=D:\src\native_client_sdk_0_1_721_0\examples\..\third_party\cygwin\bin
+
+D:\src\native_client_sdk_0_1_721_0\examples&gt;PATH=D:\src\native_client_sdk_0_1_721_0\examples\..\third_party\cygwin\bin;C:\Windows\system
+
+D:\src\native_client_sdk_0_1_721_0\examples&gt;python httpd.py
+INFO:root:Starting local server on port 5103
+INFO:root:To shut down send http://localhost:5103?quit=1</ns0:content><ns0:updated>2011-04-11T21:35:40.000Z</ns0:updated><ns0:published>2011-04-11T21:35:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by mball@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1636#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1636/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

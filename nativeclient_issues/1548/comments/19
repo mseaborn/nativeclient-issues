@@ -1,0 +1,66 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIAQH47eCl7ImA9WhdXF0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1548/comments/full/19</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">I made fresh measurements for r6584, non-browser, with-irt hello_world test on Linux.
+Processor model: Intel(R) Xeon(R) CPU E5620  @ 2.40GHz.
+
+32bit results:
+NaClPerfCounterInterval(SelMain __start__:SnapshotBlob): 6836 microsecs
+NaClPerfCounterInterval(SelMain SnapshotBlob:SnapshotNaclFile): 926 microsecs
+NaClPerfCounterInterval(NaClAppLoadFile __start__:PreAllocAddrSpace): 21 microsecs
+NaClPerfCounterInterval(NaClAppLoadFile PreAllocAddrSpace:*AllocAddrSpace): 17 microsecs
+NaClPerfCounterInterval(NaClAppLoadFile *AllocAddrSpace:*MakeDynText): 2945 microsecs
+NaClPerfCounterInterval(NaClAppLoadFile *MakeDynText:*ValidateImg): 12308 microsecs
+NaClPerfCounterInterval(NaClAppLoadFile __start__:EndLoadFile): 15449 microsecs
+NaClPerfCounterInterval(SelMain SnapshotNaclFile:AppLoadEnd): 15472 microsecs
+NaClPerfCounterInterval(SelMain AppLoadEnd:AppPrepLaunch): 118 microsecs
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 90206 microsecs
+---&gt; IRT loading:
+NaClPerfCounterInterval(SelMain AppPrepLaunch:BlobLoaded): 92602 microsecs
+NaClPerfCounterInterval(SelMain BlobLoaded:CreateMainThread): 645 microsecs
+---&gt; validation of hello_world.nexe:
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 124 microsecs
+---&gt; validation of libstdc++.so:
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 60337 microsecs
+---&gt; validation of libm.so:
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 12549 microsecs
+---&gt; validation of libgcc_s.so:
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 3805 microsecs
+---&gt; validation of libc.so:
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 109496 microsecs
+NaClPerfCounterInterval(SelMain CreateMainThread:WaitForMainThread): 196111 microsecs
+NaClPerfCounterInterval(SelMain __start__:SelMainEnd): 312730 microsecs
+
+IRT loading: 93ms
+*.so validation total: 186ms
+Together they take ~90% of running time.
+
+64bit results:
+NaClPerfCounterInterval(SelMain __start__:SnapshotBlob): 7870 microsecs
+NaClPerfCounterInterval(SelMain SnapshotBlob:SnapshotNaclFile): 1058 microsecs
+NaClPerfCounterInterval(NaClAppLoadFile __start__:PreAllocAddrSpace): 15 microsecs
+NaClPerfCounterInterval(NaClAppLoadFile PreAllocAddrSpace:*AllocAddrSpace): 31 microsecs
+NaClPerfCounterInterval(NaClAppLoadFile *AllocAddrSpace:*MakeDynText): 2813 microsecs
+NaClPerfCounterInterval(NaClAppLoadFile *MakeDynText:*ValidateImg): 15335 microsecs
+NaClPerfCounterInterval(NaClAppLoadFile __start__:EndLoadFile): 18388 microsecs
+NaClPerfCounterInterval(SelMain SnapshotNaclFile:AppLoadEnd): 18415 microsecs
+NaClPerfCounterInterval(SelMain AppLoadEnd:AppPrepLaunch): 115 microsecs
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 120198 microsecs
+---&gt; IRT loading:
+NaClPerfCounterInterval(SelMain AppPrepLaunch:BlobLoaded): 123273 microsecs
+NaClPerfCounterInterval(SelMain BlobLoaded:CreateMainThread): 948 microsecs
+---&gt; validation of hello_world.nexe:
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 274 microsecs
+---&gt; validation of libstdc++.so:
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 78873 microsecs
+---&gt; validation of libm.so:
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 23088 microsecs
+---&gt; validation of libgcc_s.so:
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 4728 microsecs
+---&gt; validation of libc.so:
+NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 133182 microsecs
+NaClPerfCounterInterval(SelMain CreateMainThread:WaitForMainThread): 249483 microsecs
+NaClPerfCounterInterval(SelMain __start__:SelMainEnd): 401180 microsecs
+
+IRT loading: 123ms
+*.so validation total: 240ms
+Together they take ~66% of running time, it is not cleare where the rest ~100ms is goin</ns0:content><ns0:updated>2011-08-30T15:35:41.000Z</ns0:updated><ns0:published>2011-08-30T15:35:41.000Z</ns0:published><ns2:updates /><ns0:title>Comment 19 by pa...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1548#c19" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1548/comments/full/19" rel="self" type="application/atom+xml" /></ns0:entry>

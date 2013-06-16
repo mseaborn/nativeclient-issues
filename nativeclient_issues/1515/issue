@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUEMQ347eCl7ImA9WhdQFkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1515</ns0:id><ns0:author>
+			<ns0:name>jos...@google.com</ns0:name><ns0:uri>/u/103868156703017965534/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;URL of docs page:&lt;/b&gt;
+
+Introductory chapter describing basic program structure and how the browser talks to the NaCl module.
+</ns0:content><ns0:updated>2011-08-17T21:48:02.000Z</ns0:updated><ns0:published>2011-03-11T00:12:54.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/103868156703017965534/</ns2:uri><ns2:username>jos...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101701583982903801272/</ns2:uri><ns2:username>awat...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104762538827300912435/</ns2:uri><ns2:username>j...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Write Dev Guide chapter on Program Structure</ns0:title><ns2:label>Pri-0</ns2:label><ns2:label>Component-Docs</ns2:label><ns2:label>Mstone-14</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1515/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1515" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1515" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-17T21:48:02.000Z</ns2:closedDate><ns2:id>1515</ns2:id></ns0:entry>

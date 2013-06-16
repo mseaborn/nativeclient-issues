@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4BRX47eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/339/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2532
+
+------------------------------------------------------------------------
+r2532 | cbiffle@google.com | Thu Jun 17 14:31:21 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_arm/validator.cc?r1=2532&amp;r2=2531&amp;pathrev=2532
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_arm/testdata/test_stores.nexe?r1=2532&amp;r2=2531&amp;pathrev=2532
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_arm/testdata/test_stores.S?r1=2532&amp;r2=2531&amp;pathrev=2532
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_arm/testdata/test_stores.err?r1=2532&amp;r2=2531&amp;pathrev=2532
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/third_party/arm-isa/armv7.table?r1=2532&amp;r2=2531&amp;pathrev=2532
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_arm/validator.h?r1=2532&amp;r2=2531&amp;pathrev=2532
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_arm/model-inl.h?r1=2532&amp;r2=2531&amp;pathrev=2532
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_arm/inst_classes.h?r1=2532&amp;r2=2531&amp;pathrev=2532
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_arm/inst_classes.cc?r1=2532&amp;r2=2531&amp;pathrev=2532
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_arm/testdata/compile_tests.sh?r1=2532&amp;r2=2531&amp;pathrev=2532
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_arm/armv7-opt.table?r1=2532&amp;r2=2531&amp;pathrev=2532
+
+Roll-forward of 2388 with a bug fix.  The fix is in model-inl.h and is the second bug attached below.  Original CL description follows.
+
+Taught the validator to recognize the conditional-store sandboxing sequence.
+This involved the following steps:
+
+- Added a sequence using the new sandbox sequence, and a few sequences using bogus variations of it, to test_stores.S.  Added the expected results to test_stores.err.  Verified that this failed.
+- Added a new instruction class method, tests_bits_clear, that checks whether an instruction sets Z iff certain bits in a certain register are clear.  (inst_classes.h)
+- Added a new instruction class, TestImmediate, that implements tests_bits_clear for the TST(immediate) instruction.  (inst_classes.cc)
+  - Modified the decode table to distinguish TST(immediate) from other TST and TEQ forms (armv7.table).  Ran this through the optimizer to produce a new armv7-opt.table.  (This should totally be done in the build process.)
+  - Added a new instruction operator, is_conditional_on, that recognizes a conditional op that executes after a flag-setting unconditional op.  (validator.h)
+  - Added a check in the validator's store analysis to recognize the new sandbox.  (validator.cc)
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=339
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=602
+
+Review URL: http://codereview.chromium.org/2811008
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:29:14.000Z</ns0:updated><ns0:published>2011-01-21T22:29:14.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=339#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/339/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

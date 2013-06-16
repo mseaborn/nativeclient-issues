@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0INRn47eCl7ImA9WhRRF0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2006</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Currently Breakpad crash reporting works for Chrome+NaCl on x86-32 Windows only, though eventually we want to support all platforms.  This needs to have automated test cases.  Crashes in trusted code should produce crash dumps.
+
+There are a couple of ways this could be implemented:
+
+ 1) In the Chromium repo, possibly using pyauto.  e.g. There is a pyauto-based test for Breakpad in chrome/test/functional/crash_reporter.py.  This has some problems though:
+    * The Chromium pyauto tests are not very well tended at the moment, and don't run on the main Chromium buildbots.  So we don't get trybot coverage.
+    * This particular test is only being run for the official Chrome build, so the delay before discovering breakage can be high.  Again, we don't get trybot coverage.
+    * Tests in the Chrome build suffer the usual problem of not having a way to build NaCl executables.
+
+ 2) In the NaCl repo, by extending tools/browser_tester to look for crash dumps.
+</ns0:content><ns0:updated>2011-12-01T19:59:57.000Z</ns0:updated><ns0:published>2011-07-12T19:06:14.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Ensure that Breakpad (crash reporting) support has automated tests</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>TestNeeded</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2006/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2006" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2006" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-12-01T19:59:57.000Z</ns2:closedDate><ns2:id>2006</ns2:id></ns0:entry>

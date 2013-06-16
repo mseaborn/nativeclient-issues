@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkMHSX47eCl7ImA9Wx9RFk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1247</ns0:id><ns0:author>
+			<ns0:name>bjarke.w...@gmail.com</ns0:name><ns0:uri>/u/111895975545066954541/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? n/a
+What version of the runtime are you using? n/a
+On what operating system? Linux (Ubuntu 10.04.1 LTS)
+What browser are you using? Chromium 8.0.552.215 (67652) Ubuntu 10.04
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Start Chromium in a terminal using `chromium-browser --enable-nacl`.
+2. Browse to http://naclports.googlecode.com/svn/trunk/src/gallery/hello_world/hello_world.html
+3. The Hello World example does not work. Look at output in terminal.
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Expected the Hello World example to work. It doesn't ('Cannot call method XX of null'). In the terminal you see the following output each time the page is (re)loaded:
+
+    failed to send nexe
+    Load: Failed to start service runtime
+</ns0:content><ns0:updated>2010-12-17T17:53:58.000Z</ns0:updated><ns0:published>2010-12-12T22:04:34.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:state>closed</ns2:state><ns0:title>'Failed to send nexe' in Chromium 8.0.552.215 for Ubuntu 10.04</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1247/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1247" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1247" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-12-17T17:53:58.000Z</ns2:closedDate><ns2:id>1247</ns2:id></ns0:entry>

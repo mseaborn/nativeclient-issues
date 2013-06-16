@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCSX47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1656</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Currently some of the debug stub code lives in service_runtime (under nacl_debug.cc) and some other service_runtime code calls NaClDebug*() functions unconditionally.
+
+This leads to worries that debug stub code might be called even when the debug stub has not been enabled at run time, and that this might introduce vulnerabilities.  For this reason, the debug stub is currently disabled with the equivalent of an &amp;quot;#if 0&amp;quot; in the source.
+
+However, we want to make the debug stub more accessible by compiling it in by default.  We want to ensure that debug stub code is never run unless it is enabled with an explicit option (currently &amp;quot;-g&amp;quot; for sel_ldr and &amp;quot;--enable-nacl-debug&amp;quot; for Chromium).
+
+
+To resolve this issue, we should have the following:
+
+ 1) All debug stub code lives in src/trusted/debug_stub and src/trusted/gdb_rsp, so that changes to this code do not require TCB reviewers.
+
+ 2) service_runtime does not do direct calls to debug stub functions, except for one call (NaClDebugInit()).  Any calls that service_runtime makes to the debug stub must be via callbacks that NaClDebugInit() may register.  This means that sel_ldr does not always need to be linked to the debug stub:  it will be easy to link a version of sel_ldr against a dummy NaClDebugInit().
+
+ 3) The call to NaClDebugInit() lives in service_runtime and this directory *does* require a TCB reviewer to modify.
+
+ 4) The debug stub is allowed to know about service_runtime's data structures and call service_runtime's functions.  That's OK: once the debug stub is enabled, we don't guarantee security.
+
+
+The goal is that code reviews for service_runtime should be enough to ensure that debug stub code does not run unless &amp;quot;-g&amp;quot; or &amp;quot;--enable-nacl-debug&amp;quot; is used.
+
+One caveat is that debug stub code could get run via C++ constructors.  Maybe we could add a build time check that no static constructors are used.
+</ns0:content><ns0:updated>2011-07-29T00:12:48.000Z</ns0:updated><ns0:published>2011-04-14T01:35:50.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/109474787648168037085/</ns2:uri><ns2:username>mli...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113823374410613289742/</ns2:uri><ns2:username>garia...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Debug stub: Separate the debug stub and service_runtime more cleanly</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Debugging</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1656/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1656" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1656" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>1220</ns2:id></ns2:blocking><ns2:closedDate>2011-04-21T15:59:01.000Z</ns2:closedDate><ns2:id>1656</ns2:id></ns0:entry>

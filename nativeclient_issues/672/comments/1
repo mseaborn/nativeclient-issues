@@ -1,0 +1,66 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUDRn47eCl7ImA9WxFbFEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/672/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I ran into this bug while trying to implement process startup for the
+dynamic linker.
+
+The problem is that the plugin does an invalid free() if SRPC method
+discovery fails.  It does not matter whether the subprocess does
+imc_accept(3) or not (because imc_connect() succeeds without waiting
+for an imc_accept()).
+
+The problem can also be reproduced by inserting this code into
+srpc_hw.c:
+
+int main(int argc, char **argv) {
+  return 0;
+}
+
+This gives the following error and backtrace in fake_browser_test:
+
+*** glibc detected *** /home/mseaborn/devel/nacl-trunk/src/native_client/scons-out/nacl-x86-32/obj/tests/fake_browser/fake_browser_test: free(): invalid pointer: 0x0805b588 ***
+
+(gdb) bt
+#0  0xb7757410 in __kernel_vsyscall ()
+#1  0xb74d7085 in raise () from /lib/tls/i686/cmov/libc.so.6
+#2  0xb74d8a01 in abort () from /lib/tls/i686/cmov/libc.so.6
+#3  0xb750fc1c in __libc_message () from /lib/tls/i686/cmov/libc.so.6
+#4  0xb7517b25 in _int_free () from /lib/tls/i686/cmov/libc.so.6
+#5  0xb751b590 in free () from /lib/tls/i686/cmov/libc.so.6
+#6  0xb747655f in FreeMethods (methods=0x805b588, rpc_count=1) at src/shared/srpc/rpc_service.c:261
+#7  0xb7476715 in NaClSrpcServiceDtor (service=0x805b400) at src/shared/srpc/rpc_service.c:337
+#8  0xb747353a in NaClSrpcDtor (channel=0xb70da020) at src/shared/srpc/nacl_srpc.c:172
+#9  0xb7461db6 in ~SrpcClient (this=0xb70da008) at src/trusted/plugin/srpc/srpc_client.cc:64
+#10 0xb74530a2 in plugin::ConnectedSocket::Init (this=0x805b4b8, plugin=0x805968c, wrapper=0x805b4a8)
+    at src/trusted/plugin/srpc/connected_socket.cc:112
+#11 0xb7453250 in plugin::ConnectedSocket::New (plugin=0x805968c, desc=0x805b4a8) at src/trusted/plugin/srpc/connected_socket.cc:77
+#12 0xb74608ac in plugin::SocketAddress::Connect (this=0x805a9b0) at src/trusted/plugin/srpc/socket_address.cc:101
+#13 0xb745e1a0 in plugin::ServiceRuntime::InitCommunication (this=0x80598a8, shm=0x0) at src/trusted/plugin/srpc/service_runtime.cc:205
+#14 0xb745e8fb in plugin::ServiceRuntime::Start (this=0x80598a8, 
+    nacl_file=0x805a650 "/home/mseaborn/devel/nacl-trunk/src/native_client/scons-out/nacl-x86-32/staging/srpc_hw.nexe")
+    at src/trusted/plugin/srpc/service_runtime.cc:262
+#15 0xb745764c in plugin::Plugin::Load (this=0x805968c, logical_url=@0xbfd27edc, 
+    local_url=0x805a59c "/home/mseaborn/devel/nacl-trunk/src/native_client/scons-out/nacl-x86-32/staging/srpc_hw.nexe", shmbufp=0x0)
+    at src/trusted/plugin/srpc/plugin.cc:545
+#16 0xb7457af4 in plugin::Plugin::Load (this=0x805968c, logical_url=@0xbfd27f18, 
+    local_url=0x805a59c "/home/mseaborn/devel/nacl-trunk/src/native_client/scons-out/nacl-x86-32/staging/srpc_hw.nexe")
+    at src/trusted/plugin/srpc/plugin.cc:474
+#17 0xb7452434 in plugin::LoadNaClAppNotify::RunFromFile (this=0x805a578, stream=0xbfd27fd0, fname=@0xbfd27f50)
+    at src/trusted/plugin/srpc/closure.cc:60
+#18 0xb7468e4e in plugin::PluginNpapi::StreamAsFile (this=0x8059688, stream=0xbfd27fd0, 
+    fname=0x80560a4 "/home/mseaborn/devel/nacl-trunk/src/native_client/scons-out/nacl-x86-32/staging/srpc_hw.nexe")
+    at src/trusted/plugin/npapi/plugin_npapi.cc:312
+#19 0xb7467735 in NPP_StreamAsFile (instance=0x8059cb8, stream=0xbfd27fd0, 
+    filename=0x80560a4 "/home/mseaborn/devel/nacl-trunk/src/native_client/scons-out/nacl-x86-32/staging/srpc_hw.nexe")
+    at src/trusted/plugin/npapi/npp_launcher.cc:224
+#20 0x0804f4d4 in Callback::run (this=0x8056260, instance=0x8059cb8) at tests/fake_browser/fake_browser_test.cc:65
+#21 0x0804adaa in TestHelloWorldMethod (nexe_url=0x80529a3 "http://localhost/srpc_hw.nexe") at tests/fake_browser/fake_browser_test.cc:386
+#22 0x0804b5e6 in main (argc=6, argv=0xbfd28254) at tests/fake_browser/fake_browser_test.cc:481
+
+The bug is in srpc_client.cc.  It does NaClSrpcDtor() even if
+NaClSrpcClientCtor() -- which does method discovery -- failed.  It
+frees an uninitialised pointer value.
+
+Presumably in the context of Firefox the uninitialised value pointed
+to a block that an unrelated piece of code had allocated, causing that
+code to fail later.
+</ns0:content><ns0:updated>2010-07-06T10:31:17.000Z</ns0:updated><ns0:published>2010-07-06T10:31:17.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=672#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/672/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

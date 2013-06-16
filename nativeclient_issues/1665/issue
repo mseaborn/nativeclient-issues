@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UGQ347eCl7ImA9WhRaE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1665</ns0:id><ns0:author>
+			<ns0:name>sa...@google.com</ns0:name><ns0:uri>/u/111227428049549265840/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;[Please summarize the enhancement so it will be comprehensible to someone&lt;/b&gt;
+&lt;b&gt;from outside the Native Client team. A good summary will include:]&lt;/b&gt;
+Tests coverage numbers of trusted plugin and proxies are less than 50 across the board.
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+[e.g. &amp;quot;Currently each platform uses a different address space size.&amp;quot;]
+Tests coverage numbers of trusted plugin and proxies are less than 50 across the board.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+[e.g. &amp;quot;This can make portability complicated.&amp;quot;]
+We can the test coverage numbers to be in a reasonable range (at least 50, hopefully above 70
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+[e.g. &amp;quot;All platforms should move to 1GB untrusted space.&amp;quot;]
+We should at least investigate adding more testing, or measure the proper coverage
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+&lt;b&gt;[How do we know we're done?]&lt;/b&gt;
+Coverage numbers above 50
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+&lt;b&gt;[for users as well as other parts of the system]&lt;/b&gt;
+</ns0:content><ns0:updated>2012-02-15T19:47:02.000Z</ns0:updated><ns0:published>2011-04-15T17:27:19.000Z</ns0:published><ns2:status>Moved</ns2:status><ns2:owner>
+			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dmichael@google.com/</ns2:uri><ns2:username>dmichael@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Investigate improving test coverage numbers for trust plugin and proxies.</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>MigrateToChromium</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1665/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1665" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1665" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-02-15T19:47:02.000Z</ns2:closedDate><ns2:id>1665</ns2:id></ns0:entry>

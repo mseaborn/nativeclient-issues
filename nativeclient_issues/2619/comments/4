@@ -1,0 +1,59 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QGR347eCl7ImA9WhVXE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2619/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8266
+
+------------------------------------------------------------------------
+r8266 | bsy@google.com | Fri Apr 13 16:19:05 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/custom_desc/nacl.scons?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/trusted_crash/win_crash_in_syscall/nacl.scons?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/race_protect/mmap_race.c?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/minnacl/minimal_test_host.c?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/interval_multiset?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/minnacl/nacl.scons?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/trusted_crash/osx_crash_forwarding/nacl.scons?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/interval_multiset/interval_multiset.gyp?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/interval_multiset/nacl_interval_range_tree_intern.h?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/interval_multiset/nacl_interval_list_intern.h?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/interval_multiset/nacl_interval_multiset.h?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_handlers_gen.py?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/multiple_sandboxes/nacl.scons?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/interval_multiset/nacl_interval_test.c?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/interval_multiset/testdata/nacl_interval_random_test.stdin?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/interval_multiset/nacl_interval_multiset_delete.c?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/interval_multiset/nacl_interval_multiset_factory.c?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/race_protect?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/race_protect/nacl.scons?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/interval_multiset/build.scons?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/interval_multiset/nacl_interval_list.c?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/interval_multiset/nacl_interval_range_tree.c?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/interval_multiset/nacl_interval_list.h?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/interval_multiset/nacl_interval_range_tree.h?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/mmap/nacl.scons?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/interval_multiset/testdata/nacl_interval_test.stdin?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/trusted_crash/osx_crash_filter/nacl.scons?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_copy.c?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_hook.c?r1=8266&amp;r2=8265&amp;pathrev=8266
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/interval_multiset/testdata?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_copy.h?r1=8266&amp;r2=8265&amp;pathrev=8266
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/command_tester.py?r1=8266&amp;r2=8265&amp;pathrev=8266
+
+add interval sets.  add memory interval interlocks to prevent race.
+
+mmap_race test has "read" mode, but in order to run it the process
+must be able to read from a descriptor and block.  in interactive
+mode, stdin works fine.  it's not clear if it's feasible for the
+build/test bots.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2619
+TEST= run_nacl_interval_list_test run_nacl_interval_tree_test run_nacl_interval_list_random_test run_nacl_interval_tree_random_test run_mmap_race_socketpair_test run_mmap_race_connect_test
+Review URL: https://chromiumcodereview.appspot.com/9933001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-04-13T23:22:06.000Z</ns0:updated><ns0:published>2012-04-13T23:22:06.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2619#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2619/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

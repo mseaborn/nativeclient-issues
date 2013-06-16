@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkMMRH47eCl7ImA9WhZUGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1295</ns0:id><ns0:author>
+			<ns0:name>sa...@google.com</ns0:name><ns0:uri>/u/111227428049549265840/</ns0:uri></ns0:author><ns0:content type="html">Each time there is a change to the trusted or shared code base, there should be an integration that runs the latest build of Chromium.  The test should start the browser and point to a test html file which would load the NaCl plugin and run a nexe binary (e.g. hello_world).  Browser interaction would be driven by selenium.
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+Currently there are no integrations tests that run a nexe appliction
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+We have no way of tracking if the entire system is broken, or tracking the last known good combinations of NaCl and Chrome revisions.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+Add functionality to the builds to grab a specific version of Chromium and run selenium tests with the latest builds of NaCl plugin and a nexe from the current version of toolchain specified in the DEPS file.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+Integration tests for Windows, linux, and OS X and results are displayed on http://goto/naclbot
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+Failing integration tests would turn the tree red.</ns0:content><ns0:updated>2011-06-13T18:08:05.000Z</ns0:updated><ns0:published>2011-01-05T21:44:56.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Add browser integration test to continuous build</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Milestone-Baltic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1295/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1295" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1295" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-06-13T18:08:05.000Z</ns2:closedDate><ns2:id>1295</ns2:id></ns0:entry>

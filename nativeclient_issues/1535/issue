@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUUER347eCl7ImA9WhZRGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1535</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The NaCl plugin's __sendAsyncMessage*() methods (from issue 642) do not support strings containing nulls.  The message to send will be truncated at the first null byte, because it is treated as a C string internally.
+
+This means anyone using this interface to send binary data (e.g. for the initial argv/env message) will have to work around this limitation and use an indirect encoding.
+
+Note, however, that this is only an experimental interface.
+</ns0:content><ns0:updated>2011-04-15T18:46:46.000Z</ns0:updated><ns0:published>2011-03-15T05:50:50.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Plugin: __sendAsyncMessage*() methods do not support strings containing nulls</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1535/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1535" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1535" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-04-15T18:46:46.000Z</ns2:closedDate><ns2:id>1535</ns2:id></ns0:entry>

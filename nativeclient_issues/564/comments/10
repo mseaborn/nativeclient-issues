@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE4ARH47eCl7ImA9WhdREkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/564/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: cf8295dff23e14d58e1da55b36a2c7bcfce18197
+ Email: mcgrathr@chromium.org@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Drop NaCl-specific e_flags bits and EI_OSABI setting
+
+The variants that the e_flags bits refer to are obsolete.
+Despite its name, EI_OSABI has an OS-independent meaning in
+upstream binutils and glibc ld.so, so we cannot use it.
+We don't really need these distinguishing marks in a NaCl ELF file.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=564
+TEST=trybots
+
+R=sehr@google.com
+
+Review URL: http://codereview.chromium.org/7453038
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6280 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+D	src/include/nacl_elf.h
+M	src/include/nacl_platform.h
+M	src/trusted/plugin/ppapi/browser_interface_ppapi.cc
+M	src/trusted/service_runtime/build.scons
+M	src/trusted/service_runtime/elf_util.c
+M	src/trusted/service_runtime/elf_util.h
+M	src/trusted/service_runtime/mmap_test.c
+M	src/trusted/service_runtime/sel_ldr.c
+M	src/trusted/service_runtime/sel_ldr.h
+M	src/trusted/service_runtime/sel_ldr_standard.c
+M	src/trusted/service_runtime/sel_main.c
+M	src/trusted/service_runtime/testdata/old_abi.stderr
+A	src/trusted/service_runtime/testdata/x86_64/old_abi.stderr
+M	src/trusted/validator/ncfileutil.c
+M	src/trusted/validator/ncfileutil.h
+M	tests/minnacl/minimal_test_host.c
+M	tests/multiple_sandboxes/multidomain_test_host.c
+M	tests/pnacl_ld_example/Makefile.pnacl
+D	tools/elf_patcher.py
+D	tools/nacl_elf_constants.py
+D	tools/set_abi_version.py
+D	tools/update_death_test_files.py</ns0:content><ns0:updated>2011-08-01T23:55:45.000Z</ns0:updated><ns0:published>2011-08-01T23:55:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=564#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/564/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,49 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIFSX47eCl7ImA9WxBWE0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/279</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">In the latest (r1430) toolchain, building earth.nexe on ARM produces this 
+validation error:
+
+nc_load(scons-out/nacl-arm/obj/tests/earth/earth.nexe): vmemlo is not 
+aligned (is 00020CB0)
+Unable to load scons-out/nacl-arm/obj/tests/earth/earth.nexe: Success
+
+(I added the hex address display for debugging.)
+
+Objdump sez:
+scons-out/nacl-arm/obj/tests/earth/earth.nexe:     file format elf32-
+littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .interp       00000013  00020000  00020000  00038000  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  1 .hash         00000268  00020014  00020014  00038014  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  2 .dynsym       00000550  0002027c  0002027c  0003827c  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  3 .dynstr       000003f0  000207cc  000207cc  000387cc  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .gnu.version  000000aa  00020bbc  00020bbc  00038bbc  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  5 .gnu.version_r 00000020  00020c68  00020c68  00038c68  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  6 .rel.dyn      00000008  00020c88  00020c88  00038c88  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  7 .rel.plt      00000020  00020c90  00020c90  00038c90  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  8 .init         00000020  00020cb0  00020cb0  00000cb0  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  9 .plt          00000044  00020cd0  00020cd0  00000cd0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+...and lots more, but I'll chop it off there.
+
+NaCl's ncfileutil code is (rightly) using the lowest *code* section as the 
+base of virtual memory, but our linker is placing data sections below that.  
+Since this is the first time we've used this linker script on C++ code, we 
+probably just omitted some wildcards somewhere.
+
+Side note: the ncfileutil code may need to be made more robust to cases 
+like this.  It blew up because the code segment was misaligned, not because 
+there was (potentially executable) data below it...</ns0:content><ns0:updated>2010-02-05T17:21:58.000Z</ns0:updated><ns0:published>2010-01-28T21:52:20.000Z</ns0:published><ns2:status>Done</ns2:status><ns2:owner>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>ARM linker script puts data sections below code in some cases</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Component-DevTools</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Pri-1</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/279/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=279" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/279" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>236</ns2:id></ns2:blocking><ns2:closedDate>2010-02-05T17:21:58.000Z</ns2:closedDate><ns2:id>279</ns2:id></ns0:entry>

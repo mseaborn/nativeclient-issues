@@ -1,0 +1,49 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEAQ347eCl7ImA9Wx9aF0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1509/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">initial observation:
+
+objdump -h &lt;good-binary&gt;
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000fff0  00020000  00020000  00010000  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .rodata       0000000c  00030000  00030000  00020000  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  2 .data         00000000  00040000  00040000  00030000  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  3 .bss          00000000  00040000  00040000  00030000  2**0
+                  ALLOC
+  4 .note.gnu.gold-version 00000018  00000000  00000000  00030000  2**2
+                  CONTENTS, READONLY
+  5 .ARM.attributes 00000027  00000000  00000000  00030018  2**0
+                  CONTENTS, READONLY
+
+
+objdump -h &lt;bad-binary&gt;
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000fff0  00020000  00020000  00008000  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .rodata       0000000c  00040000  00040000  00018000  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  2 .ARM.attributes 00000027  00000000  00000000  0001800c  2**0
+                  CONTENTS, READONLY
+
+
+good binary has empty sections for .data  and .bss which should not matter.
+
+The main difference between the two binaries is the start of rodata (good: 0x30000, bad: 0x40000)
+
+This test tries to trigger a check in the service runtime that will reject a nexe if there is not enough room for the halt sled.
+The mechanism checks whether there is a gap  of at least 32 bytes between the end of the text segment and the next segment (typically rodata).
+(Note, that the sections above map 1-1 to segments.)
+
+The good binary triggers the check as the gap is 00030000 - 0002fff0 == 16 which is &lt; 32  but the bad binary does not trigger the
+check as the gap is 00040000 - 0002fff0
+
+This is probably cause by the linker script being smart and not wanting to produce a bad binary.
+To fix this we need some way to outsmart the linker script.
+
+</ns0:content><ns0:updated>2011-03-09T22:44:02.000Z</ns0:updated><ns0:published>2011-03-09T22:44:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1509#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1509/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

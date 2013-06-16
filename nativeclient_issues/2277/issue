@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUYAR347eCl7ImA9WhdUGUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2277</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">memcpy() call at nacl_desc_quota_test.c:203 reads 16 bytes from a global string of size 10.
+
+static uint8_t file_id0[NACL_DESC_QUOTA_FILE_ID_LEN];
+...
+memcpy(file_id0, &amp;quot;File ID 0&amp;quot;, sizeof file_id0);
+
+Detected with ASan:
+
+==7533== ERROR: AddressSanitizer global-buffer-overflow on address 0x7f139b8e50ef at pc 0x7f139b86325e bp 0x7fffc99d4be0 sp 0x7fffc99d43a0
+READ of size 1 at 0x7f139b8e50ef thread T0
+    #0 0x7f139b86325e (scons-out/dbg-linux-x86-64/obj/src/trusted/desc/nacl_desc_quota_test+0x925e)
+    #1 0x7f139a16cc4d (/lib/libc-2.11.1.so+0x1ec4d)
+    #2 0x7f139b85fd49 (scons-out/dbg-linux-x86-64/obj/src/trusted/desc/nacl_desc_quota_test+0x5d49)
+0x7f139b8e50ef is located 5 bytes to the right of global variable '.str18' (0x7f139b8e50e0) of size 10
+  '.str18' is ascii string 'File ID 0'
+</ns0:content><ns0:updated>2011-10-07T08:45:46.000Z</ns0:updated><ns0:published>2011-09-22T17:09:51.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/114701340294105671768/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Global buffer overflow (r/o) in nacl_desc_quota_test</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Test</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2277/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2277" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2277" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-10-07T08:45:46.000Z</ns2:closedDate><ns2:id>2277</ns2:id></ns0:entry>

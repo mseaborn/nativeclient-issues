@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8BRH47eCl7ImA9Wx5WEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/237/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdroid1@gmail.com</ns0:name><ns0:uri>/u/bugdroid1@gmail.com/</ns0:uri></ns0:author><ns0:content type="html">Commit: da8312d016b48f8765b5d5809e122b6ba04ea9d6
+ Email: eaeltsin@google.com
+
+[binutils] Prevent ld from rewriting tls access sequences with calls
+
+NaCl assembler inserts nops in front of a call for proper bundling. When linker tries to rewrite a code sequence that consists of something followed by a call, it complains about these nops.
+
+At the moment, simply disable rewriting these sequences.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=237
+TEST=
+
+Review URL: http://codereview.chromium.org/3467009
+
+M	binutils/bfd/elf32-i386.c
+M	binutils/bfd/elf64-x86-64.c</ns0:content><ns0:updated>2010-09-22T14:14:15.000Z</ns0:updated><ns0:published>2010-09-22T14:14:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdroid1@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=237#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/237/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

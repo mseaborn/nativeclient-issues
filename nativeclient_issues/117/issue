@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUcCQH47eCl7ImA9Wx5UEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/117</ns0:id><ns0:author>
+			<ns0:name>bradnel...@google.com</ns0:name><ns0:uri>/u/114440559662199359498/</ns0:uri></ns0:author><ns0:content type="html">From bsy:
+i noticed that our osx gyp builds, C code compiles have -std=gnu99 but
+our C++ code compiles do not have -std=c++98.
+
+is this intentional?  why?
+
+additionally, in our gyp build, when -pedantic is set w/ the gcc in
+xcode, does not appear to be defining the __STRICT_ANSI__ macro for
+C++ code, so our portability.h is setting __PRIS_PREFIX to &amp;quot;z&amp;quot; rather
+than &amp;quot;l&amp;quot;, causing the gyp builds to fail.  i put a hack in
+portability.h in my CL (204108) so things build, but it's undoubtedly
+still wrong.</ns0:content><ns0:updated>2010-10-15T18:24:21.000Z</ns0:updated><ns0:published>2009-11-02T05:40:13.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>gyp osx builds has no --std=c++98, __PRIS_PREFIX problem</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/117/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=117" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/117" rel="self" type="application/atom+xml" /><ns2:stars>0</ns2:stars><ns2:id>117</ns2:id></ns0:entry>

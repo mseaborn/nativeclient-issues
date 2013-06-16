@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUAHSH47eCl7ImA9WhdbFk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2357/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=6936
+
+------------------------------------------------------------------------
+r6936 | pdox@google.com | Fri Oct 14 13:15:58 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/valgrind/nacl.scons?r1=6936&amp;r2=6935&amp;pathrev=6936
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/threads/nacl.scons?r1=6936&amp;r2=6935&amp;pathrev=6936
+
+Fix thread_test for PNaCl GLibC by disabling dynamic_annotations/valgrind.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2357
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2311
+Review URL: http://codereview.chromium.org/8276027
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-10-14T20:22:19.000Z</ns0:updated><ns0:published>2011-10-14T20:22:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2357#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2357/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

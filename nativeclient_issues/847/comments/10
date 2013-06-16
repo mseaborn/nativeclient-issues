@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEERX47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/847/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3114
+
+------------------------------------------------------------------------
+r3114 | robertm@google.com | Wed Aug 25 13:00:25 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/spec2k/Makefile.common?r1=3114&amp;r2=3113&amp;pathrev=3114
+
+Optimize spec benchmarks  twice when in pnacl mode:
+* once when producing the bitcode file and
+* again via opt for interprocedural optimzations
+
+This allows us to explore llvm optimization and works around:
+http://code.google.com/p/nativeclient/issues/detail?id=847
+
+tested like so:
+tools/llvm/utman.sh   test-spec /usr/local/google/spec2000/cpu2000-redhat64-ia32/  SetupPnaclX8632Opt
+tools/llvm/utman.sh   test-spec /usr/local/google/spec2000/cpu2000-redhat64-ia32/  SetupPnaclX8664Opt
+
+Review URL: http://codereview.chromium.org/3176034
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:56:44.000Z</ns0:updated><ns0:published>2011-01-21T22:56:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=847#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/847/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

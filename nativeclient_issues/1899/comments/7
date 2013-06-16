@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08MQ347eCl7ImA9WhZaEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1899/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 8df53450fe1591b26590e5edca41c3b5ce03b61a
+ Email: kschimpf@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Move fileutils into a common location, so that they can be properly shared by all validators.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1899
+Review URL: http://codereview.chromium.org/7262023
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@5814 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	SConstruct
+A	src/trusted/validator/ncfileutil.c
+A	src/trusted/validator/ncfileutil.h
+M	src/trusted/validator/x86/halt_trim.h
+M	src/trusted/validator/x86/ncinstbuffer.h
+M	src/trusted/validator_arm/build.scons
+M	src/trusted/validator_arm/ncval.cc
+M	src/trusted/validator_x86/build.scons
+M	src/trusted/validator_x86/nc_inst_state.h
+M	src/trusted/validator_x86/nc_jumps.h
+M	src/trusted/validator_x86/nc_read_segment.h
+M	src/trusted/validator_x86/ncdis.c
+M	src/trusted/validator_x86/ncdis_segments.h
+M	src/trusted/validator_x86/ncdis_util.h
+M	src/trusted/validator_x86/ncenuminsts.h
+D	src/trusted/validator_x86/ncfileutil.c
+D	src/trusted/validator_x86/ncfileutil.h
+M	src/trusted/validator_x86/ncval.c
+M	src/trusted/validator_x86/ncval_driver.h
+M	src/trusted/validator_x86/ncvalidate.h</ns0:content><ns0:updated>2011-06-27T20:18:02.000Z</ns0:updated><ns0:published>2011-06-27T20:18:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1899#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1899/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

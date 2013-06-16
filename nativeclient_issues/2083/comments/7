@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEAGQn47eCl7ImA9WhdREkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2083/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=6281
+
+------------------------------------------------------------------------
+r6281 | polina@google.com | Mon Aug 01 16:48:01 PDT 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/ppapi_browser/crash/ppapi_crash_via_exit_call.cc?r1=6281&amp;r2=6280&amp;pathrev=6281 (from /trunk/src/native_client/tests/ppapi_browser/crash/ppapi_crash_on_check.cc revision 6271)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/ppapi_browser/crash/ppapi_crash_on_check.nmf?r1=6281&amp;r2=6280&amp;pathrev=6281
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/ppapi_browser/crash/nacl.scons?r1=6281&amp;r2=6280&amp;pathrev=6281
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/ppapi_browser/crash/ppapi_crash_on_check.cc?r1=6281&amp;r2=6280&amp;pathrev=6281
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/ppapi_browser/crash/ppapi_crash_via_exit_call.nmf?r1=6281&amp;r2=6280&amp;pathrev=6281 (from /trunk/src/native_client/tests/ppapi_browser/crash/ppapi_crash_on_check.nmf revision 6271)
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/ppapi_browser/crash/ppapi_crash.html?r1=6281&amp;r2=6280&amp;pathrev=6281
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/ppapi_browser/crash/ppapi_crash_via_check_failure.nmf?r1=6281&amp;r2=6280&amp;pathrev=6281 (from /trunk/src/native_client/tests/ppapi_browser/crash/ppapi_crash_on_check.nmf revision 6271)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/ppapi_browser/crash/ppapi_crash_via_check_failure.cc?r1=6281&amp;r2=6280&amp;pathrev=6281 (from /trunk/src/native_client/tests/ppapi_browser/crash/ppapi_crash_on_check.cc revision 6271)
+
+Add a test that crashes on _exit(). This call (as part of CHECK) was what
+uncovered this bug:
+http://code.google.com/p/nativeclient/issues/detail?id=2083.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2083
+TEST=ppapi_crash_browser_test
+Review URL: http://codereview.chromium.org/7453057
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-08-01T23:52:03.000Z</ns0:updated><ns0:published>2011-08-01T23:52:03.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2083#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2083/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEAGSX47eCl7ImA9WhRaE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2505</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Just in case anyone tries to use posix_memalign() with newlib, I don't think it works.  I believe that the implementation is actually supplied by src/third_party/dlmalloc/malloc.c (in libnacl.a), not newlib.
+
+It works fine with glibc.
+
+
+For the following test program:
+
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+
+// extern int posix_memalign(void **memptr, size_t alignment, size_t size);
+
+double    *dvec1 = (double *)123;
+
+int main(void) {
+  int size = 32;
+  if (posix_memalign((void**)&amp;amp;dvec1, 16, size * sizeof(double)) != 0) {
+    printf(&amp;quot;posix_memaligned for dvec1 failed&amp;quot;);
+    return 1;
+  }
+}
+
+(1) You get an ENOMEM from the implementation in dlmalloc (libnacl.a), even with smaller values of size.
+(2) The newlib headers don't really export posix_memalign.
+
+
+This *may* be the cause of the crash in the &amp;quot;dt&amp;quot; test in the llvm testsuite, which uses posix_memalign without ever checking the return code and crashes.
+
+</ns0:content><ns0:updated>2012-02-15T19:05:28.000Z</ns0:updated><ns0:published>2011-12-20T21:54:57.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>posix_memalign broken on newlib (src/third_party/dlmalloc)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2505/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2505" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2505" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2505</ns2:id></ns0:entry>

@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQGRX47eCl7ImA9WxFRFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/102/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">i'm not sure what's the desired behavior here. do we want the 32-bit version of 
+sel_ldr for windows to fail in a noisy way when run on a 64-bit OS?  or for the 64-
+bit version of sel_ldr for windows to fail in a noisy way when run on a 64-bit OS but 
+when given a nacl-x86-32 binary?  or both?
+
+for the former, i see: Error while loading "...\hello_world.nexe": Operating system 
+platform is not supported.
+
+for the latter, i see: Could not create NaClElfImage object: ELF program header size 
+is too small, along with a Abort/Retry/Ignore pop up.  (i think this is a LOG_FATAL 
+message.)
+
+the message for the latter could suggest that perhaps the wrong nexe type is an 
+error, though i think a corrupt nexe (bad headers) could also be the source of the 
+problem.
+
+the other permutations should be covered:  running 64-bit sel_ldr on a 32-bit OS 
+should get a generic OS error; running a nacl-x86-64 with a 32-bit sel_ldr on a 64-
+bit OS still yields OS platform not supported (i don't think sel_ldr even gets to the 
+code that looks at the nexe).
+
+i'll amend the error message generated when trying to run a nacl-x86-32 w/ an x86-64 
+sel_ldr.  if there's something else that we want, please add a comment to this issue.</ns0:content><ns0:updated>2010-04-28T23:28:44.000Z</ns0:updated><ns0:published>2010-04-28T23:28:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=102#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/102/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

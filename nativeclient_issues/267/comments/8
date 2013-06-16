@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QDR347eCl7ImA9WxBUGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/267/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">adding alan who recently added some code and also has the freshest memory.
+
+But I believe this bug has been fixed (will double check).
+
+IIRC we asscociate some internal (i.e. service runtime) structures with each
+thread and hence there is a limit which may differ from x86.
+
+When we run this test from scons we add an extra argument reducing the
+number of threads/loops.
+
+I am not too worried about the performance, of nacl's pthread library but it is
+probably a good idea to file a performance bug for this</ns0:content><ns0:updated>2010-03-06T01:36:16.000Z</ns0:updated><ns0:published>2010-03-06T01:36:16.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>adono...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 8 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=267#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/267/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

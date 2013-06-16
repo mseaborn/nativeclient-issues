@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE8DQH47eCl7ImA9WhZbEE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1915/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">This turns out to be a bug in compiler-rt which implements
+
+__divmoddi4(di_int a, di_int b, di_int* rem)
+
+and then aliases 
+__aeabi_ldivmod to __divmoddi4 
+
+this is not quite right as  __aeabi_ldivmod is supposed to have the signature:
+
+ __value_in_regs lldiv_t __aeabi_ldivmod( 
+    long long n, long long d) 
+
+The problem is the  missing arg "rem"
+
+
+Luckily, it looks like this problem can be worked around as follows:
+The llvm arm backend calls _aeabi_ldivmod whenever is does a long long division
+but does not use the "remainder" at all.
+We can instead use __divdi3 which does not produce any remainder.
+This function is not part of the ARM __aeabi family but exists in both libgcc and compiler-rt 
+
+
+</ns0:content><ns0:updated>2011-06-13T22:07:51.000Z</ns0:updated><ns0:published>2011-06-13T22:07:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1915#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1915/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

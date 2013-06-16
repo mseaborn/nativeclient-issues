@@ -1,0 +1,51 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMESX47eCl7ImA9WxFaEk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/701/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>msn...@google.com</ns0:name><ns0:uri>/u/105190905030319373792/</ns0:uri></ns0:author><ns0:content type="html">The Pepper Plugin test fails on Mac, too:
+
+[30404:519:7595565445961:FATAL:/Users/msneck/chromium/src/app/gfx/gl/gl_context_mac.cc(193)] Check failed: false. 
+Backtrace:
+	0   Chromium Framework                  0x00a67c56 StackTrace::StackTrace() + 32
+	1   Chromium Framework                  0x00a80571 logging::LogMessage::~LogMessage() + 63
+	2   Chromium Framework                  0x00e4c4b0 gfx::GLContext::CreateOffscreenGLContext(gfx::GLContext*) + 456
+	3   Chromium Framework                  0x0161a438 gpu::GPUProcessor::Initialize(unsigned long long, gfx::Size const&amp;, gpu::GPUProcessor*, unsigned int) + 400
+	4   Chromium Framework                  0x019aab08 CommandBufferStub::OnInitialize(int, base::FileDescriptor*) + 566
+	5   Chromium Framework                  0x019ab6d3 void DispatchToMethod&lt;CommandBufferStub, void (CommandBufferStub::*)(int, base::FileDescriptor*), int, base::FileDescriptor&gt;(CommandBufferStub*, void (CommandBufferStub::*)(int, base::FileDescriptor*), Tuple1&lt;int&gt; const&amp;, Tuple1&lt;base::FileDescriptor&gt;*) + 72
+	6   Chromium Framework                  0x019acb6c bool IPC::MessageWithReply&lt;Tuple1&lt;int&gt;, Tuple1&lt;base::FileDescriptor&amp;&gt; &gt;::Dispatch&lt;CommandBufferStub, void (CommandBufferStub::*)(int, base::FileDescriptor*)&gt;(IPC::Message const*, CommandBufferStub*, void (CommandBufferStub::*)(int, base::FileDescriptor*)) + 128
+	7   Chromium Framework                  0x019aae50 CommandBufferStub::OnMessageReceived(IPC::Message const&amp;) + 192
+	8   Chromium Framework                  0x000c29f3 MessageRouter::RouteMessage(IPC::Message const&amp;) + 75
+	9   Chromium Framework                  0x01991f24 PluginChannelBase::OnMessageReceived(IPC::Message const&amp;) + 180
+	10  Chromium Framework                  0x0198cde6 PluginChannel::OnMessageReceived(IPC::Message const&amp;) + 240
+	11  Chromium Framework                  0x014f2cea IPC::ChannelProxy::Context::OnDispatchMessage(IPC::Message const&amp;) + 144
+	12  Chromium Framework                  0x014ff1c0 IPC::SyncChannel::ReceivedSyncMsgQueue::DispatchMessages() + 184
+	13  Chromium Framework                  0x014fafb2 IPC::SyncChannel::SyncContext::DispatchMessages() + 30
+	14  Chromium Framework                  0x014fb0af IPC::SyncChannel::OnWaitableEventSignaled(base::WaitableEvent*) + 241
+	15  Chromium Framework                  0x00ad27d3 base::AsyncCallbackTask::Run() + 91
+	16  Chromium Framework                  0x00a85939 MessageLoop::RunTask(Task*) + 315
+	17  Chromium Framework                  0x00a859e9 MessageLoop::DeferOrRunPendingTask(MessageLoop::PendingTask const&amp;) + 53
+	18  Chromium Framework                  0x00a85c79 MessageLoop::DoWork() + 253
+	19  Chromium Framework                  0x00aea4be base::MessagePumpCFRunLoopBase::RunWork() + 74
+	20  Chromium Framework                  0x00aea503 base::MessagePumpCFRunLoopBase::RunWorkSource(void*) + 23
+	21  CoreFoundation                      0x97f850fb __CFRunLoopDoSources0 + 1563
+	22  CoreFoundation                      0x97f82bbf __CFRunLoopRun + 1071
+	23  CoreFoundation                      0x97f82094 CFRunLoopRunSpecific + 452
+	24  CoreFoundation                      0x97f81ec1 CFRunLoopRunInMode + 97
+	25  HIToolbox                           0x9297cf9c RunCurrentEventLoopInMode + 392
+	26  HIToolbox                           0x9297cd51 ReceiveNextEventCommon + 354
+	27  HIToolbox                           0x9297cbd6 BlockUntilNextEventMatchingListInMode + 81
+	28  AppKit                              0x9889fa89 _DPSNextEvent + 847
+	29  AppKit                              0x9889f2ca -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:] + 156
+	30  AppKit                              0x9886155b -[NSApplication run] + 821
+	31  Chromium Framework                  0x00aea000 base::MessagePumpNSApplication::DoRun(base::MessagePump::Delegate*) + 130
+	32  Chromium Framework                  0x00aea5ef base::MessagePumpCFRunLoopBase::Run(base::MessagePump::Delegate*) + 175
+	33  Chromium Framework                  0x00a86484 MessageLoop::RunInternal() + 212
+	34  Chromium Framework                  0x00a8649f MessageLoop::RunHandler() + 17
+	35  Chromium Framework                  0x00a86503 MessageLoop::Run() + 35
+	36  Chromium Framework                  0x01999c75 PluginMain(MainFunctionParams const&amp;) + 408
+	37  Chromium Framework                  0x0000ccab ChromeMain + 4631
+	38  Chromium Helper                     0x00001f52 main + 24
+	39  Chromium Helper                     0x00001f0e start + 54
+	40  ???                                 0x00000008 0x0 + 8
+
+[30404:519:7599371776480:ERROR:/Users/msneck/chromium/src/base/logging.cc(373)] Not implemented reached in void logging::DisplayDebugMessageInDialog(const std::string&amp;)
+Failed to initialize 3D context
+</ns0:content><ns0:updated>2010-07-15T19:00:08.000Z</ns0:updated><ns0:published>2010-07-15T19:00:08.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by msn...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=701#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/701/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

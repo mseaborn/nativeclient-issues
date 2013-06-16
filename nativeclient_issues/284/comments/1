@@ -1,0 +1,47 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUUFRH47eCl7ImA9WxBWEEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/284/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>appama...@gmail.com</ns0:name><ns0:uri>/u/114557832031227002753/</ns0:uri></ns0:author><ns0:content type="html">Here is a diff with a fix.
+
+There is similar code for linux_env, which is necessary for OS X in Snow Leopard.  It looks like we need to explicitly pass 32 bit flags to gcc.
+
+I also removed the -m32 flag from CCFLAGS above since it is now redundant.
+
+I tested this and the examples in Firefox 3.6 on Snow Leopard 10.6.2.  I don't have a Leopard machine for testing.  I'm also not sure how to build 
+a 64-bit version through scons to test that code path as well.  Could someone give me a hint?
+
+Index: SConstruct
+===================================================================
+--- SConstruct	(revision 1439)
++++ SConstruct	(working copy)
+@@ -847,7 +847,7 @@
+ )
+ 
+ mac_env.Append(
+-    CCFLAGS = ['-mmacosx-version-min=10.4', '-m32', '-fPIC'],
++    CCFLAGS = ['-mmacosx-version-min=10.4', '-fPIC'],
+     # TODO(bradnelson): remove UNIX_LIKE_CFLAGS when scons bug is fixed
+     CPPDEFINES = [['NACL_WINDOWS', '0'],
+                   ['NACL_OSX', '1'],
+@@ -859,6 +859,22 @@
+                   ],
+ )
+ 
++if mac_env['BUILD_ARCHITECTURE'] == 'x86':
++  if mac_env['BUILD_SUBARCH'] == '32':
++    mac_env.Prepend(
++        ASFLAGS = ['-m32', ],
++        CCFLAGS = ['-m32', ],
++        LINKFLAGS = ['-m32', ],
++        )
++
++  else:
++    assert mac_env['BUILD_SUBARCH'] == '64'
++    mac_env.Prepend(
++        ASFLAGS = ['-m64', ],
++        CCFLAGS = ['-m64', ],
++        LINKFLAGS = ['-m64', ],
++        )
++
+ (mac_debug_env, mac_optimized_env) = GenerateOptimizationLevels(mac_env)
+ 
+ # ----------------------------------------------------------</ns0:content><ns0:updated>2010-02-01T16:53:35.000Z</ns0:updated><ns0:published>2010-02-01T16:53:35.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by appama...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=284#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/284/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

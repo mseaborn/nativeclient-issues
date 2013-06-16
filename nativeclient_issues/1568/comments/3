@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcESX47eCl7ImA9WhZSE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1568/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4648
+
+------------------------------------------------------------------------
+r4648 | mseaborn@chromium.org | Mon Mar 28 13:58:03 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/buildbot/buildbot_arm_hw.sh?r1=4648&amp;r2=4647&amp;pathrev=4648
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/buildbot/buildbot_linux.sh?r1=4648&amp;r2=4647&amp;pathrev=4648
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/sandbox?r1=4648&amp;r2=4647&amp;pathrev=4648 (from /trunk/src/native_client/src/trusted/sandbox revision 4613)
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=4648&amp;r2=4647&amp;pathrev=4648
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/buildbot/buildbot_mac.sh?r1=4648&amp;r2=4647&amp;pathrev=4648
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/build/all.gyp?r1=4648&amp;r2=4647&amp;pathrev=4648
+
+Revert r4614, "Remove stale src/trusted/sandbox and selenium tests"
+
+This change broke the Linux toolchain build, where Selenium is still
+run, because it is still configured in the Buildbot config.
+
+The "install_plugin" step fails with:
+
+rename /home/chrome-bot/.mozilla/plugins/sel_ldr.trace to /home/chrome-bot/.mozilla/plugins/sel_ldr_bin.trace ...
+...
+IOError: [Errno 2] No such file or directory: '/home/chrome-bot/.mozilla/plugins/sel_ldr.trace'
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1568
+TEST=none
+Review URL: http://codereview.chromium.org/6765003
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-03-28T21:00:08.000Z</ns0:updated><ns0:published>2011-03-28T21:00:08.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1568#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1568/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

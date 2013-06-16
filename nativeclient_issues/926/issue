@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0MDRX47eCl7ImA9WhZTGU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/926</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+The PPAPI/NaCl integration bot is green only because somebody manually created the required scons files from the gyp build files.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+As soon as the gyp files change in the source tree, the bot will probably go red.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+Add a script to automatically generate scons from gyp.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+scons files are generated when the gyp file is updated.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+The tree stays green more of the time.
+</ns0:content><ns0:updated>2011-03-23T19:44:34.000Z</ns0:updated><ns0:published>2010-09-29T00:39:12.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PPAPI/Nacl integration bot needs automation to generate scons files from gyp files</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Milestone-Baltic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/926/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=926" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/926" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-03-23T19:44:34.000Z</ns2:closedDate><ns2:id>926</ns2:id></ns0:entry>

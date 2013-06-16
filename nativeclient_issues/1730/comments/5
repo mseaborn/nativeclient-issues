@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QHQH47eCl7ImA9WhVXE0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1730/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">Time to revise this.
+
+I see 2 ways for fixing this properly:
+1. make the stub recognize it hit a breakpoint it inserted itself and adjust the instruction pointer (similar to what GDB does)
+2. set initial breakpoint in trusted code, after the NaCl thread is fully ready and immediately before running it. In this case we can have int3 statically in the code, so the normal execution flow continues at the next instruction.
+
+I've prototyped option 1, and will commit it soon. Still option 2 looks prettier, as it allows getting rid of debug stub code that handles temporary breakpoints.
+</ns0:content><ns0:updated>2012-04-13T10:02:11.000Z</ns0:updated><ns0:published>2012-04-13T10:02:11.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Pri-1</ns2:label><ns2:label>-Arch-x86-64</ns2:label><ns2:label>-Debugging</ns2:label><ns2:label>Pri-2</ns2:label><ns2:status>Assigned</ns2:status><ns2:ownerUpdate>eaelt...@google.com</ns2:ownerUpdate><ns2:ccUpdate>halya...@google.com</ns2:ccUpdate><ns2:ccUpdate>mseaborn@chromium.org</ns2:ccUpdate></ns2:updates><ns0:title>Comment 5 by eaelt...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1730#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1730/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

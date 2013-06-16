@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUcNQH47eCl7ImA9WhVSEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2643/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">Here is the massager code which my help for similar problems:
+
+#!/usr/bin/python
+
+import sys
+import re
+
+count = 0
+
+BRANCHES = ["bne", "bl", "beq", "bgt",
+            "blt", "bleq", "bge", "bcc",
+            "b", "bcs", "bhi", "blhi"]
+
+for line in sys.stdin:
+  tokens = line.split()
+  if re.search(r"&gt;:$", line):
+    print "@@@@@@@@@@@@@@@", tokens[1]
+    count = 0
+  elif re.search(r"^ +[0-9a-f]+:", line):
+    line = line[8:]
+    if tokens[2] in BRANCHES:
+      fr = tokens[2] + r"\s+[0-9a-f]+"
+      to = tokens[2] + " "
+      line = re.sub(fr, to, line)
+    print "%8x" % count, line,
+    count += 4
+  else:
+    print line,
+</ns0:content><ns0:updated>2012-03-07T23:31:31.000Z</ns0:updated><ns0:published>2012-03-07T23:31:31.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2643#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2643/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

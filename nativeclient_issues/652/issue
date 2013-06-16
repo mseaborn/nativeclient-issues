@@ -1,0 +1,82 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEFRX47eCl7ImA9WxFaEE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/652</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The NPAPI plugin does not handle shutdown properly.  The browser can
+call Invalidate() on the plugin's objects in any order, but the plugin
+cannot handle all orderings.
+
+To reproduce:
+
+1. Run Firefox:
+$ env NACL_PLUGIN_DEBUG=1 firefox http://localhost:5103/scons-out/nacl-x86-32/staging/srpc_basic.html
+
+2. Navigate away from the page.
+
+This produces the following debug output (newlines added for clarity):
+
+b74e46c0:PluginNpapi::Destroy(0xb0aeec88, 0xbffa02c4)
+
+b74e46c0:Invalidate(0x806b478)
+b74e46c0:Deallocate(0x806b480)
+b74e46c0:SocketAddress::~SocketAddress(0x8b863b8)
+b74e46c0:DescBasedHandle::~DescBasedHandle(0x8b863b8)
+b74e46c0:PortableHandle::~PortableHandle(0x8b863b8)
+b74e46c0:ScriptableHandle::~ScriptableHandle(0x806b478)
+
+b74e46c0:Invalidate(0x8f41780)
+b74e46c0:Deallocate(0x8f41788)
+b74e46c0:DescBasedHandle::~DescBasedHandle(0x8f416d8)
+b74e46c0:PortableHandle::~PortableHandle(0x8f416d8)
+b74e46c0:ScriptableHandle::~ScriptableHandle(0x8f41780)
+
+b74e46c0:Invalidate(0xb0ac0508)
+b74e46c0:Deallocate(0xb0ac0510)
+b74e46c0:PluginNpapi::~PluginNpapi(0xb0aeec88)
+b74e46c0:Plugin::~Plugin deleting video_
+b74e46c0:VideoMap::~VideoMap() releasing video_callback_data_ ((nil))
+b74e46c0:Plugin::~Plugin(0xb0aeec8c)
+b74e46c0:ServiceRuntime::Shutdown: shutting down
+b74e46c0:SrpcClient::HasMethod(0x8e70f80, hard_shutdown)
+b74e46c0:ConnectedSocket::InvokeEx()
+b74e46c0:SrpcClient::Invoke(0x8e70f80, hard_shutdown, 0xbff9fcc0)
+b74e46c0:SrpcClient::Invoke: sending the rpc
+b74e46c0:SrpcClient::Invoke: got response 256
+b74e46c0:SrpcClient::Invoke: done
+b74e46c0:SrtSocket::HardShutdown succeeded
+b74e46c0:Plugin::~Plugin: unloading
+
+(The browser crashes at this point.  I have not been able to get a
+backtrace because gdb always crashes when I try to run it on Firefox.)
+
+I think the crash happens when Plugin::~Plugin() (in srpc/plugin.cc)
+does socket_-&amp;gt;Unref().  I suspect this fails because the browser has
+already forcibly done Invalidate()+Deallocate() on this socket object.
+
+The crash is avoided if the browser chooses the PluginNpapi object to
+destroy first.
+
+
+To recap NPAPI, it has a shutdown mechanism in which the browser does
+two things when the DOM is being destroyed:
+ 1) The browser calls NPP_Destroy().
+ 2) Then, for every NPObject implemented by the plugin, the browser
+    calls Invalidate() and then Deallocate().
+
+I suspect that plugins cannot rely on the second step for any
+non-trivial NPObject X that refers to another NPObject Y.  That is
+because Y might have been invalidated before X is invalidated.  The
+browser does not know about the relationship between X and Y so cannot
+order their destruction for the benefit of the plugin.  There might be
+a cycle between X and Y, anyway.
+
+A correct plugin would have to deal with this itself and finalise X
+and Y at the call to NPP_Destroy().
+
+I suspect my change in r2576 might have made the immediate problem
+worse.  Before r2576, NPP_Destroy() always finalised the PluginNpapi
+object immediately (although the PluginNpapi object could still be
+wrongly finalised a second time).
+</ns0:content><ns0:updated>2010-07-13T08:10:14.000Z</ns0:updated><ns0:published>2010-06-28T13:56:37.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105190905030319373792/</ns2:uri><ns2:username>msn...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>NPAPI plugin crashes on some orderings of Invalidate() calls</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Plugins</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/652/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=652" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/652" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>642</ns2:id></ns2:blocking><ns2:closedDate>2010-07-13T08:10:14.000Z</ns2:closedDate><ns2:id>652</ns2:id></ns0:entry>

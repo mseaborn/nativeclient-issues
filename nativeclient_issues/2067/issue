@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0IHR347eCl7ImA9WhRaE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2067</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">We need more complete testing of the ppb_input_event interface.  In particular, we need to test the wheel and keyboard events, and flesh out the mouse testing a bit better.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+Verification checklist for PPB_input_event.h (list taken from  issue 1760 ):
+- Use ppapi_test_lib and PPAPIBrowserTester
+- Add a test verifying each function with an exhaustive set of good/bad inputs
+- Add stress tests (e.g. creating gazillion resources or allocating a lot of memory
+- Add browser tests to native_client/tests/ppapi_browser/ppb_input_event
+- Add test to native_client/tests/examples.html and nacl.scons
+- Manually test for surf-away and reload errors
+- Add trusted plugin build, so the test can be sanity-checked directly using --register-pepper-plugins.
+- Add the functionality that cannot be tested automatically to manual QA plan
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+More powerful interface to input events.</ns0:content><ns0:updated>2012-02-15T19:52:16.000Z</ns0:updated><ns0:published>2011-07-21T17:59:55.000Z</ns0:published><ns2:status>Moved</ns2:status><ns2:owner>
+			<ns2:uri>/u/dmichael@google.com/</ns2:uri><ns2:username>dmichael@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Add better tests for ppp_input_event</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>MigrateToChromium</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2067/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2067" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2067" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2012-02-15T19:52:16.000Z</ns2:closedDate><ns2:id>2067</ns2:id></ns0:entry>

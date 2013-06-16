@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkQFQn47eCl7ImA9Wx5WEko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/380</ns0:id><ns0:author>
+			<ns0:name>zwa...@gmail.com</ns0:name><ns0:uri>/u/108442101947689352231/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? up-to-date on Mar 23
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+On what operating system? Ubuntu 9.10/10.04 Beta, 32bit
+What browser are you using? in standalone mode, not in browser
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1.Build native client SDK and quake
+2.run Quake with make release nacl run
+3.execute the timedemo demo1 command, at the same time, count seconds
+passed with a watch
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+the time shown by the command and real world time should be the same
+(almost). What I see is that the time by quake is twice that of the 
+real time.
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+It seems the problem is in the gettimeofday syscall. 
+</ns0:content><ns0:updated>2010-09-23T20:38:33.000Z</ns0:updated><ns0:published>2010-03-25T15:49:50.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>timer offset in quake timedemo</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Milestone-Chromium-7</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/380/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=380" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/380" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-09-23T20:38:33.000Z</ns2:closedDate><ns2:id>380</ns2:id></ns0:entry>

@@ -1,0 +1,66 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcBQn47eCl7ImA9WhdVFUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2262</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">(view as text)
+(view as ansi)
+python_slave ..\..\..\scripts\slave\zip_build.py --target Release --build-dir src/build
+ in dir c:\b\build\slave\win2008-nacl-chrome\build (timeout 600 secs)
+ watching logfiles {}
+ argv: ['python_slave', '..\\..\\..\\scripts\\slave\\zip_build.py', '--target', 'Release', '--build-dir', 'src/build']
+ environment:
+  APPDATA=C:\Users\chrome-bot\AppData\Roaming
+  CHROME_HEADLESS=1
+  COMPUTERNAME=BUILD5-M3
+  COMSPEC=C:\Windows\system32\cmd.exe
+  HOMEDRIVE=C:
+  HOMEPATH=\Users\chrome-bot
+  LOCALAPPDATA=C:\Users\chrome-bot\AppData\Local
+  LOGNAME=chrome-bot
+  NUMBER_OF_PROCESSORS=16
+  OS=Windows_NT
+  PATH=c:\b\build\..\depot_tools;c:\b\depot_tools\python_bin;C:\Windows\system32;C:\Windows\system32\WBEM;c:\b\build_internal\tools
+  PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+  PROCESSOR_ARCHITECTURE=x86
+  PROCESSOR_ARCHITEW6432=AMD64
+  PROGRAMFILES=C:\Program Files (x86)
+  PROGRAMW6432=C:\Program Files
+  PWD=c:\b\build\slave\win2008-nacl-chrome\build
+  PYTHONPATH=c:\b\build\third_party\buildbot_7_12;c:\b\build\third_party\twisted_8_1;c:\b\build\site_config;c:\b\build\scripts;c:\b\build\scripts\release;c:\b\build\third_party;c:\b\build_internal\site_config;c:\b\build_internal\symsrc;.
+  SYSTEMDRIVE=C:
+  SYSTEMROOT=C:\Windows
+  TEMP=C:\Users\CHROME~1\AppData\Local\Temp\1
+  TMP=C:\Users\CHROME~1\AppData\Local\Temp\1
+  USERDOMAIN=GOLO
+  USERNAME=chrome-bot
+  USERPROFILE=C:\Users\chrome-bot
+  WINDIR=C:\Windows
+ closing stdin
+ using PTY: False
+Full Staging in src/build\Release
+Traceback (most recent call last):
+  File &amp;quot;..\..\..\scripts\slave\zip_build.py&amp;quot;, line 280, in &amp;lt;module&amp;gt;
+    sys.exit(main(sys.argv))
+  File &amp;quot;..\..\..\scripts\slave\zip_build.py&amp;quot;, line 277, in main
+    return archive(options, args)
+  File &amp;quot;..\..\..\scripts\slave\zip_build.py&amp;quot;, line 249, in archive
+    build_revision, zip_file_list)
+  File &amp;quot;..\..\..\scripts\slave\zip_build.py&amp;quot;, line 185, in MakeUnversionedArchive
+    raise_error=True)
+  File &amp;quot;c:\b\build\scripts\common\chromium_utils.py&amp;quot;, line 427, in MakeZip
+    MoveFile(output_file, previous_file)
+  File &amp;quot;c:\b\build\scripts\common\chromium_utils.py&amp;quot;, line 222, in MoveFile
+    RemoveFile(new_path)
+  File &amp;quot;c:\b\build\scripts\common\chromium_utils.py&amp;quot;, line 214, in RemoveFile
+    os.remove(file_path)
+WindowsError: [Error 5] Access is denied: 'c:\\b\\build\\slave\\win2008-nacl-chrome\\chrome_staging\\full-build-win32_old.zip'
+program finished with exit code 1
+elapsedTime=12.231000
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-09-20T22:00:53.000Z</ns0:updated><ns0:published>2011-09-17T00:49:36.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Archive failure (zip_build) on windows  for NaCl Integration bot</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2262/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2262" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2262" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-09-20T22:00:53.000Z</ns2:closedDate><ns2:id>2262</ns2:id></ns0:entry>

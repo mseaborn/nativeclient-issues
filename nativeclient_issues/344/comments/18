@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkQEQH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/344/comments/full/18</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2697
+
+------------------------------------------------------------------------
+r2697 | mseaborn@chromium.org | Thu Jul 15 03:15:51 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_base.h?r1=2697&amp;r2=2696&amp;pathrev=2697
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/imc_sockets/nacl.scons?r1=2697&amp;r2=2696&amp;pathrev=2697
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/imc_sockets?r1=2697&amp;r2=2696&amp;pathrev=2697
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/posix/nacl_desc_imc_bound_desc.c?r1=2697&amp;r2=2696&amp;pathrev=2697
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/desc.gyp?r1=2697&amp;r2=2696&amp;pathrev=2697
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_makeboundsock.c?r1=2697&amp;r2=2696&amp;pathrev=2697
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=2697&amp;r2=2696&amp;pathrev=2697
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/posix/nacl_desc_conn_cap.c?r1=2697&amp;r2=2696&amp;pathrev=2697
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=2697&amp;r2=2696&amp;pathrev=2697
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nrd_xfer.c?r1=2697&amp;r2=2696&amp;pathrev=2697
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/posix?r1=2697&amp;r2=2696&amp;pathrev=2697
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/build.scons?r1=2697&amp;r2=2696&amp;pathrev=2697
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/npapi/scriptable_impl_npapi.cc?r1=2697&amp;r2=2696&amp;pathrev=2697
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_base.c?r1=2697&amp;r2=2696&amp;pathrev=2697
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/posix/nacl_makeboundsock.c?r1=2697&amp;r2=2696&amp;pathrev=2697
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/imc_sockets/socket_transfer_test.c?r1=2697&amp;r2=2696&amp;pathrev=2697
+
+IMC: Add socketpair-based version of BoundSocket/SocketAddress FDs
+
+This removes the use of connect()/bind() on Mac OS X, and replaces it
+with use of socketpair() and sendmsg()/recvmsg().  This will allow
+NaCl to work in the Mac Chromium outer sandbox without watering down
+the sandbox.
+
+Split NaClCommonDescMakeBoundSock() out of nrd_xfer.c into a separate
+file, nacl_makeboundsock.c, so that it can have two implementations.
+
+Add new implementations of nacl_desc_conn_cap.c and
+nacl_desc_imc_bound_desc.c in the "posix" subdir of src/trusted/desc.
+
+This is enabled for Mac OS X.  It can be enabled for Linux later.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=344
+TEST=run_socket_transfer_test
+
+Review URL: http://codereview.chromium.org/2996005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:51:41.000Z</ns0:updated><ns0:published>2011-01-21T22:51:41.000Z</ns0:published><ns2:updates /><ns0:title>Comment 18 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=344#c18" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/344/comments/full/18" rel="self" type="application/atom+xml" /></ns0:entry>

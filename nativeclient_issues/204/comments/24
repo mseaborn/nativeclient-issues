@@ -1,0 +1,66 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0AHR347eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/204/comments/full/24</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3432
+
+------------------------------------------------------------------------
+r3432 | noelallen@google.com | Sat Oct 09 14:02:09 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/stubout_mode/nacl.scons?r1=3432&amp;r2=3431&amp;pathrev=3432
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=3432&amp;r2=3431&amp;pathrev=3432
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_signal_common.c?r1=3432&amp;r2=3431&amp;pathrev=3432
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/posix?r1=3432&amp;r2=3431&amp;pathrev=3432
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=3432&amp;r2=3431&amp;pathrev=3432
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/signal_handler/nacl.scons?r1=3432&amp;r2=3431&amp;pathrev=3432
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_signal.h?r1=3432&amp;r2=3431&amp;pathrev=3432
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/linux/nacl_signal.c?r1=3432&amp;r2=3431&amp;pathrev=3432
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/tools/build.scons?r1=3432&amp;r2=3431&amp;pathrev=3432
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/generic/nacl_signal.c?r1=3432&amp;r2=3431&amp;pathrev=3432
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_signal_unittest.c?r1=3432&amp;r2=3431&amp;pathrev=3432
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/data_not_executable/nacl.scons?r1=3432&amp;r2=3431&amp;pathrev=3432
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=3432&amp;r2=3431&amp;pathrev=3432
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/win/nacl_signal.c?r1=3432&amp;r2=3431&amp;pathrev=3432
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/dynamic_code_loading/nacl.scons?r1=3432&amp;r2=3431&amp;pathrev=3432
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/nullptr/nacl.scons?r1=3432&amp;r2=3431&amp;pathrev=3432
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_main_chrome.c?r1=3432&amp;r2=3431&amp;pathrev=3432
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/rodata_not_writable/nacl.scons?r1=3432&amp;r2=3431&amp;pathrev=3432
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/build/common.gypi?r1=3432&amp;r2=3431&amp;pathrev=3432
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/command_tester.py?r1=3432&amp;r2=3431&amp;pathrev=3432
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/build/all.gyp?r1=3432&amp;r2=3431&amp;pathrev=3432
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/posix/nacl_signal.c?r1=3432&amp;r2=3431&amp;pathrev=3432 (from /trunk/src/native_client/src/trusted/service_runtime/linux/nacl_signal.c revision 3393)
+
+Update nacl_signals to trap signals for all platforms.  In standalone sel_ldr we exit with -signum in all cases,
+while in chrome, we exit with -signum only for untrusted, and let breakpad deal with the other ones.
+
+Affected issues, breakpad support (win,lin,mac,arm) &amp; crash on windows
+bug=http://code.google.com/p/nativeclient/issues/detail?id=204
+bug=http://code.google.com/p/nativeclient/issues/detail?id=206
+bug=http://code.google.com/p/nativeclient/issues/detail?id=207
+bug=http://code.google.com/p/nativeclient/issues/detail?id=208
+bug=http://code.google.com/p/nativeclient/issues/detail?id=476
+test=nacl_signal_unittest (new), signal_handler (plus lots of others) for sel_ldr
+
+Changes:
+  remove linux/generic, replace with posix/windows
+  on windows install VectoredExceptionHandler
+  on posix install sigactions for all common signals
+  Added a linked list of handlers.
+  Update all test which use a named exit status to use trusted_&lt;signal&gt;, untrusted_&lt;signal&gt;, or &lt;signal&gt;
+    If a trusted sel_ldr, untrusted sel_ldr, or other app exit is expected.
+  Modified SConstruct to pass 'arch' and 'subarch' to the command_test.py
+  Added a new unit test for nacl_signal_unittest
+
+When a signal comes in, we first check if the signal is from trusted or untrusted code.
+If untrusted and x86-32, we restore segment registers for 32b x86 posix.  Win32 will die, so no code there.
+We then interate through the linked list of handlers until one of them handles the signal.
+If no handler takes the signal, we pass it back to the OS.
+
+For stand alone sel_ldr, we add a generic handler which will exit(-signum) if a signal happens in either
+trusted or untrusted code.  For sel_ldr in chrome, we add a handler which exits with -signum for untrusted
+code but we return for trusted code.  This will drop back to the OS, and allow breakpad, (if enabled) to
+trigger.
+
+
+Review URL: http://codereview.chromium.org/3605006
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:15:36.000Z</ns0:updated><ns0:published>2011-01-21T23:15:36.000Z</ns0:published><ns2:updates /><ns0:title>Comment 24 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=204#c24" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/204/comments/full/24" rel="self" type="application/atom+xml" /></ns0:entry>

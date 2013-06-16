@@ -1,0 +1,80 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUICRH47eCl7ImA9WhRaEk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7795
+
+------------------------------------------------------------------------
+r7795 | khim@google.com | Tue Feb 14 04:40:59 PST 2012
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/x87-instructions.def?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/x87-instructions.def revision 7794)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/decoder-test.c?r1=7795&amp;r2=7794&amp;pathrev=7795
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/nacl_irt_x86_64.nexe?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/nacl_irt_x86_64.nexe revision 7794)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/validator_test.py?r1=7795&amp;r2=7794&amp;pathrev=7795
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/one-instruction-x86_32.rl?r1=7795&amp;r2=7794&amp;pathrev=7795
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/nops.def?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/nops.def revision 7794)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/one-instruction-x86_64.rl?r1=7795&amp;r2=7794&amp;pathrev=7795
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator_test.py?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/validator_test.py revision 7794)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder_test_one_file.sh?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/decoder_test_one_file.sh revision 7794)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/one-instruction-x86_32.rl?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/one-instruction-x86_32.rl revision 7794)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/one-instruction-x86_64.rl?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/one-instruction-x86_64.rl revision 7794)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/decoder.h?r1=7795&amp;r2=7794&amp;pathrev=7795
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder.h?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/decoder.h revision 7794)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator-test.c?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/validator-test.c revision 7794)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/parse_dfa.py?r1=7795&amp;r2=7794&amp;pathrev=7795
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/test_dfa.c?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/test_dfa.c revision 7794)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/test_dfa.h?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/test_dfa.h revision 7794)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/Makefile?r1=7795&amp;r2=7794&amp;pathrev=7795
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/validator.h?r1=7795&amp;r2=7794&amp;pathrev=7795
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder-test.c?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/decoder-test.c revision 7794)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator.h?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/validator.h revision 7794)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/general-purpose-instructions.def?r1=7795&amp;r2=7794&amp;pathrev=7795
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed?r1=7795&amp;r2=7794&amp;pathrev=7795
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/mmx-instructions.def?r1=7795&amp;r2=7794&amp;pathrev=7795
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/xmm-instructions.def?r1=7795&amp;r2=7794&amp;pathrev=7795
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/x87-instructions.def?r1=7795&amp;r2=7794&amp;pathrev=7795
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen-decoder-flags.C?r1=7795&amp;r2=7794&amp;pathrev=7795
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/nacl_irt_x86_64.nexe?r1=7795&amp;r2=7794&amp;pathrev=7795
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/decoder-x86_32.rl?r1=7795&amp;r2=7794&amp;pathrev=7795
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/decoder-x86_64.rl?r1=7795&amp;r2=7794&amp;pathrev=7795
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/gen-decoder-flags.C?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/gen-decoder-flags.C revision 7794)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/system-instructions.def?r1=7795&amp;r2=7794&amp;pathrev=7795
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder-x86_32.rl?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/decoder-x86_32.rl revision 7794)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder-x86_64.rl?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/decoder-x86_64.rl revision 7794)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen-decoder.C?r1=7795&amp;r2=7794&amp;pathrev=7795
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/run_objdump_test.py?r1=7795&amp;r2=7794&amp;pathrev=7795
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/system-instructions.def?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/system-instructions.def revision 7794)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/nops.def?r1=7795&amp;r2=7794&amp;pathrev=7795
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/decoder_test_one_file.sh?r1=7795&amp;r2=7794&amp;pathrev=7795
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/gen-decoder.C?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/gen-decoder.C revision 7794)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/run_objdump_test.py?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/run_objdump_test.py revision 7794)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/parse_dfa.py?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/parse_dfa.py revision 7794)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/validator-test.c?r1=7795&amp;r2=7794&amp;pathrev=7795
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/validator-x86_32.rl?r1=7795&amp;r2=7794&amp;pathrev=7795
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/validator-x86_64.rl?r1=7795&amp;r2=7794&amp;pathrev=7795
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator-x86_32.rl?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/validator-x86_32.rl revision 7794)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/test_dfa.c?r1=7795&amp;r2=7794&amp;pathrev=7795
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator-x86_64.rl?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/validator-x86_64.rl revision 7794)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/Makefile?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/Makefile revision 7794)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/test_dfa.h?r1=7795&amp;r2=7794&amp;pathrev=7795
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/general-purpose-instructions.def?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/general-purpose-instructions.def revision 7794)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/mmx-instructions.def?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/mmx-instructions.def revision 7794)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/xmm-instructions.def?r1=7795&amp;r2=7794&amp;pathrev=7795 (from /trunk/src/native_client/src/trusted/validator_ragel/xmm-instructions.def revision 7794)
+
+Move unreviewed files to unreviewed subdirectory
+
+As was discussed previously:
+  https://chromiumcodereview.appspot.com/9386010/
+
+Move all unreviewed files from src/trusted/validator_ragel
+to src/trusted/validator_ragel/unreviewed.
+
+Only thoroughly reviewed files must be moved to
+src/trusted/validator_ragel.  And we will only enable
+use of this code in production without flag when
+all code will be reviewed.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2597
+TEST=manual
+Review URL: https://chromiumcodereview.appspot.com/9348082
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-02-14T12:46:05.000Z</ns0:updated><ns0:published>2012-02-14T12:46:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

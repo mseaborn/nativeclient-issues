@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkcAQX47eCl7ImA9WhVWGU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2747/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Issues with browser_startup_time + metadata is many layered.  Below are some hacks just to see how far we can get.  Will think about how to get around these hacks next.
+
+
+(1) Hack the stub maker to always generate stubs for functions that libgcc_s, libc_nonshared, and libpthread_nonshared require.
+
+
+(2) Can get past the TEXTREL issue by hacking the stub maker so that for 0-length arrays we return 16 bytes as the size (wat!) -- this is tailored to _ZNSs4_Rep20_S_empty_rep_, so it is a terrible thing to do.  Otherwise, _ZNSs4_Rep20_S_empty_rep_ will not be in BSS and we end up with the TEXTREL.
+
+
+(3) We would still need to fix the "environ" issue mentioned above, since ppapi_plugin_start uses "environ".  To see how far we could get, I tried hacking ppapi_plugin_start to use "__environ" instead.
+
+
+(4) Now we get the problem:
+
+/lib/main.nexe: symbol lookup error: /lib/libppapi_cpp.so: undefined symbol: _ZN2pp12CreateModuleEv
+
+This is defined by the main executable. To see if there are no more issues after this, for this particular test, I tried to hack --export-dynamic to the link line for the main executable.
+
+Finally, with all these hacks, we get browser_startup_time test (basically hello world) running with metadata in-lieu of actual shared libraries.
+</ns0:content><ns0:updated>2012-05-01T21:34:00.000Z</ns0:updated><ns0:published>2012-05-01T21:34:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2747#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2747/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

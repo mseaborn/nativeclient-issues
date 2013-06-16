@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkINR347eCl7ImA9Wx9RGUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/837</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">This build apparently failed:
+
+http://build.chromium.org/buildbot/nacl-toolchain/builders/hardy32-toolchain_arm-untrusted/builds/154/steps/shell_4/logs/stdio
+
+I don't know why, it just says &amp;quot;error.&amp;quot;  My suspicion is that the true failure is in a secret log file somewhere.  At least on the buildbots, we really shouldn't do this -- it is not the responsibility of the build sheriff to go digging through your script and find the error.
+
+This output is incompatible with an efficient triage process.
+
+[ Assigning initially to robertm for triage within PNaCl. ]</ns0:content><ns0:updated>2010-12-22T00:43:16.000Z</ns0:updated><ns0:published>2010-08-20T19:42:45.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/mseaborn@google.com/</ns2:uri><ns2:username>mseaborn@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PNaCl build failures are not obvious on the buildbots</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Maintainability</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Milestone-Caviar</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/837/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=837" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/837" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-12-22T00:43:16.000Z</ns2:closedDate><ns2:id>837</ns2:id></ns0:entry>

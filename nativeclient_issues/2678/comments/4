@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4FRH47eCl7ImA9WhVRE0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2678/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8086
+
+------------------------------------------------------------------------
+r8086 | ncbray@google.com | Wed Mar 21 18:15:01 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/dynamic_code_loading/dynamic_load_test.c?r1=8086&amp;r2=8085&amp;pathrev=8086
+
+Disable threaded dynamic code loading test on ARM.
+
+A kernel bug can make this test hang on ARM hardware.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2678
+TEST= none
+
+Review URL: https://chromiumcodereview.appspot.com/9812020
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-03-22T01:15:15.000Z</ns0:updated><ns0:published>2012-03-22T01:15:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2678#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2678/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

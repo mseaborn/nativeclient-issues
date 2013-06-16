@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkYFRH47eCl7ImA9WhdQEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2131/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bbu...@google.com</ns0:name><ns0:uri>/u/106710594185928520364/</ns0:uri></ns0:author><ns0:content type="html">Today I was able to run the ToT Chromium.exe on a hive instance of a Windows XP 32 bit machine. Trying to load any .nexe causes the NaCl startup to fail.
+
+I was able to get the VirtualAllocEx call to succeed in reserving 1Gb of memory, but the load still fails. As Erik pointed out, that's because I didn't disable the old call to VirtualAlloc. It looks like that is in src/native_client/src/trusted/service_runtime/win/sel_memory.c
+
+http://codesearch.google.com/#OAMlx_jo-ck/src/native_client/src/trusted/service_runtime/win/sel_memory.c&amp;exact_package=chromium&amp;q=NaCl_page_alloc
+
+where the memory is reserved, released and then re-reserved in 64 Kb chunks. If I understand the code correctly, we'll have to somehow pass the address from our new call down to the sel_ldr code and skip the VirtualAlloc call (but still call VirtualFree) on Windows XP 32 bit. I'm open to suggestions on how to do this without too many changes to the codebase. Is there a way to pass it on the command line?</ns0:content><ns0:updated>2011-08-12T00:48:35.000Z</ns0:updated><ns0:published>2011-08-12T00:48:35.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bbu...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2131#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2131/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUENR347eCl7ImA9WhZWFk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1804</ns0:id><ns0:author>
+			<ns0:name>aba...@chromium.org</ns0:name><ns0:uri>/u/117420925389613150407/</ns0:uri></ns0:author><ns0:content type="html">There's something wrong with how NaCl is talking with the IRT:
+
+[13767:22531:665852935637825:FATAL:ipc_message_utils.cc(386)] Check failed: false. 
+Backtrace:
+	0   Chromium Framework                  0x00c4cc86 base::debug::StackTrace::StackTrace() + 32
+	1   Chromium Framework                  0x00c69f60 logging::LogMessage::~LogMessage() + 42
+	2   Chromium Framework                  0x01a13b58 IPC::ParamTraits&amp;lt;base::FileDescriptor&amp;gt;::Write(IPC::Message*, base::FileDescriptor const&amp;amp;) + 194
+	3   Chromium Framework                  0x000dc11d void IPC::WriteParam&amp;lt;base::FileDescriptor&amp;gt;(IPC::Message*, base::FileDescriptor const&amp;amp;) + 30
+	4   Chromium Framework                  0x000dc864 IPC::ParamTraits&amp;lt;std::vector&amp;lt;base::FileDescriptor, std::allocator&amp;lt;base::FileDescriptor&amp;gt; &amp;gt; &amp;gt;::Write(IPC::Message*, std::vector&amp;lt;base::FileDescriptor, std::allocator&amp;lt;base::FileDescriptor&amp;gt; &amp;gt; const&amp;amp;) + 68
+	5   Chromium Framework                  0x000dc13d void IPC::WriteParam&amp;lt;std::vector&amp;lt;base::FileDescriptor, std::allocator&amp;lt;base::FileDescriptor&amp;gt; &amp;gt; &amp;gt;(IPC::Message*, std::vector&amp;lt;base::FileDescriptor, std::allocator&amp;lt;base::FileDescriptor&amp;gt; &amp;gt; const&amp;amp;) + 30
+	6   Chromium Framework                  0x000dc891 IPC::ParamTraits&amp;lt;Tuple2&amp;lt;std::vector&amp;lt;base::FileDescriptor, std::allocator&amp;lt;base::FileDescriptor&amp;gt; &amp;gt; const&amp;amp;, bool const&amp;amp;&amp;gt; &amp;gt;::Write(IPC::Message*, Tuple2&amp;lt;std::vector&amp;lt;base::FileDescriptor, std::allocator&amp;lt;base::FileDescriptor&amp;gt; &amp;gt; const&amp;amp;, bool const&amp;amp;&amp;gt; const&amp;amp;) + 19
+	7   Chromium Framework                  0x000dc15d void IPC::WriteParam&amp;lt;Tuple2&amp;lt;std::vector&amp;lt;base::FileDescriptor, std::allocator&amp;lt;base::FileDescriptor&amp;gt; &amp;gt; const&amp;amp;, bool const&amp;amp;&amp;gt; &amp;gt;(IPC::Message*, Tuple2&amp;lt;std::vector&amp;lt;base::FileDescriptor, std::allocator&amp;lt;base::FileDescriptor&amp;gt; &amp;gt; const&amp;amp;, bool const&amp;amp;&amp;gt; const&amp;amp;) + 30
+	8   Chromium Framework                  0x000dc8e9 IPC::MessageWithTuple&amp;lt;Tuple2&amp;lt;std::vector&amp;lt;base::FileDescriptor, std::allocator&amp;lt;base::FileDescriptor&amp;gt; &amp;gt;, bool&amp;gt; &amp;gt;::MessageWithTuple(int, unsigned int, Tuple2&amp;lt;std::vector&amp;lt;base::FileDescriptor, std::allocator&amp;lt;base::FileDescriptor&amp;gt; &amp;gt; const&amp;amp;, bool const&amp;amp;&amp;gt; const&amp;amp;) + 71
+	9   Chromium Framework                  0x000dc1a7 NaClProcessMsg_Start::NaClProcessMsg_Start(std::vector&amp;lt;base::FileDescriptor, std::allocator&amp;lt;base::FileDescriptor&amp;gt; &amp;gt; const&amp;amp;, bool const&amp;amp;) + 71
+	10  Chromium Framework                  0x005121cc NaClProcessHost::OpenIrtFileDone(base::PlatformFileError, base::PassPlatformFile, bool) + 1490
+	11  Chromium Framework                  0x005135f8 void DispatchToMethod&amp;lt;NaClProcessHost, void (NaClProcessHost::*)(base::PlatformFileError, base::PassPlatformFile, bool), base::PlatformFileError, base::PassPlatformFile, bool&amp;gt;(NaClProcessHost*, void (NaClProcessHost::*)(base::PlatformFileError, base::PassPlatformFile, bool), Tuple3&amp;lt;base::PlatformFileError, base::PassPlatformFile, bool&amp;gt; const&amp;amp;) + 92
+	12  Chromium Framework                  0x0051390f base::ScopedCallbackFactory&amp;lt;NaClProcessHost&amp;gt;::CallbackImpl&amp;lt;void (NaClProcessHost::*)(base::PlatformFileError, base::PassPlatformFile, bool), Tuple3&amp;lt;base::PlatformFileError, base::PassPlatformFile, bool&amp;gt; &amp;gt;::RunWithParams(Tuple3&amp;lt;base::PlatformFileError, base::PassPlatformFile, bool&amp;gt; const&amp;amp;) + 77
+	13  Chromium Framework                  0x00c5fa1c void CallbackRunner&amp;lt;Tuple3&amp;lt;base::PlatformFileError, base::PassPlatformFile, bool&amp;gt; &amp;gt;::Run&amp;lt;base::PlatformFileError, base::PassPlatformFile, bool&amp;gt;(base::PlatformFileError const&amp;amp;, base::PassPlatformFile const&amp;amp;, bool const&amp;amp;) + 64
+	14  Chromium Framework                  0x00c5bf27 (anonymous namespace)::RelayCreateOrOpen::RunCallback() + 77
+	15  Chromium Framework                  0x00c5c263 void DispatchToMethod&amp;lt;(anonymous namespace)::MessageLoopRelay, void ((anonymous namespace)::MessageLoopRelay::*)()&amp;gt;((anonymous namespace)::MessageLoopRelay*, void ((anonymous namespace)::MessageLoopRelay::*)(), Tuple0 const&amp;amp;) + 65
+	16  Chromium Framework                  0x00c5c29a RunnableMethod&amp;lt;(anonymous namespace)::MessageLoopRelay, void ((anonymous namespace)::MessageLoopRelay::*)(), Tuple0&amp;gt;::Run() + 52
+	17  Chromium Framework                  0x00c74fe2 (anonymous namespace)::TaskClosureAdapter::Run() + 30
+	18  Chromium Framework                  0x00c753da base::internal::Invoker1&amp;lt;base::internal::InvokerStorage1&amp;lt;void ((anonymous namespace)::TaskClosureAdapter::*)(), (anonymous namespace)::TaskClosureAdapter*&amp;gt;, void ((anonymous namespace)::TaskClosureAdapter::*)()&amp;gt;::DoInvoke(base::internal::InvokerStorageBase*) + 94
+	19  Chromium Framework                  0x00c78cf4 base::Callback&amp;lt;void ()()&amp;gt;::Run() const + 34
+	20  Chromium Framework                  0x00c761d0 MessageLoop::RunTask(MessageLoop::PendingTask const&amp;amp;) + 306
+	21  Chromium Framework                  0x00c762f5 MessageLoop::DeferOrRunPendingTask(MessageLoop::PendingTask const&amp;amp;) + 51
+	22  Chromium Framework                  0x00c765c3 MessageLoop::DoWork() + 243
+	23  Chromium Framework                  0x00c30ee1 base::MessagePumpLibevent::Run(base::MessagePump::Delegate*) + 279
+	24  Chromium Framework                  0x00c773a8 MessageLoop::RunInternal() + 188
+	25  Chromium Framework                  0x00c773c3 MessageLoop::RunHandler() + 17
+	26  Chromium Framework                  0x00c77427 MessageLoop::Run() + 35
+	27  Chromium Framework                  0x00cbe5c9 base::Thread::Run(MessageLoop*) + 17
+	28  Chromium Framework                  0x00cbe46d base::Thread::ThreadMain() + 337
+	29  Chromium Framework                  0x00cba371 base::(anonymous namespace)::ThreadFunc(void*) + 75
+	30  libSystem.B.dylib                   0x9128a7fd _pthread_start + 345
+	31  libSystem.B.dylib                   0x9128a682 thread_start + 34
+
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-05-17T13:08:16.000Z</ns0:updated><ns0:published>2011-05-12T21:40:43.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/106710594185928520364/</ns2:uri><ns2:username>bbu...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100177598732114324016/</ns2:uri><ns2:username>mcgra...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Running NEXEs in Chrome triggers debug ASSERT</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-IRT</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1804/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1804" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1804" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-05-17T13:08:16.000Z</ns2:closedDate><ns2:id>1804</ns2:id></ns0:entry>

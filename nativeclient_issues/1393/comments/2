@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEADQX47eCl7ImA9Wx9VGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1393/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I've reproduced the problem on my Mac laptop running 10.5.
+
+The fix is to pass the option "-mmacosx-version-min=10.5" to gcc at build time.
+
+Here's how you can check the executable you've built without OS X 10.5.  An executable built on OS X 10.6 will contain the following load header:
+
+[on OS X 10.6:]
+$ otool -l hello
+...
+Load command 4
+            cmd LC_DYLD_INFO_ONLY
+...
+$ ./hello 
+hello
+
+[same executable using tools on OS X 10.5:]
+$ otool -l hello
+...
+Load command 4
+      cmd ?(0x80000022) Unknown load command
+...
+$ ./hello 
+dyld: unknown required load command 0x80000022
+Trace/BPT trap</ns0:content><ns0:updated>2011-02-04T21:59:30.000Z</ns0:updated><ns0:published>2011-02-04T21:59:30.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1393#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1393/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ICRn47eCl7ImA9WhdRFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2100</ns0:id><ns0:author>
+			<ns0:name>MiKopi...@gmail.com</ns0:name><ns0:uri>/u/103204680007203238101/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+native_client_sdk_0_4_907
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Win7 64
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Google Chrome	13.0.782.107 (Official Build 94237) beta-m
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. add in some .cc
+__asm __volatile(
+ &amp;quot;lock xchgl %2,(%1)&amp;quot;
+ : &amp;quot;=r&amp;quot; (Ret)
+ : &amp;quot;r&amp;quot; (pDst), &amp;quot;0&amp;quot; (V)
+ : &amp;quot;memory&amp;quot;);
+2. compile
+3. load exe
+
+&lt;b&gt;What is the expected output?&lt;/b&gt;
+it should either work as usual (although it might fail to compile for some platform) or it should not compile
+
+&lt;b&gt;What do you see instead?&lt;/b&gt;
+Compiles without errors/warnings.
+when loading the nexe into chrome, it fails, java script console outputs:
+NaCl module load failed: or in file %s, line %d: !(%s)
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+it would be nice to be embed assembler into the source, at least for development. but if that is not possible, it would be nice to get at least a warning somewhere, either during compilation or from chrome why the module was not loaded. 
+Otherwise it does not even enter the &amp;quot;Module* CreateModule()&amp;quot; function and it's not obvious why it all fails.</ns0:content><ns0:updated>2011-08-05T19:12:47.000Z</ns0:updated><ns0:published>2011-07-28T18:13:54.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:state>open</ns2:state><ns0:title>inline assembler compiles without errors but nexe does not load</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2100/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2100" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2100" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2100</ns2:id></ns0:entry>

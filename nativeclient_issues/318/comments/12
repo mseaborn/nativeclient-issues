@@ -1,0 +1,48 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEGRn47eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/318/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2196
+
+------------------------------------------------------------------------
+r2196 | mseaborn@chromium.org | Tue May 04 03:21:26 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_text.c?r1=2196&amp;r2=2195&amp;pathrev=2196
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_addrspace.c?r1=2196&amp;r2=2195&amp;pathrev=2196
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/dynamic_code_loading/write_to_dyncode.stdout?r1=2196&amp;r2=2195&amp;pathrev=2196
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=2196&amp;r2=2195&amp;pathrev=2196
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/nacl_app_32.c?r1=2196&amp;r2=2195&amp;pathrev=2196
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=2196&amp;r2=2195&amp;pathrev=2196
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=2196&amp;r2=2195&amp;pathrev=2196
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/dynamic_code_loading/nacl.scons?r1=2196&amp;r2=2195&amp;pathrev=2196
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=2196&amp;r2=2195&amp;pathrev=2196
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/dynamic_code_loading/dynamic_load_test.c?r1=2196&amp;r2=2195&amp;pathrev=2196
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/dynamic_code_loading/dyncode_disabled_test.c?r1=2196&amp;r2=2195&amp;pathrev=2196
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/dynamic_code_loading/write_to_dyncode.c?r1=2196&amp;r2=2195&amp;pathrev=2196
+
+Re-enable dynamic loading, with some fixes
+
+This re-does some of the changes that were undone in r2115.
+
+Allow dynamic loading to be enabled or disabled.  For now, disable by
+default.  Use an environment variable, NACLDYNCODE, so that the option
+can be set when NaCl is run inside a web browser.  Remove sel_main.c's
+-s and -S options (which were not used before).
+
+Prevent mmap() from mapping over the dynamic code region, which would
+be unsafe on x86-32 when we rely on segmentation.  This is done by
+changing the mmap() range check to use dynamic_text_end.  Ensure this
+check works when dynamic loading is disabled by setting
+dynamic_text_start/end to static_text_end.
+
+Add a test to check that the dynamic code region is not writable,
+which would be unsafe.
+
+To be done in a later change: Fix the warnings from NaCl_page_free()
+on Windows about VirtualFree() failing.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=318
+TEST=run_dynamic_load_test
+
+Review URL: http://codereview.chromium.org/1751014
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:23:47.000Z</ns0:updated><ns0:published>2011-01-21T22:23:47.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=318#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/318/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

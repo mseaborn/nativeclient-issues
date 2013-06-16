@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QNRn47eCl7ImA9WhVSFkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2651/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8019
+
+------------------------------------------------------------------------
+r8019 | mseaborn@chromium.org | Tue Mar 13 19:13:06 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main_chrome.h?r1=8019&amp;r2=8018&amp;pathrev=8019
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/imc/nacl_imc_unistd.cc?r1=8019&amp;r2=8018&amp;pathrev=8019
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/imc/nacl_imc_c.h?r1=8019&amp;r2=8018&amp;pathrev=8019
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main_chrome.c?r1=8019&amp;r2=8018&amp;pathrev=8019
+
+Provide a more extensible startup interface to Chromium
+
+Rather than providing NaClMainForChromium() plus various global
+setters, we use a non-global struct of arguments.  This will make it
+easier to add and remove arguments in the future.
+
+This is in preparation for adding an "enable_exception_handling"
+argument.
+
+Following the recent cleanup of SelLdrLauncher, the array of handles
+is replaced with a single handle (imc_bootstrap_handle).
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2651
+TEST=built Chromium locally
+
+Review URL: https://chromiumcodereview.appspot.com/9695061
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-03-14T02:16:37.000Z</ns0:updated><ns0:published>2012-03-14T02:16:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2651#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2651/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

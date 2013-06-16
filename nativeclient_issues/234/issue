@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYFRH47eCl7ImA9WxFSGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/234</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">can be reproduced by adding 
+'tests/life/nacl.scons',
+to the  BUILD_SCONSCRIPTS list in nacl_env in the toplevel  SConstruct file
+
+error messages look like:
+
+               from
+/home/robertm/gclient-nacl3/native_client/src/third_party/nacl_sdk/arm-newlib/arm-none-linux-gnueabi/../newlib_extra_header/c++/4.2.1/iostream:45,
+                 from tests/life/life.cc:45:
+/home/robertm/gclient-nacl3/native_client/src/third_party/nacl_sdk/arm-newlib/arm-none-linux-gnueabi/../newlib_extra_header/c++/4.2.1/arm-none-linux-gnueabi/bits/ctype_base.h:53:
+error: '_ISupper' was not declared in this scope
+/home/robertm/gclient-nacl3/native_client/src/third_party/nacl_sdk/arm-newlib/arm-none-linux-gnueabi/../newlib_extra_header/c++/4.2.1/arm-none-linux-gnueabi/bits/ctype_base.h:54:
+error: '_ISlower' was not declared in this scope
+/home/robertm/gclient-nacl3/native_client/src/third_party/nacl_sdk/arm-newlib/arm-none-linux-gnueabi/../newlib_extra_header/c++/4.2.1/arm-none-linux-gnueabi/bits/ctype_base.h:55:
+error: '_ISalpha' was not declared in this scope
+/home/robertm/gclient-nacl3/native_client/src/third_party/nacl_sdk/arm-newlib/arm-none-linux-gnueabi/../newlib_extra_header/c++/4.2.1/arm-none-linux-gnueabi/bits/ctype_base.h:56:
+error: '_ISdigit' was not declared in this scope
+/home/robertm/gclient-nacl3/native_client/src/third_party/nacl_sdk/arm-newlib/arm-none-linux-gnueabi/../newlib_extra_header/c++/4.2.1/arm-none-linux-gnueabi/bits/ctype_base.h:57:
+error: '_ISxdigit' was not declared in this scope
+/home/robertm/gclient-nacl3/native_client/src/third_party/nacl_sdk/arm-newlib/arm-none-linux-gnueabi/../newlib_extra_header/c++/4.2.1/arm-none-linux-gnueabi/bits/ctype_base.h:58:
+error: '_ISspace' was not declared in this scope
+/home/robertm/gclient-nacl3/native_client/src/third_party/nacl_sdk/arm-newlib/arm-none-linux-gnueabi/../newlib_extra_header/c++/4.2.1/arm-none-linux-gnueabi/bits/ctype_base.h:59:
+error: '_ISprint' was not declared in this scope
+/home/robertm/gclient-nacl3/native_client/src/third_party/nacl_sdk/arm-newlib/arm-none-linux-gnueabi/../newlib_extra_header/c++/4.2.1/arm-none-linux-gnueabi/bits/ctype_base.h:60:
+error: '_ISalpha' was not declared in this scope
+/home/robertm/gclient-nacl3/native_client/src/third_party/nacl_sdk/arm-newlib/arm-none-linux-gnueabi/../newlib_extra_header/c++/4.2.1/arm-none-linux-gnueabi/bits/ctype_base.h:60:
+error: '_ISdigit' was not declared in this scope
+/home/robertm/gclient-nacl3/native_client/src/third_party/nacl_sdk/arm-newlib/arm-none-linux-gnueabi/../newlib_extra_header/c++/4.2.1/arm-none-linux-gnueabi/bits/ctype_base.h:60:
+error: '_ISpunct' was not declared in this scope
+/home/robertm/gclient-nacl3/native_client/src/third_party/nacl_sdk/arm-newlib/arm-none-linux-gnueabi/../newlib_extra_header/c++/4.2.1/arm-none-linux-gnueabi/bits/ctype_base.h:61:
+error: '_IScntrl' was not declared in this scope
+/home/robertm/gclient-nacl3/native_client/src/third_party/nacl_sdk/arm-newlib/arm-none-linux-gnueabi/../newlib_extra_header/c++/4.2.1/arm-none-linux-gnueabi/bits/ctype_base.h:62:
+error: '_ISpunct' was not declared in this scope
+/home/robertm/gclient-nacl3/native_client/src/third_party/nacl_sdk/arm-newlib/arm-none-linux-gnueabi/../newlib_extra_header/c++/4.2.1/arm-none-linux-gnueabi/bits/ctype_base.h:63:
+error: '_ISalpha' was not declared in this scope
+/home/robertm/gclient-nacl3/native_client/src/third_party/nacl_sdk/arm-newlib/arm-none-linux-gnueabi/../newlib_extra_header/c++/4.2.1/arm-none-linux-gnueabi/bits/ctype_base.h:63:
+error: '_ISdigit' was not declared in this scope
+
+</ns0:content><ns0:updated>2010-04-21T16:08:35.000Z</ns0:updated><ns0:published>2009-12-23T19:46:58.000Z</ns0:published><ns2:status>Done</ns2:status><ns2:owner>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>arm untrusted toolchain does not compile c++ code</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Milestone-SDK-1</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/234/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=234" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/234" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2010-04-21T16:08:35.000Z</ns2:closedDate><ns2:id>234</ns2:id></ns0:entry>

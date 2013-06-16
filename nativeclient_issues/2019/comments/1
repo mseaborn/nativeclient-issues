@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0ENQX47eCl7ImA9WhdTFUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2019/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Here is my log (stuck at DidChangeFocus):
+
+***
+
+[  2584 ms] |||| GET /ppapi_ppp_instance.html
+[  2588 ms] |||| GET /nacltest.js
+[  2589 ms] |||| GET /ppapi_ppp_instance.js
+[  2611 ms] |||| [STARTUP]
+[  2621 ms] |||| GET /ppapi_ppp_instance.nmf
+[  2630 ms] |||| GET /favicon.ico
+[  2639 ms] |||| GET /ppapi_ppp_instance_x86-32.nexe
+[  2762 ms] |||| nacl_module / test_nexe loaded
+[  2765 ms] |||| 
+[  2767 ms] |||| [PPP_Instance::DidCreate BEGIN]
+[  2768 ms] |||| [PPP_Instance::DidCreate PASS]
+[  2774 ms] |||| 
+[  2775 ms] |||| [PPP_Instance::DidChangeView BEGIN]
+[  2777 ms] |||| [PPP_Instance::DidChangeView LOG] 'DidChangeView:PASSED'
+[  2780 ms] |||| [PPP_Instance::DidChangeView LOG] 'DidChangeView:PASSED'
+[  2783 ms] |||| [PPP_Instance::DidChangeView LOG] 'DidChangeView:PASSED'
+[  2785 ms] |||| [PPP_Instance::DidChangeView PASS]
+[  2790 ms] |||| 
+[  2793 ms] |||| [PPP_Instance::DidChangeFocus BEGIN]
+[ 22821 ms] |||| 
+[ 22821 ms] |||| [SERVER_ERROR] Did not hear from the browser for 20.0 seconds
+KILLING the browser
+
+***
+
+This is probably not a problem with the bots since they *RUN* the tests with -j1.</ns0:content><ns0:updated>2011-07-13T23:28:10.000Z</ns0:updated><ns0:published>2011-07-13T23:28:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2019#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2019/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

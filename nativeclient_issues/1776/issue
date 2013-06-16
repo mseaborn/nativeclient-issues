@@ -1,0 +1,44 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCSX47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1776</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using?  -NA-
+What version of the runtime are you using? TOT
+On what operating system? Ubuntu 11.04 (Natty) x86-32
+What browser are you using?  -NA-
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. run scons with platform=arm with any test target, e.g., smoke_tests
+&lt;b&gt;2.&lt;/b&gt;
+&lt;b&gt;3.&lt;/b&gt;
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+The x86-32 tests pass.  The arm tests fail with an &amp;quot;Out of memory&amp;quot; message. Turning on NACLVERBOSITY shows that it was failing at the address space allocation for the ARM untrusted address space, with memory starting at 64K.  The kernel VM parameter /proc/sys/vm/mmap_min_addr was set at 16K (and 64K to match goobuntu) and the mmap is failing.  Is qemu mapping post-translated code in the low memory region and creating a conflict?  Weren't we going to be &amp;quot;squatting&amp;quot; on the low 1G of address space via a BSS Elf program header?
+
+This makes testing on Natty hard(er) since testing would be less thorough (can still test x86-32).  I'll retry on an Ubuntu 10.04 amd-64 machine later....
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+$ objdump -x scons-out/opt-linux-arm/staging/sel_ldr
+scons-out/opt-linux-arm/staging/sel_ldr:     file format elf32-little
+scons-out/opt-linux-arm/staging/sel_ldr
+architecture: UNKNOWN!, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x70000120
+
+Program Header:
+0x70000001 off    0x0013aae0 vaddr 0x7013aae0 paddr 0x7013aae0 align 2**2
+         filesz 0x00006188 memsz 0x00006188 flags r--
+    LOAD off    0x00000000 vaddr 0x70000000 paddr 0x70000000 align 2**15
+         filesz 0x00140d84 memsz 0x00140d84 flags r-x
+    LOAD off    0x00141000 vaddr 0x70149000 paddr 0x70149000 align 2**15
+         filesz 0x00001ae8 memsz 0x0001bedc flags rw-
+    NOTE off    0x000000f4 vaddr 0x700000f4 paddr 0x700000f4 align 2**2
+         filesz 0x00000020 memsz 0x00000020 flags r--
+     TLS off    0x00141000 vaddr 0x70149000 paddr 0x70149000 align 2**2
+         filesz 0x00000014 memsz 0x0000003c flags r--
+   STACK off    0x00000000 vaddr 0x00000000 paddr 0x00000000 align 2**2
+         filesz 0x00000000 memsz 0x00000000 flags rw-
+</ns0:content><ns0:updated>2011-07-29T00:12:48.000Z</ns0:updated><ns0:published>2011-05-06T01:06:12.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>Linux Ubuntu 11.04 (Natty) on x86-32 arm tests fail</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1776/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1776" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1776" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1776</ns2:id></ns0:entry>

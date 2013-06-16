@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkUDQn47eCl7ImA9WhVXEko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2715</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">PERF_REGRESS: runtime_mesa/pnacl_translator.opt.x8664 (0.50%)
+
+We are showing a consistent perf regression after a DEPS role.  The test in question has two parts:
+  1- Use the trusted translator to generate a NEXE then do a perf test.
+  2- Use the untrusted translator to generate a NEXE then do a perf test.
+
+In theory, both NEXEs should be identical, and both should show the same regression.   However only the untrusted version does.
+
+It was determined that the link lines between the untrusted and trusted version are different, causing enough drift between the two NEXEs that the only the untrusted one is showing the regression.
+
+This bug has three issues associated with it.
+   1- Perf regression
+   2- Different build arguments between trusted and untrusted versions
+   3- Changes in Chrome affecting a non-Chrome test.
+
+The first is caused by the second, so fixing #2 should effectively fix #1.
+For the #3, we should ideally find a way to share the command-lines between the trusted and untrusted runs of the translator.  In addition, if we truly believe that the nexes should be the same, we should diff them to help us identify issues of this nature in the future.
+
+Getting the perf issue fixed is P1 to stop the redness, the priority should be dropped after the initial fix.</ns0:content><ns0:updated>2012-04-12T23:44:33.000Z</ns0:updated><ns0:published>2012-04-06T18:35:00.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Perf Regression (build missmatch)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Test</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2715/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2715" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2715" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-04-12T23:44:33.000Z</ns2:closedDate><ns2:id>2715</ns2:id></ns0:entry>

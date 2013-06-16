@@ -1,0 +1,128 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUEGRH47eCl7ImA9WhVTEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1670</ns0:id><ns0:author>
+			<ns0:name>pol...@google.com</ns0:name><ns0:uri>/u/101953680983947802512/</ns0:uri></ns0:author><ns0:content type="html">The directory is hard to navigate and should be reorganized into sub-directories. Proposed organization:
+
+=== native_client/tests
+examples.html  # Should point to all browser-based examples/tests
+nacl_js_lib.js
+fake_browser_ppapi/
+
+=== native_client/tests/ppapi_browser
+ppapi_example_2d/ (TODO: rename to 2d/)
+ppapi_example_audio/ (TODO: rename to audio/)
+ppapi_geturl/ (TODO: rename to geturl/)
+ppapi_bad/ (TODO: rename to bad/)
+ppapi_gles_book/ (TODO: rename to gles_book/)
+ppapi_core/ (TODO: rename to ppb_core/)
+ppapi_file_system/ (TODO: rename to ppb_file_system/)
+ppapi_proxy/ (TODO: split into events/ and scripting/)
+
+=== native_client/tests/demos
+awk/
+drawing/
+lua/
+ruby/
+vim/
+xaos/
+earth/
+
+=== native_client/tests/sel_ldr
+app_lib/
+barebones/
+bundle_size/
+computed_gotos/
+createthreads/
+data_not_executable/
+dup/
+dynamic_code_loading/
+dynamic_linking/
+egyptian_cotton/
+environment_variables/
+eviltests/
+file/
+gc_instrumentation/
+glibc_file64_test/
+glibc_static_test/
+glibc_syscall_wrappers/
+hello_world/
+imc_shm_mmap/
+imc_sockets/
+irt_hw/
+libc_free_hello_world/
+longjmp/
+math/
+memcheck_test/
+mmap/
+nacl_log/
+nameservice/
+nanosleep/
+noop/
+nthread_nice/
+nullptr/
+redir/
+rodata_not_writable/
+signal_handler/
+srpc_message/
+stack_alignment/
+stubout_mode/
+sysbasic/
+syscall_return_sandboxing/
+syscalls/
+threads/
+time/
+tls/
+untrusted_check/
+debug_stub/
+loop/
+null/
+pthread_bless/
+unittests/
+
+=== native_client/tests/sel_universal
+fib/
+mandel/ # SelUniversalTest only
+srpc/ # SelUniversalTest only
+srpc_without_pthread/
+ppapi_example_2d/ # SelUniversalTest only
+ppapi_geturl/ # SelUniversalTest only
+ppapi_proxy/ # SelUniversalTest only
+
+=== native_client/tests/srpc_browser
+autoloader/
+inbrowser_test_runner/
+mandel
+multiarch/
+plugin_async_messaging/
+prebuilt/
+srpc/ (TODO: remove npapi artifacts)
+srpc_hw/
+nrd_xfer/
+
+=== native_client/tests/pnacl
+client_translator/
+pnacl_abi/
+pnacl_client_translator/
+pnacl_ld_example/
+
+=== native_client/tests/obsolete or svn delete
+cdom_perf/
+codelab/
+fake_browser/
+life/ # this is empty
+nacl_file/
+tone/  # this is empty
+multiple_sandboxes/
+native_worker/
+selenium_self_test/
+
+=== native_client/tests/toolchain
+tools/
+toolchain/
+
+=== ??? TBD ???
+ppapi/  # build test for OpenGL headers
+pyauto_nacl/
+python_version/
+spec2k/
+startup_message/</ns0:content><ns0:updated>2012-02-24T23:53:45.000Z</ns0:updated><ns0:published>2011-04-16T02:04:50.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>native_client/tests is a mess and needs to be reorganized and cleaned up</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1670/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1670" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1670" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-02-24T23:53:45.000Z</ns2:closedDate><ns2:id>1670</ns2:id></ns0:entry>

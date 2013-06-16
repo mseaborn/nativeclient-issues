@@ -1,0 +1,63 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C04DSX47eCl7ImA9WxFWFk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/558/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">&gt; mark, please do not push through changes to the TCB in this way.
+&gt; changes to the TCB should be reviewed by david or myself, and this
+&gt; is an opinion of yours that should have been discussed.  you are not
+&gt; always right.
+
+I have simply offered feedback on changes that have been proposed and
+made suggestions.
+
+&gt; the philosophy that we adhere to is to whitelist rather than to
+&gt; blacklist.  this is a standard security design principle.
+
+I am not proposing to whitelist or blacklist.  I am simply saying the
+TCB should not whitelist information it does not interpret.  To do so
+just increases its complexity, to no useful end that I can see.
+
+There are all sorts of things that sel_ldr does not whitelist.  For
+example, it does not care where in the file the Program Headers appear
+and it does not whitelist what appears between the ELF header and the
+Program Headers.  It is not a general ELF linting tool.
+
+&gt; the basic idea is that it is better to be restrictive, to only allow
+&gt; things that we recognize -- and know how to check for validity --
+&gt; than to only reject things that we recognize as bad, since anything
+&gt; that is "uncertain" would be rejected.
+
+This is the idea that led to inconsistent treatment of external jumps
+(http://code.google.com/p/nativeclient/issues/detail?id=481).  The
+problem with this is that it leads to unprincipled restrictions that
+enforce nothing, while making the trusted code more complex, and
+creating pointless hoops for others to jump through.
+
+We fixed the external-jumps issue by making the check as simple as
+possible.  We should do the same for ELF headers checks.
+
+&gt; we control the toolchain, and our toolchain should never generate
+&gt; anything that the service runtime would reject.
+
+There is no single toolchain.  We are adding more toolchain
+combinations (PNaCl, gold, glibc); others can add more (Go, and other
+language runtimes).  NaCl is supposed to be an open system.
+
+&gt; greater "flexibility" only gives attacker more wriggle room.  for
+&gt; example, even though the service runtime doesn't load unrecognized
+&gt; segments into untrusted memory, those segments may end up being
+&gt; processed by other tools (e.g., dynamic loaders, debuggers,
+&gt; performance analysis tools, etc), and encouraging the addition of
+&gt; extra program segments only gives attackers a larger attack surface
+&gt; on which to play.
+
+This is very hand-wavy.  "*may* end up being processed by other tools"
+-- how?
+
+How does the rejection of a header by sel_ldr stop other tools from
+processing it?
+
+Dynamic loaders aren't relevant -- a dynamic loader runs as untrusted
+code.
+
+For debuggers, debugging info has a surface area that would dwarf ELF
+Program Headers.  (Er, no pun intended there. :-) )
+</ns0:content><ns0:updated>2010-06-04T06:12:58.000Z</ns0:updated><ns0:published>2010-06-04T06:12:58.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=558#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/558/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

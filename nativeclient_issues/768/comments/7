@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0QHQ347eCl7ImA9WhZQE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/768/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">As part of testing startup time from the browser cache, I generated some largish 20MB nexes.  We don't have "normal" nexes but here is some data on very-synthetic nexes.
+
+If the nexe is just filled with hlts, validation time can overshadow the time it takes to load from the browser cache. If it is just 8 byte nops, then it is not bad.
+
+
+Test cases:
+ "data" is hello world + 20MB of data (same as validating hello world)
+ "nops" is hello world + 20MB of 8byte nop padding (lots of nops to validate)
+ "hlts" is hello world + 20MB of hlt padding (lots of hlts to validate)
+
+
+==== Running ncval on x86-32 - data ====
+I: ./20mb-x86-32/size_20_cache.nexe: load time: 0.000000  analysis time: 0.010000
+==== Running ncval on x86-32 - nops ====
+I: ./20mb-x86-32/size_20_nops.nexe: load time: 0.020000  analysis time: 0.580000
+==== Running ncval on x86-32 - hlts ====
+I: ./20mb-x86-32/size_20_hlts.nexe: load time: 0.030000  analysis time: 2.120000
+
+
+==== Running ncval on x86-64 - data ====
+VALIDATOR: load time: 0.000000  analysis time: 0.010000
+==== Running ncval on x86-64 - nops ====
+VALIDATOR: load time: 0.030000  analysis time: 0.630000
+==== Running ncval on x86-64 - hlts ====
+VALIDATOR: load time: 0.020000  analysis time: 3.650000
+
+
+Attached are the compressed binaries and a test harness. Unpack to the "native_client" directory and run "./time_run_validator.sh" from the "native_client" directory. This will  run ncval with the "-t" option over the different tests.</ns0:content><ns0:updated>2011-04-21T00:22:12.000Z</ns0:updated><ns0:published>2011-04-21T00:22:12.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>kschi...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 7 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=768#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/768/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

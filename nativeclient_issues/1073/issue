@@ -1,0 +1,57 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCRn47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1073</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The x86-64 NaCl hello_world executable has the following ELF Program Headers:
+
+$ objdump -x scons-out/nacl-x86-64/staging/hello_world.nexe
+...
+Program Header:
+    PHDR off    0x0000000000000000 vaddr 0x0000000000000000 paddr 0x0000000000000000 align 2**3
+         filesz 0x0000000000000120 memsz 0x0000000000000120 flags r--
+    LOAD off    0x0000000000020000 vaddr 0x0000000000020000 paddr 0x0000000000020000 align 2**21
+         filesz 0x0000000000007580 memsz 0x0000000000007580 flags r-x
+    LOAD off    0x0000000000030000 vaddr 0x0000000000030000 paddr 0x0000000000030000 align 2**21
+         filesz 0x0000000000010474 memsz 0x0000000000010474 flags r--
+    LOAD off    0x0000000000050000 vaddr 0x0000000000050000 paddr 0x0000000000050000 align 2**21
+         filesz 0x0000000000000904 memsz 0x00000000000009b0 flags rw-
+
+It specifies a segment alignment of 2MB (2**21).  This is not satisfiable because the segments are not aligned to 2MB relative to each other.  The segments are offset 64k and 128k from each other here.
+
+This does not matter very much because in practice our ELF headers (sel_ldr and ld.so) ignore this field.  But it is not really correct.
+
+This happens because nacl-binutils sets MAXPAGESIZE=2MB for x86-64.
+
+
+In contrast, the NaCl x86-32 executable specifies an alignment of 64k, which is correct:
+
+$ objdump -x scons-out/nacl-x86-32/staging/hello_world.nexe
+...
+Program Header:
+    PHDR off    0x00000000 vaddr 0x00000000 paddr 0x00000000 align 2**2
+         filesz 0x000000b4 memsz 0x000000b4 flags r--
+    LOAD off    0x00010000 vaddr 0x00020000 paddr 0x00020000 align 2**16
+         filesz 0x000065a0 memsz 0x000065a0 flags r-x
+    LOAD off    0x00020000 vaddr 0x00030000 paddr 0x00030000 align 2**16
+         filesz 0x000104c0 memsz 0x000104c0 flags r--
+    LOAD off    0x00040000 vaddr 0x00050000 paddr 0x00050000 align 2**16
+         filesz 0x000008e4 memsz 0x00000990 flags rw-
+
+
+Also in contrast, a Linux x86-64 library/executable uses 2MB alignment, but the segments match this and are spaced apart by 2MB:
+
+$ objdump -x /lib/libc.so.6
+...
+Program Header:
+    PHDR off    0x0000000000000040 vaddr 0x0000000000000040 paddr 0x0000000000000040 align 2**3
+         filesz 0x0000000000000230 memsz 0x0000000000000230 flags r-x
+  INTERP off    0x000000000014f6e0 vaddr 0x000000000014f6e0 paddr 0x000000000014f6e0 align 2**4
+         filesz 0x000000000000001c memsz 0x000000000000001c flags r--
+    LOAD off    0x0000000000000000 vaddr 0x0000000000000000 paddr 0x0000000000000000 align 2**21
+         filesz 0x0000000000179080 memsz 0x0000000000179080 flags r-x
+    LOAD off    0x0000000000179738 vaddr 0x0000000000379738 paddr 0x0000000000379738 align 2**21
+         filesz 0x0000000000004660 memsz 0x00000000000090f0 flags rw-
+...
+
+The second PT_LOAD is &amp;gt;0x200000 after the first (0x200000 == 2MB).
+</ns0:content><ns0:updated>2011-07-29T00:12:47.000Z</ns0:updated><ns0:published>2010-10-21T13:34:26.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>NaCl-x86-64 executable specifies segment alignment of 2MB</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1073/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1073" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1073" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>1709</ns2:id></ns2:blocking><ns2:closedDate>2011-05-17T13:49:57.000Z</ns2:closedDate><ns2:id>1073</ns2:id></ns0:entry>

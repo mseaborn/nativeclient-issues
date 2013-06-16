@@ -1,0 +1,51 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0cCQn47eCl7ImA9Wx9QF08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/940/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 85d93e3c0b0373e6e520f16fd124b805bc4423e7
+ Email: pasko@google.com
+
+Enable threading on x86-64
+
+sysdeps/x86_64/sysdep.h:
+
+* Reverted TLS_HACK (except one minor place, TBD)
+  I.e. all thread-local variables (including errno) are back in their
+  thread-local form.
+
+nptl/sysdeps/x86_64/tls.h:
+
+* Defined more portable TLS access macros: THREAD_GETMEM, THREAD_SETMEM,
+  THREAD_DTV (mostly borrowed from alpha)
+
+* A more portable THREAD_GSCOPE_RESET_FLAG was borrowed from ia64.
+
+* Minor TLS initialization fixes analogous to the x86-32 case.
+
+sysdeps/x86_64/bits/atomic.h:
+
+* Disable conditional jumping over the lock prefix based on a flag in TLS. The
+  code is more portable now and probably faster, since TLS access requires a
+  syscall, which in turn requires a lot of locking to be peroformed.
+
+sysdeps/unix/x86_64/sysdep.S:
+
+* A temporary incorrect (unsandboxed) assembly command to make errno
+  thread-local.
+
+nptl/sysdeps/pthread/createthread.c:
+
+* Stack alignment. This is tested by simple_thread_test performing a
+  printf in 2 threads (printf uses SSE, namely, movaps)
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=940
+TEST=simple_thread_test
+
+Review URL: http://codereview.chromium.org/6048011
+
+M	elf/dl-reloc.c
+M	elf/rtld.c
+M	include/errno.h
+M	nptl/sysdeps/pthread/createthread.c
+M	nptl/sysdeps/x86_64/tls.h
+M	sysdeps/unix/x86_64/sysdep.S
+M	sysdeps/x86_64/bits/atomic.h
+M	sysdeps/x86_64/sysdep.h</ns0:content><ns0:updated>2010-12-30T16:04:23.000Z</ns0:updated><ns0:published>2010-12-30T16:04:23.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=940#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/940/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE8CR347eCl7ImA9WhdbFU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2033</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">newlib for r6063.
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Go to nacl64/include/time.h in the newlib
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+    20: #ifndef _CLOCKS_PER_SEC_
+    21: #define _CLOCKS_PER_SEC_ 1000
+    22: #endif
+
+    24: #define CLOCKS_PER_SEC _CLOCKS_PER_SEC_
+
+The correct value for CLOCKS_PER_SEC is 1000000 and NaCl glibc has it defined to the correct value.
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-10-13T20:14:26.000Z</ns0:updated><ns0:published>2011-07-15T18:29:24.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100177598732114324016/</ns2:uri><ns2:username>mcgra...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>newlib: wrong value for CLOCKS_PER_SEC</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2033/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2033" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2033" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-10-13T20:14:26.000Z</ns2:closedDate><ns2:id>2033</ns2:id></ns0:entry>

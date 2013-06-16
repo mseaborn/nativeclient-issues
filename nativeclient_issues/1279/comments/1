@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYESX47eCl7ImA9Wx9QEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1279/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">combine.c:gen_lowpart_for_combine
+
+When rtl is CONST, when out mode is Pmode, simply returns CONST as is.
+If CONST is in ptr_mode (!= Pmode), the returned value is CONST:SI but the code expects it to be of mode DI. This causes internal error in SUBST when trying to substitute CONST:SI instead of REG:DI.
+
+Here is the test (-O1):
+
+typedef unsigned int size_t;
+
+extern "C" {
+ size_t strlen (const char *);
+};
+
+class StringRef {
+private:
+ const char *Data;
+ size_t Length;
+
+public:
+ StringRef(const char *Str)
+   : Data(Str), Length(::strlen(Str)) {}
+};
+
+StringRef GetDLLSuffix() {
+ return &amp;(".so"[1]);
+}
+</ns0:content><ns0:updated>2010-12-24T15:21:48.000Z</ns0:updated><ns0:published>2010-12-24T15:21:48.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by eaelt...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1279#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1279/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE8ARX47eCl7ImA9WhVSGUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2644/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8043
+
+------------------------------------------------------------------------
+r8043 | robertm@google.com | Fri Mar 16 08:40:54 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/toolchain/nacl.scons?r1=8043&amp;r2=8042&amp;pathrev=8043
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/toolchain/stack_frame.cc?r1=8043&amp;r2=8042&amp;pathrev=8043
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/toolchain/return_address.c?r1=8043&amp;r2=8042&amp;pathrev=8043
+
+Fix stack_frame test and turn it back on for pnacl.
+This test is useful for debugging issue with the pnacl dwarf unwinder.
+We do not want it to rot.
+Also cleanup the return_address.c test so it does not require disabling "-O".
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2644
+Review URL: https://chromiumcodereview.appspot.com/9706061
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-03-16T15:47:24.000Z</ns0:updated><ns0:published>2012-03-16T15:47:24.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2644#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2644/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

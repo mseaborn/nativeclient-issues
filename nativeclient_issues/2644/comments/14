@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0cHRH47eCl7ImA9WhVSGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2644/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>dsch...@google.com</ns0:name><ns0:uri>/u/104270846665912603141/</ns0:uri></ns0:author><ns0:content type="html">Update: now that the torture test bot is back up, there are some additional failures:
+/tmp/nacl_compiler_test/gcc-4.6.1/gcc/testsuite/g++.dg/eh/ctor2.C
+/tmp/nacl_compiler_test/gcc-4.6.1/gcc/testsuite/g++.dg/eh/elide1.C
+/tmp/nacl_compiler_test/gcc-4.6.1/gcc/testsuite/g++.dg/eh/elide2.C
+/tmp/nacl_compiler_test/gcc-4.6.1/gcc/testsuite/g++.dg/eh/pr43365.C
+/tmp/nacl_compiler_test/gcc-4.6.1/gcc/testsuite/g++.dg/eh/unwind1.C
+/tmp/nacl_compiler_test/gcc-4.6.1/gcc/testsuite/g++.dg/eh/uncaught1.C
+/tmp/nacl_compiler_test/gcc-4.6.1/gcc/testsuite/g++.dg/eh/alias1.C
+/tmp/nacl_compiler_test/gcc-4.6.1/gcc/testsuite/g++.dg/eh/simd-1.C
+
+These all seem to be eh failures, but they also all seem to fail in O0 mode. They are also fairly small and so may give some more insight into what's happening.
+
+There are also 2 failures in the LLVM testsuite:
+pnacl/git/llvm-test-suite/SingleSource/Regression/C++/EH/simple_rethrow.cpp
+pnacl/git/llvm-test-suite/SingleSource/Regression/C++/EH/exception_spec_test.cpp</ns0:content><ns0:updated>2012-03-15T18:10:35.000Z</ns0:updated><ns0:published>2012-03-15T18:10:35.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by dsch...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2644#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2644/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

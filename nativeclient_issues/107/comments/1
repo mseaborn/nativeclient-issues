@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0YEQn47eCl7ImA9WxNXGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/107/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>kat...@google.com</ns0:name><ns0:uri>/u/115964162215505781813/</ns0:uri></ns0:author><ns0:content type="html">Actually, it's correct for the tarball. (I just confirmed this on 3 platforms.)
+
+Unfortunately, the source distribution isn't the same, and the existence of a build
+directory under native_client makes it even more confusing.
+
+In the short term, I can add a note about this on every page where it's relevant.
+
+In the slightly longer term, we should make sure the structures of the two
+distributions are the same, so the doc doesn't have to be different.
+
+Can we just delete the build directory at the top of the tarball?</ns0:content><ns0:updated>2009-10-06T21:38:23.000Z</ns0:updated><ns0:published>2009-10-06T21:38:23.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by kat...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=107#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/107/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

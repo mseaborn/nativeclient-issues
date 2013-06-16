@@ -1,0 +1,55 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUcGSH47eCl7ImA9WhVVFEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2747</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Sometimes we are missing Needed Records after the bitcode link, which mean that later on, the stubs generated (e.g., a stub of libc) will not full represent the non-stub.
+
+Known Examples:
+
+(1) Everything that libgcc_s.so needs, may not show up in the main executable's list of needed symbols.  After all, libgcc_s.so is not the main executable.  We may be able to hack the stub generator to just know about this small list.
+
+
+(2) Transitive dependencies with libc.so.# and libc_nonshared.a during bitcode linking, don't quite show up.  Example is &amp;quot;atexit&amp;quot; (reproduced with tests/hello_world/at_exit.c).
+
+
+- During the bitcode link, it seems to think that libc_nonshared.a will provide &amp;quot;atexit&amp;quot; instead of libc.so.#, and that archive will later be part of the dynamic executable, so it will never make a .so Needed Record for &amp;quot;atexit&amp;quot;.
+
+
+nm toolchain/pnacl_linux_x86_64/lib-x86-64/libc.so.1de757e4 | grep &amp;quot;atexit&amp;quot;
+0000000000029e40 T __cxa_atexit
+0000000000029e40 t __cxa_atexit_internal
+000000001006def4 d __elf_set___libc_atexit_element__IO_cleanup__
+000000001006def4 a __start___libc_atexit
+000000001006def8 a __stop___libc_atexit
+0000000010090cbc b added_atexit_handler.13444
+
+
+nm toolchain/pnacl_linux_x86_64/lib-x86-64/libc_nonshared.a | grep &amp;quot;atexit&amp;quot;
+atexit.ons:
+                 U __cxa_atexit
+0000000000000000 T atexit
+
+
+- However, if it's true that libc_nonshared.a is providing &amp;quot;atexit&amp;quot;, then libc_nonshared.a actually needs &amp;quot;__cxa_atexit&amp;quot; too.  Unfortunately, the &amp;quot;__cxa_atexit&amp;quot; never shows up as a Needed.  So, in the end __cxa_atexit will be an unresolved symbol.
+
+
+** Part of this may be confusion from using the 64-bit ELF as the baseline for PSO stubs **
+
+Here are the 32-bit nm results:
+
+nm toolchain/pnacl_linux_x86_64/lib-x86-32/libc.so.1de757e4 | grep &amp;quot;atexit&amp;quot;
+000293a0 T __cxa_atexit
+000293a0 t __cxa_atexit_internal
+00197f20 t __dyn_atexit
+1005e164 d __elf_set___libc_atexit_element__IO_cleanup__
+1005e164 a __start___libc_atexit
+1005e168 a __stop___libc_atexit
+10080cb8 b added_atexit_handler.13186
+00197f20 T atexit@GLIBC_2.0            &amp;lt;&amp;lt;&amp;lt; NOTE this one difference
+
+
+nm toolchain/pnacl_linux_x86_64/lib-x86-32/libc_nonshared.a | grep &amp;quot;atexit&amp;quot;
+atexit.ons:
+         U __cxa_atexit
+00000000 T atexit
+
+
+But I think this may be a problem even when testing with 64-bit all the way... Will confirm tomorrow.</ns0:content><ns0:updated>2012-05-07T17:50:29.000Z</ns0:updated><ns0:published>2012-04-26T01:51:29.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>pnacl bitcode link / metadata sometimes incomplete or inconsistent</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2747/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2747" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2747" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2747</ns2:id></ns0:entry>

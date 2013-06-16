@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0IFRH47eCl7ImA9WxBUEk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/319</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">The ARM validator does not permit stores that use register-displacement 
+addressing, like so:
+  str r0, [r1, r2]
+
+This is good -- we can't easily predict the effective address during static 
+analysis.  However, due to an overzealous pattern match, we also forbid 
+register-post-index stores:
+  str r0, [r1], r2
+
+In this case, the effective address is simply [r1], with post-increment.  
+This is perfectly safe (assuming r1 is predictable).
+
+This bug makes toolchain authors' lives more difficult, but has no security 
+impact.  Ran across this while cleaning up after issue 312.</ns0:content><ns0:updated>2010-02-26T23:05:15.000Z</ns0:updated><ns0:published>2010-02-25T21:44:25.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>ARM validator bans safe register post-index stores</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TrustedRT</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/319/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=319" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/319" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-02-26T23:05:15.000Z</ns2:closedDate><ns2:id>319</ns2:id></ns0:entry>

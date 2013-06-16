@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEENQX47eCl7ImA9WhZRFk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1500</ns0:id><ns0:author>
+			<ns0:name>mmorten...@google.com</ns0:name><ns0:uri>/u/100268164290167392978/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+   SVN version obtained with gclient sync
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+   N/A
+&lt;b&gt;On what operating system?&lt;/b&gt;
+   Mac OS
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+   N/A
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Checkout NaCl_SDK repo
+2. Go to src/examples/hello_world
+3. Execute the command &amp;quot;make test&amp;quot;
+
+The output is:
+  ../../toolchain/mac_x86/bin/nacl-sel_ldr test_helper_functions_x86_32_dbg.nexe
+  make: ../../toolchain/mac_x86/bin/nacl-sel_ldr: No such file or directory
+  make: *** [test32] Error 1
+
+People who download a tarball or .exe installer won't hit this, because nacl-sel_ldr gets built and bundled, but when we are developing in the SDK we will hit this and have to copy nacl-sel_ldr from somewhere else.
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-04-12T19:31:30.000Z</ns0:updated><ns0:published>2011-03-04T23:14:59.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/100268164290167392978/</ns2:uri><ns2:username>mmorten...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100268164290167392978/</ns2:uri><ns2:username>mmorten...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mball@google.com/</ns2:uri><ns2:username>mball@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>'make test' fails for hello_world in REPO -- missing nacl-sel_ldr</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Milestone-Baltic-Sea-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1500/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1500" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1500" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-04-12T19:31:30.000Z</ns2:closedDate><ns2:id>1500</ns2:id></ns0:entry>

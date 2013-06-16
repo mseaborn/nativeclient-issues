@@ -1,0 +1,66 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIGQX47eCl7ImA9WhVVFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/230</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">This is about how shared libraries are built.
+
+There is a trick we could use for making PLT entries smaller on i386.  I'm 
+not saying we should necessarily do this, but I wanted to document it.
+
+Normal i386 PLT entries look like this:
+
+malloc@plt:
+	jmp   *malloc_pltgot_index(%ebx)
+malloc_slow_path:
+	push  $malloc_pltgot_index
+	jmp   zeroth_plt_entry
+
+(To see an example, do &amp;quot;objdump -d /lib/libc.so.6&amp;quot; on Linux.)
+
+This code fits neatly into 16 bytes.
+
+Initially the GOT entry indexed by malloc_pltgot_index points to 
+malloc_slow_path, which calls the dynamic linker's lazy symbol lookup code, 
+which fills out the GOT entry with the real function address.
+
+In NaCl, the PLT entry takes up 64 bytes, firstly because we have to use 
+nacljmp to do the indirect jump, and secondly because the two parts of the 
+PLT entry are padded to 32 byte boundaries.  It becomes:
+
+// This is 32-byte aligned
+malloc@plt:
+	mov      malloc_pltgot_index(%ebx),%ecx
+	nacljmp  %ecx
+	hlt; hlt; ... // Padding
+// This is also 32-byte aligned
+malloc_slow_path:
+	push  $malloc_pltgot_index
+	jmp   zeroth_plt_entry
+	hlt; hlt; ... // Padding
+
+We could reduce this to 32 bytes (what a saving!) by swapping the two parts 
+around:
+
+// This is 32-byte aligned
+malloc_slow_path:
+	push  $malloc_pltgot_index
+	jmp   zeroth_plt_entry
+// But this is NOT 32-byte aligned
+malloc@plt:
+	mov      malloc_pltgot_index(%ebx),%ecx
+	nacljmp  %ecx
+	hlt; hlt; ... // Padding
+
+This should work because malloc_slow_path is the only part that is the 
+target of an indirect jump.  malloc@plt should only ever be the target of 
+direct jumps, which are allowed to be non-32-byte-aligned.
+
+Any code that wants to call the function with an indirect jump will get the 
+real function address from the GOT and won't use the PLT entry address 
+(malloc@plt in this example).  Any code doing an indirect jump to 
+malloc@plt is likely miscompiled or mislinked, but even if that does happen 
+it will still work: the address will be forcibly aligned and the code will 
+take the slow path.  We would need to ensure that the dynamic linker's 
+runtime resolver can be entered multiple times, but it probably already 
+needs to cope with this for multi-threading.
+</ns0:content><ns0:updated>2012-05-10T16:32:00.000Z</ns0:updated><ns0:published>2009-12-22T12:58:49.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Make PLT entries 32 bytes instead of 64 bytes on x86 </ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-NaCl</ns2:label><ns2:label>DynamicLinking</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Mstone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/230/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=230" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/230" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-05-10T16:32:00.000Z</ns2:closedDate><ns2:id>230</ns2:id></ns0:entry>

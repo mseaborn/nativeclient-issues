@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkAFQX47eCl7ImA9WhRbGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2572/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7786
+
+------------------------------------------------------------------------
+r7786 | mseaborn@chromium.org | Fri Feb 10 17:44:43 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/exception_test/nacl.scons?r1=7786&amp;r2=7785&amp;pathrev=7786
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/debug_exception_handler_32.c?r1=7786&amp;r2=7785&amp;pathrev=7786
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/exception_test/exception_crash_test.c?r1=7786&amp;r2=7785&amp;pathrev=7786
+
+Exception handling: Windows: Reinstate page permission check
+
+WriteProcessMemory() bypasses page permissions in some cases, so when
+I removed the (uncommented) manual permissions check in r7648, it
+created a hole which allowed overwriting the code area with data,
+which would allow escaping from the sandbox.
+
+This change reinstates the check, with comments and a test case.
+
+Note that the check is also applied when WriteProcessMemory() is used
+for setting the exception flag.  This is not strictly necessary but it
+reduces the risk that the debugger process overwrites something
+important if it gets the address of the exception flag wrong for some
+reason.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2572
+TEST=exception_tests
+
+Review URL: https://chromiumcodereview.appspot.com/9383025
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-02-11T01:45:10.000Z</ns0:updated><ns0:published>2012-02-11T01:45:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2572#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2572/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

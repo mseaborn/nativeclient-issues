@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUcAQH47eCl7ImA9Wx5UEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/398/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">@HEAD, on a linux desktop (qemu), i get:
+
+======================================================================
+running ['/usr/local/google/home/bsy/nacl/svn3/native_client/toolchain/linux_arm-trusted/qemu-arm', '-cpu', 'cortex-a8', '-L', '/usr/local/google/home/bsy/nacl/svn3/native_client/toolchain/linux_arm-trusted/arm-2009q3/arm-none-linux-gnueabi/libc', '/usr/local/google/home/bsy/nacl/svn3/native_client/scons-out/opt-linux-arm/obj/src/trusted/service_runtime/gio_shm_test', '-n', '512', '-m', '2']
+======================================================================
+/usr/local/google/home/bsy/nacl/svn3/native_client/toolchain/linux_arm-trusted/qemu-arm -cpu cortex-a8 -L /usr/local/google/home/bsy/nacl/svn3/native_client/toolchain/linux_arm-trusted/arm-2009q3/arm-none-linux-gnueabi/libc /usr/local/google/home/bsy/nacl/svn3/native_client/scons-out/opt-linux-arm/obj/src/trusted/service_runtime/gio_shm_test -n 512 -m 2
+Test /usr/local/google/home/bsy/nacl/svn3/native_client/scons-out/opt-linux-arm/test_results/gio_shm_test.out took 5.144848 secs
+WARNING: should have taken less than 2.000000 secs
+RESULT: /usr/local/google/home/bsy/nacl/svn3/native_client/scons-out/opt-linux-arm/test_results/gio_shm_test.out PASSED
+scons: done building targets.
+
+
+======================================================================
+running ['/usr/local/google/home/bsy/nacl/svn3/native_client/toolchain/linux_arm-trusted/qemu-arm', '-cpu', 'cortex-a8', '-L', '/usr/local/google/home/bsy/nacl/svn3/native_client/toolchain/linux_arm-trusted/arm-2009q3/arm-none-linux-gnueabi/libc', '/usr/local/google/home/bsy/nacl/svn3/native_client/scons-out/dbg-linux-arm/obj/src/trusted/service_runtime/gio_shm_test', '-n', '512', '-m', '2']
+======================================================================
+/usr/local/google/home/bsy/nacl/svn3/native_client/toolchain/linux_arm-trusted/qemu-arm -cpu cortex-a8 -L /usr/local/google/home/bsy/nacl/svn3/native_client/toolchain/linux_arm-trusted/arm-2009q3/arm-none-linux-gnueabi/libc /usr/local/google/home/bsy/nacl/svn3/native_client/scons-out/dbg-linux-arm/obj/src/trusted/service_runtime/gio_shm_test -n 512 -m 2
+Test /usr/local/google/home/bsy/nacl/svn3/native_client/scons-out/dbg-linux-arm/test_results/gio_shm_test.out took 1.740081 secs
+RESULT: /usr/local/google/home/bsy/nacl/svn3/native_client/scons-out/dbg-linux-arm/test_results/gio_shm_test.out PASSED
+scons: done building targets.
+
+
+is there a repro for this failing on qemu?  afaik this is part of our regular smoke_test runs, and the only time when it is not run is on *-m32-narm-* configurations (building x86 binaries for validating manipulating arm binaries).  there are some arm-specific test parameters in src/trusted/service_runtime/build.scons, which was added in r1974.</ns0:content><ns0:updated>2010-10-15T18:24:01.000Z</ns0:updated><ns0:published>2010-10-15T18:24:01.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=398#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/398/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

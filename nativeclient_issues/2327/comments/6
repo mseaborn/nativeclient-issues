@@ -1,0 +1,141 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYESX47eCl7ImA9WhdbGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2327/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">I will put some stuff here that reproduces my current status (I have not achieved anything, but some understanding).
+
+If I try to configure and make libstdc++ w/o gcc:
+
+svn checkout svn://gcc.gnu.org/svn/gcc/trunk/ gcc
+cd gcc/libstdc++-v3
+mkdir build
+cd build
+../configure --prefix=`pwd`
+
+Configure succeeds (at least, echo $? shows 0)
+
+After that, I'm trying to build:
+
+$ make
+
+make "AR_FLAGS=" "CC_FOR_BUILD=" "CC_FOR_TARGET=" "CFLAGS=-g -O2"
+"CXXFLAGS=" "CFLAGS_FOR_BUILD=" "CFLAGS_FOR_TARGET="
+"INSTALL=/usr/bin/install -c" "INSTALL_DATA=/usr/bin/install -c -m
+644" "INSTALL_PROGRAM=/usr/bin/install -c"
+"INSTALL_SCRIPT=/usr/bin/install -c" "LDFLAGS=" "LIBCFLAGS="
+"LIBCFLAGS_FOR_TARGET=" "MAKE=make" "MAKEINFO=/bin/bash
+/home/krasin/gcc/missing --run makeinfo " "PICFLAG="
+"PICFLAG_FOR_TARGET=" "SHELL=/bin/bash" "RUNTESTFLAGS="
+"exec_prefix=/home/krasin/gcc/libstdc++-v3/build"
+"infodir=/home/krasin/gcc/libstdc++-v3/build/share/info"
+"libdir=/home/krasin/gcc/libstdc++-v3/build/lib"
+"includedir=/home/krasin/gcc/libstdc++-v3/build/include"
+"prefix=/home/krasin/gcc/libstdc++-v3/build" "tooldir="
+"gxx_include_dir=/home/krasin/gcc/libstdc++-v3/build/include/c++/4.7.0"
+"AR=ar" "AS=as" "LD=/usr/bin/ld" "RANLIB=ranlib" "NM=/usr/bin/nm -B"
+"NM_FOR_BUILD=" "NM_FOR_TARGET=" "DESTDIR=" "WERROR=" all-recursive
+make[1]: Entering directory `/home/krasin/gcc/libstdc++-v3/build'
+Making all in include
+make[2]: Entering directory `/home/krasin/gcc/libstdc++-v3/build/include'
+echo timestamp &gt; stamp-host
+mkdir -p .//bits/stdc++.h.gch
+g++ -x c++-header -nostdinc++
+-I/home/krasin/gcc/libstdc++-v3/build/include/
+-I/home/krasin/gcc/libstdc++-v3/build/include
+-I/home/krasin/gcc/libstdc++-v3/libsupc++ -O2 -g -std=gnu++0x
+/home/krasin/gcc/libstdc++-v3/include/precompiled/stdc++.h \
+       -o bits/stdc++.h.gch/O2ggnu++0x.gch
+In file included from /home/krasin/gcc/libstdc++-v3/build/include/cctype:43:0,
+                from
+/home/krasin/gcc/libstdc++-v3/include/precompiled/stdc++.h:36:
+/home/krasin/gcc/libstdc++-v3/build/include/bits/c++config.h:175:20:
+error: &#8216;nullptr&#8217; was not declared in this scope
+/home/krasin/gcc/libstdc++-v3/build/include/bits/c++config.h:175:20:
+error: &#8216;nullptr&#8217; was not declared in this scope
+/home/krasin/gcc/libstdc++-v3/build/include/bits/c++config.h:175:38:
+error: invalid type in declaration before &#8216;;&#8217; token
+In file included from
+/home/krasin/gcc/libstdc++-v3/build/include/bits/stl_pair.h:61:0,
+                from
+/home/krasin/gcc/libstdc++-v3/build/include/bits/stl_algobase.h:65,
+                from
+/home/krasin/gcc/libstdc++-v3/build/include/bits/char_traits.h:41,
+                from /home/krasin/gcc/libstdc++-v3/build/include/ios:41,
+                from /home/krasin/gcc/libstdc++-v3/build/include/istream:40,
+                from /home/krasin/gcc/libstdc++-v3/build/include/sstream:39,
+                from /home/krasin/gcc/libstdc++-v3/build/include/complex:47,
+                from /home/krasin/gcc/libstdc++-v3/build/include/ccomplex:42,
+                from
+/home/krasin/gcc/libstdc++-v3/include/precompiled/stdc++.h:53:
+/home/krasin/gcc/libstdc++-v3/build/include/bits/move.h:43:27: error:
+expected initializer before &#8216;noexcept&#8217;
+In file included from
+/home/krasin/gcc/libstdc++-v3/build/include/bits/move.h:53:0,
+                from
+/home/krasin/gcc/libstdc++-v3/build/include/bits/stl_pair.h:61,
+                from
+/home/krasin/gcc/libstdc++-v3/build/include/bits/stl_algobase.h:65,
+                from
+/home/krasin/gcc/libstdc++-v3/build/include/bits/char_traits.h:41,
+                from /home/krasin/gcc/libstdc++-v3/build/include/ios:41,
+                from /home/krasin/gcc/libstdc++-v3/build/include/istream:40,
+                from /home/krasin/gcc/libstdc++-v3/build/include/sstream:39,
+                from /home/krasin/gcc/libstdc++-v3/build/include/complex:47,
+                from /home/krasin/gcc/libstdc++-v3/build/include/ccomplex:42,
+                from
+/home/krasin/gcc/libstdc++-v3/include/precompiled/stdc++.h:53:
+/home/krasin/gcc/libstdc++-v3/build/include/type_traits:513:59: error:
+a function call cannot appear in a constant-expression
+/home/krasin/gcc/libstdc++-v3/build/include/type_traits:513:60: error:
+template argument 2 is invalid
+/home/krasin/gcc/libstdc++-v3/build/include/type_traits:568:56: error:
+expected initializer before &#8216;noexcept&#8217;
+/home/krasin/gcc/libstdc++-v3/build/include/type_traits:597:25: error:
+&#8216;declval&#8217; was not declared in this scope
+/home/krasin/gcc/libstdc++-v3/build/include/type_traits:597:25: error:
+&#8216;declval&#8217; was not declared in this scope
+/home/krasin/gcc/libstdc++-v3/build/include/type_traits:597:41: error:
+expected primary-expression before &#8216;&amp;&#8217; token
+....
+
+================================================================================================================================================
+
+
+2. If I try to configure the whole gcc, but compile just libstdc++:
+
+$ svn checkout svn://gcc.gnu.org/svn/gcc/trunk/ gcc
+$ cd gcc
+$ mkdir build
+$ cd build
+$ ../configure --prefix=`pwd`
+
+$ make all-target-libstdc++-v3
+make[1]: Entering directory `/home/krasin/gcc/build'
+make[1]: Leaving directory `/home/krasin/gcc/build'
+Checking multilib configuration for libgomp...
+mkdir -p -- x86_64-unknown-linux-gnu/libgomp
+Configuring in x86_64-unknown-linux-gnu/libgomp
+configure: creating cache ./config.cache
+checking for --enable-version-specific-runtime-libs... no
+checking for --enable-generated-files-in-srcdir... no
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking target system type... x86_64-unknown-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+/home/krasin/gcc/libgomp/configure: line 3304:
+/home/krasin/gcc/build/./gcc/xgcc: No such file or directory
+checking for x86_64-unknown-linux-gnu-gcc...
+/home/krasin/gcc/build/./gcc/xgcc -B/home/krasin/gcc/build/./gcc/
+-B/home/krasin/gcc/build/x86_64-unknown-linux-gnu/bin/
+-B/home/krasin/gcc/build/x86_64-unknown-linux-gnu/lib/ -isystem
+/home/krasin/gcc/build/x86_64-unknown-linux-gnu/include -isystem
+/home/krasin/gcc/build/x86_64-unknown-linux-gnu/sys-include
+checking for C compiler default output file name...
+configure: error: in `/home/krasin/gcc/build/x86_64-unknown-linux-gnu/libgomp':
+configure: error: C compiler cannot create executables
+See `config.log' for more details.
+make: *** [configure-target-libgomp] Error 1
+
+It means that compiling libstdc++ w/o gcc will require some tweaks to Makefile/configure.</ns0:content><ns0:updated>2011-10-17T23:11:48.000Z</ns0:updated><ns0:published>2011-10-17T23:11:48.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2327#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2327/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

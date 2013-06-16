@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUBQ347eCl7ImA9WhRaFU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1832</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I noticed that, on Mac, if I interrupt sel_ldr with Ctrl-C (SIGINT) while it is blocked in a system call, sel_ldr gets into a state where it is spinning (consuming CPU) and it can't be killed with Ctrl-C.  This happens only when signal handling is enabled (with the &amp;quot;-S&amp;quot; option, currently only used in tests).
+
+It turns out that there are two problems here:
+
+ 1) The SIGINT signal handler crashes because ucontext_t doesn't contain the %cs value that the signal handler expects.  This causes NaClSignalContextIsUntrusted() to return true, even though the signal occurred while running trusted code.  The signal handler attempts to restore %gs from nacl_thread-&amp;gt;gs, but nacl_thread is NULL, so it crashes.
+
+ 2) For some reason, the crash inside the signal handler does not kill the process cleanly, and the process spins.  This needs further investigation.
+
+The cause of (1) is that, if a Mac system call is interrupted, the OS does not report the usual userland value of %cs to the signal handler.  A different value of %cs is reported instead -- perhaps the value that kernel code runs under.
+
+The attached test program demonstrates this.
+
+On Linux (32-bit process on a 64-bit kernel), it prints:
+    original cs=0x23
+    interrupt own thread while running:
+    from signal handler: cs=0x23
+    interrupt other thread while running:
+    from signal handler: cs=0x23
+    interrupt own thread while in syscall:
+    from signal handler: cs=0x23
+    interrupt other thread while in syscall:
+    from signal handler: cs=0x23
+    sleep() returned 999, errno=4 (Interrupted system call)
+
+On Mac OS X 10.6, it prints:
+    original cs=0x27
+    interrupt own thread while running:
+    from signal handler: cs=0x27
+    interrupt other thread while running:
+    from signal handler: cs=0x27
+    interrupt own thread while in syscall:
+    from signal handler: cs=0x2f
+    interrupt other thread while in syscall:
+    from signal handler: cs=0x2f
+    sleep() returned 999, errno=4 (Interrupted system call)
+</ns0:content><ns0:updated>2012-02-17T23:10:52.000Z</ns0:updated><ns0:published>2011-05-20T11:41:08.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>Mac signal handling: Interrupting a host syscall with Ctrl-C causes sel_ldr to spin</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>FaultHandler</ns2:label><ns2:label>Mstone-19</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1832/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1832" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1832" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>2538</ns2:id></ns2:blocking><ns2:id>1832</ns2:id></ns0:entry>

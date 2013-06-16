@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYHRn47eCl7ImA9WhZSFU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1589/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4671
+
+------------------------------------------------------------------------
+r4671 | bradchen@google.com | Wed Mar 30 15:06:55 PDT 2011
+
+Changed paths:
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/gc_stub.c?r1=4671&amp;r2=4670&amp;pathrev=4671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/gc_instrumentation/gc_instrumentation.c?r1=4671&amp;r2=4670&amp;pathrev=4671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/nacl.scons?r1=4671&amp;r2=4670&amp;pathrev=4671
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/gc_hooks.c?r1=4671&amp;r2=4670&amp;pathrev=4671 (from /trunk/src/native_client/src/untrusted/nacl/gc_stub.c revision 4667)
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/gc_hooks.h?r1=4671&amp;r2=4670&amp;pathrev=4671
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/syscall_bindings_trampoline.h?r1=4671&amp;r2=4670&amp;pathrev=4671
+
+In anticipation of the integrated runtime, replacing the prior mechanism
+that used weak symbols to register nacl_pre_syscall_hook and
+nacl_post_syscall_hook with a new mechanism using an explicit
+registration function nacl_register_runtime_hooks. Also changing names
+to use 'gc_hook' in names to make the narrow and specific scope of this
+interface explicit.
+
+TEST=tests/gc_instrumentation/gc_instrumentation.c
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1589
+Review URL: http://codereview.chromium.org/6728003
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-03-30T22:12:17.000Z</ns0:updated><ns0:published>2011-03-30T22:12:17.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1589#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1589/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

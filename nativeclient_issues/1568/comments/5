@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkIDSH47eCl7ImA9WhZSFkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1568/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4709
+
+------------------------------------------------------------------------
+r4709 | noelallen@google.com | Thu Mar 31 16:34:00 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/buildbot/buildbot_arm_hw.sh?r1=4709&amp;r2=4708&amp;pathrev=4709
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/buildbot/buildbot_linux.sh?r1=4709&amp;r2=4708&amp;pathrev=4709
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/buildbot/buildbot_mac.sh?r1=4709&amp;r2=4708&amp;pathrev=4709
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/buildbot/buildbot_lucid64-glibc-makefile.sh?r1=4709&amp;r2=4708&amp;pathrev=4709
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/buildbot/buildbot_windows-glibc-makefile.sh?r1=4709&amp;r2=4708&amp;pathrev=4709
+
+Remove invocation of Selenium from the bots.
+
+This change re-applies a part of the reverted change to remove seleniumd dependencies in:
+http://codereview.chromium.org/6765003/
+
+Unlike the original change, this is being staged in two parts to reduce the change that the
+change could affect one of the other bots.  Removing selenium dependencies in the *.scons
+files and sources will be done as a seperate CL to prevent compile issues.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1568
+TEST=none
+Review URL: http://codereview.chromium.org/6690066
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-03-31T23:36:19.000Z</ns0:updated><ns0:published>2011-03-31T23:36:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1568#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1568/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

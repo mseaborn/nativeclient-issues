@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMEQX47eCl7ImA9WhdUEk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2319/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mcgra...@google.com</ns0:name><ns0:uri>/u/100177598732114324016/</ns0:uri></ns0:author><ns0:content type="html">This is an upstream Clang/LLVM bug.  Report it there.  The right way to
+report a compiler bug is to produce the preprocessed (.i) file and submit
+that in the bug report.
+
+I see the same bug for x86-32 code generation too.  Note that we don't
+normally do any optimized builds with Clang on Linux.  I don't think
+Chromium does either.  The only Clang builds that are actually used in
+production, and thus use optimized builds, are for Mac.  The bug here is in
+the handling of the fread inline the glibc header files define under
+_FORTIFY_SOURCE, so it's not surprising that there is no such problem on
+Mac.
+
+I can see a similar bug (not producing an infinite loop, but removing a
+necessary call) with this trivial test case:
+
+	extern void foo_alias(void) asm("foo");
+
+	extern __inline
+	__attribute__ ((__always_inline__))
+	__attribute__ ((__gnu_inline__))
+	void foo(void)
+	{
+	  foo_alias();
+	}
+
+	int
+	main(void)
+	{
+	  foo();
+	  return 0;
+	}
+
+when compiled under -O2.  This should generate a call to the external foo,
+but it produces no call.  The case with the _FORTIFY_SOURCE definition of
+fread is similar to this.  (I would have expected this to generate an
+infinite loop too, given what kind of wrong-thinking LLVM is obviously
+doing here.  But instead it just generates nothing.)
+</ns0:content><ns0:updated>2011-09-28T17:20:00.000Z</ns0:updated><ns0:published>2011-09-28T17:20:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mcgra...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2319#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2319/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

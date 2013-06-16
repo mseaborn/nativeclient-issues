@@ -1,0 +1,63 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkEMQH47eCl7ImA9WxVaFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/30</ns0:id><ns0:author>
+			<ns0:name>patrick.horn</ns0:name><ns0:uri>/u/patrick.horn/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? nacl-gcc (GCC) 4.2.2
+What version of the runtime are you using? 0.1 (9308700)
+On what operating system? OSX 10.5.5
+What browser are you using? Firefox 3.0.1
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+I am attempting to create a second thread that can process arguments passed
+by the user, and then respond by calling a callback function when the
+processing is finished.
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Implement NPN_New, and a struct NPClass
+2. In NPN_New, create a new pthread and initialize the mutex and condition
+variable.
+3. In the NPClass InvokeHandler, lock the mutex, set an input string,
+cond_singal() the other thread, and unlock.
+4. In the other thread, lock, cond_wait(), grab the input variable and
+unlock.  Then do some computation and return by calling NPN_InvokeDefault()
+with a callback function and the result.
+
+To execute:
+5. In the browser, call document.getElementById(&amp;quot;pluginobj&amp;quot;).run(&amp;quot;ABC&amp;quot;,
+function(s){document.body.appendChild(document.createTextNode(s));})
+6. Now, call document.getElementById(&amp;quot;pluginobj&amp;quot;).run(&amp;quot;DEF&amp;quot;,
+function(s){document.body.appendChild(document.createTextNode(s));})
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+NPN_Invoke should be called immediately. However, it waits until the next
+time I call from javascript to actually run the callback function
+NPN_InvokeDefault().
+
+On the second call to &amp;quot;run()&amp;quot;, the result is the entire plugin (and
+browser) hanging, to be resolved only by a &amp;quot;killall sel_ldr&amp;quot; at which point
+the &amp;quot;ABC&amp;quot; from the first call to run() is displayed.
+
+The correct behavior is simulated by adding a pthread_cond_wait() in the
+browser thread after waking up the proessing thread, and then have the
+processing thread cond_singal() the browser thread when done (i.e. this
+will simulate a single-threaded program).
+
+
+[Note: I have tried many ways of doing this:
+1. Call NPN_GetValue() to get the window object, and call its &amp;quot;alert&amp;quot; method.
+2. Pass in a callback NPObject and send that to the processing thread to
+callback.
+3. Call NPN_Status() which has a really simple interface (NPN, char*).
+
+All three of these succeed if run in a single thread, and all three have
+the same problem (give the first result back the second time it is called
+and then hang)]
+
+
+I will attach a testcase.  You can test both the synchronous and
+asynchronous case by definining RUN_SYNCHRONOUSLY.
+
+I am not sure if this is with the plugin itself or with the way I use
+NPAPI.  I know it is possible to call javascript from a second thread in a
+Java applet (as a callback) without any strange side-effects.</ns0:content><ns0:updated>2009-04-13T23:18:01.000Z</ns0:updated><ns0:published>2008-12-14T12:04:23.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/103445551378707684693/</ns2:uri><ns2:username>shiki%go...@gtempaccount.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/110254776827258378715/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>hang when calling NPN_* functions from different thread</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/30/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=30" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/30" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2009-04-13T23:18:01.000Z</ns2:closedDate><ns2:id>30</ns2:id></ns0:entry>

@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUAMQ347eCl7ImA9WhZSFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1491/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4662
+
+------------------------------------------------------------------------
+r4662 | kschimpf@google.com | Wed Mar 30 10:52:22 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_validate_image.c?r1=4662&amp;r2=4661&amp;pathrev=4662
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nacl_cpuid.h?r1=4662&amp;r2=4661&amp;pathrev=4662
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_iter.c?r1=4662&amp;r2=4661&amp;pathrev=4662
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncval.c?r1=4662&amp;r2=4661&amp;pathrev=4662
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncvalidate.c?r1=4662&amp;r2=4661&amp;pathrev=4662
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/arch/x86/vcpuid.c?r1=4662&amp;r2=4661&amp;pathrev=4662
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/arch/x86/nacl_cpuwhitelist_test.c?r1=4662&amp;r2=4661&amp;pathrev=4662
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nacl_cpuid_test.c?r1=4662&amp;r2=4661&amp;pathrev=4662
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/arch/x86/nacl_cpuwhitelist.c?r1=4662&amp;r2=4661&amp;pathrev=4662
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nacl_cpuid.c?r1=4662&amp;r2=4661&amp;pathrev=4662
+
+Modify nacl_cpuid to use local data for caching results, so that it is
+reentrant. This is a (partial) replacement for CL 6729006.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1491
+TEST=src/trusted/platform_qualify/arch/x86/nacl_cpuwhitelist_test.c
+TEST=src/trusted/validator_x86/nacl_cpuid_test.c
+Review URL: http://codereview.chromium.org/6756010
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-03-30T17:56:22.000Z</ns0:updated><ns0:published>2011-03-30T17:56:22.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1491#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1491/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

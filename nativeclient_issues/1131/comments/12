@@ -1,0 +1,76 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQEQn47eCl7ImA9WhZaFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1131/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5900
+
+------------------------------------------------------------------------
+r5900 | mcgrathr@chromium.org | Fri Jul 01 17:38:13 PDT 2011
+
+Changed paths:
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt/elf_restart_arm.S?r1=5900&amp;r2=5899&amp;pathrev=5900
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt/irt_entry.c?r1=5900&amp;r2=5899&amp;pathrev=5900
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt/nacl.scons?r1=5900&amp;r2=5899&amp;pathrev=5900
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/nacl_irt.c?r1=5900&amp;r2=5899&amp;pathrev=5900
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/stubs/crt1_arm.S?r1=5900&amp;r2=5899&amp;pathrev=5900
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/nacl_irt.h?r1=5900&amp;r2=5899&amp;pathrev=5900
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/stubs/crt1_x86_64.S?r1=5900&amp;r2=5899&amp;pathrev=5900
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/stubs/nacl.scons?r1=5900&amp;r2=5899&amp;pathrev=5900
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/stubs/crt1_x86_32.S?r1=5900&amp;r2=5899&amp;pathrev=5900
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_config.h?r1=5900&amp;r2=5899&amp;pathrev=5900
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/stubs/crt1.x?r1=5900&amp;r2=5899&amp;pathrev=5900
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt/elf_restart_x86_64.S?r1=5900&amp;r2=5899&amp;pathrev=5900
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_switch_to_app_arm.c?r1=5900&amp;r2=5899&amp;pathrev=5900
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt/elf_restart_x86_32.S?r1=5900&amp;r2=5899&amp;pathrev=5900
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_switch_64.S?r1=5900&amp;r2=5899&amp;pathrev=5900
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=5900&amp;r2=5899&amp;pathrev=5900
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/start.c?r1=5900&amp;r2=5899&amp;pathrev=5900
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/pthread_initialize_minimal.c?r1=5900&amp;r2=5899&amp;pathrev=5900
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/naclsdk.py?r1=5900&amp;r2=5899&amp;pathrev=5900
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/DEPS?r1=5900&amp;r2=5899&amp;pathrev=5900
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=5900&amp;r2=5899&amp;pathrev=5900
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/toolchain/nacl.scons?r1=5900&amp;r2=5899&amp;pathrev=5900
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/nacl.scons?r1=5900&amp;r2=5899&amp;pathrev=5900
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nacl/nacl_startup.h?r1=5900&amp;r2=5899&amp;pathrev=5900
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/startup_message/test_startup.py?r1=5900&amp;r2=5899&amp;pathrev=5900
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/stubs/crt1_x86.S?r1=5900&amp;r2=5899&amp;pathrev=5900
+
+Change startup ABI for untrusted code to be C-compatible
+
+This changes the trusted runtime to start up untrusted code with an
+ABI that is compatible with the normal C ABI for the machine.  Rather
+than having a special machine-dependent ABI for the entry point, the
+entry point is now expected to be a normal C function of one argument.
+That argument is a pointer onto the stack, where lies the information
+previously passed there, but now in a uniform machine-independent format.
+
+This entails some changes in the trusted code to do the appropriate
+machine-dependent setup of the stack and registers.
+
+In the untrusted runtime libraries, it removes a great deal of
+assembly code now that the entry point function _start can be written
+entirely in C.  Since it's pure C, the whole startup path is much more
+PNaCl-friendly.
+
+This makes it possible to clean up the IRT startup a bit more too,
+since it's easy to just use its own variant of that simple C function.
+
+Before this can land, it will require corresponding changes to the
+startup code in glibc and its dynamic linker, which will be reviewed
+separately.  There will need to be a multi-stage deployment in which
+the toolchains get updated and then this change lands with a toolchain
+DEPS update included in the same commit.
+
+Note that this makes all old nexe binaries no longer work (if they
+need their arguments, environment, or auxv, which is used to work with
+the IRT).  This is a hard break and we don't intend to provide any
+compatibility for old nexes or old IRT images.  Any application
+rebuilt with the new toolchains (newlib or glibc, native or pnacl)
+should work without source changes.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1131
+TEST=pending
+
+R=bsy@google.com,sehr@google.com
+
+Review URL: http://codereview.chromium.org/7276050
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-07-02T00:41:43.000Z</ns0:updated><ns0:published>2011-07-02T00:41:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1131#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1131/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUMNQn47eCl7ImA9Wx5UFUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1043/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdroid1@gmail.com</ns0:name><ns0:uri>/u/bugdroid1@gmail.com/</ns0:uri></ns0:author><ns0:content type="html">Commit: ec2cd1eb47911a81c90c18cd2f525fe122a46c6a
+ Email: mseaborn@chromium.org
+
+pthread_create: Ensure that the new thread's stack is properly aligned
+
+Adding the attribute "force_align_arg_pointer" forces gcc to align the
+stack, but without us having to write arch-specific code to do it
+ourselves.
+
+With this in place, we do not rely on sel_ldr forcing stack alignment
+in the thread_create syscall.
+
+In Linux glibc, this alignment was done in clone.S.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1043
+TEST=run_stack_alignment_test with the alignment in
+  sel_ldr's NaClCreateAdditionalThread() disabled
+
+Review URL: http://codereview.chromium.org/3935002
+
+M	nptl/pthread_create.c</ns0:content><ns0:updated>2010-10-20T15:11:33.000Z</ns0:updated><ns0:published>2010-10-20T15:11:33.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdroid1@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1043#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1043/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUMRH47eCl7ImA9WhdWEk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2210/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 69b7eccbc0f94cc908192482796f289d64a7f561
+ Email: halyavin@google.com@4ff67af0-8c30-449e-8e8b-ad334ec8d88c
+
+Enable browser tests with glibc, part 2.
+
+Full CL is here: http://codereview.chromium.org/7745047/
+This is a copy of http://codereview.chromium.org/7794022/ which has wrong base URL.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2210
+
+Review URL: http://codereview.chromium.org/7827043
+
+git-svn-id: http://src.chromium.org/svn/trunk/src/ppapi@99389 4ff67af0-8c30-449e-8e8b-ad334ec8d88c
+
+M	native_client/tests/ppapi_browser/bad/nacl.scons
+M	native_client/tests/ppapi_browser/crash/nacl.scons
+M	native_client/tests/ppapi_browser/extension_mime_handler/nacl.scons
+M	native_client/tests/ppapi_browser/manifest/nacl.scons
+M	native_client/tests/ppapi_browser/ppb_core/nacl.scons
+M	native_client/tests/ppapi_browser/ppb_dev/nacl.scons
+M	native_client/tests/ppapi_browser/ppb_file_io/nacl.scons
+M	native_client/tests/ppapi_browser/ppb_file_system/nacl.scons
+M	native_client/tests/ppapi_browser/ppb_graphics2d/nacl.scons
+M	native_client/tests/ppapi_browser/ppb_graphics3d/nacl.scons
+M	native_client/tests/ppapi_browser/ppb_image_data/nacl.scons
+M	native_client/tests/ppapi_browser/ppb_instance/nacl.scons
+M	native_client/tests/ppapi_browser/ppb_memory/nacl.scons
+M	native_client/tests/ppapi_browser/ppb_pdf/nacl.scons
+M	native_client/tests/ppapi_browser/ppb_scrollbar/nacl.scons
+M	native_client/tests/ppapi_browser/ppb_url_loader/nacl.scons
+M	native_client/tests/ppapi_browser/ppb_url_request_info/nacl.scons
+M	native_client/tests/ppapi_browser/ppb_var/nacl.scons
+M	native_client/tests/ppapi_browser/ppb_widget/nacl.scons
+M	native_client/tests/ppapi_browser/ppp_input_event/nacl.scons
+M	native_client/tests/ppapi_browser/ppp_instance/nacl.scons
+M	native_client/tests/ppapi_browser/progress_events/nacl.scons
+M	native_client/tests/ppapi_example_audio/nacl.scons
+M	native_client/tests/ppapi_example_font/nacl.scons
+M	native_client/tests/ppapi_example_gles2/nacl.scons
+M	native_client/tests/ppapi_example_post_message/nacl.scons
+M	native_client/tests/ppapi_geturl/nacl.scons
+M	native_client/tests/ppapi_gles_book/nacl.scons
+M	native_client/tests/ppapi_messaging/nacl.scons
+M	native_client/tests/ppapi_test_example/nacl.scons</ns0:content><ns0:updated>2011-09-05T15:41:25.000Z</ns0:updated><ns0:published>2011-09-05T15:41:25.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2210#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2210/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

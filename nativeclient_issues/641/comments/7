@@ -1,0 +1,76 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0YMSX47eCl7ImA9WxFUFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/641/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>msn...@google.com</ns0:name><ns0:uri>/u/105190905030319373792/</ns0:uri></ns0:author><ns0:content type="html">Here is the stack trace I got on the Mac at malloc_error_break when running NaCl code sync'd and built at r2576.  I am still investigating but I wanted to get this information into the bug report.
+
+Breakpoint 1, 0x96ba94a9 in malloc_error_break ()
+(gdb) bt
+#0  0x96ba94a9 in malloc_error_break ()
+#1  0x96ba4497 in szone_error ()
+#2  0x96ace923 in szone_free ()
+#3  0x96ace36d in free ()
+#4  0x095f087f in NPAPI::PluginInstance::~PluginInstance (this=0x268c91b0) at /Users/msneck/chromium/src/webkit/support/../glue/plugins/plugin_instance.cc:70
+#5  0x0960b59d in base::RefCountedThreadSafe&lt;NPAPI::PluginInstance, base::DefaultRefCountedThreadSafeTraits&lt;NPAPI::PluginInstance&gt; &gt;::DeleteInternal (x=0x268c91b0) at ref_counted.h:146
+#6  0x0960b5bb in base::DefaultRefCountedThreadSafeTraits&lt;NPAPI::PluginInstance&gt;::Destruct (x=0x268c91b0) at ref_counted.h:112
+#7  0x0960b5de in base::RefCountedThreadSafe&lt;NPAPI::PluginInstance, base::DefaultRefCountedThreadSafeTraits&lt;NPAPI::PluginInstance&gt; &gt;::Release (this=0x268c91b0) at ref_counted.h:140
+#8  0x095edc3f in scoped_refptr&lt;NPAPI::PluginInstance&gt;::operator= (this=0x268c98d4, p=0x0) at ref_counted.h:261
+#9  0x08a975f2 in WebPluginDelegatePepper::DestroyInstance (this=0x268c98b0) at /Users/msneck/chromium/src/chrome/renderer/webplugin_delegate_pepper.cc:186
+#10 0x08a9771a in WebPluginDelegatePepper::~WebPluginDelegatePepper (this=0x268c98b0) at /Users/msneck/chromium/src/chrome/renderer/webplugin_delegate_pepper.cc:1328
+#11 0x08a93c74 in WebPluginDelegatePepper::PluginDestroyed (this=0x268c98b0) at /Users/msneck/chromium/src/chrome/renderer/webplugin_delegate_pepper.cc:1348
+#12 0x0960bee6 in webkit_glue::WebPluginImpl::TearDownPluginInstance (this=0x268c7a90, loader_to_ignore=0x0) at /Users/msneck/chromium/src/webkit/support/../glue/plugins/webplugin_impl.cc:1208
+#13 0x0960bff3 in webkit_glue::WebPluginImpl::SetContainer (this=0x268c7a90, container=0x0) at /Users/msneck/chromium/src/webkit/support/../glue/plugins/webplugin_impl.cc:925
+#14 0x0960fb3a in webkit_glue::WebPluginImpl::destroy (this=0x268c7a90) at /Users/msneck/chromium/src/webkit/support/../glue/plugins/webplugin_impl.cc:234
+#15 0x099fc860 in WebKit::WebPluginContainerImpl::~WebPluginContainerImpl (this=0x268c8470) at /Users/msneck/chromium/src/third_party/WebKit/WebKit/chromium/src/WebPluginContainerImpl.cpp:377
+#16 0x09bebdf1 in WTF::RefCounted&lt;WebCore::Widget&gt;::deref (this=0x268c8474) at RefCounted.h:109
+#17 0x09eb06be in WTF::derefIfNotNull&lt;WebCore::Widget&gt; (ptr=0x268c8470) at PassRefPtr.h:66
+#18 0x09eb06d3 in WTF::RefPtr&lt;WebCore::Widget&gt;::~RefPtr (this=0xb34348) at RefPtr.h:56
+#19 0x0a0f9d25 in std::pair&lt;WTF::RefPtr&lt;WebCore::Widget&gt;, WebCore::FrameView*&gt;::~pair (this=0xb34348) at bits/stl_pair.h:69
+#20 0x0a0fbba4 in WTF::HashTable&lt;WTF::RefPtr&lt;WebCore::Widget&gt;, std::pair&lt;WTF::RefPtr&lt;WebCore::Widget&gt;, WebCore::FrameView*&gt;, WTF::PairFirstExtractor&lt;std::pair&lt;WTF::RefPtr&lt;WebCore::Widget&gt;, WebCore::FrameView*&gt; &gt;, WTF::PtrHash&lt;WTF::RefPtr&lt;WebCore::Widget&gt; &gt;, WTF::PairHashTraits&lt;WTF::HashTraits&lt;WTF::RefPtr&lt;WebCore::Widget&gt; &gt;, WTF::HashTraits&lt;WebCore::FrameView*&gt; &gt;, WTF::HashTraits&lt;WTF::RefPtr&lt;WebCore::Widget&gt; &gt; &gt;::deallocateTable (table=0xb34200, size=64) at HashTable.h:881
+#21 0x0a0fce32 in WTF::HashTable&lt;WTF::RefPtr&lt;WebCore::Widget&gt;, std::pair&lt;WTF::RefPtr&lt;WebCore::Widget&gt;, WebCore::FrameView*&gt;, WTF::PairFirstExtractor&lt;std::pair&lt;WTF::RefPtr&lt;WebCore::Widget&gt;, WebCore::FrameView*&gt; &gt;, WTF::PtrHash&lt;WTF::RefPtr&lt;WebCore::Widget&gt; &gt;, WTF::PairHashTraits&lt;WTF::HashTraits&lt;WTF::RefPtr&lt;WebCore::Widget&gt; &gt;, WTF::HashTraits&lt;WebCore::FrameView*&gt; &gt;, WTF::HashTraits&lt;WTF::RefPtr&lt;WebCore::Widget&gt; &gt; &gt;::~HashTable (this=0xb563a584) at HashTable.h:298
+#22 0x0a0fce5d in WTF::HashMap&lt;WTF::RefPtr&lt;WebCore::Widget&gt;, WebCore::FrameView*, WTF::PtrHash&lt;WTF::RefPtr&lt;WebCore::Widget&gt; &gt;, WTF::HashTraits&lt;WTF::RefPtr&lt;WebCore::Widget&gt; &gt;, WTF::HashTraits&lt;WebCore::FrameView*&gt; &gt;::~HashMap (this=0xb563a584) at HashMap.h:32
+#23 0x0a0f892f in WebCore::RenderWidget::resumeWidgetHierarchyUpdates () at /Users/msneck/chromium/src/third_party/WebKit/WebCore/WebCore.gyp/../rendering/RenderWidget.cpp:76
+#24 0x09bcc5e8 in WebCore::Element::detach (this=0x22606c40) at /Users/msneck/chromium/src/third_party/WebKit/WebCore/WebCore.gyp/../dom/Element.cpp:844
+#25 0x09b8de21 in WebCore::ContainerNode::detach (this=0xae7800) at /Users/msneck/chromium/src/third_party/WebKit/WebCore/WebCore.gyp/../dom/ContainerNode.cpp:627
+#26 0x09b9ec1c in WebCore::Document::detach (this=0xae7800) at /Users/msneck/chromium/src/third_party/WebKit/WebCore/WebCore.gyp/../dom/Document.cpp:1612
+#27 0x09e9fec6 in WebCore::Frame::setView (this=0x9e9600, view=@0xb563a6fc) at /Users/msneck/chromium/src/third_party/WebKit/WebCore/WebCore.gyp/../page/Frame.cpp:247
+#28 0x099db96a in WebKit::WebFrameImpl::createFrameView (this=0x26899540) at /Users/msneck/chromium/src/third_party/WebKit/WebKit/chromium/src/WebFrameImpl.cpp:1825
+#29 0x099b2aae in WebKit::FrameLoaderClientImpl::makeDocumentView (this=0x2689954c) at /Users/msneck/chromium/src/third_party/WebKit/WebKit/chromium/src/FrameLoaderClientImpl.cpp:212
+#30 0x099b2ac1 in WebKit::FrameLoaderClientImpl::transitionToCommittedForNewPage (this=0x2689954c) at /Users/msneck/chromium/src/third_party/WebKit/WebKit/chromium/src/FrameLoaderClientImpl.cpp:1317
+#31 0x09e22f0e in WebCore::FrameLoader::transitionToCommitted (this=0x9e962c, cachedPage=@0xb563a970) at /Users/msneck/chromium/src/third_party/WebKit/WebCore/WebCore.gyp/../loader/FrameLoader.cpp:2023
+#32 0x09e2349a in WebCore::FrameLoader::commitProvisionalLoad (this=0x9e962c) at /Users/msneck/chromium/src/third_party/WebKit/WebCore/WebCore.gyp/../loader/FrameLoader.cpp:1903
+#33 0x09e074b2 in WebCore::DocumentLoader::commitIfReady (this=0xb10200) at /Users/msneck/chromium/src/third_party/WebKit/WebCore/WebCore.gyp/../loader/DocumentLoader.cpp:258
+#34 0x09e074d7 in WebCore::DocumentLoader::commitLoad (this=0xb10200, data=0x377000 "&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n          \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"&gt;\n&lt;html&gt;\n  &lt;!-- Copyright 2009 Google Inc.  All rights reserved. --&gt;\n "..., length=3406) at /Users/msneck/chromium/src/third_party/WebKit/WebCore/WebCore.gyp/../loader/DocumentLoader.cpp:278
+#35 0x09e07564 in WebCore::DocumentLoader::receivedData (this=0xb10200, data=0x377000 "&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n          \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"&gt;\n&lt;html&gt;\n  &lt;!-- Copyright 2009 Google Inc.  All rights reserved. --&gt;\n "..., length=3406) at /Users/msneck/chromium/src/third_party/WebKit/WebCore/WebCore.gyp/../loader/DocumentLoader.cpp:292
+#36 0x09e1d00d in WebCore::FrameLoader::receivedData (this=0x9e962c, data=0x377000 "&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n          \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"&gt;\n&lt;html&gt;\n  &lt;!-- Copyright 2009 Google Inc.  All rights reserved. --&gt;\n "..., length=3406) at /Users/msneck/chromium/src/third_party/WebKit/WebCore/WebCore.gyp/../loader/FrameLoader.cpp:1556
+#37 0x09e34870 in WebCore::MainResourceLoader::addData (this=0x998c00, data=0x377000 "&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n          \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"&gt;\n&lt;html&gt;\n  &lt;!-- Copyright 2009 Google Inc.  All rights reserved. --&gt;\n "..., length=3406, allAtOnce=false) at /Users/msneck/chromium/src/third_party/WebKit/WebCore/WebCore.gyp/../loader/MainResourceLoader.cpp:146
+#38 0x09e3f57b in WebCore::ResourceLoader::didReceiveData (this=0x998c00, data=0x377000 "&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n          \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"&gt;\n&lt;html&gt;\n  &lt;!-- Copyright 2009 Google Inc.  All rights reserved. --&gt;\n "..., length=3406, lengthReceived=3406, allAtOnce=false) at /Users/msneck/chromium/src/third_party/WebKit/WebCore/WebCore.gyp/../loader/ResourceLoader.cpp:260
+#39 0x09e3418c in WebCore::MainResourceLoader::didReceiveData (this=0x998c00, data=0x377000 "&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n          \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"&gt;\n&lt;html&gt;\n  &lt;!-- Copyright 2009 Google Inc.  All rights reserved. --&gt;\n "..., length=3406, lengthReceived=3406, allAtOnce=false) at /Users/msneck/chromium/src/third_party/WebKit/WebCore/WebCore.gyp/../loader/MainResourceLoader.cpp:405
+#40 0x09e3ec36 in WebCore::ResourceLoader::didReceiveData (this=0x998c00, data=0x377000 "&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n          \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"&gt;\n&lt;html&gt;\n  &lt;!-- Copyright 2009 Google Inc.  All rights reserved. --&gt;\n "..., length=3406, lengthReceived=3406) at /Users/msneck/chromium/src/third_party/WebKit/WebCore/WebCore.gyp/../loader/ResourceLoader.cpp:431
+#41 0x099bbbcc in WebCore::ResourceHandleInternal::didReceiveData (this=0x24632670, data=0x377000 "&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n          \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"&gt;\n&lt;html&gt;\n  &lt;!-- Copyright 2009 Google Inc.  All rights reserved. --&gt;\n "..., dataLength=3406) at /Users/msneck/chromium/src/third_party/WebKit/WebKit/chromium/src/ResourceHandle.cpp:173
+#42 0x0963df41 in webkit_glue::WebURLLoaderImpl::Context::OnReceivedData (this=0x24636b40, data=0x377000 "&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n          \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"&gt;\n&lt;html&gt;\n  &lt;!-- Copyright 2009 Google Inc.  All rights reserved. --&gt;\n "..., len=3406) at /Users/msneck/chromium/src/webkit/support/../glue/weburlloader_impl.cc:536
+#43 0x080e81b1 in ResourceDispatcher::OnReceivedData (this=0x22600840, message=@0x2680e7cc, request_id=33, shm_handle={fd = 70, auto_close = true}, data_len=3406) at /Users/msneck/chromium/src/chrome/common/resource_dispatcher.cc:397
+#44 0x080eb956 in IPC::MessageWithTuple&lt;Tuple3&lt;int, base::FileDescriptor, int&gt; &gt;::Dispatch&lt;ResourceDispatcher, int, base::FileDescriptor, int&gt; (msg=0x2680e7cc, obj=0x22600840, func={__pfn = 0x80e7f12 &lt;ResourceDispatcher::OnReceivedData(IPC::Message const&amp;, int, base::FileDescriptor, int)&gt;, __delta = 0}) at ipc_message_utils.h:1079
+#45 0x080e7194 in ResourceDispatcher::DispatchMessage (this=0x22600840, message=@0x2680e7cc) at /Users/msneck/chromium/src/chrome/common/resource_dispatcher.cc:535
+#46 0x080e86d2 in ResourceDispatcher::OnMessageReceived (this=0x22600840, message=@0x2680e7cc) at /Users/msneck/chromium/src/chrome/common/resource_dispatcher.cc:302
+#47 0x0810595e in ChildThread::OnMessageReceived (this=0x1fb094, msg=@0x2680e7cc) at /Users/msneck/chromium/src/chrome/common/child_thread.cc:124
+#48 0x0943b58c in IPC::ChannelProxy::Context::OnDispatchMessage (this=0x22600190, message=@0x2680e7cc) at /Users/msneck/chromium/src/ipc/ipc_channel_proxy.cc:204
+#49 0x0943c591 in DispatchToMethod&lt;IPC::ChannelProxy::Context, void (IPC::ChannelProxy::Context::*)(IPC::Message const&amp;), IPC::Message&gt; (obj=0x22600190, method={__pfn = 0x943b4fc &lt;IPC::ChannelProxy::Context::OnDispatchMessage(IPC::Message const&amp;)&gt;, __delta = 0}, arg=@0x2680e7cc) at tuple.h:422
+#50 0x0943c5cd in RunnableMethod&lt;IPC::ChannelProxy::Context, void (IPC::ChannelProxy::Context::*)(IPC::Message const&amp;), Tuple1&lt;IPC::Message&gt; &gt;::Run (this=0x2680e7b0) at task.h:323
+#51 0x08b13732 in MessageLoop::RunTask (this=0xb563bd78, task=0x2680e7b0) at /Users/msneck/chromium/src/base/message_loop.cc:340
+#52 0x08b137eb in MessageLoop::DeferOrRunPendingTask (this=0xb563bd78, pending_task=@0xb563b4cc) at /Users/msneck/chromium/src/base/message_loop.cc:349
+#53 0x08b13a7b in MessageLoop::DoWork (this=0xb563bd78) at /Users/msneck/chromium/src/base/message_loop.cc:460
+#54 0x08b798b8 in base::MessagePumpCFRunLoopBase::RunWork (this=0x1f3580) at /Users/msneck/chromium/src/base/message_pump_mac.mm:291
+#55 0x08b798fd in base::MessagePumpCFRunLoopBase::RunWorkSource (info=0x1f3580) at /Users/msneck/chromium/src/base/message_pump_mac.mm:269
+#56 0x901423c5 in CFRunLoopRunSpecific ()
+#57 0x90142aa8 in CFRunLoopRunInMode ()
+#58 0x94a8d3d5 in -[NSRunLoop(NSRunLoop) runMode:beforeDate:] ()
+#59 0x08b79558 in base::MessagePumpNSRunLoop::DoRun (this=0x1f3580, delegate=0xb563bd78) at /Users/msneck/chromium/src/base/message_pump_mac.mm:650
+#60 0x08b799e9 in base::MessagePumpCFRunLoopBase::Run (this=0x1f3580, delegate=0xb563bd78) at /Users/msneck/chromium/src/base/message_pump_mac.mm:213
+#61 0x08b142c4 in MessageLoop::RunInternal (this=0xb563bd78) at /Users/msneck/chromium/src/base/message_loop.cc:214
+#62 0x08b142df in MessageLoop::RunHandler (this=0xb563bd78) at /Users/msneck/chromium/src/base/message_loop.cc:186
+#63 0x08b14343 in MessageLoop::Run (this=0xb563bd78) at /Users/msneck/chromium/src/base/message_loop.cc:164
+#64 0x08b48805 in base::Thread::Run (this=0x1f17c0, message_loop=0xb563bd78) at /Users/msneck/chromium/src/base/thread.cc:136
+#65 0x08b48cb0 in base::Thread::ThreadMain (this=0x1f17c0) at /Users/msneck/chromium/src/base/thread.cc:160
+#66 0x08b23a3e in ThreadFunc (closure=0x1f17c0) at /Users/msneck/chromium/src/base/platform_thread_posix.cc:35
+#67 0x96af9155 in _pthread_start ()
+#68 0x96af9012 in thread_start ()
+</ns0:content><ns0:updated>2010-06-25T21:26:28.000Z</ns0:updated><ns0:published>2010-06-25T21:26:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by msn...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=641#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/641/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

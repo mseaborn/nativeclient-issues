@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUCRX47eCl7ImA9WhRSFUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2452/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">&gt;1) Only by a few minutes
+When we split the toolchain into parts, it will be possible to reduce the time by half instead. It looks a better approach. PNaCl bots are already slowest.
+
+&gt;2) Don't we want this? We can't afford to keep ignoring the GlibC-based toolchain. People keep breaking it. It keeps breaking because people are not testing it. And people are not testing it because it is expensive to build and not integrated with the other toolchain.
+
+Once glibc toolchain will go green at least for one revision, it's the sheriff responsibility to revert any CL that breaks things. Also, the sheriff would be glad to have more detailed statistics on how the tree is broken. Chrome sheriffs are pretty unhappy with all-in-one nacl_integration step.
+
+&gt;3) Please, re-read my statement. I talk about these nice green/red rectangles on the waterfall. It's much easier to understand how PNaCl is broken if glibc and newlib rectangles are separated.
+
+4) Even in your example you have mistyped the path. Many developers will do the same or even worse. 
+
+At some point of my career I had a small public service for the students/alumnae of my university. These people were pretty smart, but the statistics has shown me that even smart people do stupid mistakes. I was able to significantly reduce the mistake rate by reducing the functionality. In our case, we may get rid of newlib toolchain if the developer only needs glibc toolchain. It will save a lot of developer time and effort.
+
+The funny thing is that the end developer will not see these pieces.
+
+Most of the developers will use just a portable bitcode SDK with GlibC.
+The public interface of this SDK will consist of portable bitcode toolchain + the utility ./run.py which will capable to run only portable, non-PPAPI programs. The implementation will invoke translate toolchain and sel_ldr, which would be hidden from the user.
+
+</ns0:content><ns0:updated>2011-11-18T04:24:24.000Z</ns0:updated><ns0:published>2011-11-18T04:24:24.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2452#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2452/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

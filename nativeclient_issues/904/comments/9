@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ICRH47eCl7ImA9Wx9QEE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/904/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>dmichael@google.com</ns0:name><ns0:uri>/u/dmichael@google.com/</ns0:uri></ns0:author><ns0:content type="html">I tested this using the sine_synth SDK example with head-of-tree Chrome and head-of-tree NaCl.  The good news:  A tone is played!  The bad news:  The tone is not a clean sine wave (it's obviously distorted, like we're having buffer underflow or something), and worse:  the tab crashes when we try to stop playback.  If it is expected to be better behaved at this point, we can look in to whether it's a problem in the SDK example.  If this is just an early iteration of the implementation, we can wait and try again later.
+
+If one doesn't already exist, I think we should have a JSUnit-based integration test that makes sure that:
+-StartPlayback succeeds
+-Subsequently, the callback gets invoked as expected
+-StopPlayback succeeds
+-Subsequently, the callback is not invoked
+-(repeat at least once to make sure it is well-behaved)
+Ideally we could make this an automated test w/Selenium.</ns0:content><ns0:updated>2010-12-22T15:26:05.000Z</ns0:updated><ns0:published>2010-12-22T15:26:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by dmichael@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=904#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/904/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

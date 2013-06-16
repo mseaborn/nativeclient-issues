@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0ECSH47eCl7ImA9WxFQEEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/471/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>msn...@google.com</ns0:name><ns0:uri>/u/105190905030319373792/</ns0:uri></ns0:author><ns0:content type="html">The command ipc-posix-shm exists in chrome/common/common.sb for version 10.6 only, implying that there 
+have been some ipc-posix-xxxx sandbox changes between Mac 10.5 and 10.6.  Interestingly, there is an ipc-
+posix-sem flag which does not exist yet in chrome/common/common.sb.  Probably adding
+
+;10.6_ONLY (allow ipc-posix-sem)
+
+to chrome/common/common.sb will fix this but I need to get my hands on a Mac 10.6 machine to verify.</ns0:content><ns0:updated>2010-05-05T21:41:09.000Z</ns0:updated><ns0:published>2010-05-05T21:41:09.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by msn...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=471#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/471/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

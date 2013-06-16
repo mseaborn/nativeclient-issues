@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUcHRH47eCl7ImA9WhZaFU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1933/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5888
+
+------------------------------------------------------------------------
+r5888 | robertm@google.com | Fri Jul 01 09:12:50 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pnacl_abi/data_type.stdout?r1=5888&amp;r2=5887&amp;pathrev=5888
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/pnacl_abi/data_type.c?r1=5888&amp;r2=5887&amp;pathrev=5888
+
+The _Unwind_Exception struct is not really part of the ABI.
+It is part of a contract between the C++ runtime and libgcc_eh which is not programmer visible.
+We used to track it because the there were problems when
+we had multiple frontends translating libgcc_eh. 
+This is no longer the case after switching  libgcc_eh to bitcode.
+
+This fix is necessary to permit a PNaCl TC deps roll, c.f.:
+http://codereview.chromium.org/7225003/
+
+Somewhat related:
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1933
+ 
+Review URL: http://codereview.chromium.org/7298007
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-07-01T16:17:15.000Z</ns0:updated><ns0:published>2011-07-01T16:17:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1933#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1933/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

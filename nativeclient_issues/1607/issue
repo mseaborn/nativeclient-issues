@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkMGSH47eCl7ImA9WhZWFk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1607</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">r4598 introduces a vulnerability that allows NaCl untrusted code to escape NaCl's inner sandbox on x86-32 Linux inside Chrome when Breakpad is enabled.
+
+r4598 was intended to fix another vulnerability (issue 1545).  It changed sel_main_chrome.c so that it no longer registers a signal handler on Linux.  It leaves in place the signal handler registered by Breakpad in Chrome.  However, NaCl's Linux signal handler is safe (for NaCl) and Breakpad's signal handler is not.
+
+The reason for this is that NaCl's signal handler is careful to restore %gs (since %gs is set differently for x86-32 NaCl sandboxed code), while Breakpad's signal handler does not.
+
+Failure to restore %gs is dangerous, because glibc contains code like the following in its syscall routines:
+
+$ objdump -d /lib32/libc.so.6
+...
+000bff70 &amp;lt;__write&amp;gt;:
+...
+   bffb4:       65 ff 15 10 00 00 00    call   *%gs:0x10
+
+This issue is similar to issue 1035, except that Chrome is now involved.</ns0:content><ns0:updated>2011-05-17T13:20:29.000Z</ns0:updated><ns0:published>2011-04-05T21:03:01.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Signal handling change allows inner sandbox escape on x86-32 Linux in Chrome</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Security</ns2:label><ns2:label>FaultHandler</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1607/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1607" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1607" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-05-17T13:20:29.000Z</ns2:closedDate><ns2:id>1607</ns2:id></ns0:entry>

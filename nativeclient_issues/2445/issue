@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkYFRH47eCl7ImA9WhRSE08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2445</ns0:id><ns0:author>
+			<ns0:name>pbomm...@google.com</ns0:name><ns0:uri>/u/109975254771786170787/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;On what operating system?&lt;/b&gt;
+Linux 10.04
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Chrome Version: 16.0.912.36
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1.In test plan Step7 &amp;quot;hello_world_test_x86_32_dbg.nexe&amp;quot; 
+
+
+&lt;b&gt;What is the expected output?&lt;/b&gt;
+&amp;quot;hello_world_test_x86_32_dbg.nexe file missing.&amp;quot; should be there.
+
+&lt;b&gt;What do you see instead?&lt;/b&gt;
+MIssing &amp;quot;hello_world_test_x86_32_dbg.nexe file missing.&amp;quot;
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-11-15T01:21:55.000Z</ns0:updated><ns0:published>2011-11-15T01:21:55.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>Pepper_16:"hello_world_test_x86_32_dbg.nexe" file missing.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2445/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2445" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2445" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2445</ns2:id></ns0:entry>

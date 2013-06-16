@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4CSX47eCl7ImA9WxFUFEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/564/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">I think having some notion of versioning the nexe with reqard to the ABI
+will be useful in the future.
+I primarily see this as a way to detect error early, similar to linux
+keeping  statically linked linux 2.6 binaries from being run on earlier kernels.
+
+Syscall renumbering is probably not good enough because somebody could try
+to run newer nexes with older service runtimes and get weird results.
+
+As far as the mechanism is concerned, an .ABI-note section seem like the right thing to do. I presume this is what Linux uses.
+
+BTW: We have not defined what the ABI entails yet.
+There is probably agreement on system call numbers and signatures being part of the ABI. Certain aspects of the address space organization will have to go in as well. 
+
+
+
+
+
+</ns0:content><ns0:updated>2010-06-25T15:49:28.000Z</ns0:updated><ns0:published>2010-06-25T15:49:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=564#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/564/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

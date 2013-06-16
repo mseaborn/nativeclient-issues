@@ -1,0 +1,68 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A08ARX47eCl7ImA9WhdSF08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2028</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">SVN rev 6048.
+
+When you run scons to generate only a pexe, with say, platform=x86-64 it fails to link the bitcode.
+
+For example, this is the gold bitcode-linking command line you end up with:
+
+/usr/local/google/home/nacl1/native_client/toolchain/pnacl_linux_x86_64_newlib/pkg/binutils/bin/arm-pc-nacl-ld.gold \
+    --native-client \
+    --oformat \
+    elf32-nacl \
+    -Ttext=0x20000 \
+    --undef-sym-check \
+    -plugin=/usr/local/google/home/nacl1/native_client/toolchain/pnacl_linux_x86_64_newlib/pkg/llvm/lib/libLLVMgold.so \
+    -plugin-opt=emit-llvm \
+    -plugin-opt=-add-nacl-read-tp-dependency \
+    -plugin-opt=-add-libgcc-dependencies \
+    -nostdlib \
+    -Lscons-out/nacl-x86-64-pnacl/lib \
+    -Ltoolchain/pnacl_linux_x86_64_newlib/lib-x86-64 \
+    -Ltoolchain/pnacl_linux_x86_64_newlib/lib \
+    -Lscons-out/nacl-x86-64-pnacl/lib \
+    -L/usr/local/google/home/nacl1/native_client/scons-out/nacl-x86-64-pnacl/lib/ \
+    -L/usr/local/google/home/nacl1/native_client/toolchain/pnacl_linux_x86_64_newlib/sdk/lib/ \
+    -L/usr/local/google/home/nacl1/native_client/toolchain/pnacl_linux_x86_64_newlib/sdk/lib-x86-32/ \
+    -L/usr/local/google/home/nacl1/native_client/toolchain/pnacl_linux_x86_64_newlib/lib-x86-32/ \
+    -L/usr/local/google/home/nacl1/native_client/toolchain/pnacl_linux_x86_64_newlib/lib/ \
+    -static \
+    -rpath-link=scons-out/nacl-x86-64-pnacl/lib \
+    -rpath-link=toolchain/pnacl_linux_x86_64_newlib/lib-x86-64 \
+    -rpath-link=toolchain/pnacl_linux_x86_64_newlib/lib \
+    -rpath-link=scons-out/nacl-x86-64-pnacl/lib \
+    --undefined=main \
+    --undefined=exit \
+    /usr/local/google/home/nacl1/native_client/scons-out/nacl-x86-64-pnacl/lib/nacl_startup.bc \
+    scons-out/nacl-x86-64-pnacl/obj/tests/pnacl_client_translator/pnacl_srpc_hw.bc \
+    scons-out/nacl-x86-64-pnacl/lib/libsrpc.a \
+    scons-out/nacl-x86-64-pnacl/lib/libplatform.a \
+    scons-out/nacl-x86-64-pnacl/lib/libgio.a \
+    scons-out/nacl-x86-64-pnacl/lib/libimc.a \
+    scons-out/nacl-x86-64-pnacl/lib/libimc_syscalls.a \
+    scons-out/nacl-x86-64-pnacl/lib/libpthread.a \
+    --start-group \
+    toolchain/pnacl_linux_x86_64_newlib/lib/libgcc_eh.a \
+    toolchain/pnacl_linux_x86_64_newlib/lib-x86-64/libgcc.a \
+    scons-out/nacl-x86-64-pnacl/lib/libehsupport.a \
+    toolchain/pnacl_linux_x86_64_newlib/lib/libc.a \
+    scons-out/nacl-x86-64-pnacl/lib/libnacl.a \
+    toolchain/pnacl_linux_x86_64_newlib/lib/libstdc++.a \
+    toolchain/pnacl_linux_x86_64_newlib/lib/libm.a \
+    /usr/local/google/home/nacl1/native_client/scons-out/nacl-x86-64-pnacl/lib/libcrt_platform.a \
+    --end-group \
+    -o /usr/local/google/home/nacl1/native_client/scons-out/nacl-x86-64-pnacl/obj/tests/pnacl_client_translator/pnacl_srpc_hw.pexe---linked.pre_opt.pexe
+
+
+This gives the error message:
+
+/usr/local/google/home/nacl1/native_client/toolchain/pnacl_linux_x86_64_newlib/pkg/binutils/bin/arm-pc-nacl-ld.gold: error: toolchain/pnacl_linux_x86_64_newlib/lib-x86-64/libgcc.a(divdi3.o): incompatible target
+
+
+NOTE: if you change the gold &amp;quot;oformat&amp;quot; from &amp;quot;elf32-nacl&amp;quot; to &amp;quot;elf64-nacl &amp;quot; the bitcode link succeeds. However, that is probably not what we want to do, since we would be generating the bitcode in slightly different manners each time.
+
+
+Outside of scons, if you just pnacl-gcc X.c -o X.pexe, it will always arbitrarily look for the 32-bit libraries for undef symbol checking, etc., instead of looking for the 64-bit ones, so that is not a problem.
+
+</ns0:content><ns0:updated>2011-07-27T01:24:04.000Z</ns0:updated><ns0:published>2011-07-14T17:59:59.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PNaCl scons bitcode-only linking (pexe generation) fails when platform != x86-32 due to lib choice.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Milestone-Caviar</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2028/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2028" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2028" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-27T01:24:04.000Z</ns2:closedDate><ns2:id>2028</ns2:id></ns0:entry>

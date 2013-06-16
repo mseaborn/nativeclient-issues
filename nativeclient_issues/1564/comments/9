@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQCSX47eCl7ImA9WhZTGEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1564/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>pdox%goo...@gtempaccount.com</ns0:name><ns0:uri>/u/104735739662288482898/</ns0:uri></ns0:author><ns0:content type="html">The culprit (or at least, one culprit) has been spotted:
+
+mov    %eax,%eax    # NaCl sandboxing prefix
+movzwl 0x22(%r15,%rax,1),%ecx
+shr    $0x20,%rax
+
+LLVM isn't aware that loading from pointer "%eax" trashes %rax. The SDValue structure (pointer+unsigned), is being packed in a single 64-bit register, with the pointer in the low bits. When the pointer is dereferenced, LLVM expects the high-bits to remain intact, however the sandboxing instruction trashes it.</ns0:content><ns0:updated>2011-03-23T09:42:48.000Z</ns0:updated><ns0:published>2011-03-23T09:42:48.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by pdox%goo...@gtempaccount.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1564#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1564/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

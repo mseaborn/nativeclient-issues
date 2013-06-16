@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEFSX47eCl7ImA9Wx5WEkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/830</ns0:id><ns0:author>
+			<ns0:name>davewr...@gmail.com</ns0:name><ns0:uri>/u/114290711107361128310/</ns0:uri></ns0:author><ns0:content type="html">I am running the newest SDK 0_1_507_0 on Chrome 6.0.495.0 dev on 32-bit Linux (Ubuntu 9.10).
+
+I've got a Native Client module that's stress testing the NPN_Invoke method by repeatedly calling it to send a string to a javascript function.  The stress test runs in its own thread, calling NPN_PluginThreadAsyncCall to schedule a simple function that then calls NPN_Invoke.  Using the Chrome task manager, I've found that memory usage for my web page increases rapidly and is not reclaimed even when the module stops the thread from calling NPN_Invoke.  The same code compiled in develop mode and run directly as a pepper plugin does not exhibit this behavior.
+
+To easily reproduce, I added a function &amp;quot;call_javascript_test&amp;quot; to the SDK's hello_world.cc example file.  This function uses NPN_Invoke to send a string to a javascript function &amp;quot;javascript_test&amp;quot; in hello_world.html that does nothing:
+
+void call_javascript_test(void *arg){
+  struct HelloWorld *hello_world = get_HelloWorld();
+  std::string str = &amp;quot;abcdefghijklmnopqrstuvwxyz&amp;quot;;
+  NPVariant args[1];
+  uint32_t arg_count = 1;
+  args[0].type = NPVariantType_String;
+  args[0].value.stringValue.UTF8Characters = str.data();
+  args[0].value.stringValue.UTF8Length = str.length();
+  NPVariant retval;
+  VOID_TO_NPVARIANT(retval);
+  NPIdentifier result_id = 
+    NPN_GetStringIdentifier(&amp;quot;javascript_test&amp;quot;);
+  NPN_Invoke(hello_world-&amp;gt;npp,
+	                hello_world-&amp;gt;window_object,
+	                result_id,
+	                args,
+	                arg_count,
+	                &amp;amp;retval);
+  NPN_ReleaseVariantValue(&amp;amp;retval);
+}
+
+The thread that runs to repeatedly call this function is defined below:
+
+void *stress_test(void *arg){
+  struct HelloWorld *hello_world = get_HelloWorld();
+  while(1){
+    NPN_PluginThreadAsyncCall(hello_world-&amp;gt;npp, call_javascript_test, NULL);
+  }
+  return 0;
+}
+
+Finally, I modified NPP_New in npp_gate.cc to save the NPNVWindowNPObject window object in a global instance of the HelloWorld struct, which is then accessed via get_HelloWorld() in the above functions as needed.
+
+Once the stress test thread starts running in a Native Client module, memory usage grows unbounded.
+</ns0:content><ns0:updated>2010-09-23T22:23:38.000Z</ns0:updated><ns0:published>2010-08-18T21:15:15.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:state>closed</ns2:state><ns0:title>NPAPI Memory Leak?</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Plugins</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/830/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=830" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/830" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2010-09-23T22:23:38.000Z</ns2:closedDate><ns2:id>830</ns2:id></ns0:entry>

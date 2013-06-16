@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUcHSH47eCl7ImA9Wx9UGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1278</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">shell&amp;gt; cat o.c
+__thread int i __attribute__ ((tls_model (&amp;quot;initial-exec&amp;quot;)));
+int **p;
+
+void foo ()
+{
+  __sync_bool_compare_and_swap (p, &amp;amp;i, &amp;amp;i);
+}
+
+void* __nacl_read_tp ()
+{
+  return 0;
+}
+
+shell&amp;gt; /path/to/bin/nacl64-gcc -O2 -nostdlib o.c
+/path/to/lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/ld: warning: cannot find entry symbol _start; defaulting to 00000000010001e0
+/path/to/lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/ld: /tmp/ccXDrN0X.o: TLS transition from R_X86_64_GOTTPOFF to R_X86_64_TPOFF32 against `i' at 0x48 in section `.text' failed
+/path/to/lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/ld: final link failed: Bad value
+collect2: ld returned 1 exit status
+
+The simplest possible workaround is to disable this transition in the linker.</ns0:content><ns0:updated>2011-02-17T22:50:39.000Z</ns0:updated><ns0:published>2010-12-23T15:57:26.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>toolchain The linker fails to make a transition from Initial Exec model (relocation R_X86_64_GOTTPOFF) to Local Exec (relocation R_X86_64_TPOFF32)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Milestone-Baltic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1278/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1278" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1278" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-12-30T14:10:15.000Z</ns2:closedDate><ns2:id>1278</ns2:id></ns0:entry>

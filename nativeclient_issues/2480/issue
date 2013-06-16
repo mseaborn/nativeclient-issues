@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkMAQX47eCl7ImA9WhRQFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2480</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">Something has changed in Chrome breaking this test.   
+
+The test sources live in Chrome and are affected by Chrome.  However, the test runs in Native Client.
+
+Because of this:
+1- Chrome can break this test at anytime without knowing.
+2- A fix for a break can not be easily tried, commits done blind in Chrome
+3- NaCl must roll deps again to get it.
+4- It risks Chrome binaries not being availible.
+5- Correctly fixing this, would leave NaCl red for hours.
+ 
+To solve, please make sure to address the above issues as well as what ever broke the test.
+</ns0:content><ns0:updated>2011-12-09T19:20:40.000Z</ns0:updated><ns0:published>2011-12-09T18:57:09.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/104389777848534510881/</ns2:uri><ns2:username>erik...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Disable ppapi_simple sel_universal tests</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-</ns2:label><ns2:label>OS-</ns2:label><ns2:label>Arch-</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2480/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2480" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2480" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2480</ns2:id></ns0:entry>

@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUcHRX47eCl7ImA9WhdXEkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1853</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Currently the ARM build of irt.nexe does its TLS accesses using the TLS register, r9:
+
+$ toolchain/linux_arm-untrusted/arm-none-linux-gnueabi/bin/arm-pc-nacl-objdump -D scons-out/nacl-arm-pnacl/staging/irt.nexe | grep r9
+ 8000040:	e1a00629 	lsr	r0, r9, #12
+ 8009e74:	e1a02629 	lsr	r2, r9, #12
+ 800a49c:	e1a03629 	lsr	r3, r9, #12
+ 800a4dc:	e1a00629 	lsr	r0, r9, #12
+...
+(Note that &amp;quot;-d&amp;quot; doesn't work for disassembling this.  For some reason it disassembles most instructions as &amp;quot;.word&amp;quot;.  Use &amp;quot;-D&amp;quot; instead.)
+
+This won't work because the TLS register is for use by user code.  The IRT has its own separate thread-local storage.
+
+Originally PNaCl's ARM code generator would generate calls to the function __aeabi_read_tp.  David optimised this away in http://codereview.chromium.org/6676121/.  We need an option in the code generator to disable this optimisation so that we can link a replacement __aeabi_read_tp in the IRT (as we do with __nacl_read_tp in native_client/src/untrusted/irt/irt_tls.c).
+</ns0:content><ns0:updated>2011-08-25T18:30:34.000Z</ns0:updated><ns0:published>2011-05-26T02:09:16.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Fix the IRT's TLS accesses to work on ARM</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-IRT</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1853/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1853" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1853" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-25T18:28:54.000Z</ns2:closedDate><ns2:id>1853</ns2:id></ns0:entry>

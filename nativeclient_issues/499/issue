@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE4DQH47eCl7ImA9Wx9UGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/499</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">NaCl's linker scripts contain special cases to add NOP padding to code sections:
+
+  .init           :
+  {
+    KEEP (*(.init))
+  } =0x90909090
+
+(&amp;quot;0x90&amp;quot; means NOP.)
+
+This only works for the section names listed in the linker scripts, i.e. &amp;quot;.init&amp;quot;, &amp;quot;.fini&amp;quot; and 
+&amp;quot;.text*&amp;quot;.
+
+glibc uses some unusual section names, e.g. &amp;quot;__libc_freeres_fn&amp;quot;.  (The purpose of these is to 
+keep little-used code fragments close together in memory.)  Without the &amp;quot;=0x90909090&amp;quot; 
+declaration, these sections get zero-padded instead of NOP-padded, which means the resulting 
+linked library fails to pass the validator.
+
+In the past I hacked binutils to pad with NOPs instead of zeroes by default.  This was a hack 
+because the change had to be made in the wrong layer.
+
+A good way to fix this would be to change gcc to insert the padding itself.  gcc could just 
+output &amp;quot;.p2align 5&amp;quot; at the end of a function.
+
+Steps to reproduce:
+
+$ cat &amp;gt;other-sections.c &amp;lt;&amp;lt;END
+int main() __attribute((section(&amp;quot;__libc_freeres_fn&amp;quot;)));
+int main() {
+  return 0;
+}
+END
+$ nacl-gcc other-sections.c -o other-sections
+$ sel_ldr other-sections
+VALIDATOR: 246a0: Bad basic block alignment
+[2350,3071608512:15:18:47.228301] VALIDATION FAILED.
+[2350,3071608512:15:18:47.228341] Run sel_ldr in debug mode to ignore validation failure.
+[2350,3071608512:15:18:47.228348] Run ncval &amp;lt;module-name&amp;gt; for validation error details.
+Error while loading &amp;quot;other-sections&amp;quot;: Validation failure. File violates Native Client safety 
+rules.
+</ns0:content><ns0:updated>2011-02-17T22:49:31.000Z</ns0:updated><ns0:published>2010-05-17T14:21:33.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Do NOP padding in gcc instead of in linker scripts</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Milestone-Baltic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/499/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=499" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/499" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-12-22T15:42:47.000Z</ns2:closedDate><ns2:id>499</ns2:id></ns0:entry>

@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCRn47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/569</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I have written some tools that can dump an execution trace of a NaCl
+process to display a function call tree, or log line-by-line what code
+is being executed.  These are really useful for debugging.
+
+For some explanation see:
+
+http://lackingrhoticity.blogspot.com/2009/05/really-simple-tracing-debugger.html
+http://lackingrhoticity.blogspot.com/2009/05/really-simple-tracing-debugger-part-2.html
+
+The original version uses ptrace() on Linux to single-step the sel_ldr
+process.  I have a newer patch to sel_ldr which uses the x86's trap
+flag (along with a signal handler, on Linux) to single-step untrusted
+code.  This is faster since it's within-process and doesn't try to
+trace the trusted code.
+
+It would be nice to get this committed in some form.  I guess in the
+long term this could use the debug stub and the gdb debug protocol
+that it exposes, but I'm not familiar with that protocol yet.
+</ns0:content><ns0:updated>2011-07-29T00:12:47.000Z</ns0:updated><ns0:published>2010-06-04T22:38:08.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/104834035110555747685/</ns2:uri><ns2:username>ile...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Would like execution trace tools</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Debugging</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/569/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=569" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/569" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>569</ns2:id></ns0:entry>

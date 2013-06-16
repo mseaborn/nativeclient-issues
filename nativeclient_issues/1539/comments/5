@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcBRX47eCl7ImA9WhZTFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1539/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4572
+
+------------------------------------------------------------------------
+r4572 | dspringer@google.com | Fri Mar 18 11:42:26 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/multiarch/nacl.scons?r1=4572&amp;r2=4571&amp;pathrev=4572
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/multiarch/srpc_hw_x86_32.nexe?r1=4572&amp;r2=4571&amp;pathrev=4572
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/multiarch/srpc_hw_ARM.nexe?r1=4572&amp;r2=4571&amp;pathrev=4572
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/browser_tester/browsertester/server.py?r1=4572&amp;r2=4571&amp;pathrev=4572
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/multiarch/srpc_hw_x86_64.nexe?r1=4572&amp;r2=4571&amp;pathrev=4572
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/multiarch/multiarch.nmf?r1=4572&amp;r2=4571&amp;pathrev=4572
+
+Migrate multiarch test to use the new map_file options in the browser_tester,
+which means we can use .nexes in prebuilt and not have them checked in here.
+
+Fix an issue in browser_tester.py where it didn't correctly handle the POSIX-
+style paths given as the filename to --map_file.
+
+BUG=none (relate to http://code.google.com/p/nativeclient/issues/detail?id=1539)
+TEST=chrome_browser_test
+Review URL: http://codereview.chromium.org/6709015
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-03-18T18:47:34.000Z</ns0:updated><ns0:published>2011-03-18T18:47:34.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1539#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1539/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

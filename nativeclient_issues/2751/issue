@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0YARH47eCl7ImA9WhVVFk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2751</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">While on the discussion of ARM subtarget features, feature detection, etc., I just remembered that there was an iffy LOCALMOD in:
+
+llvm/lib/MC/SubtargetFeature.cpp
+
+Namely, &amp;quot;getDefaultSubtargetFeatures()&amp;quot; may need to be adjusted.  I think this was put here instead of the driver because it affected bitcode linking, but that will need to be investigated (check the change log...).
+</ns0:content><ns0:updated>2012-05-09T22:05:45.000Z</ns0:updated><ns0:published>2012-04-27T18:05:40.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Converge on, or revert, llvm ARM localmod for getDefaultSubtargetFeatures()</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2751/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2751" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2751" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2751</ns2:id></ns0:entry>

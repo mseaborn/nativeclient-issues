@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIDR347eCl7ImA9Wx9UGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1036</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+Currently, Native Client will happily run whether or not Chrome's outer sandbox is enabled.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+To be clear, there are no known security problems inherent in running NaCl without the outer sandbox.  However, if someone *were* to discover a way to compromise NaCl's trusted runtime from an untrusted program, the outer sandbox would help limit the impact.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+Under the principle of 'defense in depth,' when running in Chrome, we should verify that Chrome thinks the outer sandbox is working.  Note the wording of this: we don't need to test the outer sandbox itself.  Merely receiving Chrome's assurance that the &amp;quot;--no-sandbox&amp;quot; flag (or equivalent) isn't being used is a great start.
+
+Later we may wish to empirically verify the integrity of the sandbox, but this is a much harder problem.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+NaCl refuses to load nexes in Chrome with --no-sandbox, or on platforms (such as older Linux) where the sandbox is implicitly disabled.  (We may wish to provide an override flag, something like --no-really-enable-nacl, for use during development.)
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+Depending on approach, this will require changes to the sel_ldr's platform qualification tests (approach 1) or the plugin (approach 2).
+
+This may cause certain legacy Linux users -- those whose distributions are too old to support any Chrome sandbox model -- to lose the ability to run Native Client programs.  [TBD: I don't actually understand which Linux environments would support neither seccomp *nor* setuid, but I'm no sandbox expert.]</ns0:content><ns0:updated>2011-02-18T00:06:16.000Z</ns0:updated><ns0:published>2010-10-14T23:04:42.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/117420925389613150407/</ns2:uri><ns2:username>aba...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>When in Chrome, NaCl should verify that Chrome's sandbox is in place</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Milestone-Arctic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1036/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1036" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1036" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-12-02T04:58:59.000Z</ns2:closedDate><ns2:id>1036</ns2:id></ns0:entry>

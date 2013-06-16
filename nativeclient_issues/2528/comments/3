@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUcBSX47eCl7ImA9WhRVGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2528/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: dc6a13b603f8c600c1b8ab56a5a7f8d6baa10965
+ Email: noelallen@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Fix tar creation issues.
+
+Recursive diff of naclsdk directories tar'd and untar'd with 'tar' and
+tar'd and untar'd with CygTar showed differences in the files.
+
+Incorrect hardlink detection due to comparing file against itself.
+Fixed missing file handle when adding file to archive causing truncation.
+Increased width of checksum.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2528
+TBR= bradnelson@google.com
+Review URL: http://codereview.chromium.org/9095004
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@7527 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	build/cygtar.py</ns0:content><ns0:updated>2012-01-18T00:37:38.000Z</ns0:updated><ns0:published>2012-01-18T00:37:38.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2528#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2528/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

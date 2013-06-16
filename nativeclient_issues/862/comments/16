@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4AQX47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/862/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3408
+
+------------------------------------------------------------------------
+r3408 | mseaborn@chromium.org | Wed Oct 06 07:39:11 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/build.py?r1=3408&amp;r2=3407&amp;pathrev=3408
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=3408&amp;r2=3407&amp;pathrev=3408
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/syscalls/syscalls.cc?r1=3408&amp;r2=3407&amp;pathrev=3408
+
+Enable more tests for nacl-glibc and fix assumption in syscalls.cc test
+
+syscalls.cc was testing that sysconf() on an invalid input returns an
+error, but it assumed that _SC_NPROCESSORS_ONLN - 1 was invalid.  This
+is true for the raw NaCl syscall where _SC_NPROCESSORS_ONLN == 0 but
+not for the glibc sysconf() function's inputs.  Make the assumption
+explicit by just testing sysconf(-1).
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=862
+TEST=small_tests --nacl_glibc
+
+Review URL: http://codereview.chromium.org/3549019
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:02:20.000Z</ns0:updated><ns0:published>2011-01-21T23:02:20.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=862#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/862/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

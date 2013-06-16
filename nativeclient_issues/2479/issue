@@ -1,0 +1,52 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcARX47eCl7ImA9WhRQF08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2479</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">r7396
+
+The following test demonstrates the issue:
+
+
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;wchar.h&amp;gt;
+
+int main(void)
+{
+  wchar_t *wcs;
+  wchar_t *stopwcs;
+  long long     l;
+
+  wcs = L&amp;quot;1234567890123456789&amp;quot;;
+  printf(&amp;quot;wcs = `%ls`\n&amp;quot;, wcs);
+  l = wcstoll(wcs, &amp;amp;stopwcs, 10);
+  printf(&amp;quot;wcstoll = %lld\n&amp;quot;, l);
+  printf(&amp;quot;Stopped scan at `%ls`\n&amp;quot;, stopwcs);
+  if (l != 1234567890123456789LL) {
+    printf(&amp;quot;Wrong answer\n&amp;quot;);
+    return 1;
+  }
+  printf(&amp;quot;OK\n&amp;quot;);
+}
+
+
+Expected result:
+
+wcs = `1234567890123456789`
+wcstoll = 1234567890123456789
+Stopped scan at ``
+OK
+
+x86-64-nacl-gcc:
+
+wcs = `1234567890123456789`
+wcstoll = 2147483647
+Stopped scan at ``
+Wrong answer
+
+x86-64-nacl-gcc -m32:
+
+wcs = `1234567890123456789`
+wcstoll = 2112454933
+Stopped scan at ``
+Wrong answer
+</ns0:content><ns0:updated>2011-12-12T21:40:44.000Z</ns0:updated><ns0:published>2011-12-09T17:42:44.000Z</ns0:published><ns2:status>Accepted</ns2:status><ns2:owner>
+			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>wcstoll is broken in nacl-glibc</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2479/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2479" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2479" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2479</ns2:id></ns0:entry>

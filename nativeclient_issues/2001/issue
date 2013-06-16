@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUMAQn47eCl7ImA9WhdSGEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2001</ns0:id><ns0:author>
+			<ns0:name>ncb...@google.com</ns0:name><ns0:uri>/u/100032148147647801554/</ns0:uri></ns0:author><ns0:content type="html">It is unlikely NaCl will have breakpad coverage on most platforms for M14, so we should establish another mechanism for reporting crashes in sel_ldr.
+
+Crashes (and the lack thereof) can be reported as a user metric (UMA) using the &amp;quot;HistogramEnumeration&amp;quot; method in the plugin.  A simple binary histogram would be sufficient &amp;quot;Crash / no crash&amp;quot;.
+
+The tricky part is detecting sel_ldr has crashed.  This can be inferred from SPRC / file handle errors (or polling) but there doesn't seem to be a good central place to check this.  Error checking would need to be inserted in every PPB function.  Alternatively the reverse channel could be monitored for errors but a) this doesn't cover cases where the reverse channel is not used (ask Ivan) b) there doesn't seem to be a simple way to plumb SRPC errors out to the plugin due to multiple layers of abstraction, threading issues, etc.
+
+Another tricky part is ensuring normal shutdown behavior is not detected as a &amp;quot;crash&amp;quot;.
+
+The browser plugin should also shut itself down and cleanup when sel_ldr crashes. This feature is beyond the scope of this issue, but it will likely use the same hooks as UMA reporting.
+
+Tips:
+1) See plugin_ppapi.cc for various uses of UMA reporting.  Search for &amp;quot;NaCl.&amp;quot;.
+2) Check about:histograms/NaCl to verify things are actually being logged.
+3) Check tests/pyauto_nacl/nacl_uma.py for UMA tests.
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-07-28T18:24:03.000Z</ns0:updated><ns0:published>2011-07-12T03:19:37.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/elijahtaylor@google.com/</ns2:uri><ns2:username>elijahtaylor@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Detect and report sel_ldr crashes via UMA</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-14</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2001/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2001" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2001" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2011-07-28T18:24:03.000Z</ns2:closedDate><ns2:id>2001</ns2:id></ns0:entry>

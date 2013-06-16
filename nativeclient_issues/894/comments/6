@@ -1,0 +1,84 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkAHSH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/894/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3385
+
+------------------------------------------------------------------------
+r3385 | bsy@google.com | Thu Sep 30 21:44:12 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_imc_bound_desc.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_quota_test.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_imc.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_mutex.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_semaphore.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/gio_shm.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/linux/nacl_desc_sysv_shm.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nrd_xfer_intern.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/posix/nacl_desc_imc_bound_desc.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_conn_cap.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_semaphore.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/generic_container/container.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/linux/nacl_desc_sysv_shm.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_dir.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_conn_cap.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/generic_container/container.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_dir.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/dyn_array.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/posix/nacl_desc_conn_cap.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_sync_socket.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nrd_xfer.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/gio_nacl_desc_test.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/build.scons?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_base.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_sync_socket.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_base.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/launcher.cc?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/include/nacl_macros.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/gio_nacl_desc.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/nacl_semaphore.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/nacl_base/nacl_refcount.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/desc.gyp?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_cond.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/pepper?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_io.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_mem.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_wrapper.cc?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_cond.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_io.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_invalid.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/pepper/nacl_pepper.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_imc_shm.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_quota.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_invalid.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/pepper/nacl_pepper.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_imc_bound_desc.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_imc_shm.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_quota.h?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_imc.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_mutex.c?r1=3385&amp;r2=3384&amp;pathrev=3385
+
+Introduce NaClDescQuota subclass of NaClDesc, which wraps other
+NaClDesc with a thin layer that performs quota checks.  Introduce
+(stubs) NaClSrpcPepperWriteRequest and ...FtruncateRequest which will
+be used to SRPC requests over to a browser plugin thread to ask for
+more quota.  Refactored nrd_xfer so that the Internalization is a
+separate function that is usable from wrappers such as NaClDescQuota
+to internalize the wrapped descriptor.
+
+Cleaned up vtbl and removed the Close virtual function and just use
+Unref.
+
+This CL does not include hooking up anything in the plugin side.
+
+BUGS=http://code.google.com/p/nativeclient/issues/detail?id=894
+TESTS=scons run_nacl_desc_quota_test
+
+Review URL: http://codereview.chromium.org/3548003
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:58:59.000Z</ns0:updated><ns0:published>2011-01-21T22:58:59.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=894#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/894/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

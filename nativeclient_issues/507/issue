@@ -1,0 +1,34 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU4FRH47eCl7ImA9WhZTE08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/507</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">NaCl security model restricts a number of system calls available for 
+untrusted code, so we have a number of posix methods within libnosys. 
+When you want to port a program to NaCl, you have to rewrite all this 
+functionality.
+
+Consider VNC client (e.g. RealVNC) we want to port to NaCl. We need to 
+rewrite graphics, sockets and files (for storing the settings). It still 
+acceptable to rewrite graphics layer since there's no X Server inside 
+NaCl available today, but sockets and files could be supported with the 
+following way:
+
+libnacl_over_srpc defines all posix calls missed from the original 
+implementation of NaCl runtime. Every such call transforms to SRPC call 
+to the supervisor (like javascript in the browser or standalone 
+application that use SelLdrLauncher to launch sel_ldr). Supervisor can 
+perform this Posix call or answer E_NOSYS.
+
+So, in case of VNC client that wants to run inside a browser, javascript 
+will implement a simple FS on top of HTML5 storage to store small files 
+with settings and a client socket api using WebSockets (w/ conversion to 
+usual sockets on special proxy server).
+
+This approach allows significantly reduce the amount of code needed for 
+porting an application to NaCl. Also, we could get rid of libnosys in 
+future, since libposix_over_srpc will return E_NOSYS in case Posix call 
+is not presented in supervisor SRPC service.
+
+This library will impact both client and server-side NaCl. </ns0:content><ns0:updated>2011-03-17T01:05:15.000Z</ns0:updated><ns0:published>2010-05-18T20:05:57.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/113301443988143166710/</ns2:uri><ns2:username>mikha...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Implement libposix_over_srpc</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/507/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=507" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/507" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2011-03-17T01:05:15.000Z</ns2:closedDate><ns2:id>507</ns2:id></ns0:entry>

@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEDQH47eCl7ImA9WhRSGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/796/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">This might be okay. Pdox, could you please confirm?
+
+Headers and libs are based on looking up from BASE. BASE_NACL is mostly used for running the translator tests (which look for sel universal, etc.), so it was a bit confusing what depended on what. I believe the BASE_NACL variable is only looked up lazily, so if you are careful not to invoke parts of the driver that use BASE_NACL, it won't be non-hermetic.
+</ns0:content><ns0:updated>2011-11-22T19:04:31.000Z</ns0:updated><ns0:published>2011-11-22T19:04:31.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>pdox%goo...@gtempaccount.com</ns2:ccUpdate><ns2:ccUpdate>jasonw...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 10 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=796#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/796/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

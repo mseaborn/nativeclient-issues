@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08ASH47eCl7ImA9WhdaEEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2327/comments/full/22</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=6985
+
+------------------------------------------------------------------------
+r6985 | robertm@google.com | Wed Oct 19 16:05:32 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/llvm/unsupported/patch-libstdc++?r1=6985&amp;r2=6984&amp;pathrev=6985
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/llvm/unsupported/build-libstdc++.sh?r1=6985&amp;r2=6984&amp;pathrev=6985
+
+With these additional changes we can create and install libstdc++ and use it with scons.
+
+In order to try it, You also need to change the driver like so:
+
+--- tools/llvm/driver/pnacl-driver.py   (revision 6978)
++++ tools/llvm/driver/pnacl-driver.py   (working copy)
+@@ -96,8 +96,8 @@
+   'ISYSTEM_newlib' :
+     '${BASE_SDK}/include ' +
+     '${ISYSTEM_%FRONTEND%} ' +
+-    '${BASE_LIBSTDCPP}/include/c++/4.2.1 ' +
+-    '${BASE_LIBSTDCPP}/include/c++/4.2.1/arm-none-linux-gnueabi ' +
++    '${BASE_LIBSTDCPP}/include/c++/4.6.2 ' +
++    '${BASE_LIBSTDCPP}/include/c++/4.6.2/arm-none-linux-gnueabi ' +
+     '${BASE_INCLUDE} ' +
+     '${BASE_NEWLIB}/arm-none-linux-gnueabi/include',
+
+and run 
+ tools/llvm/utman.sh driver
+
+ 
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2327
+Review URL: http://codereview.chromium.org/8342056
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-10-19T23:10:49.000Z</ns0:updated><ns0:published>2011-10-19T23:10:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 22 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2327#c22" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2327/comments/full/22" rel="self" type="application/atom+xml" /></ns0:entry>

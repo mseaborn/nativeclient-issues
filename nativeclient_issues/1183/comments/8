@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU8HR347eCl7ImA9WhZQFE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1183/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4969
+
+------------------------------------------------------------------------
+r4969 | bradchen@google.com | Thu Apr 21 09:30:03 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/earth/earth.h?r1=4969&amp;r2=4968&amp;pathrev=4969
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=4969&amp;r2=4968&amp;pathrev=4969
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/earth/nacl.scons?r1=4969&amp;r2=4968&amp;pathrev=4969
+
+
+This is a change I forgot to include in http://codereview.chromium.org/6878032/ 
+the SConstruct change required to incorporate the Earth test. Also fixes
+includes in earth.h, and disables validator tests for glibc since they
+don't work (see http://code.google.com/p/nativeclient/issues/detail?id=1183).
+Review URL: http://codereview.chromium.org/6873130
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-21T16:37:16.000Z</ns0:updated><ns0:published>2011-04-21T16:37:16.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1183#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1183/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

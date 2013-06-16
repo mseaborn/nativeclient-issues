@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEMDQn47eCl7ImA9WhZbF0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1935/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 902243b864dfe1ea52893c78f6ea19fa750f90d6
+ Email: cstefansen@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Compile GLES Book examples in the NaCl build for testing purposes.
+
+A forthcoming CL will automate the tests.
+
+R==ncbray@google.com
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1935
+TEST= Visit ppapi_gles_book_examples.html and click on each one to run it.
+
+Review URL: http://codereview.chromium.org/7218017
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@5739 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	tests/examples.html
+M	tests/ppapi_gles_book/nacl.scons
+M	tests/ppapi_gles_book/ppapi_gles_book.html
+A	tests/ppapi_gles_book/ppapi_gles_book_hello_triangle.nmf
+A	tests/ppapi_gles_book/ppapi_gles_book_mip_map_2d.nmf
+A	tests/ppapi_gles_book/ppapi_gles_book_simple_texture_2d.nmf
+A	tests/ppapi_gles_book/ppapi_gles_book_simple_texture_cubemap.nmf
+A	tests/ppapi_gles_book/ppapi_gles_book_simple_vertex_shader.nmf
+A	tests/ppapi_gles_book/ppapi_gles_book_stencil_test.nmf
+A	tests/ppapi_gles_book/ppapi_gles_book_texture_wrap.nmf
+M	tools/browser_tester/browser_tester.py</ns0:content><ns0:updated>2011-06-22T17:07:53.000Z</ns0:updated><ns0:published>2011-06-22T17:07:53.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1935#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1935/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

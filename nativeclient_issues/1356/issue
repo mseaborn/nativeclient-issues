@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0MHSH47eCl7ImA9WhZVGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1356</ns0:id><ns0:author>
+			<ns0:name>pol...@google.com</ns0:name><ns0:uri>/u/101953680983947802512/</ns0:uri></ns0:author><ns0:content type="html">As observed on a Mac with ppapi_geturl.html, clicking &amp;lt;- and -&amp;gt; repeatedly crashes the browser. gdb shows:
+
+Program received signal EXC_BAD_ACCESS, Could not access memory.
+Reason: KERN_PROTECTION_FAILURE at address: 0x00000000
+0x991cc2b0 in strlen ()
+(gdb) bt
+#0  0x991cc2b0 in strlen ()
+#1  0x0bf366e1 in SignatureMatches (method_desc=0x9e2ab69, signature=0xbf5198e &amp;quot;RunCompletionCallback:iiC:&amp;quot;) at /Users/polina/src-chrome/src/native_client/src/shared/srpc/rpc_service.c:377
+#2  0x0bf3677f in NaClSrpcServiceMethodIndex (service=0x9e1f8f0, signature=0xbf5198e &amp;quot;RunCompletionCallback:iiC:&amp;quot;) at /Users/polina/src-chrome/src/native_client/src/shared/srpc/rpc_service.c:395
+#3  0x0bf31760 in NaClSrpcInvokeBySignature (channel=0x9e1f8c8, rpc_signature=0xbf5198e &amp;quot;RunCompletionCallback:iiC:&amp;quot;) at /Users/polina/src-chrome/src/native_client/src/shared/srpc/invoke.c:462
+#4  0x0bf2e346 in CompletionCallbackRpcClient::RunCompletionCallback (channel=0x9e1f8c8, callback_id=1, result=-3, read_buffer_bytes=0, read_buffer=0x0) at /Users/polina/src-chrome/src/native_client/src/shared/ppapi_proxy/ppp_rpc_client.cc:212
+#5  0x0bf25c57 in ppapi_proxy::(anonymous namespace)::RunRemoteCallback (user_data=0x9d2edb0, result=-3) at /Users/polina/src-chrome/src/native_client/src/shared/ppapi_proxy/browser_callback.cc:64
+#6  0x01e75a13 in PP_RunCompletionCallback (cc=0xbfffcc48, res=-3) at pp_completion_callback.h:51
+#7  0x01a0fe04 in webkit::ppapi::TrackedCompletionCallback::Run (this=0x9d21d80, result=-3) at /Users/polina/src-chrome/src/webkit/support/../plugins/ppapi/callbacks.cc:146
+#8  0x01a0fe1f in webkit::ppapi::TrackedCompletionCallback::AbortImpl (this=0x9d21d80) at /Users/polina/src-chrome/src/webkit/support/../plugins/ppapi/callbacks.cc:151
+
+OR
+
+Program received signal EXC_BAD_ACCESS, Could not access memory.
+Reason: KERN_PROTECTION_FAILURE at address: 0x00000005
+0x0cb36679 in SignatureMatches (method_desc=0x5, signature=0xcb5197e &amp;quot;RunCompletionCallback:iiC:&amp;quot;) at /Users/polina/src-chrome/src/native_client/src/shared/srpc/rpc_service.c:369
+369       matcher[0].field = method_desc-&amp;gt;name;
+
+We should therefore keep track of the channels and/or scheduled callbacks on the browser side of the proxy and ensure that the channel is still open before RPCing the callback.</ns0:content><ns0:updated>2011-05-31T18:10:39.000Z</ns0:updated><ns0:published>2011-01-26T01:04:38.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/106710594185928520364/</ns2:uri><ns2:username>bbu...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Callback RPC should not be issued after abort (surf-away or reload)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>OS-</ns2:label><ns2:label>Arch-</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1356/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1356" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1356" rel="self" type="application/atom+xml" /><ns2:stars>4</ns2:stars><ns2:closedDate>2011-05-31T18:10:39.000Z</ns2:closedDate><ns2:id>1356</ns2:id></ns0:entry>

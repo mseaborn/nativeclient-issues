@@ -1,0 +1,52 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYBRn47eCl7ImA9WhZbEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1608</ns0:id><ns0:author>
+			<ns0:name>shubhoje...@chromium.org</ns0:name><ns0:uri>/u/117441029434370492999/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+
+0.2.781.0
+
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+
+Mac OS-X 10.5 - Intel core 2 duo (32 bit)
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+
+11.0.696.28 dev
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+
+Downloaded gnu make online (from: http://mac.softpedia.com/get/Developer-Tools/GNU-Make.shtml) and ran make test32 and came across the following error:
+
+dhcp-172-22-71-69:examples testing$ pwd
+/Users/testing/Desktop/native_client_sdk_0_2_781_0/examples
+dhcp-172-22-71-69:examples testing$ cd hello_world
+dhcp-172-22-71-69:hello_world testing$ make test32
+../../toolchain/mac_x86/bin/nacl-g++ -Wall -Wno-long-long -pthread -Werror -m32 -I../.. -g -c -o test_helper_functions_x86_32_dbg.o test_helper_functions.cc
+../../toolchain/mac_x86/bin/nacl-g++ -Wall -Wno-long-long -pthread -Werror -m32 -I../.. -g -c -o helper_functions_x86_32_dbg.o helper_functions.cc
+../../toolchain/mac_x86/bin/nacl-g++ test_helper_functions_x86_32_dbg.o helper_functions_x86_32_dbg.o -lppruntime -lppapi_cpp -lplatform -lgio -lpthread -lsrpc  -m32 -o test_helper_functions_x86_32_dbg.nexe
+../../toolchain/mac_x86/bin/nacl-sel_ldr test_helper_functions_x86_32_dbg.nexe
+dyld: Library not loaded: /usr/lib/libcrypto.0.9.8.dylib
+  Referenced from: /Users/testing/Desktop/native_client_sdk_0_2_781_0/examples/hello_world/../../toolchain/mac_x86/bin/nacl-sel_ldr
+  Reason: image not found
+make: *** [test32] Trace/BPT trap
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+          o You should see output like this (interspersed with build output):
+                + ../../toolchain/&amp;lt;platform&amp;gt;/bin/nacl-sel_ldr test_helper_functions_x86_32_dbg.nexe
+                  Check: &amp;quot;FortyTwo()&amp;quot; == &amp;quot;42&amp;quot; passed
+                  Check: &amp;quot;ReverseText(empty_string)&amp;quot; == &amp;quot;empty_string&amp;quot; passed
+                  Check: &amp;quot;ReverseText(palindrome)&amp;quot; == &amp;quot;palindrome&amp;quot; passed
+                  Check: &amp;quot;ReverseText(alphabet)&amp;quot; == &amp;quot;alphabet_backwards&amp;quot; passed
+                  ../../toolchain/&amp;lt;platform&amp;gt;/bin/nacl64-sel_ldr test_helper_functions_x86_64_dbg.nexe
+                  Check: &amp;quot;FortyTwo()&amp;quot; == &amp;quot;42&amp;quot; passed
+                  Check: &amp;quot;ReverseText(empty_string)&amp;quot; == &amp;quot;empty_string&amp;quot; passed
+                  Check: &amp;quot;ReverseText(palindrome)&amp;quot; == &amp;quot;palindrome&amp;quot; passed
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-06-14T21:15:57.000Z</ns0:updated><ns0:published>2011-04-05T22:35:02.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/100268164290167392978/</ns2:uri><ns2:username>mmorten...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/mball@google.com/</ns2:uri><ns2:username>mball@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>"make test32" does not provide desired results. </ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Milestone-Baltic-Brill-SDK</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1608/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1608" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1608" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-06-14T21:15:57.000Z</ns2:closedDate><ns2:id>1608</ns2:id></ns0:entry>

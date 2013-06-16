@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEMBRH47eCl7ImA9WhZWFko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1796/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">For background, IMC's connection protocol looks like this on Unix:
+ * Client does imc_connect(SockA) -&gt; Sock1.  This expands to:
+    a) Client creates socket pair: socketpair() -&gt; (Sock1, Sock2)
+    b) Client does sendmsg(SockA, "c", [Sock2])
+    c) Client does close(Sock2)
+ * Server does imc_accept(SockB) -&gt; Sock2.  This expands to:
+    d) Server does recvmsg(SockB) -&gt; ("c", [Sock2])
+
+Broadly speaking, the workaround for this Mac kernel bug would be to change the client so that it does not do (c) until after (d) has completed.
+
+We would have to force imc_connect() to synchronise with the server process (as it already does on Windows).
+
+
+Possible fix #1:  The client receives an acknowledgement via SockA (since this is a bidirectional socket):
+ b1) Client does sendmsg(SockA, "c", [Sock2])
+ b2) Client does recvmsg(SockA) -&gt; "a"
+ d1) Server does recvmsg(SockB) -&gt; ("c", [Sock2])
+ d2) Server does sendmsg(SockB, "a")
+
+The problem here is that (in principle) SockA can be shared between multiple processes, so the acknowledgements can get mixed up between processes.  One holder of SockA can consume acknowledgements intended for another holder of SockA.  Although the acknowledgements are identical, re-ordering does matter.  One client could close Sock2 too early (before the server has received Sock2) as a result of receiving an acknowledgement intended for another client.
+
+
+Possible fix #2:  Alternatively we could send the acknowledgement via the Sock1/Sock2 channel:
+ c1) Client does recvmsg(Sock1) -&gt; "ack"
+ c2) Client does close(Sock2)
+ d1) Server does recvmsg(SockB) -&gt; ("c", [Sock2])
+ d2) Server does sendmsg(Sock2, "ack")
+
+This has the problem that if the server process dies in the middle of this, the client will be left hanging:  the client will not receive EOF on Sock1 while it is keeping Sock2 alive.
+
+We could modify this approach to address the hanging problem:
+
+Possible fix #3:
+ c1) Client does poll([Sock1, SockA]).  If it gets an EOF condition on SockA, then do Close(Sock2) early and continue.  The server might have died, or it might have done a single imc_accept(SockB) and then closed SockB.
+ c2) Client does recvmsg(Sock1) -&gt; "ack"
+ c3) Client does close(Sock2)
+ d1) Server does recvmsg(SockB) -&gt; ("c", [Sock2])
+ d2) Server does sendmsg(Sock2, "ack")
+</ns0:content><ns0:updated>2011-05-17T23:54:15.000Z</ns0:updated><ns0:published>2011-05-17T23:54:15.000Z</ns0:published><ns2:updates>
+			<ns2:label>Milestone-Baltic-Brill</ns2:label><ns2:ownerUpdate>mseaborn@chromium.org</ns2:ownerUpdate><ns2:ccUpdate>s...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 5 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1796#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1796/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

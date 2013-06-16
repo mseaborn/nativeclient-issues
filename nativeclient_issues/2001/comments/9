@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08MSX47eCl7ImA9WhdSE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2001/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>ncb...@google.com</ns0:name><ns0:uri>/u/100032148147647801554/</ns0:uri></ns0:author><ns0:content type="html">Neither refinement is going to get in before the branch point.
+
+1) is frustrated by the fact that notification of a "crash" reaches the plugin before notification of an exit.  The correct approach seems to be having Chrome read the exit status of the NaCl process rather than communicating it.  This will require changes to Chrome that are not practical before the branch.
+
+2) is frustrated by the fact the upcall thread needs to send the notification through CallOnMainThread, and by the time it is dispatched there is no guarantee the plugin will still exist.  Solving this problem is somewhat involved and requires using WeakRefs and is not something it would be wise to shove in immediately before branch.
+
+Our integration bots indicate that crash detection is not working when we're build into Chrome, this needs to be fixed to get any crash notifications whatsoever.</ns0:content><ns0:updated>2011-07-23T00:44:48.000Z</ns0:updated><ns0:published>2011-07-23T00:44:48.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by ncb...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2001#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2001/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

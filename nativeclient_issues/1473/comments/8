@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0MFQ347eCl7ImA9WhdWFU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1473/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>erwin.co...@gmail.com</ns0:name><ns0:uri>/u/108645934446772454433/</ns0:uri></ns0:author><ns0:content type="html">
+The Tumbler example doesn't render continuously, it requires mouse input for each frame. It would be good to fix this.
+
+One solution is to submit a new render call using the CompletionCallback:
+
+
+void OpenGLContext::FlushContext(PP_CompletionCallback_Func func, void* data) {
+  if (flush_pending()) {
+    // A flush is pending so do nothing; just drop this flush on the floor.
+    return;
+  }
+  set_flush_pending(true);
+  surface_.SwapBuffers(pp::CompletionCallback(func, data));
+}
+}  // namespace tumbler
+
+
+
+namespace {
+// This is called by the brower when the 3D context has been flushed to the
+// browser window.
+void MyFlushCallback(void* data, int32_t result) 
+{
+  static_cast&lt;tumbler::Tumbler*&gt;(data)-&gt;FlushCallback();
+}
+
+}  // namespace
+
+
+void Tumbler::FlushCallback()
+{
+	opengl_context_-&gt;set_flush_pending(false);
+	//and do the render
+	DrawSelf();
+}
+
+
+</ns0:content><ns0:updated>2011-09-08T22:36:52.000Z</ns0:updated><ns0:published>2011-09-08T22:36:52.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by erwin.co...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1473#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1473/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

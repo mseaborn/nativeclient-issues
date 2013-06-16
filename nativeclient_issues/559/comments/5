@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkQFRX47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/559/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2717
+
+------------------------------------------------------------------------
+r2717 | gregoryd@google.com | Mon Jul 19 10:40:04 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/pthread/nc_thread.c?r1=2717&amp;r2=2716&amp;pathrev=2717
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/threads/nacl.scons?r1=2717&amp;r2=2716&amp;pathrev=2717
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/threads/main_thread_pthread_exit_test.c?r1=2717&amp;r2=2716&amp;pathrev=2717
+
+Fix pthread_exit for the main thread.
+When pthread_exit is called from the main thread, call exit() after waiting for all the other threads instead of thread_exit(). This ensures the application termination code is executed correctly.
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=559
+Review URL: http://codereview.chromium.org/2969004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:51:54.000Z</ns0:updated><ns0:published>2011-01-21T22:51:54.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=559#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/559/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

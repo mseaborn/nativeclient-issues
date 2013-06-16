@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUHSX47eCl7ImA9WhdTFEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/842/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5994
+
+------------------------------------------------------------------------
+r5994 | robertm@google.com | Tue Jul 12 07:49:41 PDT 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/toolchain/llvm_bitmanip_intrinsics.stdout?r1=5994&amp;r2=5993&amp;pathrev=5994
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/toolchain/nacl.scons?r1=5994&amp;r2=5993&amp;pathrev=5994
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/toolchain/llvm_bitmanip_intrinsics.c?r1=5994&amp;r2=5993&amp;pathrev=5994
+
+llvm intrinsics tests for bit manipulation intrinsics.
+We currently do not compile in supoport for these intrinsics in libgcc/compiler-rt.
+So this test also insures that the corresponding functions
+in libgcc/compiler-rt are expanded by llc inline.
+
+
+Also, factored test processing into a loop
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=842
+Review URL: http://codereview.chromium.org/7237051
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-07-12T14:50:38.000Z</ns0:updated><ns0:published>2011-07-12T14:50:38.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=842#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/842/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

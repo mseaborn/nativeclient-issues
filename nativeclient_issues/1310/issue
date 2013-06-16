@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEQMSH47eCl7ImA9WhdXE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1310</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+Today NaCl modules cannot access Websockets through Pepper. Access through JavaScript is possible but awkward and slow so no adequate.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+Important applications such as ssh clients and such need better networking.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+Pepper should expose Websocket interfaces.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+The NaCl Pepper implementation exposes Websocket bindings.
+
+TODO: Add the corresponding Pepper issue in Chrome.
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+&lt;b&gt;[for users as well as other parts of the system]&lt;/b&gt;
+</ns0:content><ns0:updated>2011-08-26T18:13:09.000Z</ns0:updated><ns0:published>2011-01-12T19:59:42.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:state>closed</ns2:state><ns0:title>Implement Websockets for Pepper in NaCl</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>Mstone-16</ns2:label><ns2:label>MigrateToChromium</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1310/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1310" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1310" rel="self" type="application/atom+xml" /><ns2:stars>8</ns2:stars><ns2:closedDate>2011-08-26T18:13:09.000Z</ns2:closedDate><ns2:id>1310</ns2:id><ns2:mergedInto>
+			<ns2:id>87310</ns2:id><ns2:project>chromium</ns2:project></ns2:mergedInto></ns0:entry>

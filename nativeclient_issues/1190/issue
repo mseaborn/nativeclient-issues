@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCRn47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1190</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">$ cat helloworld.m
+#import &amp;lt;stdio.h&amp;gt;
+#import &amp;lt;objc/Object.h&amp;gt;
+
+@interface MyClass : Object {
+}
+- (int)func;
+@end
+
+@implementation MyClass : Object {
+}
+- (int)func {
+   return 42;
+}
+@end
+
+int main(void) {
+   printf(&amp;quot;Hello, World!\n&amp;quot;);
+   return 0;
+}
+
+$ nacl-gcc helloworld.m -lobjc
+
+$ sel_ldr ./a.out
+[28865,4145497808:15:33:48.619054] VALIDATION FAILED.
+[28865,4145497808:15:33:48.619135] Run sel_ldr in debug mode to ignore validation failure.
+[28865,4145497808:15:33:48.619142] Run ncval &amp;lt;module-name&amp;gt; for validation error details.
+Error while loading &amp;quot;./a.out&amp;quot;: Validation failure. File violates Native Client safety rules.
+Using the wrong type of nexe (nacl-x86-32 on an x86-64 or vice versa)
+or a corrupt nexe file may be responsible for this error.
+
+$ sel_ldr -a -c -f ./a.out
+DEBUG MODE ENABLED (bypass acl)
+DEBUG MODE ENABLED (ignore validator)
+[28863,4144932560:15:33:43.730377] BYPASSING ALL ACL CHECKS
+[28863,4144932560:15:33:43.761015] VALIDATION FAILED: continuing anyway...
+Hello, World!
+
+I didn't investigate this. Probably libobjc needs some porting?
+</ns0:content><ns0:updated>2011-07-29T00:12:47.000Z</ns0:updated><ns0:published>2010-11-23T12:36:01.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/117420925389613150407/</ns2:uri><ns2:username>aba...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>objc binaries do not pass validation</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1190/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1190" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1190" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:id>1190</ns2:id></ns0:entry>

@@ -1,0 +1,78 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0IDQn47eCl7ImA9WhVWEks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/42</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8372
+
+------------------------------------------------------------------------
+r8372 | pasko@google.com | Tue Apr 24 04:04:08 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_validate_image.c?r1=8372&amp;r2=8371&amp;pathrev=8372
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=8372&amp;r2=8371&amp;pathrev=8372
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/testdata/dfa_validator_hello.stderr?r1=8372&amp;r2=8371&amp;pathrev=8372
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/64/validator_x86_64.gyp?r1=8372&amp;r2=8371&amp;pathrev=8372
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/dfa_validate_64.c?r1=8372&amp;r2=8371&amp;pathrev=8372
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/dfa_validate_32.c?r1=8372&amp;r2=8371&amp;pathrev=8372
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=8372&amp;r2=8371&amp;pathrev=8372
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/build.scons?r1=8372&amp;r2=8371&amp;pathrev=8372
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=8372&amp;r2=8371&amp;pathrev=8372
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/dfa_validator_x86_64.gyp?r1=8372&amp;r2=8371&amp;pathrev=8372
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/site_scons/site_tools/library_deps.py?r1=8372&amp;r2=8371&amp;pathrev=8372
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/dfa_validator_x86_32.gyp?r1=8372&amp;r2=8371&amp;pathrev=8372
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/ncvalidate.h?r1=8372&amp;r2=8371&amp;pathrev=8372
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86/service_runtime_x86.gyp?r1=8372&amp;r2=8371&amp;pathrev=8372
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=8372&amp;r2=8371&amp;pathrev=8372
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main_chrome.c?r1=8372&amp;r2=8371&amp;pathrev=8372
+
+validator_ragel: Link into TCB, use under env var
+
+In both Chrome and sel_ldr environment variable
+NACL_DANGEROUS_USE_DFA_VALIDATOR is used to replace the current validator with
+the new one.
+
+WARNING:
+WARNING:
+WARNING: The size increase of the runnable binaries resulted by this change will
+likely trigger the "perf_expectation" regression when this change gets pulled
+into Chrome via DEPS roll.
+
+Size implications:
+
+0. absolute values of size increase are equal among sel_ldr, nacl_helper and the
+   chrome binary. On Linux the validator library gets pulled into the
+   downloadable chrome package twice (in nacl_helper and chrome).
+
+1. 32bit validator size is negligible (within 40K on each platform uncompressed)
+
+2. with 64 validator there are 2 cases: Linux and Windows.
+
+2.1. On Linux the optimized stripped sel_ldr gets increased by 400K (was: 510K).
+     The 7zipped size increase for nacl_helper is 108K (was: 884K).
+
+2.2. On Windows the optimized sel_ldr gets increased by 1MB (was: 955K). When
+     7zipped the increase is 101K (great compression!). When we get to optimize
+     the Windows64 build the uncompressed size increase is expected to be
+     significantly smaller: about 350K. This is a work in progress.
+
+Overall package size increase is expected to be:
+Windows64:
+  7zipped      - about 101K
+  uncompressed - about 1MB (can be reduced later)
+Linux64:
+  7zipped      - about 216K
+  uncompressed - about 800K
+Windows32, all MacOS variants:
+  uncompressed - less than 40K
+Linux32:
+  uncompressed - less than 80K
+
+Linking another validator in statically has the advantage of being able to run
+two validators side by side for some time taking the current validator's answer
+as authoritative. Also, it does not increase the hassle in the build and
+deployment systems which we have a lot already.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2597
+TEST=./scons --mode=dbg-host platform=x86-64 run_dfa_validator_hello_world_test
+
+Review URL: https://chromiumcodereview.appspot.com/10070010
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-04-24T11:06:13.000Z</ns0:updated><ns0:published>2012-04-24T11:06:13.000Z</ns0:published><ns2:updates /><ns0:title>Comment 42 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c42" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/42" rel="self" type="application/atom+xml" /></ns0:entry>

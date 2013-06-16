@@ -1,0 +1,148 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0MEQH47eCl7ImA9WhRaGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7864
+
+------------------------------------------------------------------------
+r7864 | pasko@google.com | Wed Feb 22 06:32:37 PST 2012
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/stosd67.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/rbp67.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/bt.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/call-ex.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/strings.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/ud2.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/sse.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/bad66.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/README?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/lea.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/add_rsp_r15.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/lea-rsp.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/call_short.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/rex_not_last.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/push-memoff.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/indirect_jmp_masked.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/call0.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/call1.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/addrex.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/jmp-16.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/sub-add-rsp.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/direct-cond-jump-32.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/mov_rbp_2_rsp.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/rip67.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/AhNotSubRsp.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/mov-lea-rbp-bad-1.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/inc67.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/mov-lea-rbp-bad-2.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/incno67.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/mov_esp_add_rsp_r15.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/mov-lea-rbp-bad-3.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/mov-lea-rbp-bad-4.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/mv_ebp_add_crossing.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/mov-lea-rbp-bad-5.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/movsbw.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/3DNow.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/bsr-mask.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/mv_ebp_alone.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/direct-jump-32.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/segment_assign.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/rip-relative.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/change-subregs.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/call_aligned.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/nops.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/bsf-mask.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/stosd-bad.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/Makefile?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/ambig-segment.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/call_long.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/direct-call-16.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/stosdno67.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/mov-lea-rbp.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/sub-rsp.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/cpuid.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/nacl_illegal.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/add_cs_gs_prefix.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/jump_outside.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/extensions.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/pop-rbp.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/fs_use.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/mv_ebp_add_rbp_r15.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/call_not_aligned.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/jump_not_atomic.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/invalid_base.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/call_not_aligned_16.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/addrex2.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/dup-prefix.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/mov-lea-rsp.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/invalid_width_index.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/segment_store.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/valid_base_only.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/segment_aligned.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/mmx.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/read_const_ptr.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/jump_atomic.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/rex_invalid.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/direct-cond-jump-16.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/lea-add-rsp.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/return.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/prefix-single.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/add_mult_prefix.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/movlps-ex.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/jump_underflow.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/stack_regs.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/prefix-2.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/valid_lea_store.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/prefix-3.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/fpu.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/run_ncval_tests.py?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/invalid_base_store.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/segment_not_aligned.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/hlt.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/direct-jump-16.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/cmpxchg.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/movs_test.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/jump_overflow.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/jmp0.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/parse_hex.py?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/valid_and_store.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/x87.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/maskmov_test.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/legacy.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/direct-call-32.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/indirect_jmp_not_masked.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/jump_not_atomic_1.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/update-rsp.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/mov-esi-nop-use.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/stosd.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/golden/rep_tests.val.ref?r1=7864&amp;r2=7863&amp;pathrev=7864
+
+validator_ragel: Add ncval tests from the old validator
+
+The old validator individually analyses all instructions, and only later checks
+for bundle alignment rules.  The validator_ragel fails at the first invalid
+instruction it encounters.
+
+We will introduce a feature to the validator_ragel to be able to continue with
+validation after error (useful for fixing invalid code), but this would be hard
+to rely on in tests since the validator would often continue to restart
+from non-interesting bytes resulting in numerous false positives.
+
+Hence, the test runner (run_ncval_tests.py) cuts each test bundle by bundle,
+runs these bundles through the validator.  Instructions that cross a bundle get
+additional run, on that they get placed at offset 0.
+
+The "parse_hex.py" is used to convert the old validator output from *.rval files
+into the new golden files.  It parses the contents of testdata/64 for tests,
+generalizes the validation errors it sees into 2 categories: (1) crossing a
+32-byte bundle, (2) all others.  For each error in (2) the offset of the first
+instructions' byte is recorded into the golden file.  Some of the files cannot
+yet be parsed, for example, containing the '@' syntax, this is a TODO for later
+commits.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2597
+TEST=make check-ncval
+
+Review URL: https://chromiumcodereview.appspot.com/9423045
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-02-22T14:36:41.000Z</ns0:updated><ns0:published>2012-02-22T14:36:41.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

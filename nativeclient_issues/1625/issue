@@ -1,0 +1,315 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0MMRX47eCl7ImA9WhZUGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1625</ns0:id><ns0:author>
+			<ns0:name>ncb...@google.com</ns0:name><ns0:uri>/u/100032148147647801554/</ns0:uri></ns0:author><ns0:content type="html">The nexe is getting loaded, the bridge script is being injected, etc.  It looks like communication between the test and the extension is failing.
+
+/usr/bin/python /b/build/slave/mac10.6-m32-n32-opt/build/native_client/tools/browser_tester/browser_tester.py --browser_path /b/build/slave/mac10.6-m32-n32-opt/build/native_client/chromebinaries/mac_x86-32/Chromium.app/Contents/MacOS/Chromium --url chrome_extension_test.html --timeout 20 --ppapi_plugin /b/build/slave/mac10.6-m32-n32-opt/build/native_client/scons-out/opt-mac-x86-32/staging/ppNaClPlugin --sel_ldr /b/build/slave/mac10.6-m32-n32-opt/build/native_client/scons-out/opt-mac-x86-32/staging/sel_ldr --enable_experimental_js --file /b/build/slave/mac10.6-m32-n32-opt/build/native_client/tests/chrome_extension/chrome_extension_test.html --extension /b/build/slave/mac10.6-m32-n32-opt/build/native_client/scons-out/nacl-x86-32/staging/chrome_extension --debug
+ENV: NACL_SEL_LDR=/b/build/slave/mac10.6-m32-n32-opt/build/native_client/scons-out/opt-mac-x86-32/staging/sel_ldr VERSIONER_PYTHON_VERSION=2.6 SHLVL=1 NACL_PLUGIN_DEBUG=1 VERSIONER_PYTHON_PREFER_32_BIT=no __CF_USER_TEXT_ENCODING=0x4BA5FAA2:0:0 NACL_PPAPI_PROXY_DEBUG=1 PWD=/b/build/slave/mac10.6-m32-n32-opt/build/native_client CYGWIN=nodosfilewarning PPAPI_BROWSER_DEBUG=1 PATH=/b/build/slave/mac10.6-m32-n32-opt/build/native_client/toolchain/mac_x86/bin:/usr/local/bin:/opt/bin:/bin:/usr/bin:/sw/bin HOME=/Users/chrome-bot NACL_ENABLE_EXPERIMENTAL_JAVASCRIPT_APIS=1 DISPLAY=/tmp/launch-mqEB8r/org.x:0 _=/usr/bin/python
+LAUNCHING: /b/build/slave/mac10.6-m32-n32-opt/build/native_client/chromebinaries/mac_x86-32/Chromium.app/Contents/MacOS/Chromium --disable-web-resources --disable-preconnect --no-first-run --no-default-browser-check --enable-logging --log-level=1 --safebrowsing-disable-auto-update --user-data-dir=/tmp/browserprofile_dAEKGx --register-pepper-plugins=/b/build/slave/mac10.6-m32-n32-opt/build/native_client/scons-out/opt-mac-x86-32/staging/ppNaClPlugin;application/x-nacl --no-sandbox --load-extension=/b/build/slave/mac10.6-m32-n32-opt/build/native_client/scons-out/nacl-x86-32/staging/chrome_extension --enable-experimental-extension-apis http://127.0.0.1:49654/chrome_extension_test.html
+PID 7985
+a046e540: CreateModule ()
+a046e540: ModulePpapi::ModulePpapi (this=0x382fb30)
+a046e540: CreateModule ()
+a046e540: ModulePpapi::ModulePpapi (this=0x38305b0)
+[7986:263:1618022632555:ERROR:renderer_main.cc(319)] Running without renderer sandbox
+**** GET /chrome_extension_test.html
+**** GET /nacltest.js
+a046e540: CreateModule ()
+a046e540: ModulePpapi::ModulePpapi (this=0x3a1e2c0)
+a046e540: CreateModule ()
+a046e540: ModulePpapi::ModulePpapi (this=0x3a1ed40)
+[7987:263:1618186725051:ERROR:renderer_main.cc(319)] Running without renderer sandbox
+**** [undefined LOG] Bridge script injected.
+**** GET /favicon.ico
+a046e540: ModulePpapi::CreateInstance (pp_instance=-1761114327)
+a046e540: PluginPpapi::New (pp_instance=-1761114327)
+a046e540: PortableHandle::PortableHandle (this=0x3a39c90)
+a046e540: Plugin::Plugin (this=0x3a39c90)
+a046e540: PluginPpapi::PluginPpapi (this=0x3a39c70, pp_instance=-1761114327)
+a046e540: FileDownloader::FileDownloader (this=0x3a39d58)
+a046e540: PluginPpapi::New (plugin=0x3a39c70)
+a046e540: ModulePpapi::CreateInstance (return 0x3a39c70)
+a046e540: PluginPpapi::Init (argc=5)
+a046e540: ScriptableHandlePpapi::New (portable_handle=0x3a39c90)
+a046e540: ScriptableHandle::ScriptableHandle (this=0x3a39e54, handle=0x3a39c90)
+a046e540: ScriptableHandlePpapi::ScriptableHandlePpapi (this=0x3a39e50, handle=0x3a39c90)
+a046e540: ScriptableHandlePpapi::ScriptableHandlePpapi (this=0x3a39e50, handle_is_plugin=1)
+a046e540: ScriptableHandlePpapi::New (return 0x3a39e50)
+a046e540: PluginPpapi::Init (scriptable_handle=0x3a39e54)
+a046e540: Plugin::Init (instance_id=0x3a39c70)
+a046e540: Plugin::Init (wrapper_factory=0x3a39fa0)
+a046e540: BrowserInterfacePpapi::GetFullURL (location=Var&amp;lt;OBJECT&amp;gt;)
+a046e540: BrowserInterfacePpapi::GetFullURL (href=Var&amp;lt;'chrome-extension://plopfflhbbelobblnhdnkaipbpalnopf/background.html'&amp;gt;)
+a046e540: BrowserInterfacePpapi::GetFullURL (full_url='chrome-extension://plopfflhbbelobblnhdnkaipbpalnopf/background.html')
+a046e540: Plugin::Init (origin='chrome-extension://plopfflhbbelobblnhdnkaipbpalnopf')
+a046e540: Plugin::LoadMethods ()
+a046e540: PortableHandle::AddPropertyGet (name='__moduleReady', id=0)
+a046e540: PortableHandle::AddPropertySet (name='__moduleReady', id=0)
+a046e540: PortableHandle::AddMethodCall (name='__shmFactory', id=1)
+a046e540: PortableHandle::AddMethodCall (name='__defaultSocketAddress', id=2)
+a046e540: PortableHandle::AddMethodCall (name='__getSandboxISA', id=3)
+a046e540: PortableHandle::AddMethodCall (name='__launchExecutableFromFd', id=4)
+a046e540: PortableHandle::AddMethodCall (name='__nullPluginMethod', id=5)
+a046e540: PortableHandle::AddMethodCall (name='__sendAsyncMessage0', id=6)
+a046e540: PortableHandle::AddMethodCall (name='__sendAsyncMessage1', id=7)
+a046e540: PortableHandle::AddMethodCall (name='__startSrpcServices', id=8)
+a046e540: PortableHandle::AddPropertyGet (name='__height', id=9)
+a046e540: PortableHandle::AddPropertySet (name='__height', id=9)
+a046e540: PortableHandle::AddPropertyGet (name='__nacl', id=a)
+a046e540: PortableHandle::AddPropertySet (name='__nacl', id=a)
+a046e540: PortableHandle::AddPropertyGet (name='__src', id=b)
+a046e540: PortableHandle::AddPropertySet (name='__src', id=b)
+a046e540: PortableHandle::AddPropertyGet (name='__videoUpdateMode', id=c)
+a046e540: PortableHandle::AddPropertySet (name='__videoUpdateMode', id=c)
+a046e540: PortableHandle::AddPropertyGet (name='__width', id=d)
+a046e540: PortableHandle::AddPropertySet (name='__width', id=d)
+a046e540: Plugin::Init (return 1)
+a046e540: PluginPpapi::Init (nacl_attr=chrome_extension.nmf)
+a046e540: PluginPpapi::RequestNaClManifest (url='chrome_extension.nmf')
+a046e540: FileDownloader::Open (async_notify_ok=1)
+a046e540: PortableHandle::AddMethodCall (name='__urlAsNaClDesc', id=e)
+a046e540: PortableHandle::AddMethodCall (name='__setAsyncCallback', id=f)
+a046e540: PluginPpapi::Init (status=1)
+a046e540: PluginPpapi::DidChangeView (this=0x3a39c70)
+a046e540: FileDownloader::URLLoadStartNotify (pp_error=0)
+a046e540: FileDownloader::URLLoadStartNotify (chrome-extension response status_code=0)
+a046e540: FileDownloader::URLLoadStartNotify (async_notify_ok=1)
+a046e540: FileDownloader::URLLoadFinishNotify (pp_error=0)
+a046e540: FileDownloader::URLLoadFinishNotify (full_url=Var&amp;lt;'chrome-extension://plopfflhbbelobblnhdnkaipbpalnopf/chrome_extension.nmf'&amp;gt;)
+a046e540: FileDownloader::URLLoadFinishNotify (async_notify_ok=1)
+a046e540: FileDownloader::FileOpenNotify (pp_error=0)
+a046e540: PluginPpapi::NaClManifestFileDidOpen (pp_error=0)
+a046e540: PluginPpapi::NaClManifestFileDidOpen (file_desc=22)
+a046e540: PluginPpapi::NaClManifestFileDidOpen (dup_file_desc=23, json_file=0xa046f938)
+a046e540: GetNexeURLFromManifest(): sandbox='x86-32' nexe_manifest_json='{
+  &amp;quot;nexes&amp;quot;: {
+    &amp;quot;x86-64&amp;quot;: &amp;quot;chrome_extension_x86-64.nexe&amp;quot;,
+    &amp;quot;x86-32&amp;quot;: &amp;quot;chrome_extension_x86-32.nexe&amp;quot;,
+    &amp;quot;ARM&amp;quot;: &amp;quot;chrome_extension_ARM.nexe&amp;quot;
+  }
+}
+'.
+a046e540: PluginPpapi::NaClManifestFileDidOpen (nexe_url=chrome_extension_x86-32.nexe)
+a046e540: Plugin::SetSrcPropertyImpl (unloading previous)
+a046e540: Plugin::ShutDownSubprocess (this=0x3a39c90)
+a046e540: Plugin::ShutDownSubprocess (socket_address=0x0, socket=0x0)
+a046e540: Plugin::ShutDownSubprocess (service_runtime=0x0)
+a046e540: Plugin::ShutDownSubprocess (this=0x3a39c90, return)
+a046e540: PluginPpapi::RequestNaClModule (url='chrome_extension_x86-32.nexe')
+a046e540: FileDownloader::Open (async_notify_ok=1)
+a046e540: FileDownloader::URLLoadStartNotify (pp_error=0)
+a046e540: FileDownloader::URLLoadStartNotify (chrome-extension response status_code=0)
+a046e540: FileDownloader::URLLoadStartNotify (async_notify_ok=1)
+a046e540: FileDownloader::URLLoadFinishNotify (pp_error=0)
+a046e540: FileDownloader::URLLoadFinishNotify (full_url=Var&amp;lt;'chrome-extension://plopfflhbbelobblnhdnkaipbpalnopf/chrome_extension_x86-32.nexe'&amp;gt;)
+a046e540: FileDownloader::URLLoadFinishNotify (async_notify_ok=1)
+a046e540: FileDownloader::FileOpenNotify (pp_error=0)
+a046e540: PluginPpapi::NexeFileDidOpen (pp_error=0)
+a046e540: PluginPpapi::NexeFileDidOpen (file_desc=22)
+a046e540: Plugin::LoadNaClModule (file_desc=22)
+a046e540: Plugin::IsValidNexeOrigin (full_url='chrome-extension://plopfflhbbelobblnhdnkaipbpalnopf/chrome_extension_x86-32.nexe')
+a046e540: Plugin::IsValidNexeOrigin (page_origin='chrome-extension://plopfflhbbelobblnhdnkaipbpalnopf', page_origin_valid=1)
+a046e540: Plugin::IsValidNexeOrigin (nacl_origin='chrome-extension://plopfflhbbelobblnhdnkaipbpalnopf', nacl_origin_valid=1)
+a046e540: Plugin::LoadNaClModule (might_be_elf_exe=1)
+a046e540: Plugin::ShutDownSubprocess (this=0x3a39c90)
+a046e540: Plugin::ShutDownSubprocess (socket_address=0x0, socket=0x0)
+a046e540: Plugin::ShutDownSubprocess (service_runtime=0x0)
+a046e540: Plugin::ShutDownSubprocess (this=0x3a39c90, return)
+a046e540: Plugin::LoadNaClModule (service_runtime=0x383a900)
+a046e540: ServiceRuntime::StartFromCommandLine (nacl_file='', nacl_file_desc='0x3840390')
+a046e540: ServiceRuntime::InitCommunication (this=0x383a900, subprocess=0x383ffe0, bootstrap_socket=0x1c)
+a046e540: ServiceRuntime::GetSocketAddress (plugin=0x3a39c90, channel=0x1c)
+a046e540: ServiceRuntime::GetSocketAddress (-X result descriptor descs[0]=0x38405e0)
+a046e540: SocketAddress::New (plugin=0x3a39c90)
+a046e540: PortableHandle::PortableHandle (this=0x3840900)
+a046e540: DescBasedHandle::DescBasedHandle (this=0x3840900)
+a046e540: SocketAddress::SocketAddress (this=0x3840900)
+a046e540: PortableHandle::AddMethodCall (name='map', id=10)
+a046e540: PortableHandle::AddMethodCall (name='connect', id=11)
+a046e540: ScriptableHandlePpapi::New (portable_handle=0x3840900)
+a046e540: ScriptableHandle::ScriptableHandle (this=0x3840a54, handle=0x3840900)
+a046e540: ScriptableHandlePpapi::ScriptableHandlePpapi (this=0x3840a50, handle=0x3840900)
+a046e540: ScriptableHandlePpapi::ScriptableHandlePpapi (this=0x3840a50, handle_is_plugin=0)
+a046e540: ScriptableHandlePpapi::New (return 0x3840a50)
+a046e540: ServiceRuntime::GetSocketAddress (return 0x3840a54)
+a046e540: ServiceRuntime::InitCommunication (default_socket_address=0x3840a54)
+a046e540: SocketAddress::Connect ()
+a046e540: SocketAddress::Connect (conect_desc=0x383c0a0)
+a046e540: ConnectedSocket::New ()
+a046e540: PortableHandle::PortableHandle (this=0x3840aa0)
+a046e540: DescBasedHandle::DescBasedHandle (this=0x3840aa0)
+a046e540: ConnectedSocket::ConnectedSocket (this=0x3840aa0)
+a046e540: PortableHandle::AddMethodCall (name='map', id=10)
+a046e540: ConnectedSocket::Init (plugin=0x3a39c90, wrapper=0x383c0a0)
+a046e540: SrpcClient::SrpcClient (this=0x3840b90)
+a046e540: SrpcClient::Init (this=0x3840b90, browser_interface=0x3a39e10, socket=0x3840aa0)
+a046e540: SrpcClient::Init (Ctor worked)
+a046e540: SrpcClient::GetMethods (this=0x3840b90)
+a046e540: SrpcClient::Init (GetMethods worked)
+a046e540: ScriptableHandlePpapi::New (portable_handle=0x3840aa0)
+a046e540: ScriptableHandle::ScriptableHandle (this=0x3841194, handle=0x3840aa0)
+a046e540: ScriptableHandlePpapi::ScriptableHandlePpapi (this=0x3841190, handle=0x3840aa0)
+a046e540: ScriptableHandlePpapi::ScriptableHandlePpapi (this=0x3841190, handle_is_plugin=0)
+a046e540: ScriptableHandlePpapi::New (return 0x3841190)
+a046e540: SocketAddress::Connect (connected_socket=0x3841194)
+a046e540: ServiceRuntime::InitCommunication (raw_channel=0x3841194)
+a046e540: ServiceRuntime::InitCommunication (runtime_channel=0x38411e0)
+a046e540: PortableHandle::GetMethodInfo (id=16, return 0x0)
+a046e540: SrpcClient::HasMethod (this=0x3840b90, return 0x3841120)
+a046e540: PortableHandle::GetMethodInfo (id=16, return 0x0)
+a046e540: PortableHandle::GetMethodInfo (id=16, return 0x0)
+a046e540: ConnectedSocket::InvokeEx ()
+a046e540: SrpcClient::Invoke (this=0x3840b90, method_name='load_module', params=0xbfffb604)
+a046e540: SrpcClient::Invoke (sending the rpc)
+a046e540: SrpcClient::Invoke (response=256)
+a046e540: SrpcClient::Invoke (return 1)
+a046e540: PortableHandle::GetMethodInfo (id=14, return 0x0)
+a046e540: SrpcClient::HasMethod (this=0x3840b90, return 0x3840f90)
+a046e540: PortableHandle::GetMethodInfo (id=14, return 0x0)
+a046e540: PortableHandle::GetMethodInfo (id=14, return 0x0)
+a046e540: ConnectedSocket::InvokeEx ()
+a046e540: SrpcClient::Invoke (this=0x3840b90, method_name='start_module', params=0xbfffb604)
+a046e540: SrpcClient::Invoke (sending the rpc)
+a046e540: SrpcClient::Invoke (response=256)
+a046e540: SrpcClient::Invoke (return 1)
+a046e540: StartModule: start_module RPC returned status code 0
+a046e540: ServiceRuntime::InitCommunication (load_status=0)
+a046e540: ServiceRuntime::Start (return 1)
+a046e540: Plugin::LoadNaClModule (service_runtime_started=1)
+a046e540: ServiceRuntime::default_socket_address (this=0x383a900, default_socket_address=0x3840a54)
+a046e540: SocketAddress::Connect ()
+a046e540: SocketAddress::Connect (conect_desc=0x383a920)
+a046e540: ConnectedSocket::New ()
+a046e540: PortableHandle::PortableHandle (this=0x3841350)
+a046e540: DescBasedHandle::DescBasedHandle (this=0x3841350)
+a046e540: ConnectedSocket::ConnectedSocket (this=0x3841350)
+a046e540: PortableHandle::AddMethodCall (name='map', id=10)
+a046e540: ConnectedSocket::Init (plugin=0x3a39c90, wrapper=0x383a920)
+a046e540: SrpcClient::SrpcClient (this=0x3841420)
+a046e540: SrpcClient::Init (this=0x3841420, browser_interface=0x3a39e10, socket=0x3841350)
+PPAPI_PROXY_PLUGIN : PluginAudio::GetInterface
+a046e540: SrpcClient::Init (Ctor worked)
+a046e540: SrpcClient::GetMethods (this=0x3841420)
+a046e540: SrpcClient::Init (GetMethods worked)
+a046e540: ScriptableHandlePpapi::New (portable_handle=0x3841350)
+a046e540: ScriptableHandle::ScriptableHandle (this=0x3a3d124, handle=0x3841350)
+a046e540: ScriptableHandlePpapi::ScriptableHandlePpapi (this=0x3a3d120, handle=0x3841350)
+a046e540: ScriptableHandlePpapi::ScriptableHandlePpapi (this=0x3a3d120, handle_is_plugin=0)
+a046e540: ScriptableHandlePpapi::New (return 0x3a3d120)
+a046e540: SocketAddress::Connect (connected_socket=0x3a3d124)
+a046e540: PluginPpapi::StartProxiedExecution (srpc_channel=0x3841438)
+a046e540: PluginPpapi::StartProxiedExecution (ppapi_proxy=0x3a3d170)
+PPAPI_PROXY_BROWSER: PPP_InitializeModule: module=2391062592
+PPAPI_PROXY_PLUGIN : PPP_InitializeModule: module=2391062592: service_discovery::C
+StreamAsFile:isi:
+GetFileDesc:is:h
+HasProperty:CCC:iC
+HasMethod:CCC:iC
+GetProperty:CCC:CC
+GetAllPropertyNames:CC:iCC
+SetProperty:CCCC:C
+RemoveProperty:CCC:C
+Call:CCiCC:CC
+Construct:CiCC:CC
+Deallocate:C:
+PPB_GetInterface:s:i
+PPB_Audio_Create:ii:i
+PPB_Audio_IsAudio:i:i
+PPB_Audio_GetCurrentConfig:i:i
+PPB_Audio_StopPlayback:i:i
+PPB_Audio_StartPlayback:i:i
+PPB_AudioConfig_CreateStereo16Bit:iii:i
+PPB_AudioConfig_IsAudioConfig:i:i
+PPB_AudioConfig_RecommendSampleFrameCount:ii:i
+PPB_AudioConfig_GetSampleRate:i:i
+PPB_AudioConfig_GetSampleFrameCount:i:i
+PPB_Core_AddRefResource:i:
+PPB_Core_ReleaseResource:i:
+ReleaseResourceMultipleTimes:ii:
+PPB_Core_GetTime::d
+PPB_Core_GetTimeTicks::d
+PPB_Core_CallOnMainThread:iii:
+PPB_FileIO_Dev_Create:i:i
+PPB_FileIO_Dev_IsFileIO:i:i
+PPB_FileIO_Dev_Open:iiii:i
+PPB_FileIO_Dev_Read:ilii:Ci
+PPB_FileSystem_Dev_Create:ii:i
+PPB_FileSystem_Dev_IsFileSystem:i:i
+PPB_FileSystem_Dev_Open:ili:i
+PPB_FileSystem_Dev_GetType:i:i
+PPB_Graphics2D_Create:iCi:i
+PPB_Graphics2D_IsGraphics2D:i:i
+PPB_Graphics2D_Describe:i:Cii
+PPB_Graphics2D_PaintImageData:iiCC:
+PPB_Graphics2D_Scroll:iCC:
+PPB_Graphics2D_ReplaceContents:ii:
+PPB_Graphics2D_Flush:ii:i
+PPB_Context3D_BindSurfaces:iii:i
+PPB_Surface3D_Create:iiI:i
+PPB_Surface3D_SwapBuffers:ii:i
+PPB_Context3DTrusted_CreateRaw:iiiI:i
+PPB_Context3DTrusted_Initialize:ii:i
+PPB_Context3DTrusted_GetRingBuffer:i:hi
+PPB_Context3DTrusted_GetState:i:C
+PPB_Context3DTrusted_Flush:ii:
+PPB_Context3DTrusted_FlushSync:ii:C
+PPB_Context3DTrusted_CreateTransferBuffer:ii:i
+PPB_Context3DTrusted_DestroyTransferBuffer:ii:
+PPB_Context3DTrusted_GetTransferBuffer:ii:hi
+PPB_ImageData_GetNativeImageDataFormat::i
+PPB_ImageData_IsImageDataFormatSupported:i:i
+PPB_ImageData_Create:iiCi:i
+PPB_ImageData_IsImageData:i:i
+PPB_ImageData_Describe:i:Chii
+PPB_Instance_GetWindowObject:i:C
+PPB_Instance_GetOwnerElementObject:i:C
+PPB_Instance_BindGraphics:ii:i
+PPB_Instance_IsFullFrame:i:i
+PPB_Instance_ExecuteScript:iCC:CC
+PPB_URLLoader_Create:i:i
+PPB_URLLoader_IsURLLoader:i:i
+PPB_URLLoader_Open:iii:i
+PPB_URLLoader_FollowRedirect:ii:i
+PPB_URLLoader_GetUploadProgress:i:lli
+PPB_URLLoader_GetDownloadProgress:i:lli
+PPB_URLLoader_GetResponseInfo:i:i
+PPB_URLLoader_ReadResponseBody:iii:Ci
+PPB_URLLoader_FinishStreamingToFile:ii:i
+PPB_URLLoader_Close:i:
+PPB_URLRequestInfo_Create:i:i
+PPB_URLRequestInfo_IsURLRequestInfo:i:i
+PPB_URLRequestInfo_SetProperty:iiC:i
+PPB_URLRequestInfo_AppendDataToBody:iC:i
+PPB_URLRequestInfo_AppendFileToBody:iilld:i
+PPB_URLResponseInfo_IsURLResponseInfo:i:i
+PPB_URLResponseInfo_GetProperty:ii:C
+PPB_URLResponseInfo_GetBodyAsFileRef:i:i
+
+PPAPI_PROXY_PLUGIN : PPB_GetInterface('PPB_Core;0.4')
+PPAPI_PROXY_PLUGIN : PPB_GetInterface('PPB_Core;0.4'): 0x170b60
+PPAPI_PROXY_BROWSER: PPB_GetInterface('PPB_Core;0.4'): 0x345d920
+PPAPI_PROXY_PLUGIN : PPB_GetInterface('PPB_Core;0.4'): No error
+PPAPI_PROXY_BROWSER: PPP_InitializeModule: No error
+PPAPI_PROXY_BROWSER: PPP_GetInterface('PPP_Instance;0.4')
+PPAPI_PROXY_PLUGIN : PPP_GetInterface('PPP_Instance;0.4')
+PPAPI_PROXY_BROWSER: PPP_GetInterface('PPP_Instance;0.4'): No error
+PPAPI_PROXY_BROWSER: PPP_GetInterface('PPP_Instance;0.4'): 0x3ebcdd8
+PPAPI_PROXY_BROWSER: PPP_InitializeModule: pp_error=0
+PPAPI_PROXY_BROWSER: PPP_Instance::DidCreate: instance=2533852969
+PPAPI_PROXY_BROWSER: PPP_Instance::DidCreate: No error
+PPAPI_PROXY_BROWSER: PPP_Instance::GetInstanceObject: instance=2533852969
+PPAPI_PROXY_PLUGIN : PPB_GetInterface('PPB_Var(Deprecated);0.3')
+PPAPI_PROXY_PLUGIN : PPB_GetInterface('PPB_Var(Deprecated);0.3'): 0x171ce0
+PPAPI_PROXY_BROWSER: PPB_GetInterface('PPB_Var(Deprecated);0.3'): 0x345efe0
+PPAPI_PROXY_PLUGIN : PPB_GetInterface('PPB_Var(Deprecated);0.3'): No error
+PPAPI_PROXY_BROWSER: PPP_Instance::GetInstanceObject: No error
+PPAPI_PROXY_BROWSER: ObjectProxy::New
+a046e540: PluginPpapi::DidChangeView (this=0x3a39c70)
+PPAPI_PROXY_BROWSER: PPP_Instance::DidChangeView: instance=2533852969
+PPAPI_PROXY_BROWSER: PPP_Instance::DidChangeView: No error
+a046e540: Plugin::Load (established socket 0x3a3d124)
+a046e540: Plugin::LoadNaClModule (socket_address=0x3840a54, socket=0x3a3d124)
+**** 
+**** [SERVER_ERROR] Did not hear from the browser for 20.0 seconds
+KILLING the browser
+</ns0:content><ns0:updated>2011-06-13T17:18:04.000Z</ns0:updated><ns0:published>2011-04-07T21:11:42.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>chrome_extension_test occasionally fails, particularly on Mac.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1625/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1625" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1625" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-06-13T17:18:04.000Z</ns2:closedDate><ns2:id>1625</ns2:id></ns0:entry>

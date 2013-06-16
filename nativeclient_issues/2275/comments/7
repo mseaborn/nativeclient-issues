@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU8BR347eCl7ImA9WhdUGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2275/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">thanks for the attachment.  this looks interesting.  a couple of quick comments/questions:
+
+- why is the common trampoline code within the untrusted code space at all?  the location within the trampoline area requires bundles to be "stapled" together (with the halt and forward branches), but this could have been done in NaClSyscallSeg (the pushing of regs 4-7,31), since on MIPS we don't need to do segment register mucking while inside the untrusted code space.
+
+- what is the overhead of this sandboxing scheme?  are measurement results available?  or simulation results?
+
+- since t4 contains 0x3fffffff and t3 contains 0x3ffffff0, where t4 are used for both store (do you also do load?) sandboxing and stack pointer confinement, and t3 is used for bundle restriction.  what is the cost of permanently sequestering two registers?  you could do bundle restriction by, for example,
+
+ xori t3, t4, 0xf
+ and r1, r1, t3
+ jal r1
+
+to reduce register pressure (yeah, MIPS has plenty compared to x86-32) by materializing one constant from the other using a temporary as an intermediate strategy rather than materializing de nouveau w/ the usual lui ori or sequestering two registers, at the expense of an additional instruction at time-of-use, plus more icache pressure.
+
+- the memory map includes a guard region, but doesn't say how large it has to be.  iirc, the MIPS32 instruction set can do lw/sw (and sh,sb,usw,sc,etc) with a signed 16-bit offset from a register, so it seems like that there should be two 32KB guard regions with no-access pages for the address ranges [0x40000000-0x40007fff] and [0xffff8000-0xffffffff], though of course the top (or negative) memory addresses should already be inaccessible because (typically) that's reserved for the kernel (kseg3).
+</ns0:content><ns0:updated>2011-10-05T19:44:16.000Z</ns0:updated><ns0:published>2011-10-05T19:44:16.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2275#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2275/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

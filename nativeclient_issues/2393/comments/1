@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkQBQX47eCl7ImA9WhRTEUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2393/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">This was addressed by http://codereview.chromium.org/8384006/
+
+for clang we no copy only one header file from llvm-gcc into the clang install  tree:
+${INSTALL} ${TC_SRC_LLVM_GCC}/gcc/unwind-generic.h \                  ${LLVM_INSTALL_DIR}/lib/clang/3.1/include/unwind.h
+
+this will be easy to change when we switch to gcc 4.6
+
+for the draggon port we may chose to go with more of gcc 4.6 headers in which case
+
+build.sh::install-pre-gcc-headers needs to be adapted.
+NOTE: this function or rather its effects are currently not really used 
+
+
+
+
+</ns0:content><ns0:updated>2011-11-01T17:59:10.000Z</ns0:updated><ns0:published>2011-11-01T17:59:10.000Z</ns0:published><ns2:updates>
+			<ns2:status>Fixed</ns2:status></ns2:updates><ns0:title>Comment 1 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2393#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2393/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIBQH47eCl7ImA9WhZREkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1477/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>brettw@chromium.org</ns0:name><ns0:uri>/u/brettw@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The plugin runs in a separate process from the web content that actually ends up compositing the plugin with the page (actually, the compositing could even happen in a third process).
+
+ImageData uses shared memory so that this transfer between processes is free. If user memory was used, we would have to copy it across the process boundary and you would get an extra copy of all of the image data which would be at least as slow as your current setup.
+
+Chrome internally uses Cairo to paint directly into this shared memory like that allocated in an ImageData. It's not clear to me if you're doing this or copying out of your own surface (you should be doing this).</ns0:content><ns0:updated>2011-04-08T18:32:31.000Z</ns0:updated><ns0:published>2011-04-08T18:32:31.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by brettw@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1477#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1477/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

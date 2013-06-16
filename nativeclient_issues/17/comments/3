@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUINSH47eCl7ImA9WxVVEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/17/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>david.s...@gmail.com</ns0:name><ns0:uri>/u/118430202398522482044/</ns0:uri></ns0:author><ns0:content type="html">Hello neozeed,
+
+uber.caulker is correct that Native Client uses some Windows APIs that are
+unsupported prior to Windows XP / Server 2003.  An upcoming version will contain more
+informative messages for this issue.
+
+David</ns0:content><ns0:updated>2009-03-03T21:59:59.000Z</ns0:updated><ns0:published>2009-03-03T21:59:59.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by david.s...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=17#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/17/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

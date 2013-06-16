@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMARn47eCl7ImA9WxBUFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/270</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">Reported by Qualcomm.  Thanks, Qualcomm!
+
+The ARM validator needs to be able to distinguish and disassemble various 
+different instruction formats.  These formats are defined in a text table 
+derived from documentation provided by ARM Ltd, stored at 
+src/third_party/arm-isa/armv7.table.
+
+Unfortunately we made an error when deriving the table: for vector stores, 
+we used the bit positions for the Thumb encoding, rather than the ARM 
+encoding.  This causes us to look at some irrelevant bits (5 and 7) when 
+determining which vector op we're seeing, rather than the right ones (23 
+and 21).
+
+Since the current NaCl/ARM compiler rarely generates these instructions, 
+this hadn't come up in our tests.  We currently have no tests specifically 
+verifying our decode of vector instructions.</ns0:content><ns0:updated>2010-03-02T21:14:07.000Z</ns0:updated><ns0:published>2010-01-22T19:01:11.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/102710273696022658094/</ns2:uri><ns2:username>dt...@codeaurora.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>ARM validator incorrectly decodes some instructions</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Component-TrustedRT</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Milestone-Chromium-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/270/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=270" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/270" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-03-02T21:14:07.000Z</ns2:closedDate><ns2:id>270</ns2:id></ns0:entry>

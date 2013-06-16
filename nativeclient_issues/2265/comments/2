@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0QNQn47eCl7ImA9WhdVFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2265/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">This issue is not resolved until we have added libssl-dev to http://src.chromium.org/viewvc/chrome/trunk/src/build/install-build-deps.sh?view=markup
+
+I would also like to find out why some Linux bots have this package installed and some don't.  Why aren't the bots uniform?  Can we dump out the package lists on all of them and compare them?
+
+Note that this dependency in nacl_integration crept in because of:
+http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=6707
+which enables nacl-glibc tests in nacl_integration.
+
+The glibc tests want to run the standalone sel_ldr to discover library dependencies for generating manifest files.  The standalone sel_ldr uses libssl for a PRNG, although this code path is disabled when NaCl is built into Chromium.
+</ns0:content><ns0:updated>2011-09-21T00:36:33.000Z</ns0:updated><ns0:published>2011-09-21T00:36:33.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Component-</ns2:label><ns2:label>-Arch-</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>Arch-All</ns2:label><ns2:status>New</ns2:status></ns2:updates><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2265#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2265/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

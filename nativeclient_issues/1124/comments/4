@@ -1,0 +1,8 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0MARH47eCl7ImA9Wx9TEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1124/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>cstefan...@google.com</ns0:name><ns0:uri>/u/113511172007743761909/</ns0:uri></ns0:author><ns0:content type="html">Update: The check_test_exe actually does take '-d' so there is nothing to fix there. The same goes for nacl_syscall_handlers_gen2.py.
+
+http://codereview.chromium.org/5110002/ fixes sel_universal. Submitted.
+
+http://codereview.chromium.org/5094004/ fixes some really minor issues in sel_ldr. Awaiting code review. Will close the bug when this is submitted.
+</ns0:content><ns0:updated>2010-11-18T17:30:45.000Z</ns0:updated><ns0:published>2010-11-18T17:30:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by cstefan...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1124#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1124/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

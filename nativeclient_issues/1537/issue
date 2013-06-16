@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCSX47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1537</ns0:id><ns0:author>
+			<ns0:name>cstefan...@google.com</ns0:name><ns0:uri>/u/113511172007743761909/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+Nexes are only downloaded in compressed form if the server is correctly set up to provide gzip'ed content (using &amp;quot;Content-Encoding: gzip&amp;quot;).
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+Many servers are not correctly set up, and the nexe developer may not have control over the server. This means that nexes will often be downloaded in uncompressed form, which increases download size.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+Enable NaCl to receive .nexe.gz/.nexe.gzip and decompress these. Possibly specify this in the manifest file.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+A developer can put myapp.nexe.gz/zip on a server and NaCl will download and decompress it regardless if the server or browser supports the gzip content type.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+Faster launch time for NaCl apps.</ns0:content><ns0:updated>2011-07-29T00:12:48.000Z</ns0:updated><ns0:published>2011-03-15T22:46:35.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:state>open</ns2:state><ns0:title>Enable NaCl to download and uncompress nexe.zip/nexe.gz</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1537/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1537" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1537" rel="self" type="application/atom+xml" /><ns2:stars>0</ns2:stars><ns2:id>1537</ns2:id></ns0:entry>

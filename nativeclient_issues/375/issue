@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ICSH47eCl7ImA9WxBaFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/375</ns0:id><ns0:author>
+			<ns0:name>s...@google.com</ns0:name><ns0:uri>/u/108394971971967673680/</ns0:uri></ns0:author><ns0:content type="html">Chrome uses CreateFileMapping with sizes that are not rounded to the
+nearest 64K.  When we transfer these objects to NaCl we attempt to map the
+object into the address space using MapViewOfFileEx and rounding the size
+to the next 64K.  Unfortunately, it appears that MapViewOfFileEx fails if
+the size is more than the next 4K (empirically) after the true size.  The
+Windows documentation says that it is not supposed to be any greater than
+the size of the FileMapping object.
+
+Attached are two slightly modified files from a web sighting of the trusted
+Windows behavior, if they're helpful.
+
+Source1.cpp creates the mapping
+Source2.cpp tries to map it
+
+Both take sizes as their only command line argument.</ns0:content><ns0:updated>2010-03-25T23:59:29.000Z</ns0:updated><ns0:published>2010-03-23T23:12:00.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>MapViewOfFileEx size should not be rounded</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Milestone-Chromium-5</ns2:label><ns2:label>OS-Windows</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/375/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=375" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/375" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-03-25T23:57:03.000Z</ns2:closedDate><ns2:id>375</ns2:id></ns0:entry>

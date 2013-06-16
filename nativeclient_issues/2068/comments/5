@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4ERX47eCl7ImA9WhdSE0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2068/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=6186
+
+------------------------------------------------------------------------
+r6186 | bsy@google.com | Fri Jul 22 16:54:32 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_mem.c?r1=6186&amp;r2=6185&amp;pathrev=6186
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/nacl_log.c?r1=6186&amp;r2=6185&amp;pathrev=6186
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_mem.h?r1=6186&amp;r2=6185&amp;pathrev=6186
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=6186&amp;r2=6185&amp;pathrev=6186
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/nacl_log.h?r1=6186&amp;r2=6185&amp;pathrev=6186
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/elf_util.c?r1=6186&amp;r2=6185&amp;pathrev=6186
+
+fix bug in IRT load where a new vmmap entry was made for irt rodata
+rather than updating the map, where there's an existing enty already.
+
+also changed NACLVERBOSITY parsing to permit colon separators in
+addition to commas.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2068
+TEST= manual
+Review URL: http://codereview.chromium.org/7491026
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-07-22T23:55:04.000Z</ns0:updated><ns0:published>2011-07-22T23:55:04.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2068#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2068/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

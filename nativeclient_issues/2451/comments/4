@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4MR347eCl7ImA9WhRSFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2451/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">David,
+
+I have removed srpc and ppapi_cpp libraries from direct_libs list. See http://codereview.chromium.org/8593001/
+
+After that I have ran 
+./scons platform=x86-64 bitcode=1 --nacl_glibc chrome_browser_tests
+
+All tests pass.
+
+Could you please put a real reproducer into this issue? I believe that the issue exists, but I don't see too much benefits to spend time on guessing how to make it.</ns0:content><ns0:updated>2011-11-17T23:03:06.000Z</ns0:updated><ns0:published>2011-11-17T23:03:06.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2451#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2451/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIEQn47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/725/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2936
+
+------------------------------------------------------------------------
+r2936 | kschimpf@google.com | Fri Aug 06 14:20:08 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_iter.c?r1=2936&amp;r2=2935&amp;pathrev=2936
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_cpu_checks.c?r1=2936&amp;r2=2935&amp;pathrev=2936
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_inst_iter.h?r1=2936&amp;r2=2935&amp;pathrev=2936
+
+Fix x86-64 validator to properly invalidate model specific instructions, by
+replacing the instruction with HALTs.
+
+Note: Test cases have been generated, but will be added in a later CL.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=725
+
+Review URL: http://codereview.chromium.org/3054050
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:55:03.000Z</ns0:updated><ns0:published>2011-01-21T22:55:03.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=725#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/725/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

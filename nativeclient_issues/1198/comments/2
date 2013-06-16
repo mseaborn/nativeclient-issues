@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UDR347eCl7ImA9Wx9SE00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1198/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 1c3084620ace748412d6d14a28f3f049526c8bdc
+ Email: halyavin@google.com
+
+Move linker script for 32 bit static linking to ldscripts directory in order to get it published into the toolchain install tree.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1198
+TEST=make -j4 build-with-glibc CROSSARCH=nacl SDKLOC=... MULTILIB=no &gt;... 2&gt;&amp;1
+
+Review URL: http://codereview.chromium.org/5433002
+
+A	nacl/dyn-link/ldscripts/elf_nacl.x.static
+D	nacl/elf_i386.x
+M	nacl/make.sh</ns0:content><ns0:updated>2010-12-02T15:54:36.000Z</ns0:updated><ns0:published>2010-12-02T15:54:36.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1198#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1198/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,57 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIHQn47eCl7ImA9WhRaGUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1794</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Currently DSOs built using nacl-glibc's linker scripts have each segment page-aligned, which puts a lot of page-alignment padding into the files, making them a lot bigger than they need to be (by at least 64k*3 = 192k).  For example:
+
+$ objdump -x toolchain/linux_x86/nacl64/lib32/libdl.so.2
+...
+Program Header:
+    LOAD off    0x00010000 vaddr 0x00000000 paddr 0x00000000 align 2**16
+         filesz 0x000023e0 memsz 0x000023e0 flags r-x
+    LOAD off    0x00020000 vaddr 0x10000000 paddr 0x10000000 align 2**16
+         filesz 0x000008db memsz 0x000008db flags r--
+    LOAD off    0x00030000 vaddr 0x10010000 paddr 0x10010000 align 2**16
+         filesz 0x00030004 memsz 0x00030050 flags rw-
+
+It is even worse for x86-64, but only because of issue 1073 (which results in 2MB alignment instead of 64k alignment):
+
+$ objdump -x toolchain/linux_x86/nacl64/lib64/libdl.so.2
+...
+    LOAD off    0x0000000000200000 vaddr 0x0000000000000000 paddr 0x0000000000000000 align 2**21
+         filesz 0x0000000000001d20 memsz 0x0000000000001d20 flags r-x
+    LOAD off    0x0000000000400000 vaddr 0x0000000010000000 paddr 0x0000000010000000 align 2**21
+         filesz 0x0000000000000cb8 memsz 0x0000000000000cb8 flags r--
+    LOAD off    0x0000000000600000 vaddr 0x0000000010200000 paddr 0x0000000010200000 align 2**21
+         filesz 0x0000000000400004 memsz 0x0000000000400078 flags rw-
+
+
+The fix is to change the elf*_nacl.xs linker scripts so that instead of using:
+
+  . = ALIGN(CONSTANT (MAXPAGESIZE)); /* nacl wants page alignment */
+
+they use:
+
+  /* Adjust the address for the data segment.  We want to adjust up to
+     the same address within the page on the next page up.  */
+  . = ALIGN (CONSTANT (MAXPAGESIZE)) - ((CONSTANT (MAXPAGESIZE) - .) &amp;amp; (CONSTANT (MAXPAGESIZE) - 1));
+
+just as the normal Linux linker scripts do.
+
+The latter is almost the same as doing
+
+  . = . + CONSTANT (MAXPAGESIZE);
+
+except that it saves a page of address space in the case where &amp;quot;.&amp;quot; happens to have a page-aligned value already.
+
+This will work because nacl-glibc's dynamic linker knows how load non-page-aligned segments.  We are already doing this for executables -- see elf*_nacl.x.
+
+
+Another trick to remove padding is to add &amp;quot;+ SIZEOF_HEADERS&amp;quot; when setting the object's start address.  I did this for executables in http://git.chromium.org/gitweb/?p=native_client/nacl-glibc.git;a=commit;h=a4f6083cbf4ab7c26aea2cd82fd67e65dd44ced8 (http://codereview.chromium.org/2823015).
+
+
+One caveat:  While nacl-glibc's ELF loader can handle non-page-aligned segments, sel_ldr's ELF loader cannot.  So this means that nacl-glibc's ld.so must continue to be linked with the old version of elf*_nacl.xs.
+</ns0:content><ns0:updated>2012-02-22T22:42:13.000Z</ns0:updated><ns0:published>2011-05-10T18:06:01.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Remove excess page-alignment padding from DSOs</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1794/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1794" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1794" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>1794</ns2:id></ns0:entry>

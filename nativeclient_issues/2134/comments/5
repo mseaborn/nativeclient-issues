@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE4DQn47eCl7ImA9WhdRFUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2134/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 0463e1f3a61548a500c6abdc08d44199c4c0e800
+ Email: jvoung@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Warn on unused results when calling nacl thread ctors and check return values where missing. Check thread ctor return values in plugin.cc, pnacl_coordinator.cc, and a few tests.
+
+R=mseaborn@chromium.org,bsy@google.com
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2134
+TEST= Check compiler warning by compiling w/out fixes and failing,
+then add fixes and compile / run trybots.
+
+
+Review URL: http://codereview.chromium.org/7541055
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6343 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	src/shared/imc/sigpipe_test.cc
+M	src/shared/platform/nacl_threads.h
+M	src/trusted/plugin/plugin.cc
+M	src/trusted/plugin/pnacl_coordinator.cc
+M	src/trusted/service_runtime/nacl_signal_unittest.c
+M	src/trusted/service_runtime/sel_ldr.c</ns0:content><ns0:updated>2011-08-06T02:16:13.000Z</ns0:updated><ns0:published>2011-08-06T02:16:13.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2134#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2134/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

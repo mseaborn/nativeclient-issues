@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4BQX47eCl7ImA9WhZWF04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1816/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">FYI, here is a note that I wrote last year about PLT entries on ARM:
+
+Brad Chen wrote:
+&gt; I'd like to understand the impact of segment gap on instruction
+&gt; selection. If a larger gap will prevent use of instruction variants
+&gt; with small immediates that could be material in terms of performance.
+
+That's a good point.  There's no problem on x86 and x86-64 where immediates are 32-bit, but there may be issues on ARM.
+
+I had a look at the PLT entries that binutils normally generates on ARM.  They look like this:
+  add ip, pc, #0x0XX00000
+  add ip, ip, #0x000YY000
+  ldr pc, [ip, #0xZZZ]!
+This reads an address from a GOT entry and jumps to it, leaving the GOT entry's address in ip.  The offset of the GOT entry from the PLT entry is 0x0XXYYZZZ.  This code sequence therefore can't cope with the GOT entry being 256MB away from the PLT entry, so it is unlikely to work if the data segment is always displaced by 256MB from the code segment (although we could contrive for GOT entries to have lower addresses, mod 256MB, than their corresponding PLT entries).
+
+For the ARM SFI sandboxing we have to split the "ldr pc" instruction into three separate load/mask/branch instructions anyway, so perhaps it wouldn't hurt to load a bigger displacement-from-PC across more instructions, e.g.
+  add ip, pc, #0xWW000000
+  add ip, ip, #0x00XX0000
+  add ip, ip, #0x0000YY00
+  ldr %r7, [ip, #0xZZ]!   // Assuming no read sandboxing
+  bic %r7, %r7, #0xf000000f
+  mov pc, %r7
+  nop
+  nop
+(or whatever register is typically used for this, probably not %r7)
+
+There certainly seems to be some scope for optimising data segment references when the data segment is close to the code segment.  gcc/binutils for ARM don't attempt to do this AFAICT.  (Furthermore, gcc seems to generate quite bad code when a function accesses a single GOT reference: it loads two constants and adds them, when it could have loaded a single constant.)  Obviously LLVM is in a better position to do link-time optimisation here since that's what it was designed for, but I haven't looked at how LLVM handles this yet.
+</ns0:content><ns0:updated>2011-05-18T16:59:10.000Z</ns0:updated><ns0:published>2011-05-18T16:59:10.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Component-SDK</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-ARM</ns2:label></ns2:updates><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1816#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1816/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

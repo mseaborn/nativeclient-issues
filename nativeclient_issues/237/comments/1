@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUHQX47eCl7ImA9WxBREUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/237/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I originally encountered this problem when building glibc.  The following is a 
+minimal example of what happened when linking libc.so:
+
+$ cat &gt;ref1.c &lt;&lt;END
+__thread int var __attribute__((tls_model("initial-exec")));
+void func1() { var = 0x100; }
+END
+
+$ cat &gt;ref2.c &lt;&lt;END
+extern __thread int var;
+void func2() { var = 0x100; }
+END
+
+$ nacl-gcc -shared -fPIC ref1.c ref2.c -o lib.so
+/home/mseaborn/devel/nacl-
+trunk/src/native_client/src/third_party/nacl_sdk/linux/sdk/nacl-
+sdk/bin/../lib/gcc/nacl/4.2.2/../../../../nacl/bin/ld: /tmp/ccCA9cDN.o: TLS 
+transition from R_386_TLS_GD to R_386_TLS_GOTIE against `var' at 0x29 in section 
+`.text' failed
+/home/mseaborn/devel/nacl-
+trunk/src/native_client/src/third_party/nacl_sdk/linux/sdk/nacl-
+sdk/bin/../lib/gcc/nacl/4.2.2/../../../../nacl/bin/ld: final link failed: Bad value
+collect2: ld returned 1 exit status
+
+There are two references to the TLS variable.  The first opts in to using the faster 
+Initial Exec (IE) model.  The linker decides that because the variable is already 
+accessed using IE, it can rewrite the second access (which uses GD) to IE.
+
+In glibc this happens with the variable __resp.  This is aliased to __libc_resp but 
+the tls_model("initial-exec") attribute is only applied to __resp.
+</ns0:content><ns0:updated>2009-12-30T15:17:10.000Z</ns0:updated><ns0:published>2009-12-30T15:17:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=237#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/237/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

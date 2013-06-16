@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0YCSX47eCl7ImA9WxFWFkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/558/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Bennet, you are not answering my points.  The issue is not
+whitelisting vs. blacklisting.  I think you're trying to apply a
+principle blindly without considering whether it is useful.
+
+&gt; now, if a nexe is rejected so it could never be run, we would never
+&gt; run any performance analysis tool on it.
+
+Why?  How does this tool get to find out about the executable?  Since
+the tool is entirely hypothetical it's impossible to analyse.
+
+&gt; we might run ncval -- if the reason for rejection is validation
+&gt; problems -- or similar tools when the reasons for its rejection was
+&gt; not sufficiently detailed.  i assert that rejecting nexes in the
+&gt; sel_ldr does reduce the probability that people would run (some)
+&gt; tools to analyze it.  especially if the tool is running outside of
+&gt; the NaCl environment, this could be a route by which malware is
+&gt; introduced, albeit only to programmers or security analysts, so not
+&gt; a huge target.  similarly, the debugger issue (and similarly,
+&gt; dynamic loaders) is really relevant only in the context of
+&gt; programmers trying to debug other people's code or to use other
+&gt; people's code, and is not a huge target compared to all users.
+
+It sounds like you're saying it's not a big problem.
+
+The argument that a debugger is going to be vulnerable to, say, a
+maliciously-crafted PT_DYNAMIC segment doesn't work because, if the
+debugger needs to interpret PT_DYNAMIC in order to work, we will need
+to whitelist PT_DYNAMIC anyway.  On the other hand, if the debugger
+doesn't need to interpret some other segment type PT_FOO, it won't be
+vulnerable to it because it doesn't interpret it.
+</ns0:content><ns0:updated>2010-06-05T00:52:48.000Z</ns0:updated><ns0:published>2010-06-05T00:52:48.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=558#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/558/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

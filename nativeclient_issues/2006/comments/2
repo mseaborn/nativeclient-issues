@@ -1,0 +1,48 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE8NQH47eCl7ImA9WhdTGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2006/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 50445c208b88d49a61229f7ec847f01655ac620d
+ Email: mseaborn@chromium.org@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Add tests for Breakpad crash reporting
+
+Breakpad currently only works for NaCl in Chrome on x86-32 Windows.
+
+To test that the crash dumps appear, we use a script that extends
+browser_tester, importing it as a library.  (Maybe when this code has
+proved itself more, it could be combined into browser_tester.)
+
+Tweak browser_tester.py to make it easier to reuse its entry point.
+
+Extend PPAPIBrowserTester() so that we can override the script to use.
+
+To get out-of-process crash dumping with Chromium on Windows, we have
+to run crash_service.exe.  (If this is not running, Breakpad will fall
+back to in-process crash dumping which does not work inside the
+Chrome sandbox.)
+
+Chromium and crash_service.exe do not allow the destination directory
+or the pipe name to be customised, which complicates things because we
+have to look for dumps in a global directory.  I should be able to
+simplify the test code later by fixing this.
+
+We reuse the crash tests in tests/signal_handler but change their link
+options so that they can be loaded by the browser plugin.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2006
+TEST=run_inbrowser_crash_in_syscall_test run_inbrowser_trusted_crash_in_startup_test run_inbrowser_untrusted_crash_test
+ * tested with disable_dynamic_plugin_loading=1 and a manually-built Chromium on x86-32 Windows
+
+Review URL: http://codereview.chromium.org/7343012
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6092 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	SConstruct
+A	tests/inbrowser_crash_test/crash_dump_tester.py
+A	tests/inbrowser_crash_test/crash_in_syscall.html
+A	tests/inbrowser_crash_test/nacl.scons
+A	tests/inbrowser_crash_test/trusted_crash_in_startup.html
+A	tests/inbrowser_crash_test/untrusted_crash.html
+A	tests/signal_handler/crash_in_syscall.nmf
+A	tests/signal_handler/crash_test.nmf
+M	tests/signal_handler/nacl.scons
+M	tools/browser_tester/browser_tester.py</ns0:content><ns0:updated>2011-07-16T20:08:11.000Z</ns0:updated><ns0:published>2011-07-16T20:08:11.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2006#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2006/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

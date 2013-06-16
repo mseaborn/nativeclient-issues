@@ -1,0 +1,124 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEAHRX47eCl7ImA9WhdWFUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2005/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 014510605b0a7fbfc61ad700706d23403a253425
+ Email: kschimpf@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Update the command-line validator ncval to generate detailed error messages (rather than summary) for the x86-64 validator.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2005
+Review URL: http://codereview.chromium.org/7776021
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6674 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+A	src/trusted/validator/x86/ncval_reg_sfi/address_sets.c
+A	src/trusted/validator/x86/ncval_reg_sfi/address_sets.h
+M	src/trusted/validator/x86/ncval_reg_sfi/build.scons
+M	src/trusted/validator/x86/ncval_reg_sfi/nc_jumps.c
+M	src/trusted/validator/x86/ncval_reg_sfi/nc_jumps.h
+A	src/trusted/validator/x86/ncval_reg_sfi/nc_jumps_detailed.c
+A	src/trusted/validator/x86/ncval_reg_sfi/nc_jumps_detailed.h
+M	src/trusted/validator/x86/ncval_reg_sfi/ncval_reg_sfi.gyp
+M	src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter.c
+M	src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter.h
+A	src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter_detailed.c
+A	src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter_detailed.h
+M	src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter_internal.h
+A	src/trusted/validator/x86/ncval_reg_sfi/ncvalidator_registry_detailed.c
+A	src/trusted/validator/x86/ncval_reg_sfi/ncvalidator_registry_detailed.h
+M	src/trusted/validator_x86/build.scons
+M	src/trusted/validator_x86/ncval.c
+A	src/trusted/validator_x86/testdata/64/3DNow.rvald
+A	src/trusted/validator_x86/testdata/64/AhNotSubRsp.rvald
+A	src/trusted/validator_x86/testdata/64/add_cs_gs_prefix.rvald
+A	src/trusted/validator_x86/testdata/64/add_mult_prefix.rvald
+A	src/trusted/validator_x86/testdata/64/add_rsp_r15.rvald
+A	src/trusted/validator_x86/testdata/64/addrex.rvald
+A	src/trusted/validator_x86/testdata/64/addrex2.rvald
+A	src/trusted/validator_x86/testdata/64/ambig-segment.rvald
+A	src/trusted/validator_x86/testdata/64/bad66.rvald
+A	src/trusted/validator_x86/testdata/64/bsf-mask.rvald
+A	src/trusted/validator_x86/testdata/64/bsr-mask.rvald
+A	src/trusted/validator_x86/testdata/64/bt.rvald
+A	src/trusted/validator_x86/testdata/64/call-ex.rvald
+A	src/trusted/validator_x86/testdata/64/call0.rvald
+A	src/trusted/validator_x86/testdata/64/call1.rvald
+A	src/trusted/validator_x86/testdata/64/call_aligned.rvald
+A	src/trusted/validator_x86/testdata/64/call_long.rvald
+A	src/trusted/validator_x86/testdata/64/call_not_aligned.rvald
+A	src/trusted/validator_x86/testdata/64/call_not_aligned_16.rvald
+A	src/trusted/validator_x86/testdata/64/call_short.rvald
+A	src/trusted/validator_x86/testdata/64/change-subregs.rvald
+A	src/trusted/validator_x86/testdata/64/cmpxchg.rvald
+A	src/trusted/validator_x86/testdata/64/cpuid.rvald
+A	src/trusted/validator_x86/testdata/64/dup-prefix.rvald
+A	src/trusted/validator_x86/testdata/64/extensions.rvald
+A	src/trusted/validator_x86/testdata/64/fpu.rvald
+A	src/trusted/validator_x86/testdata/64/fs_use.rvald
+A	src/trusted/validator_x86/testdata/64/hlt.rvald
+A	src/trusted/validator_x86/testdata/64/inc67.rvald
+A	src/trusted/validator_x86/testdata/64/incno67.rvald
+A	src/trusted/validator_x86/testdata/64/indirect_jmp_masked.rvald
+A	src/trusted/validator_x86/testdata/64/indirect_jmp_not_masked.rvald
+A	src/trusted/validator_x86/testdata/64/invalid_base.rvald
+A	src/trusted/validator_x86/testdata/64/invalid_base_store.rvald
+A	src/trusted/validator_x86/testdata/64/invalid_width_index.rvald
+A	src/trusted/validator_x86/testdata/64/jmp0.rvald
+A	src/trusted/validator_x86/testdata/64/jump_atomic.rvald
+A	src/trusted/validator_x86/testdata/64/jump_not_atomic.rvald
+A	src/trusted/validator_x86/testdata/64/jump_not_atomic_1.rvald
+A	src/trusted/validator_x86/testdata/64/jump_outside.rvald
+A	src/trusted/validator_x86/testdata/64/jump_overflow.rvald
+A	src/trusted/validator_x86/testdata/64/jump_underflow.rvald
+A	src/trusted/validator_x86/testdata/64/lea-add-rsp.rvald
+A	src/trusted/validator_x86/testdata/64/lea-rsp.rvald
+A	src/trusted/validator_x86/testdata/64/lea.rvald
+A	src/trusted/validator_x86/testdata/64/legacy.rvald
+A	src/trusted/validator_x86/testdata/64/mmx.rvald
+A	src/trusted/validator_x86/testdata/64/mov-esi-nop-use.rvald
+A	src/trusted/validator_x86/testdata/64/mov-lea-rbp-bad-1.rvald
+A	src/trusted/validator_x86/testdata/64/mov-lea-rbp-bad-2.rvald
+A	src/trusted/validator_x86/testdata/64/mov-lea-rbp-bad-3.rvald
+A	src/trusted/validator_x86/testdata/64/mov-lea-rbp-bad-4.rvald
+A	src/trusted/validator_x86/testdata/64/mov-lea-rbp-bad-5.rvald
+A	src/trusted/validator_x86/testdata/64/mov-lea-rbp.rvald
+A	src/trusted/validator_x86/testdata/64/mov-lea-rsp.rvald
+A	src/trusted/validator_x86/testdata/64/mov_esp_add_rsp_r15.rvald
+A	src/trusted/validator_x86/testdata/64/mov_rbp_2_rsp.rvald
+A	src/trusted/validator_x86/testdata/64/movlps-ex.rvald
+A	src/trusted/validator_x86/testdata/64/movsbw.rvald
+A	src/trusted/validator_x86/testdata/64/mv_ebp_add_crossing.rvald
+A	src/trusted/validator_x86/testdata/64/mv_ebp_add_rbp_r15.rvald
+A	src/trusted/validator_x86/testdata/64/mv_ebp_alone.rvald
+A	src/trusted/validator_x86/testdata/64/nacl_illegal.rvald
+A	src/trusted/validator_x86/testdata/64/nops.rvald
+A	src/trusted/validator_x86/testdata/64/pop-rbp.rvald
+A	src/trusted/validator_x86/testdata/64/prefix-2.rvald
+A	src/trusted/validator_x86/testdata/64/prefix-3.rvald
+A	src/trusted/validator_x86/testdata/64/prefix-single.rvald
+A	src/trusted/validator_x86/testdata/64/push-memoff.rvald
+A	src/trusted/validator_x86/testdata/64/rbp67.rvald
+A	src/trusted/validator_x86/testdata/64/read_const_ptr.rvald
+A	src/trusted/validator_x86/testdata/64/rep_tests.rvald
+A	src/trusted/validator_x86/testdata/64/return.rvald
+A	src/trusted/validator_x86/testdata/64/rex_not_last.rvald
+A	src/trusted/validator_x86/testdata/64/rip-relative.rvald
+A	src/trusted/validator_x86/testdata/64/rip67.rvald
+A	src/trusted/validator_x86/testdata/64/segment_aligned.rvald
+A	src/trusted/validator_x86/testdata/64/segment_assign.rvald
+A	src/trusted/validator_x86/testdata/64/segment_not_aligned.rvald
+A	src/trusted/validator_x86/testdata/64/segment_store.rvald
+A	src/trusted/validator_x86/testdata/64/sse.rvald
+A	src/trusted/validator_x86/testdata/64/stack_regs.rvald
+A	src/trusted/validator_x86/testdata/64/stosd-bad.rvald
+A	src/trusted/validator_x86/testdata/64/stosd.rvald
+A	src/trusted/validator_x86/testdata/64/stosd67.rvald
+A	src/trusted/validator_x86/testdata/64/stosdno67.rvald
+A	src/trusted/validator_x86/testdata/64/strings.rvald
+A	src/trusted/validator_x86/testdata/64/sub-add-rsp.rvald
+A	src/trusted/validator_x86/testdata/64/sub-rsp.rvald
+A	src/trusted/validator_x86/testdata/64/ud2.rvald
+A	src/trusted/validator_x86/testdata/64/update-rsp.rvald
+A	src/trusted/validator_x86/testdata/64/valid_and_store.rvald
+A	src/trusted/validator_x86/testdata/64/valid_base_only.rvald
+A	src/trusted/validator_x86/testdata/64/valid_lea_store.rvald
+A	src/trusted/validator_x86/testdata/64/x87.rvald</ns0:content><ns0:updated>2011-09-09T16:45:34.000Z</ns0:updated><ns0:published>2011-09-09T16:45:34.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2005#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2005/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

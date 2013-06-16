@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEcFRH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/852/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3771
+
+------------------------------------------------------------------------
+r3771 | mseaborn@chromium.org | Tue Nov 23 15:05:05 PST 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/dirtree.py?r1=3771&amp;r2=3770&amp;pathrev=3771
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/dirtree_test.py?r1=3771&amp;r2=3770&amp;pathrev=3771
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/btarget.py?r1=3771&amp;r2=3770&amp;pathrev=3771
+
+Modular build: Track identities of input tarballs and patches
+
+This means that when the input tarballs/patches are changed, it will
+cause the build system to re-unpack the source and trigger a rebuild
+of the changed modules.
+
+So this change fixes the build system to be properly incremental for
+those modules that are stored as tarballs + patches -- currently
+binutils, gcc and newlib, although we will switch these to use Git as
+the canonical source at some point.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=852
+TEST=python test_all.py
+
+Review URL: http://codereview.chromium.org/5351001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:20:15.000Z</ns0:updated><ns0:published>2011-01-21T23:20:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=852#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/852/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

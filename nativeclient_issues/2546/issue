@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQNQn47eCl7ImA9WhVTFk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2546</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">There are various glibc nmf generators:
+- in the nacl SDK, for users
+- for scons tests (see SConstruct: GeneratedManifestNode)
+- possibly for gyp tests?
+
+These nmf generators should support bitcode as input, and not just ELF.
+
+Example for SCons:
+
+(1) Patch in http://codereview.chromium.org/9251027/
+(2) ./scons bitcode=1 platform=x86-32 --nacl_glibc run_pnacl_example_browser_test -j10
+(3) See it fail to trace the pexe's dynamic dependencies by running sel_ldr with the pexe as input.
+
+Should probably have a way to redirect to pnacl-meta for the pnacl case. Note that in Scons, the pnacl case will need to handle both pexes and nexes because some of the tests take nexes as input.
+
+</ns0:content><ns0:updated>2012-03-01T21:46:33.000Z</ns0:updated><ns0:published>2012-01-19T00:05:19.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>glibc nmf generator support for pexes (not just nexes)</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2546/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2546" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2546" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2546</ns2:id></ns0:entry>

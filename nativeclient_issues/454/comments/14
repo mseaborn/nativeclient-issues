@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU8AQX47eCl7ImA9Wx5WGUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/454/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">[bsy@salt-mines/2010-10-01 14:04:09]/usr/local/google/home/bsy/nacl/svn1/native_client 461
+$ readelf -l ../out/Debug/sel_ldr | grep -A2 STACK
+  GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RWE 0
+  GNU_RELRO      0x06e000 0x080b6000 0x080b6000 0x000e8 0x01000 RW  0x4
+
+[bsy@salt-mines/2010-10-01 14:05:29]/usr/local/google/home/bsy/nacl/svn1/native_client 462
+$ readelf -l scons-out/dbg-linux-x86-64/staging/sel_ldr | grep -A2 STACK
+  GNU_STACK      0x0000000000000000 0x0000000000000000 0x0000000000000000
+                 0x0000000000000000 0x0000000000000000  RW     0
+  TLS            0x00000000000de250 0x00000000004de250 0x00000000004de250
+[bsy@salt-mines/2010-10-01 14:05:38]/usr/local/google/home/bsy/nacl/svn1/native_client 462
+$ 
+
+since our M8 release will be use the integrated build approach on all platforms, and the standalone sel_ldr binaries, however built, are only relevant for developers / testing, i'm not sure if this issue is relevant to M8 (and with our plans for saucer separation, not relevant / fixed for M9).  i think all we need is a test to ensure that the RW doesn't turn back into a RWE as our build system gets fiddled with in the future.  i'm marking this as invalid and opening an issue for the creation of such a test.</ns0:content><ns0:updated>2010-10-01T21:17:20.000Z</ns0:updated><ns0:published>2010-10-01T21:17:20.000Z</ns0:published><ns2:updates>
+			<ns2:status>Invalid</ns2:status></ns2:updates><ns0:title>Comment 14 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=454#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/454/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

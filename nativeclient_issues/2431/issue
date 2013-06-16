@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcMSX47eCl7ImA9WhVTEEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2431</ns0:id><ns0:author>
+			<ns0:name>pdox%goo...@gtempaccount.com</ns0:name><ns0:uri>/u/104735739662288482898/</ns0:uri></ns0:author><ns0:content type="html">PNaCl should have its own top-level project, with a pinned revision for access to the rest of NaCl (including sel_ldr and the scons tests).
+
+This will help prevents delays in PNaCl development when the NaCl tree is broken (as it often is).
+
+For this to happen, the pnacl build process needs to be isolated from native_client. pnacl/ needs to become hermetic and relocatable.
+
+This means:
+
+1) Scripts (like build.sh, merge-tool.sh) should set their CWD to pnacl/ inside of native_client/, and keep their build files inside of pnacl/.
+
+2) Dependencies required to build the PNaCl toolchain should be inside pnacl/.
+
+3) The PNaCl toolchain builders need to be moved to a new waterfall (triggered on the new repository), with the buildbot scripts inside of pnacl/buildbot.
+
+4) Accesses of paths outside of pnacl/ should be explicit and only as needed.
+
+5) The repository sources (currently in hg/) should be moved to pnacl/src
+</ns0:content><ns0:updated>2012-02-23T23:34:48.000Z</ns0:updated><ns0:published>2011-11-10T23:57:22.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Move PNaCl to a separate repository</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2431/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2431" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2431" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-02-23T23:34:48.000Z</ns2:closedDate><ns2:id>2431</ns2:id></ns0:entry>

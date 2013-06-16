@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkIHSH47eCl7ImA9WhdQFk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2155</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">nacl_syscall_64.S needs to access a TLS variable on Windows, from x86-64 assembly code.  It contains the following code:
+
+       /*
+        * The Windows linker won't insert the correct offset for
+        * nacl_thread_index. Instead, it inserts a 64-bit address, the
+        * bottom 12 bits of which appear to correspond to the TLS
+        * index of the variable.
+        *
+        * TODO(ilewis): replace this hack with code that assembles and links
+        *               correctly.
+...
+        */
+        leaq nacl_thread_index(%rip), %rax
+        mov $0x00000fff, %edx
+        and %edx, %eax
+        mov %eax, %edx
+
+I think this is working out of luck.  The first instruction is getting the address of the *template* for the TLS variable nacl_thread_index.  What we really want is the offset of the variable's template within the TLS template section.
+
+It happens that the executable/DLL's TLS template section is 4k-aligned, so taking the lower 12 bits of the nacl_thread_index template works for getting its offset within the section.
+
+There may not be a guarantee that the TLS template section is 4k-aligned, though, so future versions of MSVC might break this.  Furthermore, this can break in an executable/DLL with more than 4k of TLS variables.
+</ns0:content><ns0:updated>2011-08-17T18:08:59.000Z</ns0:updated><ns0:published>2011-08-16T19:25:06.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Windows assembly-code TLS access might be working out of luck</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2155/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2155" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2155" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-17T18:08:59.000Z</ns2:closedDate><ns2:id>2155</ns2:id></ns0:entry>

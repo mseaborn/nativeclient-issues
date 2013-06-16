@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkUFQH47eCl7ImA9WhVQFEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2536</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I'm splitting this out from issue 2401.
+
+Andrey implemented NaCl hardware exception handling for x86-32 Windows in standalone sel_ldr in http://src.chromium.org/viewvc/native_client?view=rev&amp;amp;revision=7409.  We need to make exception handling work on x86-64 Windows too.
+
+Our initial plan was to use the same debug process for x86-64 as well as x86-32.  But Andrey discovered that the Windows debugging interface halts all threads whenever the debuggee process creates or destroys a thread.  We don't want to have that overhead unnecessarily.
+
+The fallback plan is to extend our existing NTDLL patch to recover from faults in untrusted code.
+
+We will probably want a platform qualification test to check that the frame the kernel pushes contains data we expect.
+
+Since I wrote the NTDLL patch I can take on this task.
+</ns0:content><ns0:updated>2012-04-03T00:50:11.000Z</ns0:updated><ns0:published>2012-01-12T00:14:28.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Implement NaCl hardware exception handling for x86-64 Windows</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>CoreRuntime</ns2:label><ns2:label>UntrustedHardwareExceptions</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2536/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2536" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2536" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>2401</ns2:id></ns2:blocking><ns2:closedDate>2012-03-13T18:03:44.000Z</ns2:closedDate><ns2:id>2536</ns2:id></ns0:entry>

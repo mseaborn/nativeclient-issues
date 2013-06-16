@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0MEQn47eCl7ImA9WhRbFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2469</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I have seen run_mmap_atomicity_test fail twice on Windows, on nacl-win32_glibc_opt (a trybot) and win7-toolchain_x86 (an x86-64 toolchain buildbot; newlib).
+
+On win64:
+
+ERROR: Command returned exit status -1073741674 (0xc0000096) but we expected 0 (0x0)
+...
+mmap call #114
+checking for write to page...
+mmap call #115
+checking for write to page...
+[  FAILED  ] nacl.run_mmap_atomicity_test (343 ms)
+
+On win32:
+
+ERROR: Command returned exit status -1073741819 (0xc0000005) but we expected 0 (0x0)
+...
+mmap call #330
+checking for write to page...
+mmap call #331
+checking for write to page...
+[  FAILED  ] nacl_glibc.run_mmap_atomicity_test (2296 ms)
+
+
+This is troubling, because I added the test with a change that's supposed to make mmap() atomic on Windows for issue 140.
+
+I can't tell if this is failing in trusted or untrusted code, or which of the two threads is failing.
+
+I *could* enable signal handling for this test.  However, I don't think the signal handler is safe when used with the Windows thread suspension code that this test was specifically written to test.  The signal handler does not currently mark the thread as running trusted code, so it could deadlock.
+
+I don't think I want to increase NACLVERBOSITY for this test because that could change the timing.
+</ns0:content><ns0:updated>2012-02-06T21:56:43.000Z</ns0:updated><ns0:published>2011-12-03T00:51:10.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:state>closed</ns2:state><ns0:title>mmap_atomicity_test is flaky on Windows</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>FlakeyBots</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2469/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2469" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2469" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-02-06T21:56:43.000Z</ns2:closedDate><ns2:id>2469</ns2:id></ns0:entry>

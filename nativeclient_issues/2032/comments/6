@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE8CQn47eCl7ImA9WhdSFkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2032/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">The issue has been fixed on 28 Jul 2008. I've taken a look at Linus' git tree for Linux 2.6:
+
+krasin@krasin$ git show v2.6.26
+tag v2.6.26
+Tagger: Linus Torvalds &lt;torvalds@linux-foundation.org&gt;
+Date:   Sun Jul 13 14:51:38 2008 -0700
+
+krasin@krasin$ git show v2.6.27
+tag v2.6.27
+Tagger: Linus Torvalds &lt;torvalds@linux-foundation.org&gt;
+Date:   Thu Oct 9 15:14:01 2008 -0700
+
+Looks like the fix has been landed into Linux 2.6.27 and we should disable earlier kernels.</ns0:content><ns0:updated>2011-07-25T18:01:03.000Z</ns0:updated><ns0:published>2011-07-25T18:01:03.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2032#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2032/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

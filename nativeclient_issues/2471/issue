@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UCSH47eCl7ImA9WhRXFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2471</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">see:
+http://chromegw.corp.google.com/i/client.nacl/builders/lucid_64-newlib-x86_32-pnacl/builds/1198/steps/scons%20%5Bx86-32%5D%20%5B%5D%20%5Buse_sandboxed_translator%3D1%5D/logs/stdio
+
+FATAL: failed command: echo &amp;quot;&amp;quot;&amp;quot;readwrite_file nexefile scons-out/nacl-x86-32-pnacl-sbtc-clang/obj/tests/barebones/barebones_hello_world.nexe
+pnacl_emu_initialize
+install_upcalls lookup_service_string dummy_channel
+rpc StartLookupService s(\&amp;quot;\${lookup_service_string}\&amp;quot;) *
+readonly_file barebones_hello_world_nexe___linked_o /mnt/data/b/build/slave/lucid_64-newlib-x86_32-pnacl/build/native_client/scons-out/nacl-x86-32-pnacl-sbtc-clang/obj/tests/barebones/barebones_hello_world.nexe---linked.o
+pnacl_emu_add_varname_mapping barebones_hello_world.nexe---linked.o barebones_hello_world_nexe___linked_o
+rpc Run C(68,-nostdlib\\x00-m\\x00elf_nacl\\x00-static\\x00barebones_hello_world.nexe---linked.o\\x00) h(nexefile) i(0) s(\&amp;quot;\&amp;quot;) s(\&amp;quot;\&amp;quot;) *
+echo \&amp;quot;ld complete\&amp;quot;
+&amp;quot;&amp;quot;&amp;quot; | /mnt/data/b/build/slave/lucid_64-newlib-x86_32-pnacl/build/native_client/scons-out/opt-linux-x86-32/staging/sel_universal \
+&#160; &#160; --abort_on_error \
+&#160; &#160; -B /mnt/data/b/build/slave/lucid_64-newlib-x86_32-pnacl/build/native_client/scons-out/nacl_irt-x86-32/staging/irt_core.nexe \
+&#160; &#160; -- /mnt/data/b/build/slave/lucid_64-newlib-x86_32-pnacl/build/native_client/toolchain/pnacl_linux_x86_64_newlib/tools-sb/x8632/srpc/bin/ld
+stdout &#160; &#160; &#160; &#160;: rpc call intiated StartLookupService:s:
+input 0: &#160;s(&amp;quot;service_discovery::C\nLookupInputFile:s:h\n&amp;quot;)
+rpc call complete StartLookupService:s:
+
+rpc call intiated Run:Chiss:
+input 0: &#160;C(68,-nostdlib\x00-m\x00elf_nacl\x00-static\x00barebones_hello_world.nexe---linked.o\x00)
+input 1: &#160;h(nexefile)
+input 2: &#160;i(0)
+input 3: &#160;s(&amp;quot;&amp;quot;)
+input 4: &#160;s(&amp;quot;&amp;quot;)
+rpc call complete Run:Chiss:
+
+&amp;quot;ld complete&amp;quot;
+
+stderr &#160; &#160; &#160; &#160;: [2211,4147219312:16:03:23.709419] Native Client module will be loaded at base address 0x00000000b7308000
+0&amp;gt; 1&amp;gt; [2210,4147119840:16:03:23.869326] HandlerPnaclEmuInitialize
+2&amp;gt; 3&amp;gt; 4&amp;gt; 5&amp;gt; 6&amp;gt; 7&amp;gt; 8&amp;gt;&#160;
+
+/mnt/data/b/build/slave/lucid_64-newlib-x86_32-pnacl/build/native_client/toolchain/pnacl_linux_x86_64_newlib/bin/pnacl-clang++ -arch x86-32 --pnacl-sb -nostdlib scons-out/nacl-x86-32-pnacl-sbtc-clang/obj/tests/barebones/fake_startup.bc scons-out/nacl-x86-32-pnacl-sbtc-clang/obj/tests/barebones/barebones_vtable.bc -Lscons-out/nacl-x86-32-pnacl-sbtc-clang/lib -L/mnt/data/b/build/slave/lucid_64-newlib-x86_32-pnacl/build/ppapi/native_client/scons-out/nacl-x86-32-pnacl-sbtc-clang/lib -Ltoolchain/pnacl_linux_x86_64_newlib/lib -L/mnt/data/b/build/slave/lucid_64-newlib-x86_32-pnacl/build/ppapi/native_client/toolchain/pnacl_linux_x86_64_newlib/lib -Lscons-out/nacl-x86-32-pnacl-sbtc-clang/lib -L/mnt/data/b/build/slave/lucid_64-newlib-x86_32-pnacl/build/ppapi/native_client/scons-out/nacl-x86-32-pnacl-sbtc-clang/lib -o scons-out/nacl-x86-32-pnacl-sbtc-clang/obj/tests/barebones/barebones_vtable.nexe
+scons: *** [scons-out/nacl-x86-32-pnacl-sbtc-clang/obj/tests/barebones/barebones_hello_world.nexe] Error 245
+/mnt/data/b/build/slave/lucid_64-newlib-x86_32-pnacl/build/native_client/toolchain/pnacl_linux_x86_64_newlib/bin/pnacl-clang++ -std=gnu++98 -Wno-long-long -Wno-c++11-extensions -O2 -fomit-frame-pointer -Wall -fdiagnostics-show-option -pedantic -Werror -Wno-variadic-macros -DNACL_BLOCK_SHIFT=5 -DNACL_BLOCK_SIZE=32 -DNACL_BUILD_ARCH=x86 -DNACL_BUILD_SUBARCH=32 -D__STDC_LIMIT_MACROS=1 -D__STDC_FORMAT_MACROS=1 -D_GNU_SOURCE=1 -D_BSD_SOURCE=1 -D_POSIX_C_SOURCE=199506 -D_XOPEN_SOURCE=600 -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DDYNAMIC_ANNOTATIONS_PREFIX=NACL_ -Iscons-out/nacl-x86-32-pnacl-sbtc-clang/include -I/mnt/data/b/build/slave/lucid_64-newlib-x86_32-pnacl/build/ppapi/native_client/scons-out/nacl-x86-32-pnacl-sbtc-clang/include -I/mnt/data/b/build/slave/lucid_64-newlib-x86_32-pnacl/build -I/mnt/data/b/build/slave/lucid_64-newlib-x86_32-pnacl/build/ppapi -c -o scons-out/nacl-x86-32-pnacl-sbtc-clang/obj/tests/earth/earth.bc tests/earth/earth.cc
+
+A local run was successful. 
+A retry on the bot was successful.
+</ns0:content><ns0:updated>2011-12-21T22:07:49.000Z</ns0:updated><ns0:published>2011-12-04T00:37:53.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:state>closed</ns2:state><ns0:title>PNaCl sel_universal coordinator emu may be flaky</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2471/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2471" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2471" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-12-21T22:07:49.000Z</ns2:closedDate><ns2:id>2471</ns2:id></ns0:entry>

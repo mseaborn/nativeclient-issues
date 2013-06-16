@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0IARn47eCl7ImA9WxFUGE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/650/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">&gt; It's required to add just a single .c test to src/shared/srpc
+&gt; directory.  Looks like pretty trivial task. But we have 3 build
+&gt; files there: nacl.scons, build.scons and srpc.gyp.
+&gt;
+&gt; Should I add this test just to .gyp? Add to all files? Add to some
+&gt; of files?
+
+Just add it to the Scons build.  You can write the test as either
+trusted code (-&gt; build.scons) or untrusted code (-&gt; nacl.scons).
+
+If it's untrusted it can go in "tests" rather than "src/shared".
+
+If you write it as trusted code you would need to use the struct-based
+NaCl descriptor interface and make it compile on ~3 platforms.  But if
+you write it as untrusted code you can use the simpler FD-number-based
+syscall interface (imc_socketpair() etc.) and it will be more
+portable.
+</ns0:content><ns0:updated>2010-06-29T15:32:27.000Z</ns0:updated><ns0:published>2010-06-29T15:32:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=650#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/650/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

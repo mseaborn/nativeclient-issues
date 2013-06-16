@@ -1,0 +1,8 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYHRn47eCl7ImA9WhdTF0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2002/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">Although, the issue looks very similar to Chrome OS issue, I believe that the fix we prepare for Chrome OS wouldn't work for SELinux. Currently, we're looking for kernel change to Chrome OS to enable NaCl on Chrome OS w/o reducing security by marking /dev/shm as executable.
+
+In case of SELinux, I don't see this option, so I would propose two possible solution:
+
+- use other tmp directory for NaCl files. NACL_TMPFS_PREFIX=/tmp/nacl- ./sel_ldr path/to/nexe will launch sel_ldr that will create files /tmp/nacl-&lt;something&gt; and probably SELinux will be happy with that
+- if not, I would suggest to tweak SELinux config. No particular idea is in my mind, because I am not a regular user of SELinux.</ns0:content><ns0:updated>2011-07-15T18:22:17.000Z</ns0:updated><ns0:published>2011-07-15T18:22:17.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2002#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2002/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

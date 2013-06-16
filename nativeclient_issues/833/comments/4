@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUCRH47eCl7ImA9WhZTEkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/833/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4542
+
+------------------------------------------------------------------------
+r4542 | pdox@google.com | Tue Mar 15 23:48:42 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/include/portability.h?r1=4542&amp;r2=4541&amp;pathrev=4542
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/naclsdk.py?r1=4542&amp;r2=4541&amp;pathrev=4542
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=4542&amp;r2=4541&amp;pathrev=4542
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/data_not_executable/nacl.scons?r1=4542&amp;r2=4541&amp;pathrev=4542
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/dynamic_code_loading/nacl.scons?r1=4542&amp;r2=4541&amp;pathrev=4542
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/utman.sh?r1=4542&amp;r2=4541&amp;pathrev=4542
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/driver.py?r1=4542&amp;r2=4541&amp;pathrev=4542
+
+Remove the ARM defines by default. Builds which still require it now use flag --pnacl-arm-bias.
+
+Also add flags --pnacl-i686-bias and --pnacl-x86_64-bias so that we can properly handle
+scons tests which need to know the machine type for low-level testing.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=833
+Review URL: http://codereview.chromium.org/6672035
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-03-16T06:51:05.000Z</ns0:updated><ns0:published>2011-03-16T06:51:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=833#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/833/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUIDRH47eCl7ImA9WhVSFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2653</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">An untrusted crash dumping facility was added in issue 2595.  It's quite simple and assumes code is compiled to use a frame pointer.  We don't expect it to work with code compiled with -fomit-frame-pointer.  To make it work in this case, we need to use DWARF unwind info to unwind the stack.
+
+This has some implications:
+
+ * Untrusted code can't necessarily unwind the stack since it won't always have the unwind info.  (You can build programs to have runtime unwind info, and C++-exception-using code will do this, but it makes executables bigger, so we shouldn't require this.)
+
+ * We'll probably want to dump the whole stack without interpreting it, as Breakpad does.  To do this we would need a libpthread API for discovering the stack size.
+
+ * We should consider whether to reuse Breakpad's stack unwinding code, rather than writing our own DWARF interpreter.  We might want to use the minidump format that Breakpad uses, too.
+</ns0:content><ns0:updated>2012-03-13T18:32:55.000Z</ns0:updated><ns0:published>2012-03-13T18:32:55.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Untrusted crash dumping: Use stack unwind info; don't rely on frame pointer</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2653/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2653" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2653" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2653</ns2:id></ns0:entry>

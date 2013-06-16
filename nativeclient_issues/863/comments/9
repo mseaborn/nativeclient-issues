@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEBRn47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/863/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3203
+
+------------------------------------------------------------------------
+r3203 | mseaborn@chromium.org | Fri Sep 03 16:46:07 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/srpc/nacl_srpc.h?r1=3203&amp;r2=3202&amp;pathrev=3203
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/srpc/accept_loop.c?r1=3203&amp;r2=3202&amp;pathrev=3203
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/srpc/rpc_universal.c?r1=3203&amp;r2=3202&amp;pathrev=3203
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/srpc/main.c?r1=3203&amp;r2=3202&amp;pathrev=3203
+
+SRPC: Add NaClSrpcMain() and make implicit startup optional
+
+Implicit startup via crt1.o/__srpc_init() will be disabled if no
+methods are on the global list.  Add NaClSrpcMain() as an alternative.
+
+Create new function NaClSrpcCommandLoopMain(), split out from code in
+srpc/main.c.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=863
+TEST=tests will be done in a subsequent changeset because we have to
+  update the toolchain DEPS first
+
+Review URL: http://codereview.chromium.org/3345004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:57:37.000Z</ns0:updated><ns0:published>2011-01-21T22:57:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=863#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/863/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

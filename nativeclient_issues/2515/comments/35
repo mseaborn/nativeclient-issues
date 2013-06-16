@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUYGQX47eCl7ImA9WhRbF0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2515/comments/full/35</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7759
+
+------------------------------------------------------------------------
+r7759 | ncbray@google.com | Wed Feb 08 16:24:10 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_cpu_checks.c?r1=7759&amp;r2=7758&amp;pathrev=7759
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/nacl_cpuid.h?r1=7759&amp;r2=7758&amp;pathrev=7759
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/arch/x86/vcpuid.c?r1=7759&amp;r2=7758&amp;pathrev=7759
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/nacl_cpuid_test.c?r1=7759&amp;r2=7758&amp;pathrev=7759
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/nacl_cpuid.c?r1=7759&amp;r2=7758&amp;pathrev=7759
+
+Eliminate redundant CPU feature name strings.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2515
+TEST= ./scons validator_tests
+
+Review URL: https://chromiumcodereview.appspot.com/9373003
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-02-09T00:25:20.000Z</ns0:updated><ns0:published>2012-02-09T00:25:20.000Z</ns0:published><ns2:updates /><ns0:title>Comment 35 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2515#c35" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2515/comments/full/35" rel="self" type="application/atom+xml" /></ns0:entry>

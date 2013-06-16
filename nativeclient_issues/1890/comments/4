@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8CSH47eCl7ImA9WhZUFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1890/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">&gt; &gt; The status quo is that only things using -lppapi get linked with a segment gap,
+&gt; so other things are trivially incompatible with loading the IRT.  If we
+&gt; wanted to run lots more of such tests with the IRT, we'd have to either
+&gt; change how they get linked, or link two versions of each test.
+
+I am confused:
+1. I don't see -lppapi in any of the logs I mentioned.
+2. How ppapi get the segment gap with static linking?  Is libppapi.a a linker
+script?
+
+&gt; The biggest reason not to run all the miscellaneous tests with the IRT is that
+&gt; they are intended to be unit tests.
+
+I can hardly classify these as tests unit tests.  The first reason is that most
+do not mock out details living outside of their unit.  The second reason is that
+many of the tests run extensive amount of time.  So I assume by unit tests you
+mean functional tests.
+
+Leaving the naming behind, there is a pretty large area in libc functionality on
+top of IRT that needs to be tested regularly, both on newlib and glibc.  This
+includes threading, TLS, file access, other interfaces calling directly to IRT.
+
+&gt; If we run them with the IRT, then they are
+&gt; no longer narrow unit tests, but each also a test of the IRT machinery.  Perhaps
+&gt; that argues for having a non-IRT and an IRT variant of each test in many cases.
+
+Earlier I did not consider the tests for IRT very useful.  Okay, good.  Now
+since we have the (overengineered?) system with more than one libc/libstdc++
+layer, we should test each layer separately and deal with the build/test
+complication.</ns0:content><ns0:updated>2011-06-07T05:34:29.000Z</ns0:updated><ns0:published>2011-06-07T05:34:29.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by pa...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1890#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1890/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

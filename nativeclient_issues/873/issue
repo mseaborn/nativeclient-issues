@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUFRH47eCl7ImA9WhdUEEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/873</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">we need compiler-qualification tests -- run as part of the build, not at startup like platform-qualification -- that verifies that the compiler being used will not suffer from arithmetic overflows as described in
+
+https://www.securecoding.cert.org/confluence/display/seccode/MEM07-C.+Ensure+that+the+arguments+to+calloc(),+when+multiplied,+can+be+represented+as+a+size_t
+
+note that new[] and VLA (which we don't use) are also potential issues, and new[] has an open bug in gcc:  http://gcc.gnu.org/bugzilla/show_bug.cgi?id=19351
+
+if in building the compiler paranoia tests we discover that our compilers aren't up to snuff, we need to provide a wrapped calloc and/or a templatized new[] wrapper.  NB: overloading operator new[](size_t) won't work, since the compiler will have already computed s*sizeof(elt)+delta.</ns0:content><ns0:updated>2011-09-26T16:56:55.000Z</ns0:updated><ns0:published>2010-09-09T19:41:15.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>calloc and new[] paranoia</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/873/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=873" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/873" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>873</ns2:id></ns0:entry>

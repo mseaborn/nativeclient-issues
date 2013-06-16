@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUYFQH47eCl7ImA9WhVWGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/537</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">NaCl's getpid() system call returns the process ID of the host
+sel_ldr process.
+
+This is unnecessary because the process ID has no uses inside of
+NaCl at the moment: it can't be used with waitpid(), kill() etc.
+
+This unnecessarily exposes information about the host system,
+such as how heavily it is being used.  A web app could monitor
+the host system for new processes being started by repeatedly
+starting sel_ldr processes and watching the increments of the
+process ID.
+</ns0:content><ns0:updated>2012-05-02T19:31:51.000Z</ns0:updated><ns0:published>2010-06-01T11:57:15.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>NaCl exposes host system's process IDs</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/537/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=537" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/537" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>1511</ns2:id></ns2:blockedOn><ns2:closedDate>2012-05-02T19:31:51.000Z</ns2:closedDate><ns2:id>537</ns2:id></ns0:entry>

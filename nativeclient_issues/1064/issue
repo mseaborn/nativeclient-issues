@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHRX47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1064</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+The Windows toolchain build is the slowest part of a full NaCl build, taking about four hours.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+It makes the tree stay red longer and slows everybody down.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+Cleverness and effective optimizations are used to make the build faster. Perhaps we can get a faster machine or cache config results. Config is understood to be the slowest part of this.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+Windows toolchain build takes about as long as the Linux and Mac builds.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+Developers don't spend as much time waiting for the Windows toolchain build.
+</ns0:content><ns0:updated>2011-07-29T00:12:14.000Z</ns0:updated><ns0:published>2010-10-19T16:39:25.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:state>open</ns2:state><ns0:title>Windows toolchain build is too slow.</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1064/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1064" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1064" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1064</ns2:id></ns0:entry>

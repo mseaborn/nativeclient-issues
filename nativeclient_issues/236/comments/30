@@ -1,0 +1,34 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU8NRX47eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/236/comments/full/30</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=1430
+
+------------------------------------------------------------------------
+r1430 | cbiffle@google.com | Thu Jan 28 13:41:27 PST 2010
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/build-phase2-llvmgcc.sh?r1=1430&amp;r2=1429&amp;pathrev=1430
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/toolchain-creator.sh?r1=1430&amp;r2=1429&amp;pathrev=1430
+
+Added a second-phase llvm-gcc build into the toolchain creator, using a modified version of LLVM's build script.  This lets us do a complete build of the C/C++ runtime with the SFI compiler.
+
+This is intended to bootstrap a toolchain on a completely stock Linux install (x86).  We need a second phase of GCC build because we need llvm-gcc to compile libgcc, libstdc++, etc. for SFI, but those libraries are most easily built as part of GCC itself!
+
+GCC cross-compilers don't normally have to do this because they compile a basic cross-compiler binary and use that to build libgcc/libstdc++.  We can't do that because we're not using GCC to build these libraries -- not really.  We're using our custom driver script wrapped around LLVM.
+
+With this script the procedure is now:
+1. Install CodeSourcery toolchain.
+2. Build/install LLVM.
+3. Build/install LLVM-GCC (phase 1).
+4. Build/install SFI llc binary.
+5. Install driver script for SFI compiler.
+6. Build LLVM using SFI compiler (new!)
+7. Build/install LLVM-GCC using SFI compiler (new!)
+
+#6 there is suboptimal, but necessary, because of how the scripts are factored.  Our toolchain-creator script doesn't have access to the LLVM build script's output directories (generated with tmpnam or equivalent).  With a little refactoring we can fix this, but I'm postponing that to a later CL.
+
+This change addresses:
+http://code.google.com/p/nativeclient/issues/detail?id=224
+http://code.google.com/p/nativeclient/issues/detail?id=236
+Review URL: http://codereview.chromium.org/548189
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:11:34.000Z</ns0:updated><ns0:published>2011-01-21T22:11:34.000Z</ns0:published><ns2:updates /><ns0:title>Comment 30 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=236#c30" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/236/comments/full/30" rel="self" type="application/atom+xml" /></ns0:entry>

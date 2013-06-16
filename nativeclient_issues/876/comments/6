@@ -1,0 +1,156 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkIER347eCl7ImA9Wx5WGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/876/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdroid1@gmail.com</ns0:name><ns0:uri>/u/bugdroid1@gmail.com/</ns0:uri></ns0:author><ns0:content type="html">Commit: 824f0adda7d3aad8040bd9932a8c2cc346d3a170
+ Email: mseaborn@chromium.org
+
+Fix up RET instructions in sysdeps/i386/fpu
+
+Use NACLRET in order to pass the validator.
+
+This was automated with:
+perl -pi -e 's/^((\S+:)?\s*)ret(\s*)$/$1NACLRET$3/' $(find sysdeps/i386/fpu -name '*.S')
+
+This fixes all cases of RET in libm.so and from fpu files in libc.so,
+except for the trickier "RET $n" instructions.
+
+I considered switching to C versions of these routines (e.g. in
+sysdeps/ieee754/flt-32), but some are significantly more complicated
+(a large function inside of a few instructions) and have probably
+bitrotted through lack of use.  Using the C versions would involve
+pulling in code such as __ieee754_rem_pio2f() from
+sysdeps/ieee754/flt-32/e_rem_pio2f.c which is not mentioned in any
+makefile and has probably been dead code for a while.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=876
+TEST=run_float_math_test (with another change applied to fix SETUP_PIC_REG)
+
+Review URL: http://codereview.chromium.org/3539003
+
+M	sysdeps/i386/fpu/e_acos.S
+M	sysdeps/i386/fpu/e_acosf.S
+M	sysdeps/i386/fpu/e_acosh.S
+M	sysdeps/i386/fpu/e_acoshf.S
+M	sysdeps/i386/fpu/e_acoshl.S
+M	sysdeps/i386/fpu/e_asin.S
+M	sysdeps/i386/fpu/e_asinf.S
+M	sysdeps/i386/fpu/e_atan2.S
+M	sysdeps/i386/fpu/e_atan2f.S
+M	sysdeps/i386/fpu/e_atanh.S
+M	sysdeps/i386/fpu/e_atanhf.S
+M	sysdeps/i386/fpu/e_atanhl.S
+M	sysdeps/i386/fpu/e_exp.S
+M	sysdeps/i386/fpu/e_exp10.S
+M	sysdeps/i386/fpu/e_exp10f.S
+M	sysdeps/i386/fpu/e_exp10l.S
+M	sysdeps/i386/fpu/e_exp2.S
+M	sysdeps/i386/fpu/e_exp2f.S
+M	sysdeps/i386/fpu/e_exp2l.S
+M	sysdeps/i386/fpu/e_expf.S
+M	sysdeps/i386/fpu/e_fmod.S
+M	sysdeps/i386/fpu/e_fmodf.S
+M	sysdeps/i386/fpu/e_hypot.S
+M	sysdeps/i386/fpu/e_hypotf.S
+M	sysdeps/i386/fpu/e_log.S
+M	sysdeps/i386/fpu/e_log10.S
+M	sysdeps/i386/fpu/e_log10f.S
+M	sysdeps/i386/fpu/e_log10l.S
+M	sysdeps/i386/fpu/e_log2.S
+M	sysdeps/i386/fpu/e_log2f.S
+M	sysdeps/i386/fpu/e_log2l.S
+M	sysdeps/i386/fpu/e_logf.S
+M	sysdeps/i386/fpu/e_logl.S
+M	sysdeps/i386/fpu/e_pow.S
+M	sysdeps/i386/fpu/e_powf.S
+M	sysdeps/i386/fpu/e_powl.S
+M	sysdeps/i386/fpu/e_remainder.S
+M	sysdeps/i386/fpu/e_remainderf.S
+M	sysdeps/i386/fpu/e_remainderl.S
+M	sysdeps/i386/fpu/e_scalb.S
+M	sysdeps/i386/fpu/e_scalbf.S
+M	sysdeps/i386/fpu/e_scalbl.S
+M	sysdeps/i386/fpu/e_sqrt.S
+M	sysdeps/i386/fpu/e_sqrtf.S
+M	sysdeps/i386/fpu/s_asinh.S
+M	sysdeps/i386/fpu/s_asinhf.S
+M	sysdeps/i386/fpu/s_asinhl.S
+M	sysdeps/i386/fpu/s_atan.S
+M	sysdeps/i386/fpu/s_atanf.S
+M	sysdeps/i386/fpu/s_cbrt.S
+M	sysdeps/i386/fpu/s_cbrtf.S
+M	sysdeps/i386/fpu/s_cbrtl.S
+M	sysdeps/i386/fpu/s_ceil.S
+M	sysdeps/i386/fpu/s_ceilf.S
+M	sysdeps/i386/fpu/s_ceill.S
+M	sysdeps/i386/fpu/s_cexpf.S
+M	sysdeps/i386/fpu/s_copysign.S
+M	sysdeps/i386/fpu/s_copysignf.S
+M	sysdeps/i386/fpu/s_copysignl.S
+M	sysdeps/i386/fpu/s_cos.S
+M	sysdeps/i386/fpu/s_cosf.S
+M	sysdeps/i386/fpu/s_cosl.S
+M	sysdeps/i386/fpu/s_expm1.S
+M	sysdeps/i386/fpu/s_expm1f.S
+M	sysdeps/i386/fpu/s_expm1l.S
+M	sysdeps/i386/fpu/s_fabs.S
+M	sysdeps/i386/fpu/s_fabsf.S
+M	sysdeps/i386/fpu/s_fabsl.S
+M	sysdeps/i386/fpu/s_fdim.S
+M	sysdeps/i386/fpu/s_fdimf.S
+M	sysdeps/i386/fpu/s_fdiml.S
+M	sysdeps/i386/fpu/s_finite.S
+M	sysdeps/i386/fpu/s_finitef.S
+M	sysdeps/i386/fpu/s_finitel.S
+M	sysdeps/i386/fpu/s_floor.S
+M	sysdeps/i386/fpu/s_floorf.S
+M	sysdeps/i386/fpu/s_floorl.S
+M	sysdeps/i386/fpu/s_fma.S
+M	sysdeps/i386/fpu/s_fmaf.S
+M	sysdeps/i386/fpu/s_fmal.S
+M	sysdeps/i386/fpu/s_fmax.S
+M	sysdeps/i386/fpu/s_fmaxf.S
+M	sysdeps/i386/fpu/s_fmaxl.S
+M	sysdeps/i386/fpu/s_fmin.S
+M	sysdeps/i386/fpu/s_fminf.S
+M	sysdeps/i386/fpu/s_fminl.S
+M	sysdeps/i386/fpu/s_frexp.S
+M	sysdeps/i386/fpu/s_frexpf.S
+M	sysdeps/i386/fpu/s_frexpl.S
+M	sysdeps/i386/fpu/s_ilogb.S
+M	sysdeps/i386/fpu/s_ilogbf.S
+M	sysdeps/i386/fpu/s_ilogbl.S
+M	sysdeps/i386/fpu/s_llrint.S
+M	sysdeps/i386/fpu/s_llrintf.S
+M	sysdeps/i386/fpu/s_llrintl.S
+M	sysdeps/i386/fpu/s_log1p.S
+M	sysdeps/i386/fpu/s_log1pf.S
+M	sysdeps/i386/fpu/s_log1pl.S
+M	sysdeps/i386/fpu/s_logb.S
+M	sysdeps/i386/fpu/s_logbf.S
+M	sysdeps/i386/fpu/s_lrint.S
+M	sysdeps/i386/fpu/s_lrintf.S
+M	sysdeps/i386/fpu/s_lrintl.S
+M	sysdeps/i386/fpu/s_nearbyint.S
+M	sysdeps/i386/fpu/s_nearbyintf.S
+M	sysdeps/i386/fpu/s_nearbyintl.S
+M	sysdeps/i386/fpu/s_remquo.S
+M	sysdeps/i386/fpu/s_remquof.S
+M	sysdeps/i386/fpu/s_remquol.S
+M	sysdeps/i386/fpu/s_rint.S
+M	sysdeps/i386/fpu/s_rintf.S
+M	sysdeps/i386/fpu/s_scalbn.S
+M	sysdeps/i386/fpu/s_scalbnf.S
+M	sysdeps/i386/fpu/s_scalbnl.S
+M	sysdeps/i386/fpu/s_significand.S
+M	sysdeps/i386/fpu/s_significandf.S
+M	sysdeps/i386/fpu/s_sin.S
+M	sysdeps/i386/fpu/s_sincos.S
+M	sysdeps/i386/fpu/s_sincosf.S
+M	sysdeps/i386/fpu/s_sincosl.S
+M	sysdeps/i386/fpu/s_sinf.S
+M	sysdeps/i386/fpu/s_sinl.S
+M	sysdeps/i386/fpu/s_tan.S
+M	sysdeps/i386/fpu/s_tanf.S
+M	sysdeps/i386/fpu/s_tanl.S
+M	sysdeps/i386/fpu/s_trunc.S
+M	sysdeps/i386/fpu/s_truncf.S
+M	sysdeps/i386/fpu/s_truncl.S</ns0:content><ns0:updated>2010-09-30T11:01:46.000Z</ns0:updated><ns0:published>2010-09-30T11:01:46.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdroid1@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=876#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/876/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

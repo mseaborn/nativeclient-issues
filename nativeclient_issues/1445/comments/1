@@ -1,0 +1,58 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0cAQX47eCl7ImA9Wx9UGEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1445/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">some insight from pdox and jvoung:
+
+
+After a fresh rebuild, I am able to reproduce this locally now very
+consistently (probably not a race condition?)
+
+The "bad" .nexe is over 1MB bigger than the "good" version!
+
+BAD:
+jvoung@january:/usr/local/google/home/nacl4/native_client$ nm
+temp/ppapi_geturl.nexe | wc -l
+10115
+
+GOOD:
+jvoung@january:/usr/local/google/home/nacl4/native_client$ nm
+../../nacl3/native_client/temp/ppapi_geturl.nexe | wc -l
+6996
+
+Maybe some linking bug?
+
+- Jan
+
+==========================================
+
+
+Hmm, so the reason for the size diff may be from all the 3D stuff that
+got added to ppruntime, but didn't get optimized out...
+
+- Jan
+
+=========================================================
+If you run the test manually, i.e.:
+
+scons-out/opt-linux-x86-32/staging/sel_universal -- scons-out/nacl-x86-32-pnacl-pic/obj/tests/ppapi_geturl/ppapi_geturl.nexe &lt; tests/ppapi_geturl/ppapi_geturl.stdin
+
+Then you'll see extra debug info on stderr:
+
+PPP_Instance_GetInstanceObject RESULTS:  C(16,\xd8\x95)\x00\x00\x00\x00\x00|]\x00\x00\x00\x00\x00\x00)
+
+[23931,4147341008:22:56:25.286562] array token number mismatch 16 vs 2 
+
+The problem is that the PPP_Instance_GetInstanceObject results are corrupted. That extra ')' is terminating the string at 2 characters instead of 16.
+
+I haven't figured out why this is happening yet...
+
+- pdox
+=====================================
+Copy and paste error the first time:
+
+PPP_Instance_GetInstanceObject RESULTS:  C(16,\xd8\x95)\x00\x00\x00\x00\x00\x1c\x04\x00\x00\x00\x00\x00\x00)
+
+- pdox
+
+
+
+</ns0:content><ns0:updated>2011-02-16T20:44:00.000Z</ns0:updated><ns0:published>2011-02-16T20:44:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1445#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1445/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

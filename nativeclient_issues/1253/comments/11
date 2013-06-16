@@ -1,0 +1,41 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A04MR347eCl7ImA9Wx9VF0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1253/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4268
+
+------------------------------------------------------------------------
+r4268 | bsy@google.com | Thu Feb 03 11:00:35 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/linux/nacl_host_desc.c?r1=4268&amp;r2=4267&amp;pathrev=4268
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/linux/nacl_desc.c?r1=4268&amp;r2=4267&amp;pathrev=4268
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/linux/nacl_host_dir_types.h?r1=4268&amp;r2=4267&amp;pathrev=4268
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/osx/nacl_host_dir_types.h?r1=4268&amp;r2=4267&amp;pathrev=4268
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/osx/nacl_host_dir.c?r1=4268&amp;r2=4267&amp;pathrev=4268
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/testdata/sample_dir1_expected.txt?r1=4268&amp;r2=4267&amp;pathrev=4268
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/linux/nacl_host_dir.c?r1=4268&amp;r2=4267&amp;pathrev=4268
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/testdata?r1=4268&amp;r2=4267&amp;pathrev=4268
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_config.h?r1=4268&amp;r2=4267&amp;pathrev=4268
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/win/nacl_desc.c?r1=4268&amp;r2=4267&amp;pathrev=4268
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/win/nacl_host_dir_types.h?r1=4268&amp;r2=4267&amp;pathrev=4268
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/win/nacl_host_dir.c?r1=4268&amp;r2=4267&amp;pathrev=4268
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/include/sys/dirent.h?r1=4268&amp;r2=4267&amp;pathrev=4268
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/build.scons?r1=4268&amp;r2=4267&amp;pathrev=4268
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/include/portability_io.h?r1=4268&amp;r2=4267&amp;pathrev=4268
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/nacl_host_dir_test.c?r1=4268&amp;r2=4267&amp;pathrev=4268
+
+fixed getdents on linux to copy the dirents with possible translation.
+found and fixed oversights in file and dir open where we did not
+enforce object types by checking that the opened objects are really
+files or directories respectively.
+
+changed getdents implementation on all host OSes to use locking, since
+host OS getdents / readdir / FindNextFile may not be reentrant and
+multiple threads performent getdents will likely cause
+inconsistencies.
+
+TEST= run_nacl_host_dir_test
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1253
+
+Review URL: http://codereview.chromium.org/6317012
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-02-03T19:06:26.000Z</ns0:updated><ns0:published>2011-02-03T19:06:26.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1253#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1253/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

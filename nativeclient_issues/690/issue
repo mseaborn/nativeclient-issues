@@ -1,0 +1,41 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYAQ347eCl7ImA9WhVTEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/690</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">On Windows, if two threads in the same process do imc_sendmsg() and
+imc_recvmsg() on the same socket descriptor at the same time,
+the imc_sendmsg() call blocks.
+
+To put it another way, this means NaCl IMC sockets are not
+full-duplex, just half-duplex: they can send and receive, but not at
+the same time.
+
+This problem does not occur on Linux.
+
+Debugging a process that is blocked in this way with Visual Studio
+shows that the threads are blocked on the WriteFile() and ReadFile()
+calls in src/shared/imc/win/nacl_imc.cc.
+
+This issue is not really made clear in the MSDN docs on named pipes.
+However, the docs on serial ports make it clear that the issue exists
+in another context:
+
+&amp;quot;It is the responsibility of the application to serialize access to
+the port correctly. If one thread is blocked waiting for its I/O
+operation to complete, all other threads that subsequently call a
+communications API will be blocked until the original operation
+completes. For instance, if one thread were waiting for a ReadFile
+function to return, any other thread that issued a WriteFile function
+would be blocked.&amp;quot;
+-- http://msdn.microsoft.com/en-us/library/ms810467.aspx
+Serial Communications in Win32 (December 11, 1995)
+
+Possible fixes:
+ * Use &amp;quot;overlapped&amp;quot; IO instead of synchronous IO.
+ * Use a pair of pipes in place of a single named pipe in nacl_imc.cc
+   or in the layers on top of it.
+
+Possible workaround:
+ * Use a pair of socket FDs in place of a single socket in the NaCl
+   process.
+</ns0:content><ns0:updated>2012-02-24T17:55:42.000Z</ns0:updated><ns0:published>2010-07-14T08:32:59.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>On Windows, simultaneous imc_sendmsg() and imc_recvmsg() hangs</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>PlatformDifference</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Component-IRT</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/690/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=690" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/690" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>690</ns2:id></ns0:entry>

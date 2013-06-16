@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMHRX47eCl7ImA9WhdRE0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1997/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 0b0a77f8d691a07c3a3e90987154c514dd7889a4
+ Email: kschimpf@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Change the decoder tables to  use (16-bit) array offsets, rather than (64-bit) pointers. Compresses the x86-64 validator tables by approximately 120k (approximately a 60% drop in table size for the decoder).
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1997
+Review URL: http://codereview.chromium.org/7477053
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6288 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	src/trusted/validator_x86/gen/nc_opcode_table_32.h
+M	src/trusted/validator_x86/gen/nc_opcode_table_64.h
+M	src/trusted/validator_x86/nc_compress.h
+M	src/trusted/validator_x86/nc_decode_tables.h
+A	src/trusted/validator_x86/nc_decode_tables_types.h
+M	src/trusted/validator_x86/nc_illegal.c
+M	src/trusted/validator_x86/nc_inst_state.c
+M	src/trusted/validator_x86/nc_inst_state.h
+M	src/trusted/validator_x86/nc_inst_state_statics.c
+M	src/trusted/validator_x86/nc_inst_state_tests.cc
+M	src/trusted/validator_x86/nc_inst_trans.c
+M	src/trusted/validator_x86/nc_inst_trans.h
+M	src/trusted/validator_x86/nc_memory_protect.c
+M	src/trusted/validator_x86/nc_protect_base.c
+M	src/trusted/validator_x86/ncdecode_tablegen.c
+M	src/trusted/validator_x86/ncdis_decode_tables.c
+M	src/trusted/validator_x86/ncdis_segments.c
+M	src/trusted/validator_x86/ncenuminsts.c
+M	src/trusted/validator_x86/ncenuminsts.h
+M	src/trusted/validator_x86/ncop_exps.c
+M	src/trusted/validator_x86/ncop_exps.h
+M	src/trusted/validator_x86/ncopcode_desc.c
+M	src/trusted/validator_x86/ncopcode_desc.h
+M	src/trusted/validator_x86/ncvalidate_iter.c
+M	src/trusted/validator_x86/ncvalidate_iter_internal.h
+M	src/trusted/validator_x86/ncvalidate_utils.c
+M	src/trusted/validator_x86/ncvalidate_utils.h
+M	src/trusted/validator_x86/ncvalidator_registry.c</ns0:content><ns0:updated>2011-08-02T18:40:34.000Z</ns0:updated><ns0:published>2011-08-02T18:40:34.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1997#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1997/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

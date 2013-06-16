@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkMNRH47eCl7ImA9WhdVEE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2228/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: b45dfef5ce0b53c1784682d40c1a36a3912d6101
+ Email: kschimpf@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Speed up x86-64 validator by 8%, by not looking for special hard-coded nop sequences first. Rather, delay and only try if matched instruction may be a special hard-coded nop sequence.
+
+Note: No new tests added since hard-coded nop sequence tests already exist.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2228
+Review URL: http://codereview.chromium.org/7846002
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6699 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	src/trusted/validator/x86/decoder/generator/ncdecode_tablegen.c
+M	src/trusted/validator/x86/decoder/nc_inst_state.c
+M	src/trusted/validator/x86/decoder/nc_inst_state_statics.c
+M	src/trusted/validator/x86/decoder/nc_inst_state_tests.cc
+M	src/trusted/validator/x86/ncinstbuffer.c
+M	src/trusted/validator/x86/ncinstbuffer.h
+M	src/trusted/validator_x86/testdata/32/foof-bug.dis
+M	src/trusted/validator_x86/testdata/32/mem_overflow.dis
+M	src/trusted/validator_x86/testdata/32/tls.dis</ns0:content><ns0:updated>2011-09-14T22:14:55.000Z</ns0:updated><ns0:published>2011-09-14T22:14:55.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2228#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2228/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

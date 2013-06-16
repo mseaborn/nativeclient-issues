@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEASH47eCl7ImA9WhZXEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2/comments/full/18</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5089
+
+------------------------------------------------------------------------
+r5089 | robertm@google.com | Thu Apr 28 13:26:56 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/buildbot/buildbot_selector.py?r1=5089&amp;r2=5088&amp;pathrev=5089
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/buildbot/buildbot_pnacl2.sh?r1=5089&amp;r2=5088&amp;pathrev=5089
+
+Proposal for reorganzation of spec build-bots.
+
+Trying to get some early feedback, this will ultimately get rid of "tests/spec2k/bot_spec.sh".
+
+We also would need one additional build bot, and some bot renaming.
+
+TEST= buildbot/buildbot_pnacl2.sh mode-spec-pnacl-arm
+      buildbot/buildbot_pnacl2.sh mode-spec-pnacl-trybot
+
+Review URL: http://codereview.chromium.org/6883166
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-28T20:30:49.000Z</ns0:updated><ns0:published>2011-04-28T20:30:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 18 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2#c18" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2/comments/full/18" rel="self" type="application/atom+xml" /></ns0:entry>

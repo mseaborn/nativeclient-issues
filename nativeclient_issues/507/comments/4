@@ -1,0 +1,96 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEGQX47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/507/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3150
+
+------------------------------------------------------------------------
+r3150 | krasin@google.com | Mon Aug 30 04:40:59 PDT 2010
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/posix_over_srpc/posix_over_srpc.h?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/posix_over_srpc/getpagesize.c?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/linux_lib/build.scons?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/linux_lib/pathconf.cc?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/launcher_main.cc?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/posix_over_srpc/closedir.c?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/launcher.h?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/linux_lib/getpagesize.cc?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/posix_over_srpc/getcwd.c?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/posix_over_srpc/nacl.scons?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/posix_over_srpc/include/calls_macros.h?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/posix_over_srpc/include?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/linux_lib/opendir.cc?r1=3150&amp;r2=3149&amp;pathrev=3150
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/Makefile?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/posix_over_srpc/readdir.c?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/linux_lib/getcwd.cc?r1=3150&amp;r2=3149&amp;pathrev=3150
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/build.scons?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/linux_lib/readdir.cc?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/linux_lib/posix_over_srpc_linux.cc?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/posix_over_srpc/opendir.c?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/posix_over_srpc/pipe.c?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/posix_over_srpc/times.c?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/launcher.cc?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/linux_lib/open.cc?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/simple_test.c?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/linux_lib/times.cc?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/linux_lib?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/linux_lib/posix_over_srpc_linux.h?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/posix_over_srpc/include/unistd.h?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/posix_over_srpc?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/linux_lib/closedir.cc?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/posix_over_srpc/pathconf.c?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/posix_over_srpc/open.c?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/posix_over_srpc/posix_over_srpc.c?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/posix_over_srpc/getwd.c?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/linux_lib/pipe.cc?r1=3150&amp;r2=3149&amp;pathrev=3150
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/posix_over_srpc/nacl.scons?r1=3150&amp;r2=3149&amp;pathrev=3150
+
+Initial version of nacl_posix library
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=507
+
+Review URL: http://codereview.chromium.org/2086012
+
+A    src/untrusted/posix_over_srpc
+AM   src/untrusted/posix_over_srpc/nacl.scons
+AM   src/untrusted/posix_over_srpc/opendir.c
+AM   src/untrusted/posix_over_srpc/times.c
+AM   src/untrusted/posix_over_srpc/open.c
+A    src/untrusted/posix_over_srpc/include
+AM   src/untrusted/posix_over_srpc/include/calls_macros.h
+AM   src/untrusted/posix_over_srpc/include/unistd.h
+AM   src/untrusted/posix_over_srpc/pathconf.c
+AM   src/untrusted/posix_over_srpc/closedir.c
+AM   src/untrusted/posix_over_srpc/posix_over_srpc.c
+AM   src/untrusted/posix_over_srpc/getpagesize.c
+AM   src/untrusted/posix_over_srpc/posix_over_srpc.h
+AM   src/untrusted/posix_over_srpc/getwd.c
+AM   src/untrusted/posix_over_srpc/readdir.c
+AM   src/untrusted/posix_over_srpc/getcwd.c
+AM   src/untrusted/posix_over_srpc/pipe.c
+M    tools/Makefile
+A    tests/posix_over_srpc
+AM   tests/posix_over_srpc/nacl.scons
+AM   tests/posix_over_srpc/build.scons
+AM   tests/posix_over_srpc/launcher.cc
+A    tests/posix_over_srpc/linux_lib
+AM   tests/posix_over_srpc/linux_lib/pipe.cc
+AM   tests/posix_over_srpc/linux_lib/getcwd.cc
+AM   tests/posix_over_srpc/linux_lib/build.scons
+AM   tests/posix_over_srpc/linux_lib/opendir.cc
+AM   tests/posix_over_srpc/linux_lib/open.cc
+AM   tests/posix_over_srpc/linux_lib/times.cc
+AM   tests/posix_over_srpc/linux_lib/pathconf.cc
+AM   tests/posix_over_srpc/linux_lib/posix_over_srpc_linux.cc
+AM   tests/posix_over_srpc/linux_lib/closedir.cc
+AM   tests/posix_over_srpc/linux_lib/posix_over_srpc_linux.h
+AM   tests/posix_over_srpc/linux_lib/getpagesize.cc
+AM   tests/posix_over_srpc/linux_lib/readdir.cc
+AM   tests/posix_over_srpc/launcher.h
+AM   tests/posix_over_srpc/simple_test.c
+AM   tests/posix_over_srpc/launcher_main.cc
+M    SConstruct
+
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:57:00.000Z</ns0:updated><ns0:published>2011-01-21T22:57:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=507#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/507/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

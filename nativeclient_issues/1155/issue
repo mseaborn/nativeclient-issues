@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEIFRX47eCl7ImA9WhdRFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1155</ns0:id><ns0:author>
+			<ns0:name>tulr...@google.com</ns0:name><ns0:uri>/u/111061048408100095063/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? 0.1.507.0
+What version of the runtime are you using? built locally: Chromium 9.0.579.0 (Developer Build 65666)
+On what operating system? Mac OSX 10.6.4
+What browser are you using? Chromium	9.0.579.0 (Developer Build 65666)
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. build tumbler example, start httpd.py
+2. start Chromium, nav to http://localhost:5103/tumbler/tumbler.html
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+The expected output is a 3d rotatable cube.  The browser shows no display output.
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+Log:
+
+tulrich-macbookpro:chrome tulrich$ ../xcodebuild/Debug/Chromium.app/Contents/MacOS/Chromium --enable-nacl
+LEAK: 4 CachedResource
+LEAK: 75 WebCoreNode
+** Fault in NaCl untrusted code
+
+Further investigation reveals that at tumbler.cc(129), the call to
+
+    device3d_-&amp;gt;initializeContext(npp_, &amp;amp;config, &amp;amp;context3d_);
+
+Is returning an error code, and presumably the program dereferences NULL soon after.
+
+My other programs that attempt to open the OpenGL graphics context are failing in the same way.
+
+I have tried various other nightly snapshots of Chromium with similar failures, including 64610, 62876, 61293.  I have two older versions of Chromium that do work, 59035 and 59583.
+</ns0:content><ns0:updated>2011-08-05T17:48:34.000Z</ns0:updated><ns0:published>2010-11-10T22:28:34.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101571556652463395731/</ns2:uri><ns2:username>dsprin...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/104626697121361476101/</ns2:uri><ns2:username>gw...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>tumbler 3D sample does not work in recent builds of Chromium</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1155/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1155" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1155" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-05T17:48:34.000Z</ns2:closedDate><ns2:id>1155</ns2:id></ns0:entry>

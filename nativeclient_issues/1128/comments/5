@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUUBR347eCl7ImA9Wx9aEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1128/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>pdox%goo...@gtempaccount.com</ns0:name><ns0:uri>/u/104735739662288482898/</ns0:uri></ns0:author><ns0:content type="html">I believe I've solved the mystery once and for all.
+
+When building gcc-stage1, utman.sh does this:
+
+1) configure
+2) make all-gcc
+3) xgcc-patch
+4) make all
+5) xgcc-unpatch
+6) make install
+
+In order to speed up the build, there is a mechanism to skip steps #2 - #5 if there were no changes detected in the llvm-gcc directory.
+
+However, Make itself is more discerning, and may sometimes trigger a rebuild of the libraries even if the llvm-gcc directory was not touched. Since utman.sh skips the other phases, this rebuild will happen during "make install", while xgcc is not patched with our driver.
+
+As a result, libgcc_eh and other libraries are built without using our driver. xgcc does this by invoking LLVM directly. The flags we require, such as -mattr=+vfp2, will be missing, which means the resulting object file will be using the wrong floating point version, and probably broken in other ways as well. (but we never get past the linking step anyway).
+
+The fix is to remove the optimization which skips steps #2 - #5.
+</ns0:content><ns0:updated>2011-03-01T23:47:36.000Z</ns0:updated><ns0:published>2011-03-01T23:47:36.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by pdox%goo...@gtempaccount.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1128#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1128/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

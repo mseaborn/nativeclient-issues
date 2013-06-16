@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A04EQn47eCl7ImA9WxFXGEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/522/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bradnelson@google.com</ns0:name><ns0:uri>/u/bradnelson@google.com/</ns0:uri></ns0:author><ns0:content type="html">Not sure what you mean, they build:
+bash -c " ./scons DOXYGEN=../third_party/doxygen/linux/doxygen -k --verbose --mode=opt-
+linux,nacl,doc platform=x86-32 "
+And run for small tests for instance they run:
+bash -c " ./scons DOXYGEN=../third_party/doxygen/linux/doxygen -k --verbose --mode=opt-
+linux,nacl,doc small_tests platform=x86-32 "
+
+I wasn't aware --mode=nacl even works by itself (or if it does I'm not sure which sel_ldr its using).
+I thought the toolchain uses --mode=extra_sdk or somesuch ?</ns0:content><ns0:updated>2010-05-25T20:38:23.000Z</ns0:updated><ns0:published>2010-05-25T20:38:23.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bradnelson@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=522#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/522/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

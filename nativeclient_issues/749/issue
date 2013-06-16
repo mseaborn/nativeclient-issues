@@ -1,0 +1,48 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEIGRH47eCl7ImA9WhdXEk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/749</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">A general problem with the NaCl plugin is that it attempts to provide
+high-level convenience interfaces.  This causes two problems:
+
+ * It adds large amounts of complex code to the trusted codebase.
+ * The interfaces provided are too limited and not flexible enough.
+
+Specific examples:
+
+* Marshalling: The plugin provides two overlapping layers for doing
+marshalling, &amp;quot;SRPC&amp;quot; and &amp;quot;NPAPI&amp;quot;/npruntime.
+- Though these add a large amount of complexity, they were unable to
+  handle asynchronous messaging, so it was necessary to add a new
+  layer to do that (issue 642), which for simplicity does not marshal
+  arguments.
+- These layers often block (issue 673).
+- npruntime is sufficiently complex that it is not obvious that it
+  exposes information that it doesn't need to expose (issue 748).
+
+* Process launching: The plugin bundles several concerns into one
+monolithic interface, rather than exposing them as separate interfaces
+(issue 746).  This makes it hard to support sandboxing and dynamic
+linking.
+
+
+An alternative direction for the plugin would be to expose simple
+primitives for message-passing and process launching, and allow more
+complex and convenient interfaces to be built on top of these.
+
+Issue 642 is a step in this direction.
+
+So, SRPC and NPAPI proxying could be implemented in untrusted
+Javascript rather than in trusted plugin code.
+
+To keep compatibility with the existing interfaces, a Javascript
+library implementing this could be included in the plugin, which would
+eval() and call the code.
+
+Javascript has been getting faster, so implementing method argument
+marshalling in Javascript may not be too expensive.  However, if it
+turns out to be necessary for performance, we could implement
+arglist-&amp;gt;string and string-&amp;gt;arglist conversions in the trusted plugin
+as standalone functions, decoupled from socket objects.
+</ns0:content><ns0:updated>2011-08-25T00:35:25.000Z</ns0:updated><ns0:published>2010-08-02T10:19:18.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Kernelise the NaCl plugin</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>Mstone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/749/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=749" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/749" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-25T00:35:25.000Z</ns2:closedDate><ns2:id>749</ns2:id></ns0:entry>

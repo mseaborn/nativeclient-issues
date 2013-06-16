@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QMRn47eCl7ImA9WhdRE0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1778</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">Today we have:
+
+############################################
+# Tests that cause timeouts, i.e. slow.
+############################################
+nptl/tst-mutex6
+nptl/tst-mutexpi6
+nptl/tst-mutexpi8
+rt/tst-clock
+rt/tst-timer
+rt/tst-timer2
+rt/tst-timer3
+rt/tst-timer4
+rt/tst-timer5
+nptl/tst-spin3
+
+############################################
+# Flaky tests.
+############################################
+nptl/tst-cancel7
+nptl/tst-mutexpi2
+nptl/tst-cancelx7
+nptl/tst-cancel18
+nptl/tst-cancelx18
+nptl/tst-cancel25
+nptl/tst-stdio1
+posix/tst-fnmatch
+nptl/tst-spin1
+nptl/tst-spin2
+
+rt/ and posix/ tests are probably waiting for a signal, in this case they can be left out.  All nptl tests must be fixed before BB release!  These are potential producers of hard-to investigate problems in 3rd-party ports.</ns0:content><ns0:updated>2011-08-03T11:03:07.000Z</ns0:updated><ns0:published>2011-05-06T11:54:41.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Fix threading failures from glibc testsuite</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1778/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1778" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1778" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>565</ns2:id></ns2:blocking><ns2:closedDate>2011-08-03T11:03:07.000Z</ns2:closedDate><ns2:id>1778</ns2:id></ns0:entry>

@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0MFR347eCl7ImA9WhdQF0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2170</ns0:id><ns0:author>
+			<ns0:name>dsprin...@chromium.org</ns0:name><ns0:uri>/u/101571556652463395731/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using?  0.5.1052
+
+If I put the NaCl toolchain in a directory that looks like this:
+
+&amp;quot;d:\This folder has spaces\native_client_sdk\toolchain\...&amp;quot;
+
+I get the following results:
+
+&amp;quot;D:\This folder has spaces\native_client_sdk\examples\..\toolchain\win_x86\bin\i686-nacl-g++&amp;quot; -o geturl\dbg_x86_32\geturl.o -c -pthread -O0 -g -m32 -D_GNU_SOURCE=1 &amp;quot;-ID:\This folder has spaces\native_client_sdk&amp;quot; geturl\geturl.cc
+
+This: folder: No such file or directory
+This: has: No such file or directory
+cygwin warning:
+  MS-DOS style path detected: spaces\native_client_sdk\toolchain\win_x86/libexec/x86_64-nacl-g++.exe
+  Preferred POSIX equivalent is: spaces/native_client_sdk/toolchain/win_x86/libexec/x86_64-nacl-g++.exe
+  CYGWIN environment variable option &amp;quot;nodosfilewarning&amp;quot; turns off this warning.
+  Consult the user's guide for more details about POSIX paths:
+    http://cygwin.com/cygwin-ug-net/using.html#using-pathnames
+This: spaces\native_client_sdk\toolchain\win_x86/libexec/x86_64-nacl-g++.exe: No such file or directory
+This: error trying to exec 'cc1plus': execvp: No such file or directory
+</ns0:content><ns0:updated>2011-08-19T15:56:56.000Z</ns0:updated><ns0:published>2011-08-19T15:54:57.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>gcc wrappers don't handle spaces in path names.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2170/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2170" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2170" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>2170</ns2:id></ns0:entry>

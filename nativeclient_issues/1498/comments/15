@@ -1,0 +1,5 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUAESH47eCl7ImA9WhRSFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1498/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">Just a quick update on this. The attached diff is between x86-32 and x86-64 version of libc.so (nm -g with a little bit sed magic).
+
+It makes me less convinced that PNaCl should ship glibc toolchain anytime soon.</ns0:content><ns0:updated>2011-11-18T23:08:29.000Z</ns0:updated><ns0:published>2011-11-18T23:08:29.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1498#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1498/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

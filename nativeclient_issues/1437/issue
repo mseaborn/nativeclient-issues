@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QNQX47eCl7ImA9WhZTEkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1437</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? 725
+On what operating system? Windows 7 64-bit
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Get the SDK from Subversion (or git)
+2. cd src
+3. hammer.bat --help
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+I expect to see a standard scons help screen.
+
+Instead I get this error:
+
+D:\src\nacl-sdk\src&amp;gt;set SCONS_DIR=D:\src\nacl-sdk\src\third_party\scons\scons-local
+scons: Reading SConscript files ...
+NACL_SDK_ROOT must be defined as the root directory of NaCl SDK.
+
+
+If I set NACL_SDK_ROOT to the current directory and run again, I get this error:
+
+D:\src\nacl-sdk\src&amp;gt;set SCONS_DIR=D:\src\nacl-sdk\src\third_party\scons\scons-local
+scons: Reading SConscript files ...
+Your NaCl toolchain does not have the necessary packages
+or the packages are not current.
+Run scripts/setup_naclports_packages.py
+
+
+I'm hoping that we can use hammer.bat and hammer.sh as the point-of-entry for the build bots and try bots, so it's important to get hammer.bat working.
+</ns0:content><ns0:updated>2011-03-16T16:03:10.000Z</ns0:updated><ns0:published>2011-02-15T23:13:28.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mball@google.com/</ns2:uri><ns2:username>mball@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>hammer.bat doesn't work in the SDK</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Milestone-Baltic-Brill-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1437/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1437" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1437" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>1108</ns2:id></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1122</ns2:id></ns2:blockedOn><ns2:closedDate>2011-03-16T16:03:10.000Z</ns2:closedDate><ns2:id>1437</ns2:id></ns0:entry>

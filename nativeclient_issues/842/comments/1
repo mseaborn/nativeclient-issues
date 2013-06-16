@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYMQH47eCl7ImA9Wx5RFUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/842/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>pdox%goo...@gtempaccount.com</ns0:name><ns0:uri>/u/104735739662288482898/</ns0:uri></ns0:author><ns0:content type="html">The problem may have existed before, and we just didn't notice it.
+
+Intrinsics and optimizations can result in the output of llc having references to symbols (from libc or libm) not referenced in the bitcode. For example, LLVM may generate calls to sqrtf or exp.
+
+If libm was linked as bitcode, the combined bitcode file may not contain the new symbol(s).
+
+Even worse, during bitcode linking, library functions that were marked internal may have been optimized in ways that assume they will only be invoked in certain ways. By introducing a new use of these functions, you get undefined behavior.</ns0:content><ns0:updated>2010-08-23T21:16:21.000Z</ns0:updated><ns0:published>2010-08-23T21:16:21.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by pdox%goo...@gtempaccount.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=842#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/842/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

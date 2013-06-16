@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0YMRn47eCl7ImA9WxFaF0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/710</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">We should enable the Mac OS X outer sandbox in the NaCl tree using the
+Mac's sandbox_init() call (the same API that Chromium uses), so that
+it is enabled in the standalone sel_ldr.
+
+There are two reasons for doing this:
+
+1) We have a lot of automated tests that run in the standalone build,
+but we don't yet have a way to run them in the context of Chromium, so
+we don't know if they work when the Mac Chromium sandbox is enabled.
+
+By turning the Mac sandbox on, we can easily check that issue 344 is
+fixed and that there are no regressions.
+
+2) We will get an outer sandbox for the standalone plugin (e.g. when
+used in Firefox or Safari), thus making the plugin safer.
+
+A first cut is at:
+http://codereview.chromium.org/3057005/show
+</ns0:content><ns0:updated>2010-07-22T07:53:07.000Z</ns0:updated><ns0:published>2010-07-21T23:14:15.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105190905030319373792/</ns2:uri><ns2:username>msn...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Enable Mac outer sandbox in NaCl codebase</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Mac</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/710/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=710" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/710" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-07-22T07:53:07.000Z</ns2:closedDate><ns2:id>710</ns2:id><ns2:mergedInto>
+			<ns2:id>127</ns2:id></ns2:mergedInto></ns0:entry>

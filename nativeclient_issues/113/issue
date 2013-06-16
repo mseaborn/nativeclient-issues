@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCRn47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/113</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105678638446503189415/</ns0:uri></ns0:author><ns0:content type="html">dorrendorf et al's cryptanalysis of WRNG:
+
+http://eprint.iacr.org/2007/419.pdf
+http://www.computerworld.com/s/article/9048438/Microsoft_confirms_that_XP_c
+ontains_random_number_generator_bug
+
+microsoft says XP3 contains a fix -- don't know if the fix has been 
+independently verified -- for this bug.  however, systems before XP SP3 is 
+vulnerable.
+
+we can workaround this by seeding a forward secure generator from the WRNG 
+and then consuming 128KB of WRNG output to force it to be reseeded.  this 
+causes excessive load at startup, however.  it could be done in a separate 
+thread (at low priority) so it shouldn't impact user experience too badly.</ns0:content><ns0:updated>2011-07-29T00:12:47.000Z</ns0:updated><ns0:published>2009-10-15T23:39:46.000Z</ns0:published><ns2:status>Accepted</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Sources of randomness need to be forward-secure if untrusted code may access their internals.</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/113/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=113" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/113" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>113</ns2:id></ns0:entry>

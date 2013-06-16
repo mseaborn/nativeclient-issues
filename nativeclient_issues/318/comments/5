@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIDQn47eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/318/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=1969
+
+------------------------------------------------------------------------
+r1969 | mseaborn@chromium.org | Tue Apr 06 02:32:21 PDT 2010
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_validate_image.c?r1=1969&amp;r2=1968&amp;pathrev=1969
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/arm/sel_validate_image.c?r1=1969&amp;r2=1968&amp;pathrev=1969
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86/service_runtime_x86.gyp?r1=1969&amp;r2=1968&amp;pathrev=1969
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86/sel_validate_image.c?r1=1969&amp;r2=1968&amp;pathrev=1969
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=1969&amp;r2=1968&amp;pathrev=1969
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=1969&amp;r2=1968&amp;pathrev=1969
+
+Refactor: Unify sel_validate_image.c variants into one file
+
+This provides NaClValidateCode() as a uniform interface to all the
+validators.  This will be used by the dynamic code loading syscall.
+
+This also reduces code duplication a little.  The
+NaClIgnoreValidatorResult() logic is no longer duplicated.
+
+Add check for return value of NaClValidatorStateCreate() that was
+previously missing.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=318
+
+Review URL: http://codereview.chromium.org/1585004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:22:53.000Z</ns0:updated><ns0:published>2011-01-21T22:22:53.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=318#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/318/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

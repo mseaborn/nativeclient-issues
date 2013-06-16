@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ANQ347eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1051/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3529
+
+------------------------------------------------------------------------
+r3529 | mseaborn@chromium.org | Thu Oct 21 12:26:36 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_globals.c?r1=3529&amp;r2=3528&amp;pathrev=3529
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_globals.h?r1=3529&amp;r2=3528&amp;pathrev=3529
+
+Remove unused code:  GetCurThread(), GetCurProc() and nacl_cur_thread_key
+
+These were intended for implementing x86-64 support for Mac OS X, but
+this has now been implemented and these are not needed.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1051
+TEST=trybots
+
+Review URL: http://codereview.chromium.org/1403002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:16:32.000Z</ns0:updated><ns0:published>2011-01-21T23:16:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1051#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1051/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

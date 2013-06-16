@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE8CRX47eCl7ImA9WhdSGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2074</ns0:id><ns0:author>
+			<ns0:name>bradnelson@google.com</ns0:name><ns0:uri>/u/bradnelson@google.com/</ns0:uri></ns0:author><ns0:content type="html">gcc -V apparently has recently changed from emitting a version string to expecting a compiler version number parameter.
+naclports under cygwin invokes a lot of autoconf type builds that interrogate the compiler and other tools with -V as one of many possible ways to get a version string. gcc -V now seems to attempt to exec something based on the version string internally. Under cygwin this seems to produce frequent stalls.
+
+I'm gonna to attempt to work around this for now with a mass replacement of -V with --version.
+However, this seems like undesirable behavior from gcc.
+
+It is quite reproducible thru the naclports build, but I have not reproduced it when invoking nacl-gcc directly.
+</ns0:content><ns0:updated>2011-07-29T07:01:04.000Z</ns0:updated><ns0:published>2011-07-22T17:13:34.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>gcc -V acts weird under cygwin</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2074/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2074" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2074" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-29T07:01:04.000Z</ns2:closedDate><ns2:id>2074</ns2:id></ns0:entry>

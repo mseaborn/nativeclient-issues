@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUABRn47eCl7ImA9WhZbEEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1924</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The bot &amp;quot;lucid-64-32-newlib-coverage&amp;quot; has failed a couple of times recently with this set of test failures:
+
+
+scons-out/nacl-x86-32/test_results/write_to_rodata.out failed: Error 255
+
+scons-out/nacl-x86-32/test_results/untrusted_crash_test.out failed: Error 255
+
+scons-out/nacl-x86-32/test_results/crash_in_syscall_test.out failed: Error 255
+
+scons-out/nacl-x86-32/test_results/partly_invalid_3.out failed: Error 255
+
+scons-out/nacl-x86-32/test_results/partly_invalid_stubout.out failed: Error 255
+
+scons-out/coverage-linux-x86-32/test_results/nullptr.out failed: Error 255
+
+
+Each of these fails with an error like this:
+
+ERROR: Command returned -11 with type='untrusted', but expected [245] with type='untrusted' for platform=linux2
+...
+======================================================================
+Stderr
+======================================================================
+[CRASH_TEST] Causing crash in untrusted code...
+
+** Signal 11 from untrusted code: Halting at 20343h
+
+
+i.e. These are all cases where a crash in untrusted code is supposed to run the signal handler, and does, but apparently the signal handler crashes after printing its message.
+
+It seems likely that this is related to code coverage:  if a code coverage handler kicks in during the signal handler, it might not be able to handle the environment it finds itself in.  Maybe it is running out of stack?  (If that were the case, though, the failures would happen on trusted-crash tests too, and this would also occur on x86-64.)
+
+It's odd that this should fail only once, but with apparently all the untrusted-crash tests failing in the same way.
+
+A recent change of mine made the exit-status checking stricter.  Previously crashes inside the signal handler would have been missed, because they weren't distinguished from crashes that trigger the signal handler.
+</ns0:content><ns0:updated>2011-06-15T00:29:17.000Z</ns0:updated><ns0:published>2011-06-15T00:27:07.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:state>open</ns2:state><ns0:title>Flaky code coverage test: signal handler appears to crash</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Test</ns2:label><ns2:label>FlakeyBots</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1924/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1924" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1924" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>1924</ns2:id></ns0:entry>

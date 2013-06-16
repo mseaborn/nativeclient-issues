@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIEQX47eCl7ImA9WhdSEEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1988/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: aee9461e0ec8b9b29f06e4a50ac023a20b9bed62
+ Email: mseaborn@chromium.org@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Scons: Simplify setup of ARM trusted env
+
+Don't copy settings into the global os.environ unnecessarily.  My aim
+here is to remove the global side effects from the arch-specific env
+setup code so that I can move it into a function.
+
+Remove obsolete references to tools/llvm/setup_arm_untrusted_toolchain.sh
+and the NACL_SDK_CC env var.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1988
+TEST=trybots
+
+Review URL: http://codereview.chromium.org/7390021
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6101 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	SConstruct</ns0:content><ns0:updated>2011-07-18T19:48:20.000Z</ns0:updated><ns0:published>2011-07-18T19:48:20.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1988#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1988/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

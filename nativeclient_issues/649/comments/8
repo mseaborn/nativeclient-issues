@@ -1,0 +1,47 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AAR347eCl7ImA9Wx5VEkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/649/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdroid1@gmail.com</ns0:name><ns0:uri>/u/bugdroid1@gmail.com/</ns0:uri></ns0:author><ns0:content type="html">Commit: 3f6eff38b28bffde240156d50e31319e66932cab
+ Email: mseaborn@chromium.org
+
+libpthread: Address many validation failures and make pthread_join() work
+
+Replace various pthread assembly routines with C versions:
+ * Add overrides in make_sysd_rules.py.
+ * Add sysdeps/nacl/lowlevellock.h, based on
+   nptl/sysdeps/unix/sysv/linux/ia64/lowlevellock.h, which was mostly
+   arch-independent.  This overrides
+   nptl/sysdeps/unix/sysv/linux/i386/lowlevellock.h.
+
+Note that those changes have to be done together: the library does not
+link when using linux/i386/lowlevellock.h with the nptl/pthread_*.c
+routines.
+
+nptl/pthread_once.c: Define __fork_generation (which is defined in the
+pthread_once.S files) so that the library will link.
+
+nptl/sysdeps/i386/tls.h and sysdeps/i386/i486/bits/atomic.h: Disable
+use of instructions that are disallowed by NaCl.  The code will fall
+back to the arch-independent definitions in nptl/pthreadP.h and
+include/atomic.h.
+
+Note that lowlevellock.h now uses INLINE_SYSCALL(), and though this is
+currently a no-op, the resulting code will work by busy-waiting.
+
+Also make pthread_join() work by busy-waiting on pd-&gt;tid as a stop-gap:
+ * createthread.c: Set pd-&gt;tid before the thread is created.
+ * pthread_create.c: Tell NaCl to unset pd-&gt;tid when the thread has exited.
+
+This allows two thread-using tests from native_client/tests to pass.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=649
+TEST=run_simple_thread_test run_socket_transfer_test
+
+Review URL: http://codereview.chromium.org/3525015
+
+M	make_sysd_rules.py
+M	nptl/pthread_create.c
+M	nptl/pthread_once.c
+M	nptl/sysdeps/i386/tls.h
+M	nptl/sysdeps/pthread/createthread.c
+M	sysdeps/i386/i486/bits/atomic.h
+A	sysdeps/nacl/lowlevellock.h</ns0:content><ns0:updated>2010-10-05T16:22:26.000Z</ns0:updated><ns0:published>2010-10-05T16:22:26.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdroid1@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=649#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/649/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

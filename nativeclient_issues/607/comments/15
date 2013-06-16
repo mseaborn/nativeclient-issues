@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYDQ347eCl7ImA9WhZTFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/607/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4581
+
+------------------------------------------------------------------------
+r4581 | mseaborn@chromium.org | Fri Mar 18 17:04:27 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/build.py?r1=4581&amp;r2=4580&amp;pathrev=4581
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=4581&amp;r2=4580&amp;pathrev=4581
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/treemappers.py?r1=4581&amp;r2=4580&amp;pathrev=4581
+
+Add dynamic_library_browser_tests to be run on Buildbot
+
+Add "browser_headless" Scons option for running the browser through
+Xvfb (a headless X11 display) on Linux.  This is easier than launching
+VNC in a separate build step and will be useful for general
+development testing too.
+
+Add "chrome_binaries_dir" Scons option so that downloaded files do not
+have to be placed within the source tree (since modular-build tries to
+separate source/build dirs).
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=607
+TEST=trybots
+
+Review URL: http://codereview.chromium.org/6714024
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-03-19T00:06:12.000Z</ns0:updated><ns0:published>2011-03-19T00:06:12.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=607#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/607/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUMDQ347eCl7ImA9Wx9QFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/876/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 7781d1b6a18522b6a2c0a8fc998611228cbb4bd2
+ Email: khim@chromium.org
+
+Make libc.so validatable
+
+TEST=ncval libc.so | grep module
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=876
+
+D: ***module libc.so is safe***
+
+Review URL: http://codereview.chromium.org/5768003
+
+M	make_sysd_rules.py
+M	sysdeps/i386/bsd-setjmp.S
+M	sysdeps/i386/dl-tlsdesc.S
+M	sysdeps/i386/dl-trampoline.S
+M	sysdeps/i386/i386-mcount.S
+M	sysdeps/i386/i486/bits/string.h
+M	sysdeps/nacl/sysdep.h
+M	sysdeps/unix/sysv/linux/i386/sigaction.c
+M	sysdeps/unix/sysv/linux/i386/sysconf.c</ns0:content><ns0:updated>2010-12-27T12:37:52.000Z</ns0:updated><ns0:published>2010-12-27T12:37:52.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=876#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/876/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE4EQX47eCl7ImA9Wx5TFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/731/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>jan...@google.com</ns0:name><ns0:uri>/u/112556240084283736563/</ns0:uri></ns0:author><ns0:content type="html">I am not opposed to a flag to enable this behavior, though I think the chance of bugs from this behavior even without a flag is low since an unintended replacement sequence is extremely unlikely to validate.  (Getting instructions to line up can be tricky.)
+
+The second part is an empirical question. Currently the slowdown for the V8 benchmark suite (running with the proposed patches) is slightly higher than 2.5x on my workstation.  The slowdown is primarily due to worse codegen to meet the NaCl safety requirements, I hope to greatly improve this number in the coming weeks.
+
+This current version of NaCl/V8 spends about 5% of its total execution time in nacl_dyncode_copy. (This count includes original code insertion *and* self modification.)  This relatively low number means even if the thread-safe code replacement made nacl_dyncode_copy much slower, it still is unlikely to become the primary cause of slowdown in V8.
+
+We are looking into code replacement strategies that don't require docking threads.  Docking threads is a worse-case solution.</ns0:content><ns0:updated>2010-07-29T18:08:20.000Z</ns0:updated><ns0:published>2010-07-29T18:08:20.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by jan...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=731#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/731/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

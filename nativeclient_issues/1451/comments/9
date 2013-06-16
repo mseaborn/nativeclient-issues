@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUFQ347eCl7ImA9WhZbEUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1451/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">The problem doesn't stop at libcrypto.  When using even more obscure Linux distributions, there will typically be other mismatches with library versions. 
+
+Here's what 'ldd nacl-sel_ldr' looks like, any one of which could cause problems:
+
+	linux-gate.so.1 =&gt;  (0xf7798000)
+	librt.so.1 =&gt; /lib32/librt.so.1 (0xf776f000)
+	libpthread.so.0 =&gt; /lib32/libpthread.so.0 (0xf7755000)
+	libcrypto.so.0.9.8 =&gt; /lib32/i686/cmov/libcrypto.so.0.9.8 (0xf7603000)
+	libstdc++.so.6 =&gt; /usr/lib32/libstdc++.so.6 (0xf750d000)
+	libm.so.6 =&gt; /lib32/libm.so.6 (0xf74e7000)
+	libgcc_s.so.1 =&gt; /usr/lib32/libgcc_s.so.1 (0xf74c8000)
+	libc.so.6 =&gt; /lib32/libc.so.6 (0xf736d000)
+	/lib/ld-linux.so.2 (0xf7799000)
+	libdl.so.2 =&gt; /lib32/libdl.so.2 (0xf7369000)
+	libz.so.1 =&gt; /usr/lib32/libz.so.1 (0xf7354000)
+
+Essentially, to do this right we'd really need to provide a deb or rpm package that has all these dependencies built-in.  Either that, or ship will all the libraries and do some magic with LD_LIBRARY_PATH before launching each tool.</ns0:content><ns0:updated>2011-06-15T15:03:32.000Z</ns0:updated><ns0:published>2011-06-15T15:03:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by mball@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1451#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1451/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

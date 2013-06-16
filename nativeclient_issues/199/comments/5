@@ -1,0 +1,52 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIHQX47eCl7ImA9WxBTFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/199/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">http://codereview.chromium.org/486035
+
+fixes some of the problem but there are also  16 byte constants
+which are a result of a clever optimization using the "select" bitcode
+operation, e.g.
+
+ %iftmp.0.0 = select i1 %2, double 0x7FF0000000000000, double
+0xFFF0000000000000 ; &lt;double&gt; [#uses=1]
+
+selects one of two double and llvm places them adjacent and used
+address magic to select the right  one.
+
+This was triggered by:
+
+newlib-1.17.0/newlib/libc/stdlib/__adjust.c
+"""
+ return (sign) ? -HUGE_VAL : HUGE_VAL;
+""""
+
+
+
+The assembly code looks something like
+
+         mov     r1, #0
+         mov     r0, #8
+         cmp     r2, #0
+         movne   r1, r0
+         .set .LPCRELV0, (.LCPI1_0-(.LPCRELL0+8))
+ .LPCRELL0:
+         add     r0, pc, #.LPCRELV0
+         add     r0, r0, r1
+         vldr.64 d0, [r0]
+         b       .LBB1_4
+
+.....
+
+        .align  2
+         sfi_illegal_if_at_bundle_begining  @ ========== SFI (16)
+ .LCPI1_0:
+         .long   0                                           @ least significant word
+ of double -inf
+         .long   4293918720                                  @ most significant word
+o f double -inf
+         .long   0                                           @ least significant word
+ of double inf
+         .long   2146435072                                  @ most significant word
+o f double inf
+ 
+
+</ns0:content><ns0:updated>2009-12-11T22:28:50.000Z</ns0:updated><ns0:published>2009-12-11T22:28:50.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=199#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/199/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcHQX47eCl7ImA9WhVRFEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2407/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8094
+
+------------------------------------------------------------------------
+r8094 | dschuff@google.com | Thu Mar 22 16:41:18 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/driver_tools.py?r1=8094&amp;r2=8093&amp;pathrev=8094
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/toolchainbinaries.py?r1=8094&amp;r2=8093&amp;pathrev=8094
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=8094&amp;r2=8093&amp;pathrev=8094
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/findpython.sh?r1=8094&amp;r2=8093&amp;pathrev=8094
+
+Enable standalone sandboxed translation
+This CL allows the pnacl_translator directory to be used without the rest of the pnacl toolchain by copying the driver scripts and native libs. It is usable on x86 and arm.
+Changes:
+Add build.sh step to install a subset of the driver scripts in the translator directory
+Fix FindBasePNaCl in driver_tools.py to work when run from the translator directory
+Fix findpython.sh so that it works when Ubuntu helpfully echoes back the failed command
+Don't download any x86 toolchains on arm
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2407
+TEST= arm hw (soon)
+
+Review URL: https://chromiumcodereview.appspot.com/9836023
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-03-22T23:47:10.000Z</ns0:updated><ns0:published>2012-03-22T23:47:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2407#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2407/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

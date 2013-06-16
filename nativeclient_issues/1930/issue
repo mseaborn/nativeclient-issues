@@ -1,0 +1,107 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUAQX47eCl7ImA9WhZbGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1930</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">This is more in the series about Mac 64-bit kernel woes, following on from issue 1271 and issue 1712.  I have found that run_egyptian_cotton_test fails on the Mac I have that runs a 64-bit kernel.
+
+The test has exhibited different failure modes:
+
+
+#1: NaClCreateAdditionalThread() returns an error.
+
+xeric:native_client mseaborn$ gdb --args scons-out/dbg-mac-x86-32/staging/sel_ldr -- scons-out/nacl-x86-32/obj/tests/egyptian_cotton/egyptian_cotton.nexe -n 2556
+GNU gdb 6.3.50-20050815 (Apple version gdb-1510) (Wed Sep 22 02:45:02 UTC 2010)
+Copyright 2004 Free Software Foundation, Inc.
+GDB is free software, covered by the GNU General Public License, and you are
+welcome to change it and/or distribute copies of it under certain conditions.
+Type &amp;quot;show copying&amp;quot; to see the conditions.
+There is absolutely no warranty for GDB.  Type &amp;quot;show warranty&amp;quot; for details.
+This GDB was configured as &amp;quot;x86_64-apple-darwin&amp;quot;...Reading symbols for shared libraries ..... done
+(gdb) run
+Starting program: /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/staging/sel_ldr -- scons-out/nacl-x86-32/obj/tests/egyptian_cotton/egyptian_cotton.nexe -n 2556
+Reading symbols for shared libraries .++++...................................................................................... done
+Reading symbols for shared libraries .. done
+[1999,2952933376:18:34:39.894512] No tls for thread, num_thread 1
+[1999,2952933376:18:34:39.907828] NaClCreateAdditionalThread: could not allocate thread index.  Returning EAGAIN per POSIX specs.
+Thread creation failed at thread 0, error 11 (No more processes)
+PASSED
+
+Program exited normally.
+
+(The fact that this reports &amp;quot;PASSED&amp;quot; is a separate bug -- see issue 1929.)
+
+
+#2: The process crashes.
+
+xeric:~ mseaborn$ cd devel/nacl/native_client/
+xeric:native_client mseaborn$ scons-out/dbg-mac-x86-32/staging/sel_ldr -- scons-out/nacl-x86-32/obj/tests/egyptian_cotton/egyptian_cotton.nexe -n 2556
+Segmentation fault
+
+I also reproduced a crash using gdb:
+
+(gdb) run
+Starting program: /Users/mseaborn/devel/nacl/native_client/scons-out/dbg-mac-x86-32/staging/sel_ldr -- scons-out/nacl-x86-32/obj/tests/egyptian_cotton/egyptian_cotton.nexe -n 2556
+Reading symbols for shared libraries . done
+Reading symbols for shared libraries .. done
+
+Program received signal EXC_BAD_ACCESS, Could not access memory.
+Reason: KERN_INVALID_ADDRESS at address: 0xb0103048
+[Switching to process 2007]
+0x95ec1423 in __error ()
+(gdb) bt
+#0  0x95ec1423 in __error ()
+#1  0x95ec61db in cthread_set_errno_self ()
+#2  0x95ebb367 in cerror ()
+#3  0x95ed1ba1 in tzsetwall_basic ()
+#4  0x95ed1994 in localtime_r ()
+#5  0x00029f9f in NaClTimeStampString (buffer=0xb0022c5c &amp;quot;3&#65533;\002&amp;quot;, buffer_size=128) at src/shared/platform/linux/nacl_timestamp.c:27
+#6  0x0002bc9c in NaClLogOutputTag_mu (s=0x109ed0) at src/shared/platform/nacl_log.c:309
+#7  0x0002bd28 in NaClLogV_mu (detail_level=-3, fmt=0x417cc &amp;quot;No tls for thread, num_thread %d\n&amp;quot;, ap=0xb0022d58 &amp;quot;\001&amp;quot;) at src/shared/platform/nacl_log.c:348
+#8  0x0002bdea in NaClLog (detail_level=-3, fmt=0x417cc &amp;quot;No tls for thread, num_thread %d\n&amp;quot;) at src/shared/platform/nacl_log.c:384
+#9  0x00005608 in NaClAppThreadAllocSegCtor (natp=0x10a730, nap=0xbffff684, usr_entry=141440, usr_stack_ptr=420508, sys_tdb_base=17181184, tdb_size=40) at src/trusted/service_runtime/nacl_app_thread.c:185
+#10 0x000145c0 in NaClCreateAdditionalThread (nap=0xbffff684, prog_ctr=141440, sys_stack_ptr=17197724, sys_tdb=17181184, tdb_size=40) at src/trusted/service_runtime/sel_ldr_standard.c:895
+#11 0x0000a4f0 in NaClCommonSysThread_Create (natp=0x300020, prog_ctr=0x22880, stack_ptr=0x66a9c, tdb=0x62a00, tdb_size=40) at src/trusted/service_runtime/nacl_syscall_common.c:2354
+#12 0x0000bad2 in NaClSysThread_Create (natp=0x300020, prog_ctr=0x22880, stack_ptr=0x66a9c, tdb=0x62a00, tdb_size=40) at scons-out/dbg-mac-x86-32/gen/native_client/src/trusted/service_runtime/nacl_syscall_handlers.c:484
+#13 0x0000c48f in NaClSysThread_CreateDecoder (natp=0x300020) at scons-out/dbg-mac-x86-32/gen/native_client/src/trusted/service_runtime/nacl_syscall_handlers.c:962
+#14 0x0000cfd1 in NaClSyscallCSegHook (tls_idx=5) at src/trusted/service_runtime/nacl_syscall_hook.c:147
+#15 0x00015e88 in NaClSyscallSeg ()
+(gdb) disass
+Dump of assembler code for function __error:
+0x95ec141a &amp;lt;__error+0&amp;gt;:	push   %ebp
+0x95ec141b &amp;lt;__error+1&amp;gt;:	mov    %esp,%ebp
+0x95ec141d &amp;lt;__error+3&amp;gt;:	call   0x95ec1422 &amp;lt;__error+8&amp;gt;
+0x95ec1422 &amp;lt;__error+8&amp;gt;:	pop    %ecx
+0x95ec1423 &amp;lt;__error+9&amp;gt;:	mov    %gs:0x48,%eax
+0x95ec1429 &amp;lt;__error+15&amp;gt;:	test   %eax,%eax
+0x95ec142b &amp;lt;__error+17&amp;gt;:	je     0x95ec143a &amp;lt;__error+32&amp;gt;
+0x95ec142d &amp;lt;__error+19&amp;gt;:	cmpl   $0x54485244,(%eax)
+0x95ec1433 &amp;lt;__error+25&amp;gt;:	jne    0x95ec143a &amp;lt;__error+32&amp;gt;
+0x95ec1435 &amp;lt;__error+27&amp;gt;:	add    $0x44,%eax
+0x95ec1438 &amp;lt;__error+30&amp;gt;:	jmp    0x95ec1440 &amp;lt;__error+38&amp;gt;
+0x95ec143a &amp;lt;__error+32&amp;gt;:	mov    0xa85f4ca(%ecx),%eax
+0x95ec1440 &amp;lt;__error+38&amp;gt;:	leave  
+0x95ec1441 &amp;lt;__error+39&amp;gt;:	ret    
+End of assembler dump.
+(gdb) info reg
+eax            0x1	1
+ecx            0x95ec1422	-1779690462
+edx            0x95ec61be	-1779670594
+ebx            0x95ec61d2	-1779670574
+esp            0xb0020b28	0xb0020b28
+ebp            0xb0020b28	0xb0020b28
+esi            0xa072750c	-1603111668
+edi            0x1	1
+eip            0x95ec1423	0x95ec1423 &amp;lt;__error+9&amp;gt;
+eflags         0x10286	66182
+cs             0x1b	27
+ss             0x23	35
+ds             0x23	35
+es             0x23	35
+fs             0x23	35
+gs             0xf	15
+
+The process is faulting on the '%gs:' access in trusted code.  %gs is set to the correct segment selector (0xf is the Mac OS X default for %gs), so the problem does not lie in restoring %gs.
+
+
+#3: When I ran this again, the machine froze.
+</ns0:content><ns0:updated>2011-06-23T22:30:40.000Z</ns0:updated><ns0:published>2011-06-20T19:43:56.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Mac OS X: egyptian_cotton_test fails on 64-bit kernels and can freeze the machine</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>HostOSBug</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1930/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1930" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1930" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-06-23T22:30:40.000Z</ns2:closedDate><ns2:id>1930</ns2:id><ns2:mergedInto>
+			<ns2:id>1712</ns2:id></ns2:mergedInto></ns0:entry>

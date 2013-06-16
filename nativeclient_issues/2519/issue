@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYEQX47eCl7ImA9WhRVE00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2519</ns0:id><ns0:author>
+			<ns0:name>jo...@unity3d.com</ns0:name><ns0:uri>/u/116362082051371563851/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+
+Pepper 16
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+
+Google Chrome 16.0.912.63
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+
+Mac OS X 10.7.2
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+
+Google Chrome 16.0.912.63
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+
+I'm trying to create a shared OpenGL context, by using the share_context parameter of the Graphics3D constructor. I tried this in the tumbler sample, by replacing the line
+
+    context_ = pp::Graphics3D(instance, pp::Graphics3D(), attribs);
+
+with
+
+    pp::Graphics3D mastercontext_;
+    mastercontext_ = pp::Graphics3D(instance, pp::Graphics3D(), attribs);
+    context_ = pp::Graphics3D(instance, mastercontext_, attribs);
+
+I need this to be able to recreate 3D contexts at runtime without destroying all resources, in order to switch context settings (PP_GRAPHICS3DATTRIB_SAMPLE_BUFFERS) at runtime.
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Instead of creating a new context with shared resources, the creating the context fails (.is_null() returns true on the new context).
+</ns0:content><ns0:updated>2012-01-11T18:21:40.000Z</ns0:updated><ns0:published>2012-01-05T13:56:00.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/116351505165496571679/</ns2:uri><ns2:username>g...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110174592293525866339/</ns2:uri><ns2:username>jbau...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/107703401167120146751/</ns2:uri><ns2:username>vange...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Graphics3D context sharing does not seem to work.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Pepper</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2519/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2519" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2519" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2519</ns2:id></ns0:entry>

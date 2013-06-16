@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0QEQn47eCl7ImA9WxVaE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/72</ns0:id><ns0:author>
+			<ns0:name>trent.wa...@gmail.com</ns0:name><ns0:uri>/u/118156278383070592809/</ns0:uri></ns0:author><ns0:content type="html">ncdecode.c starts with the comment:
+
+ * ALSO, the decoder mostly needs to worry about accurate
+ * instruction lengths and finding opcodes. It does not need
+ * to completely resolve the operands of all instructions.
+
+That's a shame.  Failure to decode all the various addressing modes means
+that instructions must be determined to be &amp;quot;safe&amp;quot; with a broad stroke.  I'd
+expect that this will mostly become impractical as instructions that would
+otherwise be safe are rejected due to the possible use of an unsafe
+addressing mode.  In an attempt to redeem those instructions, decoding for
+those addressing modes will be added piecemeal, and this will not lead to
+100% coverage of the instruction set.  
+
+On the other hand, covering all the addressing modes gives a lot more power
+to the verifier.  By using simple range propagation the verifier could
+conservatively estimate the target of all memory reads/writes and the
+targets of control flow transfers.  The techniques available are well
+understood applications of abstract interpretation and can be implemented
+efficiently.  They only need to be conservative estimations as the compiler
+can be adapted to provide feedback to developers when the verifier would
+fail and where.  
+
+This would eliminate the need to rely on segment or page protection by the
+CPU and operating system.  Even on platforms where this runtime protection
+is available the static analysis complements it.
+</ns0:content><ns0:updated>2009-04-10T17:41:43.000Z</ns0:updated><ns0:published>2009-04-07T11:20:02.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/108782782163151845439/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Memory read/writes and control flow transfers are not statically verified</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/72/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=72" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/72" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2009-04-10T17:41:43.000Z</ns2:closedDate><ns2:id>72</ns2:id></ns0:entry>

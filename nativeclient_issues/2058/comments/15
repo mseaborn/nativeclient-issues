@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEECRX47eCl7ImA9WhdSEko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2058/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">stdin, stdout and stderr are just pointers in struct _reent. Each operation with FILE* is carefully locked.  And also there is a global list of all FILE* objects (__sglue) to make it possible to flush all outputs once an input is read.
+
+Earlier I thought that all IO buffers are thread local.  But looking at it closer today, I no longer think they are.
+
+struct _reent contains a lot of useless stuff beyond errno and __cleanup.  Does not look too wrong to have it per thread.</ns0:content><ns0:updated>2011-07-21T18:24:24.000Z</ns0:updated><ns0:published>2011-07-21T18:24:24.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by pa...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2058#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2058/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

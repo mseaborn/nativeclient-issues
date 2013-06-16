@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0QBSH47eCl7ImA9Wx9VF0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1306/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">ncval calls abort(), and it would be nicer to do exit(1).  Here's the backtrace on Linux:
+
+#0  0x00007ffff6b2aa75 in raise (sig=&lt;value optimized out&gt;) at ../nptl/sysdeps/unix/sysv/linux/raise.c:64
+#1  0x00007ffff6b2e5c0 in abort () at abort.c:92
+#2  0x00000000004189f6 in NaClLogUnlock () at src/shared/platform/nacl_log.c:155
+#3  0x000000000040677b in NaClValidatorMessage (level=-4, state=0x0, format=0x41c1d9 "expected: %s file\n")
+    at src/trusted/validator_x86/ncvalidate_iter.c:193
+#4  0x000000000040305d in ValidateSfiLoad (argc=1, argv=0x7fffffffe658, data=0x7fffffffd4e0)
+    at src/trusted/validator_x86/ncval.c:281
+#5  0x00000000004058db in NaClRunValidator (argc=1, argv=0x7fffffffe658, data=0x7fffffffd4e0, 
+    load=0x403021 &lt;ValidateSfiLoad&gt;, analyze=0x4030dd &lt;ValidateAnalyze&gt;)
+    at src/trusted/validator_x86/ncval_driver.c:123
+#6  0x00000000004036bc in main (argc=1, argv=0x7fffffffe658) at src/trusted/validator_x86/ncval.c:487</ns0:content><ns0:updated>2011-02-03T17:49:19.000Z</ns0:updated><ns0:published>2011-02-03T17:49:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1306#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1306/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

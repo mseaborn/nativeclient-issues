@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUGQH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/344/comments/full/26</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4088
+
+------------------------------------------------------------------------
+r4088 | mseaborn@chromium.org | Fri Jan 07 08:12:03 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/imc_sockets/nacl.scons?r1=4088&amp;r2=4087&amp;pathrev=4088
+
+Remove unneeded "-X -1" arguments from test invocation
+
+We no longer need to pass this option to sel_ldr for IMC sockets to
+work fully.  It was only needed for the old Linux implementation of
+imc_connect()/imc_accept().
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=344
+TEST=trybots
+
+Review URL: http://codereview.chromium.org/6177001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:23:41.000Z</ns0:updated><ns0:published>2011-01-21T23:23:41.000Z</ns0:published><ns2:updates /><ns0:title>Comment 26 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=344#c26" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/344/comments/full/26" rel="self" type="application/atom+xml" /></ns0:entry>

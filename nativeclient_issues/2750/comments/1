@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0MAQX47eCl7ImA9WhVWFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2750/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8441
+
+------------------------------------------------------------------------
+r8441 | mseaborn@chromium.org | Fri Apr 27 19:13:14 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/DEPS?r1=8441&amp;r2=8440&amp;pathrev=8441
+
+Update chrome_rev in DEPS (but not chromebinaries_rev)
+
+I need to pull in the fix in r134196 (and r134361), but the bots
+haven't built binaries that cover these yet.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2750
+TEST=trybots
+
+Review URL: https://chromiumcodereview.appspot.com/10258008
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-04-28T02:17:20.000Z</ns0:updated><ns0:published>2012-04-28T02:17:20.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2750#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2750/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

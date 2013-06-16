@@ -1,0 +1,81 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QMRn47eCl7ImA9WhRTEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2400/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>s...@google.com</ns0:name><ns0:uri>/u/108394971971967673680/</ns0:uri></ns0:author><ns0:content type="html">The results of attaching gdb to a renderer when it is stuck:
+
+(gdb) thr 4
+[Switching to thread 4 (Thread 0x7f1e3336e700 (LWP 22114))]#0  syscall ()
+    at ../sysdeps/unix/sysv/linux/x86_64/syscall.S:39
+39	../sysdeps/unix/sysv/linux/x86_64/syscall.S: No such file or directory.
+	in ../sysdeps/unix/sysv/linux/x86_64/syscall.S
+(gdb) where
+#0  syscall () at ../sysdeps/unix/sysv/linux/x86_64/syscall.S:39
+#1  0x00007f1e4038847a in epoll_wait ()
+#2  0x00007f1e40387f6b in epoll_dispatch ()
+#3  0x00007f1e40386213 in event_base_loop ()
+#4  0x00007f1e40310882 in base::MessagePumpLibevent::Run(base::MessagePump::Delegate*) ()
+#5  0x00007f1e40338cf6 in MessageLoop::RunInternal() ()
+#6  0x00007f1e40338eac in MessageLoop::Run() ()
+#7  0x00007f1e4036a664 in base::Thread::ThreadMain() ()
+#8  0x00007f1e40369e32 in base::(anonymous namespace)::ThreadFunc(void*) ()
+#9  0x00007f1e3b9889ca in start_thread (arg=&lt;value optimized out&gt;)
+    at pthread_create.c:300
+#10 0x00007f1e3988570d in clone ()
+    at ../sysdeps/unix/sysv/linux/x86_64/clone.S:112
+#11 0x0000000000000000 in ?? ()
+(gdb) thr 3
+[Switching to thread 3 (Thread 0x7f1e32b6d700 (LWP 22115))]#0  pthread_cond_wait@@GLIBC_2.3.2 ()
+    at ../nptl/sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:162
+162	../nptl/sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S: No such file or directory.
+	in ../nptl/sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S
+(gdb) where
+#0  pthread_cond_wait@@GLIBC_2.3.2 ()
+    at ../nptl/sysdeps/unix/sysv/linux/x86_64/pthread_cond_wait.S:162
+#1  0x00007f1e40364de1 in base::ConditionVariable::Wait() ()
+#2  0x00007f1e40366618 in base::WaitableEvent::TimedWait(base::TimeDelta const&amp;) ()
+#3  0x00007f1e40366651 in base::WaitableEvent::Wait() ()
+#4  0x00007f1e4033f55a in base::MessagePumpDefault::Run(base::MessagePump::Delegate*) ()
+#5  0x00007f1e40338cf6 in MessageLoop::RunInternal() ()
+#6  0x00007f1e40338eac in MessageLoop::Run() ()
+#7  0x00007f1e4036a664 in base::Thread::ThreadMain() ()
+#8  0x00007f1e40369e32 in base::(anonymous namespace)::ThreadFunc(void*) ()
+#9  0x00007f1e3b9889ca in start_thread (arg=&lt;value optimized out&gt;)
+    at pthread_create.c:300
+#10 0x00007f1e3988570d in clone ()
+    at ../sysdeps/unix/sysv/linux/x86_64/clone.S:112
+#11 0x0000000000000000 in ?? ()
+(gdb) thr 2 where
+A syntax error in expression, near `where'.
+(gdb) thr 2      
+[Switching to thread 2 (Thread 0x7f1e31bf2700 (LWP 22119))]#0  sem_wait ()
+    at ../nptl/sysdeps/unix/sysv/linux/x86_64/sem_wait.S:86
+86	../nptl/sysdeps/unix/sysv/linux/x86_64/sem_wait.S: No such file or directory.
+	in ../nptl/sysdeps/unix/sysv/linux/x86_64/sem_wait.S
+(gdb) where
+#0  sem_wait () at ../nptl/sysdeps/unix/sysv/linux/x86_64/sem_wait.S:86
+#1  0x00007f1e409e1cbd in v8::internal::LinuxSemaphore::Wait() ()
+#2  0x00007f1e4092973e in v8::internal::RuntimeProfilerRateLimiter::SuspendIfNecessary() ()
+#3  0x00007f1e409e2638 in v8::internal::SignalSender::Run() ()
+#4  0x00007f1e409e1f20 in v8::internal::ThreadEntry(void*) ()
+#5  0x00007f1e3b9889ca in start_thread (arg=&lt;value optimized out&gt;)
+    at pthread_create.c:300
+#6  0x00007f1e3988570d in clone ()
+    at ../sysdeps/unix/sysv/linux/x86_64/clone.S:112
+#7  0x0000000000000000 in ?? ()
+(gdb) thr 1 
+[Switching to thread 1 (Thread 0x7f1e3f44e800 (LWP 22113))]#0  pthread_cond_timedwait@@GLIBC_2.3.2 ()
+    at ../nptl/sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:211
+211	../nptl/sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S: No such file or directory.
+	in ../nptl/sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S
+(gdb) where
+#0  pthread_cond_timedwait@@GLIBC_2.3.2 ()
+    at ../nptl/sysdeps/unix/sysv/linux/x86_64/pthread_cond_timedwait.S:211
+#1  0x00007f1e403650af in base::ConditionVariable::TimedWait(base::TimeDelta const&amp;) ()
+#2  0x00007f1e40366602 in base::WaitableEvent::TimedWait(base::TimeDelta const&amp;) ()
+#3  0x00007f1e4033f5bb in base::MessagePumpDefault::Run(base::MessagePump::Delegate*) ()
+#4  0x00007f1e40338cf6 in MessageLoop::RunInternal() ()
+#5  0x00007f1e40338eac in MessageLoop::Run() ()
+#6  0x00007f1e41b99edf in RendererMain(MainFunctionParams const&amp;) ()
+#7  0x00007f1e402b8210 in content::ContentMain(int, char const**, content::ContentMainDelegate*) ()
+#8  0x00007f1e3f9a1a7d in ChromeMain ()
+#9  0x00007f1e3f9a1a36 in main ()
+(gdb)</ns0:content><ns0:updated>2011-11-01T17:43:07.000Z</ns0:updated><ns0:published>2011-11-01T17:43:07.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by s...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2400#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2400/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

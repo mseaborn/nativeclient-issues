@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYFSX47eCl7ImA9Wx5TGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/750/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Dmitry reports that the NaCl log (from in Chromium) ends with the following:
+
+[5,1819298672:17:49:28.201453] Looking at segment 0, type 0x6, p_flags 0x4
+[5,1819298672:17:49:28.201594] Matched nacl_phdr_check_data[0]
+[5,1819298672:17:49:28.201730] Ignoring
+[5,1819298672:17:49:28.201900] Looking at segment 1, type 0x1, p_flags 0x5
+[5,1819298672:17:49:28.202043] Matched nacl_phdr_check_data[1]
+[5,1819298672:17:49:28.202202] Looking at segment 2, type 0x1, p_flags 0x4
+[5,1819298672:17:49:28.202342] Matched nacl_phdr_check_data[2]
+[5,1819298672:17:49:28.202481] Looking at segment 3, type 0x1, p_flags 0x6
+[5,1819298672:17:49:28.202620] Matched nacl_phdr_check_data[3]
+[5,1819298672:17:49:28.202760] static_text_end: 0x0000000000289fe0  break_add: 0x000000000030bc20  data_end: 0x000000000030bc20  entry_pt: 0x0000000000020080  bundle_size: 0x20
+[5,1819298672:17:49:28.202931] Allocating address space
+[5,1819298672:17:49:28.203072] NaClAllocAddrSpace: calling NaClAllocateSpace(*,0x0000000040000000)
+[5,1819298672:17:49:28.203241] NaClAllocateSpace: NaCl_page_alloc 0x6c703d28 failed
+[3,1819178752:17:49:28.203443] NaClImcRecvTypedMsg: returning 25</ns0:content><ns0:updated>2010-08-03T14:01:58.000Z</ns0:updated><ns0:published>2010-08-03T14:01:58.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=750#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/750/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

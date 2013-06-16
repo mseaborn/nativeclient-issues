@@ -1,0 +1,168 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEADQn47eCl7ImA9WhVSEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2642</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+
+svn rev 7965.
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+
+Linux
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+
+Chrome rev 125232 (freshly built) or 124422 (from DEPS)
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. sync to nacl 7965
+2. ./scons bitcode=1 --mode=opt-host,nacl platform=x86-32 run_pnacl_example_browser_test -j10
+3. observe crash
+
+Additional debug steps:
+
+Edit tests/pnacl_client_translator/nacl.scons to have a &amp;quot;--debug&amp;quot; in the browser tester arguments.
+
+Now run with the copy-pasted the browsertester command and run with --interactive.  If you hit refresh many times, you will the crash happening in many different places.
+
+Place A:
+
+In DoTranslateThread, while launching LLC:
+
+PLUGIN 1331084978670002: PnaclCoordinator::StartSubprocess (url_for_nexe=llc)
+PLUGIN 1331084978670023: Plugin::LoadNaClModuleCommon (service_runtime=0xf819ae10)
+PLUGIN 1331084978670029: ServiceRuntime::Start (nacl_desc=0xf8154d50)
+PLUGIN 1331084978670642: ServiceRuntime::InitCommunication (this=0xf819ae10, subprocess=0xf819ad70)
+[7730,4143537008:17:49:38.677515] Native Client module will be loaded at base address 0x00000000b6f85000
+[7730,4143537008:17:49:38.910658] NaClMakePcrelThunk: got addr 0x5a360000
+[SRPC:HOST:7730,4143537008:17:49:38.910860] NaClSrpcMessageChannelSend: first send failed, 44 != -5.
+[SRPC:HOST:7730,4143537008:17:49:38.910871] RpcCheckingClosureRun: response write failed
+PID 7667
+
+Place A.2:
+
+Further along starting up llc
+PLUGIN 1331085173888927: ScriptablePlugin::GetProperty (property=Var(3))
+third_party/tcmalloc/chromium/src/free_list.cc:115] Memory corruption detected.
+[8273,4143582064:17:52:54.060576] NaClMakePcrelThunk: got addr 0x7fbb0000
+[SRPC:HOST:8273,4143582064:17:52:54.060781] NaClSrpcMessageChannelSend: first send failed, 44 != -5.
+[SRPC:HOST:8273,4143582064:17:52:54.060802] RpcCheckingClosureRun: response write failed
+
+
+
+
+Place B:
+
+During ReverseService Lookups for LD:
+
+
+PLUGIN 1331085131931914: Plugin::StreamAsFile (url='chrome-extension://gcodniebolpnpaiggndmcmmfpldlknih/x86-32/libgcc.a')
+PLUGIN 1331085131931920: FileDownloader::FileDownloader (this=0xf9888b00)
+PLUGIN 1331085131931937: FileDownloader::Open (url=chrome-extension://gcodniebolpnpaiggndmcmmfpldlknih/x86-32/libgcc.a)
+PLUGIN 1331085131932018: FileDownloader::Open (pp_error=-1)
+PLUGIN 1331085131932693: FileDownloader::URLLoadStartNotify (pp_error=0)
+PLUGIN 1331085131932701: FileDownloader::InitialResponseIsValid (chrome-extension response status_code=200)
+PLUGIN 1331085131932705: FileDownloader::URLLoadStartNotify (async_notify_ok=1)
+
+Place C:
+
+While LLC is running
+
+
+Run LLC step 1.
+Got write wrapper.
+Got reverse service.
+Added quota managed file.
+PLUGIN 1331085220821230: SrpcClient::HasMethod (this=0xf84f1900, method_name='RunWithDefaultCommandLine', return 1)
+PLUGIN 1331085220821238: SrpcClient::Invoke (this=0xf84f1900, method_name='RunWithDefaultCommandLine', params=0xefb09e80)
+PLUGIN 1331085220821242: SrpcClient::Invoke (sending the rpc)
+PLUGIN 1331085520458354: SrpcClient::Invoke (sending the rpc)
+	base::debug::StackTrace::StackTrace() [0xf2692b30]
+	tcmalloc::FL_Next() [0xf1782c14]
+	tcmalloc::FL_Pop() [0xf1782dee]
+	tcmalloc::ThreadCache::FreeList::Pop() [0xf1779404]
+	tcmalloc::ThreadCache::Allocate() [0xf177956b]
+	(anonymous namespace)::do_malloc() [0xf1777d9d]
+	(anonymous namespace)::cpp_alloc() [0xf1778929]
+	operator new() [0xf57f24de]
+	WebKit::WebURLRequest::assign() [0xf34c521a]
+	WebKit::WebURLRequest::operator=() [0xf47b1040]
+	webkit_glue::WebURLLoaderImpl::Context::Start() [0xf47aee1f]
+	webkit_glue::WebURLLoaderImpl::loadSynchronously() [0xf47b0ca9]
+	WebCore::ResourceHandle::loadResourceSynchronously() [0xf35099f3]
+	WebCore::FrameLoader::loadResourceSynchronously() [0xf3d945ba]
+	WebCore::DocumentThreadableLoader::loadRequest() [0xf3d80993]
+	WebCore::DocumentThreadableLoader::DocumentThreadableLoader() [0xf3d7ebb0]
+	WebCore::DocumentThreadableLoader::loadResourceSynchronously() [0xf3d7e279]
+	WebCore::ThreadableLoader::loadResourceSynchronously() [0xf4015fd5]
+	WebCore::XMLHttpRequest::createRequest() [0xf3edb439]
+	WebCore::XMLHttpRequest::send() [0xf3eda887]
+	WebCore::XMLHttpRequest::send() [0xf3eda31e]
+	WebCore::V8XMLHttpRequest::sendCallback() [0xf54cb31e]
+	0x2853c054
+	0x28531af3
+	0x28532125
+	0x2853058c
+	0x285340e7
+	0x28533c61
+	0x28521c59
+	0x285131ca
+	v8::internal::Invoke() [0xf2c89c7c]
+	v8::internal::Execution::Call() [0xf2c89f83]
+	v8::Function::Call() [0xf2c2d54f]
+	WebCore::V8Proxy::instrumentedCallFunction() [0xf3b6bddf]
+	WebCore::V8Proxy::callFunction() [0xf3b6bb31]
+	WebCore::ScheduledAction::execute() [0xf3f19411]
+	WebCore::ScheduledAction::execute() [0xf3f19127]
+	WebCore::DOMTimer::fired() [0xf3df94c5]
+	WebCore::ThreadTimers::sharedTimerFiredInternal() [0xf399c098]
+	WebCore::ThreadTimers::sharedTimerFired() [0xf399bfd9]
+	webkit_glue::WebKitPlatformSupportImpl::DoTimeout() [0xf47a7a54]
+	base::BaseTimer&amp;lt;&amp;gt;::TimerTask::Run() [0xf47a7f1d]
+	base::internal::RunnableAdapter&amp;lt;&amp;gt;::Run() [0xf2719b65]
+	base::internal::InvokeHelper&amp;lt;&amp;gt;::MakeItSo() [0xf2719b12]
+	base::internal::Invoker&amp;lt;&amp;gt;::Run() [0xf2719adb]
+	base::Callback&amp;lt;&amp;gt;::Run() [0xf18c6736]
+	MessageLoop::RunTask() [0xf26c1637]
+	MessageLoop::DeferOrRunPendingTask() [0xf26c1731]
+	MessageLoop::DoDelayedWork() [0xf26c2137]
+	base::MessagePumpDefault::Run() [0xf26c99e8]
+	MessageLoop::RunInternal() [0xf26c1331]
+	MessageLoop::RunHandler() [0xf26c120b]
+	MessageLoop::Run() [0xf26c0b61]
+	RendererMain() [0xf4eb2356]
+	(anonymous namespace)::RunZygote() [0xf2658247]
+	(anonymous namespace)::RunNamedProcessTypeMain() [0xf2658413]
+	(anonymous namespace)::ContentMainRunnerImpl::Run() [0xf2658bf4]
+	content::ContentMain() [0xf2657be0]
+	ChromeMain [0xf176994f]
+	main [0xf1769903]
+	0xf01f8bd6
+	0xf1769811
+third_party/tcmalloc/chromium/src/free_list.cc:119] Memory corruption detected.
+
+
+Place D:
+
+While trying to create scratch files (really early):
+
+Making a fileref with name: /.pnacl/169ece6e577db644023cfbd8ed1077af!
+Mallocing file_ref in OpenWrite!
+DidMalloc file_ref in OpenWrite!
+PLUGIN 1331085292149989: LocalTempFile::OpenWrite: /.pnacl/169ece6e577db644023cfbd8ed1077af
+Mallocing fileio in OpenWrite!
+DidMalloc fileio in OpenWrite!
+Made a callback!
+Started the open!
+third_party/tcmalloc/chromium/src/free_list.cc:138] assertion failed: FL_Previous_No_Check(old) == __null
+[9226:9243:3650505653561:WARNING:file_descriptor_set_posix.cc(22)] FileDescriptorSet destroyed with unconsumed descriptors
+
+
+
+Other NOTEs:
+
+- Using the chrome built from scratch with NACL rolled to 7965 seems to be okay.
+- However, using that chrome w/ custom EVERYTHING (register pepper plugins, sel ldr, sel ldr bootstrap, irt lib) will also crash.
+- Using that chrome w/ only a custom pepper plugin also crashes.
+- Using that chrome w/ custom everything except the pepper plugin works fine.
+
+</ns0:content><ns0:updated>2012-03-07T15:06:13.000Z</ns0:updated><ns0:published>2012-03-07T02:01:29.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Random crashes in pnacl tests after libcrypto change.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2642/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2642" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2642" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-03-07T15:06:12.000Z</ns2:closedDate><ns2:id>2642</ns2:id></ns0:entry>

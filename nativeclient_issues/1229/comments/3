@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0UERn47eCl7ImA9Wx9SGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1229/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">I see that we have 3 different use cases:
+
+1. Debug purposes: any syscall available through trampolines is
+allowed and executed by sel_ldr itself (-a)
+2. The browser: syscall is forwarded to javascript (or Pepper --
+depends on syscall)
+3. The server: sel_ldr asks the launcher for approval to make the
+syscall and executes it if approved.
+
+I need the option 3 to achieve good performance for applications which
+require to do a lot of file and socket I/O (consider grep, gcc, http
+server, etc).
+
+The good side of my proposal is that the NaCl module will be able to
+run both in the browser and on the server but it will be faster
+(~2.5x) on the server. Also, the untrusted code will know need to know
+about imc and/or srpc stuff. It will make it easier to port
+third_party software because sometimes they call syscalls directly.
+
+Ivan</ns0:content><ns0:updated>2010-12-08T18:00:07.000Z</ns0:updated><ns0:published>2010-12-08T18:00:07.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by krasin@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1229#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1229/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

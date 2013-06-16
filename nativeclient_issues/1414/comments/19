@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0IDSX47eCl7ImA9WhZaEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1414/comments/full/19</ns0:id><ns0:author>
+			<ns0:name>mseaborn%chromium.org@gtempaccount.com</ns0:name><ns0:uri>/u/mseaborn%25chromium.org@gtempaccount.com/</ns0:uri></ns0:author><ns0:content type="html">Surely the solution is to link the NaCl trusted plugin into the Chromium executable, just as it was when the NaCl plugin was NPAPI-based.
+
+When I asked Noel about why this wasn't being done for the NaCl PPAPI plugin, I think the reason was that it led to some symbols being multiply-defined -- presumably PPP_InitializeModule()/PPP_ShutdownModule()/PPP_GetInterface().
+
+This can't be terribly difficult to fix.  Inside Chromium we can pass these functions around as pointers rather than relying on global definitions.  (We already do something similar in NaCl untrusted code for hooking up the IRT library to the webapp-supplied plugin.)
+
+Fixing this will have another space-saving benefit too: For the cases in which NaCl's service_runtime is linked into the Chromium executable, it can share libraries with the NaCl PPAPI plugin.  Today, with the PPAPI plugin as a DLL/DSO, it duplicates various libraries.
+
+@Noel: Re: "shrinking the plugin code base", I doubt that making the plugin DLL/DSO smaller would make much difference.  I think the latency here comes from the extra directory lookup and disc seek.  (The cost of resolving symbols at dynamic link time is probably secondary.)  This is why Chromium usually statically links everything into a huge executable.
+
+@Brad: This issue doesn't slow down web pages that don't use NaCl; it increases the time Chromium takes to start up.  Bear in mind that we will probably get a similar startup time penalty if we enable the separate-NaCl-zygote feature that you are adding for Linux Chromium.  This is one of the reasons why I thought it would be better to start the NaCl zygote in a separate SUID sandbox, because that would get the NaCl zygote's startup off the critical path.  We could start the NaCl zygote on demand, or after the renderer has finished starting, or at least there would be no need to wait for the NaCl zygote before the browser is usable.
+</ns0:content><ns0:updated>2011-06-27T01:52:58.000Z</ns0:updated><ns0:published>2011-06-27T01:52:58.000Z</ns0:published><ns2:updates /><ns0:title>Comment 19 by mseaborn%chromium.org@gtempaccount.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1414#c19" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1414/comments/full/19" rel="self" type="application/atom+xml" /></ns0:entry>

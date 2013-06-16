@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYARn47eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/312/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=1562
+
+------------------------------------------------------------------------
+r1562 | cbiffle@google.com | Wed Feb 24 11:16:00 PST 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_arm/v2/testdata/test_stores.S?r1=1562&amp;r2=1561&amp;pathrev=1562
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_arm/v2/testdata/test_sp_updates.nexe?r1=1562&amp;r2=1561&amp;pathrev=1562
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_arm/v2/inst_classes.cc?r1=1562&amp;r2=1561&amp;pathrev=1562
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_arm/v2/armv7-opt.table?r1=1562&amp;r2=1561&amp;pathrev=1562
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_arm/v2/inst_classes.h?r1=1562&amp;r2=1561&amp;pathrev=1562
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_arm/v2/testdata/test_sp_updates.S?r1=1562&amp;r2=1561&amp;pathrev=1562
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/third_party/arm-isa/armv7.table?r1=1562&amp;r2=1561&amp;pathrev=1562
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_arm/v2/testdata/test_sp_updates.err?r1=1562&amp;r2=1561&amp;pathrev=1562
+
+This addresses http://code.google.com/p/nativeclient/issues/detail?id=312 .
+
+Added a test to demonstrate the validator hole discussed in that bug (test_sp_updates.S, test_sp_updates.err).  The test failed, confirming the report.
+
+Turns out I had artificially combined several classes of loads into a single ClassDecoder, and we were losing information in the process.  I split the instructions into five new classes; thankfully some OO kept the LOC in check (armv7.table, armv7-opt.table, inst_classes.h, inst_classes.cc).  The new decoder classes distinguish between register- and immediate-offset address generation, and thus distinguish the two types of writeback that can result.
+
+With this change the new test passes.  I'm still squinting at the edges of this bug -- I suspect we might have other beasties nearby.
+
+Review URL: http://codereview.chromium.org/653001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:15:47.000Z</ns0:updated><ns0:published>2011-01-21T22:15:47.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=312#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/312/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

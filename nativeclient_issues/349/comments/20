@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IDRH47eCl7ImA9WhdbFU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/349/comments/full/20</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: bd3acccb02faf5fd1c4e12d9e8ba7270d0fc6e30
+ Email: mcgrathr@google.com@72b347f9-1636-4932-8204-c47f5100e119
+
+Add new NaClSelLdrErrorCode values
+
+One existing value was renamed for pedanticism, though the essential
+meaning remains the same (was a "too small", now is a "bad size").
+Three new error codes are added.  This corresponds to the native_client
+tree change in http://codereview.chromium.org/8161004/.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=349
+TEST= none
+Review URL: https://chromereviews.googleplex.com/3599013
+
+git-svn-id: svn://svn.chromium.org/chrome-internal/trunk/tools/histograms@18529 72b347f9-1636-4932-8204-c47f5100e119
+
+M	histograms.xml</ns0:content><ns0:updated>2011-10-13T18:46:15.000Z</ns0:updated><ns0:published>2011-10-13T18:46:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 20 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=349#c20" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/349/comments/full/20" rel="self" type="application/atom+xml" /></ns0:entry>

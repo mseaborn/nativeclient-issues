@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04FQH47eCl7ImA9WxFbE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/663</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">GCC in the Mac toolchain thinks that it does not support .cfi directives. In fact, the assembler does support them, but GCC does not issue .cfi_startproc/.cfi_endproc because it's configure script is too dumb.
+
+This results in the following errors when I try to use them in my code:
+
+nacl64-gcc -o scons-out/nacl_extra_sdk-x86-32-to-x86-64/obj/src/untrusted/valgrind/valgrind_interceptors.o -c -std=gnu99 -O3 -Werror -Wall -Wswitch-enum -g -fno-builtin -fno-stack-protector -fdiagnostics-show-option -pedantic -m64 -Wall -fdiagnostics-show-option -pedantic -Werror -DNACL_BUILD_ARCH=x86 -DNACL_BUILD_SUBARCH=32 -DNACL_BLOCK_SHIFT=5 -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DDYNAMIC_ANNOTATIONS_PREFIX=NACL_ -I/b/slave/mac-toolchain_x86-32/build src/untrusted/valgrind/valgrind_interceptors.c
+/var/tmp//ccVXtKfT.s: Assembler messages:
+/var/tmp//ccVXtKfT.s:144: Error: CFI instruction used without previous .cfi_startproc
+/var/tmp//ccVXtKfT.s:155: Error: CFI instruction used without previous .cfi_startproc
+/var/tmp//ccVXtKfT.s:650: Error: CFI instruction used without previous .cfi_startproc
+/var/tmp//ccVXtKfT.s:662: Error: CFI instruction used without previous .cfi_startproc
+/var/tmp//ccVXtKfT.s:918: Error: CFI instruction used without previous .cfi_startproc
+</ns0:content><ns0:updated>2010-07-05T18:51:51.000Z</ns0:updated><ns0:published>2010-07-01T12:00:24.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Mac toolchain thinks that it does not support .cfi directives, even though it does.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/663/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=663" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/663" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-07-05T18:51:51.000Z</ns2:closedDate><ns2:id>663</ns2:id></ns0:entry>

@@ -1,0 +1,72 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEGQX47eCl7ImA9WxFTFk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/401</ns0:id><ns0:author>
+			<ns0:name>s...@google.com</ns0:name><ns0:uri>/u/108394971971967673680/</ns0:uri></ns0:author><ns0:content type="html">1. NaClImcRecvTypedMessage Buffer Overflow
+
+File: src/trusted/desc/nrd_xfer.c
+Function: NaClImcRecvTypedMessage()
+Problem Type: Buffer Overflow
+Compromise Type: Varies
+Severity: Medium
+
+This function received a message on a given socket. As part of this 
+functionality, it will read a series of descriptors by parsing a blob of 
+descriptor_data_bytes in size (indicated in the received header). A loop is 
+entered to unpack these descriptors, which fills out the new_desc array. 
+Since no bounds checking has been performed in ths loop, it is possible to 
+trigger a buffer overflow in this code by providing more than 8 
+descriptors, resulting in stack corruption.
+
+************************* NOTE: I am not really convinced users can reach 
+this code. Does anyone know?? ****************************************
+
+
+2. ArgsGet Memory Corruption
+
+File: src/shared/srpc/rpc_serialize.c
+Function: ArgsGet
+Problem Type: Illegal Memory Access
+Compromise Type: Remote Compromise
+Severity: High
+
+The ArgsGet() function deserializes an SRPC argument vector and places the 
+results in the argvec buffer. In the case where this function is called 
+with allocate_args set to 0 and read_values set to 1, this function will 
+read an arbitrary amount of parameters from the buffer in to the argument 
+vector. This could lead to a buffer overflow when writing past the end of 
+argvec. Alternatively, it is likely at some point that argdesc-
+&amp;gt;element_interface() will fail when reading past the end of the buffer. 
+However, in this case, the argdesc-&amp;gt;free() function (ArgsFree) will likely 
+operate on arbitrary memory. This is because it traverses the argument 
+vector until a NULL pointer is encountered, however the NULL terminator for 
+the array will be written over with a pointer to out of bounds memory 
+within the loop. This function is called with the relevant parameters in 
+NaClResponseGet(), called from NaClSrpcRpcWait(), called from 
+NaClSrpcInvokeV(). The argument vector that is being written to is 
+allocated in NaClSrpcInvokeVaList().
+
+************************ NOTE: Pretty sure the above is a bug 
+***************************************************************************
+*
+
+3. Exit Thread Out of Bounds Memory Access
+
+File: src/trusted/service_runtime/nacl_syscall_common.c
+Function: NaClCommonSysThreadExit()
+Problem Type: Illegal Memory Access
+Compromise Type: Remote compromise
+Severity: High 
+
+The stack_flag pointer passed to this function has the integer value 0 
+written to it if it is a valid pointer. Although stack_flag is validated to 
+be in bounds, an out-of-bounds write could occur if it points right at the 
+end of the Native Client address space, due to the fact that 
+NaClUserToSys() is used to validate stack_flag, instead of 
+NaClUserToSysAddrRange() to check that all 4 bytes of the integer will be 
+within the address space. As a result, up to 3 bytes can be written in to 
+the adjacent memory in the process address space, thus possibly corrupting 
+memory. Note that this is not an issue in the x64 implementation, since the 
+guard pages will be located right after the end of the application's 
+address space.
+</ns0:content><ns0:updated>2010-04-07T02:50:20.000Z</ns0:updated><ns0:published>2010-04-05T16:06:30.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>MD audit: Service Runtime</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Milestone-Chromium-5</ns2:label><ns2:label>Security</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/401/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=401" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/401" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>399</ns2:id></ns2:blockedOn><ns2:closedDate>2010-04-07T02:50:20.000Z</ns2:closedDate><ns2:id>401</ns2:id></ns0:entry>

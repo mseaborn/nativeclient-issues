@@ -1,0 +1,57 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkUCRH47eCl7ImA9WxFUE0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/639/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">It turns out there are a total of three dependencies  on libc - at least for
+the arm flavor
+of libgcc. Below is a list of all its undefined symbols.
+abort, raise, memcpy seem to be the only deps for programs that do not use
+exceptions.
+
+These look like pretty harmless functions to me.
+What are your objections to special casing those and force them to be always
+linked in?
+Especially if this saves us from having to provide two basically identical
+libraries.
+
+
+nm  toolchain/pnacl-untrusted/arm/libgcc.a | grep " U "   | sort -u
+         U _Unwind_GetDataRelBase
+         U _Unwind_GetLanguageSpecificData
+         U _Unwind_GetRegionStart
+         U _Unwind_GetTextRelBase
+         U _Unwind_VRS_Get
+         U _Unwind_VRS_Pop
+         U _Unwind_VRS_Set
+         U __clz_tab
+         U __div0
+         U __divdi3
+         U __exidx_end
+         U __exidx_start
+         U __fixunsdfdi
+         U __fixunssfdi
+         U __gnu_Unwind_ForcedUnwind
+         U __gnu_Unwind_RaiseException
+         U __gnu_Unwind_Restore_VFP
+         U __gnu_Unwind_Restore_VFP_D
+         U __gnu_Unwind_Restore_VFP_D_16_to_31
+         U __gnu_Unwind_Restore_WMMXC
+         U __gnu_Unwind_Restore_WMMXD
+         U __gnu_Unwind_Resume
+         U __gnu_Unwind_Resume_or_Rethrow
+         U __gnu_Unwind_Save_VFP
+         U __gnu_Unwind_Save_VFP_D
+         U __gnu_Unwind_Save_VFP_D_16_to_31
+         U __gnu_Unwind_Save_WMMXC
+         U __gnu_Unwind_Save_WMMXD
+         U __gnu_ldivmod_helper
+         U __gnu_uldivmod_helper
+         U __gnu_unwind_execute
+         U __gnu_unwind_frame
+         U __muldi3
+         U __popcount_tab
+         U __udivdi3
+         U abort
+         U memcpy
+         U r0
+         U raise
+         U restore_core_regs
+         U sp</ns0:content><ns0:updated>2010-06-23T17:31:05.000Z</ns0:updated><ns0:published>2010-06-23T17:31:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=639#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/639/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,114 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk4BSX47eCl7ImA9WhZVGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1870/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>rsi...@google.com</ns0:name><ns0:uri>/u/100893057764035413344/</ns0:uri></ns0:author><ns0:content type="html">The logs are much cleaner now, but I'm keeping this bug open because there are more logs that need to be cleaned up. See http://build.chromium.org/p/tryserver.nacl/builders/nacl-lucid32_newlib_opt/builds/1030/steps/pyauto_tests32/logs/stdio.
+
+For example:
+
+[ RUN        ] multiple_nexes.NaClTest.testLoadMultipleNexesInOneTab: "Load multiple nexes in one tab and load them one after another."
+[31320,1145781104:10:26:57.409418] Test: [bb76c20] Hello world
+[31320,1094807616:10:26:57.527657] LogToJavaScriptConsole: Weak ref okay: 0xbba11c0
+[31320,1145985904:10:26:57.661637] Test: [bc92560] Hello world
+[31320,1094807616:10:26:57.794254] LogToJavaScriptConsole: Weak ref okay: 0xbba1fe0
+[31320,1145985904:10:26:58.204553] Test: [bbc7340] Hello world
+[31320,1094807616:10:26:58.329116] LogToJavaScriptConsole: Weak ref okay: 0xbba1060
+[31320,1145985904:10:27:00.617138] Test: [bbc3c00] Hello world
+[31320,1094807616:10:27:00.755610] LogToJavaScriptConsole: Weak ref okay: 0xbba1630
+[31320,1145985904:10:27:02.963638] Test: [bbbcca0] Hello world
+[31320,1094807616:10:27:03.085736] LogToJavaScriptConsole: Weak ref okay: 0xbba1090
+[31320,1145985904:10:27:04.854952] Test: [ba83720] Hello world
+ALSA lib confmisc.c:768:(parse_card) cannot find card '0'
+ALSA lib conf.c:4154:(_snd_config_evaluate) function snd_func_card_driver returned error: No such file or directory
+ALSA lib confmisc.c:392:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:4154:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1251:(snd_func_refer) error evaluating name
+ALSA lib conf.c:4154:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4633:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2211:(snd_pcm_open_noupdate) Unknown PCM default
+ALSA lib confmisc.c:768:(parse_card) cannot find card '0'
+ALSA lib conf.c:4154:(_snd_config_evaluate) function snd_func_card_driver returned error: No such file or directory
+ALSA lib confmisc.c:392:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:4154:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1251:(snd_func_refer) error evaluating name
+ALSA lib conf.c:4154:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4633:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2211:(snd_pcm_open_noupdate) Unknown PCM default
+[31320,1094807616:10:27:04.974863] LogToJavaScriptConsole: Weak ref okay: 0xb994e28
+[31320,1145985904:10:27:06.123029] Test: [bbbcca0] Hello world
+[31320,1094807616:10:27:06.241644] LogToJavaScriptConsole: Weak ref okay: 0xbba1a70
+[31320,1145985904:10:27:06.644973] Test: [bbbcca0] Hello world
+localhost - - [31/May/2011 10:27:06] code 404, message Not Found
+[31320,1094807616:10:27:06.765116] LogToJavaScriptConsole: Weak ref okay: 0xbba10c0
+localhost - - [31/May/2011 10:27:08] code 404, message Not Found
+localhost - - [31/May/2011 10:27:08] code 404, message Not Found
+[31320,1145985904:10:27:08.817956] Test: [bbc5e60] Hello world
+[31320,1094807616:10:27:08.965187] LogToJavaScriptConsole: Weak ref okay: 0xbba1958
+[31320,1145985904:10:27:09.153367] Test: [bbbcca0] Hello world
+[31320,1094807616:10:27:09.278155] LogToJavaScriptConsole: Weak ref okay: 0xbba1620
+[31320,1145985904:10:27:09.699399] Test: [bbb62a0] Hello world
+[31320,1094807616:10:27:09.823535] LogToJavaScriptConsole: Weak ref okay: 0xbca3740
+[31320,1145985904:10:27:09.992165] Test: [bbb9220] Hello world
+[31320,1094807616:10:27:10.124882] LogToJavaScriptConsole: Weak ref okay: 0xbca3748
+[31320,1145781104:10:27:10.163553] Test: [bbb90c0] Hello world
+[31320,1094807616:10:27:10.275770] LogToJavaScriptConsole: Weak ref okay: 0xbca37c0
+[31320,1145781104:10:27:10.632784] Test: [bbdbfc0] Hello world
+[31320,1094807616:10:27:10.750980] LogToJavaScriptConsole: Weak ref okay: 0xbca3750
+[31320,1145781104:10:27:10.942042] Test: [bbdb8e0] Hello world
+[31320,1094807616:10:27:11.059989] LogToJavaScriptConsole: Weak ref okay: 0xbca37a8
+[31320,1145781104:10:27:11.510975] Test: [bbd97e0] Hello world
+[31320,1094807616:10:27:11.629692] LogToJavaScriptConsole: Weak ref okay: 0xbca3650
+[31320,1145781104:10:27:11.818685] Test: [bbd9a20] Hello world
+[31320,1094807616:10:27:11.937703] LogToJavaScriptConsole: Weak ref okay: 0xbca37f0
+localhost - - [31/May/2011 10:27:11] code 404, message Not Found
+[31320,1145781104:10:27:12.129086] Test: [bbd9ac0] Hello world
+[31320,1094807616:10:27:12.251873] LogToJavaScriptConsole: Weak ref okay: 0xbca3608
+[31320,1145781104:10:27:12.427365] Test: [bbd90c0] Hello world
+[31320,1094807616:10:27:12.542571] LogToJavaScriptConsole: Weak ref okay: 0xbca3628
+[31320,1145781104:10:27:12.987565] Test: [bbd90c0] Hello world
+[31320,1094807616:10:27:13.109664] LogToJavaScriptConsole: Weak ref okay: 0xbc39180
+[31320,1145781104:10:27:13.309193] Test: [bbd9fe0] Hello world
+[31320,1094807616:10:27:13.427139] LogToJavaScriptConsole: Weak ref okay: 0xbc39610
+[31320,1145985904:10:27:13.472116] Test: [bba6c80] Hello world
+[31320,1094807616:10:27:13.584653] LogToJavaScriptConsole: Weak ref okay: 0xbc39788
+[31320,1145781104:10:27:13.935484] Test: [bbd9fa0] Hello world
+[31320,1094807616:10:27:14.052278] LogToJavaScriptConsole: Weak ref okay: 0xbc395b0
+[31320,1145781104:10:27:14.254816] Test: [bbd9fe0] Hello world
+[31320,1094807616:10:27:14.371020] LogToJavaScriptConsole: Weak ref okay: 0xbc395c8
+[31320,1145781104:10:27:14.831511] Test: [bbd9fa0] Hello world
+[31320,1094807616:10:27:14.957770] LogToJavaScriptConsole: Weak ref okay: 0xbc395e8
+[31320,1145781104:10:27:15.335012] Test: [bbd9fa0] Hello world
+localhost - - [31/May/2011 10:27:15] code 404, message Not Found
+[31320,1094807616:10:27:15.459050] LogToJavaScriptConsole: Weak ref okay: 0xbc39600
+localhost - - [31/May/2011 10:27:17] code 404, message Not Found
+localhost - - [31/May/2011 10:27:17] code 404, message Not Found
+[31320,1145781104:10:27:17.635569] Test: [bba6c40] Hello world
+[31320,1094807616:10:27:17.755408] LogToJavaScriptConsole: Weak ref okay: 0xbc395a8
+[31320,1145781104:10:27:17.930921] Test: [bbd9fa0] Hello world
+ALSA lib confmisc.c:768:(parse_card) cannot find card '0'
+ALSA lib conf.c:4154:(_snd_config_evaluate) function snd_func_card_driver returned error: No such file or directory
+ALSA lib confmisc.c:392:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:4154:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1251:(snd_func_refer) error evaluating name
+ALSA lib conf.c:4154:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4633:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2211:(snd_pcm_open_noupdate) Unknown PCM default
+ALSA lib confmisc.c:768:(parse_card) cannot find card '0'
+ALSA lib conf.c:4154:(_snd_config_evaluate) function snd_func_card_driver returned error: No such file or directory
+ALSA lib confmisc.c:392:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:4154:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1251:(snd_func_refer) error evaluating name
+ALSA lib conf.c:4154:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4633:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2211:(snd_pcm_open_noupdate) Unknown PCM default
+[31320,1094807616:10:27:18.094778] LogToJavaScriptConsole: Weak ref okay: 0xbd8b600
+[31320,1145781104:10:27:19.289544] Test: [bba6c40] Hello world
+[31320,1094807616:10:27:19.428110] LogToJavaScriptConsole: Weak ref okay: 0xbd8b070
+[31320,1145781104:10:27:21.220327] Test: [bbbdb60] Hello world
+[31320,1094807616:10:27:21.343098] LogToJavaScriptConsole: Weak ref okay: 0xbd8b4b0
+[31320,1145781104:10:27:23.616121] Test: [bbbdda0] Hello world
+[31320,1094807616:10:27:23.740055] LogToJavaScriptConsole: Weak ref okay: 0xbd8b060
+[31320,1145781104:10:27:26.138825] Test: [bb96260] Hello world
+[31320,1094807616:10:27:26.280814] LogToJavaScriptConsole: Weak ref okay: 0xbd8b768
+[31320,1145985904:10:27:26.412301] Test: [bbde0c0] Hello world
+[31320,1094807616:10:27:26.547722] LogToJavaScriptConsole: Weak ref okay: 0xbd8bb10
+[         OK ] multiple_nexes.NaClTest.testLoadMultipleNexesInOneTab</ns0:content><ns0:updated>2011-05-31T18:02:38.000Z</ns0:updated><ns0:published>2011-05-31T18:02:38.000Z</ns0:published><ns2:updates>
+			<ns2:status>Assigned</ns2:status></ns2:updates><ns0:title>Comment 2 by rsi...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1870#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1870/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

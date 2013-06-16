@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkIMQ347eCl7ImA9WhdUFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2293/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 7cda45f2213bcc0d0252e324572810ac293b5c6e
+ Email: robertm@google.com@4ff67af0-8c30-449e-8e8b-ad334ec8d88c
+
+Workaround a problem where clang and gcc behavior wrt the creation of temp objects differs. Since the ctor/dtor make pepper calls this results in observable differences in program behavior.
+
+The workaround is to use different lifetimes for the 
+objects involved. I will leave the bug open until this is better understood.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2293
+
+Review URL: http://codereview.chromium.org/8102006
+
+git-svn-id: http://src.chromium.org/svn/trunk/src/ppapi@103737 4ff67af0-8c30-449e-8e8b-ad334ec8d88c
+
+M	native_client/tests/ppapi_simple_tests/file.cc
+M	native_client/tests/ppapi_simple_tests/file1.stdin
+M	native_client/tests/ppapi_simple_tests/file2.stdin
+M	native_client/tests/ppapi_simple_tests/file2.stdout</ns0:content><ns0:updated>2011-10-03T17:56:22.000Z</ns0:updated><ns0:published>2011-10-03T17:56:22.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2293#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2293/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

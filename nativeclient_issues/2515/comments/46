@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE8CRX47eCl7ImA9WhVREks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2515/comments/full/46</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8069
+
+------------------------------------------------------------------------
+r8069 | ncbray@google.com | Tue Mar 20 09:58:20 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/dynamic_code_loading/nacl.scons?r1=8069&amp;r2=8068&amp;pathrev=8069
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/dynamic_code_loading/dynamic_load_test_threaded.c?r1=8069&amp;r2=8068&amp;pathrev=8069
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/inbrowser_test_runner/test_runner.html?r1=8069&amp;r2=8068&amp;pathrev=8069
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/dynamic_code_loading/dynamic_load_test.c?r1=8069&amp;r2=8068&amp;pathrev=8069
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/dynamic_code_loading/dynamic_load_test.h?r1=8069&amp;r2=8068&amp;pathrev=8069
+
+Add a test for multiple threads creating dynamic code.
+
+This change also adds crash detection to the inbrowser test runner.  Asserts inside the nexe will appear to be crashes,  detecting them avoids waiting for the test to timeout.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2515
+TEST= ./scons run_dynamic_load_test run_inbrowser_test_runner
+
+Review URL: https://chromiumcodereview.appspot.com/9722017
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-03-20T17:01:04.000Z</ns0:updated><ns0:published>2012-03-20T17:01:04.000Z</ns0:published><ns2:updates /><ns0:title>Comment 46 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2515#c46" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2515/comments/full/46" rel="self" type="application/atom+xml" /></ns0:entry>

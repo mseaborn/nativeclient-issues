@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcBQ347eCl7ImA9WhVREUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/449</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">As of r2101, the sel_ldr and friends call NaClOsIsSupported at startup.  
+This is good!
+
+However, they don't call NaClOsRestoresLdt and the other OS qualification 
+functions.  This is less good!  In fact, only the platform_qual_test seems 
+to call these functions.  So we need to determine which of the following 
+statements is true:
+
+1. These functions don't matter and should be removed, or
+
+2. These functions should be called.</ns0:content><ns0:updated>2012-03-19T20:47:32.000Z</ns0:updated><ns0:published>2010-04-21T18:32:43.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>NaClOsRestoresLdt is never called from anything real</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Maintainability</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/449/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=449" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/449" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2012-03-19T20:47:32.000Z</ns2:closedDate><ns2:id>449</ns2:id></ns0:entry>

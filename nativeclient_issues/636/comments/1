@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUUGRH47eCl7ImA9WxFUEkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/636/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">In case it is useful, here are the locations of the failures:
+
+$ nacl arm-ncval-core scons-out/nacl-arm/obj/tests/hello_world/hello_world.nexe 2&gt;&amp;1 | perl -ne '/ncval: (\\S+)/ &amp;&amp; print "$1\\n"' | addr2line -e scons-out/nacl-arm/obj/tests/hello_world/hello_world.nexe | uniq
+??:0
+/tmp/crosstool-untrusted/llvm-gcc/build/gcc/../../llvm-gcc-4.2/gcc/config/arm/ieee754-df.S:935
+/tmp/crosstool-untrusted/llvm-gcc/build/gcc/../../llvm-gcc-4.2/gcc/config/arm/ieee754-df.S:945
+/tmp/crosstool-untrusted/llvm-gcc/build/gcc/../../llvm-gcc-4.2/gcc/config/arm/bpabi.S:84
+/tmp/crosstool-untrusted/llvm-gcc/build/gcc/../../llvm-gcc-4.2/gcc/config/arm/bpabi.S:92
+/tmp/crosstool-untrusted/llvm-gcc/build/gcc/../../llvm-gcc-4.2/gcc/config/arm/bpabi.S:94
+/tmp/crosstool-untrusted/llvm-gcc/build/gcc/../../llvm-gcc-4.2/gcc/config/arm/bpabi.S:104
+/tmp/crosstool-untrusted/llvm-gcc/build/gcc/../../llvm-gcc-4.2/gcc/config/arm/bpabi.S:112
+/tmp/crosstool-untrusted/llvm-gcc/build/gcc/../../llvm-gcc-4.2/gcc/config/arm/bpabi.S:114
+/tmp/crosstool-untrusted/llvm-gcc/build/gcc/../../llvm-gcc-4.2/gcc/libgcc2.c:2057
+/tmp/crosstool-untrusted/llvm-gcc/build/gcc/../../llvm-gcc-4.2/gcc/libgcc2.c:1764
+/tmp/crosstool-untrusted/llvm-gcc/build/gcc/../../llvm-gcc-4.2/gcc/libgcc2.c:1913
+/tmp/crosstool-untrusted/llvm-gcc/build/gcc/../../llvm-gcc-4.2/gcc/libgcc2.c:1960
+/tmp/crosstool-untrusted/llvm-gcc/build/gcc/../../llvm-gcc-4.2/gcc/libgcc2.c:1318
+/tmp/crosstool-untrusted/llvm-gcc/build/gcc/../../llvm-gcc-4.2/gcc/libgcc2.c:1283
+/tmp/crosstool-untrusted/llvm-gcc/build/gcc/../../llvm-gcc-4.2/gcc/config/arm/unwind-arm.c:699
+/tmp/crosstool-untrusted/llvm-gcc/build/gcc/./include/unwind.h:259
+</ns0:content><ns0:updated>2010-06-22T21:47:05.000Z</ns0:updated><ns0:published>2010-06-22T21:47:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=636#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/636/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

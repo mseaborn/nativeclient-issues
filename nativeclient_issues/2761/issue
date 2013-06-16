@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0MDRX47eCl7ImA9WhVVEEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2761</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">What does *not* seem to work is source code annotations, e.g.:
+
+ __attribute__ ((visibility(&amp;quot;default&amp;quot;),externally_visible))
+
+What does work is adding a linker script to the gold command line, e.g.
+
+-l:keep_alive.x 
+&amp;gt;cat keep_alive.x 
+
+EXTERN ( &amp;lt;sym1&amp;gt; &amp;lt;sym2&amp;gt; ...  )
+
+
+It would be good to have a source code mechanism as well -- without sacrificing the property that most symbols are not visible
+
+it is also not clear what make shared images different from non-shared one in that respect.
+
+</ns0:content><ns0:updated>2012-05-03T16:11:14.000Z</ns0:updated><ns0:published>2012-05-03T16:11:14.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>pnacl: figure out a standard mechanism  of making sure symbols are externally visible after opt phase</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2761/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2761" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2761" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2761</ns2:id></ns0:entry>

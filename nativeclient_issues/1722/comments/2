@@ -1,0 +1,65 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4EQX47eCl7ImA9WhZQFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1722/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Mandel test also segfaults at the very end, sometimes?
+
+ 
+ERROR: Command returned normal -11, expecting ['normal'] 0 for linux2
+======================================================================
+Stdout
+======================================================================
+rpc call intiated mandel:dddd:iii
+input 0:  d(1)
+input 1:  d(2)
+input 2:  d(3)
+input 3:  d(4)
+rpc call complete mandel:dddd:iii
+output 0:  i(0)
+output 1:  i(0)
+output 2:  i(0)
+
+rpc call intiated mandel:dddd:iii
+input 0:  d(0)
+input 1:  d(0)
+input 2:  d(0)
+input 3:  d(0)
+rpc call complete mandel:dddd:iii
+output 0:  i(128)
+output 1:  i(0)
+output 2:  i(0)
+
+rpc call intiated mandel:dddd:iii
+input 0:  d(100)
+input 1:  d(2)
+input 2:  d(3)
+input 3:  d(4)
+rpc call complete mandel:dddd:iii
+output 0:  i(128)
+output 1:  i(0)
+output 2:  i(0)
+
+rpc call intiated mandel:dddd:iii
+input 0:  d(100)
+input 1:  d(2)
+input 2:  d(3)
+input 3:  d(4)
+rpc call complete mandel:dddd:iii
+output 0:  i(128)
+output 1:  i(0)
+output 2:  i(0)
+
+rpc call intiated mandel:dddd:iii
+input 0:  d(0.5)
+input 1:  d(0.1)
+input 2:  d(0.5)
+input 3:  d(0.1)
+rpc call complete mandel:dddd:iii
+output 0:  i(128)
+output 1:  i(0)
+output 2:  i(0)
+
+
+======================================================================
+Stderr
+======================================================================
+0&gt; 1&gt; 2&gt; 3&gt; 4&gt; 5&gt; 
+RESULT mandel_test.out: FAILED= 0.010000 secs</ns0:content><ns0:updated>2011-04-22T19:01:40.000Z</ns0:updated><ns0:published>2011-04-22T19:01:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1722#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1722/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

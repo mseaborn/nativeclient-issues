@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUMMQ347eCl7ImA9WhVTEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/860</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">If I run:
+
+./scons --mode=dbg-linux,nacl --nacl_glibc sysinfo= naclsdk_mode=custom:tools/modular-build/out/input-prefix/glibc_toolchain run_hello_world_test --verbose
+
+it now fails with:
+
+/home/mseaborn/devel/nacl-trunk/src/native_client/scons-out/nacl-x86-32/obj/tests/hello_world/hello_world.nexe: error while loading shared libraries: libgcc_s.so.1: cannot open shared object file: No such file or directory
+
+
+This is because it is now declaring a DT_NEEDED dependency on libgcc_s:
+
+$ objdump -x /home/mseaborn/devel/nacl-trunk/src/native_client/scons-out/nacl-x86-32/obj/tests/hello_world/hello_world.nexe
+...
+Dynamic Section:
+  NEEDED      libgcc_s.so.1
+  NEEDED      libc.so.6
+...
+
+Normally this would work, but gcc is installing libgcc_s into &amp;quot;lib32&amp;quot;
+instead of &amp;quot;lib&amp;quot;, and &amp;quot;lib32&amp;quot; is not on our library search path
+currently:
+
+$ find out/install/ | grep libgcc_s
+out/install/full-gcc-glibc/nacl/lib32/libgcc_s.so
+out/install/full-gcc-glibc/nacl/lib32/libgcc_s.so.1
+
+
+Passing -v to gcc when hello_world.nexe is linked shows these flags
+are passed to the linker:
+
+-lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc -lgcc --as-needed -lgcc_s --no-as-needed
+
+This is not out of the ordinary.  But libgcc_s should not be getting
+pulled in.  My guess is that some of the symbols defined in
+libgcc_s.so/libc.so are different from usual and the linker is picking
+libgcc_s's symbols in preference to definitions elsewhere.</ns0:content><ns0:updated>2012-02-24T17:11:22.000Z</ns0:updated><ns0:published>2010-08-31T10:26:54.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>nacl-glibc-based executables are now getting a dependency on libgcc_s.so.1</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/860/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=860" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/860" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>860</ns2:id></ns0:entry>

@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCRn47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1198</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">We should make sure static linking works with nacl-glibc (and is tested on Buildbot), if only because it is useful for testing and development purposes.
+
+This involves:
+
+* Add a Scons option, e.g. &amp;quot;--static_link&amp;quot;, for use with &amp;quot;--nacl_glibc&amp;quot;.  This should:
+  - pass &amp;quot;-static&amp;quot; at link time
+  - pass a linker script to gcc with -Wl,-T,&amp;lt;filename&amp;gt;
+    (Ideally we could get nacl-gcc to pick this linker script itself.)
+  - omit invoking executables via ld.so
+
+* Make sure the dummy libcrt_platform works with static linking.  The dummy &amp;quot;.so&amp;quot; file should be changed to a dummy &amp;quot;.a&amp;quot; file.
+
+* Fix up TLS initialisation:  __libc_setup_tls() in csu/libc-tls.c needs to be changed to use __tls_template_{start,tdata_end,end}.
+
+  - Furthermore, the static linker script in glibc/nacl/elf_i386.x needs updating because __tls_template_end gets set wrongly.  It needs to be changed to:
+    PROVIDE (__tls_template_end = . + SIZEOF(.tbss));
+
+* Fix futex emulation's initialisation to work with static linking.</ns0:content><ns0:updated>2011-07-29T00:12:47.000Z</ns0:updated><ns0:published>2010-11-30T00:14:25.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Ensure static linking works with nacl-glibc</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1198/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1198" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1198" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-01-07T13:08:35.000Z</ns2:closedDate><ns2:id>1198</ns2:id></ns0:entry>

@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYDQH47eCl7ImA9WhZXFU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1717</ns0:id><ns0:author>
+			<ns0:name>ncb...@google.com</ns0:name><ns0:uri>/u/100032148147647801554/</ns0:uri></ns0:author><ns0:content type="html">Platform: Win 64
+
+When NaCl revision 4702 or later is compiled into ToT Chrome in Release mode, the validator starts rejecting a 64-bit nexes compiled with ToT NaCl.  This means that NaCl is currently broken in M12.
+
+However, these nexes work fine when NaCl is specified using --register-plugins=.  We need to figure out why.
+
+Linux 64 also seems to be OK.  Again, we need to figure out why.
+
+I'll need to verify it later, but I think Chrome in Debug mode may work.  Again, why?
+
+Attached is a NACLLOG showing the validator failure for geturl.  (At the very bottom of the 8 meg text file.)</ns0:content><ns0:updated>2011-05-04T18:19:31.000Z</ns0:updated><ns0:published>2011-04-22T05:06:32.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108470876877739532758/</ns2:uri><ns2:username>kschi...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Revision 4702 breaks Chrome+NaCl on Win64.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1717/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1717" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1717" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>1723</ns2:id></ns2:blockedOn><ns2:closedDate>2011-05-04T18:19:31.000Z</ns2:closedDate><ns2:id>1717</ns2:id></ns0:entry>

@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcERn47eCl7ImA9WhVSEUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2601</ns0:id><ns0:author>
+			<ns0:name>jasonw...@google.com</ns0:name><ns0:uri>/u/110605953789916471800/</ns0:uri></ns0:author><ns0:content type="html">
+It look like upstream already has a concept of using movw/movt for
+materializing pc relative addresses (MOVTi16_ga_pcrel/MOVi16_ga_pcrel
+and   t2MOVTi16_ga_pcrel/t2MOVi16_ga_pcrel)
+- but the pattern it matches is different.
+
+We have &amp;quot;duplicate&amp;quot; ones MOVi16PIC/MOVTi16PIC and now t2MOVi16PIC/t2MOVTi16PIC
+
+Perhaps its worthwhile investigating whether its profitable to get rid
+of our version in lieu of the upstream version....
+</ns0:content><ns0:updated>2012-03-07T21:00:07.000Z</ns0:updated><ns0:published>2012-02-16T03:55:49.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>LLVM upstream has PIC versions of movw/movt. Should we get rid of our custom cooked version?</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2601/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2601" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2601" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
+			<ns2:id>1713</ns2:id></ns2:blockedOn><ns2:id>2601</ns2:id></ns0:entry>

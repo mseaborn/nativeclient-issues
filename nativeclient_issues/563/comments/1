@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUBSH47eCl7ImA9WxFWFko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/563/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Our dependence on one person is a consequence of the design of
+Buildbot, which fails to scale because Buildbot rules are version
+controlled separately from the main code and cannot be tested outside
+of Buildbot.
+
+I wrote a blog post about this recently:
+http://lackingrhoticity.blogspot.com/2010/05/trouble-with-buildbot.html
+
+Brad N and I have some similar ideas about how to do a better
+continuous integration system...
+</ns0:content><ns0:updated>2010-06-04T17:24:19.000Z</ns0:updated><ns0:published>2010-06-04T17:24:19.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>bradnel...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=563#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/563/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

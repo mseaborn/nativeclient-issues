@@ -1,0 +1,8 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYEQH47eCl7ImA9Wx5UEUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1031/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">I, for one, feel that it's very important to support third-party untrusted components and non-C languages.
+
+Unassigning during triage.  Anyone who found themselves with free time and an interest in learning SRPC could take this on -- in practice it might be useful to have one of the customers do it (krasin or the Go team) if they have time!
+
+I've marked the current breaking change (issue 935) as blocking.  I've also tentatively attached this to Baltic, because we should probably document this around the time that DSOs are enabled, but I'm open to discussion on that.</ns0:content><ns0:updated>2010-10-15T20:55:01.000Z</ns0:updated><ns0:published>2010-10-15T20:55:01.000Z</ns0:published><ns2:updates>
+			<ns2:label>Milestone-BalticSea</ns2:label><ns2:label>Docs</ns2:label><ns2:status>Available</ns2:status><ns2:ownerUpdate>---</ns2:ownerUpdate><ns2:blockedOnUpdate>935</ns2:blockedOnUpdate></ns2:updates><ns0:title>Comment 1 by cbiffle@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1031#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1031/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEYBQ347eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/933/comments/full/18</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4026
+
+------------------------------------------------------------------------
+r4026 | noelallen@google.com | Tue Dec 21 15:35:53 PST 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/module_ppapi.cc?r1=4026&amp;r2=4025&amp;pathrev=4026
+
+Add mising init code for windows only mutex initialization.  This code normally was called by the NPAPI plugin during module initialization, however for PPAPI, we need to initialize once on module initialization.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=933
+TEST= try (build test)
+Review URL: http://codereview.chromium.org/6054002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:22:32.000Z</ns0:updated><ns0:published>2011-01-21T23:22:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 18 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=933#c18" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/933/comments/full/18" rel="self" type="application/atom+xml" /></ns0:entry>

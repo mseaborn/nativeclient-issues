@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8BQH47eCl7ImA9WhVTE0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2488</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using?  pepper_15
+What version of the runtime are you using?  N/A
+On what operating system?  N/A
+
+
+I downloaded the SDK and found that it contains the following code, which does a direct getpid() NaCl syscall:
+
+objdump -d ./pepper_15/toolchain/linux_x86_newlib/x86_64-nacl/lib32/libnacl.a
+...
+00000000 &amp;lt;getpid&amp;gt;:
+   0:   83 ec 0c                sub    $0xc,%esp
+   3:   b8 e0 03 01 00          mov    $0x103e0,%eax
+   8:   83 c4 0c                add    $0xc,%esp
+   b:   83 e0 e0                and    $0xffffffe0,%eax
+   e:   ff e0                   jmp    *%eax
+
+This is bad because if someone links in code which uses getpid(), this will have undefined behaviour in the future, because direct syscalls are not part of NaCl's stable ABI.  e.g. Jumping to the address 0x103e0 might crash the process.
+</ns0:content><ns0:updated>2012-02-27T18:54:11.000Z</ns0:updated><ns0:published>2011-12-12T23:30:40.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>NaCl SDK contains a direct NaCl syscall in getpid.o in libnacl.a</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>CoreRuntime</ns2:label><ns2:label>Mstone-19</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2488/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2488" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2488" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2488</ns2:id></ns0:entry>

@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0YDSX47eCl7ImA9WhdSE0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2058/comments/full/17</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">
+The fix to this race condition would be to just not touch __sdidinit, __cleanup, __sglue, they would be initialized lazily later (under a proper lock) if we leave the thread local _reent initialized with default values.
+
+About _REENT design.
+
+The newlib design assumes that there is no __thread attribute in the compiler, all thread-local values are stored in _REENT structure (of type struct _reent).  Most of the time we need only errno from this structure.  But some other fields are also used helping strtok() /* keeps thread-local state */, l64a() /* has a thread local buffer to return from, initialized lazily */, mbrtowc() /* similar */, etc.
+
+So, effectively changing this design would imply too many changes.  We just implement thread-local nature of _REENT by putting it into TLS via __thread.  The structure is quite large, I saw people in forums complaining that it takes 1K per-thread, but for memory-constrained system we can define REENT_SMALL macro.  At this moment it is too risky to do so (some features may stop working), but later we may investigate this more lightweight approach for IRT.
+
+Now what happens with flushing files.
+
+The buffers for IO live in struct FILE, which is _not_ thread-local, all updates are properly locked on FILE.  Each FILE has their own IO buffer (i.e. _bf { _base, _size}).  _REENT keeps pointers to stdin, stdout, stderr (supposed to be globally equal?), and fflush(FILE*) would take a _REENT, but only for updating errno in the end.
+
+Our current implementation performs fflush for all known files on every thread exit.  This is ugly and suboptimal, which I want to get rid of.  It was done to flush outputs on program exit.  Unfortunately, it does not work to do fflush()-es on program exit (with _REENT as visible in exit() or _GLOBAL_REENT as visible in exit()).  The reasons for this are still unknown to me.
+
+Also discovered: __newlib_thread_init is not called for the main thread.  Pointers to stdin, stdout and stderr for the main thread differ from all other threads (which have the same pointers).  I found this by instrumenting the code, but did not investigate further.
+
+I am preparing the change proposed in the first paragraph and testing it on small_tests, large_tests.  Sadly, browser tests are a complete mystery to me. ./scons irt=0 run_post_msg_thread_chrome_browser_test would just say: Do not know how to make File target `run_post_msg_thread_chrome_browser_test'
+</ns0:content><ns0:updated>2011-07-22T18:59:38.000Z</ns0:updated><ns0:published>2011-07-22T18:59:38.000Z</ns0:published><ns2:updates /><ns0:title>Comment 17 by pa...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2058#c17" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2058/comments/full/17" rel="self" type="application/atom+xml" /></ns0:entry>

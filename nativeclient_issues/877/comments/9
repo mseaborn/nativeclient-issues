@@ -1,0 +1,56 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0MHQX47eCl7ImA9Wx5XFUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/877/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Update:
+
+With the patch and the --rosegment option I get a bus error:
+
+Program received signal SIGBUS, Bus error.
+0x7000b270 in NaClFillMemoryRegionWithHalt ()
+...
+2: x/i $pc
+0x7000b270 &lt;NaClFillMemoryRegionWithHalt+96&gt;:	str	r1, [r4, r3, lsl #2]
+(gdb) info registers
+r0             0x401	1025
+r1             0xe1266676	3777390198
+r2             0x1	1
+r3             0x400	1024
+r4             0xf0000	983040
+
+
+objdump -p vortex.pnacl.arm2
+
+vortex.pnacl.arm2:     file format elf32-littlearm
+
+Program Header:
+    LOAD off    0x00010000 vaddr 0x00020000 paddr 0x00020000 align 2**16
+         filesz 0x000c0000 memsz 0x000c0020 flags r-x
+    LOAD off    0x000d0020 vaddr 0x000f0020 paddr 0x000f0020 align 2**16
+         filesz 0x0001a9f0 memsz 0x0001a9f0 flags r--
+    LOAD off    0x000f0000 vaddr 0x00110000 paddr 0x00110000 align 2**16
+         filesz 0x00006b50 memsz 0x00006b54 flags rw-
+     TLS off    0x000f6970 vaddr 0x00116970 paddr 0x00116970 align 2**4
+         filesz 0x00000180 memsz 0x00000180 flags r--
+private flags = 100000: [APCS-32] [FPA float format]&lt;Unrecognised flag bits set&gt;
+
+------
+
+I was worried that sel_ldr didn't like: "vaddr 0x000f0020" -- not starting at a 64k boundary. So, as a stab in the dark, I tweaked the patch a bit and changed line 68 and 69 to "addr = align_address(addr, abi_pagesize);"
+
+This instead results in a segfault at the original location.
+
+objdump -p vortex.pnacl.arm3
+
+vortex.pnacl.arm3:     file format elf32-littlearm
+
+Program Header:
+    LOAD off    0x00010000 vaddr 0x00020000 paddr 0x00020000 align 2**16
+         filesz 0x000c0000 memsz 0x000c0020 flags r-x
+    LOAD off    0x000e0000 vaddr 0x000f0000 paddr 0x000f0000 align 2**16
+         filesz 0x0001a9f0 memsz 0x0001a9f0 flags r--
+    LOAD off    0x00100000 vaddr 0x00110000 paddr 0x00110000 align 2**16
+         filesz 0x00006b50 memsz 0x00006b54 flags rw-
+     TLS off    0x00106970 vaddr 0x00116970 paddr 0x00116970 align 2**4
+         filesz 0x00000180 memsz 0x00000180 flags r--
+private flags = 100000: [APCS-32] [FPA float format]&lt;Unrecognised flag bits set&gt;
+
+</ns0:content><ns0:updated>2010-09-15T22:23:50.000Z</ns0:updated><ns0:published>2010-09-15T22:23:50.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=877#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/877/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

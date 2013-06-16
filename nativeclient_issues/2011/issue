@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUYDRX47eCl7ImA9WhdSGUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2011</ns0:id><ns0:author>
+			<ns0:name>kbr@chromium.org</ns0:name><ns0:uri>/u/kbr@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">In http://codereview.chromium.org/7331020/ , for http://crbug.com/88106 , a new SetContextLostReason method is being defined in the CommandBuffer class which CommandBufferNacl subclasses (src/shared/ppapi_proxy/command_buffer_nacl.h).
+
+To avoid a three-step commit process, I'm defining a body for the new method rather than making it pure virtual.
+
+NaCl needs to define this method after rolling to the appropriate Chromium revision. Afterward, once Chromium then rolls forward NaCl, the method should be made pure virtual on the Chromium side.
+</ns0:content><ns0:updated>2011-07-29T22:06:14.000Z</ns0:updated><ns0:published>2011-07-13T02:06:16.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Define SetContextLostReason in CommandBufferNacl</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-</ns2:label><ns2:label>OS-</ns2:label><ns2:label>Arch-</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2011/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2011" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2011" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-29T22:06:14.000Z</ns2:closedDate><ns2:id>2011</ns2:id></ns0:entry>

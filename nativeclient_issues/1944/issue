@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0ECQn47eCl7ImA9WhdTFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1944</ns0:id><ns0:author>
+			<ns0:name>kschi...@google.com</ns0:name><ns0:uri>/u/108470876877739532758/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;[Please summarize the enhancement so it will be comprehensible to someone&lt;/b&gt;
+&lt;b&gt;from outside the Native Client team. A good summary will include:]&lt;/b&gt;
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+
+Currently associated with each modeled instruction (using the iterator model) is the opcode prefix, the sequence of opcode bytes (1-3 bytes), and possible values in the modrm byte that also effect the instruction selection.
+
+These values are not needed, since this information is only needed to find the modeled instruction in corresponding generated tables.
+
+This currently only effects the x86-64 validator, but will also effect the x86-32 validator is we change the decoder to use the iterator model.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+
+This (redundant) information stops us from better compressing the generated tables. This will be particularly true if we move to &amp;quot;simplifying&amp;quot; the modeled instructions (within the validator) to only use information that is needed by the validator.
+
+Further, the main use of this redundant information is for table generation, and a corresponding high-level description in the printed version of the modeled instruction. It is not used by the validator ncval and the decoder ncdis. It is also not used in sel_ldr.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+
+Modify the code so that is information is only available at table generation time.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+
+The redundant information is removed.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+
+No impact other than the memory footprint of the validator in sel_ldr could be significantly smaller.
+</ns0:content><ns0:updated>2011-07-12T18:34:23.000Z</ns0:updated><ns0:published>2011-06-22T22:31:56.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108470876877739532758/</ns2:uri><ns2:username>kschi...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Remove encoding of opcode byte sequence in model of instructions</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1944/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1944" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1944" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-12T18:34:23.000Z</ns2:closedDate><ns2:id>1944</ns2:id></ns0:entry>

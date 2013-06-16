@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0MHQ347eCl7ImA9WhdVGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2285</ns0:id><ns0:author>
+			<ns0:name>assafRa...@gmail.com</ns0:name><ns0:uri>/u/100260242131676702826/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? 1.x
+On what operating system? win7 64
+What browser are you using? 15.0.874.21 dev-m
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Start the OGRE demo app: http://goo.gl/2ztrR
+2. Move the mouse rapidly then stop moving and look carefully at the mouse cursor.
+
+&lt;b&gt;What is the expected output?&lt;/b&gt;
+Windows cursor to be at the same position as the OGRE cursor.
+
+&lt;b&gt;What do you see instead?&lt;/b&gt;
+The OGRE cursor doesn't always follow the windows cursor. 
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+Seems to be some sort of a Chrome bug here, the PP_INPUTEVENT_TYPE_MOUSEMOVE event doesn't happen for each windows mouse move.</ns0:content><ns0:updated>2011-09-24T06:23:52.000Z</ns0:updated><ns0:published>2011-09-22T22:17:26.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:cc>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/106498078576352695438/</ns2:uri><ns2:username>bre...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PP_INPUTEVENT_TYPE_MOUSEMOVE event doesn't happen for each windows mouse move</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>MigrateToChromium</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2285/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2285" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2285" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-09-24T06:23:52.000Z</ns2:closedDate><ns2:id>2285</ns2:id></ns0:entry>

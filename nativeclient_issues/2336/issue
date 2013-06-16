@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUEMRH47eCl7ImA9WhdUGEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2336</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">Wrong data size is specified for test2 in ncdecode_tests, resulting in the validator decoding one byte past the end of the test data.
+
+==18768== ERROR: AddressSanitizer global-buffer-overflow on address 0x0809fdd5 at pc 0x8072652 bp 0xffec9458 sp 0xffec9360
+READ of size 1 at 0x0809fdd5 thread T0
+    #0 0x8072652 in NCRemainingMemoryPeekInline src/trusted/validator/x86/ncinstbuffer_inl.c:70
+    #1 0x8071efb in NCRemainingMemoryReadInline src/trusted/validator/x86/ncinstbuffer_inl.c:119
+    #2 0x8071676 in NCInstBytesReadInline src/trusted/validator/x86/ncinstbuffer_inl.c:148
+    #3 0x806aaa3 in ConsumeOpcodeBytes src/trusted/validator/x86/ncval_seg_sfi/ncdecode.c:245
+    #4 0x806607f in ConsumeNextInstruction src/trusted/validator/x86/ncval_seg_sfi/ncdecode.c:597
+    #5 0x806510b in NCDecoderStateDecode src/trusted/validator/x86/ncval_seg_sfi/ncdecode.c:642
+    #6 0x804ba34 in NCDecodeSegment src/trusted/validator/x86/ncval_seg_sfi/ncdecode_verbose.c:607
+    #7 0x804a59d in ncdecode_unittests src/trusted/validator_x86/ncdecode_tests.c:332
+    #8 0x804a955 in main src/trusted/validator_x86/ncdecode_tests.c:346
+    #9 0xf7363bd6 in __libc_start_main ??:0
+0x0809fdd5 is located 0 bytes to the right of global variable '.str3' (0x809fc80) of size 341
+</ns0:content><ns0:updated>2011-10-05T11:21:25.000Z</ns0:updated><ns0:published>2011-10-04T09:24:24.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/114701340294105671768/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108470876877739532758/</ns2:uri><ns2:username>kschi...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Read past the end of a static array in ncdecode_tests</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Test</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2336/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2336" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2336" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-10-05T11:21:25.000Z</ns2:closedDate><ns2:id>2336</ns2:id></ns0:entry>

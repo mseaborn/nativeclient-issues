@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0cCRH47eCl7ImA9WxVVEkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/5</ns0:id><ns0:author>
+			<ns0:name>edwinto...@gmail.com</ns0:name><ns0:uri>/u/112604335436044307373/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+nacl_source_0.1_9308700.tgz
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Debian unstable Linux
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+firefox 3.0.4 (haven't tested in browser yet)
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+Debian GNU/Linux unstable,  kernel 2.6.27.6
+gcc version 4.3.2 (Debian 4.3.2-1)
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Use scons to build as described in README
+2. gcc fails with build errors
+&lt;b&gt;3.&lt;/b&gt;
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+I see build errors about strlen, and PATH_MAX not being declared.
+
+
+
+Please provide any additional information below and attach any relevant
+source files.
+See attached patch for fix</ns0:content><ns0:updated>2009-03-05T13:17:45.000Z</ns0:updated><ns0:published>2008-12-09T18:37:56.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108782782163151845439/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100340469138716077054/</ns2:uri><ns2:username>grego...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105678638446503189415/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Build problems with gcc 4.3</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/5/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/5" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2009-03-05T13:17:45.000Z</ns2:closedDate><ns2:id>5</ns2:id></ns0:entry>

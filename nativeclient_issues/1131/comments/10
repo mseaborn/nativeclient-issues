@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE8FSH47eCl7ImA9WhZaFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1131/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5871
+
+------------------------------------------------------------------------
+r5871 | mcgrathr@chromium.org | Thu Jun 30 10:58:18 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/REVISIONS?r1=5871&amp;r2=5870&amp;pathrev=5871
+
+Update glibc revision
+
+This brings in:
+8be6943 Adjust for new NaCl startup ABI
+
+NOTE! There must NOT be a toolchain DEPS roll done after this until
+http://codereview.chromium.org/7276050/ lands at the same time.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1131
+TEST=none
+
+R=eaeltsin@google.com,mseaborn@chromium.org
+
+Review URL: http://codereview.chromium.org/7285004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-06-30T18:00:19.000Z</ns0:updated><ns0:published>2011-06-30T18:00:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1131#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1131/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,60 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQAQ347eCl7ImA9Wx5bFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1130/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">Based on bug:
+http://code.google.com/p/nativeclient/issues/detail?id=1024&amp;q=Component%3DInfrastructure&amp;colspec=ID%20Type%20Pri%20Status%20Milestone%20Owner%20Summary
+
+I tried removing the toolchain directory.   The very next update sync passed, again without updating the toolchain.  Running scons gave the following error:
+At revision 3601.
+Syncing projects: 100% (30/30), done.
+
+D:\private_svn\nacl_clean2&gt;cd native_client
+
+D:\private_svn\nacl_clean2\native_client&gt;scons platform=x86-64 sdl=none -j 16
+scons: Reading SConscript files ...
+ERROR: NativeClient toolchain does not seem present!,
+ Missing: D:\private_svn\nacl_clean2\native_client\toolchain\win_x86/nacl/include/stdio.h
+
+Configuration is:
+ NACL_SDK_INCLUDE=D:\private_svn\nacl_clean2\native_client\toolchain\win_x86/nacl/include
+ NACL_SDK_LIB=D:\private_svn\nacl_clean2\native_client\toolchain\win_x86/nacl/lib/64
+ CC=D:\private_svn\nacl_clean2\native_client\toolchain\win_x86\bin\nacl-gcc
+ CXX=D:\private_svn\nacl_clean2\native_client\toolchain\win_x86\bin\nacl-g++
+ AR=D:\private_svn\nacl_clean2\native_client\toolchain\win_x86\bin\nacl-ar
+ AS=D:\private_svn\nacl_clean2\native_client\toolchain\win_x86\bin\nacl-as
+ LINK=D:\private_svn\nacl_clean2\native_client\toolchain\win_x86\bin\nacl-g++
+ RANLIB=D:\private_svn\nacl_clean2\native_client\toolchain\win_x86\bin\nacl-ranlib
+
+Run: gclient runhooks --force or build the SDK yourself.
+
+
+Running gclient runhooks --force gave the same error as before:
+
+D:\private_svn\nacl_clean2\native_client&gt;cd ..
+D:\private_svn\nacl_clean2&gt;gclient runhooks --force
+
+________ running 'D:\depot_tools\python_bin\python.exe native_client/build/gyp_nacl native_client/build/all.gyp' in 'D:\private_svn\nacl_clean2'
+Updating projects from gyp files...
+
+________ running 'D:\depot_tools\python_bin\python.exe native_client/build/download_toolchains.py --x86-version 3586 --arm-version 3586' in 'D:\private_svn\nacl_clean2'
+...
+...
+sdk/nacl-sdk/share/man/man1/nacl64-strings.1
+sdk/nacl-sdk/share/man/man1/nacl64-strip.1
+sdk/nacl-sdk/share/man/man1/nacl64-windmc.1
+sdk/nacl-sdk/share/man/man1/nacl64-windres.1
+Downloading http://build.chromium.org/buildbot/nacl_archive/nacl/toolchain/3586/naclsdk_win_x86.tgz to native_client\toolchain\.tmp/.tgz...
+Extracting from native_client\toolchain\.tmp/.tgz...
+Update complete.
+Traceback (most recent call last):
+  File "native_client/build/download_toolchains.py", line 120, in ?
+    main(sys.argv[1:])
+  File "native_client/build/download_toolchains.py", line 109, in main
+    Retry(os.rename, os.path.join(dst_tmp, 'sdk', 'nacl-sdk'), dst)
+  File "native_client/build/download_toolchains.py", line 48, in Retry
+    op(*args)
+OSError: [Errno 13] Permission denied
+Error: D:\depot_tools\python_bin\python.exe native_client/build/download_toolchains.py --x86-version 3586 --arm-version 3586 in D:\private_svn\nacl_clean2 returned 1
+
+D:\private_svn\nacl_clean2&gt;
+
+</ns0:content><ns0:updated>2010-10-30T22:22:22.000Z</ns0:updated><ns0:published>2010-10-30T22:22:22.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by noelal...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1130#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1130/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

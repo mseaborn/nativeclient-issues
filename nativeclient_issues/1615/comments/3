@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkQMRH47eCl7ImA9WhZQEk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1615/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4927
+
+------------------------------------------------------------------------
+r4927 | kschimpf@google.com | Tue Apr 19 09:23:04 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode.c?r1=4927&amp;r2=4926&amp;pathrev=4927
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nacl_cpuid.h?r1=4927&amp;r2=4926&amp;pathrev=4927
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode_tests.c?r1=4927&amp;r2=4926&amp;pathrev=4927
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nccopycode.c?r1=4927&amp;r2=4926&amp;pathrev=4927
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode.h?r1=4927&amp;r2=4926&amp;pathrev=4927
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdis_util.c?r1=4927&amp;r2=4926&amp;pathrev=4927
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_iter.c?r1=4927&amp;r2=4926&amp;pathrev=4927
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncvalidate.c?r1=4927&amp;r2=4926&amp;pathrev=4927
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_internaltypes.h?r1=4927&amp;r2=4926&amp;pathrev=4927
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdis_util.h?r1=4927&amp;r2=4926&amp;pathrev=4927
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncvalidate_iter.h?r1=4927&amp;r2=4926&amp;pathrev=4927
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/tools/validator_tools/ncstubout.c?r1=4927&amp;r2=4926&amp;pathrev=4927
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncvalidate.h?r1=4927&amp;r2=4926&amp;pathrev=4927
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nacl_cpuid.c?r1=4927&amp;r2=4926&amp;pathrev=4927
+
+Restructure x86-32 data structures so that they are better organized.
+Includes:
+
+(1) Make Decoder/Validator states be more like objects with inheritance and
+virtual functions (but still in c).
+
+(2) Clean up callers of validator code to be more consistent in the use of
+the APIs for the x86-32 validator.
+
+(3) Remove redundant fields/structures by splitting parts of decoder state
+that corresponds to instructions into a separate state. This results in
+only one copy being generated for decoder states (i.e. aren't duplicated in
+the instruction (decoder) buffer).
+
+Note: There are no tests for these changes because (1) the current (functional)
+tests should be testing the changes; and (2) Part of the purpose of this change
+is to make unit testing easier to introduce.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1615
+Review URL: http://codereview.chromium.org/6833033
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-19T16:26:25.000Z</ns0:updated><ns0:published>2011-04-19T16:26:25.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1615#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1615/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

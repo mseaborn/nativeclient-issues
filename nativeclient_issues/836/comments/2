@@ -1,0 +1,34 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEFRn47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/836/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3122
+
+------------------------------------------------------------------------
+r3122 | mseaborn@chromium.org | Thu Aug 26 03:53:20 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=3122&amp;r2=3121&amp;pathrev=3122
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/mmap/nacl.scons?r1=3122&amp;r2=3121&amp;pathrev=3122
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/mmap/test-file?r1=3122&amp;r2=3121&amp;pathrev=3122
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/mmap/mmap_test.stdout?r1=3122&amp;r2=3121&amp;pathrev=3122
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/mmap/mmap_test.cc?r1=3122&amp;r2=3121&amp;pathrev=3122
+
+Fix mmap() on Windows to work for the last page of a file
+
+MapViewOfFileEx() returns an error when the dwNumberOfBytesToMap
+argument goes beyond the (non-page-rounded) size of the file, but
+NaClCommonSysMmap() always passes a page-rounded size to
+NaClHostDescMap().
+
+Fix NaClCommonSysMmap() by passing a size that does not go beyond the
+file's extent.  NaClHostDescMap() on Windows already had logic to
+handle a non-page-rounded size.
+
+This renames "file_bytes" to "host_rounded_file_bytes".  A new
+"file_bytes" variable is added containing the unrounded size.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=836
+TEST=run_mmap_test
+
+Review URL: http://codereview.chromium.org/3156041
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:56:57.000Z</ns0:updated><ns0:published>2011-01-21T22:56:57.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=836#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/836/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

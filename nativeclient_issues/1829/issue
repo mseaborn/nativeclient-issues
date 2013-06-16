@@ -1,0 +1,66 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEIMSX47eCl7ImA9WhdTEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1829</ns0:id><ns0:author>
+			<ns0:name>ncb...@google.com</ns0:name><ns0:uri>/u/100032148147647801554/</ns0:uri></ns0:author><ns0:content type="html">Similar problems have been observed on pnacl-x8632, pnacl-x8664, toolchain builder, etc.
+
+-----
+
+/mnt/data/b/build/slave/pnacl-x8632/build/native_client/toolchain/pnacl_linux_x86_64/bin/pnacl-ld -arch x86-32 -o scons-out/nacl-x86-32-pnacl/obj/tests/hello_world/printf.nexe scons-out/nacl-x86-32-pnacl/obj/tests/hello_world/printf.bc -Ltoolchain/pnacl_linux_x86_64/libs-bitcode -Lscons-out/nacl-x86-32-pnacl/lib
+WARNING: While resolving call to function 'main' arguments were dropped!
+*** glibc detected *** /mnt/data/b/build/slave/pnacl-x8632/build/native_client/toolchain/pnacl_linux_x86_64/arm-none-linux-gnueabi/bin/llc: malloc(): memory corruption: 0x00000000023a6820 ***
+======= Backtrace: =========
+/lib/libc.so.6(+0x775b6)[0x2b7a9d2f85b6]
+/lib/libc.so.6(+0x7b6d8)[0x2b7a9d2fc6d8]
+/lib/libc.so.6(__libc_malloc+0x6e)[0x2b7a9d2fd58e]
+/usr/lib/libstdc++.so.6(_Znwm+0x1d)[0x2b7a9cb9d26d]
+/mnt/data/b/build/slave/pnacl-x8632/build/native_client/toolchain/pnacl_linux_x86_64/arm-none-linux-gnueabi/bin/llc(_ZNSt8_Rb_treeIPKN4llvm4SCEVESt4pairIKS3_St3mapIPKNS0_4LoopENS0_15ScalarEvolution15LoopDispositionESt4lessIS9_ESaIS4_IKS9_SB_EEEESt10_Select1stISI_ESC_IS3_ESaISI_EE10_M_insert_EPKSt18_Rb_tree_node_baseSQ_RKSI_+0x48)[0xb13708]
+/mnt/data/b/build/slave/pnacl-x8632/build/native_client/toolchain/pnacl_linux_x86_64/arm-none-linux-gnueabi/bin/llc(_ZNSt8_Rb_treeIPKN4llvm4SCEVESt4pairIKS3_St3mapIPKNS0_4LoopENS0_15ScalarEvolution15LoopDispositionESt4lessIS9_ESaIS4_IKS9_SB_EEEESt10_Select1stISI_ESC_IS3_ESaISI_EE17_M_insert_unique_ESt23_Rb_tree_const_iteratorISI_ERKSI_+0x288)[0xb17ba8]
+/mnt/data/b/build/slave/pnacl-x8632/build/native_client/toolchain/pnacl_linux_x86_64/arm-none-linux-gnueabi/bin/llc(_ZN4llvm15ScalarEvolution18getLoopDispositionEPKNS_4SCEVEPKNS_4LoopE+0x23a)[0xaf72aa]
+/mnt/data/b/build/slave/pnacl-x8632/build/native_client/toolchain/pnacl_linux_x86_64/arm-none-linux-gnueabi/bin/llc(_ZN4llvm15ScalarEvolution15isLoopInvariantEPKNS_4SCEVEPKNS_4LoopE+0x9)[0xaf7499]
+/mnt/data/b/build/slave/pnacl-x8632/build/native_client/toolchain/pnacl_linux_x86_64/arm-none-linux-gnueabi/bin/llc(_ZN4llvm15ScalarEvolution13getAddRecExprERNS_15SmallVectorImplIPKNS_4SCEVEEEPKNS_4LoopEbb+0x122)[0xb04722]
+/mnt/data/b/build/slave/pnacl-x8632/build/native_client/toolchain/pnacl_linux_x86_64/arm-none-linux-gnueabi/bin/llc(_ZN4llvm15ScalarEvolution15getTruncateExprEPKNS_4SCEVEPKNS_4TypeE+0x476)[0xb0b816]
+/mnt/data/b/build/slave/pnacl-x8632/build/native_client/toolchain/pnacl_linux_x86_64/arm-none-linux-gnueabi/bin/llc(_ZN4llvm15ScalarEvolution16createNodeForGEPEPNS_11GEPOperatorE+0xf3)[0xb0df53]
+/mnt/data/b/build/slave/pnacl-x8632/build/native_client/toolchain/pnacl_linux_x86_64/arm-none-linux-gnueabi/bin/llc(_ZN4llvm15ScalarEvolution10createSCEVEPNS_5ValueE+0x541)[0xb00621]
+/mnt/data/b/build/slave/pnacl-x8632/build/native_client/toolchain/pnacl_linux_x86_64/arm-none-linux-gnueabi/bin/llc(_ZN4llvm15ScalarEvolution7getSCEVEPNS_5ValueE+0x313)[0xb01c53]
+/mnt/data/b/build/slave/pnacl-x8632/build/native_client/toolchain/pnacl_linux_x86_64/arm-none-linux-gnueabi/bin/llc(_ZN4llvm7IVUsers21AddUsersIfInterestingEPNS_11InstructionE+0x144)[0xabe9c4]
+/mnt/data/b/build/slave/pnacl-x8632/build/native_client/toolchain/pnacl_linux_x86_64/arm-none-linux-gnueabi/bin/llc(_ZN4llvm7IVUsers21AddUsersIfInterestingEPNS_11InstructionE+0x70e)[0xabef8e]
+======= Memory map: ========
+00400000-00ff9000 r-xp 00000000 08:15 3629743                            /mnt/data/b/build/slave/pnacl-x8632/build/native_client/toolchain/pnacl_linux_x86_64/arm-none-linux-gnueabi/bin/llc
+00ffa000-010ea000 r--p 00bf9000 08:15 3629743                            /mnt/data/b/build/slave/pnacl-x8632/build/native_client/toolchain/pnacl_linux_x86_64/arm-none-linux-gnueabi/bin/llc
+010ea000-010ed000 rw-p 00ce9000 08:15 3629743                            /mnt/data/b/build/slave/pnacl-x8632/build/native_client/toolchain/pnacl_linux_x86_64/arm-none-linux-gnueabi/bin/llc
+010ed000-010f7000 rw-p 00000000 00:00 0 
+02141000-023c7000 rw-p 00000000 00:00 0                                  [heap]
+2b7a9c48e000-2b7a9c4ae000 r-xp 00000000 08:05 242888                     /lib/ld-2.11.1.so
+2b7a9c4ae000-2b7a9c4b0000 rw-p 00000000 00:00 0 
+2b7a9c4e9000-2b7a9c50a000 rw-p 00000000 00:00 0 
+2b7a9c6ad000-2b7a9c6ae000 r--p 0001f000 08:05 242888                     /lib/ld-2.11.1.so
+2b7a9c6ae000-2b7a9c6af000 rw-p 00020000 08:05 242888                     /lib/ld-2.11.1.so
+2b7a9c6af000-2b7a9c6b0000 rw-p 00000000 00:00 0 
+2b7a9c6b0000-2b7a9c6c8000 r-xp 00000000 08:05 242946                     /lib/libpthread-2.11.1.so
+2b7a9c6c8000-2b7a9c8c7000 ---p 00018000 08:05 242946                     /lib/libpthread-2.11.1.so
+2b7a9c8c7000-2b7a9c8c8000 r--p 00017000 08:05 242946                     /lib/libpthread-2.11.1.so
+2b7a9c8c8000-2b7a9c8c9000 rw-p 00018000 08:05 242946                     /lib/libpthread-2.11.1.so
+2b7a9c8c9000-2b7a9c8ce000 rw-p 00000000 00:00 0 
+2b7a9c8ce000-2b7a9c8d0000 r-xp 00000000 08:05 242935                     /lib/libdl-2.11.1.so
+2b7a9c8d0000-2b7a9cad0000 ---p 00002000 08:05 242935                     /lib/libdl-2.11.1.so
+2b7a9cad0000-2b7a9cad1000 r--p 00002000 08:05 242935                     /lib/libdl-2.11.1.so
+2b7a9cad1000-2b7a9cad2000 rw-p 00003000 08:05 242935                     /lib/libdl-2.11.1.so
+2b7a9cad2000-2b7a9cbc8000 r-xp 00000000 08:05 301145                     /usr/lib/libstdc++.so.6.0.13
+2b7a9cbc8000-2b7a9cdc8000 ---p 000f6000 08:05 301145                     /usr/lib/libstdc++.so.6.0.13
+2b7a9cdc8000-2b7a9cdcf000 r--p 000f6000 08:05 301145                     /usr/lib/libstdc++.so.6.0.13
+2b7a9cdcf000-2b7a9cdd1000 rw-p 000fd000 08:05 301145                     /usr/lib/libstdc++.so.6.0.13
+2b7a9cdd1000-2b7a9cde6000 rw-p 00000000 00:00 0 
+2b7a9cde6000-2b7a9ce68000 r-xp 00000000 08:05 242936                     /lib/libm-2.11.1.so
+2b7a9ce68000-2b7a9d067000 ---p 00082000 08:05 242936                     /lib/libm-2.11.1.so
+2b7a9d067000-2b7a9d068000 r--p 00081000 08:05 242936                     /lib/libm-2.11.1.so
+2b7a9d068000-2b7a9d069000 rw-p 00082000 08:05 242936                     /lib/libm-2.11.1.so
+2b7a9d069000-2b7a9d06a000 rw-p 00000000 00:00 0 
+2b7a9d06a000-2b7a9d080000 r-xp 00000000 08:05 356961                     /lib/libgcc_s.so.1
+2b7a9d080000-2b7a9d27f000 ---p 00016000 08:05 356961                     /lib/libgcc_s.so.1
+2b7a9d27f000-2b7a9d280000 r--p 00015000 08:05 356961                     /lib/libgcc_s.so.1
+2b7a9d280000-2b7a9d281000 rw-p 00016000 08:05 356961                     /lib/libgcc_s.so.1
+</ns0:content><ns0:updated>2011-07-08T22:03:08.000Z</ns0:updated><ns0:published>2011-05-19T22:33:23.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PNaCl build bots are experiencing periodic memory corruption errors.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Milestone-Caviar</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1829/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1829" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1829" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
+			<ns2:id>1895</ns2:id></ns2:blockedOn><ns2:closedDate>2011-07-08T22:03:08.000Z</ns2:closedDate><ns2:id>1829</ns2:id></ns0:entry>

@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EFR347eCl7ImA9WhZSEkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/876/comments/full/19</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 7d728c3a33b68fd0a367fb8e69e526009943f63b
+ Email: mseaborn@chromium.org
+
+Fix a validation failure in libpthread.so
+
+Remove pt-vfork.  Before the change, it is supplied from
+nptl/sysdeps/unix/sysv/linux/*/pt-vfork.S, which does not pass the
+validator.
+
+There is still a stub vfork() function in libc.so, so this does not
+break programs that want to link against the stub.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=876
+TEST=check output of ncval_annotate.py on libpthread.so.0
+
+Review URL: http://codereview.chromium.org/6708034
+
+M	sysdeps/nacl/Makefile</ns0:content><ns0:updated>2011-03-28T07:00:16.000Z</ns0:updated><ns0:published>2011-03-28T07:00:16.000Z</ns0:published><ns2:updates /><ns0:title>Comment 19 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=876#c19" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/876/comments/full/19" rel="self" type="application/atom+xml" /></ns0:entry>

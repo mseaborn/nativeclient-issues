@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0EAR347eCl7ImA9Wx5WE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/834</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">The toolchain download script seems to delete the existing toolchain even if the download fails.  This became really frustrating to me today, as I'm on a slow wireless internet connection and the download timed out -- but it can be replicated by simply interrupting the download script, as described below.
+
+Steps to reproduce:
+1. Run gclient runhooks --force in a client with a working toolchain.
+2. Wait for it to get to the download_toolchains.py phase.
+3. Hit ^C.
+
+Expected behavior: the download is aborted and my previous toolchain is still there.
+
+Actual behavior: I have no toolchain.
+
+</ns0:content><ns0:updated>2010-09-24T18:07:26.000Z</ns0:updated><ns0:published>2010-08-20T00:26:08.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Toolchain download script deletes existing toolchain regardless of whether the new download succeeds.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Scripts</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/834/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=834" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/834" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-09-24T18:07:26.000Z</ns2:closedDate><ns2:id>834</ns2:id></ns0:entry>

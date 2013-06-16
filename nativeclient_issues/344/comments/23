@@ -1,0 +1,49 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMHQn47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/344/comments/full/23</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2805
+
+------------------------------------------------------------------------
+r2805 | mseaborn@chromium.org | Tue Jul 27 08:14:22 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/imc_sockets/nacl.scons?r1=2805&amp;r2=2804&amp;pathrev=2805
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nrd_xfer_test.c?r1=2805&amp;r2=2804&amp;pathrev=2805
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/nrd_xfer/nrd_xfer_test.sh?r1=2805&amp;r2=2804&amp;pathrev=2805
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=2805&amp;r2=2804&amp;pathrev=2805
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/posix/nacl_desc_conn_cap.c?r1=2805&amp;r2=2804&amp;pathrev=2805
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nrd_xfer_test.sh?r1=2805&amp;r2=2804&amp;pathrev=2805
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/nrd_xfer/nrd_xfer_test.c?r1=2805&amp;r2=2804&amp;pathrev=2805
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/nrd_xfer/nacl.scons?r1=2805&amp;r2=2804&amp;pathrev=2805
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=2805&amp;r2=2804&amp;pathrev=2805
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/imc/linux/nacl_imc.cc?r1=2805&amp;r2=2804&amp;pathrev=2805
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/build.scons?r1=2805&amp;r2=2804&amp;pathrev=2805
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=2805&amp;r2=2804&amp;pathrev=2805
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_base.c?r1=2805&amp;r2=2804&amp;pathrev=2805
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/desc.gyp?r1=2805&amp;r2=2804&amp;pathrev=2805
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/imc/sigpipe_test.cc?r1=2805&amp;r2=2804&amp;pathrev=2805
+
+IMC: Enable socketpair-based BoundSocket/SocketAddress on Linux
+
+Windows is now the odd one out, rather than Mac, so the conditionals
+change accordingly.
+
+Remove now-unused code in linux/nacl_imc.cc.
+
+Remove the "-a" and "-D" options from sel_ldr, which were for
+importing and exporting socket address strings respectively.  These
+were only used on Linux, by the nrd_xfer_tests, but cannot work on
+Linux any more.
+
+Remove the nrd_xfer_tests (both trusted-code and untrusted-code
+versions).  These only worked on Linux, but they rely on "-a" and "-D"
+and so cannot work any more.  They are superseded by tests/imc_sockets
+and tests/fake_browser, which run on all platforms.
+
+We leave nrd_xfer_perf.c because it is not entirely superseded.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=344
+TEST=run_socket_transfer_test and other tests
+
+Review URL: http://codereview.chromium.org/3012025
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:53:53.000Z</ns0:updated><ns0:published>2011-01-21T22:53:53.000Z</ns0:published><ns2:updates /><ns0:title>Comment 23 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=344#c23" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/344/comments/full/23" rel="self" type="application/atom+xml" /></ns0:entry>

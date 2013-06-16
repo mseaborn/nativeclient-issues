@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIDQn47eCl7ImA9WhZbEEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1903/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Karl wrote:
+&gt; Since this bug can happen in so many cases, I am raising the
+&gt; priority of this bug.
+
+What are the other cases?  I thought it was just 'lea' and 'cmpxchg8'.
+
+IMO this bug is not serious enough to be Pri-0.  I would expect all modern CPUs to handle these illegal instructions correctly.  Even in the unlikely case that someone is running a CPU from the 90s, OSes have implemented workarounds for the f00f bug.
+
+There is no good reason to be using these illegal instructions so we won't break ABI stability in a meaningful way by disallowing them in a later release.  I have been viewing this bug as a curio.
+
+&gt; I think it is time to seriously consider changing the decoder used
+&gt; by the x86-32 validator.
+
+Bear in mind that I have been prototyping a DFA-based x86-32 validator (https://github.com/mseaborn/x86-decoder), which might be worth using in the longer term.  It has the potential to be faster and smaller than the current validator, and easier to verify, because it makes it easy to enumerate all whitelisted instructions.</ns0:content><ns0:updated>2011-06-14T18:52:53.000Z</ns0:updated><ns0:published>2011-06-14T18:52:53.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1903#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1903/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

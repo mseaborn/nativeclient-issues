@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE4CQn47eCl7ImA9WhdXEUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1565/comments/full/25</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">I was not using the IRT for my last test. Jvoung showed me how to invoke this with the translator, e.g.
+
+toolchain/pnacl_linux_x86_64_newlib/bin/pnacl-translate -arch arm     scons-out/nacl-arm-pnacl/obj/tests/barebones/barebones_switch.nexe---linked.pre_opt.pexe -o x.o --pnacl-driver-verbose --pnacl-sb --pnacl-use-emulator
+
+
+This seems to actually work now. So I will try the rest of scons next.
+
+
+For the record, the new script.sh should like:
+
+#!/bin/bash
+
+echo """readonly_file myfile $1
+rpc AddArg s(\"-march=arm\") *
+rpc AddArg s(\"-mcpu=cortex-a8\") *
+rpc AddArg s(\"-mtriple=armv7a-none-linux-gnueabi\") *
+rpc AddArg s(\"-filetype=asm\") *
+rpc AddArg s(\"-asm-verbose=false\") *
+rpc AddArg s(\"-arm-reserve-r9\") *
+rpc AddArg s(\"-sfi-disable-cp\") *
+rpc AddArg s(\"-arm_static_tls\") *
+rpc AddArg s(\"-sfi-store\") *
+rpc AddArg s(\"-sfi-stack\") *
+rpc AddArg s(\"-sfi-branch\") *
+rpc AddArg s(\"-sfi-data\") *
+rpc AddArg s(\"-debug\") *
+rpc AddArg s(\"-no-inline-jumptables\") *
+rpc Translate h(myfile) * h() i()
+set_variable out_handle \${result0}
+set_variable out_size \${result1}
+map_shmem \${out_handle} addr
+save_to_file temp.o \${addr} 0 \${out_size}
+""" | toolchain/linux_arm-trusted/run_under_qemu_arm \
+    scons-out/opt-linux-arm/staging/sel_universal \
+    --abort_on_error \
+    -B scons-out/nacl_irt-arm/staging/irt_core.nexe \
+    --command_prefix \
+    toolchain/linux_arm-trusted/run_under_qemu_arm -Q \
+    -- $2
+
+
+
+Remove the -debug line to reduce verbosity.</ns0:content><ns0:updated>2011-08-24T02:29:23.000Z</ns0:updated><ns0:published>2011-08-24T02:29:23.000Z</ns0:published><ns2:updates /><ns0:title>Comment 25 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1565#c25" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1565/comments/full/25" rel="self" type="application/atom+xml" /></ns0:entry>

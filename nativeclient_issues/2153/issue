@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C04NSH47eCl7ImA9WhdQFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2153</ns0:id><ns0:author>
+			<ns0:name>halya...@google.com</ns0:name><ns0:uri>/u/112856509894568708731/</ns0:uri></ns0:author><ns0:content type="html">If I try to open file that doesn't exist in manifest, the test hangs.
+
+Steps to reproduce:
+Use test from my CL http://codereview.chromium.org/7605029/ but change file to non existing one. The command line is ./scons --verbose -j8 platform=x86-64 --mode=nacl,dbg-linux run_irt_manifest_file_chrome_browser_test &amp;gt;out_irt.txt
+
+Test displays this text on stderr and hangs:
+[26696:26696:1058671712252:ERROR:renderer_main.cc(213)] Running without renderer sandbox
+[26718,720492288:21:06:43.651642] Entered NaClMakeDispatchThunk
+[26718,720492288:21:06:43.651710] NaCl_page_alloc_randomized: 0xc5c47614
+[26718,720492288:21:06:43.651715] NaCl_page_alloc_randomized: hint 0x45c476140000
+[26718,720492288:21:06:43.651721] NaClMakeDispatchThunk: got addr 0x45c476140000
+[26696,1716172544:21:06:44.037244] ManifestLookupRpc: files/utest_file, 17
+[26696,1716172544:21:06:44.037332] ManifestLookupRpc: invoking OpenManifestEntry
+[26696,1716172544:21:06:44.037465] ManifestLookupRpc: OpenManifestEntry returned desc -1.
+[SRPC:HOST:26696,1716172544:21:06:44.037508] NaClSrpcMessageChannelSend: first send failed, 102 != -5.
+[SRPC:HOST:26696,1716172544:21:06:44.037557] RpcCheckingClosureRun: response write failed
+</ns0:content><ns0:updated>2011-08-18T10:06:39.000Z</ns0:updated><ns0:published>2011-08-16T17:14:59.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Manifest file open interface crashes if file doesn't exist in manifest.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2153/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2153" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2153" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-17T18:34:23.000Z</ns2:closedDate><ns2:id>2153</ns2:id></ns0:entry>

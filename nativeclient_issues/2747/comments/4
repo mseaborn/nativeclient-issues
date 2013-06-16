@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEcNR347eCl7ImA9WhVWGE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2747/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">How to detect that case is this -- the dynamic linker will print out a warning (but is not quite kind enough to print out conflicting sizes).  E.g.,:
+
+
+test_eh_bad/eh_catch_many_noopt_noframe.nexe: Symbol `_ZTVN10__cxxabiv117__class_type_infoE' has different size in shared object, consider re-linking
+
+
+More for this list.  This is also the cause of segfaults for the 4 variations of run_eh_catch_many_*...
+
+
+Not yet classified failures for smoke_tests:
+
+
+run_without_stubout_2_test
+run_stubout_mode_test
+run_offline_stubout_test
+run_thread_test
+run_initfini_static_test
+run_initfini_shared_test
+run_egyptian_cotton_test
+run_callingconv_test
+
+</ns0:content><ns0:updated>2012-04-30T21:41:36.000Z</ns0:updated><ns0:published>2012-04-30T21:41:36.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2747#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2747/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

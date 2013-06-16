@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QFSH47eCl7ImA9Wx5UEk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/634/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">It's easy to see that the amount of code will be reduced. Only when file abstractions provided by sel_ldr are sufficient for the program you may avoid reimplementing them in "trusted companion" - in all other cases they are implemented twice: in "trusted companion" and in sel_ldr.
+
+In practically important case (browser) most of the stuff will be implemented in untrusted JavaScript using APIs provided by browser so it's even easier to see that this will reduce amount of trusted code.
+
+The debug-only aspect of the problem is good argument for keeping some the stuff in some kind of "debug build" of sel_ldr. I think we only need open(), read(), write() and close(). May be lseek(). But why do we provide stat and fstat, for example?
+
+Perhaps we can even keep these few "debug" functions in regular build of sel_ldr: amount of code for these few functions is very small and does not affect size of TCB materially.
+
+I think the best compromise plan will be:
+1. Remove stat and fstat - these are not useful anyway.
+2. Write set of tests to make sure syscalls open/read/write/lseek/close work.
+2. Make sure glibc does not use these syscalls and uses IPC instead.
+
+This will guarantee the simple syscalls will be there to help with future development (new ISA, new OS, new libc, etc), but real, more complex set of functions (there are dozens of file-related functions and some can not be implemented without TCB help) will be implemented in less vulnerable place (single unaligned jump in sel_ldr can destroy the sandbox - this is not the case for a "trusted companion").
+</ns0:content><ns0:updated>2010-10-16T12:15:19.000Z</ns0:updated><ns0:published>2010-10-16T12:15:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by k...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=634#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/634/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

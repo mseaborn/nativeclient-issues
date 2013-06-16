@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0IARX47eCl7ImA9WhVSFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2643/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7995
+
+------------------------------------------------------------------------
+r7995 | dschuff@google.com | Mon Mar 12 12:07:52 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/toolchain/nacl.scons?r1=7995&amp;r2=7994&amp;pathrev=7995
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/DEPS?r1=7995&amp;r2=7994&amp;pathrev=7995
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=7995&amp;r2=7994&amp;pathrev=7995
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-translate.py?r1=7995&amp;r2=7994&amp;pathrev=7995
+
+Update UPSTREAM_REV to pull in the merge to r152162
+Update gcc DEPS, fix llc command line, disable eh_ tests
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2644
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2643
+TEST=all bitcode
+
+Review URL: https://chromiumcodereview.appspot.com/9694002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-03-12T19:12:24.000Z</ns0:updated><ns0:published>2012-03-12T19:12:24.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2643#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2643/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

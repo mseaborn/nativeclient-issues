@@ -1,0 +1,66 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUCQH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/928/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4127
+
+------------------------------------------------------------------------
+r4127 | polina@google.com | Wed Jan 12 17:06:08 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_ppb_instance.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/trusted/srpcgen/ppb_rpc.h?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppapi_proxy.gyp?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_ppb_url_request_info_rpc_server.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_callback.h?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_ppb_url_request_info.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/completion_callback.srpc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppb_url_loader.srpc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/untrusted/srpcgen/ppb_rpc.h?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/build.scons?r1=4127&amp;r2=4126&amp;pathrev=4127
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_ppb_url_loader.h?r1=4127&amp;r2=4126&amp;pathrev=4127 (from /trunk/src/native_client/src/shared/ppapi_proxy/plugin_url_loader.h revision 4028)
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/trusted/srpcgen/ppp_rpc.h?r1=4127&amp;r2=4126&amp;pathrev=4127
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_url_loader.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_url_loader.h?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_geturl/url_load_request.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppb_rpc_client.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/untrusted/srpcgen/ppp_rpc.h?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppb_rpc_server.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_ppb.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/nacl.scons?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_ppb_url_response_info_rpc_server.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppp_rpc_client.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_ppb_url_response_info.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_globals.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/ppp_rpc_server.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_ppb_instance_rpc_server.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_callback.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_ppb_url_loader.cc?r1=4127&amp;r2=4126&amp;pathrev=4127 (from /trunk/src/native_client/src/shared/ppapi_proxy/plugin_url_loader.cc revision 4028)
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc/examples_ppapi.html?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_callback.h?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_upcall.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_ppb_url_loader_rpc_server.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_callback.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_var.cc?r1=4127&amp;r2=4126&amp;pathrev=4127
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/browser_globals.h?r1=4127&amp;r2=4126&amp;pathrev=4127
+
+ppapi_proxy: Support loading and reading urls. Proxy URLLoader.
+Enable ppapi_geturl test.
+
+Extend callback support to store buffer pointers for byte reads.
+
+Remove NACL_UNTESTED from the proxy code that ppapi_geturl exercises.
+This includes most PPB_URLRequestInfo, PPB_URLResponseInfo,
+PPB_URLLoader methods as well as PPB_Instance::GetWindowObject.
+
+Add some dummy code to ppapi_geturl to test PPB_Foo::IsFoo methods.
+
+Rename *url_loader* files to follow the new naming convention.
+
+Comment out a delete statement PluginVar::Release that caused crashes on
+subsequent usages of GetWindowObject. Add a comment with a bug link.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=928
+TEST= ppapi_geturl, manually in chrome
+
+Review URL: http://codereview.chromium.org/6177007
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:24:21.000Z</ns0:updated><ns0:published>2011-01-21T23:24:21.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=928#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/928/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

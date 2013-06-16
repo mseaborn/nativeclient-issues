@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE4BRn47eCl7ImA9WhVSEUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2645/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7971
+
+------------------------------------------------------------------------
+r7971 | jvoung@google.com | Wed Mar 07 12:37:20 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=7971&amp;r2=7970&amp;pathrev=7971
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/browser_dynamic_library/browser_dlopen_test.nmf?r1=7971&amp;r2=7970&amp;pathrev=7971
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/browser_dynamic_library/dynamic_library_test.nmf?r1=7971&amp;r2=7970&amp;pathrev=7971
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/browser_dynamic_library/dynamic_library_test.html?r1=7971&amp;r2=7970&amp;pathrev=7971
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/browser_dynamic_library/nacl.scons?r1=7971&amp;r2=7970&amp;pathrev=7971
+
+Clean up browser_dynamic_library scons files / NMF generation to
+use the more "standard" SCons methods.  This may make it easier to
+generate NMFs across the board.
+
+Other:
+- Delete dynamic_library_test since that is basically the same as
+  run_ppapi_test_example_browser_test, when run with --nacl-glibc.
+- Indent and sort the generated manifests to make them more readable.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2645
+TEST= dynamic_library_browser_tests
+
+Review URL: https://chromiumcodereview.appspot.com/9625013
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-03-07T20:42:37.000Z</ns0:updated><ns0:published>2012-03-07T20:42:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2645#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2645/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

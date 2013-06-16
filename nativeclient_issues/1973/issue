@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8MQH47eCl7ImA9WhZaGUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1973</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">The NaCl SDK currently ships libnacl_dyncode.a, but does not include a corresponding header file.  We should provide such a header file.
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+When linking against nacl_dyncode, developers have to create their own function prototypes.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+If the interface to nacl_dyncode changes, it can be very difficult to debug when using your own function prototypes.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+Add a header file for nacl_dyncode to the toolchain.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+Users should start to use the new header file instead of creating their own function prototypes
+</ns0:content><ns0:updated>2011-07-06T16:14:41.000Z</ns0:updated><ns0:published>2011-07-01T18:11:56.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Add a header file for libnacl_dyncode.a to the NaCl SDK toolchain</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-14</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1973/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1973" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1973" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-06T16:14:41.000Z</ns2:closedDate><ns2:id>1973</ns2:id></ns0:entry>

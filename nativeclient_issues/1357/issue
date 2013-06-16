@@ -1,0 +1,70 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCSX47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1357</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">With Linux gcc, the option &amp;quot;-fstack-protector&amp;quot; will insert checks for stack corruption into some functions (such as those that allocate buffers on the stack).  Furthermore, on Ubuntu this is turned on by default.
+
+However, with nacl-gcc, this option does not work.
+
+Example:
+
+$ cat stack_protector.c
+
+#include &amp;lt;string.h&amp;gt;
+
+void foo(char *data) {
+  char buf[100];
+  strcpy(buf, data);
+}
+
+int main() {
+  char buf[200];
+  memset(buf, 'x', sizeof(buf));
+  buf[sizeof(buf) - 1] = 0;
+  foo(buf);
+  return 0;
+}
+
+$ gcc stack_protector.c -o stack_protector
+$ ./stack_protector
+*** stack smashing detected ***: ./stack_protector terminated
+
+$ nacl nacl-gcc stack_protector.c -o stack_protector
+$ nacl sel_ldr ./stack_protector
+** Signal 11 from untrusted code: Halting at 20307h
+
+$ nacl nacl-gcc stack_protector.c -o stack_protector -fstack-protector
+/home/mseaborn/devel/nacl-trunk/src/native_client/toolchain/linux_x86/bin/../lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/ld: cannot find -lssp_nonshared
+collect2: ld returned 1 exit status
+
+
+With Linux/gcc/glibc, the generated code looks like this:
+
+$ gcc stack_protector.c -S -o - -m32
+...
+        movl    %gs:20, %eax
+...
+        xorl    %gs:20, %edx
+        je      .L6
+        call    __stack_chk_fail
+.L6:
+...
+
+This uses TLS.  glibc is responsible for setting up %gs:20.
+
+
+With NaCl/nacl-gcc/newlib, the generated code looks like this:
+
+$ nacl nacl-gcc stack_protector.c -S -o - -m32 -fstack-protector | less
+...
+        movl    __stack_chk_guard, %eax
+...
+        xorl    __stack_chk_guard, %edx
+        je      .L6
+        call    __stack_chk_fail
+        .align 32
+.L6:
+...
+
+This refers to a variable that (AFAIK) the NaCl libraries do not define.
+
+It shouldn't be too difficult to get this to work.  The runtime cost would be greater on NaCl-x86-64, though, because TLS accesses go through a syscall on x86-64 rather than %gs as on x86-32.  However, we don't *have* to use TLS for this -- TLS just makes the check value harder to guess.
+</ns0:content><ns0:updated>2011-07-29T00:12:48.000Z</ns0:updated><ns0:published>2011-01-26T02:53:46.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:state>open</ns2:state><ns0:title>nacl-gcc: "-fstack-protector" does not work for NaCl untrusted code</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1357/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1357" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1357" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1357</ns2:id></ns0:entry>

@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEAMQH47eCl7ImA9WhVQF0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1707</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">==20603== 4,636,288 bytes in 9,992 blocks are definitely lost in loss record 5,788 of 5,789
+==20603==    at 0x4C29F8F: malloc vg_replace_malloc.c:236
+==20603==    by 0x412F67: NaClCreateAdditionalThread src/trusted/service_runtime/sel_ldr_standard.c:761
+==20603==    by 0x40ADFC: NaClCommonSysThread_Create src/trusted/service_runtime/nacl_syscall_common.c:2287
+==20603==    by 0x40C421: NaClSysThread_Create scons-out/dbg-linux-x86-64/gen/native_client/src/trusted/service_runtime/nacl_syscall_handlers.c:461
+==20603==    by 0x40CF13: NaClSysThread_CreateDecoder scons-out/dbg-linux-x86-64/gen/native_client/src/trusted/service_runtime/nacl_syscall_handlers.c:934
+==20603==    by 0x41FFC8: NaClSyscallCSegHook src/trusted/service_runtime/nacl_syscall_hook.c:145
+
+
+#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;pthread.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+
+void* ThreadFunc(void* data) {
+  printf(&amp;quot;ThreadFunc\n&amp;quot;);
+  return NULL;
+}
+
+int main(void) {
+  const int N = 10000;
+  pthread_t t;
+
+  for (int i = 0; i &amp;lt; N; ++i) {
+    pthread_create(&amp;amp;t, 0, ThreadFunc, NULL);
+    pthread_join(t, 0);
+    printf(&amp;quot;%d\n&amp;quot;, i);
+  }
+  return 0;
+}
+
+</ns0:content><ns0:updated>2012-04-06T22:53:01.000Z</ns0:updated><ns0:published>2011-04-21T15:33:46.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>sel_ldr is leaking NaClAppThread's</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Mstone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1707/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1707" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1707" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2012-04-06T22:53:01.000Z</ns2:closedDate><ns2:id>1707</ns2:id></ns0:entry>

@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0INSH47eCl7ImA9WxFaFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/706/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The config.log for the working build contains:
+
+configure:6107: checking for -z relro option
+configure:6114: nacl64-gcc -m32 -v --help 2&gt;&amp;1|grep z relro 1&gt;&amp;5
+  -z relro                    Create RELRO program header
+  -z relro                    Create RELRO program header
+configure:6117: $? = 0
+configure:6121: nacl64-gcc -m32 -Wl,--verbose 2&gt;&amp;1|grep DATA_SEGMENT_RELRO_END 1&gt;&amp;5
+  . = DATA_SEGMENT_RELRO_END (12, .);
+configure:6124: $? = 0
+configure:6131: result: yes
+
+
+The config.log that you sent me for the broken build contains:
+
+configure:6107: checking for -z relro option
+configure:6114: nacl64-gcc -m32 -v --help 2&gt;&amp;1|grep z relro 1&gt;&amp;5
+  -z relro                    Create RELRO program header
+  -z relro                    Create RELRO program header
+configure:6117: $? = 0
+configure:6121: nacl64-gcc -m32 -Wl,--verbose 2&gt;&amp;1|grep DATA_SEGMENT_RELRO_END 1&gt;&amp;5
+configure:6124: $? = 1
+configure:6131: result: no
+configure:6134: error: linker with -z relro support required
+
+
+I suspect this was broken by the binutils changes in r2716, since they
+affect the linker script in the vicinity of DATA_SEGMENT_RELRO_END.
+
+Try checking out a revision before r2716.
+</ns0:content><ns0:updated>2010-07-19T17:46:39.000Z</ns0:updated><ns0:published>2010-07-19T17:46:39.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=706#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/706/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

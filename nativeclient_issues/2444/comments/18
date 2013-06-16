@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QHQn47eCl7ImA9WhRSFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2444/comments/full/18</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7232
+
+------------------------------------------------------------------------
+r7232 | krasin@chromium.org | Thu Nov 17 14:32:05 PST 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/toolchain/strtoull.c?r1=7232&amp;r2=7231&amp;pathrev=7232
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/toolchain/nacl.scons?r1=7232&amp;r2=7231&amp;pathrev=7232
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/toolchain/strtoll.c?r1=7232&amp;r2=7231&amp;pathrev=7232
+
+Add test for stroull, 0xFFFFFFFFFFFFFFFF and disable run_strtoll_test.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2444
+TEST=
+
+Review URL: http://codereview.chromium.org/8589031
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-11-17T22:35:33.000Z</ns0:updated><ns0:published>2011-11-17T22:35:33.000Z</ns0:published><ns2:updates /><ns0:title>Comment 18 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2444#c18" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2444/comments/full/18" rel="self" type="application/atom+xml" /></ns0:entry>

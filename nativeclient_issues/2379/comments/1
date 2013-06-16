@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMFQ347eCl7ImA9WhdaEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2379/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">This is message from TCB loader:
+
+$ cat test.nmf
+test.nmf:
+{
+ "program": {
+   "x86-64": {"url": "test.nmf"}
+ }
+}
+$ ./sel_ldr test.nmf 
+Error while loading "test.nmf": Too many program header entries in ELF file
+Using the wrong type of nexe (nacl-x86-32 on an x86-64 or vice versa)
+or a corrupt nexe file may be responsible for this error.
+
+ELF file starts with a signature: 0x464c457F = ntohl('.ELF'). It's probably good idea to check it specifically - this will make situation more clear when random HTML files will be served by server instead of proper .nexe.</ns0:content><ns0:updated>2011-10-21T12:33:32.000Z</ns0:updated><ns0:published>2011-10-21T12:33:32.000Z</ns0:published><ns2:updates>
+			<ns2:ownerUpdate>b...@google.com</ns2:ownerUpdate></ns2:updates><ns0:title>Comment 1 by k...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2379#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2379/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUEDQn47eCl7ImA9WhZVGUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1271/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">As suggested by Bert Freudenberg in issue 1712, the machine that I was testing on that exhibited the problem was running a 64-bit kernel, and when I switched it to a 32-bit kernel the problem went away.  Furthermore, the machine that was not exhibiting the problem was running a 32-bit kernel, and switching it to using a 64-bit kernel caused the problem to occur.  Both Macs are running the same version of OS X, 10.6.7 (10J869).
+
+So this confirms that the 64-bit kernel is responsible.
+
+Macs from the last few years are all capable of running 64-bit kernels, but only very recent Macs run the 64-bit kernel by default.  Mac OS X apparently picks the default kernel type based on the machine's model.  Specifically:
+
+"These Macs use the 64-bit kernel by default in Mac OS X v10.6.
+    * Mac Pro (Mid 2010)
+    * MacBook Pro (Early 2011)"
+(from http://support.apple.com/kb/HT3770)
+
+It is possible to identify the model programmatically by running "system_profiler" from the command line.  (The same info is also accessible via "About This Mac" -&gt; "More Info".)  I have tried this on two machines:
+"MacPro4,1" - defaults to 32-bit kernel
+"MacPro5,1" - defaults to 64-bit kernel
+(more info attached)
+</ns0:content><ns0:updated>2011-06-01T22:34:33.000Z</ns0:updated><ns0:published>2011-06-01T22:34:33.000Z</ns0:published><ns2:updates>
+			<ns2:label>HostOSBug</ns2:label><ns2:summary>Mac OS X: Entering signal handler causes process hang or machine freeze on a 64-bit kernel</ns2:summary></ns2:updates><ns0:title>Comment 4 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1271#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1271/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

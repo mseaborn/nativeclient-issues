@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUECQH47eCl7ImA9Wx9UGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1163</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">After completing bug 885, we need to update the documentation to use the new style of the nexe attribute within the 'embed' tag.
+
+Currently, the comments throughout the code tell the user to include attributes such as these within the 'embed' html tag.  For example, in nacl-sdk/src/examples/hello_world/hello_world.cc, it give the following instructions in the comments:
+
+     type=&amp;quot;application/x-ppapi-nacl-srpc&amp;quot;
+     nexes=&amp;quot;ARM: hello_world_arm.nexe
+            x86-32: hello_world_x86_32.nexe
+            x86-64: hello_world_x86_64.nexe&amp;quot;
+ 
+After implementing the new scheme as described in bug 885, this example would look like this:
+
+     type=&amp;quot;application/x-ppapi-nacl-srpc&amp;quot;
+     nacl=&amp;quot;hello_world.nmf&amp;quot;
+
+After switch over to this scheme, it is necessary to hunt down all these comments and change them.</ns0:content><ns0:updated>2011-02-18T00:07:41.000Z</ns0:updated><ns0:published>2010-11-12T16:44:38.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mball@google.com/</ns2:uri><ns2:username>mball@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112723007196297768207/</ns2:uri><ns2:username>dsprin...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Update SDK nexe loading comments to match new ISA selection scheme</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>Milestone-Arctic-Sea-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1163/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1163" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1163" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>885</ns2:id></ns2:blockedOn><ns2:closedDate>2011-02-04T23:21:37.000Z</ns2:closedDate><ns2:id>1163</ns2:id></ns0:entry>

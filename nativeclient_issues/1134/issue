@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMGSH47eCl7ImA9Wx9bFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1134</ns0:id><ns0:author>
+			<ns0:name>ncb...@google.com</ns0:name><ns0:uri>/u/100032148147647801554/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+0.1.507.1
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+OSX 10.6.4
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Chrome
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+
+In the SDK examples, editing a header file in will not result in &amp;quot;make&amp;quot; rebuilding the .cc files that depend on it.  This allows for version skew: different .o files may have been compiled with different versions of the header file.  This can lead to subtle data corruption bugs for classes defined in shared header files.  Although this is a fairly simple problem with the build system, it may result in users perceiving Native Client as flaky.
+
+This problem was observed while editing the tumbler example to modify the shader, which in turn required modifying cube.h to support additional uniform variables.  cube.h is shared between cube.cc and tumbler.cc.  The resulting corruption made the MVP matrix go crazy the more the cube was rotated.</ns0:content><ns0:updated>2011-02-23T22:33:49.000Z</ns0:updated><ns0:published>2010-11-01T23:56:57.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/112723007196297768207/</ns2:uri><ns2:username>dsprin...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Example makefiles do not depend on header files.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>Milestone-Baltic-Sea-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1134/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1134" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1134" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-02-23T22:33:49.000Z</ns2:closedDate><ns2:id>1134</ns2:id></ns0:entry>

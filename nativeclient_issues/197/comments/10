@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0ANRH47eCl7ImA9Wx5bEkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/197/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">techtonik wrote:
+&gt; Full URLs are not autolinked.
+
+I'm not exactly sure what you mean by autolinked.  Full URLs are made
+into clickable links on codereview.chromium.org if you put a space
+between "BUG=" and the URL (for an example, see
+http://codereview.chromium.org/4137001).  It would be nice to fix this
+so that the space is not needed.
+
+&gt; I've landed a patch that adds link to upstream issue to code review
+&gt; tools. It can be seen at http://codereview.appspot.com/2790041/ and
+&gt; demo at http://codereview-keydown.appspot.com/1/
+
+I don't see why you want to put the bug number into Rietveld's side
+panel.  We want the bug number to be included in the commit message.
+</ns0:content><ns0:updated>2010-10-28T09:56:35.000Z</ns0:updated><ns0:published>2010-10-28T09:56:35.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=197#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/197/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

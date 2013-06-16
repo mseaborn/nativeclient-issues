@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkICQn47eCl7ImA9Wx9SEUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1192/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdroid1@gmail.com</ns0:name><ns0:uri>/u/bugdroid1@gmail.com/</ns0:uri></ns0:author><ns0:content type="html">Commit: cd03e9ce9e8b60bf7d29254c04c45310b4181af6
+ Email: mikhailt@google.com
+
+Enable time() in glibc.
+
+BUG = http://code.google.com/p/nativeclient/issues/detail?id=1192
+TEST = run_time_test
+
+Review URL: http://codereview.chromium.org/5284008
+
+M	make_sysd_rules.py</ns0:content><ns0:updated>2010-11-30T20:56:03.000Z</ns0:updated><ns0:published>2010-11-30T20:56:03.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdroid1@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1192#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1192/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

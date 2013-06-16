@@ -1,0 +1,83 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkQMQH47eCl7ImA9WxBSEEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/210</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">Using the toolchain tarball as available on the morning of 2009-12-11, we 
+get non-sandboxed stores in the newlib build.
+
+For example, the function copybits (newlib/libc/stdlib.mprec.c), which 
+reads as follows in the original C:
+
+#define Storeinc(a,b,c) (*(a)++ = (b) &amp;lt;&amp;lt; 16 | (c) &amp;amp; 0xffff)
+void
+_DEFUN (copybits, (c, n, b),
+  __ULong *c _AND
+  int n _AND
+  _Bigint *b)
+{
+  __ULong *ce, *x, *xe;
+#ifdef Pack_16
+  int nw, nw1;
+#endif
+
+  ce = c + ((n-1) &amp;gt;&amp;gt; kshift) + 1;
+  x = b-&amp;gt;_x;
+#ifdef Pack_32
+  xe = x + b-&amp;gt;_wds;
+  while(x &amp;lt; xe)
+    *c++ = *x++;
+#else
+  nw = b-&amp;gt;_wds;
+  nw1 = nw &amp;amp; 1;
+  for(xe = x + (nw - nw1); x &amp;lt; xe; x += 2)
+    Storeinc(c, x[1], x[0]);
+  if (nw1)
+    *c++ = *x;
+#endif
+  while(c &amp;lt; ce)
+    *c++ = 0;
+}
+
+...compiles into this:
+00027630 &amp;lt;__copybits&amp;gt;:
+   27630:       e92d4830        push    {r4, r5, fp, lr}
+   27634:       e2411001        sub     r1, r1, #1      ; 0x1
+   27638:       e5923010        ldr     r3, [r2, #16]
+   2763c:       e3530000        cmp     r3, #0  ; 0x0
+   27640:       e1a012c1        asr     r1, r1, #5
+   27644:       e0801101        add     r1, r0, r1, lsl #2
+   27648:       e2811004        add     r1, r1, #4      ; 0x4
+   2764c:       da00000d        ble     27688 &amp;lt;__copybits+0x58&amp;gt;
+   27650:       e0823103        add     r3, r2, r3, lsl #2
+   27654:       e282c014        add     ip, r2, #20     ; 0x14
+   27658:       e3a0e000        mov     lr, #0  ; 0x0
+   2765c:       e2833014        add     r3, r3, #20     ; 0x14
+   27660:       e082500e        add     r5, r2, lr
+   27664:       e080400e        add     r4, r0, lr
+   27668:       e28ee004        add     lr, lr, #4      ; 0x4
+   2766c:       e5955014        ldr     r5, [r5, #20]
+   27670:       e3c44103        bic     r4, r4, #-1073741824    ; 
+0xc0000000
+   27674:       e5845000        str     r5, [r4]
+   27678:       e08c500e        add     r5, ip, lr
+   2767c:       e1550003        cmp     r5, r3
+   27680:       3afffff6        bcc     27660 &amp;lt;__copybits+0x30&amp;gt;
+   27684:       e080000e        add     r0, r0, lr
+   27688:       e1500001        cmp     r0, r1
+   2768c:       2a000003        bcs     276a0 &amp;lt;__copybits+0x70&amp;gt;
+   27690:       e3a02000        mov     r2, #0  ; 0x0
+   27694:       e4802004        str     r2, [r0], #4  @ &amp;lt;-- BAD BAD BAD
+   27698:       e1500001        cmp     r0, r1
+   2769c:       3afffffc        bcc     27694 &amp;lt;__copybits+0x64&amp;gt;
+   276a0:       e8bd4830        pop     {r4, r5, fp, lr}
+   276a4:       e3cee2ff        bic     lr, lr, #-268435441     ; 
+0xf000000f
+   276a8:       e12fff1e        bx      lr
+   276ac:       e1a00000        nop                     (mov r0,r0)
+
+This function is interesting!  It contains both masked stores (@27674 for 
+example), unmasked stores (@27694), and a masked return instruction 
+(@276a8).
+
+Hypothesis: LLVM has recently grown a new store pattern in the isel DAG, 
+and we are failing to sandbox it.</ns0:content><ns0:updated>2009-12-17T22:53:01.000Z</ns0:updated><ns0:published>2009-12-11T21:00:07.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>2009-12-11 ARM toolchain produces non-sandboxed stores</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Milestone-ARM-Toolchain-Alpha</ns2:label><ns2:label>Component-DevTools</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/210/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=210" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/210" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>195</ns2:id></ns2:blocking><ns2:closedDate>2009-12-17T22:53:01.000Z</ns2:closedDate><ns2:id>210</ns2:id></ns0:entry>

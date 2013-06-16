@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHQ347eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/238</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">As I understand it, the Same Origin Policy for NaCl plugins works as follows:
+
+Suppose a NaCl executable from origin A is embedded in a page from origin B.  
+(This cross-origin embedding is allowed.)
+
+The Javascript running on the page can fetch URLs from origin A using the 
+plugin DOM object's __urlAsNaClDesc() method, but all it gets back is a NaCl 
+file descriptor object.  The Javascript cannot read the file directly; all it 
+can do with the FD object is pass it to the NaCl process.
+
+The NaCl process cannot fetch URLs directly; it can only receive file 
+descriptors from the Javascript code.  It cannot tell what URL a file 
+descriptor was fetched from.  It also cannot tell if it has been embedded 
+cross-origin.
+
+This arrangement has the potential for creating confusion.
+
+Origin A may rely on the executable not to leak data from URLs in origin A to 
+the Javascript code in origin B.  However, the executable has no trusted path 
+for fetching URLs; all of its file descriptors come via origin B's code.  
+Origin B could confuse origin A's executable by supplying descriptors for files 
+that the executable did not expect.
+</ns0:content><ns0:updated>2011-07-29T00:12:12.000Z</ns0:updated><ns0:published>2010-01-02T19:32:51.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Potential for confusion in NaCl plugin's Same Origin Policy</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-NaCl</ns2:label><ns2:label>Component-FFPlugin</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/238/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=238" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/238" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-02-15T23:16:25.000Z</ns2:closedDate><ns2:id>238</ns2:id></ns0:entry>

@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUEQn47eCl7ImA9WhRXFk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2511/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>jba...@google.com</ns0:name><ns0:uri>/u/104606170740762880533/</ns0:uri></ns0:author><ns0:content type="html">These tests are also failing now, intermittently (sorry for the dups):
+
+nacl_newlib.run_manifest_browser_test
+nacl_newlib.run_ppapi_example_audio_test
+nacl_newlib.run_ppapi_example_font_test
+nacl_newlib.run_ppapi_geturl_browser_test
+nacl_newlib.run_ppapi_messaging_browser_test
+nacl_newlib.run_ppapi_ppb_core_browser_test
+nacl_newlib.run_ppapi_ppb_dev_browser_test
+nacl_newlib.run_ppapi_ppb_file_system_browser_test
+nacl_newlib.run_ppapi_ppb_graphics2d_browser_test
+nacl_newlib.run_ppapi_ppb_instance_browser_test
+nacl_newlib.run_ppapi_ppb_memory_browser_test
+nacl_newlib.run_ppapi_ppb_pdf_browser_test
+nacl_newlib.run_ppapi_ppb_scrollbar_browser_test
+nacl_newlib.run_ppapi_ppb_url_loader_browser_test
+nacl_newlib.run_ppapi_ppb_widget_browser_test
+nacl_newlib.run_ppapi_ppp_input_event_browser_test
+nacl_newlib.run_ppapi_ppp_instance_browser_test
+nacl_newlib.run_ppapi_progress_events_browser_test
+nacl_newlib.run_ppapi_test_example_browser_test
+
+nacl_glibc.run_manifest_browser_test
+nacl_glibc.run_pm_exit0_status_chrome_browser_test
+nacl_glibc.run_pm_exit254_status_chrome_browser_test
+nacl_glibc.run_pm_exit7_status_chrome_browser_test
+nacl_glibc.run_pm_exitneg2_status_chrome_browser_test
+nacl_glibc.run_ppapi_example_audio_test
+nacl_glibc.run_ppapi_example_font_test
+nacl_glibc.run_ppapi_geturl_browser_test
+nacl_glibc.run_ppapi_messaging_browser_test
+nacl_glibc.run_ppapi_ppb_graphics2d_browser_test
+nacl_glibc.run_ppapi_ppb_instance_browser_test
+nacl_glibc.run_ppapi_ppb_memory_browser_test
+nacl_glibc.run_ppapi_ppb_pdf_browser_test
+nacl_glibc.run_ppapi_ppb_scrollbar_browser_test
+nacl_glibc.run_ppapi_ppb_url_loader_browser_test
+nacl_glibc.run_ppapi_ppb_widget_browser_test
+nacl_glibc.run_ppapi_ppp_input_event_browser_test
+nacl_glibc.run_ppapi_ppp_instance_browser_test
+nacl_glibc.run_ppapi_progress_events_browser_test
+nacl_glibc.run_ppapi_test_example_browser_test
+</ns0:content><ns0:updated>2011-12-23T02:26:43.000Z</ns0:updated><ns0:published>2011-12-23T02:26:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by jba...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2511#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2511/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

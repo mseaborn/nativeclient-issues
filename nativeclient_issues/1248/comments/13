@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0YBRH47eCl7ImA9WhRSFk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1248/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7238
+
+------------------------------------------------------------------------
+r7238 | pdox@google.com | Fri Nov 18 00:29:24 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/nacl.scons?r1=7238&amp;r2=7237&amp;pathrev=7238
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/srpc/nacl.scons?r1=7238&amp;r2=7237&amp;pathrev=7238
+
+Add architectural #defines (e.g. __x86_64__) back into the PNaCl build of libsrpc and libplatform against GLibC.
+
+This is needed because the types of pthread_mutex_t and pthread_attr_t differ
+between X86-32 and X86-64 in the GlibC headers. This is a GlibC ABI issue (issue 1248).
+
+This fixes 3 test failures in the glibc x86-64 pnacl smoke tests:
+  run_simple_srpc_test_nexe
+  run_types_srpc_test_nexe
+  run_atomic_ops_nexe_test
+
+TBR= krasin
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1248
+Review URL: http://codereview.chromium.org/8588050
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-11-18T08:32:35.000Z</ns0:updated><ns0:published>2011-11-18T08:32:35.000Z</ns0:published><ns2:updates /><ns0:title>Comment 13 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1248#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1248/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

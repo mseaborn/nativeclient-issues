@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkEMQn47eCl7ImA9WhRQGUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2203</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">r6575
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Go to native_client/tests/pnacl_abi/data_type.{c,stdout}.
+It requires sizeof(jmp_buf) == 1024 with the comment:
+/* A 1024 byte buffer to accomodate future architectures */
+
+2. Go to NaCl glibc, glibc/include/bits/setjmp.h:
+# if __WORDSIZE == 64
+typedef long int __jmp_buf[8];
+# else
+typedef int __jmp_buf[6];
+# endif
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+I would expect that the definition and the test match each other. They don't.
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-12-15T18:44:43.000Z</ns0:updated><ns0:published>2011-08-29T19:46:05.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>PNaCl / glibc conflict around jmp_buf size</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2203/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2203" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2203" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2203</ns2:id></ns0:entry>

@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE8BQ347eCl7ImA9Wx5XE0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/453</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I tried to compile the code below, and it gave me this internal compiler 
+error:
+
+nacl64-gcc -o scons-out/nacl-x86-
+64/obj/tests/data_not_executable/execute_data.o -c -O2 -fomit-frame-pointer -
+Wall -fdiagnostics-show-option -pedantic -Werror -m64 -DNACL_STANDALONE=1 -
+I/usr/local/google/home/mseaborn/devel/nacl-svn 
+tests/data_not_executable/execute_data.c
+tests/data_not_executable/execute_data.c: In function 'main':
+tests/data_not_executable/execute_data.c:16: internal compiler error: in 
+copy_to_mode_reg, at explow.c:629scons: building terminated because of errors.
+
+Please submit a full bug report,
+with preprocessed source if appropriate.
+See &amp;lt;http://gcc.gnu.org/bugs.html&amp;gt; for instructions.
+
+
+Here is the code:
+
+#include &amp;lt;stdio.h&amp;gt;
+
+unsigned char code[] = { 0xc3 /* ret */ };
+
+int main() {
+  /* Double cast required to stop gcc complaining. */
+  void (*func)() = (void (*)()) (uintptr_t) code;
+  fprintf(stderr, &amp;quot;This should fault\n&amp;quot;);
+  func();
+  fprintf(stderr, &amp;quot;We're still running. This is bad.\n&amp;quot;);
+  return 1;
+}
+</ns0:content><ns0:updated>2010-09-13T07:27:32.000Z</ns0:updated><ns0:published>2010-04-23T09:51:02.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>x86-64 gcc: internal compiler error: in copy_to_mode_reg, at explow.c:629</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/453/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=453" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/453" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-09-13T07:27:32.000Z</ns2:closedDate><ns2:id>453</ns2:id></ns0:entry>

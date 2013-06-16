@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEQAR347eCl7ImA9WhZbF0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1935/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5739
+
+------------------------------------------------------------------------
+r5739 | cstefansen@google.com | Wed Jun 22 10:03:55 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_gles_book/nacl.scons?r1=5739&amp;r2=5738&amp;pathrev=5739
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/examples.html?r1=5739&amp;r2=5738&amp;pathrev=5739
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_gles_book/ppapi_gles_book_texture_wrap.nmf?r1=5739&amp;r2=5738&amp;pathrev=5739
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_gles_book/ppapi_gles_book_mip_map_2d.nmf?r1=5739&amp;r2=5738&amp;pathrev=5739
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_gles_book/ppapi_gles_book.html?r1=5739&amp;r2=5738&amp;pathrev=5739
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_gles_book/ppapi_gles_book_simple_vertex_shader.nmf?r1=5739&amp;r2=5738&amp;pathrev=5739
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_gles_book/ppapi_gles_book_hello_triangle.nmf?r1=5739&amp;r2=5738&amp;pathrev=5739
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_gles_book/ppapi_gles_book_stencil_test.nmf?r1=5739&amp;r2=5738&amp;pathrev=5739
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_gles_book/ppapi_gles_book_simple_texture_cubemap.nmf?r1=5739&amp;r2=5738&amp;pathrev=5739
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/browser_tester/browser_tester.py?r1=5739&amp;r2=5738&amp;pathrev=5739
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_gles_book/ppapi_gles_book_simple_texture_2d.nmf?r1=5739&amp;r2=5738&amp;pathrev=5739
+
+Compile GLES Book examples in the NaCl build for testing purposes.
+
+A forthcoming CL will automate the tests.
+
+R==ncbray@google.com
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1935
+TEST= Visit ppapi_gles_book_examples.html and click on each one to run it.
+
+Review URL: http://codereview.chromium.org/7218017
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-06-22T17:05:46.000Z</ns0:updated><ns0:published>2011-06-22T17:05:46.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1935#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1935/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

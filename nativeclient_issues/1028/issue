@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUMSH47eCl7ImA9WhVREUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1028</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">In issue 1027 I described how repeatedly creating and
+pthread_join()ing a thread can exhaust trusted address space.  The
+same problem can occur for untrusted address space, at least with the
+pthreads implementation used for nacl-newlib (in
+src/untrusted/pthread).
+
+The problem is that pthread_join() can return when the thread is about
+to exit, but before it has finally exited and its stack is marked as
+reusable (via the thread_exit() syscall).  If there are many
+outstanding threads, we can run out of untrusted address space for
+more stacks.
+
+nacl-glibc's pthread_join() currently addresses this by waiting on a
+condvar and then spinning until thread_exit(x) does its &amp;quot;*x = 0&amp;quot;
+assignment.  This busy-waiting is obviously wasteful of CPU.  It also
+does not solve the problem of trusted address space from issue 1027,
+only untrusted address space.
+
+As with issue 1027, the fix is to add a thread_join() syscall.</ns0:content><ns0:updated>2012-03-19T15:51:29.000Z</ns0:updated><ns0:published>2010-10-14T14:18:17.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>nacl-newlib: Race condition in thread exit can exhaust untrusted address space</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>ThreadJoinRace</ns2:label><ns2:label>Mstone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1028/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1028" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1028" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1028</ns2:id></ns0:entry>

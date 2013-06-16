@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08ER347eCl7ImA9Wx9aEUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/579/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4447
+
+------------------------------------------------------------------------
+r4447 | mseaborn@chromium.org | Thu Mar 03 12:50:15 PST 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/signal_handler/crash_in_syscall.c?r1=4447&amp;r2=4446&amp;pathrev=4447
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/signal_handler/nacl.scons?r1=4447&amp;r2=4446&amp;pathrev=4447
+
+Signal handler: Add test for crashes that occur inside syscall handlers
+
+When looking at the signal handler code recently, I noticed that the
+crash-in-syscall case is no longer fully tested because this branch is
+hidden behind the conditions
+  NACL_TLS_INDEX_INVALID == current_thread_index
+or
+  NULL == g_SignalNAP
+which are not true for the existing crash-in-trusted-code test.
+
+This new test case also doubles up as a reproducer for the issue
+linked below.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=579
+TEST=run_signal_handler_test
+
+Review URL: http://codereview.chromium.org/6613002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-03-03T20:56:46.000Z</ns0:updated><ns0:published>2011-03-03T20:56:46.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=579#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/579/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

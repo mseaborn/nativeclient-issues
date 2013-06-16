@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ADSX47eCl7ImA9Wx9bEEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1453/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4350
+
+------------------------------------------------------------------------
+r4350 | mseaborn@chromium.org | Fri Feb 18 09:50:22 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/Makefile?r1=4350&amp;r2=4349&amp;pathrev=4350
+
+tools/Makefile: Remove ad-hoc step for forcing Bison/Flex to run
+
+This step is no longer necessary now that the change to the Bison/Flex
+files in nacl-binutils has been reverted.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1453
+TEST="cd tools &amp;&amp; make SDKLOC=`pwd`/DEST binutils"
+
+Review URL: http://codereview.chromium.org/6532047
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-02-18T17:56:18.000Z</ns0:updated><ns0:published>2011-02-18T17:56:18.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1453#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1453/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,8 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUANR347eCl7ImA9WhdXGUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1071/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">the patches are here: http://git.chromium.org/gitweb/?p=native_client/nacl-gcc.git
+
+The changes are mostly in the code generator, though with significantly changed instruction definitions in the i386.md file patches need heavily non-trivial work.
+
+I updated the issue summary to make our intentions more clear: we want to update the patches closer to the upstream.</ns0:content><ns0:updated>2011-09-02T11:43:16.000Z</ns0:updated><ns0:published>2011-09-02T11:43:16.000Z</ns0:published><ns2:updates>
+			<ns2:summary>Upgrade nacl-gcc closer to upstream (GCC 4.5.x, 4.6.x, 4.7.x or newer)</ns2:summary></ns2:updates><ns0:title>Comment 11 by pa...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1071#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1071/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

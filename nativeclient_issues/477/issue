@@ -1,0 +1,71 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUcFSH47eCl7ImA9WhRaGUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/477</ns0:id><ns0:author>
+			<ns0:name>bradnelson@google.com</ns0:name><ns0:uri>/u/bradnelson@google.com/</ns0:uri></ns0:author><ns0:content type="html">This test has been disabled on that bot, as it hangs the builder.
+
+C:\b\slave\win7atom64-m64-n64-test-opt\build\native_client\scons-out\opt-win-x86-
+64\staging\sel_ldr.exe -f C:\b\slave\win7atom64-m64-n64-test-
+opt\build\native_client\scons-out\nacl-x86-
+64\obj\tests\egyptian_cotton\egyptian_cotton.nexe -- -s 0x400000 -n 4095 -f
+command returned unexpected exit status 3
+============================================================
+==========
+Stdout
+============================================================
+==========
+................................................................
+
+................................................................
+
+................................................................
+
+................................................................255
+
+
+============================================================
+==========
+Stderr
+============================================================
+==========
+[5864,5868:21:15:34.290000] NaClTimeInternalInit: timeBeginPeriod(1)
+
+[5864,5868:21:15:34.290000] Unix epoch start is  11644473600000ms in Windows epoch time
+
+[5864,5868:21:15:34.306000] NaClAllocateSpace(*, 0x0000000100000000 bytes).
+
+[5864,5868:21:15:34.306000]                      Ask: 0000001600000000
+
+[5864,5868:21:15:34.306000]            orig memory at 0000000140170000
+
+[5864,5868:21:15:37.062000]           Aligned memory: 0000000200000000
+
+[5864,5868:21:15:37.062000] NaClAllocateSpace: addr space at 0x0000000c00000000
+
+[5864,5900:21:15:37.461000] NaClAbiStatHostDescStatXlateCtor: how did NaCl app open a file 
+with st_mode = 010000?
+
+[5864,5900:21:15:37.803000] NaClXlateSystemError: UNEXPECTED ERROR 1455 (0x5af), 
+returning EINVAL
+
+[5864,5900:21:15:37.804000] Could not mprotect(0x45b20000, 0x00400000, 
+PROT_READ|PROT_WRITE)
+
+
+
+This application has requested the Runtime to terminate it in an unusual way.
+Please contact the application's support team for more information.
+
+
+RESULT: C:\b\slave\win7atom64-m64-n64-test-opt\build\native_client\scons-out\nacl-x86-
+64/test_results/thread_stack_alloc_test.out FAILED
+scons: unknown OSError exception code 0 - 'C:\windows\System32\cmd.exe /C 
+&amp;quot;&amp;quot;C:\b\slave\win7atom64-m64-n64-test-opt\build\third_party\python_24\python.exe&amp;quot; 
+&amp;quot;C:\b\slave\win7atom64-m64-n64-test-opt\build\native_client\tools\command_tester.py&amp;quot; --
+name C:\b\slave\win7atom64-m64-n64-test-opt\build\native_client\scons-out\nacl-x86-
+64/test_results/thread_stack_alloc_test.out --report C:\b\slave\win7atom64-m64-n64-test-
+opt\build\native_client\scons-out\nacl-x86-64/test_results/thread_stack_alloc_test.out --
+time_warning 10 --time_error 100 &amp;quot;C:\b\slave\win7atom64-m64-n64-test-
+opt\build\native_client\scons-out\opt-win-x86-64\staging\sel_ldr.exe&amp;quot; -f 
+&amp;quot;C:\b\slave\win7atom64-m64-n64-test-opt\build\native_client\scons-out\nacl-x86-
+64\obj\tests\egyptian_cotton\egyptian_cotton.nexe&amp;quot; -- -s 0x400000 -n 4095 -f&amp;quot;': Error
+scons: *** [scons-out\nacl-x86-64\test_results\thread_stack_alloc_test.out] Error 127</ns0:content><ns0:updated>2012-02-23T00:30:19.000Z</ns0:updated><ns0:published>2010-05-04T21:40:25.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>thread_stack_alloc_test fails on atom64 test bot</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Test</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/477/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=477" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/477" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>477</ns2:id></ns0:entry>

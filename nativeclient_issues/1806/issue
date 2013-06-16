@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYGQH47eCl7ImA9WhdXEk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1806</ns0:id><ns0:author>
+			<ns0:name>dsprin...@google.com</ns0:name><ns0:uri>/u/112723007196297768207/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using?  N/A
+What version of the runtime are you using?  N/A
+On what operating system?  Windows (try boit, specifically)
+What browser are you using? N/A
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Create a CL that has, say, a shell script that wants to run under bash in CygWin.
+2. Make extra double super positive sure that there are NO CRLF line endings in your script.  Make sure to apply svn pset svn:eol-style LF; do this a few times to make sure it sticks.
+3. Run the CL locally in a windows box under the DOS shell.  Make sure it all works as expected.
+4.  Upload and try the CL
+5. Nothing will work right.  You get all kinds of weird errors like '\r' command not found.
+
+What is the expected output? A working try.
+
+What do you see instead?
+
+@@@BUILD_STEP create Windows installer@@@
+generate_windows_installer is creating the windows installer.
+make_native_client_sdk.sh: line 5: $'\r': command not found
+make_native_client_sdk.sh: line 7: $'\r': command not found
+make_native_client_sdk.sh: line 9: $'\r': command not found
+make_native_client_sdk.sh: line 11: $'\r': command not found
+make_native_client_sdk.sh: line 13: syntax error near unexpected token `$'in\r''
+make_native_client_sdk.sh: line 13: `  case &amp;quot;$flag&amp;quot; in
+'
+RunPythonUnitTest([&amp;quot;scons-out\build\obj\build_tools\installer_test_output.txt&amp;quot;], [&amp;quot;build_tools\tests\installer_test.py&amp;quot;])
+
+
+--------------------------------------------------------------------------------
+started: Fri May 13 15:27:20 2011
+ended: Fri May 13 15:33:34 2011
+duration: 6 mins, 13 secs
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-08-24T22:48:41.000Z</ns0:updated><ns0:published>2011-05-13T22:41:45.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>Try bot patches on Windows *always* get CRLF line endings.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-16</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1806/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1806" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1806" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1806</ns2:id></ns0:entry>

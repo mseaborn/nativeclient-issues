@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkMAQn47eCl7ImA9Wx5aGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1159/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>esei...@google.com</ns0:name><ns0:uri>/u/118329321683865945653/</ns0:uri></ns0:author><ns0:content type="html">This is how Chromium implements tick-count:
+
+uint64 TickCount() {
+#if defined(OS_WIN)
+  return GetTickCount();
+#elif defined(OS_MACOSX)
+  return mach_absolute_time();
+#elif defined(OS_NACL)
+  // NaCl sadly does not have _POSIX_TIMERS enabled in sys/features.h
+  // Apparently NaCl only has CLOCK_REALTIME:
+  // http://code.google.com/p/nativeclient/issues/detail?id=1159
+  return clock();
+#elif defined(OS_POSIX)
+  struct timespec ts;
+  clock_gettime(CLOCK_MONOTONIC, &amp;ts);
+
+  uint64 absolute_micro =
+    static_cast&lt;int64&gt;(ts.tv_sec) * 1000000 +
+    static_cast&lt;int64&gt;(ts.tv_nsec) / 1000;
+
+  return absolute_micro;
+#endif
+}
+
+That's from base/logging.cc.  If I remember correctly NaCl already includes Chromium base, but I may be wrong on that.</ns0:content><ns0:updated>2010-11-16T00:47:23.000Z</ns0:updated><ns0:published>2010-11-16T00:47:23.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by esei...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1159#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1159/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

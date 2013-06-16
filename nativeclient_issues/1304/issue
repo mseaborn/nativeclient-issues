@@ -1,0 +1,51 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU8CQX47eCl7ImA9WhVVF08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1304</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">Here is the test:
+
+$ cat t.c
+
+struct StringRef {
+  const char *Data;
+  unsigned Length;
+};
+
+// Prevent inlining with 'weak' attribute
+int print_size(struct StringRef Data) __attribute__((weak));
+
+int print_size(struct StringRef Data) {
+  return Data.Length;
+}
+
+int main(int argc, char *argv[]) {
+  char str[6]; // NEEDED!
+
+  struct StringRef s;
+  s.Data = str; // NEEDED!
+  s.Length = 0;
+
+  return print_size(s);
+}
+
+When this test is compiled with nacl64-gcc -O1, it returns arbitrary values instead of correct value of 0.
+
+Here is what I learned so far:
+
+StringRef s is allocated on register. Initialization of s.Data is taking the low 4 bytes of (frame pointer + offset) and writing them to the low part of the register. Initialization of s.Length is just zeroing high part of the register with and.
+
+This code is optimized by just setting the parameter of the print_size call to the value of sp. This happens because (? - means my guess):
+- frame pointer is eliminated, sp is used instead
+- local array str has address (sp + 0)
+- so s.Data has to be set to the pointer value of sp
+- and s.Length to 0
+? nacl64 configuration is that 8-bytes addresses are made from 4-bytes pointers by zero extension
+? thus gcc probably thinks sp has 0 in its high part for s.Length
+? and needed value in its low part for s.Data
+? so gcc turns all that messy initialization into a single 8-bytes move
+
+The guess that gcc makes assumptions about zeros in the high part of sp needs to be confirmed.
+</ns0:content><ns0:updated>2012-05-11T08:11:00.000Z</ns0:updated><ns0:published>2011-01-11T20:45:10.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112268664018567406585/</ns2:uri><ns2:username>k...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Wrong initialization of register structure with pointer field</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1304/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1304" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1304" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1304</ns2:id></ns0:entry>

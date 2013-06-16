@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEESX47eCl7ImA9Wx9RGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/940/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: ef346cf0d10d75c18dda162a193f3e32361c23d6
+ Email: pasko@google.com
+
+Make execution path validatable in glibc64/Hello
+
+* Set THREAD_SELF to point to TCB (Thread Control Block) via __nacl_read_tp ()
+
+* Continue TLS_HACK:
+  define THREAD_SETMEM as noop
+  define THREAD_GETMEM as 0
+  (these two are temporary workarounds)
+
+* define INTERNAL_SYSCALL to use valid ENOSYS macros the same way as it is done
+  in glibc32. For x86-{64,32} the macros INTERNAL_SYSCALL,
+  INTERNAL_SYSCALL_ERRNO and like are defined in the generic style and then
+  redefined in architecture-specific files:
+  sysdeps/unix/sysv/linux/{i386,x86_64}/sysdep.h
+  (the x86-64 __native_client__ conditional was missing until now)
+
+* misc sandboxing fixes in assembly:
+  dl-trampoline.S, x86_64/elf/start.S
+
+* sysdeps/x86_64/elf/initfini.c is tricky. It contains plain inline assembly. It
+  is overridden in make_sysd_rules.py already so the more generic C
+  implementation that successfully links into ld.so. Unfortunately, initfini.c
+  is also used to generate crti.o and crtn.o. This is done by 'gcc -S initfini.c
+  -o initfini.s' and then processing the .s output with sed to separate it into
+  crti.S and crtn.S. This does not trivially work with
+  sysdeps/generic/initfini.c. A lot of ugly sandboxing is added. Also, aligned
+  the end of _init and _fini to make constructors/destructors collected to the
+  sections .init and .fini start from aligned addresses.
+  See also: http://code.google.com/p/nativeclient/issues/detail?id=499
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=940
+TEST=printf_test (with sel_ldr -s and libc-2.9.so manually stubbed out (runtime
+     stubout did not work supposedly because mysterious zero-padding confused
+     the validator))
+
+Review URL: http://codereview.chromium.org/5977002
+
+M	nptl/sysdeps/x86_64/tls.h
+M	sysdeps/nacl/nacl_read_tp.c
+M	sysdeps/nacl/sysdep.h
+M	sysdeps/unix/sysv/linux/x86_64/init-first.c
+M	sysdeps/unix/sysv/linux/x86_64/sysdep.h
+M	sysdeps/x86_64/dl-trampoline.S
+M	sysdeps/x86_64/elf/initfini.c
+M	sysdeps/x86_64/elf/start.S</ns0:content><ns0:updated>2010-12-20T15:56:48.000Z</ns0:updated><ns0:published>2010-12-20T15:56:48.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=940#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/940/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

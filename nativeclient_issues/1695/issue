@@ -1,0 +1,52 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0YERH47eCl7ImA9WhZXFU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1695</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">See attached libppruntime.so (zipped).
+
+The problem seems to be in 0x6666 prefix discussed in
+http://code.google.com/p/nativeclient/issues/detail?id=1685
+
+In the attached binary, the prefix crosses the bundle boundary, which is ignored by ncval_stubout but detected with ncval (code offset 0x19680).
+
+Here is how to reproduce:
+
+$ ncval_stubout libppruntime.so -o libppruntime.safe.so
+$ diff libppruntime.so libppruntime.safe.so
+$ echo $?
+0
+
+$ ncval libppruntime.so 
+VALIDATOR: segment[0] p_type 1 p_offset 200000 vaddr 0 paddr 0 align 2097152
+VALIDATOR:     filesz 5e6a0 memsz 5e6a0 flags 5
+VALIDATOR: parsing segment 0
+VALIDATOR: 000000000000674c: 48 98                                        cdqe
+VALIDATOR: WARNING: Does not support LM feature, removing usage(s).
+VALIDATOR: 0000000000006bcb: 0f 45 d3                                     cmovnz %edx, %ebx
+VALIDATOR: WARNING: Does not support CMOV feature, removing usage(s).
+VALIDATOR: 0000000000012468: f3 48 0f 2a c0                               cvtsi2ss %xmm0, %rax
+VALIDATOR: WARNING: Does not support SSE feature, removing usage(s).
+VALIDATOR: 000000000001255a: 66 0f ef c0                                  pxor %xmm0, %xmm0
+VALIDATOR: WARNING: Does not support SSE2 feature, removing usage(s).
+VALIDATOR: Checking jump targets: 0 to 5e6a0
+VALIDATOR: Checking that basic blocks are aligned
+VALIDATOR: At address 19680:
+VALIDATOR: ERROR: Bad basic block alignment.
+VALIDATOR: At address 198c0:
+VALIDATOR: ERROR: Bad basic block alignment.
+VALIDATOR: segment[1] p_type 1 p_offset 400000 vaddr 10000000 paddr 10000000 align 2097152
+VALIDATOR:     filesz 1dc2c memsz 1dc2c flags 4
+VALIDATOR: segment[2] p_type 1 p_offset 600000 vaddr 10200000 paddr 10200000 align 2097152
+VALIDATOR:     filesz 400190 memsz 400348 flags 6
+VALIDATOR: segment[3] p_type 2 p_offset 810c28 vaddr 10410c28 paddr 10410c28 align 8
+VALIDATOR:     filesz 1c0 memsz 1c0 flags 6
+VALIDATOR: segment[4] p_type 1685382481 p_offset 0 vaddr 0 paddr 0 align 8
+VALIDATOR:     filesz 0 memsz 0 flags 6
+VALIDATOR: segment[5] p_type 7 p_offset 608841 vaddr 10410000 paddr 10410000 align 4
+VALIDATOR:     filesz 0 memsz 9 flags 4
+VALIDATOR: ***MODULE lib/libppruntime.so IS UNSAFE***
+VALIDATOR: Validated lib/libppruntime.so
+***MODULE IS UNSAFE***
+</ns0:content><ns0:updated>2011-05-04T19:58:25.000Z</ns0:updated><ns0:published>2011-04-19T12:42:29.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108470876877739532758/</ns2:uri><ns2:username>kschi...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108470876877739532758/</ns2:uri><ns2:username>kschi...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>ncval_stubout misses validation errors which ncval successfully detects</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1695/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1695" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1695" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-05-04T19:58:25.000Z</ns2:closedDate><ns2:id>1695</ns2:id></ns0:entry>

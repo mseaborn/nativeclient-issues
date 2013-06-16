@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYFQ347eCl7ImA9WhdSEks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2043/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>mark@chromium.org</ns0:name><ns0:uri>/u/mark@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Ah, that sucks.
+
+I need to ask: does NaCl have this problem with -pie on 10.5.8 too?
+
+On 10.5, I wind up with a pair of gaps totaling 2285MB between 0x1000000 and 0x8fe00000. Even in the worst case, if Chromium Framework (today&#8217;s canary&#8217;s framework needs a bit over 55MB of contiguous address space) loads right in the middle of that range, there might be enough of a hole available on 10.5 as long as NaCl grabs the memory quickly.
+
+This may not be a problem on 10.5 at all, then. And if it is, it seems like we&#8217;d be really close to fitting. It might be feasible to use DYLD_NO_PIE on 10.6 and to choose an &#8220;it&#8217;ll fit even with PIE&#8221; size which wouldn&#8217;t be that much smaller than 1GB on 10.5.
+
+Another thought: how &#8217;bout that top gigabyte over 0xc0000000? By the time NaCl gets control, have other things already been mapped up there?</ns0:content><ns0:updated>2011-07-21T16:35:12.000Z</ns0:updated><ns0:published>2011-07-21T16:35:12.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by mark@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2043#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2043/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

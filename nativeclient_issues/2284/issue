@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEICRX47eCl7ImA9WhVTEEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2284</ns0:id><ns0:author>
+			<ns0:name>branimir...@gmail.com</ns0:name><ns0:uri>/u/100111796601236342885/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+
+NaCl SDK 0.5 (28 July 2011)
+
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+
+Win7
+
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+
+Chrome 14.0.835.186 m
+
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+Use -Os GCC switch when compiling.
+
+
+&lt;b&gt;What is the expected output?&lt;/b&gt;
+Produced .nexe loads.
+
+
+&lt;b&gt;What do you see instead?&lt;/b&gt;
+Produced .nexe fails to load.
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+x86_64-nacl-gcc (GCC) 4.4.3 2011-07-22 (Native Client r6191, Git Commit a2490b96462a8cc20322c174e7ac5bee72f3d6bd)
+</ns0:content><ns0:updated>2012-02-24T14:09:24.000Z</ns0:updated><ns0:published>2011-09-22T21:39:59.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Optimize for size (-Os) switch produces .nexe which doesn't load properly in Chrome</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2284/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2284" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2284" rel="self" type="application/atom+xml" /><ns2:stars>0</ns2:stars><ns2:id>2284</ns2:id></ns0:entry>

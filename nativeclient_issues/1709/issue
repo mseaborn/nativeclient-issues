@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkYCRn47eCl7ImA9WhZWFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1709</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">'nacl-strip' successfully reduces the size of irt.nexe for x86-32, but not for x86-64.
+
+On x86-64, it removes symbols and debugging info, but it creates a sparse file.  So, the file will compress better.  But it may not produce savings on systems that don't support sparse files (e.g. Windows) or transports that don't support sparse files and don't compress (e.g. HTTP with gzip).
+
+$ nacl nacl-strip scons-out/nacl-x86-64/staging/irt.nexe -o irt-x86-64.nexe.stripped
+$ nacl nacl-strip scons-out/nacl-x86-32/staging/irt.nexe -o irt-x86-32.nexe.stripped
+$ du -h irt-*.nexe.stripped
+1.5M	irt-x86-32.nexe.stripped
+1.7M	irt-x86-64.nexe.stripped
+$ du -h --apparent-size irt-*.nexe.stripped
+1.7M	irt-x86-32.nexe.stripped
+4.4M	irt-x86-64.nexe.stripped
+
+The cause is issue 1073:  binutils sets MAXPAGESIZE to 2MB instead of 64k and so the segment alignments are set to 2MB.
+</ns0:content><ns0:updated>2011-05-17T13:49:27.000Z</ns0:updated><ns0:published>2011-04-21T17:29:45.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/100177598732114324016/</ns2:uri><ns2:username>mcgra...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>'strip' does not successfully reduce file sizes on x86-64 -- creates sparse files</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1709/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1709" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1709" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
+			<ns2:id>1073</ns2:id></ns2:blockedOn><ns2:closedDate>2011-05-17T13:49:27.000Z</ns2:closedDate><ns2:id>1709</ns2:id></ns0:entry>

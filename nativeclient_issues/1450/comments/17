@@ -1,0 +1,8 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUNQ347eCl7ImA9WhZbFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1450/comments/full/17</ns0:id><ns0:author>
+			<ns0:name>muf...@gmail.com</ns0:name><ns0:uri>/u/105945596631838283097/</ns0:uri></ns0:author><ns0:content type="html">I am running Chromium 12.0.742.91 (87961) on Ubuntu GNU/Linux 10.04.2 and also getting this error at Conway's life example (http://nacl-gallery.appspot.com/life/life.html) and the Hello World example (http://nacl-gallery.appspot.com/hello_world/hello_world.html) - both are linked from http://code.google.com/chrome/nativeclient/docs/examples.html
+
+How do I find out .readyState and .lastError? The status stays "LOADING...", so onload for the embed tag was not fired yet.
+
+Reproducibility is 100%, it doesn't work at all.
+</ns0:content><ns0:updated>2011-06-19T16:18:12.000Z</ns0:updated><ns0:published>2011-06-19T16:18:12.000Z</ns0:published><ns2:updates /><ns0:title>Comment 17 by muf...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1450#c17" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1450/comments/full/17" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkYASH47eCl7ImA9WhdWFU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1711/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 20c4c25ebacaf9ae978741152b9b91cfd1f144fa
+ Email: jvoung@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Update llvm rev for cleanup patch: http://codereview.chromium.org/7841019/
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1711 
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1554
+TEST= untrusted_sdk /tmp/tarball.tar.gz &amp;&amp; test-all
+Review URL: http://codereview.chromium.org/7857001
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6664 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	tools/llvm/utman.sh</ns0:content><ns0:updated>2011-09-08T22:15:49.000Z</ns0:updated><ns0:published>2011-09-08T22:15:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1711#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1711/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

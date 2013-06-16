@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0ADSH47eCl7ImA9WhZXF00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1595/comments/full/25</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5208
+
+------------------------------------------------------------------------
+r5208 | mcgrathr@chromium.org | Fri May 06 11:11:22 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt_stub/nacl.scons?r1=5208&amp;r2=5207&amp;pathrev=5208
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=5208&amp;r2=5207&amp;pathrev=5208
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt_stub/libppapi.a?r1=5208&amp;r2=5207&amp;pathrev=5208
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt/link_segment_gap.S?r1=5208&amp;r2=5207&amp;pathrev=5208
+
+Install -lppapi that includes ppapi_stub library and places .rodata after gap
+
+This installs a tiny linker script under the name libppapi.a for use
+with linking programs using PPAPI via the IRT (as -lppapi).  This brings
+in the libppapi_stub.a library, and also defines a magic symbol that
+makes the NaCl linker scripts place R/O data after a large gap, leaving
+space for the IRT code.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1595
+TEST=trybots
+
+R=sehr@google.com,bradchen@google.com,mseaborn@google.com
+
+Review URL: http://codereview.chromium.org/6927067
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-06T18:16:19.000Z</ns0:updated><ns0:published>2011-05-06T18:16:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 25 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1595#c25" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1595/comments/full/25" rel="self" type="application/atom+xml" /></ns0:entry>

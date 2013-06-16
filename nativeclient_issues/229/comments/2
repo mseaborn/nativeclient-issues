@@ -1,0 +1,58 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEANRX47eCl7ImA9WxBSFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/229/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">&gt; We still need the label because without label we have no way to
+&gt; generate offsets!
+
+Generate offsets for what?  Not sure what you mean here.
+
+
+&gt; Validator should ONLY allow unaligned call to the VERY NEXT
+&gt; instruction. To allow random unaligned call we'll need some kind of
+&gt; flow-control in validator and we are trying to avoid this.
+
+To clarify, there are two sorts of alignment:
+ 1) whether the call instruction is aligned to be at the end of a bundle
+    (so that the return address pushed on the stack is aligned)
+ 2) whether the target address of the call instruction is aligned.
+
+For (1), there's nothing unsafe about allowing the call to be anywhere
+in the instruction bundle, it's just that seeing a call that isn't at
+the end of the bundle suggests a program that will go wrong if the
+address pushed on the stack is used as a return address.
+
+For (2), the validator already allows direct jumps to unaligned
+addresses, as long as they are addresses of allowed instructions.
+Although now that I check, nacl-gcc doesn't seem to be making use of
+that.
+
+The instruction
+  call .L; .L:
+(i.e. .byte 0xe8, 0, 0, 0, 0)
+should be permitted to appear anywhere provided it doesn't straddle a
+bundle boundary.  It effectively means "push %eip onto the stack" (or
+more accurately, push the address of the end of the instruction onto
+the stack).
+
+Thinking about it, processors could easily have treated this
+instruction as not starting a call for the purposes of deep branch
+prediction.  Perhaps when deep branch prediction was introduced to
+x86, Linux and ELF were not common enough to optimise for.  This
+change was made in gcc in 2001 and ELF was adopted by Linux around
+1999 or something like that?
+
+
+&gt; Note that it only works because pop %ecx is just one byte long!
+&gt; Two-byte instruction can lead to troubles with bundles (think about
+&gt; case where our 0xe8, 0x00, 0x00, 0x00, 0x00 instruction starts at
+&gt; 27th byte in budle and ends at 32th byte), but "pop %ecx" is fine.
+
+It doesn't matter what follows the call instruction.
+
+But I think I see what you mean: using .byte to generate the
+instruction is no good if it ends up straddling an instruction bundle
+boundary.  The assembler won't necessarily add the right padding.
+Although this instruction is likely to always appear in a function
+prologue so this problem probably wouldn't occur.
+
+Mark
+</ns0:content><ns0:updated>2009-12-22T14:39:54.000Z</ns0:updated><ns0:published>2009-12-22T14:39:54.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=229#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/229/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

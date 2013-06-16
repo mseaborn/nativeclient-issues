@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEGQ347eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/454/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2144
+
+------------------------------------------------------------------------
+r2144 | mseaborn@chromium.org | Tue Apr 27 10:29:02 PDT 2010
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/data_not_executable/execute_data.stdout?r1=2144&amp;r2=2143&amp;pathrev=2144
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=2144&amp;r2=2143&amp;pathrev=2144
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/data_not_executable/nacl.scons?r1=2144&amp;r2=2143&amp;pathrev=2144
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/data_not_executable/execute_data.c?r1=2144&amp;r2=2143&amp;pathrev=2144
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/data_not_executable?r1=2144&amp;r2=2143&amp;pathrev=2144
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/command_tester.py?r1=2144&amp;r2=2143&amp;pathrev=2144
+
+Fix executability of data on Linux on x86-64 and ARM
+
+The presence of assembly files without a GNU-stack declaration causes
+sel_ldr to have a GNU_STACK header which causes the kernel to set the
+process's READ_IMPLIES_EXEC flag, which disables NX page protection. This
+breaks the x86-64 and ARM sandboxes.
+
+We can fix this by passing "-z noexecstack" to the linker.
+
+Adds a test for executability of the data segment.
+
+Note that this doesn't fix the Gyp build yet.
+
+An alternative or complementary change would be to add GNU-stack
+declarations to all the .S files.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=454
+TEST=run_execute_data_test
+
+Review URL: http://codereview.chromium.org/1711012
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:23:42.000Z</ns0:updated><ns0:published>2011-01-21T22:23:42.000Z</ns0:published><ns2:updates>
+			<ns2:summary>sel_ldr is not getting NX page protection on Linux</ns2:summary></ns2:updates><ns0:title>Comment 15 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=454#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/454/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

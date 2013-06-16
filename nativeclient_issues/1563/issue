@@ -1,0 +1,44 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUEDRX47eCl7ImA9WhZTGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1563</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Normally nacl_signal_unittest produces the following output:
+
+$ scons-out/opt-linux-x86-32/staging/nacl_signal_unittest
+Waiting for 11 on Exec_RW.
+Done.
+Waiting for 11 on Write_RX.
+Done.
+Waiting for 11 on ReadWriteUnmapped.
+Done.
+Waiting for 8 on DivZero.
+Done.
+
+
+However, on a recent try job it failed and produced the following output (repetitions trimmed):
+
+Waiting for 11 on Exec_RW.
+Done.
+Waiting for 11 on Write_RX.
+Waiting for 11 on ReadWriteUnmapped.
+Done.
+Done.
+Done.
+...
+Done.
+Done.
+Done.
+Waiting for 8 on DivZero.
+Done.
+Done.
+...
+Done.
+Done.
+Error: Got signal 11, while expecting 8.
+Done.
+Done.
+...
+Done.
+Done.
+
+
+The cause is apparent from looking at the code.  It uses setjmp/longjmp on a global variable from multiple threads, and this is done in a non-thread-safe way, because the siglongjmp() call can occur after the next thread calls sigsetjmp().  I expect that &amp;quot;Done.&amp;quot; is appearing multiple times because the code is re-running the same setjmp continuation many times.
+</ns0:content><ns0:updated>2011-03-23T15:21:14.000Z</ns0:updated><ns0:published>2011-03-22T02:34:44.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:state>closed</ns2:state><ns0:title>nacl_signal_unittest.c (run_nacl_signal_test) fails non-deterministically</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Test</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1563/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1563" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1563" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-03-23T15:21:14.000Z</ns2:closedDate><ns2:id>1563</ns2:id></ns0:entry>

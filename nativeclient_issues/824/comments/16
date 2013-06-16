@@ -1,0 +1,34 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUEQn47eCl7ImA9WhVTF04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/824/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7937
+
+------------------------------------------------------------------------
+r7937 | mseaborn@chromium.org | Fri Mar 02 15:11:36 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=7937&amp;r2=7936&amp;pathrev=7937
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/mmap/nacl.scons?r1=7937&amp;r2=7936&amp;pathrev=7937
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/mmap/mmap_test.cc?r1=7937&amp;r2=7936&amp;pathrev=7937
+
+mmap: Fix PROT_NONE fill within a 64k page for end-of-file mappings
+
+If untrusted code requests to map 0x40000 bytes from a file
+of extent 0x100, we expect to get the following regions:
+
+       0-  0x100  A: Bytes from the file
+   0x100- 0x1000  B: The rest of the 4k page is accessible but undefined
+  0x1000-0x10000  C: The rest of the 64k page is inaccessible (PROT_NONE)
+ 0x10000-0x40000  D: Further 64k pages are also inaccessible (PROT_NONE)
+
+This change fixes region C to be PROT_NONE on Unix.  This makes NaCl's
+behaviour on Unix consistent with its behaviour on Windows.
+
+This does not change the behaviour for region D, which is broken
+before and after this change.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=824
+TEST=run_mmap_test
+
+Review URL: https://chromiumcodereview.appspot.com/9564027
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-03-02T23:16:43.000Z</ns0:updated><ns0:published>2012-03-02T23:16:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=824#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/824/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

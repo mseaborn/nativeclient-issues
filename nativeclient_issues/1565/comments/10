@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0AERn47eCl7ImA9WhZSEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1565/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">I just ran the barebones_switch.nexe test under qemu.
+I had to rebuild llc but we still get the failure in __adddf3 the PC has moved to 
+ AB24DC, though.
+
+The trace fragment is:
+
+@@NACL =========================================================
+R00=00000000 R01=008a0250 R02=00000000 R03=00000000
+R04=00d705e0 R05=00000000 R06=00d7927c R07=00df3398
+R08=00dc42f8 R09=00d7b000 R10=00d78268 R11=00000000
+R12=0000001e R13=3fffe3e0 R14=00000000 R15=0001ffe4
+PSR=00000010 ---- A usr32
+Trace 0x602b2710 [0001ffe4] 
+----------------
+IN: 
+0x00ab24c8:  cmp	ip, #-2147483648	; 0x80000000
+0x00ab24cc:  lsrseq	ip, r0, #1
+0x00ab24d0:  adcs	r0, r0, #0	; 0x0
+0x00ab24d4:  adc	r1, r1, r4, lsl #20
+0x00ab24d8:  orr	r1, r1, r5
+0x00ab24dc:  pop	{r4, r5, lr}
+0x00ab24e0:  lsls	ip, ip, #1
+0x00ab24e4:  adcs	r0, r0, r0
+0x00ab24e8:  adc	r1, r1, r1
+0x00ab24ec:  tst	r1, #1048576	; 0x100000
+0x00ab24f0:  sub	r4, r4, #1	; 0x1
+0x00ab24f4:  bne	0xab24c8
+
+I read this as:
+
+we jump from one trace at 0001ffe4 (probably a trampoline) to another trace at 
+0x00ab24c8.
+However, the latter is not bundle aligned - so this is a little worrisome.
+
+I am almost tempted to put some control flow checks into qemu now.</ns0:content><ns0:updated>2011-03-25T19:35:07.000Z</ns0:updated><ns0:published>2011-03-25T19:35:07.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1565#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1565/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

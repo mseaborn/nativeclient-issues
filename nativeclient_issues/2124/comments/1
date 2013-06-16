@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcDRn47eCl7ImA9WhdRFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2124/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">This test also failed on the Chromium Windows trybot (which is 64-bit).  It failed at a different stage:
+
+[  2559 ms] |||| GET /ppapi_ppb_var_x86-64.nexe (/ppapi_ppb_var_x86-64.nexe)
+[  6234 ms] |||| nacl_module / test_nexe loaded
+[  6319 ms] |||| 
+[  6370 ms] |||| [PPB_Var::TestStringVarCreateDelete BEGIN]
+[ 26428 ms] |||| 
+[ 26428 ms] |||| [SERVER_ERROR] Did not hear from the test for 20.0 seconds.
+[ 26428 ms] |||| Heard from Javascript 20.1 seconds ago.
+[ 26428 ms] |||| The renderer probably hung or crashed.
+KILLING the browser
+...
+ppapi_ppb_var_browser_test.out: FAILED
+</ns0:content><ns0:updated>2011-08-04T22:14:37.000Z</ns0:updated><ns0:published>2011-08-04T22:14:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2124#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2124/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

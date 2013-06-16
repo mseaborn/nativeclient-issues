@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkICQX47eCl7ImA9Wx5TGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/672</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I found that if I run an executable that does not do imc_accept(),
+such as hello_world.nexe, under the NaCl plugin on Firefox on Linux,
+the browser crashes.
+
+I used the following HTML:
+
+&amp;lt;embed id=&amp;quot;plugin_elt&amp;quot; src=&amp;quot;scons-out/nacl-x86-32/staging/hello_world.nexe&amp;quot;
+  type=&amp;quot;application/x-nacl-srpc&amp;quot;/&amp;gt;
+
+Firefox ended with these messages when using NACL_PLUGIN_DEBUG=1:
+
+...
+b58e68e0:SrpcClient::SrpcClient(0xa9642000)
+b58e68e0:SrpcClient::SrpcClient(0xa9642000, 0xb0409a70, 0xac69cbe0)
+Hello, World!
+[23332,1997020048:00:24:00.905215] Exit syscall handler: 0
+b58e68e0:SrpcClient::~SrpcClient(0xa9642000)
+b58e68e0:SrpcClient::~SrpcClient: destroying the channel
+b58e68e0:SrpcClient::~SrpcClient: done
+b58e68e0:ConnectedSocket::Init -- SrpcClient::Init failed.
+b58e68e0:ConnectedSocket::~ConnectedSocket(0xac69cbe0)
+b58e68e0:DescBasedHandle::~DescBasedHandle(0xac69cbe0)
+b58e68e0:PortableHandle::~PortableHandle(0xac69cbe0)
+b58e68e0:ScriptableImplNpapi::New((nil))
+b58e68e0:SocketAddress::Connect: CS returned (nil)
+b58e68e0:ServiceRuntime::Start: command channel Connect failed.
+b58e68e0:  Load: FAILED to start service runtimeLoad: FAILED to start service runtime
+
+GLib-ERROR **: /tmp/glib2.0.Qz3055/glib2.0-2.16.6/glib/gmem.c:136: failed to allocate 16 bytes
+aborting...
+/usr/lib/firefox-3.6.6/run-mozilla.sh: line 131: 23119 Aborted                 &amp;quot;$prog&amp;quot; ${1+&amp;quot;$@&amp;quot;}
+</ns0:content><ns0:updated>2010-08-03T12:29:20.000Z</ns0:updated><ns0:published>2010-07-05T23:28:36.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Plugin crashes on hello_world.nexe on Firefox on Linux</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Plugins</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/672/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=672" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/672" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-08-03T12:29:20.000Z</ns2:closedDate><ns2:id>672</ns2:id></ns0:entry>

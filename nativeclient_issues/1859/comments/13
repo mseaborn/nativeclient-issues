@@ -1,0 +1,62 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkAFQn47eCl7ImA9WhZaE0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1859/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5852
+
+------------------------------------------------------------------------
+r5852 | mcgrathr@chromium.org | Wed Jun 29 09:23:24 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/ehsupport/nacl.scons?r1=5852&amp;r2=5851&amp;pathrev=5852
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/irt_stub/nacl.scons?r1=5852&amp;r2=5851&amp;pathrev=5852
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/naclsdk.py?r1=5852&amp;r2=5851&amp;pathrev=5852
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/component_builders.py?r1=5852&amp;r2=5851&amp;pathrev=5852
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/pthread/nacl.scons?r1=5852&amp;r2=5851&amp;pathrev=5852
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=5852&amp;r2=5851&amp;pathrev=5852
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/threads/thread_test.c?r1=5852&amp;r2=5851&amp;pathrev=5852
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_example_audio/audio.cc?r1=5852&amp;r2=5851&amp;pathrev=5852
+
+Build and use libraries locally in the nacl build, not requiring "partial SDK"
+
+This is the major piece of retiring the "partial SDK" concept.
+The --mode=nacl_extra_sdk build is still intact and works as before,
+but is longer necessary for building a nacl tree from scratch with
+local updates to all the libraries whose source is in this tree.
+
+One component of this is to substantially unify the compilation flags in
+the nacl and nacl_extra_sdk environments, which had grown apart by bit-rot.
+The various libraries are now compiled in both environments (and some of
+them also in the nacl_irt environment), so the set of -D macros that the
+library code requires must be consistent across the environments.
+
+Another issue is that the C preprocessor implicitly suppresses various
+warnings when the code provoking them appears in a "system header file".
+Files in the toolchain/.../include directories count as system headers, so
+this was masking some cruft in two tests.  Now that we are instead finding
+the headers locally via -Iscons-out/.../include, they are no longer
+considered system headers and the warnings (which are errors with -Werror)
+are not suppressed.  This is what necessitated the two actual code changes.
+http://code.google.com/p/nativeclient/issues/detail?id=1654 was mentioned
+in one of those places, but has been obsolete for a long time.
+
+There are various bits of scons magic required to correctly express all the
+dependencies on header files and libraries.  These didn't matter before
+when scons didn't have to build/install those files because the compilers
+just found them implicitly in toolchain directories.  Now everything that
+can come from the local nacl tree does come from the local nacl tree, so
+scons has to know about all the dependencies to build libraries into
+scons-out/.../lib and copy headers into scons-out/.../include.
+
+Later changes will finish the job by providing new ways to install the
+public headers and libraries into an SDK, and then finally getting rid of
+nacl_extra_sdk entirely.
+
+PNaCl is another can of worms not yet addressed.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1859
+TEST=trybots &amp; toolchain trybots
+
+R=bradnelson@google.com,ncbray@google.com,bradchen@google.com
+
+Review URL: http://codereview.chromium.org/7265001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-06-29T16:25:13.000Z</ns0:updated><ns0:published>2011-06-29T16:25:13.000Z</ns0:published><ns2:updates /><ns0:title>Comment 13 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1859#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1859/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

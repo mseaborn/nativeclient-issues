@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMAR347eCl7ImA9WhZQGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1723/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5044
+
+------------------------------------------------------------------------
+r5044 | ncbray@google.com | Tue Apr 26 14:41:09 PDT 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/branches/742/src/native_client/src/trusted/validator_x86/nacl_regs64.h?r1=5044&amp;r2=5043&amp;pathrev=5044 (from /trunk/src/native_client/src/trusted/validator_x86/nacl_regs64.h revision 5014)
+ A http://src.chromium.org/viewvc/chrome/branches/742/src/native_client/src/trusted/validator_x86/nacl_regs32.h?r1=5044&amp;r2=5043&amp;pathrev=5044 (from /trunk/src/native_client/src/trusted/validator_x86/nacl_regs32.h revision 5014)
+ M http://src.chromium.org/viewvc/chrome/branches/742/src/native_client/src/trusted/validator_x86/nacl_regsgen.h?r1=5044&amp;r2=5043&amp;pathrev=5044
+ M http://src.chromium.org/viewvc/chrome/branches/742/src/native_client/src/trusted/validator_x86/nacl_regs.h?r1=5044&amp;r2=5043&amp;pathrev=5044
+ A http://src.chromium.org/viewvc/chrome/branches/742/src/native_client/src/trusted/validator_x86/testdata/32/nc_subregs.h?r1=5044&amp;r2=5043&amp;pathrev=5044 (from /trunk/src/native_client/src/trusted/validator_x86/testdata/32/nc_subregs.h revision 5014)
+ A http://src.chromium.org/viewvc/chrome/branches/742/src/native_client/src/trusted/validator_x86/testdata/64/nc_subregs.h?r1=5044&amp;r2=5043&amp;pathrev=5044 (from /trunk/src/native_client/src/trusted/validator_x86/testdata/64/nc_subregs.h revision 5014)
+ M http://src.chromium.org/viewvc/chrome/branches/742/src/native_client/src/trusted/validator_x86/ncdecode_tablegen.c?r1=5044&amp;r2=5043&amp;pathrev=5044
+ A http://src.chromium.org/viewvc/chrome/branches/742/src/native_client/src/trusted/validator_x86/testdata/64/nc_opcode_table.h?r1=5044&amp;r2=5043&amp;pathrev=5044 (from /trunk/src/native_client/src/trusted/validator_x86/testdata/64/nc_opcode_table.h revision 5014)
+ M http://src.chromium.org/viewvc/chrome/branches/742/src/native_client/src/trusted/validator_x86/build.scons?r1=5044&amp;r2=5043&amp;pathrev=5044
+ A http://src.chromium.org/viewvc/chrome/branches/742/src/native_client/src/trusted/validator_x86/testdata/32/nc_opcode_table.h?r1=5044&amp;r2=5043&amp;pathrev=5044 (from /trunk/src/native_client/src/trusted/validator_x86/testdata/32/nc_opcode_table.h revision 5014)
+ M http://src.chromium.org/viewvc/chrome/branches/742/src/native_client/src/trusted/validator_x86/nacl_regsgen.c?r1=5044&amp;r2=5043&amp;pathrev=5044
+
+Merge 5014 - Make the table generators for the iterator model of the validator (both 32and 64) generate target subarchitecture tables matching the command lineargument.Adds tests that capture the corresponding generated tables so that we canverify that we generate the same tables, independent of the subarchitecturethe table generator is built on.BUG= http://code.google.com/p/nativeclient/issues/detail?id=1723TEST=src/trusted/validator_x86/testdata/32/nc_opcode_table.hTEST=src/trusted/validator_x86/testdata/32/nc_subregs.hTEST=src/trusted/validator_x86/testdata/64/nc_opcode_table.hTEST=src/trusted/validator_x86/testdata/64/nc_subregs.hReview URL: http://codereview.chromium.org/6893004
+TBR=kschimpf@google.com
+Review URL: http://codereview.chromium.org/6903043
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-26T21:47:26.000Z</ns0:updated><ns0:published>2011-04-26T21:47:26.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1723#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1723/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

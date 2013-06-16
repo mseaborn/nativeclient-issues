@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IDRX47eCl7ImA9Wx5REUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/820</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The fix for issue 714 in r2938 introduces a regression in that
+nacl-glibc's tests no longer work.  This is because, currently,
+dynamic executables and libraries contain some instruction bundles
+containing only HLTs, which are now rejected by nacl_dyncode_copy().
+
+I think the only case of this is the 0th PLT entry, which is
+HLT-padded.  PLT entries contain two bundles but the second bundle of
+the 0th entry is unused.
+
+From the dynamic hello_world.nexe:
+
+Disassembly of section .plt:
+
+010001a0 &amp;lt;__deregister_frame_info@plt-0x40&amp;gt;:
+ 10001a0:       ff 35 b8 09 01 11       pushl  0x110109b8
+ 10001a6:       b9 bc 09 01 11          mov    $0x110109bc,%ecx
+ 10001ab:       8b 09                   mov    (%ecx),%ecx
+ 10001ad:       83 e1 e0                and    $0xffffffe0,%ecx
+ 10001b0:       ff e1                   jmp    *%ecx
+ 10001b2:       f4                      hlt    
+ 10001b3:       f4                      hlt    
+ 10001b4:       f4                      hlt    
+...
+ 10001de:       f4                      hlt    
+ 10001df:       f4                      hlt    
+
+There are two ways to fix this:
+
+1) Change trusted code: Change sel_ldr to accept a HLT-filled bundle
+but rewrite it to start with a NOP, so that the bundle is not a valid
+placeholder (as I suggested on issue 714).
+
+2) Changed untrusted code: Change nacl-binutils' PLT entries to not
+use HLTs.  For comparison, the non-NaCl binutils just pads the 0th PLT
+entry with zero bytes.  There's no particular need to use HLTs.  It
+might make a few bugs fail-stop, but we're not using HLT padding in
+most cases (such as ends of functions).
+
+Let's go with (2).  There might be another case of HLT-filled bundles,
+but it seems unlikely.
+</ns0:content><ns0:updated>2010-08-18T22:46:14.000Z</ns0:updated><ns0:published>2010-08-13T11:57:55.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Prohibition of HLT-filled bundles breaks nacl-glibc</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>DynamicLinking</ns2:label><ns2:label>Component-GLibC</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/820/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=820" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/820" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-08-18T22:46:14.000Z</ns2:closedDate><ns2:id>820</ns2:id></ns0:entry>

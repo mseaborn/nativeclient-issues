@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4ERH47eCl7ImA9Wx9VFUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1375/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mmorten...@google.com</ns0:name><ns0:uri>/u/100268164290167392978/</ns0:uri></ns0:author><ns0:content type="html">I got exactly the same error:
+
+  Traceback (most recent call last):
+    File "httpd.py", line 15, in &lt;module&gt; import http.server
+  ImportError: No module named http.server
+
+ when running
+    python httpd.py
+on a Windows 64 system.
+
+I also tried running httpd.cmd and got the same error.
+
+I know I *have* run this before on Windows for development...and I think I had to do something to get it to run (python path or something), but it affects Windows 64 bit as well, so I'm bumping it back to P0.
+
+I was using the native_client_sdk_0_1_700_0 build of NaCl-SDK.
+
+</ns0:content><ns0:updated>2011-02-01T20:08:25.000Z</ns0:updated><ns0:published>2011-02-01T20:08:25.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Pri-1</ns2:label><ns2:label>Pri-0</ns2:label></ns2:updates><ns0:title>Comment 2 by mmorten...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1375#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1375/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

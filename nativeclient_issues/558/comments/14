@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AFRX47eCl7ImA9WxFWF0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/558/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>espind...@google.com</ns0:name><ns0:uri>/u/101432766050863658364/</ns0:uri></ns0:author><ns0:content type="html">&gt; Please explain what useful data people will want to have in other nonPT_LOAD segments
+&gt; that must be present in a load image.  And what segment types will be used.
+
+Part of the argument for allowing any non-load segment is that we can't
+know it all. I have found usefulness in PT_TLS. Mark has found in others.
+The same thing may pass to other developers.
+
+&gt; as for victor's notion that it reduces overall security, i think that argument has as
+&gt; its basis the inflexibility of the whitelist.
+
+A bit maybe, but the first reaction of a developer hitting this is probably
+going to be the same I had with gold: assume there is a good reason
+why we cannot allow segment PT_XYZ and try to hack it in the tool. I
+was lucky in that Ian's review to my patch to gold was basically "why do you
+need this"?
+
+Maybe we should at least point out in a comment next to the table (and maybe
+in the error message) that we are just using a whitelist as tight as we
+can for the current known users?
+</ns0:content><ns0:updated>2010-06-06T03:41:54.000Z</ns0:updated><ns0:published>2010-06-06T03:41:54.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by espind...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=558#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/558/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

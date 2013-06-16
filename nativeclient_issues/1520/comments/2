@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkYFRH47eCl7ImA9WhZTEkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1520/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">+pdox since this may make his frontend bias work easier.
+
+Some very encouraging news:
+I tried to find out which libgcc functions are actually used by removing -lgcc from the driver, here is the summary:
+
+x86-64:  scons-tests: NONE!!!
+         spec2k: NONE!!!
+x86-32:  scons-tests: __udivdi3, __umoddi3, __divdi3  (mostly ppapi tests)
+         spec2k: __udivdi3, __umoddi3 (eon)
+
+NOTE: __udivdi3 seems to be dragged in via the c++ "&lt;&lt; long long" stream operator
+      My guess is that  this is not an issue for 64bit system since the 64bit division is natively available? 
+
+arm:     scons-tests + spec2k:
+         __modsi3, __aeabi_uidiv,__aeabi_idiv, __umodsi3,   (all tests)  __aeabi_l2d (some tests)  __aeabi_d2lz  (some)  __aeabi_uldivmod __aeabi_ldivmod ,  __umoddi3 (some) [might have overlooked some more rare ones]
+
+NOTE: It seems arm completely lacks hardware div/mod </ns0:content><ns0:updated>2011-03-16T15:41:55.000Z</ns0:updated><ns0:published>2011-03-16T15:41:55.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>pdox%goo...@gtempaccount.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 2 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1520#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1520/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

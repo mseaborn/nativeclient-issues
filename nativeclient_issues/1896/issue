@@ -1,0 +1,56 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUMASH47eCl7ImA9WhZUFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1896</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+
+1. Make a file &amp;quot;lala.cc&amp;quot; with the contents:
+
+#include &amp;lt;bb.h&amp;gt;
+
+2. Make a file &amp;quot;bb.h&amp;quot; with the contents:
+
+template&amp;lt;typename T&amp;gt;
+   class X;
+
+3. Try to execute nacl-g++ as follows:
+
+nacl64-g++ -c lala.cc -m32 -isystem .
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+It's expected to successfully compile the program. Unfortunately, it says:
+
+krasin@krasin$ third_party/native_client/build/newlib/bin/nacl64-g++ -c lala.cc -m32 -isystem . 
+In file included from lala.cc:1:
+./bb.h:1: error: template with C linkage
+
+To ensure that it's a bug, let's call the host Ubuntu Lucid g++ with the same options:
+
+krasin@krasin$ g++ -c lala.cc -m32 -isystem . 
+krasin@krasin$ echo $?
+0
+krasin@krasin$ g++ --version
+g++ (Ubuntu 4.4.3-4ubuntu5) 4.4.3
+Copyright (C) 2009 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+gcc had this bug two times: in 2003 and in 2009. See these links and discussions:
+http://stackoverflow.com/questions/2328031/g-fails-mysteriously-only-if-a-h-is-in-a-certain-directory
+https://bugs.launchpad.net/widelands/+bug/549479
+http://mail-index.netbsd.org/netbsd-bugs/2003/02/18/0019.html
+http://gcc.gnu.org/bugzilla/show_bug.cgi?id=7327
+http://gcc.gnu.org/bugzilla/show_bug.cgi?id=38503
+
+Mark Seaborn suggests to define NO_IMPLICIT_EXTERN_C in config/i386/nacl.h: &amp;quot;in nacl-gcc's source, config/linux.h defines NO_IMPLICIT_EXTERN_C but config/i386/nacl.h does not.&amp;quot;
+
+This bug is a blocker for me. I've tried to build a modified toolchain but has failed (with missing libpwl).</ns0:content><ns0:updated>2011-06-08T20:04:09.000Z</ns0:updated><ns0:published>2011-06-08T00:36:20.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>-isystem implicitly adds extern "C" to every header in the path</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1896/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1896" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1896" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-06-08T20:04:09.000Z</ns2:closedDate><ns2:id>1896</ns2:id></ns0:entry>

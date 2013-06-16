@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEMNQX47eCl7ImA9WhZaEkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1674/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 2f45173990424bd84220eb7c7f4d8a75828c1ba3
+ Email: polina@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+tests/ppb_graphics2d: Use PPB_Testing to verify displayed data.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1674
+TEST=run_ppapi_ppb_graphics2d_browser_test
+Review URL: http://codereview.chromium.org/7261010
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@5821 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	SConstruct
+M	tests/ppapi_browser/ppb_graphics2d/nacl.scons
+M	tests/ppapi_browser/ppb_graphics2d/ppapi_ppb_graphics2d.cc
+M	tests/ppapi_browser/ppb_graphics2d/ppapi_ppb_graphics2d.html
+M	tests/ppapi_test_lib/get_browser_interface.cc
+M	tests/ppapi_test_lib/get_browser_interface.h
+M	tools/browser_tester/browser_tester.py
+M	tools/browser_tester/browsertester/browserlauncher.py</ns0:content><ns0:updated>2011-06-27T22:08:10.000Z</ns0:updated><ns0:published>2011-06-27T22:08:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1674#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1674/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

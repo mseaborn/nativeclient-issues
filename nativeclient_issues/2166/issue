@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEIBRH47eCl7ImA9WhVSFko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2166</ns0:id><ns0:author>
+			<ns0:name>halya...@google.com</ns0:name><ns0:uri>/u/112856509894568708731/</ns0:uri></ns0:author><ns0:content type="html">The size of list of names in manifest file can be arbitrary long but there is no bullet-proof way to determine the size of the buffer.
+
+The code in ManifestListRpc says:
+...
+  for (std::set&amp;lt;nacl::string&amp;gt;::iterator it = manifest_keys.begin();
+       it != manifest_keys.end();
+       ++it) {
+    NaClLog(3, &amp;quot;ManifestList RPC: appending %s\n&amp;quot;, it-&amp;gt;c_str());
+
+    if (sofar + it-&amp;gt;size() + 1 &amp;gt; space) {
+      break;
+    }
+...
+  out_args[0]-&amp;gt;u.count = static_cast&amp;lt;nacl_abi_size_t&amp;gt;(sofar);
+...
+So we return the number of bytes written to the buffer. But API user can't determine whether all data is read and how much larger buffer must be to contain all of it.</ns0:content><ns0:updated>2012-03-13T21:02:35.000Z</ns0:updated><ns0:published>2011-08-18T07:54:30.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>User can't determine buffer size that would contain all data in manifest list interface.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2166/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2166" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2166" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-03-13T21:02:35.000Z</ns2:closedDate><ns2:id>2166</ns2:id></ns0:entry>

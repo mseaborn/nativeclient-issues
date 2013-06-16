@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkAER347eCl7ImA9WhRUEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2401/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7648
+
+------------------------------------------------------------------------
+r7648 | mseaborn@chromium.org | Fri Jan 20 16:09:07 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/debug_exception_handler_32.c?r1=7648&amp;r2=7647&amp;pathrev=7648
+
+Exception handling: Remove calls to VirtualQueryEx()
+
+The page permission checks are not necessary, so remove them to
+simplify the code.
+
+Checking the stack for writability is unnecessary because the
+WriteProcessMemory() call will fail and return an error if the range
+was not writable.
+
+Checking the exception handler address for executability isn't
+necessary.  If the address cannot be executed inside the sandbox, the
+process will fault when it is resumed, and this will terminate the
+process since the nested-exception flag will be set.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2401
+TEST=run_exception_bad_stack_test run_exception_bad_handler_test
+
+Review URL: https://chromiumcodereview.appspot.com/9192017
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-01-21T00:11:46.000Z</ns0:updated><ns0:published>2012-01-21T00:11:46.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2401#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2401/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

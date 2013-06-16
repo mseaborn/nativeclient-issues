@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkEGSX47eCl7ImA9WhVSE08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2573/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>gabo...@gmail.com</ns0:name><ns0:uri>/u/113977345204586454178/</ns0:uri></ns0:author><ns0:content type="html">I'm trying to compile a static nexe with glibc toolchain (Pepper 16) and getting...
+
+sel_ldr_x86_64 mytest.nexe
+[2610,1499490144:17:14:10.768373] Entered NaClMakeDispatchThunk
+[2610,1499490144:17:14:10.768435] NaCl_page_alloc_randomized: 0x73f0464f
+[2610,1499490144:17:14:10.768453] NaCl_page_alloc_randomized: hint 0x73f0464f0000
+[2610,1499490144:17:14:10.768460] NaClMakeDispatchThunk: got addr 0x73f0464f0000
+PpapiPluginStart: No AT_SYSINFO item found in auxv, so cannot start PPAPI.  Is the IRT library not present?
+
+I'm using Linux 64 bits (Ubuntu 11.10), and Chrome 18, I do see a irt nexe at /opt/google/chrome... can this be related to this bug?</ns0:content><ns0:updated>2012-03-09T20:23:48.000Z</ns0:updated><ns0:published>2012-03-09T20:23:48.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by gabo...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2573#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2573/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

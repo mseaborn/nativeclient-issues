@@ -1,0 +1,58 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcBRX47eCl7ImA9WhdXGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/779</ns0:id><ns0:author>
+			<ns0:name>weird...@gmail.com</ns0:name><ns0:uri>/u/103729453350563222330/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+native_client svn r2880
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+sel_ldr.exe svn r2880 (built with VS2005)
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Windows XP SP3 (32bit)
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+None (sel_ldr)
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1.launch any nexe file with sel_ldr.exe
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+The launch will always fail with : &amp;quot;Insufficient memory to load file&amp;quot;
+The computer still have over 1.5Gb of free RAM, I increased the virtual memory of 4 more Gb to be sure with no successs.
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+sel_ldr.exe ..\..\scons-out\nacl-x86-32\staging\earth.nexe
+[3100,3240:15:51:10.951000] NaClTimeInternalInit: timeBeginPeriod(1)
+[3100,3240:15:51:10.951000] Unix epoch start is  11644473600000ms in Windows epoch time
+[3100,3240:15:51:10.967000] NaCl_page_alloc:  VirtualAlloc(*,0x40000000,MEM_COMMIT,PAGE_EXECUTE_READWRITE) failed
+Error while loading &amp;quot;..\..\scons-out\nacl-x86-32\staging\earth.nexe&amp;quot;: Insufficient memory to load file
+Using the wrong type of nexe (nacl-x86-32 on an x86-64 or vice versa)
+or a corrupt nexe file may be responsible for this error.
+
+sel_ldr.exe ..\..\scons-out\nacl-x86-32\staging\app_lib_test.nexe
+[3680,5700:16:02:55.305000] NaClTimeInternalInit: timeBeginPeriod(1)
+[3680,5700:16:02:55.305000] Unix epoch start is  11644473600000ms in Windows epoch time
+[3680,5700:16:02:55.368000] NaCl_page_alloc:  VirtualAlloc(*,0x40000000,MEM_COMMIT,PAGE_EXECUTE_READWRITE) failed
+Error while loading &amp;quot;..\..\scons-out\nacl-x86-32\staging\app_lib_test.nexe&amp;quot;: Insufficient memory to load file
+Using the wrong type of nexe (nacl-x86-32 on an x86-64 or vice versa)
+or a corrupt nexe file may be responsible for this error.
+
+sel_ldr.exe ..\..\scons-out\nacl-x86-32\staging\dummy.nexe
+[6508,6504:16:03:39.055000] NaClTimeInternalInit: timeBeginPeriod(1)
+[6508,6504:16:03:39.055000] Unix epoch start is  11644473600000ms in Windows epoch time
+[6508,6504:16:03:39.087000] NaCl_page_alloc:  VirtualAlloc(*,0x40000000,MEM_COMMIT,PAGE_EXECUTE_READWRITE) failed
+Error while loading &amp;quot;..\..\scons-out\nacl-x86-32\staging\dummy.nexe&amp;quot;: Insufficient memory to load file
+Using the wrong type of nexe (nacl-x86-32 on an x86-64 or vice versa)
+or a corrupt nexe file may be responsible for this error.
+
+&amp;gt;sel_ldr.exe ..\..\scons-out\nacl-x86-32\staging\dump_env.nexe
+[3824,5940:16:03:43.790000] NaClTimeInternalInit: timeBeginPeriod(1)
+[3824,5940:16:03:43.790000] Unix epoch start is  11644473600000ms in Windows epoch time
+[3824,5940:16:03:43.837000] NaCl_page_alloc:  VirtualAlloc(*,0x40000000,MEM_COMMIT,PAGE_EXECUTE_READWRITE) failed
+Error while loading &amp;quot;..\..\scons-out\nacl-x86-32\staging\dump_env.nexe&amp;quot;: Insufficient memory to load file
+Using the wrong type of nexe (nacl-x86-32 on an x86-64 or vice versa)
+
+In the browser (Google Chrome 6.0.472.14 (Build officiel 54133) dev with --enable-nacl), I can't load any nexe. Always Fail with &amp;quot;failed to send nexe&amp;quot; &amp;quot;Load: FAILED to start runtime&amp;quot;.</ns0:content><ns0:updated>2011-09-01T00:14:14.000Z</ns0:updated><ns0:published>2010-08-03T16:09:34.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Insufficient memory to load file</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/779/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=779" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/779" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2011-09-01T00:14:14.000Z</ns2:closedDate><ns2:id>779</ns2:id></ns0:entry>

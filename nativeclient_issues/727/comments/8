@@ -1,0 +1,49 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMBQn47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/727/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2827
+
+------------------------------------------------------------------------
+r2827 | mseaborn@chromium.org | Thu Jul 29 06:39:32 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_base.h?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_imc_bound_desc.h?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_effector.h?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_effector_cleanup.c?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_desc_effector_ldr.c?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nrd_xfer_effector.c?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/handle_pass/ldr_handle.cc?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/posix/nacl_desc_imc_bound_desc.c?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_conn_cap.c?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nrd_xfer_effector.h?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_effector_trusted_mem.c?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_text.c?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_wrapper.cc?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/handle_pass/browser_handle.cc?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/posix/nacl_desc_conn_cap.c?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_base.c?r1=2827&amp;r2=2826&amp;pathrev=2827
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_imc_bound_desc.c?r1=2827&amp;r2=2826&amp;pathrev=2827
+
+IMC: Remove ReturnCreatedDesc() method from effector object
+
+Change the ConnectAddr() and AcceptConn() methods to return a NaClDesc
+rather than a descriptor number.
+
+This means the syscall function is now responsible for adding the
+descriptor into the FD table with NaClSetAvail(), which is consistent
+with the other syscall functions.
+
+This means we can remove NaClNrdXferEffectorDtor(), which was a
+workaround for cases where a NaClDesc was what the caller wanted from
+ConnectAddr()/AcceptConn().
+
+This removes the need to create effector objects in some cases.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=727
+TEST=existing tests
+
+Review URL: http://codereview.chromium.org/3076010
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:54:13.000Z</ns0:updated><ns0:published>2011-01-21T22:54:13.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=727#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/727/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

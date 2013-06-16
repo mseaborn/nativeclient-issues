@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYMSH47eCl7ImA9Wx5bFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/364/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">This is happening on the new bots on Hardy as well.  I am re-opening this bug, and bumping up the priority.  This looks like an actual real bug.  I am disabling the test on ALL platforms until this gets fixed.
+
+disabled at: 3603
+
+
+DEBUG:selenium_tester:471:sel_rc [020] sel_serv:09:25:02.465 INFO - Got result: OK on session 118ddb924316429589c4e02fbee3e9af
+DEBUG:selenium_tester:471:sel_rc [021] sel_serv:09:25:02.468 INFO - Command request: getEval[window.nacllib.getStatus(), ] on session 118ddb924316429589c4e02fbee3e9af
+DEBUG:selenium_tester:471:sel_rc [022] sel_serv:09:25:02.618 INFO - Got result: OK,ERROR on session 118ddb924316429589c4e02fbee3e9af
+DEBUG:selenium_tester:471:sel_rc [023] sel_serv:09:25:02.621 INFO - Command request: getEval[window.nacllib.getMessage(), ] on session 118ddb924316429589c4e02fbee3e9af
+DEBUG:selenium_tester:471:sel_rc [024] sel_serv:09:25:02.751 INFO - Got result: OK,Error: Error calling method on NPObject! on session 118ddb924316429589c4e02fbee3e9af
+INFO:selenium_tester:547:MainThread STATUS: ERROR
+INFO:selenium_tester:548:MainThread MESSAGE: Error: Error calling method on NPObject!
+INFO:selenium_tester:555:MainThread RESULT:http://localhost:58338/srpc_nrd_xfer.html  STATUS:FAILURE  TIME:1.287424  DETAILS:Error: Error calling method on NPObject!
+WARNING:selenium_tester:561:MainThread ************* FAILURE *********</ns0:content><ns0:updated>2010-10-31T23:36:29.000Z</ns0:updated><ns0:published>2010-10-31T23:36:29.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Pri-2</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:status>Available</ns2:status><ns2:ownerUpdate>---</ns2:ownerUpdate><ns2:ccUpdate>-grego...@google.com</ns2:ccUpdate><ns2:ccUpdate>s...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 11 by noelal...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=364#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/364/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

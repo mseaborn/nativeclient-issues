@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUEHQX47eCl7ImA9WhRRFk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2465/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">The normal IRT is broken into two pieces:
+   irt_core:  this lives in the NaCl repo and uses NaCl sources
+   irt: this lives in the Chrome repo, and links in irt_core as well as ppruntime (the ppapi portion of IRT)
+
+It seems to me that the pnacl shim should become a dependency of either IRT or ppruntime directly, and it should sit in the Chrome repo. A GYP action should trigger the IDL generator and cause it to generate the needed source file, which will then get compiled into the irt.
+
+By making the generator action a dependency of ppruntime, you can force it to run first, then immediately use those sources in ppruntime.  If the generator is setup to always generate single .cc or single .cc + .h, listing out the dependencies correctly in the GYP action should be fairly trivial, and you'll just need to add the *.cc to the ppruntime sources and you are done.</ns0:content><ns0:updated>2011-11-29T21:53:50.000Z</ns0:updated><ns0:published>2011-11-29T21:53:50.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by noelal...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2465#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2465/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

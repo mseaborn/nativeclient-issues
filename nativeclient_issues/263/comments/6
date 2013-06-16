@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A08DQH47eCl7ImA9WxBQGU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/263/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Yes, libraries are usually built with -fPIC, otherwise you get TEXTRELs, which preclude 
+memory sharing and add to start-up time.
+
+It's true that x86-64 doesn't support non-PIC libraries.  However, the reason for that 
+is that x86-64 usually uses 32-bit PC-relative immediates: these cannot be patched via 
+a TEXTREL to refer to arbitrary 64-bit addresses.  This doesn't apply to NaCl-x86-64 
+where we have only a 32-bit address space.
+
+TEXTRELs don't actually require patching on the fly.  They require relocations to be 
+performed up front, when the library is loaded.  This means that lazy symbol binding 
+isn't supported for TEXTRELs.  Normally ld.so does the patching by mmapping the code 
+and modifying it in place (triggering copy-on-write).  Under NaCl it would have to make 
+the modifications to a temporary copy before validation.
+
+As an experiment, I tried building i686 Linux glibc 2.9 without -fPIC today.  ld.so 
+segfaults early on startup; this is not surprising because of the way it relocates 
+itself.  However, libc.so and other libraries seem to work OK.
+</ns0:content><ns0:updated>2010-01-19T14:04:31.000Z</ns0:updated><ns0:published>2010-01-19T14:04:31.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=263#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/263/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

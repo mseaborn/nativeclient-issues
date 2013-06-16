@@ -1,0 +1,59 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkIDR347eCl7ImA9WhZTFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1486</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The original signal handler code that I wrote contained the following
+in nacl_signal_arch.h:
+
+&amp;gt; static INLINE void NaClRecoverFromSignal(struct NaClApp *nap,
+&amp;gt;                                          ucontext_t *context,
+&amp;gt;                                          int *in_untrusted_code) {
+&amp;gt;   /*
+&amp;gt;    * We need to drop the top 16 bits with this implicit cast.  In some
+&amp;gt;    * situations, Linux does not assign to the top 2 bytes of the
+&amp;gt;    * REG_CS array entry when writing %cs to the stack.  Therefore we
+&amp;gt;    * need to drop the undefined top 2 bytes.  This happens in 32-bit
+&amp;gt;    * processes running on 64-bit kernels, but not on 32-bit kernels.
+&amp;gt;    */
+&amp;gt;   uint16_t cs = context-&amp;gt;uc_mcontext.gregs[REG_CS];
+&amp;gt;   UNREFERENCED_PARAMETER(nap);
+&amp;gt; 
+&amp;gt;   *in_untrusted_code = cs != NaClGetGlobalCs();
+&amp;gt;   if (*in_untrusted_code) {
+
+However, the cast referred to in the comment has now been removed.
+The current code reads REG_CS but always treats the value as a
+uint32_t.
+
+What are the implications?  The signal handler could be comparing a
+garbage value of %cs -- the top 16 bits will be undefined.
+
+ 1) In a thread that is created to run untrusted code, the thread has
+    a sigaltstack, and this stack is initialised with zeroes.  In this
+    case, we should never see a garbage saved value of %cs.
+
+ 2) In other threads that sel_ldr may create, sigaltstacks are not
+    guaranteed to be registered.  The saved %cs could fail to match
+    NaClGetGlobalCs(), so the signal handler will treat the fault as
+    untrusted.  The handler will attempt to get the NaClThreadContext
+    from the saved %gs, and then restore the trusted %gs, by doing
+    this:
+
+      struct NaClThreadContext *nacl_thread = nacl_sys[sigCtx.gs &amp;gt;&amp;gt; 3];
+      NaClSetGs(nacl_thread-&amp;gt;gs);
+
+    But sigCtx.gs will potentially be corrupted too, so nacl_thread is
+    not guaranteed to be a safe NULL value.
+
+    If untrusted code could control the value of nacl_thread-&amp;gt;gs used
+    here, it could probably escape the sandbox.
+
+I have seen the signal handler test crash on the Ubuntu Hardy 32-on-64
+bot, and this is probably attributable to this bug.  (Later Linux
+kernels *might* have different behaviour.)
+
+This is probably very difficult to exploit though.
+
+When we fix this, it would be good to add some sanity checks in the
+signal handler to check that we are restoring good values.  As well as
+checking that %cs doesn't equal the trusted value, we can check that
+it equals the known value that we allocated for untrusted code.
+</ns0:content><ns0:updated>2011-03-18T18:56:16.000Z</ns0:updated><ns0:published>2011-03-02T00:06:21.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:state>closed</ns2:state><ns0:title>Signal handler may mishandle some crashes on x86-32 on a Linux x86-64 kernel</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>FaultHandler</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1486/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1486" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1486" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-03-18T18:56:16.000Z</ns2:closedDate><ns2:id>1486</ns2:id></ns0:entry>

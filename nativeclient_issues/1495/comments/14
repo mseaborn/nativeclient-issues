@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU8HSX47eCl7ImA9WhdTFUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1495/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">There should be no current vulnerabilities.
+
+Windows, x86-64: We no longer run KiUserExceptionDispatcher, because of problems bigger than the direction flag - as a result of issue 1633, we patch KiUserExceptionDispatcher to halt the process safely.  So vectored exception handlers do not run.
+
+Windows, x86-32: KiUserExceptionDispatcher does not run if a fault occurs in untrusted code, because the kernel terminates the process if %ss has a non-standard value.  (We should really have a test to check that assumption.)  NaClSyscallSeg does 'cld' before changing %ss back to its standard value, so we should be safe if a fault occurs during the NaCl syscall code.
+
+Linux: NaCl's signal handlers are currently disabled.  When we re-enable them for Breakpad support, we should revisit this.  Recent kernels clear the direction flag when entering a signal handler (see http://lwn.net/Articles/272203/), but we might want to be careful about older kernels.
+
+Mac: NaCl's signal handlers are currently disabled, but Chromium registers one in base/mac/os_crash_dumps.cc.  This should be safe because:
+ * The Mac kernel clears the direction flag when entering a signal handler.  (This may not be guaranteed though; I only tested it.)
+ * The signal handler just calls _exit(), so the chance of it using a string instruction is low.
+Ideally we should replace this signal handler though.
+
+I'm marking this as "Milestone-Z" because revisiting this might be a dependency of other changes.
+</ns0:content><ns0:updated>2011-07-13T20:10:38.000Z</ns0:updated><ns0:published>2011-07-13T20:10:38.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Pri-0</ns2:label><ns2:label>-Mstone-14</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Milestone-Z</ns2:label><ns2:summary>Fault handlers might need to clear the x86 direction flag</ns2:summary></ns2:updates><ns0:title>Comment 14 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1495#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1495/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

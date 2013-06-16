@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUYGRH47eCl7ImA9WhRbFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2144/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7745
+
+------------------------------------------------------------------------
+r7745 | bradchen@google.com | Tue Feb 07 15:22:15 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/nacl_cpuwhitelist.h?r1=7745&amp;r2=7744&amp;pathrev=7745
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_error_code.c?r1=7745&amp;r2=7744&amp;pathrev=7745
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_qualify.c?r1=7745&amp;r2=7744&amp;pathrev=7745
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_error_code.h?r1=7745&amp;r2=7744&amp;pathrev=7745
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/arch/x86/nacl_cpuwhitelist.c?r1=7745&amp;r2=7744&amp;pathrev=7745
+
+Add blacklist check to sel_ldr
+
+BUG=440,2144
+TEST=nacl_cpuwhitelist_test
+
+Review URL: https://chromiumcodereview.appspot.com/9350028
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-02-07T23:25:25.000Z</ns0:updated><ns0:published>2012-02-07T23:25:25.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2144#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2144/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

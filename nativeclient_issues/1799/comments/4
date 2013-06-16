@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEADRX47eCl7ImA9WhZWFk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1799/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5331
+
+------------------------------------------------------------------------
+r5331 | eugenis@google.com | Tue May 17 03:04:15 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_text.c?r1=5331&amp;r2=5330&amp;pathrev=5331
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_validate_image.c?r1=5331&amp;r2=5330&amp;pathrev=5331
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=5331&amp;r2=5330&amp;pathrev=5331
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=5331&amp;r2=5330&amp;pathrev=5331
+
+Add an option to skip validation step, not just ignore the result.
+
+This reduces running time of a simple test (built with GLibC) under Valgrind
+from over 80s to 4.5s.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1799
+TEST=time src/third_party/valgrind/memcheck.sh --error-exitcode=1 \
+  scons-out/dbg-linux-x86-64/staging/sel_ldr -S -Q -a -s -cc -- \
+  toolchain/linux_x86/nacl64/lib/runnable-ld.so \
+  --library-path toolchain/linux_x86/nacl64/lib \
+  scons-out/nacl-x86-64-glibc/obj/tests/memcheck_test/memcheck_test.nexe
+Review URL: http://codereview.chromium.org/7006003
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-17T10:06:14.000Z</ns0:updated><ns0:published>2011-05-17T10:06:14.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1799#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1799/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

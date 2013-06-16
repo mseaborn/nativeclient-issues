@@ -1,0 +1,56 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU4DRn47eCl7ImA9WxFbFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/642/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">My original plan was that makeSocket() would create a
+SocketAddress/BoundSocket pair (FD1, FD2), as described in issue 618,
+and returns FD1.  Javascript passes FD1 to the NaCl subprocess via an
+SRPC method call and does imc_connect(FD1) once.  The plugin spawns a
+thread that does imc_accept(FD2) once.
+
+That plan had some problems:
+
+1) If the subprocess never does imc_connect(), the plugin will leak
+the thread that is blocked on imc_accept() (though I think this is
+host-OS-dependent).  This is described in issue 618.
+
+2) The NaCl subprocess has to know how to speak SRPC in order to
+receive FD1.
+
+
+I had been assuming that there was some fundamental reason why the
+plugin initially grants the NaCl subprocess a BoundSocket and then
+imc_connect()s to that socket.  The obvious, simpler alternative is
+for the plugin to initially grant the NaCl subprocess a
+ConnectedSocket, so that the connection is ready to go at startup.  I
+had assumed there was some reason this wouldn't work on Windows,
+related to handle-passing.
+
+However, I am now more familiar with the sel_ldr_launcher code, and I
+see my assumptions were wrong.  It is possible to initially grant a
+ConnectedSocket (using sel_ldr's "-i").  And in fact, the plugin
+*does* do this, only to use the ConnectedSocket to exchange a
+SocketAddress which is then used to establish a new ConnectedSocket
+(actually two of them).
+
+
+So my new plan is to simplify the interface:
+
+* Extend the plugin to grant an extra ConnectedSocket to the NaCl
+subprocess, e.g. as FD 6.  This connection is available to the
+subprocess as soon as it starts running.
+
+* Add two methods to the plugin DOM object:
+
+plugin.__setAsyncCallback(callback)
+- Registers a callback that will be invoked with each message received
+by the plugin from this connection.  This starts a new thread and can
+be called only once.
+
+plugin.__sendAsyncMessage(data, fds)
+- Sends a message on this connection.
+
+This is less general than the makeSocket() interface I proposed
+earlier since the plugin creates a fixed connection without a way to
+create more connections.  That is OK: it does not preclude extending
+the plugin for multiple connections later, perhaps once issue 618 is
+solved.
+</ns0:content><ns0:updated>2010-07-07T11:59:37.000Z</ns0:updated><ns0:published>2010-07-07T11:59:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=642#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/642/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

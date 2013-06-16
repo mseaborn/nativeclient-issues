@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0YAQ347eCl7ImA9WhZbEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/17/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5663
+
+------------------------------------------------------------------------
+r5663 | khim@google.com | Wed Jun 15 11:04:57 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/hermetic_cygwin/make_hermetic_cygwin.sh?r1=5663&amp;r2=5662&amp;pathrev=5663
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/hermetic_cygwin/hermetic-toolchain-build.bat?r1=5663&amp;r2=5662&amp;pathrev=5663
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/hermetic_cygwin/make_installer.inc?r1=5663&amp;r2=5662&amp;pathrev=5663
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/buildbot/cygwin_env.bat?r1=5663&amp;r2=5662&amp;pathrev=5663
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/hermetic_cygwin/setup.ini?r1=5663&amp;r2=5662&amp;pathrev=5663
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/hermetic_cygwin/make_hermetic_cygwin.conf?r1=5663&amp;r2=5662&amp;pathrev=5663
+
+Fix gettext dependences in cygwin installation.
+
+The actual fix is in setup.ini. The rest is move from
+NaCl-SDK repository (revision 790) to NaCl repository.
+
+It looks like this:
+
+Index: setup.ini
+===================================================================
+--- setup.ini	(revision 790)
++++ setup.ini	(working copy)
+@@ -4985,17 +4985,7 @@
+ @ gettext
+ sdesc: "GNU Internationalization library and core utilities (PLUS LINK LIBS)"
+ ldesc: "The GNU gettext package provides a set of tools and
+ documentation for producing multi-lingual messages in programs.
+ 
+ This package provides the main gettext executables, and the LINK libraries.
+ Ordinarily, LINK libs (.dll.a and .a) would go into the 'gettext-devel' or
+ even 'libintlX-devel' packages, but Bruno Haible, the official maintainer
+ for the GNU gettext package, recommends that the LINK libs be included
+ with the main executables -- even on cygwin, in violation of our normal
+ cygwin packaging standard.  Sorry for any confusion that may be caused by
+ this."
+ category: Devel Libs
+-requires: cygwin libintl8 libiconv2 _update-info-dir
++requires: cygwin libintl8 libiconv _update-info-dir
+ version: 0.17-11
+ install: release/gettext/gettext-0.17-11.tar.bz2 177957 e389da2d6e9ec9fe777affb87f82cfb0
+ source: release/gettext/gettext-0.17-11-src.tar.bz2 11693299 c1c2bd596c96e5e457c7d0d1c8d23c6f
+
+libiconv2 is runtime package, libiconv is development package.
+Review URL: http://codereview.chromium.org/7171020
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-06-15T18:05:42.000Z</ns0:updated><ns0:published>2011-06-15T18:05:42.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=17#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/17/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

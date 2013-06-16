@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0IGRH47eCl7ImA9WhRaE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2004</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">We see failures on reload for Windows XP.
+
+Failures are fairly consistent on:
+  xp-newlib-opt
+And also occur on:
+  xp-bare-newlib-opt
+although not as frequently.
+
+From Nicholas' email:
+Wow.  Running the pyauto_reload test is about as fun as watching paint dry.
+
+Anyways, we seem to have a problem with the pyauto_reload test on
+windows XP.  The symptom is that we seem to somehow be navigating to
+about:blank instead of about:version when we hit the back button for
+the final time..
+
+I was able to trigger the issue a couple times on nacltest5  (just
+running the SRPC tests, deleted the rest).  The only abnormal thing I
+noticed is that when it fails, it fails fast.  I suspect this is a
+timing-sensitive issue with how the test navigates between pages,
+rather than a deeper NaCl issue.  This, however, something we need to
+fix because the test is important.
+
+I'll be traveling tomorrow, so someone else needs to pick this up.
+Noel?  Nicholas?</ns0:content><ns0:updated>2012-02-15T19:52:05.000Z</ns0:updated><ns0:published>2011-07-12T17:49:41.000Z</ns0:published><ns2:status>Moved</ns2:status><ns2:owner>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100893057764035413344/</ns2:uri><ns2:username>rsi...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/elijahtaylor@google.com/</ns2:uri><ns2:username>elijahtaylor@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PyAuto failing on Windows XP</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-</ns2:label><ns2:label>Mstone-15</ns2:label><ns2:label>MigrateToChromium</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2004/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2004" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2004" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2012-02-15T19:52:05.000Z</ns2:closedDate><ns2:id>2004</ns2:id></ns0:entry>

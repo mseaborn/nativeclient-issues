@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcCQn47eCl7ImA9WhRUEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2460</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">This test is failing:
+
+======================================================================
+FAIL: surfaway.NaClTest.testSurfAwayProgressEvents: &amp;quot;None&amp;quot;
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File &amp;quot;/usr/local/google/private_svn/nacl_clean/native_client/tests/pyauto_nacl/surfaway.py&amp;quot;, line 106, in testSurfAwayProgressEvents
+    self.surfAway('ppapi_progress_events.html', 'PPAPI')
+  File &amp;quot;/usr/local/google/private_svn/nacl_clean/native_client/tests/pyauto_nacl/surfaway.py&amp;quot;, line 32, in surfAway
+    self.surfAwayMulti(page, title_word, 5)
+  File &amp;quot;/usr/local/google/private_svn/nacl_clean/native_client/tests/pyauto_nacl/surfaway.py&amp;quot;, line 24, in surfAwayMulti
+    nacl_utils.VerifyAllTestsPassed(self)
+  File &amp;quot;/usr/local/google/private_svn/nacl_clean/native_client/tests/pyauto_nacl/nacl_utils.py&amp;quot;, line 77, in VerifyAllTestsPassed
+    tab_index)
+  File &amp;quot;/usr/local/google/private_svn/nacl_clean/native_client/tests/pyauto_nacl/nacl_utils.py&amp;quot;, line 15, in AssertTrueOrLogTab
+    browser.assertTrue(ok, msg)
+AssertionError: nexe test did not report success
+
+----------------------------------------------------------------------
+Ran 13 tests in 115.633s
+
+FAILED (failures=1)
+Tests can be disabled by editing /usr/local/google/private_svn/nacl_clean/native_client/tests/pyauto_nacl/PYAUTO_TESTS. Ref: http://dev.chromium.org/developers/testing/pyauto
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+[  FAILED  ] nacl_newlib.run_pyauto_surfaway_test (19200 ms)
+
+</ns0:content><ns0:updated>2012-01-20T18:27:43.000Z</ns0:updated><ns0:published>2011-11-23T17:45:37.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>PyAuto surfAwayProgressEvents fails (disabled)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-18</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-</ns2:label><ns2:label>OS-</ns2:label><ns2:label>Arch-</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2460/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2460" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2460" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2460</ns2:id></ns0:entry>

@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEYFQX47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1220/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3914
+
+------------------------------------------------------------------------
+r3914 | krasin@google.com | Thu Dec 09 05:57:54 PST 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/desc/nacl_desc_wrapper.cc?r1=3914&amp;r2=3913&amp;pathrev=3914
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/stream_shm_buffer.cc?r1=3914&amp;r2=3913&amp;pathrev=3914
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/npapi/video.cc?r1=3914&amp;r2=3913&amp;pathrev=3914
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/npapi/video.h?r1=3914&amp;r2=3913&amp;pathrev=3914
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/win/nacl_host_desc.c?r1=3914&amp;r2=3913&amp;pathrev=3914
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/win/nacl_host_dir.c?r1=3914&amp;r2=3913&amp;pathrev=3914
+
+Remove unused import of sel_util.h
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1220
+
+Review URL: http://codereview.chromium.org/5713001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:21:50.000Z</ns0:updated><ns0:published>2011-01-21T23:21:50.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1220#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1220/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

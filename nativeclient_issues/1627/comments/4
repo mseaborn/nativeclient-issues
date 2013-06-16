@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEYMQX47eCl7ImA9WhZREkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1627/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>suna...@chromium.org</ns0:name><ns0:uri>/u/108616898676203953394/</ns0:uri></ns0:author><ns0:content type="html">Which NaCl files are you removing, and what is your method for doing so?
+I'm removing the whole SDK directory(native_client_sdk_0_2_781_0). I'm using Shift+Delete to remove the directory. 
+
+When you say 'NaCl stopped loading', do you mean that the examples no longer run?  Is this true of all the examples?
+Yes
+
+NaCl is enabled and I still see the following message.
+WARNING: Native Client is not enabled in Google Chrome. To enable Native Client, type about:flags in the address bar, scroll down to "Native Client," and click the "Enable" link. Then scroll down to the bottom of the page and click the "Restart Now" button. For additional information see running Native Client applications.
+
+Note that this did work before with 0.1.721.0 on my win7 64bit box. Now it's no longer working with that SDK version as well.
+
+On Win XP 32bit, the first install of 0.2.781.0 itself failed.</ns0:content><ns0:updated>2011-04-08T19:49:40.000Z</ns0:updated><ns0:published>2011-04-08T19:49:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by suna...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1627#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1627/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

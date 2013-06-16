@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUNQX47eCl7ImA9WhZbFk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/842/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">Overview of the  current set of mechanism to deal with the intrinsic issue:
+
+tools//llvm/llvm-intrinsics.c provides a weak copy of 
+memcpy, memset in case we did not link with libc and llc decides to generated a
+call to memcpy "out of the blue". We observed this once for bitcode but it is no longer a problem. 
+
+Another mechanism can be found in llvm-trunk/lib/CodeGen/IntrinsicLowering.cpp
+"IsCalledByIntrinsic"
+This is currently very conservative and list the following functions:
+
+"abort", "memcpy", "memset", "memmove",
+       "sqrtf", "sqrt", "sqrtl",
+       "sinf", "sin", "sinl",
+       "cosf", "cos", "cosl",
+       "powf", "pow", "powl",
+       "logf", "log", "logl",
+       "log2f", "log2", "log2l",
+       "log10f", "log10", "log10l",
+       "expf", "exp", "expl",
+       "exp2f", "exp2", "exp2l",
+       "__nacl_read_tp",
+
+
+it is used in llvm-trunk/tools/lto/LTOModule.cpp
+to mark all the symbols as potentially undefined.
+This means: when a pexe is linked against libm most of libm will become part of the pexe because llc might generate a call to these functions.  Since we provide libm as bitcode it should be rather small, though, as
+most platforms have math co-processors.
+
+NOTE: the list above is missing the all the libgcc functions. This is not a problem as we link libgcc natively
+in the final link. It will have to be addressed if we link libgcc as a pnacl library.
+
+
+
+</ns0:content><ns0:updated>2011-06-20T21:44:50.000Z</ns0:updated><ns0:published>2011-06-20T21:44:50.000Z</ns0:published><ns2:updates>
+			<ns2:ownerUpdate>robertm@google.com</ns2:ownerUpdate></ns2:updates><ns0:title>Comment 10 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=842#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/842/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04CQn47eCl7ImA9WhVVFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2695</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I tried enabling run_inbrowser_exception_test on x86-32 Windows, but it failed on Chromium's &amp;quot;NACL_Tests&amp;quot; bot, which runs Windows XP.  I was able to reproduce this failure by logging in to the bot and running the test there.
+
+I have found that:
+
+ * This only fails if Chromium's outer sandbox is enabled.  The test passes on XP using --no-sandbox.
+
+ * The test passes on 32-bit Windows Server (running on an Amazon EC2 instance), with or without the outer sandbox enabled.
+
+I don't yet know how far the test is getting.  The only information I have for the test failure is the output:
+
+[3032:4008:2117107765:ERROR:nacl_process_host.cc(495)] NaCl process exited with status -1073741819 (0xc0000005)
+</ns0:content><ns0:updated>2012-05-07T21:26:03.000Z</ns0:updated><ns0:published>2012-03-27T01:16:07.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Hardware exception handling not working in Chromium on 32-bit Windows XP</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>UntrustedHardwareExceptions</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2695/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2695" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2695" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>2618</ns2:id></ns2:blockedOn><ns2:closedDate>2012-05-07T21:26:03.000Z</ns2:closedDate><ns2:id>2695</ns2:id></ns0:entry>

@@ -1,0 +1,65 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUMARn47eCl7ImA9WhVSEUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2641/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>olo...@google.com</ns0:name><ns0:uri>/u/113921375080395685545/</ns0:uri></ns0:author><ns0:content type="html">Relevant disassembler part:
+
+ fc60df0:       e28d0070        add     r0, sp, #112    ; 0x70
+ fc60df4:       e1a02005        mov     r2, r5
+ fc60df8:       e3a03000        mov     r3, #0
+ fc60dfc:       eb0000c3        bl      fc61110 &lt;_ZN11ppapi_proxy21PluginResourceTracker20AdoptBrowserResourceINS_16PluginInputEventEEE13sc
+oped_refptrIT_Eij&gt;
+ fc60e00:       e28d0030        add     r0, sp, #48     ; 0x30
+ fc60e04:       e320f000        nop     {0}
+ fc60e08:       e320f000        nop     {0}
+ fc60e0c:       ebffbd4b        bl      fc50340 &lt;_ZN11ppapi_proxy14InputEventDataC1Ev&gt;
+ fc60e10:       e1a01007        mov     r1, r7
+ fc60e14:       e28d0030        add     r0, sp, #48     ; 0x30
+ fc60e18:       e1a0200b        mov     r2, fp
+ fc60e1c:       e28d7020        add     r7, sp, #32
+ fc60e20:       e320f000        nop     {0}
+ fc60e24:       e320f000        nop     {0}
+ fc60e28:       e320f000        nop     {0}
+ fc60e2c:       eb029e37        bl      fd08710 &lt;memcpy&gt;
+ fc60e30:       e3032f00        movw    r2, #16128      ; 0x3f00
+ fc60e34:       e3432ef1        movt    r2, #16113      ; 0x3ef1
+ fc60e38:       e3c22103        bic     r2, r2, #-1073741824    ; 0xc0000000
+ fc60e3c:       e892000b        ldm     r2, {r0, r1, r3}
+ fc60e40:       e3c22103        bic     r2, r2, #-1073741824    ; 0xc0000000
+ fc60e44:       e592200c        ldr     r2, [r2, #12]
+ fc60e48:       e58d202c        str     r2, [sp, #44]   ; 0x2c
+ fc60e4c:       e320f000        nop     {0}
+ fc60e50:       e3c77103        bic     r7, r7, #-1073741824    ; 0xc0000000
+ fc60e54:       e887000b        stm     r7, {r0, r1, r3}
+ fc60e58:       e320f000        nop     {0}
+ fc60e5c:       e320f000        nop     {0}
+ fc60e60:       e28d3020        add     r3, sp, #32
+ fc60e64:       e59d00a4        ldr     r0, [sp, #164]  ; 0xa4
+ fc60e68:       e59d10a0        ldr     r1, [sp, #160]  ; 0xa0
+ fc60e6c:       e3a02001        mov     r2, #1
+ fc60e70:       e320f000        nop     {0}
+ fc60e74:       e320f000        nop     {0}
+ fc60e78:       e320f000        nop     {0}
+ fc60e7c:       ebffbed7        bl      fc509e0 &lt;_ZN11ppapi_proxy13DeserializeToEPcjjP6PP_Var&gt;
+ fc60e80:       e28d3020        add     r3, sp, #32
+ fc60e84:       e59d7070        ldr     r7, [sp, #112]  ; 0x70
+ fc60e88:       e3c33103        bic     r3, r3, #-1073741824    ; 0xc0000000
+ fc60e8c:       e893000f        ldm     r3, {r0, r1, r2, r3}
+ fc60e90:       e28db010        add     fp, sp, #16
+ fc60e94:       e3cbb103        bic     fp, fp, #-1073741824    ; 0xc0000000
+ fc60e98:       e88b000f        stm     fp, {r0, r1, r2, r3}
+ fc60e9c:       e320f000        nop     {0}
+ fc60ea0:       e59d3010        ldr     r3, [sp, #16]
+
+fc60ea4:       e59d2014        ldr     r2, [sp, #20]
+ fc60ea8:       e59d1018        ldr     r1, [sp, #24]
+ fc60eac:       e59d001c        ldr     r0, [sp, #28]
+ fc60eb0:       e58d3000        str     r3, [sp]
+ fc60eb4:       e58d2004        str     r2, [sp, #4]
+ fc60eb8:       e58d1008        str     r1, [sp, #8]
+ fc60ebc:       e28d1030        add     r1, sp, #48     ; 0x30
+ fc60ec0:       e58d000c        str     r0, [sp, #12]
+ fc60ec4:       e1a00007        mov     r0, r7
+^^^^^^^ here r0 is 0, i.e. Init() gets NULL 'this' 
+ fc60ec8:       e320f000        nop     {0}
+ fc60ecc:       ebfed0df        bl      fc15250 &lt;_ZN11ppapi_proxy16PluginInputEvent4InitERKNS_14InputEventDataE6PP_Var&gt;
+
+</ns0:content><ns0:updated>2012-03-07T18:04:07.000Z</ns0:updated><ns0:published>2012-03-07T18:04:07.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by olo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2641#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2641/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

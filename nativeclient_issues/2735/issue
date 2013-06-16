@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE8CRH47eCl7ImA9WhVXFkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2735</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">I tried --enable-target=i686-pc-nacl only, and it complained about the elf64 version of Sized_dynobj missing:
+
+
+libgold.a: error: undefined reference to 'void gold::Symbol_table::add_from_dynobj&amp;lt;64, false&amp;gt;(gold::Sized_dynobj&amp;lt;64, false&amp;gt;*, unsigned char const*, unsigned int, char const*, unsigned int, unsigned char const*, unsigned int, std::vector&amp;lt;char const*, std::allocator&amp;lt;char const*&amp;gt; &amp;gt; const*, gold::Sized_relobj_file&amp;lt;64, false&amp;gt;::Symbols*, unsigned int*)'
+
+Same thing happens when you only --enable-target=arm-*
+It seems like those instantiations of the templates shouldn't be necessary.
+For now, this means that we must enable x86-64 support even when building the arm nexe.
+
+
+Other notes:
+
+* Knocking out the ARM target when trying to build the x86-32 nexe saves about 1MB, so we should definitely do that. Haven't tried knocking out the x86 targets when building the ARM nexe (because of the elf64 expectation).
+
+* &amp;quot;gold::General_options::General_options()&amp;quot;  takes about 80KB!
+* &amp;quot;gold::General_options::~General_options()&amp;quot; takes about 60KB!
+* We probably don't need to support all of those options in the sandboxed case, since we have a very specific commandline that we issue.</ns0:content><ns0:updated>2012-04-17T18:21:05.000Z</ns0:updated><ns0:published>2012-04-17T17:54:14.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Trim sandboxed version of gold more.</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2735/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2735" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2735" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2735</ns2:id></ns0:entry>

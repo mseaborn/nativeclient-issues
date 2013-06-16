@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUHRX47eCl7ImA9Wx5TF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/532/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">Give a man a fish and you feed him for a day. Teach him how to fish and you feed him for a lifetime.
+
+Here is how can you find AT&amp;T instructions in Intel manual:
+
+$ cat test.s 
+
+movsbw %nacl:(%r15,%r12,1),%ax
+lock cmpxchg %ax,%nacl:(%r15,%rsi,1)
+
+$ nacl64-as test.s 
+
+$ objdump -d -M intel a.out 
+
+a.out:     file format elf64-x86-64
+
+Disassembly of section .text:
+
+0000000000000000 &lt;.text&gt;:
+   0:	45 89 e4             	mov    r12d,r12d
+   3:	66 43 0f be 04 27    	movsx  ax,BYTE PTR [r15+r12*1]
+   9:	89 f6                	mov    esi,esi
+   b:	66 f0 41 0f b1 04 37 	lock cmpxchg WORD PTR [r15+rsi*1],ax
+
+Now it's easy to find these instructions in Intel Manual, but more important is to look on encoding of these instructions: problem occurs only with these particular version because there are more prefixes then validator likes.
+
+While "movsbw" is easy to avoid (usually you can expand byte to 32bit word and use low part of it), story with "lock cmpxchg" is much worse: you only need 16bit atomic instructions rarely but when you need them you can not replace them with anything.
+
+Not a security hazard but real nasty deficiency.
+</ns0:content><ns0:updated>2010-08-02T17:30:34.000Z</ns0:updated><ns0:published>2010-08-02T17:30:34.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by k...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=532#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/532/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUICR347eCl7ImA9WhZTFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1298/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">OK, the problem we still have is that we need "-T ldscripts/elf_nacl.x.static" together with "-static".
+
+There are several options for fixing:
+
+- add "-T xxx" to gcc specs. The problem is when xxx does not exist:
+  - in newlib toolchain - this can be fixed just by adding xxx to newlib
+  - in pregcc - i.e. glibc configure runs pregcc -static and fails
+    This can be fixed by an ugly define given to gcc build that only enables specs hack for glibc's full gcc :(
+  - if-exists does not work - it can conditionally substitute xxx but not "-T xxx" :(
+
+- make static and dynamic linker scripts to be one script
+  Unfortunately there is no way to alter linker script depending on this (or at least I didn't found one) - this implies the script should do the same things in both cases. At the moment this does not work:
+  - we need different load addresses for these cases
+  - dynamic executable has more segments than sel_ldr allows
+
+Not sure how I will proceed ...
+</ns0:content><ns0:updated>2011-03-18T18:39:26.000Z</ns0:updated><ns0:published>2011-03-18T18:39:26.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by eaelt...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1298#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1298/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

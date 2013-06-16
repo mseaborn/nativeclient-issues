@@ -1,0 +1,83 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUHSH47eCl7ImA9WhdaGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/48</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">I have the following stack trace into V8 built as DEBUG.  Notice the heap failure message prior to the segv. 
+
+(gdb) run
+Starting program: /usr/local/google/private_svn/chrome_utf/src/out/Debug/chrome --type=renderer --disable-seccomp-sandbox --register-pepper-plugins=out/Debug/obj.target/ppapi/libppapi_example_post_message.so\;application/x-ppapi-post-message-example --lang=en-US --force-fieldtest=ConnCountImpact/conn_count_6/ConnnectBackupJobs/ConnectBackupJobsEnabled/DnsImpact/default_enabled_prefetch/DnsParallelism/parallel_default/GlobalSdch/global_enable_sdch/IdleSktToImpact/idle_timeout_10/Instant/HiddenExperimentA/Prefetch/ContentPrefetchPrerenderControl1/ProxyConnectionImpact/proxy_connections_32/SpdyCwnd/cwnd10/SpdyImpact/npn_with_spdy/WarmSocketImpact/warm_socket/ --enable-nacl --channel=2533.0x7fabe36ead80.1720556045
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/libthread_db.so.1".
+warning: the debug information found in "/usr/lib/debug//usr/lib/libxcb.so.1.1.0" does not match "/usr/lib/libxcb.so.1" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/usr/lib/libxcb.so.1.1.0" does not match "/usr/lib/libxcb.so.1" (CRC mismatch).
+
+[2629:2629:2078392743675:WARNING:chrome_main_delegate.cc(227)] process type 'renderer' should be created through the zygote.
+[New Thread 0x7fffe4f4a700 (LWP 2702)]
+[New Thread 0x7fffe4749700 (LWP 2703)]
+[New Thread 0x7fffe33d8700 (LWP 2704)]
+
+
+#
+# Fatal error in v8/src/heap-inl.h, line 274
+# CHECK(!result || gc_state_ != NOT_IN_GC || InToSpace(object)) failed
+#
+
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff2c3569a in v8::internal::Map::instance_type (
+    this=0x1beefdad0beefdaf) at v8/src/objects-inl.h:2638
+2638      return static_cast&lt;InstanceType&gt;(READ_BYTE_FIELD(this, kInstanceTypeOffset));
+(gdb) bt
+#0  0x00007ffff2c3569a in v8::internal::Map::instance_type (
+    this=0x1beefdad0beefdaf) at v8/src/objects-inl.h:2638
+#1  0x00007ffff2c32f52 in v8::internal::Object::IsString (this=0xcf2a3cffe01)
+    at v8/src/objects-inl.h:167
+#2  0x00007ffff2e99f1b in v8::internal::StringStream::PrintObject (
+    this=0x7fffffffabf0, o=0xcf2a3cffe01) at v8/src/string-stream.cc:189
+#3  0x00007ffff2e99b9d in v8::internal::StringStream::Add (
+    this=0x7fffffffabf0, format=..., elms=...) at v8/src/string-stream.cc:140
+#4  0x00007ffff2e9a1f6 in v8::internal::StringStream::Add (
+    this=0x7fffffffabf0, format=0x7ffff5d073af "%o\n", arg0=...)
+    at v8/src/string-stream.cc:228
+#5  0x00007ffff2e9ab7a in v8::internal::StringStream::PrintUsingMap (
+    this=0x7fffffffabf0, js_object=0xcf2a2f04101)
+    at v8/src/string-stream.cc:370
+#6  0x00007ffff2e9afcc in v8::internal::StringStream::PrintMentionedObjectCache
+    (this=0x7fffffffabf0) at v8/src/string-stream.cc:432
+#7  0x00007ffff2d45793 in v8::internal::Isolate::PrintStack (
+    this=0x7ffff08ae000, accumulator=0x7fffffffabf0) at v8/src/isolate.cc:722
+#8  0x00007ffff2d45527 in v8::internal::Isolate::PrintStack (
+    this=0x7ffff08ae000) at v8/src/isolate.cc:669
+#9  0x00007ffff2c5f140 in V8_Fatal (file=0x7ffff5caea07 "v8/src/heap-inl.h", 
+    line=274, format=0x7ffff5cad820 "CHECK(%s) failed") at v8/src/checks.cc:55
+#10 0x00007ffff2c13a3c in CheckHelper (
+---Type &lt;return&gt; to continue, or q &lt;return&gt; to quit---
+    file=0x7ffff5caea07 "v8/src/heap-inl.h", line=274, 
+    source=0x7ffff5cae9d0 "!result || gc_state_ != NOT_IN_GC || InToSpace(object)", condition=false) at v8/src/checks.h:60
+#11 0x00007ffff2c38505 in v8::internal::Heap::InNewSpace (this=0x7ffff08ae0a8, 
+    object=0xcf2a3cffe01) at v8/src/heap-inl.h:272
+#12 0x00007ffff2c34b50 in v8::internal::FixedArray::set (this=0xcf2a2e042d1, 
+    index=0, value=0xcf2a3cffe01) at v8/src/objects-inl.h:1543
+#13 0x00007ffff2dabb9c in v8::internal::JSObject::FastPropertyAtPut (
+    this=0xcf2a2f04101, index=0, value=0xcf2a3cffe01)
+    at v8/src/objects-inl.h:1401
+#14 0x00007ffff2d88648 in v8::internal::JSObject::ConvertDescriptorToField (
+    this=0xcf2a2f04101, name=0x3b2cc4b15f31, new_value=0xcf2a3cffe01, 
+    attributes=5) at v8/src/objects.cc:1933
+#15 0x00007ffff2d8cd48 in v8::internal::JSObject::SetLocalPropertyIgnoreAttributes (this=0xcf2a2f04101, name=0x3b2cc4b15f31, value=0xcf2a3cffe01, attributes=5)
+    at v8/src/objects.cc:3118
+#16 0x00007ffff2e0c620 in v8::internal::Runtime::ForceSetObjectProperty (
+    isolate=0x7ffff08ae000, js_object=..., key=..., value=..., attr=5)
+    at v8/src/runtime.cc:4526
+#17 0x00007ffff2cb3c2a in v8::internal::ForceSetProperty (object=..., key=..., 
+    value=..., attributes=5) at v8/src/handles.cc:298
+#18 0x00007ffff2c203ef in v8::Object::ForceSet (this=0x7fffffffb350, key=..., 
+    value=..., attribs=5) at v8/src/api.cc:2750
+---Type &lt;return&gt; to continue, or q &lt;return&gt; to quit---
+#19 0x00007ffff4efb82d in WebCore::V8MessageEvent::dataAccessorGetter (
+    name=..., info=...)
+    at third_party/WebKit/Source/WebCore/bindings/v8/custom/V8MessageEventCustom.cpp:88
+#20 0x0000282de943ae80 in ?? ()
+#21 0x00007fffffffb358 in ?? ()
+#22 0x0000000000000000 in ?? ()
+(gdb) 
+</ns0:content><ns0:updated>2011-10-28T20:03:59.000Z</ns0:updated><ns0:published>2011-10-28T20:03:59.000Z</ns0:published><ns2:updates /><ns0:title>Comment 48 by noelal...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2394#c48" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full/48" rel="self" type="application/atom+xml" /></ns0:entry>

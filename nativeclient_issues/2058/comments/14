@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0MNR347eCl7ImA9WhdSEko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2058/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>mcgra...@chromium.org</ns0:name><ns0:uri>/u/109286297231979736865/</ns0:uri></ns0:author><ns0:content type="html">Whatever that documentation says, making _impure_ptr et al __thread variables was part of the "NaCl bulk" commit, not the original newlib sources.
+
+Before I investigated this a little yesterday, I was blaming newlib for the insanity rather than blaming NaCl hackers.  The rightful target of the blame has no bearing on the level of insanity.
+
+It is entirely wrong for stdin/stdout/stderr and most other state in _reent to be per-thread.  It is only correct for errno to be per-thread.  That is, if we are going for anything even remotely approximating ISO C or POSIX semantics, regardless of what any "norm" for newlib may have been.</ns0:content><ns0:updated>2011-07-21T18:04:56.000Z</ns0:updated><ns0:published>2011-07-21T18:04:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by mcgra...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2058#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2058/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

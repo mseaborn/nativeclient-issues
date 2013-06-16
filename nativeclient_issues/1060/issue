@@ -1,0 +1,66 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUMCQX47eCl7ImA9WhdXE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1060</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">The following try shows up as a green try box in:
+   http://codereview.chromium.org/3786007/show
+
+However looking at the email, you can see that the try was a failure.  It is interesting that the try completed with the last stage passing, but several middle stages failing.   Email bellow:
+
+tryserver@chromium.org to me
+show details 4:12 PM (1 hour ago)
+try failure for 'noelallen: sig3' try job on nacl-mac_opt @ r3491
+http://buildbot.jail.google.com/buildbot/nacl-tryserver/
+TRY FAILED
+
+If you think the try slave is broken (it happens!) or tests are flaky, please REPLY to this email, don't ask on irc, mailing list or IM.
+Please use &amp;quot;rich text&amp;quot; replies so the links aren't lost.
+It is possible that you get no reply, don't worry, the reply address isn't a blackhole.
+Thanks!
+
+http://buildbot.jail.google.com/buildbot/nacl-tryserver/builders/nacl-mac_opt/builds/3849
+nacl-mac_opt
+Build 3849
+'noelallen: sig3' try job
+update scripts
+stdio
+update
+r3496
+patch
+stdio
+gclient runhooks
+stdio
+clobber
+stdio
+partial_sdk
+stdio
+gyp compile
+stdio
+gyp tests
+stdio
+scons compile
+stdio
+small_tests
+failed
+stdio
+medium_tests
+failed
+stdio
+large_tests
+stdio
+backup_plugin
+stdio
+install_plugin
+stdio
+selenium
+stdio
+restore_plugin
+stdio
+
+FAQ: http://sites.google.com/a/chromium.org/dev/developers/testing/try-server-usage
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-08-26T18:31:00.000Z</ns0:updated><ns0:published>2010-10-19T00:50:24.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>code review reports false success on trys</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-</ns2:label><ns2:label>Arch-</ns2:label><ns2:label>FlakeyBots</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1060/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1060" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1060" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-08-26T18:31:00.000Z</ns2:closedDate><ns2:id>1060</ns2:id></ns0:entry>

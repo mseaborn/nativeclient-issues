@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEcEQX47eCl7ImA9WxBWE0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/248</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">Reproducer:
+
+scons-out/opt-linux-arm/staging/sel_universal -f
+scons-out/nacl-arm/staging/srpc_test.nexe
+
+The nacl modules seems to exit automatically shortly after it gets launched.
+Though, it may stay around long enough to server a few request coming in via
+sel_universal stdin redirection.
+
+Note: this can currently only be reproduced on HW or possibly a full system
+emulator
+</ns0:content><ns0:updated>2010-02-05T17:46:40.000Z</ns0:updated><ns0:published>2010-01-13T22:52:40.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>arm sel_universal does not seem to work properly</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/248/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=248" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/248" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-02-05T17:46:40.000Z</ns2:closedDate><ns2:id>248</ns2:id></ns0:entry>

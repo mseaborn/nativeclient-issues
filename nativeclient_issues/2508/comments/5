@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0ADQH47eCl7ImA9WhRVGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2508/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">Thank you for your feedback and your interest in this question. Please understand that security is a critical challenge in this space, and we are determined to do an excellent job of protecting users of our system.
+
+Try searching for "Intel Specification Update" or "AMD Revision Guide" for some examples of defects in popular x86 implementations. While it is hard to find a documented defect that allows a simple Native Client exploit, we are inclined to take a pessimistic position in the interest of protecting our users.
+
+In general we feel the errata documents provided by x86 vendors are inadequate. We work with engineers from Intel and AMD to get additional information on errata of particular interest. We would like to work with other x86 vendors, assuming they can provide errata documentation and appropriate technical contacts.
+</ns0:content><ns0:updated>2012-01-18T22:29:31.000Z</ns0:updated><ns0:published>2012-01-18T22:29:31.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Pri-1</ns2:label><ns2:label>-Mstone-19</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Mstone-X</ns2:label></ns2:updates><ns0:title>Comment 5 by bradc...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2508#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2508/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

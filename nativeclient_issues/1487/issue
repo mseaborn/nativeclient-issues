@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0IFSX47eCl7ImA9WhZbEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1487</ns0:id><ns0:author>
+			<ns0:name>tri...@gmail.com</ns0:name><ns0:uri>/u/112767041460502214504/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? N/A
+What version of the runtime are you using? 11.0.686.1
+On what operating system? 64bit Kubuntu 10.04.2 LTS
+What browser are you using? Chrome 11.0.686.1
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+Google Chrome	11.0.686.1 (Official Build 76348) dev
+WebKit	534.23 (trunk@79757)
+V8	3.1.6.1
+User Agent	Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.23 (KHTML, like Gecko) Chrome/11.0.686.1 Safari/534.23
+Command Line	 /usr/bin/google-chrome --restore-last-session --flag-switches-begin --enable-click-to-play --enable-nacl --experimental-location-features --flag-switches-end
+
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Load Chrome with the enable Native Client flag
+2. Visit NaCl gallery and see it detect NaCl enabled
+3. Try any of the gallery pages
+4. Notice that the user is prompted &amp;quot;click to play&amp;quot; the NaCl plugin
+5. Clicking on the plugin fails to execute it.
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+The plugin should execute.
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+NaCl was just packaged with the new dev build yesterday &amp;gt;&amp;gt;
+http://code.google.com/p/nativeclient/issues/detail?id=1416
+which prompted me to test if it worked.
+</ns0:content><ns0:updated>2011-06-14T21:05:18.000Z</ns0:updated><ns0:published>2011-03-02T15:59:47.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>NativeClient (now packaged with dev channel) fails "click to play"</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Milestone-Baltic-Brill</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1487/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1487" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1487" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-06-14T21:05:18.000Z</ns2:closedDate><ns2:id>1487</ns2:id></ns0:entry>

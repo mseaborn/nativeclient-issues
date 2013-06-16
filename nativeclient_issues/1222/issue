@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UGQn47eCl7ImA9WhRbGUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1222</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">Some data:
+
+ls -l toolchain/linux_arm-untrusted/tools-sb/x86*/bin/llc 
+18489936 Nov 30 13:35 toolchain/linux_arm-untrusted/tools-sb/x8632/bin/llc
+20063296 Nov 30 13:39 toolchain/linux_arm-untrusted/tools-sb/x8664/bin/llc
+
+Note: these are sandboxed versions of llc - presumably only supporting one arch
+
+
+ls -l toolchain/linux_arm-untrusted/arm-none-linux-gnueabi/bin/llc
+14577584 Nov 30 13:25 toolchain/linux_arm-untrusted/arm-none-linux-gnueabi/bin/llc
+
+
+Note: this version is NOT sandboxed but supports all three archs
+
+We need to understand why these images are so large.
+Especially the sandboxed llc version is way too big for being part of the 
+client side translator </ns0:content><ns0:updated>2012-02-10T23:07:03.000Z</ns0:updated><ns0:published>2010-12-03T19:10:13.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>pnacl's llc backend is too large</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1222/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1222" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1222" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:id>1222</ns2:id></ns0:entry>

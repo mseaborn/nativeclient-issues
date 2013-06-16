@@ -1,0 +1,8 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08BQn47eCl7ImA9WhdXE0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2149/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Okay, the flake is due to the pexe not being fully downloaded, in exactly the same way as issue 1521!
+
+In fact, the size of the truncated file is exactly the same 3895 bytes! The input bitcode size is roughly the same size as the linker script used to be ~8000-10000 bytes. I hope we don't end up with manifest files around that same size...
+
+See attached patch to print out the file size and pound the browser until things flake out.</ns0:content><ns0:updated>2011-08-26T21:57:33.000Z</ns0:updated><ns0:published>2011-08-26T21:57:33.000Z</ns0:published><ns2:updates>
+			<ns2:blockedOnUpdate>1521</ns2:blockedOnUpdate></ns2:updates><ns0:title>Comment 8 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2149#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2149/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

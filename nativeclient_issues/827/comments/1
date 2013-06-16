@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQGQn47eCl7ImA9Wx5RFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/827/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">If I try to build nacl-glibc against pre-gcc I get this error:
+
+...
+running configure fragment for sysdeps/i386/elf
+checking for i386 TLS support... yes
+running configure fragment for nptl/sysdeps/pthread
+checking for forced unwind support... no
+configure: error: forced unwind support is required
+
+From config.log:
+configure:7475: result: running configure fragment for nptl/sysdeps/pthread
+configure:27: checking for forced unwind support
+configure:56: nacl-gcc -m32 -o conftest -march=i486 -pipe -fno-strict-aliasing -O2 -mno-tls-direct-seg-refs -g  -L/usr/local/google/home/mseaborn/devel/nacl-svn/native_client/tools/modular-build/out/input-prefix/glibc/lib conftest.c  &gt;&amp;5/usr/local/google/home/mseaborn/devel/nacl-svn/native_client/tools/modular-build/out/input-prefix/glibc/original-bin/../lib/gcc/nacl/4.4.3/../../../../nacl/bin/ld: crtbegin.o: No such file: No such file or directory
+collect2: ld returned 1 exit status
+
+crtbegin.o is currently only provided by full-gcc:
+
+$ find out/install/ | grep crtbegin
+out/install/full-gcc/lib/gcc/nacl/4.4.3/crtbegin.o
+out/install/full-gcc/lib/gcc/nacl/4.4.3/crtbeginS.o
+out/install/full-gcc/lib/gcc/nacl/4.4.3/crtbeginT.o
+</ns0:content><ns0:updated>2010-08-23T15:45:23.000Z</ns0:updated><ns0:published>2010-08-23T15:45:23.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=827#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/827/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

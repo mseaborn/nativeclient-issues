@@ -1,0 +1,44 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU8MRn47eCl7ImA9WhZREE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1561/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4767
+
+------------------------------------------------------------------------
+r4767 | noelallen@google.com | Tue Apr 05 14:05:47 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/nacl.scons?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/target_platform_mac.py?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/nacl_log.c?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/method_map.cc?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_signal_common.c?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_debug.cc?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/linux/sel_memory.c?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/target_platform_windows.py?r1=4767&amp;r2=4766&amp;pathrev=4767
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/linux/nacl_exit.c?r1=4767&amp;r2=4766&amp;pathrev=4767
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/nacl_exit.h?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_signal.h?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/nonnacl_util/posix/sel_ldr_launcher_posix.cc?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/platform.gyp?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/linux/sysv_shm_and_mmap.c?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=4767&amp;r2=4766&amp;pathrev=4767
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/win/nacl_exit.c?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/build.scons?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_hook.c?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/target_platform_linux.py?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/platform/win/lock_impl_win.cc?r1=4767&amp;r2=4766&amp;pathrev=4767
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/posix/nacl_signal.c?r1=4767&amp;r2=4766&amp;pathrev=4767
+
+Exit Cleanup
+
+Add a nacl_exit.h and nacl_exit.c to the src/shared/platform library. Convert all instances of 'abort' and '_exit' to nacl_abort and nacl_exit within the trusted code base (not including tests). This allows us to use a fast exit when an error is detected.  This CL also looks for the macro COVERAGE signalling a coverage build, to bypass the quick exit and use a normal exit to allow coverage information to be flushed out before exiting.
+While there is an assumption that _exit or abort are used in all cases where fast exit is required, the list of changes was derived by manual verification of a grep for all instances of abort and exit (instead of abort( and _exit( since the may be used as a function pointer, or exit may be used when _exit was really needed).   We run all tests to verify all tests that require specific exit codes run correctly.
+
+In addition to changes of _exit and abort, this CL also modifies our use of sysv_shm_and_mmap.c during platform qualification to avoid the use of atexit.
+
+TEST=all
+BUG=nacl1561
+Review URL: http://codereview.chromium.org/6676106
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-04-05T21:11:27.000Z</ns0:updated><ns0:published>2011-04-05T21:11:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1561#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1561/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

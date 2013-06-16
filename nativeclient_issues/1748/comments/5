@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0AFQn47eCl7ImA9WhZWF0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1748/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5358
+
+------------------------------------------------------------------------
+r5358 | elijahtaylor@google.com | Wed May 18 15:55:49 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/plugin_ppapi.cc?r1=5358&amp;r2=5357&amp;pathrev=5358
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/file_downloader.cc?r1=5358&amp;r2=5357&amp;pathrev=5358
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc_hw/nacl.scons?r1=5358&amp;r2=5357&amp;pathrev=5358
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/plugin_ppapi.h?r1=5358&amp;r2=5357&amp;pathrev=5358
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/ppapi/file_downloader.h?r1=5358&amp;r2=5357&amp;pathrev=5358
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_url_util.cc?r1=5358&amp;r2=5357&amp;pathrev=5358
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/srpc_hw/srpc_hw_data.html?r1=5358&amp;r2=5357&amp;pathrev=5358
+
+Data URI support for manifest files.  File_downloader changed to allow streaming to buffer.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1748
+TEST= run_srpc_hw_data_chrome_browser_test
+
+Review URL: http://codereview.chromium.org/6973007
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-18T23:01:53.000Z</ns0:updated><ns0:published>2011-05-18T23:01:53.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1748#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1748/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

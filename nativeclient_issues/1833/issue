@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQBQ347eCl7ImA9WhVTEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1833</ns0:id><ns0:author>
+			<ns0:name>ncb...@google.com</ns0:name><ns0:uri>/u/100032148147647801554/</ns0:uri></ns0:author><ns0:content type="html">The test works fine on the main bots, however.
+
+This skew may have to do with the outer sandbox not being enabled on the main bots.  You can pass the disable_dynamic_plugin_loading=1 to SCons to use whatever plugin/sel_ldr the browser binary has, and thereby enabling sandboxing.
+
+======================================================================
+Stdout
+======================================================================
+ENV: __CF_USER_TEXT_ENCODING=0x4BA5FAA2:0:0 VERSIONER_PYTHON_PREFER_32_BIT=no VERSIONER_PYTHON_VERSION=2.6 SHLVL=1 NACLLOG=/b/build/slave/mac-nacl-chrome/build/src/native_client/scons-out/nacl-x86-32/obj/tests/browser_startup_time/browser_startup_time.out.nacllog NACLVERBOSITY=1 PWD=/b/build/slave/mac-nacl-chrome/build/src/native_client CYGWIN=nodosfilewarning PATH=/b/build/slave/mac-nacl-chrome/build/src/native_client/toolchain/mac_x86_newlib/bin:/usr/local/bin:/opt/bin:/bin:/usr/bin:/sw/bin HOME=/Users/chrome-bot NACL_ENABLE_EXPERIMENTAL_JAVASCRIPT_APIS=1 DISPLAY=/tmp/launch-idkUz9/org.x:0 _=/usr/bin/python
+LAUNCHING: /b/build/slave/mac-nacl-chrome/build/src/xcodebuild/Release/Chromium.app/Contents/MacOS/Chromium --disable-web-resources --disable-preconnect --no-first-run --no-default-browser-check --enable-logging --log-level=1 --safebrowsing-disable-auto-update --user-data-dir=/tmp/browserprofile_rAAQO_ --enable-nacl http://127.0.0.1:60222/browser_startup_time.html
+PID 71009
+**** GET /browser_startup_time.html
+**** GET /nacltest.js
+**** GET /ppapi_test_example.js
+**** GET /browser_startup_time.js
+**** [STARTUP]
+**** GET /browser_startup_time.nmf
+**** GET /browser_startup_time_x86-32.nexe
+**** GET /favicon.ico
+**** 
+**** [SERVER_ERROR] Did not hear from the browser for 20.0 seconds
+KILLING the browser
+
+======================================================================
+Stderr
+======================================================================
+NaClLogSetFile: Operation not permitted
+Could not create log file
+
+browser_startup_time.out: FAILED</ns0:content><ns0:updated>2012-02-24T17:09:12.000Z</ns0:updated><ns0:published>2011-05-20T17:35:25.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>browser_startup_time does not work on the Chrome integration bots.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1833/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1833" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1833" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1833</ns2:id></ns0:entry>

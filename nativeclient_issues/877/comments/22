@@ -1,0 +1,67 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08BRn47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/877/comments/full/22</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3635
+
+------------------------------------------------------------------------
+r3635 | bsy@google.com | Mon Nov 08 17:29:13 PST 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_text.c?r1=3635&amp;r2=3634&amp;pathrev=3635
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=3635&amp;r2=3634&amp;pathrev=3635
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/naclsdk.py?r1=3635&amp;r2=3634&amp;pathrev=3635
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=3635&amp;r2=3634&amp;pathrev=3635
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=3635&amp;r2=3634&amp;pathrev=3635
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/nacl_text_pad_test.S?r1=3635&amp;r2=3634&amp;pathrev=3635
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_text_pad_test.S?r1=3635&amp;r2=3634&amp;pathrev=3635
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/nacl_elf_constants.py?r1=3635&amp;r2=3634&amp;pathrev=3635
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/elf_patcher.py?r1=3635&amp;r2=3634&amp;pathrev=3635
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl.scons?r1=3635&amp;r2=3634&amp;pathrev=3635
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/set_abi_version.py?r1=3635&amp;r2=3634&amp;pathrev=3635
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_text_pad_test.S?r1=3635&amp;r2=3634&amp;pathrev=3635
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_error_code.h?r1=3635&amp;r2=3634&amp;pathrev=3635
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/elf.py?r1=3635&amp;r2=3634&amp;pathrev=3635
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/command_tester.py?r1=3635&amp;r2=3634&amp;pathrev=3635
+
+Fixes some bugs with memory setup and halt-sled allocation and
+initialization.
+
+Tests in assembly language are written to be text-only -- no rodata
+nor data segments are present in one set of tests -- with varying
+sizes of padding so that the text segment ends exactly at a multiple
+of 65536, just 32 bytes shy of it (the halt sled size), many bytes shy
+of a multiple, and 28 bytes shy of 65536 (too small gap).  The text
+prints out the break address and the end-of-text address to check the
+rounding that's done by the sel_ldr.
+
+In addition to the 4 text-only tests, this CL also builds a set with
+rodata -- containing a string -- at its "natural" position, and
+another set with rodata at 0x100000, leaving space for dynamic code.
+These additional eight tests have _ro and _ro_dyn in their names.
+
+In order to get exact memory layout, the tests are built by directly
+invoking the loader, rather than indirectly through nacl-g++.  For the
+x86-* architectures, we are using nacl-ld; for the arm, we are using
+code sourcery's ld and patching the generated exectuable with the
+elf_patcher.py script to modify the Elf headers to be nexes as opposed
+to standard executables.
+
+Because there appears to be a linker bug on the ARM, the _ro_dyn tests
+are not built -- the text is moved to an address other than 0x20000,
+despite command-line flags to the contrary.  One ARM test
+(too_small_ro) triggers a LOG_FATAL because the ARM linker will not
+automatically move the .rodata section to ensure that there is enough
+room for the halt sled.  If we could use linker scripts so that full
+control is feasible but defaulting to automatically always reserving
+gap space, that would be ideal behavior....
+
+The next set of CLs will add tests where data segments *are* present
+as well, and where no rodata is present but rw data is present -- more
+test case combinatorics.  And the address space setup code needs to be
+cleaned up still.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=506 http://code.google.com/p/nativeclient/issues/detail?id=877
+TEST= run_nacl_text_no_pad_test run_nacl_text_small_pad_test run_nacl_text_large_pad_test run_nacl_text_too_small_pad_test run_nacl_text_no_pad_ro_test run_nacl_text_small_pad_ro_test run_nacl_text_large_pad_ro_test run_nacl_text_too_small_pad_ro_test run_nacl_text_no_pad_ro_dyn_test run_nacl_text_small_pad_ro_dyn_test run_nacl_text_large_pad_ro_dyn_test run_nacl_text_too_small_pad_ro_dyn_test
+
+Review URL: http://codereview.chromium.org/4181005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:17:37.000Z</ns0:updated><ns0:published>2011-01-21T23:17:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 22 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=877#c22" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/877/comments/full/22" rel="self" type="application/atom+xml" /></ns0:entry>

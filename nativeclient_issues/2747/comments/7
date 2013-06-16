@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0MERn47eCl7ImA9WhVWGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2747/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">For a sample of the browser tests (e.g., run_browser_startup_time_test, run_ppapi_ppb_graphics2d_browser_test), we still have a whole bunch of TEXTRELs and get this error during startup:
+
+
+/lib/main.nexe: error while loading shared libraries: cannot make segment writable for relocation: Error 38
+
+
+$ scanelf -qT test_graphics2d_bad/ppapi_ppb_graphics2d_x86-32.nexe | wc -l
+271
+
+$ scanelf -qT test_browser_startup_bad/browser_startup_time_x86-32.nexe | wc -l
+3
+
+I added some printfs to the LLC's MakeStub() function to see when it is skipping stubs because of missing prototypes, and it looks like that is happening A LOT for the graphics2d nexe, but never happens for the browser_startup_time.nexe.  So, that doesn't explain everything.  More investigation to come.
+</ns0:content><ns0:updated>2012-05-01T18:03:27.000Z</ns0:updated><ns0:published>2012-05-01T18:03:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2747#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2747/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

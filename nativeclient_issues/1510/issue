@@ -1,0 +1,67 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0UGQX47eCl7ImA9WhdQF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1510</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+Nacl r4484
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Linux
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+Chrome r76594
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Patch in: http://codereview.chromium.org/6624036/ (Patch Set 9?)
+2. Uncomment the line &amp;quot;// Uncomment the following waitFor() if you want to see some sad-tabs&amp;quot; in tests/pnacl_client_translator/pnacl_srpc_hw.html
+3. Run: ./scons platform=x86-64 bitcode=1 run_pnacl_srpc_hw_browser_test
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Expected: Test runs to completion and passes.
+Instead: Chrome shows you a sad tab.
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+High-level view of what is happening: We are using the possibly-deprecated __launchExecutableFromFd plugin method while also repeatedly checking __moduleReady. The plugin/embed-tag does not have a &amp;quot;src&amp;quot; or &amp;quot;nacl&amp;quot; attribute on because the nexe is dynamically generated and &amp;quot;launched from an FD&amp;quot;.
+
+
+A backtrace from running the test separately in a chrome debug build:
+
+Program received signal SIGSEGV, Segmentation fault.
+[Switching to Thread 0x7fffe4109700 (LWP 12993)]
+0x00007fffb30b86f0 in plugin::SrtSocket::LoadModule (this=0x7fffb5fd8c70, desc=0x7fffe51c9780) at native_client/src/trusted/plugin/srt_socket.cc:71
+71        params.ins()[0]-&amp;gt;u.hval = desc;
+(gdb) bt
+#0  0x00007fffb30b86f0 in plugin::SrtSocket::LoadModule (this=0x7fffb5fd8c70, desc=0x7fffe51c9780) at native_client/src/trusted/plugin/srt_socket.cc:71
+#1  0x00007fffb30b3b48 in plugin::ServiceRuntime::InitCommunication (this=0x7fffe54af6c0, bootstrap_socket=154, nacl_desc=0x7fffe50ed8c0) at native_client/src/trusted/plugin/service_runtime.cc:95
+#2  0x00007fffb30b461a in plugin::ServiceRuntime::StartFromBrowser (this=0x7fffe54af6c0, nacl_url=&amp;quot;&amp;quot;, nacl_desc=0x7fffe50ed8c0) at native_client/src/trusted/plugin/service_runtime.cc:207
+#3  0x00007fffb30afb80 in plugin::Plugin::LoadNaClModule (this=0x7fffe534bc40, wrapper=0x7fffe50ed8c0, start_from_browser=true) at native_client/src/trusted/plugin/plugin.cc:631
+#4  0x00007fffb30af8df in plugin::Plugin::LoadNaClModule (this=0x7fffe534bc40, wrapper=0x7fffe50ed8c0) at native_client/src/trusted/plugin/plugin.cc:596
+#5  0x00007fffb30ad206 in (anonymous namespace)::LaunchExecutableFromFd (obj=0x7fffe534bc40, params=0x7fffe4105760) at native_client/src/trusted/plugin/plugin.cc:146
+#6  0x00007fffb30b13ac in plugin::PortableHandle::Invoke(uintptr_t, plugin::&amp;lt;anonymous enum&amp;gt;, plugin::SrpcParams *) (this=0x7fffe534bc40, method_id=2, call_type=plugin::METHOD_CALL, params=0x7fffe4105760) at native_client/src/trusted/plugin/portable_handle.cc:117
+#7  0x00007fffb30c864b in plugin::ScriptableHandlePpapi::Invoke(plugin::&amp;lt;anonymous enum&amp;gt;, nacl::string, const char *, const std::vector&amp;lt;pp::Var, std::allocator&amp;lt;pp::Var&amp;gt; &amp;gt; &amp;amp;, pp::Var *) (this=0x7fffb5f43e60, call_type=plugin::METHOD_CALL, call_name=&amp;quot;__launchExecutableFromFd&amp;quot;, caller=0x7fffb311349a &amp;quot;Call&amp;quot;, args=
+    std::vector of length 1, capacity 1 = {...}, exception=0x7fffe41062b8) at native_client/src/trusted/plugin/ppapi/scriptable_handle_ppapi.cc:164
+#8  0x00007fffb30c9673 in plugin::ScriptableHandlePpapi::Call (this=0x7fffb5f43e60, name=..., args=std::vector of length 1, capacity 1 = {...}, exception=0x7fffe41062b8) at native_client/src/trusted/plugin/ppapi/scriptable_handle_ppapi.cc:285
+#9  0x00007fffb31044c7 in pp::deprecated::(anonymous namespace)::Call (object=0x7fffb5f43e60, method_name=..., argc=1, argv=0x7fffe37a88f0, exception=0x7fffe41063d0) at ppapi/cpp/dev/scriptable_object_deprecated.cc:106
+#10 0x0000000001dece77 in webkit::ppapi::(anonymous namespace)::WrapperClass_Invoke (object=0x7fffe5444420, method_name=0x7fffe5109c00, argv=0x7fffe51bc560, argc=1, result=0x7fffe4106480) at webkit/plugins/ppapi/plugin_object.cc:82
+#11 0x00000000027db606 in WebCore::npObjectInvokeImpl (args=..., functionId=WebCore::InvokeMethod) at third_party/WebKit/Source/WebCore/bindings/v8/V8NPObject.cpp:118
+#12 0x00000000027db77c in WebCore::npObjectMethodHandler (args=...) at third_party/WebKit/Source/WebCore/bindings/v8/V8NPObject.cpp:149
+#13 0x00000000017d75ff in v8::internal::HandleApiCallHelper&amp;lt;false&amp;gt; (args=...) at v8/src/builtins.cc:1069
+#14 0x00000000017d5010 in v8::internal::Builtin_Impl_HandleApiCall (args=...) at v8/src/builtins.cc:1086
+#15 0x00000000017d4fe9 in v8::internal::Builtin_HandleApiCall (args=...) at v8/src/builtins.cc:1085
+#16 0x00007fffb69a224a in ?? ()
+#17 0x00007fffb69a687a in ?? ()
+
+
+Fishy state of &amp;quot;params.ins()[0]&amp;quot; which the code is trying to dereference:
+
+(gdb) print params
+$1 = {ins_ = {0x0 &amp;lt;repeats 129 times&amp;gt;}, outs_ = {0x7fffe5292700, 0x0 &amp;lt;repeats 128 times&amp;gt;}, exception_string_ = 0x0}
+
+
+Random, possibly-relevant error message (but may be a red herring):
+[28454,4147100528:17:35:46.343895] Seek method is not implemented for object of type NACL_DESC_IMC_SOCKET
+
+</ns0:content><ns0:updated>2011-08-19T18:40:20.000Z</ns0:updated><ns0:published>2011-03-10T01:47:31.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>__launchExecutableFromFd may crash in conjuction with __moduleReady</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1510/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1510" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1510" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-19T18:18:19.000Z</ns2:closedDate><ns2:id>1510</ns2:id></ns0:entry>

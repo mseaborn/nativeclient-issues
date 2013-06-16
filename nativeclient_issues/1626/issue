@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIHRH47eCl7ImA9WhZRFkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1626</ns0:id><ns0:author>
+			<ns0:name>suna...@chromium.org</ns0:name><ns0:uri>/u/108616898676203953394/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? 0.0.781.0
+On what operating system? Win7 x64
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Install using the .exe - On Native Client SDK Setup dialog, once installation is complete, Show release notes options should be selected
+3. Click on Finish button
+
+What is the expected output? 
+Release notes should be seen
+
+What do you see instead?
+Nothing happens
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2011-04-12T14:28:55.000Z</ns0:updated><ns0:published>2011-04-07T21:23:41.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/mball@google.com/</ns2:uri><ns2:username>mball@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Release notes is not seen after completing installation</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Milestone-Baltic-Brill-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1626/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1626" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1626" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-04-12T14:28:55.000Z</ns2:closedDate><ns2:id>1626</ns2:id></ns0:entry>

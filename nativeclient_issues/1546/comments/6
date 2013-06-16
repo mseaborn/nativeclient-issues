@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUER347eCl7ImA9WhZTF0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1546/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Update:
+llc.srpc.tcmalloc.nexe:    real	0m18.577s
+
+The extra time for SRPC vs non-SRPC does not appear to be part of the untrusted code (very similar profile). The difference, I beleive, is the slowness of locking again. The nacl_file.cpp implementation uses locks in quite a few places that it perhaps does not need.
+
+Some evidence:
+
+For SRPC:
+13087 samples     pthread_mutex_lock
+8601 samples      pthread_mutex_unlock
+
+For non-SRPC:
+1496 samples      pthread_mutex_lock
+ 887 samples      pthread_mutex_unlock
+
+As for the invalid free we saw before, it appears to be a problem with memory allocated via strdup and free()'ed through tcmalloc. I.e., tcmalloc with nacl-gcc will barf with the following test (from tcmalloc issue http://code.google.com/p/google-perftools/issues/detail?id=280):
+
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+
+main() {
+  char *d = strdup("abc");
+  free(d);
+}
+
+
+Luckily, strdup is only tickled in the srpc version of LLC in nacl_file.cpp, in anticipation of using LLC in a re-entrant manner. So, we can disable free()'ing there for now or we can manually perform strdup there to work around the issue.</ns0:content><ns0:updated>2011-03-22T01:26:46.000Z</ns0:updated><ns0:published>2011-03-22T01:26:46.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1546#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1546/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

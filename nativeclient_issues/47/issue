@@ -1,0 +1,122 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEIGSX47eCl7ImA9WxVVF04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/47</ns0:id><ns0:author>
+			<ns0:name>aazu...@gmail.com</ns0:name><ns0:uri>/u/106324950370895382600/</ns0:uri></ns0:author><ns0:content type="html">Issue
+  Heap overflow error in the nacl validator when parsing the .nexe/elf headers.
+
+
+Description
+  The validator calculates the required memory to hold the program sections
+  using
+  the p_memsz and p_vaddr values of the .nexe header [lines 155-167], then
+  allocates that amount of memory [lines 167,172] but,
+  when trying to load the program [line 184] into the allocated memory,
+  instead of using the calculated value, it
+  uses the p_filesz value from the binary header without validating it.
+  
+
+Native client version number
+  nacl_source_0.1_38_2009_02_11.tgz
+
+
+Native client current version number
+  nacl/nacl_svn/nacl/googleclient/native_client/ncv$ svn info ncfileutil.c 
+  Path: ncfileutil.c
+  Name: ncfileutil.c
+  URL: http://nativeclient.googlecode.com/svn/trunk/nacl/googleclient/
+    native_client/ncv/ncfileutil.c
+  Repository Root: http://nativeclient.googlecode.com/svn
+  Repository UUID: fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+  Revision: 130
+  Node Kind: file
+  Schedule: normal
+  Last Changed Author: nativeclient.admin
+  Last Changed Rev: 118
+  Last Changed Date: 2009-02-12 07:35:33 -0200 (Thu, 12 Feb 2009)
+  Text Last Updated: 2009-02-27 17:00:35 -0200 (Fri, 27 Feb 2009)
+  Checksum: fb86dd8805d16507fc394a424cf0c721
+
+
+Tested platforms
+  Ubuntu Linux hardy 8.04 LTS
+
+
+Program listing
+  &amp;lt;ncfileutil.c&amp;gt;
+  102 static int nc_load(ncfile *ncf, int fd)
+  103 {
+  ...
+  153  /* Iterate through the program headers to find the virtual */
+  154  /* size of loaded text.                                    */
+  155  vmemlo = 0xffffffff;
+  156  vmemhi = 0;
+  157  for (i = 0; i &amp;lt; h.e_phnum; i++) {
+  ...
+  161    if (vmemlo &amp;gt; ph[i].p_vaddr) vmemlo = ph[i].p_vaddr;
+  162    if (vmemhi &amp;lt; ph[i].p_vaddr + ph[i].p_memsz) {
+  163      vmemhi = ph[i].p_vaddr + ph[i].p_memsz;
+  164    }
+  165  }
+  166  vmemhi = NCPageRound(vmemhi);
+  167  ncf-&amp;gt;size = vmemhi - vmemlo;
+  ...
+  172  ncf-&amp;gt;data = (uint8_t *)calloc(1, ncf-&amp;gt;size);
+  ...
+  183  assert(ncf-&amp;gt;size &amp;gt;= NCPageRound(p-&amp;gt;p_vaddr - ncf-&amp;gt;vbase + p-&amp;gt;p_memsz));
+  184  nread = readat(fd, &amp;amp;(ncf-&amp;gt;data[p-&amp;gt;p_vaddr - ncf-&amp;gt;vbase]),
+  185                 p-&amp;gt;p_filesz, p-&amp;gt;p_offset);
+  ...
+  }
+  &amp;lt;/ncfileutil.c&amp;gt;
+
+
+Steps to reproduce
+  load the attached 01.nexe, which is a byte-only modification of the file
+life.nexe.
+  (file offset 0x67 [.text: p_filesz] : 0x0 -&amp;gt; 0x08)
+
+
+Debugging hints
+  nacl/googleclient/native_client/scons-out/dbg-linux/staging$ gdb --args
+./ncval
+    ../../nacl/staging/life.nexe 
+  GNU gdb 6.8-debian
+  Copyright (C) 2008 Free Software Foundation, Inc.
+  License GPLv3+: GNU GPL version 3 or later &amp;lt;http://gnu.org/licenses/gpl.html&amp;gt;
+  This is free software: you are free to change and redistribute it.
+  There is NO WARRANTY, to the extent permitted by law.  Type &amp;quot;show copying&amp;quot;
+  and &amp;quot;show warranty&amp;quot; for details.
+  This GDB was configured as &amp;quot;i486-linux-gnu&amp;quot;...
+  (gdb) directory ../../../ncv/
+  Source directories searched: nacl/googleclient/native_client/scons-out/
+    dbg-linux/staging/../../../ncv:$cdir:$cwd
+  (gdb) b ncv/ncfileutil.c:184
+  Breakpoint 1 at 0x804bbe2: file ncv/ncfileutil.c, line 184.
+  (gdb) r
+  Starting program:
+nacl/googleclient/native_client/scons-out/dbg-linux/staging/ncval 
+    ../../nacl/staging/life.nexe
+  [Thread debugging using libthread_db enabled]
+  [New Thread 0xb7b6aa50 (LWP 11631)]
+  [Switching to Thread 0xb7b6aa50 (LWP 11631)]
+  
+  Breakpoint 1, nc_load (ncf=0x805f008, fd=5) at ncv/ncfileutil.c:184
+  184	    nread = readat(fd, &amp;amp;(ncf-&amp;gt;data[p-&amp;gt;p_vaddr - ncf-&amp;gt;vbase]),
+  (gdb) p/x ncf-&amp;gt;size
+  $1 = 0x8a000
+  (gdb) p/x ncf-&amp;gt;p_filesz
+  There is no member named p_filesz.
+  (gdb) p/x p-&amp;gt;p_filesz
+  $2 = 0x8089c20
+  (gdb) n
+  
+  Program received signal SIGSEGV, Segmentation fault.
+  0x00000000 in ?? ()
+  (gdb) bt
+  #0  0x00000000 in ?? ()
+  #1  0x0804bc20 in nc_load (ncf=0x805f008, fd=5) at ncv/ncfileutil.c:184
+  #2  0x0804be76 in nc_loadfile (
+      filename=0xbfc9f6bb &amp;quot;../../nacl/staging/life.nexe&amp;quot;) at
+ncv/ncfileutil.c:225
+  #3  0x08048d6f in main (argc=2, argv=0xbfc9e9a4) at ncv/ncval.c:175
+  (gdb) 
+</ns0:content><ns0:updated>2009-03-11T00:48:48.000Z</ns0:updated><ns0:published>2009-03-09T18:42:08.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:state>closed</ns2:state><ns0:title>Heap overflow error in the nacl validator when parsing the .nexe/elf headers.</ns0:title><ns2:label>Security-Contest</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/47/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=47" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/47" rel="self" type="application/atom+xml" /><ns2:stars>4</ns2:stars><ns2:closedDate>2009-03-11T00:48:48.000Z</ns2:closedDate><ns2:id>47</ns2:id></ns0:entry>

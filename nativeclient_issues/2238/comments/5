@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIAQ347eCl7ImA9WhdWGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2238/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: e012f13334d9e4c9e919b7d3ffd177c15df53e90
+ Email: mcgrathr@chromium.org@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Add syscall and test for checking for FPU information leaks
+
+This adds a private trampoline syscall just for testing.
+It pollutes the FPU state in trusted code, so untrusted code
+might see some bits that shouldn't be leaked.
+
+The test using this call currently passes because it's configured
+to expect the information leak.  When the underlying bug is fixed,
+the expectation in the test will be toggled.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2238
+TEST= trybots
+
+R=bsy@google.com
+
+Review URL: http://codereview.chromium.org/7844017
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6683 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	SConstruct
+A	src/trusted/service_runtime/arch/x86_64/fxsaverstor.S
+M	src/trusted/service_runtime/arch/x86_64/service_runtime_x86_64.gyp
+M	src/trusted/service_runtime/build.scons
+M	src/trusted/service_runtime/include/bits/nacl_syscalls.h
+M	src/trusted/service_runtime/linux/nacl_syscall_impl.c
+M	src/trusted/service_runtime/nacl_syscall_common.c
+M	src/trusted/service_runtime/nacl_syscall_common.h
+M	src/trusted/service_runtime/win/nacl_syscall_impl.c
+M	src/untrusted/nacl/syscall_bindings_trampoline.h
+A	tests/infoleak/nacl.scons
+A	tests/infoleak/test_infoleak.c</ns0:content><ns0:updated>2011-09-12T22:45:42.000Z</ns0:updated><ns0:published>2011-09-12T22:45:42.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2238#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2238/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IGQX47eCl7ImA9WhVWGE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2747/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Probably a separate bug, but the elf sizes are still off for several C++ objects.
+
+Known ones:
+
+We seem to calculate 138 bytes for std::cerr, while it should be 140.
+We seem to calculate 4 bytes for "vtable for __cxxabiv1::__class_type_info" when it should be 44
+etc...
+
+This throws of a bunch of other copy relocations and causes segfaults for some c++ tests like run_return_structs_self, run_return_structs, run_call_structs, run_call_structs_self, etc.  Possibly breaks some of the browser tests too, which currently crash when using this inaccurate metadata.
+
+Manually patching these sizes to the right values makes the tests pass.</ns0:content><ns0:updated>2012-04-30T21:32:00.000Z</ns0:updated><ns0:published>2012-04-30T21:32:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2747#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2747/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A04CSX47eCl7ImA9Wx5UF0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/480/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">Thanks Henry!
+
+The vast majority of the fix is in the TCB.  Once we're done with that, we *may* have some small GCC tweaks that may improve performance by 10% or so -- but I'm assuming the GCC guys have already read Jason's noptimization research, which will help Atom as much as anyone.
+
+So I'm going to...
+- Take this off the GCC guys' radar for now.
+- Hook this on Baltic, since (1) it will make ChromeOS be more awesome and (2) a lot of the proposed fix is implied by the "saucer separation" work tracked issue 1070.
+- Mark 1070 as blocking this.</ns0:content><ns0:updated>2010-10-22T17:52:48.000Z</ns0:updated><ns0:published>2010-10-22T17:52:48.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Component-GCC</ns2:label><ns2:label>-Milestone-Z</ns2:label><ns2:label>Milestone-BalticSea</ns2:label><ns2:blockedOnUpdate>1070</ns2:blockedOnUpdate></ns2:updates><ns0:title>Comment 2 by cbiffle@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=480#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/480/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

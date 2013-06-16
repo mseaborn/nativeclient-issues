@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkINQH47eCl7ImA9WhZbEUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1521/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">
+Update: still happens w/ svn rev 5605.
+
+(*) Only the linker script ever gets truncated.
+(*) Doing fetching the linker script thousands of times before or after client-side-translation has occurred, will NEVER fail. Normally the problem is reproduced in less than 20 tries. The original timing of the fetch really matters.
+(*) The linker script is always truncated by the same amount, from 9133 bytes to 3895 bytes.
+(*) Truncation happens when the "Pnacl Coordinator" is implemented within the plugin (see http://codereview.chromium.org/7109018/) or as a JS script. I.e., it doesn't matter if you are using StreamAsFile vs UrlAsNaClDesc.
+(*) Truncation has already occurred when the file was stream-as-file'd. If you fstat() within FileDownloader::GetPOSIXFileDescriptor(), you will notice that the downloaded temp file is only 3895 bytes. I.e., this is before the file is ever touched by PNaCl's linker nexe.
+(*) HTTP headers correctly say "Content-Length: 9133", even when the file is truncated.
+(*) Debug vs Opt of sel_ldr and/or the NaCl plugin does not matter, thank goodness...
+
+
+Okay, probably no point in trying to solve this, since the production version
+should not require downloading the linker script. This only makes the current
+test for the current prototype really flaky.
+</ns0:content><ns0:updated>2011-06-15T21:49:51.000Z</ns0:updated><ns0:published>2011-06-15T21:49:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1521#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1521/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkIFRn47eCl7ImA9WhZVGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1870/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5509
+
+------------------------------------------------------------------------
+r5509 | rsimha@google.com | Tue May 31 10:52:05 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=5509&amp;r2=5508&amp;pathrev=5509
+
+Clean up pyauto NaCl test logs
+
+This patch cleans up the pyauto NaCl test logs by doing two things:
+
+- Sets the chrome log level so that it only logs major failures. Doing
+  this silences the numerous warnings from chrome that we are running
+  without a sandbox (we know this) and that the chrome src directory
+  could not be found (we know this too).
+
+- Redirects the extremely verbose nexe output away from the console by
+  modifying the NACL_EXE_STDOUT and NACL_EXE_STDERR environment
+  variables. Note that if a nexe fails, we still explicitly log the
+  contents of the page including any errors the nexe might have
+  encountered.
+
+BUG=nacl1870
+TEST=scons pyauto_tests
+
+Review URL: http://codereview.chromium.org/7078009
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-31T17:55:17.000Z</ns0:updated><ns0:published>2011-05-31T17:55:17.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1870#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1870/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEANQn47eCl7ImA9WhVVFU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2772</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">In https://src.chromium.org/viewvc/native_client?view=rev&amp;amp;revision=8249, I changed NaCl's Windows debug exception handler to always resume the process (with DBG_CONTINUE) when it hits an int3 breakpoint.
+
+However, Chromium uses int3 breakpoints as a way to exit the process with a crash.
+
+base::debug::BreakDebugger() does the following and is called in various fatal-error conditions:
+
+void BreakDebugger() {
+  if (IsDebugUISuppressed())
+    _exit(1);
+  __debugbreak();
+#if defined(NDEBUG)
+  _exit(1);
+#endif
+}
+
+Suppose this is called inside Chromium's NaCl process when NaCl's debug exception handler is enabled.  In a non-release build, the _exit() call will be omitted and this function will have no effect.  In a release build, _exit() will be called and this will not report the failure via Breakpad.
+
+I found this while investigating how to fix issue 2626.
+</ns0:content><ns0:updated>2012-05-09T01:26:33.000Z</ns0:updated><ns0:published>2012-05-09T01:26:33.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>NaCl's debug exception handler breaks Chromium's use of int3 to exit</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>UntrustedHardwareExceptions</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2772/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2772" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2772" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2772</ns2:id></ns0:entry>

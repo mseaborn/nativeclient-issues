@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0ADQX47eCl7ImA9WhZbGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1712/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">There is a bug in 64-bit Mac OS X kernels which breaks NaCl's x86-32 sandbox quite fundamentally.  The x86-32 sandbox relies on getting the kernel to set up an LDT entry, which we set the %cs segment register to point to.  But on 64-bit kernels, this can cause kernel panics quite quickly.  On issue 1930 there is a minimal test case for this.
+
+We are considering various NaCl/Chrome-side options:
+
+ 1) Disable NaCl by default on 64-bit OS X kernels so that it does not
+    crash users' machines.  If the bug is fixed in OS X Lion (10.7),
+    we would need to confirm this and enable NaCl to run there.
+
+ 2) Switch to the x86-64 NaCl sandbox on OS X.  (Note that you can run
+    64-bit processes on 32-bit kernels on the Mac, unlike on Linux.)
+    This would stop NaCl from working on some early x86 Macs though.
+
+ 3) Allow the x86-64 NaCl sandbox alongside the x86-32 sandbox on OS
+    X.  This would increase the size of the Chrome download.  We
+    already include both sandboxes in Windows Chrome, however.
+</ns0:content><ns0:updated>2011-06-23T22:56:10.000Z</ns0:updated><ns0:published>2011-06-23T22:56:10.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Pri-2</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>HostOSBug</ns2:label><ns2:status>Assigned</ns2:status><ns2:ownerUpdate>mseaborn@chromium.org</ns2:ownerUpdate><ns2:ccUpdate>-mseaborn@chromium.org</ns2:ccUpdate></ns2:updates><ns0:title>Comment 15 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1712#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1712/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

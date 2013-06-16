@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0UHQX47eCl7ImA9WxBbGUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/361</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;[Please summarize the enhancement so it will be comprehensible to someone&lt;/b&gt;
+&lt;b&gt;from outside the Native Client team. A good summary will include:]&lt;/b&gt;
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+when the origin check causes a module to not load, the failure appears to 
+be silent, i.e., the load appears to time out.
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+on the off chance that HTML/nexe authors tries to host nexes on other than 
+http/https, there wouldn't be any error indication.  developer confusion 
+ensues.
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+pop up some kind of alert w/ a meaningful error message.
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+a pop up appears
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+relatively low.  most people wouldn't try to use file/ftp/etc protocols.</ns0:content><ns0:updated>2010-03-19T06:13:50.000Z</ns0:updated><ns0:published>2010-03-19T04:38:42.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>UI for origin (protocol) check failure</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Usability</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/361/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=361" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/361" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-03-19T06:13:50.000Z</ns2:closedDate><ns2:id>361</ns2:id></ns0:entry>

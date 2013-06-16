@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcCQn47eCl7ImA9WhRRFEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2364</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">See http://build.chromium.org/p/client.nacl.toolchain/console or, in particular,
+
+http://build.chromium.org/p/client.nacl.toolchain/builders/win-pnacl-x86_32-newlib/builds/440
+
+It fails on some weird command:
+
+cd tmp; \
+	 for i in argz/lib.a stdlib/lib.a ctype/lib.a search/lib.a stdio/lib.a  string/lib.a signal/lib.a time/lib.a locale/lib.a reent/lib.a  errno/lib.a misc/lib.a  posix/lib.a  iconv/ces/lib.a iconv/ccs/lib.a iconv/lib/lib.a machine/lib.a sys/lib.a; do \
+	   /cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/bin/pnacl-ar x ../$i; \
+	 done; \
+	/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/bin/pnacl-ar rc ../libc.a *.o
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../argz/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../stdlib/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../ctype/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../search/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../stdio/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../string/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../signal/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../time/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../locale/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../reent/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../errno/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../misc/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../posix/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../iconv/ces/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../iconv/ccs/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../iconv/lib/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../machine/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: ../sys/lib.a: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ar: *.o: No such file or directory
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/bin/pnacl-ranlib libc.a
+/cygdrive/c/b/build/slave/win-pnacl-x86_32-newlib/build/native_client/toolchain/pnacl_windows_i686_newlib/pkg/binutils/bin/arm-pc-nacl-ranlib: 'libc.a': No such file
+rm -rf tmp</ns0:content><ns0:updated>2011-11-28T00:27:43.000Z</ns0:updated><ns0:published>2011-10-17T19:36:48.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:state>closed</ns2:state><ns0:title>PNaCl win toolchain bot is broken</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-Windows</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2364/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2364" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2364" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-11-28T00:27:43.000Z</ns2:closedDate><ns2:id>2364</ns2:id><ns2:mergedInto>
+			<ns2:id>2286</ns2:id></ns2:mergedInto></ns0:entry>

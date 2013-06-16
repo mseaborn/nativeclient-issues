@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A08FRn47eCl7ImA9WxNVFko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/76</ns0:id><ns0:author>
+			<ns0:name>zhangyaf...@gmail.com</ns0:name><ns0:uri>/u/118055180251648117592/</ns0:uri></ns0:author><ns0:content type="html">Hi
+
+I am using Windows XP Chinese Simplified + VC9.
+The default code page is 936 GB2312.
+
+scons --mode=most will generates below:
+
+......
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: `contest_issue_regression_tests' is up to date.
+scons: `many_html' is up to date.
+________Compiling scons-out\dbg-win\obj\tests\npapi_bridge\base_object.obj
+base_object.cc
+D:\OpenSource\nacl\googleclient\third_party/npapi/files/include/npruntime.h 
+: er
+ror C2220: warning treated as error - no 'object' file generated
+D:\OpenSource\nacl\googleclient\third_party/npapi/files/include/npruntime.h 
+: wa
+rning C4819: The file contains a character that cannot be represented in 
+the cur
+rent code page (936). Save the file in Unicode format to prevent data loss
+scons: *** [scons-out\dbg-win\obj\tests\npapi_bridge\base_object.obj] Error 
+2
+scons: building terminated because of errors.
+......
+
+
+I save &amp;quot;npruntime.h&amp;quot; as UTF-8, then things were OK.
+
+The VC warning C4819 results from a file encoding problem, why must all 
+warnings be treated as errors?
+
+Thanks!!!
+
+
+
+</ns0:content><ns0:updated>2009-10-27T21:43:37.000Z</ns0:updated><ns0:published>2009-05-04T16:21:38.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:state>closed</ns2:state><ns0:title>&#8220;Treat Warning as Error&#8221; make the compilation fail</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>OS-Windows</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/76/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=76" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/76" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2009-10-27T21:43:37.000Z</ns2:closedDate><ns2:id>76</ns2:id></ns0:entry>

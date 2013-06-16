@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEDQ347eCl7ImA9WhZaFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1856/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 81f8324abb89a4da8ea9cc6fb687bc49ae476894
+ Email: mcgrathr@chromium.org@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Remove partial_sdk step from coverage and valgrind bots
+
+This step should not be needed for any builds any more (except perhaps the toolchain itself, pending SDK team adaptation).  This is an incremental step in removing it from buildbot runs.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1856
+TEST=none
+
+R=bradnelson@google.com,ncbray@google.com
+
+Review URL: http://codereview.chromium.org/7284022
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@5868 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	buildbot/buildbot_coverage_arm.sh
+M	buildbot/buildbot_coverage_linux.sh
+M	buildbot/buildbot_coverage_mac.sh
+M	buildbot/buildbot_coverage_win.bat
+M	buildbot/buildbot_valgrind.sh</ns0:content><ns0:updated>2011-06-30T16:17:52.000Z</ns0:updated><ns0:published>2011-06-30T16:17:52.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1856#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1856/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

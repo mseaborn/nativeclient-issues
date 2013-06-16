@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcMRH47eCl7ImA9Wx5WEkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/618</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Suppose there is an IMC socket connection between processes A and B
+(using IMC ConnectedSockets).  The processes want to establish an
+additional connection between them.  Process A wants to initiate this.
+
+This is complicated by the restriction that ConnectedSocket FDs are
+not transferrable and cannot be sent in messages.  Only SocketAddress
+FDs are transferrable.
+
+We can get around this restriction by doing the following:
+
+Process A does:
+  * Create new pair:  imc_makeboundsock() -&amp;gt; (boundsock_fd, sockaddr_fd)
+  * Send sockaddr_fd to B in a message using imc_sendmsg().
+  * imc_accept(boundsock_fd) -&amp;gt; fd1
+  * close(boundsock_fd)
+Process B does:
+  * Receives sockaddr_fd from A using imc_recvmsg().
+  * imc_connect(sockaddr_fd) -&amp;gt; fd2
+  * close(sockaddr_fd)
+Result:  connection between fd1 and fd2
+
+However, what happens if process B never does imc_connect()?
+Process A will be stuck in imc_accept() forever.  This happens even if
+B exits, because closing sockaddr_fd does not make imc_accept() return
+-- bound socket pairs don't support GC because they are implemented
+using unguessable tokens.
+
+This means process A will leak the thread doing imc_accept().
+imc_accept() does not support a non-blocking mode and it cannot be
+cancelled.
+
+This would be particularly problematic if process A were the plugin
+and process B were the NaCl process, because we don't want to leak
+threads in the trusted renderer process.
+</ns0:content><ns0:updated>2010-09-23T22:14:45.000Z</ns0:updated><ns0:published>2010-06-19T04:41:23.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Non-transferrable ConnectedSockets make bootstrapping new connections hard</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/618/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=618" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/618" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-09-23T22:14:45.000Z</ns2:closedDate><ns2:id>618</ns2:id></ns0:entry>

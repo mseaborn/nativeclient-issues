@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4MRn47eCl7ImA9Wx9XGUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/841/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>bbu...@google.com</ns0:name><ns0:uri>/u/106710594185928520364/</ns0:uri></ns0:author><ns0:content type="html">I tracked this down to a problem in Webcore:
+
+\third_party\WebKit\Source\WebCore\bindings\v8\V8NPUtils.cpp
+
+The following lines (65-67) copying the V8 string to an NPObject contain the error:
+
+
+        v8::String::Utf8Value utf8(object);
+        char* utf8_chars = strdup(*utf8);
+        STRINGN_TO_NPVARIANT(utf8_chars, utf8.length(), *result);
+
+strdup stops at the first NUL, which is incorrect, since UTF-8 can contain NULs. Further confusing the situation, the length is set to the actual string length, so it appears the string has random garbage. It's not browser memory, but it causes Pepper to randomly fail to return the value, as the garbage may or may not be UTF-8.
+
+I will prepare a patch to correct this on the Chromium side.</ns0:content><ns0:updated>2011-01-13T20:36:27.000Z</ns0:updated><ns0:published>2011-01-13T20:36:27.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>s...@google.com</ns2:ccUpdate><ns2:ccUpdate>pol...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 13 by bbu...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=841#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/841/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

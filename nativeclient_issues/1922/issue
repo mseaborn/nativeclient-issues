@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0cFR347eCl7ImA9WhZbE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1922</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;[Please summarize the enhancement so it will be comprehensible to someone&lt;/b&gt;
+&lt;b&gt;from outside the Native Client team. A good summary will include:]&lt;/b&gt;
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+For loading dynamic libraries or putting jitted code in the address space, sel_ldr currently uses shm segment. Currently, sel_ldr uses /dev/shm.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+Sometimes /dev/shm is not present on the system or it's mounted as no-exec (see, for example, Chrome OS issue: http://code.google.com/p/chromium-os/issues/detail?id=16117)
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+sel_ldr should try to fallback to use other location if /dev/shm is not presented or mounted as noexec.
+
+I would propose sel_ldr to look at NATIVE_CLIENT_TMPFS env variable and use the specified location in case if it's not empty.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+sel_ldr works on systems w/o /dev/shm
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+It will make server-side NaCl easier to use. Also, it will make it possible to run NaCl on Chrome OS.
+</ns0:content><ns0:updated>2011-06-17T18:23:36.000Z</ns0:updated><ns0:published>2011-06-14T20:13:58.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Implement a fallback to use tmp fs in case if /dev/shm is not available</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-</ns2:label><ns2:label>OS-Linux</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1922/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1922" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1922" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-06-17T18:23:36.000Z</ns2:closedDate><ns2:id>1922</ns2:id></ns0:entry>

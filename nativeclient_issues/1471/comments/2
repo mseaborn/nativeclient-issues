@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUAFQH47eCl7ImA9Wx9bFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1471/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4406
+
+------------------------------------------------------------------------
+r4406 | mseaborn@chromium.org | Fri Feb 25 12:59:13 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/site_scons/site_tools/component_setup.py?r1=4406&amp;r2=4405&amp;pathrev=4406
+
+Scons: Remove "--mode=all" setting because it does not work
+
+This option currently just gives the error:
+
+$ ./scons --mode=all
+scons: Reading SConscript files ...
+You are using incompatible environments simultaneously
+opt-linux vs dbg-linux
+      Please specfy the exact environments you require, e.g.
+      MODE=dbg-linux,nacl
+
+This change will allow us to remove BUILD_GROUPS and simplify the Scons setup.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1471
+TEST="./scons --mode=all"
+
+Review URL: http://codereview.chromium.org/6594013
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-02-25T21:01:51.000Z</ns0:updated><ns0:published>2011-02-25T21:01:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1471#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1471/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

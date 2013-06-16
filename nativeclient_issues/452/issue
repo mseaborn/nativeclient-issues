@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUMEQn47eCl7ImA9WxFWFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/452</ns0:id><ns0:author>
+			<ns0:name>mnissler@chromium.org</ns0:name><ns0:uri>/u/mnissler@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Please see the following chromium bugs for related discussions
+http://code.google.com/p/chromium/issues/detail?id=42259
+http://code.google.com/p/chromium/issues/detail?id=32762
+http://code.google.com/p/chromium/issues/detail?id=17943
+
+The problem is the NaCl plugin defining well-known NPAPI symbols like
+NPN_RetainObject(). This causes problem whenever they leak into a plugin
+process that loads a plugin which defines these symbols itself.
+
+For regular static binary builds, this is not a problem, since we build
+chromium with -fvisibility=hidden, which is also applied to the built-in
+plugin's symbols. However, for shared builds, we have to remove that flag
+since the chromium shared objects need to be able look up each other's
+entry points, resulting in the NaCl plugin symbols to show up.
+
+Still, the built-in NaCl plugin should hide its symbols in order to prevent
+clashes with other plugins, and that's what this bug is about.
+
+I've run a quick experiment inserting a pair of 
+
+#pragma GCC visibility push(hidden)
+
+NPN_ functions here
+
+#pragma GCC visibility pop
+
+into native_client/src/third_party_mod/npapi_plugin/npn_gate.cc. Hiding
+these symbols makes my nspluginwrapper-wrapped flash player come back to
+live in a shared chromium build. A better approach would be to hide all
+symbols except RegisterInternalNaClPlugin(), since that is the only one
+called by chromium.
+</ns0:content><ns0:updated>2010-06-01T21:23:23.000Z</ns0:updated><ns0:published>2010-04-23T00:42:40.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/114685308157308201595/</ns2:uri><ns2:username>grego...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Built-in NaCl chrome plugin should hide internal symbols</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Milestone-Chromium-6</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/452/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=452" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/452" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2010-06-01T21:23:23.000Z</ns2:closedDate><ns2:id>452</ns2:id></ns0:entry>

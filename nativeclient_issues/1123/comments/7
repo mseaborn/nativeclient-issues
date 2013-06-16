@@ -1,0 +1,51 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08DSH47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1123/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3670
+
+------------------------------------------------------------------------
+r3670 | polina@google.com | Thu Nov 11 22:52:09 PST 2010
+
+Changed paths:
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_file_io_trusted.cc?r1=3670&amp;r2=3669&amp;pathrev=3670
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_url_response_info.h?r1=3670&amp;r2=3669&amp;pathrev=3670
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_url_response_info.cc?r1=3670&amp;r2=3669&amp;pathrev=3670
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_file_io_trusted.h?r1=3670&amp;r2=3669&amp;pathrev=3670
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/nacl.scons?r1=3670&amp;r2=3669&amp;pathrev=3670
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_file_ref.cc?r1=3670&amp;r2=3669&amp;pathrev=3670
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_url_request_info.cc?r1=3670&amp;r2=3669&amp;pathrev=3670
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_resource.cc?r1=3670&amp;r2=3669&amp;pathrev=3670
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_file_io.h?r1=3670&amp;r2=3669&amp;pathrev=3670
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_url_loader.h?r1=3670&amp;r2=3669&amp;pathrev=3670
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_host.cc?r1=3670&amp;r2=3669&amp;pathrev=3670
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_host.h?r1=3670&amp;r2=3669&amp;pathrev=3670
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_file_io.cc?r1=3670&amp;r2=3669&amp;pathrev=3670
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_url_loader.cc?r1=3670&amp;r2=3669&amp;pathrev=3670
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/include/portability_io.h?r1=3670&amp;r2=3669&amp;pathrev=3670
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_url_request_info.h?r1=3670&amp;r2=3669&amp;pathrev=3670
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_resource.h?r1=3670&amp;r2=3669&amp;pathrev=3670
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_core.cc?r1=3670&amp;r2=3669&amp;pathrev=3670
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/fake_file_ref.h?r1=3670&amp;r2=3669&amp;pathrev=3670
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/fake_browser_ppapi/main.cc?r1=3670&amp;r2=3669&amp;pathrev=3670
+
+PPAPI Fake Browser: add generic support for resources and use it to mock url loading and file access used for nexe loading.
+
+The design is inspired by chrome's src/webkit/glue/plugin implementation:
+
+fake_resource.h/cc 
+This is analogous to pepper::Resource. It defines generic representation of a resource within the browser. It also defines the global function interface for tracking resources to be implemented by main.cc.
+
+fake_host.h/cc 
+Host includes a PP_Resource-to-Resource map to track the resources. Its TrackResource and GetResource functions are exposed by main.cc via global functions. This is analogous to what Chrome achieves with pepper::ResourceTracker and it's static get-singleton-tracker method.
+
+fake_url* and fake_file* files implement PPAPI C interfaces tied into classes derived from Resource for tracking. The member variables within those classes let us access and modify state between C function calls. Note that only the functions that the plugin actually invokes have been implemented within each new interface implementation. The rest are compile-friendly stubs and will fail on NACL_UNIMPLEMENTED if invoked. This will make it easier to track what exactly needs to be implemented as the plugin exercises more and more PPAPI functionality.
+
+main.cc dispatches the above url* and file* interfaces in FakeGetInterface and includes NACL_UNIMPLEMENTED for everything that is not supported. It also implements TrackResource and GetResource as wrappers around it's host object's functions.
+
+fake_core.cc now has no-op implementations for reference counting and IsMainThread.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1123
+TEST=run_fake_browser_ppapi_test
+
+Review URL: http://codereview.chromium.org/4370001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T23:17:59.000Z</ns0:updated><ns0:published>2011-01-21T23:17:59.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1123#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1123/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUBQn47eCl7ImA9WhRaFUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2540</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">nacl_syscall_handlers_gen2.py generates NaCl system call stubs.  It gets the list of syscalls by scraping {linux,win}/nacl_syscall_impl.c and looking for function definitions.
+
+The problem with this is that it encourages duplication of code.  e.g. NaClSysException_Handler() and other functions are duplicated across the two nacl_syscall_impl.c files.
+
+It's also awkward to have */nacl_syscall_impl.c call functions in nacl_syscall_common.c.
+
+It also makes the codebase less greppable.
+
+I propose putting an explicit list of syscalls into nacl_syscall_handlers_gen2.py.
+</ns0:content><ns0:updated>2012-02-17T22:37:33.000Z</ns0:updated><ns0:published>2012-01-12T22:48:45.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Stop scraping syscall list from per-platform C files</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2540/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2540" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2540" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-02-17T22:37:33.000Z</ns2:closedDate><ns2:id>2540</ns2:id></ns0:entry>

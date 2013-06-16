@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEABQn47eCl7ImA9WhRaEUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2588/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7788
+
+------------------------------------------------------------------------
+r7788 | bsy@google.com | Mon Feb 13 11:48:20 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/win/nacl_time_types.h?r1=7788&amp;r2=7787&amp;pathrev=7788
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/sel_memory.c?r1=7788&amp;r2=7787&amp;pathrev=7788
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/win/nacl_time.c?r1=7788&amp;r2=7787&amp;pathrev=7788
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=7788&amp;r2=7787&amp;pathrev=7788
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/time/nacl.scons?r1=7788&amp;r2=7787&amp;pathrev=7788
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/time/time_check.py?r1=7788&amp;r2=7787&amp;pathrev=7788
+
+fixed windows gettimeofday QPC implementation to return Unix epoch time.
+
+added some logging output while increasing detail level to require
+greater verbosity settings to see log output (mostly to 5, since the
+detail level is higher than syscalls internals, which is 4).  removed
+monotonicity enforcement for windows gettimeofday, since that was
+never a requirement.  (this is not a property for linux or osx, since
+posix gettimeofday is subject to NTP adjustments.)
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2588
+TEST= run_gettimeofday_test
+Review URL: https://chromiumcodereview.appspot.com/9373057
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-02-13T19:52:33.000Z</ns0:updated><ns0:published>2012-02-13T19:52:33.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2588#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2588/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

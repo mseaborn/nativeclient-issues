@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkMBR347eCl7ImA9WhdSEEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2049/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">We are not generating the magic x86-64 TLS sequences any more.  Looking at Issue 1685 gives me more confidence that Intel is not going to change this instruction.  On x86-32 the sequences are not used for TLS rewriting, but is is not likely that x86-32 would evolve significantly in long term.
+
+On the opposite side:
+* the sequences will have to be rewritten in binutils anyway
+* for consistency the nop sequences should better be identical on x86-32 and x86-64
+
+I'd prefer to remove them.
+Evgeny? Roland?</ns0:content><ns0:updated>2011-07-19T18:00:56.000Z</ns0:updated><ns0:published>2011-07-19T18:00:56.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>eaelt...@google.com</ns2:ccUpdate><ns2:ccUpdate>mcgra...@google.com</ns2:ccUpdate><ns2:blockedOnUpdate>1685</ns2:blockedOnUpdate></ns2:updates><ns0:title>Comment 3 by pa...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2049#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2049/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

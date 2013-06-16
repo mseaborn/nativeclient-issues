@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUAQX47eCl7ImA9WhRbEE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2537/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: bfe164cb1c934d41fb2c9bcb88f30ba3d8d38b60
+ Email: mseaborn@chromium.org@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Exception handling: Test the exception handler's %esp exactly
+
+This tests the alignment of the stack that the exception handler is
+called on more exactly.
+
+Fix STACK_ALIGNMENT to be 16, the correct value for x86 and the
+alignment that sel_ldr sets up.  (The alignment is only 32 if __m256
+arguments are passed.)
+
+This puts in place an assembly helper that we can use for testing for
+a safe value of %rbp when we add x86-64 support.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2537
+TEST=run_exception_test
+
+Review URL: https://chromiumcodereview.appspot.com/9302036
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@7711 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	tests/exception_test/exception_test.c
+A	tests/exception_test/handler_wrapper_x86.S
+M	tests/exception_test/nacl.scons</ns0:content><ns0:updated>2012-01-31T19:30:40.000Z</ns0:updated><ns0:published>2012-01-31T19:30:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2537#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2537/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

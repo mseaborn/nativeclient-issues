@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIMSX47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/364/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3082
+
+------------------------------------------------------------------------
+r3082 | bradnelson@google.com | Mon Aug 23 23:05:30 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/third_party/selenium/selenium-server-1.0.1/selenium-server.jar?r1=3082&amp;r2=3081&amp;pathrev=3082
+
+Tweaking jar files to allow selenium to run with firefox &gt; 3.5.
+
+Process used:
+
+jar xf selenium-server.jar `jar tf selenium-server.jar |grep install.rdf`
+
+(edit files to replace 3.5 -&gt; 3.7)
+vi `find ./ -name "*.rdf"`
+
+jar uf selenium-server.jar `jar tf selenium-server.jar |grep install.rdf`
+
+
+BUG=nacl364
+TEST=None
+TBR=gregoryd
+
+Review URL: http://codereview.chromium.org/3191023
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:56:28.000Z</ns0:updated><ns0:published>2011-01-21T22:56:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=364#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/364/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

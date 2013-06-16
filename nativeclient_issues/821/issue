@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEIMRn47eCl7ImA9WhdXEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/821</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">This problem may or may not go away when we switch to a shared library style translation mode.
+
+It has bitten us twice so far:
+* in libgcc we have calls in memset/memcpy etc
+* in spec2k we have calls to various math library functions
+
+Background:
+
+Besides function calls llvm bitcode may contain intrinsics that could turn into function calls eventually.
+
+To work around this we could make the linker smarter, i.e.
+those intrinsics would be treated like function calls, or make sure we always link against native libraries containing all possible intrinsics calls in the final link stage.
+
+The latter solution will likely come for free with shared libraries.
+</ns0:content><ns0:updated>2011-08-24T16:16:27.000Z</ns0:updated><ns0:published>2010-08-13T21:47:51.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>discuss solutions for llvm intrinsics problem</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/821/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=821" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/821" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>821</ns2:id></ns0:entry>

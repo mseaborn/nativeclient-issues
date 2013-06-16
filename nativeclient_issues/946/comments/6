@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEIMRH47eCl7ImA9Wx9UGEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/946/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=4321
+
+------------------------------------------------------------------------
+r4321 | garianov@google.com | Wed Feb 16 09:13:19 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_all_modules.c?r1=4321&amp;r2=4320&amp;pathrev=4321
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/nacl_debug.cc?r1=4321&amp;r2=4320&amp;pathrev=4321
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/gdb_rsp/target.h?r1=4321&amp;r2=4320&amp;pathrev=4321
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/debug_stub/win/thread_impl.cc?r1=4321&amp;r2=4320&amp;pathrev=4321
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/gdb_rsp/target.cc?r1=4321&amp;r2=4320&amp;pathrev=4321
+
+Several changes to fix debug_stub:
+1) make it break on nexe thread creation 
+2) proper handling of 'OutputDebugString' exception
+3) add address offset for memory access operations (RSP 'm' and 'M' commands)
+
+BUG=366: Linux GDB doesn't work for Chrome, 946: gdb-rsp responds with zeroes for all memory locations
+TEST=start chrome, load nexe with debug symbols, connect from linux/gdb, set breakpoint, print variables...
+(uncomment #define NACL_DEBUG_STUB=1 in nacl_all_modules.c and nacl_debug.cc, rebuild nacl)
+
+Review URL: http://codereview.chromium.org/6489005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-02-16T17:16:25.000Z</ns0:updated><ns0:published>2011-02-16T17:16:25.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=946#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/946/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,61 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcEQX47eCl7ImA9WhVQFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2708</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">This bug should probably be upstreamed to llvm but it needs be verified and
+made reproducible outside of the pnacl TC.
+
+
+One the surface this problem looks like a gold linker bug.
+But after talking to Ian Tayler, it is more like llvm's MC
+producing dubious relocation information which just happens
+to work with binutil's regular ld but fails with the more strict gold linker. 
+Binutil's gas on the other hand  produces relocations which work fine .
+
+
+The problematic asm (x86-64) is:
+
+callq $0x101fc
+
+i.e. a pc rel call to an abs address.
+
+Here is what the code looks like in the &amp;quot;.o&amp;quot;
+
+objdump -d  nacl_text_no_pad_test.o
+
+
+      59:       90                      nop
+      5a:       90                      nop
+      5b:       e8 9c 01 01 00          callq  101fc &amp;lt;end_of_text+0x1fc&amp;gt;    &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; 
+      60:       48 89 ec                mov    %rbp,%rsp
+      63:       41 5b                   pop    %r11
+      65:       44 89 dd                mov    %r11d,%ebp
+      68:       4a 8d 6c 3d 00          lea    0x0(%rbp,%r15,1),%rbp
+
+
+Here are the relocations:
+
+readelf -r nacl_text_no_pad_test.o 
+
+Relocation section '.rela.text' at offset 0x14430 contains 6 entries:
+  Offset          Info           Type           Sym. Value    Sym. Name + Addend
+00000000005c  000000000002 R_X86_64_PC32                        0000000000000000     &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; 
+0000000000dc  000000000002 R_X86_64_PC32                        0000000000000000
+00000000011c  000000000002 R_X86_64_PC32                        0000000000000000
+0000000001c4  000b0000000b R_X86_64_32S      0000000000000000 .text + 10000
+00000000021c  000000000002 R_X86_64_PC32                        0000000000000000
+0000000002bc  000000000002 R_X86_64_PC32                        0000000000000000
+
+
+Note: the absence of &amp;quot;addends&amp;quot;
+
+Here is the quote from Ian Taylor's analysis:
+
+GNU ld does not handle R_X86_64_PC32 according to the ELF spec: it adds
+in the contents of the .o file.  gold follows the spec and does not add
+in the contents of the .o file.  The GNU assembler puts zero into the .o
+file and puts the addend into the relocation entry, which works with
+both GNU ld and gold.  It looks like MC is doing the wrong thing, in
+such a way that it happens to work with GNU ld but not with gold.
+
+
+
+</ns0:content><ns0:updated>2012-04-04T18:26:40.000Z</ns0:updated><ns0:published>2012-04-04T16:27:42.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>pnacl: mc differs from gnu-as in the relocation in generates from pc rel branches to abs targets for x86-64</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2708/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2708" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2708" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2708</ns2:id></ns0:entry>

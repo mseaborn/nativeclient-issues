@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMBQH47eCl7ImA9WhZXE0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1755/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5124
+
+------------------------------------------------------------------------
+r5124 | robertm@google.com | Mon May 02 14:00:44 PDT 2011
+
+Changed paths:
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nosys/_exit.c?r1=5124&amp;r2=5123&amp;pathrev=5124
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nosys/nacl.scons?r1=5124&amp;r2=5123&amp;pathrev=5124
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nosys/write.c?r1=5124&amp;r2=5123&amp;pathrev=5124
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nosys/gettimeofday.c?r1=5124&amp;r2=5123&amp;pathrev=5124
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nosys/lseek.c?r1=5124&amp;r2=5123&amp;pathrev=5124
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nosys/stat.c?r1=5124&amp;r2=5123&amp;pathrev=5124
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nosys/getpid.c?r1=5124&amp;r2=5123&amp;pathrev=5124
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nosys/read.c?r1=5124&amp;r2=5123&amp;pathrev=5124
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nosys/close.c?r1=5124&amp;r2=5123&amp;pathrev=5124
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nosys/sbrk.c?r1=5124&amp;r2=5123&amp;pathrev=5124
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nosys/fstat.c?r1=5124&amp;r2=5123&amp;pathrev=5124
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/untrusted/nosys/open.c?r1=5124&amp;r2=5123&amp;pathrev=5124
+
+Remove functions provided by libnosys.a that are already provided by libnacl.a.
+Having then both is dangerous as this only works if -lnacl preceeds -lnosys
+on the linker command line.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1755
+
+TEST= trybot
+      tools/llvm/utman.sh  install-translators srpc
+      buildbot/buildbot_pnacl1.sh  scons-tests "'x86-32 x86-64'" "'--mode=opt-host,nacl -j8'" "smoke_tests"
+Review URL: http://codereview.chromium.org/6893164
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-05-02T21:07:31.000Z</ns0:updated><ns0:published>2011-05-02T21:07:31.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1755#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1755/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

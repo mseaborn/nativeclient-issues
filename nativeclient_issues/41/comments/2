@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkIFQn47eCl7ImA9WxVVEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/41/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>nativecl...@gmail.com</ns0:name><ns0:uri>/u/100932292489675356954/</ns0:uri></ns0:author><ns0:content type="html">We are committed to making NaCl portable across instruction set architectures and are
+evaluating a number of technical approaches. That said, we're not going to commit to
+how we are going to do it until we actually think we've understood how to do it well.
+We will definitely not be able to cover all popular/worthy instruction sets on our
+own. If you are interested in helping with a Power PC port we will definitely be
+looking for help.
+
+I'm marking this "Done" as I don't expect us to respond with a fix in the short term.</ns0:content><ns0:updated>2009-03-03T18:21:53.000Z</ns0:updated><ns0:published>2009-03-03T18:21:53.000Z</ns0:published><ns2:updates>
+			<ns2:status>Done</ns2:status><ns2:ownerUpdate>bradc...@google.com</ns2:ownerUpdate></ns2:updates><ns0:title>Comment 2 by nativecl...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=41#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/41/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

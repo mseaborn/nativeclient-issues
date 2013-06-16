@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYFRn47eCl7ImA9WxBWEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/286/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>appama...@gmail.com</ns0:name><ns0:uri>/u/114557832031227002753/</ns0:uri></ns0:author><ns0:content type="html">adding -Wno-error to the CFLAGS for the binutils build allows it to build and ignore 
+these warnings, which are apparently unique to Snow Leopard.
+
+Maybe changes could be contributed upstream to binutils, but it seems that there 
+many changes required.  Checking for Snow Leopard before adding -Wno-error 
+might allow us to at least catch warnings on other systems, or there might be a way 
+to specifically disable warnings for the printf typecheck (there is an option for this in 
+Xcode)
+
+Index: tools/Makefile
+====================================================
+===============
+--- tools/Makefile	(revision 1439)
++++ tools/Makefile	(working copy)
+@@ -222,7 +222,7 @@
+ 	mkdir BUILD/build-binutils-$(CROSSARCH)
+ 	cd BUILD/build-binutils-$(CROSSARCH) &amp;&amp; \
+ 	  CC="gcc" \
+-	  CFLAGS="-DNACL_ALIGN_BYTES=$(DEFAULT_ALIGN_BYTES) -
+DNACL_ALIGN_POW2=$(DEFAULT_ALIGN_POW2)" \
++	  CFLAGS="-Wno-error -DNACL_ALIGN_BYTES=$(DEFAULT_ALIGN_BYTES) -
+DNACL_ALIGN_POW2=$(DEFAULT_ALIGN_POW2)" \
+ 	  LDFLAGS="-s" \
+ 	  ../binutils-$(BINUTILS_VERSION)/configure \
+ 	    --prefix=$(SDKROOT) \
+</ns0:content><ns0:updated>2010-02-02T03:58:37.000Z</ns0:updated><ns0:published>2010-02-02T03:58:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by appama...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=286#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/286/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

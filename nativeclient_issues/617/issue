@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMEQX47eCl7ImA9WhZbF0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/617</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The client-side (untrusted) libraries for talking to the NaCl plugin
+will need to be adapted to work as dynamically-linked libraries.
+
+There are two libraries:
+ * libsrpc
+ * libnpruntime
+
+Problems:
+
+1) libsrpc relies on some code in untrusted/stubs/crti_*.S, which calls
+  __srpc_init()
+  __av_wait()
+  __srpc_wait()
+in assembly code (!).  glibc provides its own crti.o, so this dependency
+will need to change.
+
+2) libsrpc expects to have a global list of all SRPC methods that the
+static executable supports.  It finds them via a magic section name
+called &amp;quot;.nacl_rpc_methods&amp;quot;.  This assumes static linking, so it will
+have to change.
+
+3) The NaCl plugin expects to know early on whether the NaCl process
+supports NPAPI (i.e. uses libnpruntime).  The plugin expects to find
+out from its initial exchanges with the NaCl process.  However, with
+dynamic linking, the dynamic linker will need to talk to the plugin to
+fetch libraries, before it is known whether the program will support
+NPAPI.  So it seems likely that the plugin's startup protocol will
+need to be changed to support a dynamic libnpruntime.
+</ns0:content><ns0:updated>2011-06-22T23:13:20.000Z</ns0:updated><ns0:published>2010-06-19T03:35:52.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Adapt plugin client-side (untrusted) libraries for dynamic linking</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>DynamicLinking</ns2:label><ns2:label>Component-Plugins</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/617/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=617" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/617" rel="self" type="application/atom+xml" /><ns2:stars>4</ns2:stars><ns2:blocking>
+			<ns2:id>565</ns2:id></ns2:blocking><ns2:closedDate>2011-06-22T23:13:20.000Z</ns2:closedDate><ns2:id>617</ns2:id></ns0:entry>

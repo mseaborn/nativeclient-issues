@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkAHQX47eCl7ImA9WhZbEk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/869/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5679
+
+------------------------------------------------------------------------
+r5679 | robertm@google.com | Thu Jun 16 07:29:52 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/llvm/utman.sh?r1=5679&amp;r2=5678&amp;pathrev=5679
+
+Prune away most of the stage1 phases including the build of the x86-32 and 
+x86-64 xgcc.
+This brings down utman to just below 3000 lines and shaves off about 5min of build time ;-)
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1520
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=869
+Review URL: http://codereview.chromium.org/7169014
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-06-16T14:32:10.000Z</ns0:updated><ns0:published>2011-06-16T14:32:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=869#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/869/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

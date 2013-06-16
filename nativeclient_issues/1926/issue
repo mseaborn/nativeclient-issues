@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08BSH47eCl7ImA9WhZbF0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1926</ns0:id><ns0:author>
+			<ns0:name>erik...@chromium.org</ns0:name><ns0:uri>/u/104389777848534510881/</ns0:uri></ns0:author><ns0:content type="html">Using 0.4 of the viewer on the 14.0.792.0, the &amp;quot;loading&amp;quot; icon displays but never disappears and the page never renders in some cases.  Here's a link that reproduces it:
+http://learn.adobe.com/wiki/download/attachments/64389123/CrossDomain_PolicyFile_Specification.pdf?version=1
+
+One interesting bit is that if you display this without the extension installed, you get the Adobe infobar:
+&amp;quot;Parts of this PDF document could not be displayed.  Install Adobe Reader?&amp;quot;
+</ns0:content><ns0:updated>2011-06-22T16:57:39.000Z</ns0:updated><ns0:published>2011-06-16T00:07:17.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/elijahtaylor@google.com/</ns2:uri><ns2:username>elijahtaylor@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/106710594185928520364/</ns2:uri><ns2:username>bbu...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pdf viewer stuck "loading" some pdfs</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-14</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1926/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1926" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1926" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2011-06-22T16:57:39.000Z</ns2:closedDate><ns2:id>1926</ns2:id></ns0:entry>

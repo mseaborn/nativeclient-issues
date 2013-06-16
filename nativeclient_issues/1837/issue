@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIHQn47eCl7ImA9WhRaGUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1837</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">In brief,
+
+NaCl programs should access shared stuff (shared libraries, common data files, etc.) at standardized locations. For example, programs should be able to find libc.so at /lib or /usr/lib or likewise.
+
+
+In details,
+
+The origin of the problem is that a bunch of useful libraries are not relocatable - their runtime operation depends on absolute paths specified at build time.
+
+Glibc is the major case. For example, the absolute path specified for configure --prefix is used at runtime, in particular, by iconv to locate character data (GCONV_PATH is defined from libdir, which in turn is defined from prefix).
+
+That implies that when we configure glibc, we should give it a prefix that will be later used for serving, otherwise stuff like iconv will fail to find corresponding files at runtime.
+
+(Yes, this can be mostly controlled with environment variables, but I don't think it is a way to go)
+
+Similar dependencies can occur in other packages and even between packages.
+
+
+The solution I propose to discuss is to standardize locations where programs should look for shared stuff.
+
+IMHO, a good approach for that would be to regard NaCl installation as Linux installation, and use the same Filesystem Hierarchy Standard-compliant paths when configuring/building and when serving glibc and other stuff.
+
+For example, we'll always configure glibc with some default prefix (/usr), so that stuff is installed under /usr and /lib. Program that dlopens libc.so should be always able to find it at /usr/lib/libc.so or likewise.
+
+This brings us a number of advantages, including ability to switch between different glibc-serving urls, discipline for naclports, simpler porting of third-party code, and more.
+
+This will probably simplify the way manifest files are managed as well.
+
+On the other hand, this approach requires a number of tweaks to our existing code. For example, sel_ldr will need a kind of sysroot option to adjust paths requested by the nacl program.
+
+
+Probably an alternate solution can be built with some smart manifest file hacking, but I can't yet imagine this working end-to-end.
+
+
+Setting high pri so that the discussion starts ASAP - missing solution seems to block dso deployment. Exit criteria is to have a doc on how shared libraries are configured and served and how programs can pick this or that provider of these libraries (data files, etc)
+</ns0:content><ns0:updated>2012-02-22T22:42:13.000Z</ns0:updated><ns0:published>2011-05-23T12:10:15.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Standardize paths for serving shared NaCl stuff</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1837/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1837" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1837" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>1612</ns2:id></ns2:blocking><ns2:id>1837</ns2:id></ns0:entry>

@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0ACRH47eCl7ImA9WhdVF0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2293/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">I have narrowed down the problem a little bit:
+A replay for PPB_Core_AddRefResource was missing and a formerly unused replay
+for PB_Core_ReleaseResource is now used. In sel_universal speak the new trace looks like:
+
+
+ [replaying PPB_URLLoader_GetResponseInfo:i:i:]
+ [input 0:  i(34)]
+ [output 0:  i(38)]
++['replaying PPB_Core_AddRefResource:i::']
++['input 0:  i(38)']
++['replaying PPB_Core_ReleaseResource:i::']
++['input 0:  i(38)']
+ [replaying PPB_GetInterface:s:i:]
+ [input 0:  s("PPB_URLResponseInfo;1.0")]
+ [output 0:  i(1)]
+
+
+This looks like a temporary object being constructed/destructed.
+The behavior is clearly different from the (llvm-)gcc frontends,
+which do not have these two calls, so clang generates different (bit)code here.
+
+I am not quite sure yet whether the temporary object is created in 
+../ppapi/native_client/tests/ppapi_simple_tests/file.cc or the IRT
+
+This also looks related to some unexpected pair of
+PPB_Core_AddRefResource
+ReleaseResourceMultipleTimes
+we see in ../ppapi/native_client/tests/ppapi_simple_tests/event.stdout 
+
+
+The question for me is: If the theory about tmp objs is right and what clang is doing turns out to be legit,
+should we disambiguate our code so that we do not have to rely on compiler optimizations to get rid of tmp objs?
+
+
+
+
+
+
+
+</ns0:content><ns0:updated>2011-09-23T16:36:05.000Z</ns0:updated><ns0:published>2011-09-23T16:36:05.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>sa...@google.com</ns2:ccUpdate><ns2:ccUpdate>mball@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 2 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2293#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2293/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,48 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUUGQH47eCl7ImA9WhRaE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/871</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">I could not make a simple reproducer for this bug because of another one (http://code.google.com/p/nativeclient/issues/detail?id=870).
+
+ThreadSanitizer reports a data race on errno in printf. It can be reproduced by running simple_thread_test under TSan.
+
+==1211== WARNING: Possible data race during write of size 4 at 0xB00061F84: {{{
+==1211==    T1 (L{L34, L34}):
+==1211==     #0  _write_r scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #1  _fflush_r scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #2  __sfvwrite_r scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #3  __sprint_r scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #4  _vfprintf_r scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #5  printf scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #6  main tests/threads/simple_thread_test.c:168
+==1211==   Concurrent write(s) happened at (OR AFTER) these points:
+==1211==    T2 (L{L48}):
+==1211==     #0  _fstat_r scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #1  __smakebuf_r scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #2  __swsetup_r scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #3  _vfprintf_r scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #4  printf scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #5  MyThreadFunction tests/threads/simple_thread_test.c:139
+==1211==     #6  nc_thread_starter src/untrusted/pthread/nc_thread.c:126
+==1211==   Locks involved in this report (reporting last lock sites): {L34, L48}
+==1211==    L34 (0xB000623CC)
+==1211==     #0  pthread_mutex_lock src/untrusted/valgrind/valgrind_interceptors.c:319
+==1211==     #1  _fflush_r scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #2  __sfvwrite_r scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #3  __sprint_r scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #4  _vfprintf_r scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #5  printf scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #6  main tests/threads/simple_thread_test.c:168
+==1211==    L48 (0xB00062DEC)
+==1211==     #0  pthread_mutex_lock src/untrusted/valgrind/valgrind_interceptors.c:319
+==1211==     #1  _vfprintf_r scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #2  printf scons-out/nacl-x86-64/obj/tests/threads/simple_thread_test.nexe
+==1211==     #3  MyThreadFunction tests/threads/simple_thread_test.c:139
+==1211==     #4  nc_thread_starter src/untrusted/pthread/nc_thread.c:126
+==1211==    Race verifier data: 0xB0003DE69,0xB0003DF80
+==1211== }}}
+
+This is a race on _global_ errno variable. See the code at the end of
+http://git.chromium.org/cgi-bin/gitweb.cgi?p=nacl-toolchain.git;a=blob;f=newlib/newlib/libc/reent/writer.c
+
+Apparently, newlib is compiled without REENTRANT_SYSCALLS_PROVIDED preprocessor definition.</ns0:content><ns0:updated>2012-02-16T09:07:01.000Z</ns0:updated><ns0:published>2010-09-07T11:28:55.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Reentrant functions in newlib are not reentrant at all</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/871/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=871" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/871" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>871</ns2:id></ns0:entry>

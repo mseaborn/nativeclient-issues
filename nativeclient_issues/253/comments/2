@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IHQ347eCl7ImA9WxBQFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/253/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">For some background, see:
+ * http://code.google.com/p/v8/issues/detail?id=436 (this issue affected V8)
+ * http://www.vinc17.org/research/extended.en.html (doesn't list Mac OS X though)
+
+For what it's worth, Cygwin gcc produces the same results as Linux and Mac OS X, even 
+when compiling with -mno-cygwin.
+</ns0:content><ns0:updated>2010-01-15T13:18:52.000Z</ns0:updated><ns0:published>2010-01-15T13:18:52.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=253#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/253/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

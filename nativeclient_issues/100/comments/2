@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0MBRX47eCl7ImA9WxNVFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/100/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/108782782163151845439/</ns0:uri></ns0:author><ns0:content type="html">The scons build does not automatically find new tests as the structure suggested to 
+you it might. Note that many of the tests are not built automatically with scons. I 
+would suggest creating a makefile modeled after one of the simpler examples such as 
+voronoi or earth, and then invoking it manually.
+
+There is perhaps an opportunity to improve the documentation; we will look into that.</ns0:content><ns0:updated>2009-10-26T17:50:54.000Z</ns0:updated><ns0:published>2009-10-26T17:50:54.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Type-Defect</ns2:label><ns2:label>Type-Enhancement</ns2:label><ns2:status>WontFix</ns2:status></ns2:updates><ns0:title>Comment 2 by bradc...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=100#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/100/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

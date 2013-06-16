@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEcHQX47eCl7ImA9Wx5VFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/917</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">char[] array allocated with new[]() is destroyed with a scalar delete(). This has an undefined behaviour by the C++ standard.
+
+./scons MODE=nacl,dbg-linux platform=x86-64 sdl=none buildbot=memcheck run_fake_browser_ppapi_test
+
+==22653== Mismatched free() / delete / delete []
+==22653==    at 0x4C2A8B6: operator delete(void*) /b/slave/full_valgrind/build/third_party/valgrind64/coregrind/m_replacemalloc/vg_replace_malloc.c:387
+==22653==    by 0x69BDA04: nacl::scoped_ptr&amp;lt;char&amp;gt;::~scoped_ptr() /build/native_client/src/include/nacl_scoped_ptr.h:76
+==22653==    by 0x69BD65C: ppapi_proxy::(anonymous namespace)::Initialize(long, unsigned int, char const**, char const**) /build/native_client/src/shared/ppapi_proxy/browser_instance.cc:117
+==22653==    by 0x698150C: plugin::PluginPpapi::StartProxiedExecution(NaClSrpcChannel*) /build/native_client/src/trusted/plugin/ppapi/plugin_ppapi.cc:218
+==22653==    by 0x6978649: plugin::SrpcClient::StartJSObjectProxy(plugin::Plugin*) /build/native_client/src/trusted/plugin/srpc_client.cc:80
+==22653==    by 0x6967A73: plugin::ConnectedSocket::StartJSObjectProxy(plugin::Plugin*) /build/native_client/src/trusted/plugin/connected_socket.cc:65
+==22653==    by 0x696FBFD: plugin::Plugin::StartSrpcServices(std::string*) /build/native_client/src/trusted/plugin/plugin.cc:651
+==22653==    by 0x696F9F3: plugin::Plugin::Load(std::string, char const*, plugin::StreamShmBuffer*) /build/native_client/src/trusted/plugin/plugin.cc:634
+==22653==    by 0x696EC51: plugin::Plugin::Load(std::string, char const*) /build/native_client/src/trusted/plugin/plugin.cc:526
+==22653==    by 0x698116D: plugin::PluginPpapi::RequestNaClModule(std::string const&amp;amp;) /build/native_client/src/trusted/plugin/ppapi/plugin_ppapi.cc:167
+==22653==    by 0x698031E: plugin::PluginPpapi::Init(unsigned int, char const**, char const**) /build/native_client/src/trusted/plugin/ppapi/plugin_ppapi.cc:70
+==22653==    by 0x69AB143: pp::Instance_Initialize(long, unsigned int, char const**, char const**) /build/ppapi/cpp/module.cc:86
+==22653==  Address 0x6744330 is 0 bytes inside a block of size 36 alloc'd
+==22653==    at 0x4C2BE4E: operator new[](unsigned long) /b/slave/full_valgrind/build/third_party/valgrind64/coregrind/m_replacemalloc/vg_replace_malloc.c:305
+==22653==    by 0x69BD475: ppapi_proxy::(anonymous namespace)::ArgArraySerialize(int, char const**, unsigned int*) /build/native_client/src/shared/ppapi_proxy/browser_instance.cc:76
+==22653==    by 0x69BD57F: ppapi_proxy::(anonymous namespace)::Initialize(long, unsigned int, char const**, char const**) /build/native_client/src/shared/ppapi_proxy/browser_instance.cc:98
+==22653==    by 0x698150C: plugin::PluginPpapi::StartProxiedExecution(NaClSrpcChannel*) /build/native_client/src/trusted/plugin/ppapi/plugin_ppapi.cc:218
+==22653==    by 0x6978649: plugin::SrpcClient::StartJSObjectProxy(plugin::Plugin*) /build/native_client/src/trusted/plugin/srpc_client.cc:80
+==22653==    by 0x6967A73: plugin::ConnectedSocket::StartJSObjectProxy(plugin::Plugin*) /build/native_client/src/trusted/plugin/connected_socket.cc:65
+==22653==    by 0x696FBFD: plugin::Plugin::StartSrpcServices(std::string*) /build/native_client/src/trusted/plugin/plugin.cc:651
+==22653==    by 0x696F9F3: plugin::Plugin::Load(std::string, char const*, plugin::StreamShmBuffer*) /build/native_client/src/trusted/plugin/plugin.cc:634
+==22653==    by 0x696EC51: plugin::Plugin::Load(std::string, char const*) /build/native_client/src/trusted/plugin/plugin.cc:526
+==22653==    by 0x698116D: plugin::PluginPpapi::RequestNaClModule(std::string const&amp;amp;) /build/native_client/src/trusted/plugin/ppapi/plugin_ppapi.cc:167
+==22653==    by 0x698031E: plugin::PluginPpapi::Init(unsigned int, char const**, char const**) /build/native_client/src/trusted/plugin/ppapi/plugin_ppapi.cc:70
+==22653==    by 0x69AB143: pp::Instance_Initialize(long, unsigned int, char const**, char const**) /build/ppapi/cpp/module.cc:86
+</ns0:content><ns0:updated>2010-10-07T11:47:10.000Z</ns0:updated><ns0:published>2010-09-28T15:20:40.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>delete(new[]) in src/shared/ppapi_proxy/browser_instance.cc</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/917/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=917" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/917" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>929</ns2:id></ns2:blocking><ns2:closedDate>2010-10-07T11:47:10.000Z</ns2:closedDate><ns2:id>917</ns2:id></ns0:entry>

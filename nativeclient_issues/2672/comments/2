@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A08AQn47eCl7ImA9WhVREks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2672/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">The error message from the linker (on an unstripped pexe):
+
+failed command: 
+
+BLAH/nacl_sdk_install/pepper_19/toolchain/linux_x86_pnacl/pkg/binutils/bin/arm-pc-nacl-ld.bfd \
+
+ /* BLAH BLAH */ 
+
+stderr        : BLAH/naclports/src/out/repository-pnacl/snes9x-1.53-src/unix/snes9x.x86-64.pic---snes9x---.o: In function `ConfigFile::LoadFile(char const*)':
+BLAH/naclports/src/out/repository-pnacl/snes9x-1.53-src/unix/snes9x:(.text+0x1e71c): undefined reference to `__nacl_add_tp'
+BLAH/naclports/src/out/repository-pnacl/snes9x-1.53-src/unix/snes9x.x86-64.pic---snes9x---.o: In function `ConfigFile::LoadFile(Reader*, char const*)':
+BLAH/naclports/src/out/repository-pnacl/snes9x-1.53-src/unix/snes9x:(.text+0x1eb5c): undefined reference to `__nacl_add_tp'
+BLAH/naclports/src/out/repository-pnacl/snes9x-1.53-src/unix/snes9x:(.text+0x1ebbc): undefined reference to `__nacl_add_tp'
+BLAH/naclports/src/out/repository-pnacl/snes9x-1.53-src/unix/snes9x:(.text+0x1eefc): undefined reference to `__nacl_add_tp'
+BLAH/naclports/src/out/repository-pnacl/snes9x-1.53-src/unix/snes9x:(.text+0x1ef5c): undefined reference to `__nacl_add_tp'
+BLAH/naclports/src/out/repository-pnacl/snes9x-1.53-src/unix/snes9x.x86-64.pic---snes9x---.o:/usr/local/google/home/naclports/src/out/repository-pnacl/snes9x-1.53-src/unix/snes9x:(.text+0x1efbc): more undefined references to `__nacl_add_tp' follow
+
+
+
+
+Looks like binutils was changed to do a different re-write from the standard one:
+http://codereview.chromium.org/8206004
+
+which is related to the lack of flexible assembler bundling (but there may be other reasons):
+http://code.google.com/p/nativeclient/issues/detail?id=237
+
+and so now it expects to have a "__nacl_add_tp" symbol, which was added to glibc (where we would normally exercise PIC):
+
+http://codereview.chromium.org/8143011/
+
+but is not really available to newlib right now.
+
+</ns0:content><ns0:updated>2012-03-20T18:57:23.000Z</ns0:updated><ns0:published>2012-03-20T18:57:23.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2672#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2672/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

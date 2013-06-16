@@ -1,0 +1,70 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQHQ347eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/676</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">To reproduce this, run srpc_hw.html in Firefox on Linux.  Listing
+sel_ldr's open file descriptors shows a load of Firefox-specific FDs
+that sel_ldr itself does not open.
+
+There is no code in sel_ldr_launcher_linux.cc to close unwanted FDs.
+
+I don't know if this problem applies to Chromium.
+
+$ pstree -ap
+...
+   `-firefox-bin,25495 http://localhost:5103/scons-out/nacl-x86-32/staging/srpc_hw.html
+      |-sel_ldr,25922 -f/home/mseaborn/devel/nacl-trunk/src/native_cl
+
+$ ls -l /proc/25922/fd
+total 0
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 0 -&amp;gt; /dev/pts/18
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 1 -&amp;gt; /dev/pts/18
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 10 -&amp;gt; pipe:[84792788]
+l-wx------ 1 mseaborn eng 64 Jul  7 11:46 11 -&amp;gt; pipe:[84792788]
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 12 -&amp;gt; socket:[84793450]
+l-wx------ 1 mseaborn eng 64 Jul  7 11:46 13 -&amp;gt; /home/mseaborn/devel/nacl-trunk/src/native_client/tmp-home/.mozilla/firefox/default/.parentlock
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 14 -&amp;gt; socket:[84793452]
+l-wx------ 1 mseaborn eng 64 Jul  7 11:46 16 -&amp;gt; /home/mseaborn/devel/nacl-trunk/src/native_client/tmp-home/.mozilla/firefox/default/.parentlock
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 2 -&amp;gt; /dev/pts/18
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 20 -&amp;gt; /dev/urandom
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 21 -&amp;gt; pipe:[84792802]
+l-wx------ 1 mseaborn eng 64 Jul  7 11:46 22 -&amp;gt; pipe:[84792802]
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 23 -&amp;gt; pipe:[84792817]
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 24 -&amp;gt; /dev/urandom
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 25 -&amp;gt; pipe:[84792814]
+l-wx------ 1 mseaborn eng 64 Jul  7 11:46 26 -&amp;gt; pipe:[84792814]
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 27 -&amp;gt; /home/mseaborn/devel/nacl-trunk/src/native_client/tmp-home/.mozilla/firefox/default/XPC.mfasl
+l-wx------ 1 mseaborn eng 64 Jul  7 11:46 28 -&amp;gt; /home/mseaborn/devel/nacl-trunk/src/native_client/tmp-home/.mozilla/firefox/default/XPC.mfasl
+l-wx------ 1 mseaborn eng 64 Jul  7 11:46 29 -&amp;gt; pipe:[84792817]
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 3 -&amp;gt; /dev/urandom
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 30 -&amp;gt; /usr/lib/firefox-3.6.6/chrome/en-US.jar
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 32 -&amp;gt; /usr/lib/firefox-3.6.6/chrome/browser-branding-en-US.jar
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 33 -&amp;gt; /usr/lib/firefox-3.6.6/chrome/classic.jar
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 34 -&amp;gt; /usr/lib/firefox-3.6.6/chrome/toolkit.jar
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 35 -&amp;gt; /usr/share/ubufox/chrome/ubufox.jar
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 36 -&amp;gt; /usr/lib/firefox-3.6.6/chrome/browser.jar
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 4 -&amp;gt; /dev/pts/18
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 40 -&amp;gt; /home/mseaborn/devel/nacl-trunk/src/native_client/tmp-home/.mozilla/firefox/default/XUL.mfasl
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 49 -&amp;gt; pipe:[84793118]
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 5 -&amp;gt; /dev/pts/18
+l-wx------ 1 mseaborn eng 64 Jul  7 11:46 50 -&amp;gt; pipe:[84793118]
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 51 -&amp;gt; /home/mseaborn/devel/nacl-trunk/src/native_client/tmp-home/.mozilla/firefox/default/Cache/_CACHE_001_
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 52 -&amp;gt; /home/mseaborn/devel/nacl-trunk/src/native_client/tmp-home/.mozilla/firefox/default/Cache/_CACHE_MAP_
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 53 -&amp;gt; /home/mseaborn/devel/nacl-trunk/src/native_client/tmp-home/.mozilla/firefox/default/Cache/_CACHE_002_
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 54 -&amp;gt; /home/mseaborn/devel/nacl-trunk/src/native_client/tmp-home/.mozilla/firefox/default/Cache/_CACHE_003_
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 55 -&amp;gt; socket:[84793129]
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 57 -&amp;gt; pipe:[84793302]
+l-wx------ 1 mseaborn eng 64 Jul  7 11:46 58 -&amp;gt; pipe:[84793302]
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 59 -&amp;gt; pipe:[84793303]
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 6 -&amp;gt; /dev/pts/18
+l-wx------ 1 mseaborn eng 64 Jul  7 11:46 60 -&amp;gt; pipe:[84793303]
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 61 -&amp;gt; socket:[84793421]
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 63 -&amp;gt; /dev/urandom
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 64 -&amp;gt; socket:[84793432]
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 66 -&amp;gt; socket:[84793444]
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 69 -&amp;gt; socket:[84793445]
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 7 -&amp;gt; socket:[84793449]
+lrwx------ 1 mseaborn eng 64 Jul  7 11:46 71 -&amp;gt; socket:[84793447]
+lr-x------ 1 mseaborn eng 64 Jul  7 11:46 8 -&amp;gt; pipe:[84792404]
+l-wx------ 1 mseaborn eng 64 Jul  7 11:46 9 -&amp;gt; pipe:[84792404]
+</ns0:content><ns0:updated>2011-07-29T00:12:12.000Z</ns0:updated><ns0:published>2010-07-07T10:53:52.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Plugin leaves file descriptors open in sel_ldr subprocess</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-FFPlugin</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/676/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=676" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/676" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-02-15T23:19:44.000Z</ns2:closedDate><ns2:id>676</ns2:id></ns0:entry>

@@ -1,0 +1,41 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EBRH47eCl7ImA9WhdSEUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2058/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">In newlib, the file: impure.c contians the __newlib_thread_init() function which does some thread local setup including assigning per thread FILE*s for stdin, stdout, and stderr.
+
+One of the initialization variables is __sdidinit which is controlled by _GLOBAL_REENT-&gt;__sdidinit.  For some reason, in the failure case, this value is set to non-zero which appears to prevent lazy initialization of the file structures via __sinit.
+
+I believe the root cause is a confusion in the use of the global impure_ptr and the file local impure_ptr.  I believe the issue is that somehow the global_impure_ptr object is getting used causing it to be initialized.  Once initialized, all thread local impure_ptr objects that use it as a template for initialization will then have their _sdidinit flag set.
+
+I don't know if this is correct, but
+
+/*
+ * This function should be called on thread startup (for each thread).
+ */
+void __newlib_thread_init()
+{
+  /*
+   * Fix the initialization - REENT_INIT pointed
+   * the pointers to the global structure.
+   */
+  impure_data._stdin = &amp;impure_data.__sf[0];
+  impure_data._stdout = &amp;impure_data.__sf[1];
+  impure_data._stderr = &amp;impure_data.__sf[2];
+  if (&amp;impure_data != _GLOBAL_REENT) {
+    impure_data.__sdidinit = 0;
+  }
+  impure_data.__cleanup = _GLOBAL_REENT-&gt;__cleanup;
+  impure_data.__sglue._niobs = 3;
+  impure_data.__sglue._iobs = &amp;_GLOBAL_REENT-&gt;__sf[0];
+
+  /* Set the pointer to point to the thread-specific structure. */
+  _impure_ptr = &amp;impure_data;
+}
+
+I conditionally set __sdidinit in case somehow _GLOBAL_REENT points to impure_data (such as the case if the main thread's _impure_ptr is the same as _GLOBAL_REENT.
+
+This change appears to fix the issue, but I am unsure what other effects, or assumptions went into the original code.
+
+I am resetting the owner to available so that someone with toolchain experience in general and hopefully this code fragment in particular can pick create a fix.
+
+Since this appears to be a toolchain fix, delivery needs to be in time for M14 SDK.</ns0:content><ns0:updated>2011-07-20T18:14:15.000Z</ns0:updated><ns0:published>2011-07-20T18:14:15.000Z</ns0:published><ns2:updates>
+			<ns2:status>Available</ns2:status><ns2:ccUpdate>b...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 2 by noelal...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2058#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2058/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,237 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkQBRX47eCl7ImA9WhZXGUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1781</ns0:id><ns0:author>
+			<ns0:name>mmorten...@google.com</ns0:name><ns0:uri>/u/100268164290167392978/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? top of tree
+What version of the runtime are you using? top of tree
+On what operating system? win, mac, linux
+What browser are you using? chrome
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+The log is:
+   http://chromegw.corp.google.com/i/client.nacl/builders/mac10.6-m32-n32-opt/builds/854/steps/chrome_browser_tests/logs/stdio
+
+Here is a stdout/stderr of the test failure -- this could be because of recent system library changes.
+Note: Component (in the label below) could be wrong:
+
+
+running ['scons-out/opt-win-x86-64/staging/sel_ldr.exe', '-S', '-a', '-s', '--', 'E:\\b\\build\\slave\\win64-glibc-opt\\build\\native_client\\toolchain\\win_x86/nacl64/lib/runnable-ld.so', '--library-path', 'E:\\b\\build\\slave\\win64-glibc-opt\\build\\native_client\\toolchain\\win_x86/nacl64/lib', 'scons-out/nacl-x86-64-glibc/obj/tests/syscalls/raw_timefuncs_test.nexe']
+======================================================================
+scons-out/opt-win-x86-64/staging/sel_ldr.exe -S -a -s -- E:\b\build\slave\win64-glibc-opt\build\native_client\toolchain\win_x86/nacl64/lib/runnable-ld.so --library-path E:\b\build\slave\win64-glibc-opt\build\native_client\toolchain\win_x86/nacl64/lib scons-out/nacl-x86-64-glibc/obj/tests/syscalls/raw_timefuncs_test.nexe
+Test E:\b\build\slave\win64-glibc-opt\build\native_client\scons-out\nacl-x86-64-glibc/test_results/raw_timefuncs_test.out took 2.453125 secs
+
+ERROR: Command returned normal 1, expecting ['normal'] 0 for win64
+======================================================================
+Stdout
+======================================================================
+TEST PASSED: test gettimeofday,nanosleep function: 0 == GETTIMEOFDAY(&amp;amp;tv1, NULL)
+
+TEST PASSED: test gettimeofday,nanosleep function: 0 == NANOSLEEP(&amp;amp;ts, NULL)
+
+TEST PASSED: test gettimeofday,nanosleep function: 0 == GETTIMEOFDAY(&amp;amp;tv2, NULL)
+
+TEST PASSED: test gettimeofday,nanosleep function: tv2.tv_sec &amp;gt; tv1.tv_sec
+
+TEST PASSED: test gettimeofday,nanosleep function: 0 == GETTIMEOFDAY(&amp;amp;tv3, &amp;amp;tz)
+
+TEST PASSED: test gettimeofday,nanosleep function: tv3.tv_sec &amp;gt;= tv2.tv_sec
+
+TEST PASSED: test gettimeofday,nanosleep function: 0 != NANOSLEEP(NULL, NULL)
+
+           Requesting nanosleep duration: 0.001000000 seconds
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_start, NULL)
+
+TEST PASSED: Test nanosleep: -1 != rv
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_end, NULL)
+
+               Actual nanosleep duration: 0.002000 seconds
+
+TEST PASSED: Test nanosleep: !(t_elapsed.tv_sec &amp;lt; t_suspend-&amp;gt;tv_sec || (t_elapsed.tv_sec == t_suspend-&amp;gt;tv_sec &amp;amp;&amp;amp; (NANOS_PER_MICRO * t_elapsed.tv_usec &amp;lt; t_suspend-&amp;gt;tv_nsec)))
+
+           Requesting nanosleep duration: 0.002000000 seconds
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_start, NULL)
+
+TEST PASSED: Test nanosleep: -1 != rv
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_end, NULL)
+
+               Actual nanosleep duration: 0.003000 seconds
+
+TEST PASSED: Test nanosleep: !(t_elapsed.tv_sec &amp;lt; t_suspend-&amp;gt;tv_sec || (t_elapsed.tv_sec == t_suspend-&amp;gt;tv_sec &amp;amp;&amp;amp; (NANOS_PER_MICRO * t_elapsed.tv_usec &amp;lt; t_suspend-&amp;gt;tv_nsec)))
+
+           Requesting nanosleep duration: 0.005000000 seconds
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_start, NULL)
+
+TEST PASSED: Test nanosleep: -1 != rv
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_end, NULL)
+
+               Actual nanosleep duration: 0.006000 seconds
+
+TEST PASSED: Test nanosleep: !(t_elapsed.tv_sec &amp;lt; t_suspend-&amp;gt;tv_sec || (t_elapsed.tv_sec == t_suspend-&amp;gt;tv_sec &amp;amp;&amp;amp; (NANOS_PER_MICRO * t_elapsed.tv_usec &amp;lt; t_suspend-&amp;gt;tv_nsec)))
+
+           Requesting nanosleep duration: 0.010000000 seconds
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_start, NULL)
+
+TEST PASSED: Test nanosleep: -1 != rv
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_end, NULL)
+
+               Actual nanosleep duration: 0.010000 seconds
+
+TEST PASSED: Test nanosleep: !(t_elapsed.tv_sec &amp;lt; t_suspend-&amp;gt;tv_sec || (t_elapsed.tv_sec == t_suspend-&amp;gt;tv_sec &amp;amp;&amp;amp; (NANOS_PER_MICRO * t_elapsed.tv_usec &amp;lt; t_suspend-&amp;gt;tv_nsec)))
+
+           Requesting nanosleep duration: 0.025000000 seconds
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_start, NULL)
+
+TEST PASSED: Test nanosleep: -1 != rv
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_end, NULL)
+
+               Actual nanosleep duration: 0.026000 seconds
+
+TEST PASSED: Test nanosleep: !(t_elapsed.tv_sec &amp;lt; t_suspend-&amp;gt;tv_sec || (t_elapsed.tv_sec == t_suspend-&amp;gt;tv_sec &amp;amp;&amp;amp; (NANOS_PER_MICRO * t_elapsed.tv_usec &amp;lt; t_suspend-&amp;gt;tv_nsec)))
+
+           Requesting nanosleep duration: 0.050000000 seconds
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_start, NULL)
+
+TEST PASSED: Test nanosleep: -1 != rv
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_end, NULL)
+
+               Actual nanosleep duration: 0.050000 seconds
+
+TEST PASSED: Test nanosleep: !(t_elapsed.tv_sec &amp;lt; t_suspend-&amp;gt;tv_sec || (t_elapsed.tv_sec == t_suspend-&amp;gt;tv_sec &amp;amp;&amp;amp; (NANOS_PER_MICRO * t_elapsed.tv_usec &amp;lt; t_suspend-&amp;gt;tv_nsec)))
+
+           Requesting nanosleep duration: 0.100000000 seconds
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_start, NULL)
+
+TEST PASSED: Test nanosleep: -1 != rv
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_end, NULL)
+
+               Actual nanosleep duration: 0.101000 seconds
+
+TEST PASSED: Test nanosleep: !(t_elapsed.tv_sec &amp;lt; t_suspend-&amp;gt;tv_sec || (t_elapsed.tv_sec == t_suspend-&amp;gt;tv_sec &amp;amp;&amp;amp; (NANOS_PER_MICRO * t_elapsed.tv_usec &amp;lt; t_suspend-&amp;gt;tv_nsec)))
+
+           Requesting nanosleep duration: 0.250000000 seconds
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_start, NULL)
+
+TEST PASSED: Test nanosleep: -1 != rv
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_end, NULL)
+
+               Actual nanosleep duration: 0.250000 seconds
+
+TEST PASSED: Test nanosleep: !(t_elapsed.tv_sec &amp;lt; t_suspend-&amp;gt;tv_sec || (t_elapsed.tv_sec == t_suspend-&amp;gt;tv_sec &amp;amp;&amp;amp; (NANOS_PER_MICRO * t_elapsed.tv_usec &amp;lt; t_suspend-&amp;gt;tv_nsec)))
+
+           Requesting nanosleep duration: 0.500000000 seconds
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_start, NULL)
+
+TEST PASSED: Test nanosleep: -1 != rv
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_end, NULL)
+
+               Actual nanosleep duration: 0.500000 seconds
+
+TEST PASSED: Test nanosleep: !(t_elapsed.tv_sec &amp;lt; t_suspend-&amp;gt;tv_sec || (t_elapsed.tv_sec == t_suspend-&amp;gt;tv_sec &amp;amp;&amp;amp; (NANOS_PER_MICRO * t_elapsed.tv_usec &amp;lt; t_suspend-&amp;gt;tv_nsec)))
+
+           Requesting nanosleep duration: 1.000000000 seconds
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_start, NULL)
+
+TEST PASSED: Test nanosleep: -1 != rv
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_end, NULL)
+
+               Actual nanosleep duration: 0.935000 seconds
+
+Error: Elapsed time too short!
+
+TEST FAILED: Test nanosleep: !(t_elapsed.tv_sec &amp;lt; t_suspend-&amp;gt;tv_sec || (t_elapsed.tv_sec == t_suspend-&amp;gt;tv_sec &amp;amp;&amp;amp; (NANOS_PER_MICRO * t_elapsed.tv_usec &amp;lt; t_suspend-&amp;gt;tv_nsec))) at tests\syscalls\timefuncs_test.cc:192
+
+           Requesting nanosleep duration: 1.500000000 seconds
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_start, NULL)
+
+TEST PASSED: Test nanosleep: -1 != rv
+
+TEST PASSED: Test nanosleep: -1 != GETTIMEOFDAY(&amp;amp;t_end, NULL)
+
+               Actual nanosleep duration: 1.500000 seconds
+
+TEST PASSED: Test nanosleep: !(t_elapsed.tv_sec &amp;lt; t_suspend-&amp;gt;tv_sec || (t_elapsed.tv_sec == t_suspend-&amp;gt;tv_sec &amp;amp;&amp;amp; (NANOS_PER_MICRO * t_elapsed.tv_usec &amp;lt; t_suspend-&amp;gt;tv_nsec)))
+
+Called clock.  clock_time=6377, CLOCKS_PER_SEC=1000000
+
+TEST PASSED: test clock function: clock_time &amp;gt; 0
+
+There were 1 failures
+
+
+======================================================================
+Stderr
+======================================================================
+[3300,3180:16:23:33.703000] NaClTimeInternalInit: timeBeginPeriod(1)
+
+[3300,3180:16:23:33.703000] Unix epoch start is  11644473600000ms in Windows epoch time
+
+[3300,3180:16:23:33.704000] BYPASSING ALL ACL CHECKS
+
+[3300,3180:16:23:33.715000]                      Ask: 0000001600000000
+
+[3300,3180:16:23:33.715000]            orig memory at 0000000140140000
+
+[3300,3180:16:23:34.567000]           Aligned memory: 0000000200000000
+
+DEBUG MODE ENABLED (bypass acl)
+
+[3300,3176:16:23:34.870000] munmap: rounded length to 0x10000
+
+[3300,3176:16:23:34.870000] invalid mmap flags 04022, ignoring extraneous bits
+
+[3300,3176:16:23:34.870000] invalid mmap flags 04022, ignoring extraneous bits
+
+[3300,3176:16:23:35.133000] munmap: rounded length to 0xf0000
+
+[3300,3176:16:23:35.133000] invalid mmap flags 04022, ignoring extraneous bits
+
+[3300,3176:16:23:35.133000] invalid mmap flags 04022, ignoring extraneous bits
+
+[3300,3176:16:23:35.207000] munmap: rounded length to 0x50000
+
+[3300,3176:16:23:35.207000] invalid mmap flags 04022, ignoring extraneous bits
+
+[3300,3176:16:23:35.208000] invalid mmap flags 04022, ignoring extraneous bits
+
+[3300,3176:16:23:35.231000] munmap: rounded length to 0x10000
+
+[3300,3176:16:23:35.231000] invalid mmap flags 04022, ignoring extraneous bits
+
+[3300,3176:16:23:35.231000] invalid mmap flags 04022, ignoring extraneous bits
+
+[3300,3176:16:23:35.624000] munmap: rounded length to 0x1b0000
+
+[3300,3176:16:23:35.624000] invalid mmap flags 04022, ignoring extraneous bits
+
+[3300,3176:16:23:35.624000] invalid mmap flags 04022, ignoring extraneous bits
+
+[3300,3176:16:23:35.669000] NaClAbiStatHostDescStatXlateCtor: Unusual NaCl descriptor type (not constructible). The NaCl app has a file with st_mode = 010000. (This is normal for std{in,out,err}, or other inherited/injected files.)
+
+
+raw_timefuncs_test.out: FAILED
+scons: *** [scons-out\nacl-x86-64-glibc\test_results\raw_timefuncs_test.out] Error -1
+E:\b\build\slave\win64-glibc-opt\build\third_party\python_26\python.exe tools/command_tester.py --name E:\b\build\slave\win64-glibc-opt\build\native_client\scons-out\nacl-x86-64-glibc/test_results/syscall_return_sandboxing.out --report E:\b\build\slave\win64-glibc-opt\build\native_client\scons-out\nacl-x86-64-glibc/test_results/syscall_return_sandboxing.out --time_warning 10 --time_error 100 --perf_env_description x86-64_nnacl_glibc_dynamic --subarch 64 --arch x86 scons-out/opt-win-x86-64/staging/sel_ldr.exe -S -a -s -- E:\b\build\slave\win64-glibc-opt\build\native_client\toolchain\win_x86/nacl64/lib/runnable-ld.so --library-path E:\b\build\slave\win64-glibc-opt\build\native_client\toolchain\win_x86/nacl64/lib scons-out/nacl-x86-64-glibc/obj/tests/syscall_return_sandboxing/syscall_return_sandboxing.nexe
+======================================================================</ns0:content><ns0:updated>2011-05-10T01:19:14.000Z</ns0:updated><ns0:published>2011-05-09T02:28:00.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:owner>
+			<ns2:uri>/u/100268164290167392978/</ns2:uri><ns2:username>mmorten...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>timefuncs test frequently failing in build bots</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1781/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1781" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1781" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>1736</ns2:id></ns2:blockedOn><ns2:closedDate>2011-05-10T01:19:14.000Z</ns2:closedDate><ns2:id>1781</ns2:id><ns2:mergedInto>
+			<ns2:id>1736</ns2:id></ns2:mergedInto></ns0:entry>

@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMDRX47eCl7ImA9WhZbFUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1927/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: cd98f4fe5b1e12c5ae4ec42f60727be282a77a3c
+ Email: bsy@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+this fixes a bug in the WeakRefAnchor dtor which should not have invoked Abandon -- that should be done once only, by the containing object's dtor.
+
+tested using a BUILDTYPE=Release make of chrome @HEAD with NaCl @HEAD,
+with this patch applied.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1927
+TEST= manual inspection of log messages
+Review URL: http://codereview.chromium.org/7201015
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@5717 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	src/trusted/weak_ref/weak_ref.cc
+M	src/trusted/weak_ref/weak_ref.h</ns0:content><ns0:updated>2011-06-20T18:27:54.000Z</ns0:updated><ns0:published>2011-06-20T18:27:54.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1927#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1927/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

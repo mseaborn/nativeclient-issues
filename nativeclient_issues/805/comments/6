@@ -1,0 +1,47 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkANRn47eCl7ImA9Wx5RGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/805/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">arm and x86 differ on where they place their initialization thunks,
+arm uses the .init_array section while x86 uses .ctors 
+
+objdump -h  eon.pnacl.x8664
+
+eon.pnacl.x8664:     file format elf64-x86-64
+
+Sections:
+Idx Name          Size      VMA               LMA               File off  Algn
+ 
+  8 .ctors        0000020c  00000000001e0100  00000000001e0100  001bb100  2**3
+                  CONTENTS, ALLOC, LOAD, DATA
+
+objdump -h  eon.pnacl.arm
+
+eon.pnacl.arm:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+ 
+  6 .init_array   00000208  00170180  00170180  0014f180  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+
+
+
+There are some linker defined  symbols that should point to the beginning and end of this section, so the actual name of the section does not matter.
+
+But those symbols are wrong in the x86 case as the beginning and end marker point to  the same address:
+
+nm eon.pnacl.arm | grep _init_array
+00170388 t __init_array_end
+00170180 t __init_array_start
+
+nm eon.pnacl.x8664 | grep _init_array
+00000000001e0100 a __init_array_end
+00000000001e0100 a __init_array_start
+
+So on x86 nothing gets initialized. This is likely a linker script issue.
+
+
+
+
+
+</ns0:content><ns0:updated>2010-08-26T16:06:37.000Z</ns0:updated><ns0:published>2010-08-26T16:06:37.000Z</ns0:published><ns2:updates>
+			<ns2:status>Started</ns2:status></ns2:updates><ns0:title>Comment 6 by robe...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=805#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/805/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

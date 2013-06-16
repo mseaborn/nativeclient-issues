@@ -1,0 +1,34 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0cMQX47eCl7ImA9WhRRFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2403</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">The pnacl clang / nacl gcc ABI mismatch with c++ non-trivial objects is due to having an &amp;quot;extra&amp;quot; byval attribute attached to the pointer argument. It was the case that the old llvm-gcc frontend did the right thing (and passed that part of the &amp;quot;callingconv_case_by_case&amp;quot; test). This bit of bitcode ABI affects both x86-32 and x86-64 native ABIs.
+
+
+(1) Here is the output of the old pnacl-llvm-gcc frontend on a smaller test:
+
+$ toolchain/pnacl_linux_x86_64_newlib/bin/pnacl-gcc -no-save-temps -O2 ~/cc_tests/small_nontrivial_class_by_value.cpp -o - -S | c++filt | grep &amp;quot;define.*bar&amp;quot;
+
+   define linkonce_odr void @void bar&amp;lt;char&amp;gt;(TWO_X&amp;lt;char&amp;gt;)(%&amp;quot;struct.TWO_X&amp;lt;char&amp;gt;&amp;quot;* noalias nocapture %z) noinline {
+
+with that, the pointer %z will be stored in the first integer argument register.
+
+
+
+(2) Here is the output of the pnacl-clang frontend:
+
+$ toolchain/pnacl_linux_x86_64_newlib/bin/pnacl-clang -no-save-temps -O2 ~/cc_tests/small_nontrivial_class_by_value.cpp -o - -S | c++filt | grep &amp;quot;define.*bar&amp;quot;
+
+   define linkonce_odr void @void bar&amp;lt;char&amp;gt;(TWO_X&amp;lt;char&amp;gt;)(%class.TWO_X* nocapture byval %z) noinline {
+
+with that, the pointer %z is never written to an argument register, and is instead implicitly defined as an offset of the stack.
+
+
+(3) Here is the output of the standard clang x86-64 frontend for comparison (closer to what nacl-gcc would do):
+
+$ clang -emit-llvm -O2 ~/cc_tests/small_nontrivial_class_by_value.cpp -o - -S | c++filt | grep &amp;quot;define.*bar&amp;quot;
+
+
+   define linkonce_odr void @void bar&amp;lt;char&amp;gt;(TWO_X&amp;lt;char&amp;gt;)(%class.TWO_X* nocapture %z) uwtable noinline {
+
+similar to the old llvm-gcc frontend.
+
+</ns0:content><ns0:updated>2011-11-28T19:38:00.000Z</ns0:updated><ns0:published>2011-10-31T21:44:34.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:state>closed</ns2:state><ns0:title>For arg pointers to non-trivial c++ objects, pnacl-clang should not have "byval"</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2403/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2403" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2403" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-11-28T19:38:00.000Z</ns2:closedDate><ns2:id>2403</ns2:id></ns0:entry>

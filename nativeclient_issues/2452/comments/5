@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EGQX47eCl7ImA9WhRSFUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2452/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>pdox%goo...@gtempaccount.com</ns0:name><ns0:uri>/u/104735739662288482898/</ns0:uri></ns0:author><ns0:content type="html">Ivan,
+
+1) Only by a few minutes
+2) Don't we want this? We can't afford to keep ignoring the GlibC-based toolchain. People keep breaking it. It keeps breaking because people are not testing it. And people are not testing it because it is expensive to build and not integrated with the other toolchain.
+3) No, it won't. Any particular usage of our toolchain will always be either newlib-based or glibc-based. It won't ever make sense to mix them in a particular invocation. The only thing that changes is the directory layout.
+4) This won't complicate things, it just changes the path to get to the tools: pnacl_linux_x86_64/newlib/bin  vs. pnacl_linux_x86_64_newlib/bin
+5) That issue is vague and also conflicts with my arguments against creating separate native toolchains.
+
+Ivan, it looks like you are suggesting we split our toolchain into 6 different flavors, when I'm suggesting we only need a single toolchain directory that can handle all these cases. FYI, it is already possible to pull the PNaCl translator build out of the toolchain directory, but we don't do it for convenience/testing reasons. The toolchain we ship won't have the sandboxed translator packaged with it.</ns0:content><ns0:updated>2011-11-18T03:07:00.000Z</ns0:updated><ns0:published>2011-11-18T03:07:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by pdox%goo...@gtempaccount.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2452#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2452/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

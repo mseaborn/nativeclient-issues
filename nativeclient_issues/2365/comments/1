@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYAQ347eCl7ImA9WhRSFEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2365/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7179
+
+------------------------------------------------------------------------
+r7179 | jvoung@google.com | Tue Nov 15 19:09:58 PST 2011
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/pnacl_packaging/README?r1=7179&amp;r2=7178&amp;pathrev=7179
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/pnacl_packaging/pnacl_manifest_template.json?r1=7179&amp;r2=7178&amp;pathrev=7179
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/pnacl_packaging/autoupdate-ascii-pnacl.config?r1=7179&amp;r2=7178&amp;pathrev=7179
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/pnacl_packaging/pnacl_component_crx_gen.py?r1=7179&amp;r2=7178&amp;pathrev=7179
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/pnacl_packaging?r1=7179&amp;r2=7178&amp;pathrev=7179
+
+Scripts to generate an extension out of the PNaCl artifacts. There are several flavors.
+
+- Zip file of everything for the webstore.
+- Packed CRX specific to an architecture for future Omaha installs.
+- Unpacked CRX specific to an architecture for offline/commandline testing.
+
+Writes files to toolchain/pnacl-package/
+
+Run: pnacl/pnacl_packaging/pnacl_component_crx_gen.py  "0.1.0.3" -p ~/path_to_old_key
+
+Or: pnacl/pnacl_packaging/pnacl_component_crx_gen.py -g
+to get a fresh private key (this will change the AppId)
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2365
+TEST=
+- doesn't blow up when you run it...
+- when you load the unpacked extension, it has the same AppId as the webstore ID.
+
+Review URL: http://codereview.chromium.org/8505045
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-11-16T03:12:22.000Z</ns0:updated><ns0:published>2011-11-16T03:12:22.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2365#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2365/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

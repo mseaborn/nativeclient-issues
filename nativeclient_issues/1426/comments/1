@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUYASX47eCl7ImA9Wx9bFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1426/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: 375ae440510049de64ae2d470f6286261848ff50
+ Email: mseaborn@chromium.org
+
+Allow building with a non-GNU version of sed
+
+Change Makerules' linker script munging code to work with the version
+of sed found on Mac OS X 10.6.  This version of sed is a little
+stricter than GNU sed and requires single-character commands to be
+terminated with a semicolon (as nearby sed invocations already do).
+
+The alternative would have been to add GNU sed into the build, which
+is more complicated.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1426
+TEST="python build.py -b" on Mac
+
+Review URL: http://codereview.chromium.org/6541012
+
+M	Makerules</ns0:content><ns0:updated>2011-02-23T02:12:28.000Z</ns0:updated><ns0:published>2011-02-23T02:12:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1426#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1426/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

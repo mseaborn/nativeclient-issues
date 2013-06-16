@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU4ERH47eCl7ImA9WhRQEk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2442/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7380
+
+------------------------------------------------------------------------
+r7380 | mseaborn@chromium.org | Tue Dec 06 18:07:13 PST 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/data_not_executable/nacl.scons?r1=7380&amp;r2=7379&amp;pathrev=7380
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=7380&amp;r2=7379&amp;pathrev=7380
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/signal_handler/nacl.scons?r1=7380&amp;r2=7379&amp;pathrev=7380
+
+Scons: Use booleans in CommandTest() arguments where possible
+
+It turns out that booleans already work.  "True" is passed as a string
+which is treated as true in command_tester.py, and "False" is skipped
+by CommandTest().
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2442
+TEST=trybots
+
+Review URL: http://codereview.chromium.org/8825001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-12-07T02:11:45.000Z</ns0:updated><ns0:published>2011-12-07T02:11:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2442#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2442/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

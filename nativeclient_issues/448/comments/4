@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU4BQX47eCl7ImA9WxFSGEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/448/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>msn...@google.com</ns0:name><ns0:uri>/u/105190905030319373792/</ns0:uri></ns0:author><ns0:content type="html">Change 44949 contains the fix to the Mac and Linux sandboxes on the branch.  Orit says the current dev 
+channel is 5.0.375.9 and that 44949 is in 5.0.375.15.  So the fix will be in the next dev channel release 
+sometime next week.  https://sites.google.com/a/google.com/chrome-pmo/Home shows the list of released 
+versions and pending versions.
+
+A note concerning the --disable-seccomp-sandbox switch I mentioned earlier.  NaCl runs fine with Linux tip-
+of-trunk using only the --enable-nacl switch.  If I add --disable-seccomp-sandbox there is no behavior 
+change.  If I use --enable-seccomp-sandbox, Chrome does "Aw, Snap!" immediately at start-up, regardless 
+of the presence or absence of --enable-nacl.  So I think my --disable-seccomp-sandbox comment earlier 
+was a red herring.
+
+The only problem seems to be that the sandbox fix is not yet in dev channel.
+</ns0:content><ns0:updated>2010-04-21T18:19:10.000Z</ns0:updated><ns0:published>2010-04-21T18:19:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by msn...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=448#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/448/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

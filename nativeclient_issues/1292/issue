@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCRn47eCl7ImA9WhdSGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1292</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">sel_ldr's -h/-r/-w options are for setting up file descriptors:
+
+ -h -r -w associate a host POSIX descriptor D with app desc d
+    that was opened in O_RDWR, O_RDONLY, and O_WRONLY modes
+    respectively
+
+In principle it should be possible to use &amp;quot;-w 2:10&amp;quot; to redirect stderr to FD 10, which would have the benefit of separating the guest process's stderr output from sel_ldr's log output.
+
+However, this does not work, because the default stdin/stdout/stderr are set up in NaClAppPrepareToLaunch(), which happens after the NaClAddHostDescriptor() calls in sel_main.c and which overwrites the original redirections.</ns0:content><ns0:updated>2011-07-29T00:12:47.000Z</ns0:updated><ns0:published>2011-01-03T17:01:03.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>sel_ldr: -h/-r/-w options do not work on stdin/stdout/stderr</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1292/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1292" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1292" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-03-22T22:37:51.000Z</ns2:closedDate><ns2:id>1292</ns2:id></ns0:entry>

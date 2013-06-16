@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkEHRX47eCl7ImA9WxBUEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/232/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>dt...@codeaurora.org</ns0:name><ns0:uri>/u/102710273696022658094/</ns0:uri></ns0:author><ns0:content type="html">We have a probably solution for this issue. This involves declaring a new section in 
+the linker script to reserve the sandbox. In order to accomplish this we had to allow 
+the loader to load/access the elf-header in a region occurring earlier in memory. In 
+order to eliminate any security issues with allowing placement of the elf-header in 
+untrusted space, we added logic to sel_ldr to 'save off' the elf-header and remap 
+that page to NONE. Subsequently, on NaCl-App-exit we restore the elf-header to allow 
+the loader to gracefully clean-up.
+
+As a side affect, we are able to now dynamically link the sel_ldr application with 
+karmic libraries (vs. the static linking with Maemo libraries that is done currently.  
+This provides a notably smaller footprint for sel_ldr (important for ARM platforms) 
+as well as enable linking with libSDL and begin testing of video/graphics on ARM 
+hardware.
+
+Is this a solution you would be interested in?</ns0:content><ns0:updated>2010-02-24T15:17:14.000Z</ns0:updated><ns0:published>2010-02-24T15:17:14.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by dt...@codeaurora.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=232#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/232/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

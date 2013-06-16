@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUECSH47eCl7ImA9WhVVFUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2716</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">Currently, a failure in QEMU during small tests can prevent the tests from ever running on real HW.  It makes it hard to detremine if the failure is real.  In addition, failures which only happen on QEMU and not on real hardware are just ignored, so this adds flakiness and to no real advantage, especially since we ignore them anyway.
+
+Instead, we should not gate the tree on QEMU.  I would suggest that for the build bots, we build on one bot, then transfer over the build and run it on real HW.  We then gate the tree on the HW results.
+
+For TRY bots, we may wish to build on one bot, then test on both QEMU and real HW.  In this case, the QEMU try is just informative, giving the committer a chance to see if they are breaking QEMU.  If it fails, they can just re-run the test locally to see if it's a QEMU flake.  If not, they just commit.
+
+We don't do this for the build bots because in practice sheriffs ignore QEMU failures and just wait to see if they go away next run anyway.
+
+See also: BUG=2494
+</ns0:content><ns0:updated>2012-05-08T22:54:29.000Z</ns0:updated><ns0:published>2012-04-06T20:17:34.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Flaky QEMU causing redness and stopping HW tests</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Test</ns2:label><ns2:label>FlakeyBots</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2716/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2716" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2716" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>2694</ns2:id></ns2:blockedOn><ns2:closedDate>2012-05-08T22:54:29.000Z</ns2:closedDate><ns2:id>2716</ns2:id></ns0:entry>

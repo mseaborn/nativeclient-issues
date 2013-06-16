@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEFRn47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/617/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3124
+
+------------------------------------------------------------------------
+r3124 | mseaborn@chromium.org | Thu Aug 26 09:18:00 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tools/modular-build/build.py?r1=3124&amp;r2=3123&amp;pathrev=3124
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=3124&amp;r2=3123&amp;pathrev=3124
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/include/nacl/nacl_inttypes.h?r1=3124&amp;r2=3123&amp;pathrev=3124
+
+Fix nacl_inttypes.h to work with nacl-glibc
+
+We shouldn't use the newlib workaround when using glibc.
+
+This allows google_nacl_npruntime to build.  It fixes the error:
+src/shared/npruntime/npnavigator.cc:195: error: format &#8216;%lu&#8217; expects type &#8216;long unsigned int&#8217;, but argument 4 has type &#8216;uint32_t&#8217; [-Wformat]
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=617
+TEST=python build.py -sb libnacl_headers nacl_libs_glibc-input nacl_libs_glibc
+
+Review URL: http://codereview.chromium.org/3119049
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:56:57.000Z</ns0:updated><ns0:published>2011-01-21T22:56:57.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=617#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/617/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

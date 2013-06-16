@@ -1,0 +1,60 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUMBSX47eCl7ImA9Wx5SGUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/819</ns0:id><ns0:author>
+			<ns0:name>halya...@google.com</ns0:name><ns0:uri>/u/112856509894568708731/</ns0:uri></ns0:author><ns0:content type="html">Linux x64
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Remove -D__linux__ from site_scons/site_tools/naclsdk.py
+2. make clean
+3. make SDKLOC=/some/path
+
+build failed with message:
+
+...
+nacl64-gcc -o scons-out/nacl_extra_sdk-x86-32/obj/src/untrusted/valgrind/valgrind_interceptors.o -c -std=gnu99 -O3 -Werror -Wall -Wswitch-enum -g -fno-builtin -fno-stack-protector -fdiagnostics-show-option -pedantic -m32 -Wall -fdiagnostics-show-option -pedantic -Werror -DNACL_BUILD_ARCH=x86 -DNACL_BUILD_SUBARCH=32 -DNACL_BLOCK_SHIFT=5 -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DDYNAMIC_ANNOTATIONS_PREFIX=NACL_ -I/usr/local/google/home/nacl-read src/untrusted/valgrind/valgrind_interceptors.c
+src/untrusted/valgrind/valgrind_interceptors.c:155: error: expected ')' before 'fn'
+src/untrusted/valgrind/valgrind_interceptors.c: In function '_vgwZZ_NaCl_malloc':
+...
+
+valgrind_interceptors.c:155 line says
+INLINE static void handle_free(OrigFn fn, size_t ptr){
+
+nacl_valgrind.h file says
+...
+#if defined(PLAT_x86_linux) || defined(PLAT_x86_darwin)
+
+typedef
+   struct {
+      unsigned int nraddr; /* where's the code? */
+   }
+   OrigFn;
+...
+#if defined(PLAT_amd64_linux) || defined(PLAT_amd64_darwin)
+
+#undef VALGRIND_SANDBOX_PTR
+...
+typedef
+   struct {
+      uint64_t nraddr; /* where's the code? */
+   }
+   OrigFn;
+...
+#if defined(PLAT_ppc32_linux)
+
+typedef
+   struct {
+      unsigned int nraddr; /* where's the code? */
+   }
+   OrigFn;
+...
+#if defined(PLAT_ppc64_linux)
+
+typedef
+   struct {
+      uint64_t nraddr; /* where's the code? */
+      uint64_t r2;  /* what tocptr do we need? */
+   }
+   OrigFn;
+...
+
+and a couple more similar platform-specific definitions
+</ns0:content><ns0:updated>2010-08-16T11:17:38.000Z</ns0:updated><ns0:published>2010-08-13T09:31:54.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Valgrind needs linux-specific defines in src/third_party/valgrind/nacl_valgrind.h and src/untrusted/valgrind/valgrind_interceptors.c</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/819/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=819" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/819" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-08-16T11:17:38.000Z</ns2:closedDate><ns2:id>819</ns2:id></ns0:entry>

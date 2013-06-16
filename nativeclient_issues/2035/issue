@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0UBQH47eCl7ImA9WhdSEko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2035</ns0:id><ns0:author>
+			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">We should add a NaCl proxy that implements the ppb_input_event.h ppapi header file, and add corresponding browser tests.    
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+Currently, input events are handled through the PPP_Instance with the HandleInputEvent method.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+The HandleInputEvent method doesn't support touch events and other more advanced features, and doesn't allow for unfiltered, non-blocking events from the browser.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+Add a proxy for ppb_input_event and add corresponding browser tests.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+Verification checklist for PPB_input_event.h (list taken from issue 1760):
+- Use ppapi_test_lib and PPAPIBrowserTester
+- Add a test verifying each function with an exhaustive set of good/bad inputs
+- Add stress tests (e.g. creating gazillion resources or allocating a lot of memory
+- Add browser tests to native_client/tests/ppapi_browser/ppb_input_event
+- Add test to native_client/tests/examples.html and nacl.scons
+- Manually test for surf-away and reload errors
+- Add trusted plugin build, so the test can be sanity-checked directly using --register-pepper-plugins.
+- Add the functionality that cannot be tested automatically to manual QA plan
+
+Also, we'll want to remove HandleInputEvent from PPP_Instance.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+More powerful interface to input events.
+</ns0:content><ns0:updated>2011-07-21T18:00:51.000Z</ns0:updated><ns0:published>2011-07-15T19:55:53.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mball@google.com/</ns2:uri><ns2:username>mball@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/mball@google.com/</ns2:uri><ns2:username>mball@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Add a proxy for ppb_input_event, including tests</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-14</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2035/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2035" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2035" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-07-21T18:00:51.000Z</ns2:closedDate><ns2:id>2035</ns2:id></ns0:entry>

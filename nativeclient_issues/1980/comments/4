@@ -1,0 +1,44 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEAFSX47eCl7ImA9WhdTEE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1980/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=5926
+
+------------------------------------------------------------------------
+r5926 | polina@google.com | Wed Jul 06 19:43:24 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_simple_tests/graphics2d.stdout?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_nacl_file.cc?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_simple_tests/ppapi_geturl_invalid.stdin?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_simple_tests/ppapi_geturl_valid.stdout?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_ppb_file_ref.cc?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_simple_tests/nacl.scons?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_simple_tests/ppapi_geturl_invalid.stdout?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_simple_tests/ppapi_geturl_valid.stdin?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_simple_tests/graphics2d.stdin?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_ppb_file_system.cc?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_callback.cc?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_surface_3d.cc?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/DEPS?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_ppb_url_loader.cc?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_simple_tests/event.stdout?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_callback.h?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_simple_tests/file1.stdin?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_simple_tests/audio.stdin?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_simple_tests/file2.stdin?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_simple_tests/audio.stdout?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_simple_tests/file2.stdout?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_ppb_file_io.cc?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_simple_tests/file1.stdout?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/sel_universal/pepper_emu_core.cc?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/shared/ppapi_proxy/plugin_ppb_graphics_2d.cc?r1=5926&amp;r2=5925&amp;pathrev=5926
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/ppapi_simple_tests/event.stdin?r1=5926&amp;r2=5925&amp;pathrev=5926
+
+DEPS: Bump chrome_rev to 91508. Fix broken sel_universal tests.
+Add support for forcing callbacks (chrome rev 91205) to the proxy -
+this is tested by ppapi_tests run as nexes.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1980
+TEST=bots
+Review URL: http://codereview.chromium.org/7310012
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-07-07T02:45:18.000Z</ns0:updated><ns0:published>2011-07-07T02:45:18.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1980#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1980/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

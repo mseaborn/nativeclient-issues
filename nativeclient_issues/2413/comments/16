@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcMQn47eCl7ImA9WhRQEE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2413/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: a99112822a02e5d6f204cbe5517a8b37ea744cf9
+ Email: jvoung@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Switch the nop pnacl x86-64 IRT shim to the real one generated from IDL.
+
+We add pnacl_irt_shim to the Implicit Libs for pnacl x86-64 runs
+so that we get the freshest version instead of whatever is in the toolchain
+tarball.
+
+R=robertm@google.com,sehr@google.com
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2413
+TEST= ./scons bitcode=1 platform=x86-64 chrome_browser_tests
+
+Review URL: http://codereview.chromium.org/8776023
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@7353 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	SConstruct
+M	pnacl/build.sh
+M	site_scons/site_tools/naclsdk.py
+M	src/untrusted/pnacl_irt_shim/nacl.scons
+M	src/untrusted/pnacl_irt_shim/shim_ppapi.c
+M	tests/pnacl_client_translator/nacl.scons</ns0:content><ns0:updated>2011-12-04T21:28:03.000Z</ns0:updated><ns0:published>2011-12-04T21:28:03.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2413#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2413/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

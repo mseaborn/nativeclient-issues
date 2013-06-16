@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYFR347eCl7ImA9WhZTGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1564/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>pdox%goo...@gtempaccount.com</ns0:name><ns0:uri>/u/104735739662288482898/</ns0:uri></ns0:author><ns0:content type="html">Explanation of this bug:
+
+The LLVM CodeGen X86-64 backend was previously modified so that memory operations looked like they were operating on 32-bit pointers:
+
+"mov (%eax), ..."
+
+Of course in reality, on X86-64, memory addresses are 64-bit. Thus, in the NaCl rewrite pass, this would be rewritten as:
+
+mov %eax,%eax
+mov (%r15, %rax, 1), ...
+
+Unfortunately, this creates a disagreement between LLVM's model of the instruction and it's actual effects. In particular, LLVM assumes that because "mov (%eax), 10" is using %eax and not %rax, that it does not read the upper 32-bits of %rax. It also assumes that because it is not modifying %eax, it also not changing %rax. However, in reality, the instruction clears the upper bits of %rax.
+
+Thus, if data was packed in the upper bits of %rax, and a pointer in the lower bits, LLVM could generate a pointer dereference which accidentally trashes the upper bits.
+
+This is fixed by changing LLVM's view of memory operands as operating on 64-bit addresses. Pointers are still 32-bits, but they are zero-extended to 64-bits for memory operations. Most of the time, this won't have any effect on the code, since LLVM knows that implicit truncation will keep the upper 32-bits clear. 
+In the cases where the upper 32-bits are live, LLVM will now generate moves and copies to avoid trashing the upper 32-bits.
+
+http://codereview.chromium.org/6733025</ns0:content><ns0:updated>2011-03-24T16:11:56.000Z</ns0:updated><ns0:published>2011-03-24T16:11:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by pdox%goo...@gtempaccount.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1564#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1564/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0EASH47eCl7ImA9WhRUFEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2515/comments/full/22</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: a8743e31906559e991816c9fa75f4b0f758d6c93
+ Email: ncbray@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Change the x86-64 decoder to store jump offsets rather than target addresses.
+
+This change was a little complicated for two reasons.  First, it required
+changing the interface for printing disassembly information so that the offset
+could be transformed to an absolute address before printing.  This interface
+was widely used for printing debugging information, so a large number of lines
+were touched.  Second, the way that the decoder stored negative 32-bit
+constants was a little off, it kept trying to treat them as 64-bit constants.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2515
+TEST= ./scons platform=x86-64 validator_tests
+
+Review URL: https://chromiumcodereview.appspot.com/9131024
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@7668 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	src/trusted/validator/x86/decoder/nc_inst_state_statics.c
+M	src/trusted/validator/x86/decoder/nc_inst_trans.c
+M	src/trusted/validator/x86/decoder/ncop_exps.c
+M	src/trusted/validator/x86/decoder/ncop_exps.h
+M	src/trusted/validator/x86/ncval_reg_sfi/nc_illegal.c
+M	src/trusted/validator/x86/ncval_reg_sfi/nc_jumps.c
+M	src/trusted/validator/x86/ncval_reg_sfi/nc_jumps_detailed.c
+M	src/trusted/validator/x86/ncval_reg_sfi/nc_memory_protect.c
+M	src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter.c
+M	src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_utils.c
+M	src/trusted/validator_x86/ncdis_segments.c
+M	src/trusted/validator_x86/ncenuminsts.c</ns0:content><ns0:updated>2012-01-25T00:00:49.000Z</ns0:updated><ns0:published>2012-01-25T00:00:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 22 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2515#c22" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2515/comments/full/22" rel="self" type="application/atom+xml" /></ns0:entry>

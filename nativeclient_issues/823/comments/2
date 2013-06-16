@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEGRX47eCl7ImA9Wx5SGUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/823/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">Currently, the ARM validator tests work like this:
+1. You write some test programs in ARM assembly language.
+2. You run a script that generates fixtures -- ELF binaries that are then checked into the tree, because apparently more people want to run the tests than have the toolchain installed.
+3. The test snarfs in these fixtures and regurgitates some machine-readable (and mildly human-readable) output describing what it found.
+4. The test harness compares the output to a "golden file" checked in.  It must match byte-for-byte.
+
+This has worked so far, mostly because the validator binary has few moving parts and the output makes no effort to be pretty.  But it's not the right way to do things.  There are several problems with the current approach:
+1. Adding new tests, or tweaking existing tests, requires a dance with a little shell script.  When new engineers encounter this, they invariably ask "why are we checking in both source and binaries?"  This is a sign of a Non-Obvious Thing That Should Be Fixed.
+2. Because we involve gas (the GNU assembler) we're vulnerable to its caprice.  We've had tests break at least once because gas fixed an ARM Unified Syntax bug that we happened to rely on.  Since such breakages only appear when the fixtures are recompiled, simply updating the toolchain doesn't reveal them.
+3. Because we're testing not only the validator semantics, but also the format and spelling of its output, failures in the latter may be difficult to distinguish from the former.  (This hasn't happened in practice.  Yet.)
+4. The diagnostic messages when a test fails aren't spectacular.  The user gets a snippet of the (deliberately terse) validator output and the name of a fixture file, which invariable contains a dozen or so individual test cases.  (Because generating or adding a fixture file is difficult, engineers, myself included, have tended to add tests to existing files.)
+5. The tests are canned.  This makes it unnecessarily difficult to add even simple test pattern generation or modulation.  Since I'm trying to do both, this has been bothering me recently.
+
+I suggest that we could fix all of these problems by moving the validator test suite to unit tests -- in the formal sense of fully isolated component tests.  The validator is already factored such that this should be straightforward, if tedious.  The revised test method would look like this:
+1. Tests are defined in a C++ driver file, not a python script.  I'd probably use GTest, since (a) I like it and (b) it's already being used in our codebase.  Also it starts with G, so it must be good.
+2. Tests provide in-memory input to the Validator class and analyze its response.
+
+Since this would be entirely isolated and in-process, and the validator is thread-safe, we could potentially parallelize it on our beefier test bots.
+
+We lose a modicum of convenience with this approach, because gas is no longer involved.  This means we would need to hand-assemble the input programs (typically 1-4 instructions).  I was rather proud of how the current test harness doesn't require hand-assembly, but I must admit that it now seems like the right thing to do: it's the only way to demonstrate our correctness, given the possibility of assembler changes and bugs.
+
+I reckon I could have a feasibility study completed within a day, which should equip me to make a more precise estimate.</ns0:content><ns0:updated>2010-08-16T17:10:24.000Z</ns0:updated><ns0:published>2010-08-16T17:10:24.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>jasonw...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 2 by cbiffle@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=823#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/823/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,55 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkcAR347eCl7ImA9WhdXGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1851/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=6609
+
+------------------------------------------------------------------------
+r6609 | bsy@google.com | Thu Sep 01 10:24:06 PDT 2011
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/include/portability.h?r1=6609&amp;r2=6608&amp;pathrev=6609
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/fault_injection/fault_pm_nameservice_test.html?r1=6609&amp;r2=6608&amp;pathrev=6609
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/fault_injection/fault_injection.gyp?r1=6609&amp;r2=6608&amp;pathrev=6609
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/fault_injection/fault_injection.c?r1=6609&amp;r2=6608&amp;pathrev=6609
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/fault_injection?r1=6609&amp;r2=6608&amp;pathrev=6609
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/fault_injection/nacl.scons?r1=6609&amp;r2=6608&amp;pathrev=6609 (from /trunk/src/native_client/tests/nameservice/nacl.scons revision 6604)
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=6609&amp;r2=6608&amp;pathrev=6609
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/fault_injection/nacl_fi_test.c?r1=6609&amp;r2=6608&amp;pathrev=6609
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/fault_injection/fault_injection.h?r1=6609&amp;r2=6608&amp;pathrev=6609
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=6609&amp;r2=6608&amp;pathrev=6609
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_all_modules.c?r1=6609&amp;r2=6608&amp;pathrev=6609
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/minnacl/nacl.scons?r1=6609&amp;r2=6608&amp;pathrev=6609
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/fault_injection/fault_pm_nameservice.nmf?r1=6609&amp;r2=6608&amp;pathrev=6609 (from /trunk/src/native_client/tests/nameservice/pm_nameservice.nmf revision 6604)
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/nameservice/pm_nameservice_test.html?r1=6609&amp;r2=6608&amp;pathrev=6609
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=6609&amp;r2=6608&amp;pathrev=6609
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=6609&amp;r2=6608&amp;pathrev=6609
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/fault_injection/fault_pm_nameservice_test.cc?r1=6609&amp;r2=6608&amp;pathrev=6609 (from /trunk/src/native_client/tests/nameservice/pm_nameservice_test.cc revision 6604)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/fault_injection/no_fault_pm_nameservice_test.html?r1=6609&amp;r2=6608&amp;pathrev=6609
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/fault_injection?r1=6609&amp;r2=6608&amp;pathrev=6609
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/fault_injection/build.scons?r1=6609&amp;r2=6608&amp;pathrev=6609
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/multiple_sandboxes/nacl.scons?r1=6609&amp;r2=6608&amp;pathrev=6609
+
+fault injection library, plus its first use to cause out-of-memory
+returns from the load_module RPC.
+
+The fault injection library provides C macros to wrap and name various
+call sites.  It uses an environment variable, NACL_FAULT_INJECTION,
+which specifies a list of call sites and when fault(s) should be
+injected (e.g., invoke the function normally on the first 3 calls,
+then return an error on the next two, etc).  For some fault injection
+macros, the faulting value can be specified as well via this
+environment variable.  The counters for number of times control
+reaches a call site may be global or thread-specific.
+
+The fault_pm_nameservice_chrome_browser_test test is a modified
+version of pm_nameservice_chrome_browser_test; it checks that the load
+error is reported via the lastError string attribute of the embed DOM
+element, triggered by the delivery of the 'error' event.
+
+this CL also adds some missing NACL_PRI macros that were missing that
+was needed by the fault injection library.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1851
+TEST= fault_pm_nameservice_chrome_browser_test
+Review URL: http://codereview.chromium.org/7812012
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-09-01T17:27:26.000Z</ns0:updated><ns0:published>2011-09-01T17:27:26.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1851#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1851/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

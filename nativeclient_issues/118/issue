@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0AESX47eCl7ImA9WxBaFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/118</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105678638446503189415/</ns0:uri></ns0:author><ns0:content type="html">Service discovery attaches SRPC functions as methods on the JavaScript 
+object that represent the NaCl module connection.  However, no checks are 
+done to ensure that SRPC function names are legal JavaScript identifiers, 
+esp embedded spaces, etc.  for ECMAScript v3 (and later?), that's letters 
+and digits from all of Unicode.  See
+
+  http://docstore.mik.ua/orelly/webprog/jscript/ch02_07.htm
+
+Rather than including a Unicode validity checker, it probably suffices to 
+enforce the JavaScript 1.1 behavior of ASCII alphanum identifiers.</ns0:content><ns0:updated>2010-03-26T00:01:48.000Z</ns0:updated><ns0:published>2009-11-10T00:55:59.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>srpc service discovery can create illegal javascript identifiers</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/118/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=118" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/118" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-03-26T00:01:48.000Z</ns2:closedDate><ns2:id>118</ns2:id></ns0:entry>

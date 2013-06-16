@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMCRn47eCl7ImA9WhZaEUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1525/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: b875baa581a1a4a200b987c59015917253344ee0
+ Email: kschimpf@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Fix the x86-64 validator to be able to generate error messages that can be assorbed by ncval_annotate.py, and make ncval_annotate.py generate such messages.
+
+Also fixes some problems with validator print routines, which sometimes
+gets called before a validator state is created. In such cases,
+the error messages get directed to the log file.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1525
+Review URL: http://codereview.chromium.org/7249018
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@5805 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	src/trusted/validator_x86/build.scons
+M	src/trusted/validator_x86/ncval.c
+M	src/trusted/validator_x86/ncval_annotate.py
+M	src/trusted/validator_x86/ncval_annotate_test.py
+M	src/trusted/validator_x86/ncvalidate_iter.c
+M	src/trusted/validator_x86/ncvalidate_iter.h
+M	src/trusted/validator_x86/testdata/64/README
+M	src/trusted/validator_x86/testdata/64/jump_not_atomic.rval
+A	src/trusted/validator_x86/testdata/64/jump_not_atomic.rvala
+M	src/trusted/validator_x86/testdata/64/jump_not_atomic.val
+M	src/trusted/validator_x86/testdata/64/jump_not_atomic_1.rval
+A	src/trusted/validator_x86/testdata/64/jump_not_atomic_1.rvala
+M	src/trusted/validator_x86/testdata/64/jump_not_atomic_1.val
+M	src/trusted/validator_x86/testdata/64/mv_ebp_add_crossing.rval
+A	src/trusted/validator_x86/testdata/64/mv_ebp_add_crossing.rvala
+M	src/trusted/validator_x86/testdata/64/mv_ebp_add_crossing.val
+A	src/trusted/validator_x86/testdata/64/rep_tests.rvala</ns0:content><ns0:updated>2011-06-27T17:07:47.000Z</ns0:updated><ns0:published>2011-06-27T17:07:47.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1525#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1525/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

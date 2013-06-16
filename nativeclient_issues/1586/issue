@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUUGQH47eCl7ImA9WhRaE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1586</ns0:id><ns0:author>
+			<ns0:name>euge...@google.com</ns0:name><ns0:uri>/u/101600367715055138223/</ns0:uri></ns0:author><ns0:content type="html">int main(void) {
+  return 0;
+}
+
+# nacl64-gcc 1.c -lrt
+
+/home/user/root/nacl-sdk/lib/gcc/nacl64/4.4.3/../../../../nacl64/bin/ld:
+warning: libpthread.so.0, needed by
+/home/user/root/nacl-sdk/lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib64/librt.so,
+not found (try using -rpath or -rpath-link)
+/home/user/root/nacl-sdk/lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib64/librt.so:
+undefined reference to `pthread_barrier_wait@GLIBC_2.2.5'
+/home/user/root/nacl-sdk/lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib64/librt.so:
+undefined reference to `__pthread_unwind@GLIBC_PRIVATE'
+/home/user/root/nacl-sdk/lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib64/librt.so:
+undefined reference to `pthread_sigmask@GLIBC_2.2.5'
+/home/user/root/nacl-sdk/lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib64/librt.so:
+undefined reference to `__pthread_register_cancel@GLIBC_2.3.3'
+/home/user/root/nacl-sdk/lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib64/librt.so:
+undefined reference to `pthread_attr_setstacksize@GLIBC_2.2.5'
+/home/user/root/nacl-sdk/lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib64/librt.so:
+undefined reference to `pthread_once@GLIBC_2.2.5'
+/home/user/root/nacl-sdk/lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib64/librt.so:
+undefined reference to `pthread_detach@GLIBC_2.2.5'
+/home/user/root/nacl-sdk/lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib64/librt.so:
+undefined reference to `pthread_create@GLIBC_2.2.5'
+/home/user/root/nacl-sdk/lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib64/librt.so:
+undefined reference to `__pthread_unregister_cancel@GLIBC_2.3.3'
+/home/user/root/nacl-sdk/lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib64/librt.so:
+undefined reference to `pthread_cancel@GLIBC_2.2.5'
+/home/user/root/nacl-sdk/lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib64/librt.so:
+undefined reference to `__pthread_unwind_next@GLIBC_2.3.3'
+/home/user/root/nacl-sdk/lib/gcc/nacl64/4.4.3/../../../../nacl64/lib/../lib64/librt.so:
+undefined reference to `pthread_barrier_init@GLIBC_2.2.5'
+collect2: ld returned 1 exit status
+
+Adding -lpthread helps.
+Native gcc does not require -lpthread.</ns0:content><ns0:updated>2012-02-16T09:07:01.000Z</ns0:updated><ns0:published>2011-03-29T07:12:19.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Glibc's -lrt requires -lpthread but can't locate it</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1586/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1586" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1586" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1586</ns2:id></ns0:entry>

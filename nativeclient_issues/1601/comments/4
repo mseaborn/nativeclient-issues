@@ -1,0 +1,100 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk4FQX47eCl7ImA9WhZbEUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1601/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">
+x is an unsigned int, which in NaCl is an uint32.
+
+ y = x \bmod m
+where
+ m := 2^{13}-1
+
+let
+
+ x := xh 2^{26} + xm 2^{13} + xl
+      where 0 &lt;= xh &lt; 2^6 and
+            0 &lt;= xm &lt; 2^{13}
+            0 &lt;= xl &lt; 2^{13}
+
+since 2**13 \cong = \pmod{2**13-1}
+
+ y = x mod m
+   = (xh 2^{26} + xl 2^{13} + xl) \bmod m
+   = ((xh 2^{26} \bmod m) + (xl 2^{13} \bmod m) + xl) \bmod m
+   = (xh + xm + xl) \bmod m
+
+-------------------------------------------------------------------------------
+
+#include &lt;stdio.h&gt;
+
+void testzzz(const void* p) {
+  unsigned a = ((unsigned)p) % 8191;
+  printf("%u\n", a);
+}
+
+int main(void) {
+  testzzz((const void *)0x10662998);
+  return 0;
+}
+
+-------------------------------------------------------------------------------
+the compiler generated buggy code, annotated:
+-------------------------------------------------------------------------------
+
+testzzz:
+.LFB11:
+        .cfi_startproc
+        movl    %edi, %edx   ; %edx &lt;- x
+        movl    %edi, %esi   ; %esi &lt;- x
+        movl    $.LC0, %edi  ; printf format string
+        shrl    $13, %edx    ; %edx &lt;- x div 2^{13} = xh 2^{13} + xm
+        movl    %edx, %eax   ; %eax &lt;- xh 2^{13} + xm
+        sall    $13, %eax    ; %eax &lt;- xh 2^{26} + xm 2^{13}
+        subl    %edx, %eax   ; %eax &lt;- xh 2^{26} + xm 2^{13} - (xh 2{^13} + xm)
+	                     ;       = xh 2^{26} + xm 2^{13} - xh 2^{13} - xm
+        subl    %eax, %esi   ; %esi &lt;- %esi - %eax
+                             ;       =   xh 2^{26} + xm 2^{13} + xl
+                             ;         - xh 2^{26} - xm 2^{13} + xh 2^{13} + xm
+                             ;       = xh 2^{13} + xm + xl  (wrong)
+        xorl    %eax, %eax
+        jmp     printf
+        .cfi_endproc
+
+-------------------------------------------------------------------------------
+this is a fixed version, though it could probably be more efficient:
+-------------------------------------------------------------------------------
+testzzz:
+.LFB11:
+        .cfi_startproc
+        movl    %edi, %edx   ; %edx &lt;- x
+        movl    %edi, %esi   ; %esi &lt;- x
+        movl    $.LC0, %edi  ; printf format string
+        shrl    $13, %edx    ; %edx &lt;- x div 2^{13} = xh 2^{13} + xm
+        movl    %edx, %eax   ; %eax &lt;- xh 2^{13} + xm
+        sall    $13, %eax    ; %eax &lt;- xh 2^{26} + xm 2^{13}
+        subl    %edx, %eax   ; %eax &lt;- xh 2^{26} + xm 2^{13} - (xh 2{^13} + xm)
+	                     ;       = xh 2^{26} + xm 2^{13} - xh 2^{13} - xm
+        subl    %eax, %esi   ; %esi &lt;- %esi - %eax
+                             ;       =   xh 2^{26} + xm 2^{13} + xl
+                             ;         - xh 2^{26} - xm 2^{13} + xh 2^{13} + xm
+                             ;       = xh 2^{13} + xm + xl
+	movl    %esi, %eax
+        shrl    $13, %eax
+        movl    %eax, %edx
+	sall    $13, %edx
+        subl    %edx, %esi
+        addl    %eax, %esi
+
+	movl    %esi, %eax
+        shrl    $13, %eax
+        movl    %eax, %edx
+	sall    $13, %edx
+        subl    %edx, %esi
+        addl    %eax, %esi
+
+	cmpl    $8191, %esi
+	jne     1f
+        xorl    %esi, %esi
+
+1:      xorl    %eax, %eax
+        jmp     printf
+        .cfi_endproc
+</ns0:content><ns0:updated>2011-06-15T21:55:10.000Z</ns0:updated><ns0:published>2011-06-15T21:55:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1601#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1601/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>
