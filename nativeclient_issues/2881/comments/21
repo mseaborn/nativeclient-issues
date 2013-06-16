@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0UCRn47eCl7ImA9WhNSF08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2881/comments/full/21</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10154
+
+------------------------------------------------------------------------
+r10154 | mseaborn@chromium.org | 2012-11-01T00:18:47.034193Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/sel_ldr_x86_64.c?r1=10154&amp;r2=10153&amp;pathrev=10154
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=10154&amp;r2=10153&amp;pathrev=10154
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/syscall_return_regs/syscall_return_regs_test.c?r1=10154&amp;r2=10153&amp;pathrev=10154
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_switch_64.S?r1=10154&amp;r2=10153&amp;pathrev=10154
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=10154&amp;r2=10153&amp;pathrev=10154
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/syscall_return_sandboxing/sandboxed_x86_64.S?r1=10154&amp;r2=10153&amp;pathrev=10154
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=10154&amp;r2=10153&amp;pathrev=10154
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_syscall_64.S?r1=10154&amp;r2=10153&amp;pathrev=10154
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/tramp_64.h?r1=10154&amp;r2=10153&amp;pathrev=10154
+
+x86-64: Add a fast path syscall for second_tls_get(), used by the IRT
+
+This generalises the existing fast path for reading user code's TLS
+value and it generalises the tests for that fast path.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=2881
+TEST=run_irt_thread_test run_syscall_return_regs_test run_syscall_return_sandboxing_test
+
+Review URL: https://codereview.chromium.org/11339059
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-11-01T00:21:07.000Z</ns0:updated><ns0:published>2012-11-01T00:21:07.000Z</ns0:published><ns2:updates /><ns0:title>Comment 21 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2881#c21" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2881/comments/full/21" rel="self" type="application/atom+xml" /></ns0:entry>

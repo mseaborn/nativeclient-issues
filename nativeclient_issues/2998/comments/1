@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUERX47eCl7ImA9WhJVEUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2998/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>shcherb...@google.com</ns0:name><ns0:uri>/u/105197577636354702799/</ns0:uri></ns0:author><ns0:content type="html">Interestingly, prod. validator rejects vmaskmovdqu, but not the other two.
+Full test for all EMMS/SSE2/AVX instructions which have implicit %ds:(%rsi) operand looks like this:
+
+--------
+# EMMS/SSE2/AVX instructions which have implicit %ds:(%rsi) operand
+
+BITS: 64
+OUTCOME: invalid
+
+
+asm: mov    %edi,%edi
+hex: 89 ff
+
+asm: lea    (%r15,%rdi,1),%rdi
+hex: 49 8d 3c 3f
+
+asm: maskmovq %mm1,%mm2
+hex: 0f f7 d1
+
+
+asm: mov    %edi,%edi
+hex: 89 ff
+
+asm: lea    (%r15,%rdi,1),%rdi
+hex: 49 8d 3c 3f
+
+asm: maskmovdqu %xmm1,%xmm2
+hex: 66 0f f7 d1
+
+
+asm: mov    %edi,%edi
+hex: 89 ff
+
+asm: lea    (%r15,%rdi,1),%rdi
+hex: 49 8d 3c 3f
+
+asm: vmaskmovdqu %xmm1,%xmm2
+hex: c5 f9 f7 d1
+nc_out: ERROR: This instruction has been marked illegal by Native Client
+nc_out: ERROR: Opcode sequence doesn't define a valid x86 instruction
+dfa_out: DFA error in validator
+</ns0:content><ns0:updated>2012-08-28T09:30:04.000Z</ns0:updated><ns0:published>2012-08-28T09:30:04.000Z</ns0:published><ns2:updates>
+			<ns2:status>Started</ns2:status></ns2:updates><ns0:title>Comment 1 by shcherb...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2998#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2998/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

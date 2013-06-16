@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUIMQH47eCl7ImA9WhNSEUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3092/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I tried running gdb_tests on panda1, an ARM device running Ubuntu Oneiric (according to /etc/issue), with gdb 7.3.  All the GDB tests fail with an error like the following:
+
+$ gdb --version
+GNU gdb (Ubuntu/Linaro 7.3-0ubuntu2) 7.3-2011.08
+...
+$ dpkg -s gdb | grep ^Version
+Version: 7.3-0ubuntu2
+
+From GDB: ~"1, test_stepi_after_break () at tests/gdb/gdb_test_guest.c:21\n"
+From GDB: &amp;"21\ttests/gdb/gdb_test_guest.c: No such file or directory.\n"
+From GDB: ~"\tin tests/gdb/gdb_test_guest.c\n"
+From GDB: *stopped,frame={addr="0x00020130",func="test_stepi_after_break",args=[],file="tests/gdb/gdb_test_guest.c",line="21"},thread-id="1",stopped-threads="all"
+From GDB: (gdb)
+Traceback (most recent call last):
+  File "./stepi_after_break.py", line 22, in &lt;module&gt;
+    gdb_test.RunTest(test, 'stepi_after_break')
+  File "/home/nacl/mseaborn/tmp_for_test/gdb_test.py", line 276, in RunTest
+    test_func(gdb)
+  File "./stepi_after_break.py", line 12, in test
+    AssertEquals(gdb.ResumeCommand('continue')['reason'], 'breakpoint-hit')
+KeyError: 'reason'
+[  FAILED  ] pnacl_newlib.run_gdb_stepi_after_break_test (740 ms)
+
+This failure seems to be because this is an older version of GDB which doesn't provide the "reason" field.  According to http://www.gnu.org/software/gdb/news/, GDB 7.4 has "Some minor Remote protocol extensions and GDB/MI changes".
+
+I had more luck when running the tests against a newer version of GDB (7.4) on ARM Ubuntu Precise.
+</ns0:content><ns0:updated>2012-10-25T19:33:01.000Z</ns0:updated><ns0:published>2012-10-25T19:33:01.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3092#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3092/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

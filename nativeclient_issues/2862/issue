@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIBQ347eCl7ImA9WhNSEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2862</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I wrote nacl_deps_bump.py to partially automate updating nacl_revision in Chromium's DEPS file.  It lives here in this Git repo:
+https://github.com/mseaborn/nacl-dev-tools
+
+I've recently added auto_nacl_deps_bump.py which I'm running in a cron job.  It kicks off nacl_deps_bump.py whenever 10 new NaCl SVN revisions have appeared since its last try job, or whenever the oldest untried revision is &amp;gt;12 hours old.
+
+I want to automate this further:
+
+ 1) Produce a Buildbot-console-like status page showing the Chrome try job statuses for each NaCl revision.
+     * This will make it easier to see when a NaCl revision breaks when rolled into Chrome.
+     * This involves querying Buildbot to get try job results.
+
+ 2) Avoid getting DEPS patch conflicts in try jobs.  If we kick off a nacl_revision try job soon after a nacl_revision change was committed, applying the patch to DEPS will usually fail, because the try job is run against LKGR.  This produces lots of false-negative failures.  If LKGR hasn't caught up, the try job should be run against HEAD instead.
+
+ 3) Move nacl_deps_bump.py into SVN so that it can receive code reviews via Rietveld.  It probably belongs in the Chromium repo (under &amp;quot;tools&amp;quot;) since it's a tool for updating Chromium.  I will leave this until after (1) since it's likely to share code with &amp;quot;tools/parasite&amp;quot;.
+</ns0:content><ns0:updated>2012-10-25T01:29:12.000Z</ns0:updated><ns0:published>2012-06-20T22:31:09.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Further automate updating nacl_revision in Chromium's DEPS, and move code to SVN</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2862/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2862" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2862" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2862</ns2:id></ns0:entry>

@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUcESX47eCl7ImA9WhVaFU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2550/comments/full/21</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8906
+
+------------------------------------------------------------------------
+r8906 | mseaborn@chromium.org | Tue Jun 12 13:28:23 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_text.c?r1=8906&amp;r2=8905&amp;pathrev=8906
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_effector_trusted_mem.h?r1=8906&amp;r2=8905&amp;pathrev=8906
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_effector.h?r1=8906&amp;r2=8905&amp;pathrev=8906
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_desc_effector_ldr.c?r1=8906&amp;r2=8905&amp;pathrev=8906
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gio/gio_shm.c?r1=8906&amp;r2=8905&amp;pathrev=8906
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=8906&amp;r2=8905&amp;pathrev=8906
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gio/gio_shm_test.c?r1=8906&amp;r2=8905&amp;pathrev=8906
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gio/gio_shm.h?r1=8906&amp;r2=8905&amp;pathrev=8906
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_effector_trusted_mem.c?r1=8906&amp;r2=8905&amp;pathrev=8906
+
+Simplify creation and teardown of NaClDescEffectors
+
+Remove the Dtor() method of NaClDescEffector, since the
+implementations of it don't do anything apart from unset the vtable
+pointer.  NaClDescEffectors have very simple lifetimes -- a function
+receiving one never saves a pointer to it -- so a dynamic destructor
+is not needed.
+
+Allocate a single global instance of NaClDescEffectorTrustedMem, so
+that we don't have to create instances of this dynamically.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2550
+TEST=existing tests
+
+Review URL: https://chromiumcodereview.appspot.com/10496014
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-12T20:30:08.000Z</ns0:updated><ns0:published>2012-06-12T20:30:08.000Z</ns0:published><ns2:updates /><ns0:title>Comment 21 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2550#c21" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2550/comments/full/21" rel="self" type="application/atom+xml" /></ns0:entry>

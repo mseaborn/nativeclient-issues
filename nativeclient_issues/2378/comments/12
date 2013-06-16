@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEANQn47eCl7ImA9WhJaGE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2378/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">I think for var-arg functions, it is not allowed to use float regs at all (even with hard float).  So the calling convention is expected to be different.
+
+In section 6.1.2.1 of http://infocenter.arm.com/help/topic/com.arm.doc.ihi0042d/IHI0042D_aapcs.pdf
+
+"There are no VFP Co-processor Register Candidate (CPRCs) in a variadic procedure."
+
+</ns0:content><ns0:updated>2012-10-09T17:13:13.000Z</ns0:updated><ns0:published>2012-10-09T17:13:13.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2378#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2378/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,48 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0MMRX47eCl7ImA9WhNWGEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3223/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10475
+
+------------------------------------------------------------------------
+r10475 | mseaborn@chromium.org | 2012-12-19T00:41:21.821374Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/thread_suspension_test.cc?r1=10475&amp;r2=10474&amp;pathrev=10475
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/minnacl/nacl.scons?r1=10475&amp;r2=10474&amp;pathrev=10475
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/minnacl/minimal_test_host.c?r1=10475&amp;r2=10474&amp;pathrev=10475
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.c?r1=10475&amp;r2=10474&amp;pathrev=10475
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=10475&amp;r2=10474&amp;pathrev=10475
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/osx/thread_suspension.c?r1=10475&amp;r2=10474&amp;pathrev=10475
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.h?r1=10475&amp;r2=10474&amp;pathrev=10475
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=10475&amp;r2=10474&amp;pathrev=10475
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/thread_suspension.c?r1=10475&amp;r2=10474&amp;pathrev=10475
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/linux/thread_suspension.c?r1=10475&amp;r2=10474&amp;pathrev=10475
+
+Allow creating a NaClAppThread without creating a new host OS thread
+
+Split the thread-launching part of NaClAppThreadMake() into a separate
+function, NaClAppThreadSpawn().
+
+This is intended so that an embedder of NaCl can run untrusted code
+without the overhead of creating a new host OS thread.  I have added
+an example of this to tests/minnacl.
+
+ * This means that an embedder might leave NaClAppThread's "thread"
+   field uninitialized.  I have added a "host_thread_is_defined" field
+   so that the thread suspension code doesn't use an undefined
+   "thread" value accidentally in this case, and so that NaClAppThread
+   is freed correctly if NaClThreadCtor() fails.
+
+ * Rename NaClAppThread's "thread" to "host_thread" for greppability.
+
+ * Rename NaClThreadLauncher() to NaClAppThreadLauncher() for
+   consistency.
+
+ * Split out NaClGetInitialStackTop() from NaClCreateMainThread() to
+   avoid duplicating its logic in the test.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3223
+TEST=run_minnacl_test
+
+Review URL: https://codereview.chromium.org/11543028
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-12-19T03:58:04.000Z</ns0:updated><ns0:published>2012-12-19T03:58:04.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3223#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3223/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

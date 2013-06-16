@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0UHQn47eCl7ImA9WhJXGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2953</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">in our waterfall, we see messages like
+
+[44782,2953228288:21:40:03.009512] Write method is not implemented for object of type NACL_DESC_MUTEX
+
+esp in pyauto tests.  this is because NACL_EXE_STDOUT and NACL_EXE_STDERR is set to /dev/null, and because (now) browser-related tests really run in an outer sandbox, the &amp;quot;I/O redirection&amp;quot; that this implies fail.  the failure generates an error message, but otherwise leaves the NaCl module's descriptors 1 and 2 unused.  this implies that the first user descriptors will get these numbers instead of higher values, and when user code invokes stdio code to write to stdout or stderr streams, we get these warning messages.
+
+the point fix is something along the lines of
+
+- abort the execution when the redirection fails -- but that would cause all the tests (or test frameworks) that set these environment variables inappropriately to fail, possibly impacting external developers and not just our waterfall
+- use default inherited descriptors when the redirection fails -- but that's not what the environment variable said to do / not what the user supposedly wanted
+- use a new NaClDescDevNull subclass as data sink -- but recognizing /dev/null as a special case seem a bit of a hack
+
+this will all be easier/cleaner when the proper embedding interface cleanups are done.
+
+i'll probably take a crack and turning the warning to a LOG_FATAL and see what the fallout is.</ns0:content><ns0:updated>2012-08-13T20:53:53.000Z</ns0:updated><ns0:published>2012-08-08T18:44:28.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>warning messages in bot logs about trying to write to a mutex or condvar</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2953/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2953" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2953" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2012-08-13T20:53:53.000Z</ns2:closedDate><ns2:id>2953</ns2:id></ns0:entry>

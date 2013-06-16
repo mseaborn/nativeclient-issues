@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMAQ347eCl7ImA9WhVaEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2515/comments/full/58</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=139481
+------------------------------------------------------------------------
+r139481 | ncbray@chromium.org | 2012-05-30T07:44:52.660268Z
+
+Changed paths:
+   M /trunk/src/chrome/browser/nacl_host/nacl_process_host.cc
+   M /trunk/src/chrome/browser/nacl_host/nacl_validation_cache_unittest.cc
+   M /trunk/src/chrome/browser/nacl_host/nacl_process_host.h
+   M /trunk/src/chrome/browser/nacl_host/nacl_validation_cache.cc
+   M /trunk/src/chrome/browser/nacl_host/nacl_validation_cache.h
+   M /trunk/src/chrome/browser/renderer_host/chrome_render_message_filter.cc
+   M /trunk/src/chrome/browser/nacl_host/nacl_browser.cc
+   M /trunk/src/chrome/browser/renderer_host/chrome_render_message_filter.h
+   M /trunk/src/chrome/browser/nacl_host/nacl_browser.h
+
+NaCl Validation Caching: support incognito mode.
+
+When the validation cache handles a query from an incognito process it:
+1) checks the main cache without reordering it.
+2) if 1 fails, checks a seperate "incognito" cache that is never persisted to
+disk.
+
+When the validation cache handles a set from incognito process, it routes the
+set directly to the incognito cache.
+
+The net result is that incognito can use non-incognito cache entries, and cache
+entries created in incognito mode are only usable by incognito within a single
+browser session.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2515
+TEST= Run nexe in browser with NACL_VALIDATION_CACHE=1
+
+
+Review URL: https://chromiumcodereview.appspot.com/10446047
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-08T01:54:02.000Z</ns0:updated><ns0:published>2012-06-08T01:54:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 58 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2515#c58" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2515/comments/full/58" rel="self" type="application/atom+xml" /></ns0:entry>

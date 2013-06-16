@@ -16,5 +16,5 @@ Read-only file access is easy to implement and provides reasonable performance.
 Applications get useful access to URL contents as read-only file.
 </ns0:content><ns0:updated>2011-02-18T00:06:16.000Z</ns0:updated><ns0:published>2010-09-29T00:43:55.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>PPAPI NaCl support to load and read URLs</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Component-AppPlatform</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Milestone-Arctic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/928/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=928" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/928" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
-			<ns2:id>938</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>1325</ns2:id></ns2:blockedOn><ns2:closedDate>2011-01-25T19:08:42.000Z</ns2:closedDate><ns2:id>928</ns2:id></ns0:entry>
+			<ns2:id>938</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1325</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:closedDate>2011-01-25T19:08:42.000Z</ns2:closedDate><ns2:id>928</ns2:id></ns0:entry>

@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUABRX47eCl7ImA9WhNSEkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3098/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10105
+
+------------------------------------------------------------------------
+r10105 | mseaborn@chromium.org | 2012-10-26T02:14:50.179403Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/thread_capture/nacl_thread_capture_test_injection_test.c?r1=10105&amp;r2=10104&amp;pathrev=10105
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_test_injection_main.c?r1=10105&amp;r2=10104&amp;pathrev=10105
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=10105&amp;r2=10104&amp;pathrev=10105
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=10105&amp;r2=10104&amp;pathrev=10105
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main.h?r1=10105&amp;r2=10104&amp;pathrev=10105
+
+Rename NaClPostTestInjectionMain() to NaClSelLdrMain() for use by embedders
+
+This is intended to be a (fairly) stable interface for embedders of
+NaCl to use so that embedders can link a custom version of sel_ldr
+that does some custom initialisation in main() before calling into
+NaClSelLdrMain().
+
+We move the prototype of NaClSelLdrMain() into a new header file,
+sel_main.h, so that embedders can #include this without pulling in a
+load of NaCl internal stuff from sel_ldr.h.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3098
+TEST="run_hello_world_test run_nacl_thread_capture_test" cover this
+
+Review URL: https://codereview.chromium.org/11288004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-26T02:15:54.000Z</ns0:updated><ns0:published>2012-10-26T02:15:54.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3098#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3098/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

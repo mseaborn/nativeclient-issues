@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEMHQn47eCl7ImA9WhJWE0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2979/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9510
+
+------------------------------------------------------------------------
+r9510 | mseaborn@chromium.org | 2012-08-18T18:59:15.911112Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/stack_alignment/stack_alignment_asm_test.c?r1=9510&amp;r2=9509&amp;pathrev=9510
+
+Fix race condition in stack_alignment_asm_test
+
+Before this change, the test does not wait for thread_exit() to
+complete before launching another thread that runs on the same stack
+as the first.  This can fail because two instances of thread_exit()
+will be running on the same stack, and the IRT's thread_exit() is
+non-trivial (it calls the IRT's internal free() function).
+
+Fix this by letting thread_exit() set a flag to 0 when the thread has
+truly finished.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2979
+TEST=could not reproduce failure, so none besides running run_stack_alignment_asm_test_irt
+
+Review URL: https://chromiumcodereview.appspot.com/10860028
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-18T19:00:33.000Z</ns0:updated><ns0:published>2012-08-18T19:00:33.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2979#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2979/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

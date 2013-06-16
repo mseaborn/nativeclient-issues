@@ -1,0 +1,49 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0YBQn47eCl7ImA9WhFSEEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3440/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">------------------------------------------------------------------------
+r205855 | sehr@chromium.org | 2013-06-12T17:40:51.948073Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/nacl_browser/manifest_file/pm_manifest_file.nmf?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_nmf_options/pnacl_options.html?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad_doesnotexist.nmf?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/exit_status/pm_exit_status_test.html?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/ppapi_browser/manifest/manifest_arch_specific.nmf?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_error_handling/pnacl_error_handling.html?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/ppapi/ppb_core/ppapi_ppb_core.html?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest_util.cc?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest.cc?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/ppapi_browser/manifest/manifest_subdir.nmf?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad_crossorigin.nmf?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad.html?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/nacl_test_data.gyp?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/nacl_browser/manifest_file/irt_manifest_file.nmf?r1=205855&amp;r2=205854&amp;pathrev=205855
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_mime_type?r1=205855&amp;r2=205854&amp;pathrev=205855
+   D http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad_doesnotexist_nexe_only.nmf?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/ppapi_browser/manifest/manifest_top.nmf?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad.js?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_dyncode_syscall_disabled/pnacl_dyncode_syscall_disabled.html?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/nacl_browser/manifest_file/pm_pre_init_manifest_file.nmf?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/progress_events/ppapi_progress_events.html?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/common/chrome_content_client.cc?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/plugin.cc?r1=205855&amp;r2=205854&amp;pathrev=205855
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_mime_type/pnacl_mime_type.html?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/json_manifest.cc?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/plugin.h?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/nacl_load_test.html?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/json_manifest.h?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/ppapi_browser/bad/nacl.scons?r1=205855&amp;r2=205854&amp;pathrev=205855
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/renderer/chrome_content_renderer_client.cc?r1=205855&amp;r2=205854&amp;pathrev=205855
+
+Split pnacl and nacl mime types
+
+Manifest parsing now knows which mime type was used, and does not allow
+pnacl to be used from nacl manifests or vice-versa.
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3440
+R=bradnelson@chromium.org, jam@chromium.org, jvoung@chromium.org
+
+Committed: https://src.chromium.org/viewvc/chrome?view=rev&amp;revision=205329
+
+Review URL: https://codereview.chromium.org/16296005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-06-12T17:45:53.000Z</ns0:updated><ns0:published>2013-06-12T17:45:53.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3440#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3440/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

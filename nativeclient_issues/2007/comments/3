@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8MRH47eCl7ImA9WhdTFko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2007/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: ccdf94b33d40d8c028b0aec7908c88102e7fc5b7
+ Email: polina@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Security review fix: Avoid heap overflow in trusted PPB_URLLoader::ReadResponseBody proxy code. Also fix this in PPB_FileIO proxy.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2007
+TEST=bots
+Review URL: http://codereview.chromium.org/7342027
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@6057 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	src/shared/ppapi_proxy/browser_ppb_file_io_rpc_server.cc
+M	src/shared/ppapi_proxy/browser_ppb_url_loader_rpc_server.cc</ns0:content><ns0:updated>2011-07-14T21:28:05.000Z</ns0:updated><ns0:published>2011-07-14T21:28:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2007#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2007/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

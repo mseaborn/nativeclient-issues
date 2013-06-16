@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UCSX47eCl7ImA9WhBVEkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3360/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Derek pointed out that the LLVM backend lowers a load/store of an i24 (for example) into two loads/stores, for an i16 and an i8.  In the general case this is necessary to prevent stores from clobbering unintended locations, and to ensure unaligned loads don't cross a page boundary (although LLVM doesn't optimise an aligned load into an i32 load here).  i56 loads/stores are even worse because they are expanded into three memory accesses.
+
+This means that an int-size-legalization IR pass would have to transform loads and stores as well as arithmetic in order to be fully general.
+
+This makes me think that changing Clang to use i64 for bitfields instead of i40 might be a better option, because using fewer memory accesses (as GCC does) is probably faster.  Clang knows the overall struct layout, so it knows whether surrounding bytes need to be clobbered or preserved.
+
+In some cases, Clang already uses i64 instead of i40, based on the target triple:
+
+struct MyStruct {
+  unsigned long long a: 40;
+};
+unsigned long long get_field(struct MyStruct *ptr) {
+  return ptr-&gt;a;
+}
+
+$ pnacl-clang bitfield_min.c -S -o - --pnacl-frontend-triple=x86_64-linux-gnu -O1
+...
+%struct.MyStruct = type { [8 x i8] }
+
+define i64 @get_field(%struct.MyStruct* nocapture %ptr) #1 {
+entry:
+  %0 = bitcast %struct.MyStruct* %ptr to i64*
+  %bf.load = load i64* %0, align 8
+  %bf.clear = and i64 %bf.load, 1099511627775
+  ret i64 %bf.clear
+}
+
+$ pnacl-clang bitfield_min.c -S -o - --pnacl-frontend-triple=i386-linux-gnu -O1
+...
+%struct.MyStruct = type { [5 x i8], [3 x i8] }
+
+define i64 @get_field(%struct.MyStruct* nocapture %ptr) #1 {
+entry:
+  %0 = bitcast %struct.MyStruct* %ptr to i40*
+  %bf.load = load i40* %0, align 4
+  %bf.cast = zext i40 %bf.load to i64
+  ret i64 %bf.cast
+}
+
+Without --pnacl-frontend-triple, pnacl-clang produces the second variant, using i40.  Maybe we could get Clang to generate the first variant for PNaCl instead?
+
+However, adding a "char" field at the start or end of MyStruct causes Clang to use i40 for x86_64 too.
+</ns0:content><ns0:updated>2013-04-18T00:34:28.000Z</ns0:updated><ns0:published>2013-04-18T00:34:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3360#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3360/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

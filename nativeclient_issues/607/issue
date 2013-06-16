@@ -24,9 +24,9 @@ passes the FD back to the NaCl process in reply to its open() request.
 			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Make nacl-glibc's dynamic linker work inside the browser</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>DynamicLinking</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>Mstone-14</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/607/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=607" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/607" rel="self" type="application/atom+xml" /><ns2:stars>5</ns2:stars><ns2:blockedOn>
-			<ns2:id>642</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>662</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>1534</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>1544</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>1597</ns2:id></ns2:blockedOn><ns2:blocking>
-			<ns2:id>565</ns2:id></ns2:blocking><ns2:closedDate>2011-07-11T23:49:26.000Z</ns2:closedDate><ns2:id>607</ns2:id></ns0:entry>
+			<ns2:id>642</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>662</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1534</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1544</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1597</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blocking>
+			<ns2:id>565</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2011-07-11T23:49:26.000Z</ns2:closedDate><ns2:id>607</ns2:id></ns0:entry>

@@ -1,0 +1,73 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QBQn47eCl7ImA9WhJTF0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2868/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">&gt; &gt; Currently the standalone x86 sel_ldr gets two validators linked
+&gt; &gt; into it -- the original validator and the Ragel-based validator --
+&gt; &gt; with a runtime switch to select between them.  However, there is
+&gt; &gt; not much point in doing that.
+&gt;
+&gt; I disagree. I did not fully give up the idea of testing two validators
+&gt; side by side in Chrome Canary.  Initially I thought we would do it
+&gt; with production Chrome to collect real-life cases when validators
+&gt; differ.  The r&#1075;ntime switch is just a step towards that direction, a
+&gt; build switch is a step backwards.
+
+We discussed this several weeks ago.  The question is, what do you
+expect to achieve by testing validators side by side?  The idea that
+we will find differences in what the validators accept this way is
+fanciful.  There is no army of testers outside of the NaCl team who is
+going to find bugs like this for us.  We just have to do exhaustive
+testing of the validators ourselves.
+
+
+&gt; Launching a validator without a test in the field is probably not a
+&gt; disaster, but we should first agree that we are going with it.
+
+Flipping a build-time switch to turn on a new validator in Chrome
+Canary *is* how we would test this in the field.
+
+
+&gt; &gt;  * It is making sel_ldr unnecessarily slow to build, which causes
+&gt;
+&gt; It is necessarily slow in the sense that we are tuning the build
+&gt; time vs.  performance _now_ and making sure it does not affect us
+&gt; when we are closer to the release.
+
+You're only getting that testing by luck because issue 2860 hasn't
+been fixed yet.
+
+
+&gt; &gt; There is no need for a runtime validator switch.  We're not doing
+&gt; &gt; one for Chromium, and really the standalone sel_ldr and Chromium
+&gt; &gt; should be consistent with each other.
+&gt;
+&gt; No, talking about consistency here is a false alarm.  The standalone
+&gt; sel_ldr will be consistent with Chromium as soon as we pass the
+&gt; stabilization/testing phase for validator_ragel. Now the question is
+&gt; different: whether a build time switch is more useful than runtime
+&gt; switch.
+
+I mentioned that because I'm working on removing the NACL_STANDALONE
+#define.  As the uses of it become fewer, I will put more pressure on
+removing the validator's use of it. :-)
+
+
+&gt; &gt; For testing, the plan -- as discussed in
+&gt; &gt; https://chromiumcodereview.appspot.com/10386190/ -- is to have a
+&gt; &gt; Scons build-time switch, and extra Buildbot steps to run
+&gt; &gt; validator_tests for the Ragel-based validator.
+&gt;
+&gt; This is possible, and I would do that if we agree that trying two
+&gt; validators in the field is a bad idea.
+&gt;
+&gt; Generally I do not like build modes because it would require more
+&gt; hassle with buildbot configurations, this case is probably an
+&gt; exception.
+
+We discussed all of this before?  You need a build mode switch if you
+are going to run validator_tests, dynamic_modify_test etc. against the
+Ragel-based validator on the bots.
+
+Adding a buildbot step is trivial: it only involves changing
+native_client/buildbot/buildbot_standard.py and does not require
+changing the Buildbot config at all.
+</ns0:content><ns0:updated>2012-06-26T22:55:53.000Z</ns0:updated><ns0:published>2012-06-26T22:55:53.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2868#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2868/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

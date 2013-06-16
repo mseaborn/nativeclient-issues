@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk4ASX47eCl7ImA9WhNRGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3103/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10257
+
+------------------------------------------------------------------------
+r10257 | mcgrathr@chromium.org | 2012-11-13T22:14:29.548398Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/callingconv/nacl.scons?r1=10257&amp;r2=10256&amp;pathrev=10257
+
+Enable arm-nacl-gcc for pnacl callingconv test
+
+Now that there is a toolchain available, this test can be enabled
+for proper interoperability testing between the two compilers.
+The test is currently broken (see issue 3143) and so disabled by
+default, but with this it can be run by hand for debugging.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3103
+TEST= trybots
+
+R=jvoung@google.com
+
+Review URL: https://codereview.chromium.org/11377118
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-11-13T22:15:48.000Z</ns0:updated><ns0:published>2012-11-13T22:15:48.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3103#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3103/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

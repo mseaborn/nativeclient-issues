@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk4BSH47eCl7ImA9WhJWGE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1918/comments/full/31</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9559
+
+------------------------------------------------------------------------
+r9559 | halyavin@google.com | 2012-08-24T16:13:16.478192Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/hermetic_cygwin/make_hermetic_cygwin.sh?r1=9559&amp;r2=9558&amp;pathrev=9559
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/hermetic_cygwin/setup.ini?r1=9559&amp;r2=9558&amp;pathrev=9559
+
+Update scripts to build new cygwin version.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1918
+TEST= none
+Review URL: https://chromiumcodereview.appspot.com/10878048
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-24T16:15:59.000Z</ns0:updated><ns0:published>2012-08-24T16:15:59.000Z</ns0:published><ns2:updates /><ns0:title>Comment 31 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1918#c31" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1918/comments/full/31" rel="self" type="application/atom+xml" /></ns0:entry>

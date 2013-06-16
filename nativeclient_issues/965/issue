@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkEBQ347eCl7ImA9WhNUGU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/965</ns0:id><ns0:author>
+			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">Bennet has noticed a number of paths in the sel_ldr that disable sandbox features (like the validator) in response to environment variables.  Someone needs to go through these and consider them very carefully: exposing our security to possible environment pollution seems imprudent.
+
+These options should be conditionally compiled out using the DANGEROUS flag.  If this isn't possible we need a very clear justification.
+
+Bennet, please update this with any notes you have on specifics.</ns0:content><ns0:updated>2013-01-11T20:04:12.000Z</ns0:updated><ns0:published>2010-10-07T18:24:09.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>sel_ldr may disable sandbox under the control of environment variables</ns0:title><ns2:label>Security</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-16</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/965/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=965" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/965" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-09-23T20:41:27.000Z</ns2:closedDate><ns2:id>965</ns2:id></ns0:entry>

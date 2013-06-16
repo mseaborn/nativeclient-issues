@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEBRH47eCl7ImA9WhBVGE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3397/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Now the remaining failure is that DevIL is attempting to build a .cpp file with a C standard and clang is unhappy about that.  I don't know if there is a way to turn off that error (it's not a warning, which could be turned off by -Wno-&lt;foo&gt;).
+
+
+libtool: compile:  /mnt/data/b/build/slave/periodic-linux-pnacl_newlib-all/build/src/build_tools/../pepper_XX/toolchain/linux_x86_pnacl/newlib/bin/pnacl-clang++ -DHAVE_CONFIG_H -I. -I../../lib -I../include/IL -I ../../lib/../src-IL/include -I ../../lib/../include -std=gnu99 -fgnu89-inline -O3 -MT libIL_la-il_exr.lo -MD -MP -MF .deps/libIL_la-il_exr.Tpo -c ../../lib/../src-IL/src/il_exr.cpp -o libIL_la-il_exr.o
+error: invalid argument '-std=gnu99' not allowed with 'C++/ObjC++'
+
+</ns0:content><ns0:updated>2013-04-24T16:57:35.000Z</ns0:updated><ns0:published>2013-04-24T16:57:35.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3397#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3397/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

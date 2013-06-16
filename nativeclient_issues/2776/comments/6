@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AAQX47eCl7ImA9WhJREkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2776/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9144
+
+------------------------------------------------------------------------
+r9144 | bsy@google.com | Fri Jul 13 14:35:52 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator-test.c?r1=9144&amp;r2=9143&amp;pathrev=9144
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/nacl_log.c?r1=9144&amp;r2=9143&amp;pathrev=9144
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/nacl_log.h?r1=9144&amp;r2=9143&amp;pathrev=9144
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder-test.c?r1=9144&amp;r2=9143&amp;pathrev=9144
+
+Revert change to remove positive detail-level log statements at compile-time.
+
+This CL re-enables the dynamic checks for comparing desired verbosity
+level against log statements' detail level for all levels of logging
+detail.  The validator changes are to make the ugly hacks there to
+avoid linking against the platform library conform to the name
+changes.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2776
+TEST= existing tests
+Review URL: https://chromiumcodereview.appspot.com/10702199
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-13T21:42:20.000Z</ns0:updated><ns0:published>2012-07-13T21:42:20.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2776#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2776/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

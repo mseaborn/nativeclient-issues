@@ -1,0 +1,51 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUADQX47eCl7ImA9WhBWFkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3381</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+
+PNACL_VERSION=11131
+
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+
+1. Generate .ll test like this:
+
+define i32 @foo() {
+  %1 = call { i32, i1 } @llvm.umul.with.overflow.i32(i32 undef, i32 16)                                                                                                                                                                                                            
+  %2 = extractvalue { i32, i1 } %1, 1
+  %3 = extractvalue { i32, i1 } %1, 0
+  %4 = or i32 %3, 3
+  %5 = select i1 %2, i32 18, i32 %4
+  ret i32 %5
+}
+
+declare { i32, i1 } @llvm.umul.with.overflow.i32(i32, i32)
+
+
+2. Compile w/ -mtriple=x86_64-none-nacl-gnu:
+
+toolchain/pnacl_linux_x86/host_x86_32/bin/llc -mtriple=x86_64-none-nacl-gnu -filetype=obj -reduce-memory-footprint -mcpu=core2 test.ll -o test.o -debug 
+
+3. See:
+
+@ApplyStackSFI(, PUSHF64 %RSP&amp;lt;imp-def&amp;gt;, %RSP&amp;lt;imp-use&amp;gt;, %EFLAGS&amp;lt;imp-use&amp;gt;
+)
+PUSHF64 %RSP&amp;lt;imp-def&amp;gt;, %RSP&amp;lt;imp-use&amp;gt;, %EFLAGS&amp;lt;imp-use&amp;gt;
+3 operands:
+  0(0):%RSP&amp;lt;imp-def&amp;gt;
+  1(0):%RSP&amp;lt;imp-use&amp;gt;
+  2(0):%EFLAGS&amp;lt;imp-use&amp;gt;
+
+Unhandled Stack SFI
+UNREACHABLE executed at /mnt/data/b/build/slave/linux-pnacl-x86_64/build/native_client/pnacl/git/llvm/lib/Target/X86/X86NaClRewritePass.cpp:317!
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+We may need some way of avoiding the use of pushf.  IIRC pushf is not allowed by the validator.
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+See test above.</ns0:content><ns0:updated>2013-04-10T17:09:30.000Z</ns0:updated><ns0:published>2013-04-10T16:09:19.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:state>open</ns2:state><ns0:title>PNaCl: @llvm.umul.with.overflow.i32 plus arithmetic and select generates PUSHF</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3381/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3381" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3381" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>3381</ns2:id></ns0:entry>

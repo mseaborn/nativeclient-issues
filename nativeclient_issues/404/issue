@@ -1,9 +1,10 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkANRn47eCl7ImA9WhRTF00.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCRH47eCl7ImA9WhJbEEw.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/404</ns0:id><ns0:author>
-			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">llvm-gcc is frozen at 4.2 but there are some non-official ports </ns0:content><ns0:updated>2011-11-07T23:33:17.000Z</ns0:updated><ns0:published>2010-04-07T19:32:34.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">llvm-gcc is frozen at 4.2 but there are some non-official ports </ns0:content><ns0:updated>2012-09-19T01:32:45.000Z</ns0:updated><ns0:published>2010-04-07T19:32:34.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/114634225736176908130/</ns2:uri><ns2:username>nlewy...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>switch to a more recent version of the gcc frontend and/or exoplore clang</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/404/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=404" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/404" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
-			<ns2:id>2279</ns2:id></ns2:blockedOn><ns2:blocking>
-			<ns2:id>709</ns2:id></ns2:blocking><ns2:closedDate>2011-11-07T23:33:17.000Z</ns2:closedDate><ns2:id>404</ns2:id></ns0:entry>
+			<ns2:id>2279</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blocking>
+			<ns2:id>709</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>709</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2011-11-07T23:33:17.000Z</ns2:closedDate><ns2:id>404</ns2:id></ns0:entry>

@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEFQn47eCl7ImA9WhBTFko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3302/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>damonp...@gmail.com</ns0:name><ns0:uri>/u/112358947840938663111/</ns0:uri></ns0:author><ns0:content type="html">Here is the version information:
+bash-4.1$  C:/cygwin/opt/toolchain/nacl_sdk/pepper_canary/toolchain/win_x86_pnacl/newlib/bin/pnacl-clang.bat --version
+clang version 3.3 (http://llvm.org/git//clang.git 2e39713a3d72c243a2bcd13cc8f5036ba6b487d9) (http://git.chromium.org/native_client/pnacl-llvm.git 411e665e7c7b288760015c670177c8493ccd3e0c)
+Target: le32-unknown-nacl
+Thread model: posix
+bash-4.1$  C:/cygwin/opt/toolchain/nacl_sdk/pepper_canary/toolchain/win_x86_pnacl/newlib/bin/pnacl-clang++.bat --version
+clang version 3.3 (http://llvm.org/git//clang.git 2e39713a3d72c243a2bcd13cc8f5036ba6b487d9) (http://git.chromium.org/native_client/pnacl-llvm.git 411e665e7c7b288760015c670177c8493ccd3e0c)
+Target: le32-unknown-nacl
+Thread model: posix
+
+Thanks.
+Damon</ns0:content><ns0:updated>2013-02-12T14:16:53.000Z</ns0:updated><ns0:published>2013-02-12T14:16:53.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by damonp...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3302#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3302/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

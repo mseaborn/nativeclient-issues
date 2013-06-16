@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkcGRn47eCl7ImA9WhNQFEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3138/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10318
+
+------------------------------------------------------------------------
+r10318 | petarj@mips.com | 2012-11-21T03:19:01.898778Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/model.h?r1=10318&amp;r2=10317&amp;pathrev=10318
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/ncval.cc?r1=10318&amp;r2=10317&amp;pathrev=10318
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/validator.cc?r1=10318&amp;r2=10317&amp;pathrev=10318
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/validator.h?r1=10318&amp;r2=10317&amp;pathrev=10318
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/validator_tests.cc?r1=10318&amp;r2=10317&amp;pathrev=10318
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/ncvalidate.cc?r1=10318&amp;r2=10317&amp;pathrev=10318
+
+[MIPS] Forbid $sp update at the end of the last bundle.
+
+Validator should not allow change of $sp at the end of the last bundle, since
+someone could place a code right after it.
+
+This change mimics fix on ARM from https://codereview.chromium.org/11361222
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3138
+TEST= ./scons run_mips_validator_tests
+
+
+Review URL: https://chromiumcodereview.appspot.com/11415031
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-11-21T03:20:27.000Z</ns0:updated><ns0:published>2012-11-21T03:20:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3138#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3138/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

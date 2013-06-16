@@ -1,0 +1,98 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUUFQ347eCl7ImA9WhNREUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3114/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10192
+
+------------------------------------------------------------------------
+r10192 | mseaborn@chromium.org | 2012-11-05T19:19:02.757683Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/thread_handle_map.h?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_signal_common.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/osx/nacl_ldt.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_tls.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_invalid.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_tls_unittest.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_invalid.h?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/nacl_cpuwhitelist.h?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/arch/arm/nacl_dep_qualify_arch.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_switch_to_app.h?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/exception_patch/intercept_test.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/exception_patch/ntdll_patch.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_thread_nice.h?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/nacl_base/nacl_base_test.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/exception_patch/ntdll_patch.h?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/posix/nacl_dep_qualify.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/mips/sel_rt.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/win/nacl_os_qualify.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/linux/nacl_os_qualify.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/arch/x86_64/nacl_dep_qualify_arch.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/arch/x86/platform_qual_test.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_signal_frame_test.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_tls_64.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/sel_rt.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/exception_patch/ntdll_test.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_tls.h?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/nacl_signal.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/arch/x86/vcpuid.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/win/nacl_dep_qualify.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/debug_stub.h?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/osx/nacl_thread_nice.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/arch/x86/vcpuid.h?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/posix/nacl_signal.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/arch/x86_32/nacl_dep_qualify_arch.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_qualify.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/nacl_ldt.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_thread_death_test.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_qualify.h?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/mips/nacl_tls.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86/nacl_ldt_x86.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86/nacl_ldt_x86.h?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/arch/mips/nacl_dep_qualify_arch.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_rt.h?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/sel_rt_32.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/env_cleanser_test.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/linux/x86/nacl_ldt.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/nacl_tls_32.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/sel_rt_64.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/format_string_test.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/nacl_dep_qualify.h?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_ldt_unittest.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_asm_symbols.h?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/osx/outer_sandbox.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/nacl_os_qualify.h?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/nacl_base/nacl_min_max_test.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/osx/nacl_os_qualify.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_handlers.h?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/arch/x86/nacl_cpuwhitelist_test.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/arch/x86/nacl_cpuwhitelist.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/linux/nacl_bootstrap_prereservation_test.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_sync_cond_test.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/thread_handle_map.c?r1=10192&amp;r2=10191&amp;pathrev=10192
+
+Make src/trusted compilable with -Wstrict-prototypes
+
+In C, "void foo();" or "void foo() { ... }" leaves the function's
+arguments unspecified.  This change fixes various cases to use "void
+foo(void)" instead, which declares the function as taking no
+arguments.
+
+This conversion was automated using the commands:
+
+  perl -pi -e 's/^([a-z].*)\(\);$/$1(void);/gi' $(git ls-files)
+  perl -pi -e 's/^([a-z].*)\(\) {$/$1(void) {/gi' $(git ls-files | grep '\.c$')
+
+However, I have left the following C++ headers unchanged:
+
+  src/trusted/debug_stub/test.h
+  src/trusted/sel_universal/reverse_emulate.h
+  src/trusted/validator_mips/decode.h
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3114
+TEST=build
+
+Review URL: https://codereview.chromium.org/11361079
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-11-05T19:20:12.000Z</ns0:updated><ns0:published>2012-11-05T19:20:12.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3114#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3114/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

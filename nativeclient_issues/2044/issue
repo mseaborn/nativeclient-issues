@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEEFRX47eCl7ImA9WhdXEEQ.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE4CQ347eCl7ImA9WhNWEUQ.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2044</ns0:id><ns0:author>
 			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The untrusted atomic_ops_test failed once today on mac10.6-glibc-opt with the following output:
 
@@ -23,10 +23,9 @@ Given that it printed &amp;quot;PASSED&amp;quot;, it must have segfaulted on one
   NaClCondVarDtor(&amp;amp;gFinishedCv);
   NaClMutexDtor(&amp;amp;gMutex);
   free(threads);
-</ns0:content><ns0:updated>2011-08-23T10:50:14.000Z</ns0:updated><ns0:published>2011-07-18T23:48:07.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:owner>
+</ns0:content><ns0:updated>2012-12-11T02:29:22.000Z</ns0:updated><ns0:published>2011-07-18T23:48:07.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
-			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
-			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>The untrusted atomic_ops_test failed once on mac10.6-glibc-opt</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>FlakeyBots</ns2:label><ns2:label>Test</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2044/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2044" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2044" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2044</ns2:id></ns0:entry>
+			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>The untrusted atomic_ops_test failed once on mac10.6-glibc-opt</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>FlakeyBots</ns2:label><ns2:label>Test</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2044/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2044" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2044" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-12-11T02:29:22.000Z</ns2:closedDate><ns2:id>2044</ns2:id></ns0:entry>

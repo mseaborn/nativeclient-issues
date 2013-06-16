@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IHRH47eCl7ImA9WhNTE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2870/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10002
+
+------------------------------------------------------------------------
+r10002 | mseaborn@chromium.org | 2012-10-15T20:48:10.173914Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/multiple_sandboxes/multidomain_test_host.c?r1=10002&amp;r2=10001&amp;pathrev=10002
+
+Attempt to fix flakiness in run_multidomain_test's exit status on Windows
+
+This test has been failing occasionally with:
+
+  ERROR: Command returned exit status 1001 (0x3e9) but we expected 0 (0x0)
+
+Using ExitProcess() rather than TerminateProcess() (which NaClExit()
+uses) should prevent this flakiness.  If this works, we might consider
+changing NaClExit() to use ExitProcess().
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2870
+TEST=run_multidomain_test (but I couldn't reproduce the flakiness)
+
+Review URL: https://codereview.chromium.org/11137021
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-16T01:38:55.000Z</ns0:updated><ns0:published>2012-10-16T01:38:55.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2870#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2870/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

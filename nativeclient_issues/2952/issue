@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUUARX47eCl7ImA9WhNUGU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2952</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The debug stub's main loop currently works by polling 10 times per second to wait for something to do.  See the &amp;quot;IPlatform::Relinquish(100)&amp;quot; call in target.cc.
+
+We can make the debug stub a lot more responsive if we remove this busy-waiting and do things properly.
+
+This will need to wait until after issue 2948 is addressed, since that will overhaul how the debug stub gets notified about untrusted faults.
+</ns0:content><ns0:updated>2013-01-11T11:20:44.000Z</ns0:updated><ns0:published>2012-08-08T00:25:14.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Make the debug stub faster: remove the sleep() calls</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-DebugStub</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Performance</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2952/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2952" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2952" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-01-11T11:20:44.000Z</ns2:closedDate><ns2:id>2952</ns2:id></ns0:entry>

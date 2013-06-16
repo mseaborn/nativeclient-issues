@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYFR347eCl7ImA9WhVTEU0.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AGRn47eCl7ImA9WhBTEU0.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1864</ns0:id><ns0:author>
 			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? r885 from SVN
 On what operating system? Ubuntu 10.04 Linux 64-bit
@@ -62,6 +62,6 @@ Segment at 0xB00060000 belongs to the loader
 ==6948== 
 ==6948== For counts of detected and suppressed errors, rerun with: -v
 ==6948== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 4 from 4)
-</ns0:content><ns0:updated>2012-02-24T17:05:16.000Z</ns0:updated><ns0:published>2011-05-26T22:38:11.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+</ns0:content><ns0:updated>2013-02-05T23:08:47.000Z</ns0:updated><ns0:published>2011-05-26T22:38:11.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
 			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Valgrind detects 608 bytes are leaked when running simple nexe with sel_ldr</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Mstone-21</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1864/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1864" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1864" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1864</ns2:id></ns0:entry>

@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYGRX47eCl7ImA9WhJWGE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2879/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9556
+
+------------------------------------------------------------------------
+r9556 | mseaborn@chromium.org | 2012-08-24T15:40:07.424887Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/abi.cc?r1=9556&amp;r2=9555&amp;pathrev=9556
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/abi.h?r1=9556&amp;r2=9555&amp;pathrev=9556
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/target.cc?r1=9556&amp;r2=9555&amp;pathrev=9556
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/debug_stub/debug_stub_test.py?r1=9556&amp;r2=9555&amp;pathrev=9556
+
+Debug stub: x86: Use HLT for the initial breakpoint instead of INT3
+
+This is necessary for Mac OS X support, because INT3 does not work
+properly on Mac: a kernel bug means that INT3s in untrusted code are
+not reported via Mach exception handling.
+
+This also simplifies the code, because we no longer need to subtract 1
+from the instruction pointer to undo the effect of the INT3
+instruction.  We can remove the 'after_' field from BPDef since it is
+no longer needed.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2879
+TEST=run_debug_stub_test
+
+Review URL: https://chromiumcodereview.appspot.com/10869043
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-24T15:45:24.000Z</ns0:updated><ns0:published>2012-08-24T15:45:24.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2879#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2879/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

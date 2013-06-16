@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08HSH47eCl7ImA9WhJRFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2881/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9152
+
+------------------------------------------------------------------------
+r9152 | mseaborn@chromium.org | Mon Jul 16 13:48:22 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/irt_private_pthread/irt_thread_test.c?r1=9152&amp;r2=9151&amp;pathrev=9152
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt_thread.c?r1=9152&amp;r2=9151&amp;pathrev=9152
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt_tls.c?r1=9152&amp;r2=9151&amp;pathrev=9152
+
+TLS: Add check to require that the thread pointer points to itself
+
+As explained in the comment, NaCl can make x86-32's "%gs:0" TLS access
+work in two ways:
+
+ (1) with the %gs segment pointing into untrusted address space
+ (2) with the %gs segment pointing into trusted address space
+
+In a future change, I plan to switch from (1) to (2), but we want to
+retain the option of switching back to (1) in the future.
+
+This new check will work with all shipped NaCl SDKs.  The purpose of
+this change is to ensure that any hypothetical future third-party user
+threading libraries for NaCl will also work with both (1) and (2).
+
+If there were any third-party user threading libraries, this might
+break them if they don't use *(void **) thread_ptr == thread_ptr, but
+since no third-party NaCl user threading libraries exist we should be
+OK.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2881
+TEST= trybots
+
+Review URL: https://chromiumcodereview.appspot.com/10694135
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-16T20:50:39.000Z</ns0:updated><ns0:published>2012-07-16T20:50:39.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2881#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2881/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

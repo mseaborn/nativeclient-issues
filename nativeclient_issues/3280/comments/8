@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcCQH47eCl7ImA9WhBTEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3280/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10712
+
+------------------------------------------------------------------------
+r10712 | mseaborn@chromium.org | 2013-02-05T17:36:42.193162Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_hook.c?r1=10712&amp;r2=10711&amp;pathrev=10712
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pthread/nc_mutex.c?r1=10712&amp;r2=10711&amp;pathrev=10712
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/nacl_log.c?r1=10712&amp;r2=10711&amp;pathrev=10712
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/include/nacl_compiler_annotations.h?r1=10712&amp;r2=10711&amp;pathrev=10712
+
+Add NACL_LIKELY() compiler annotations
+
+This gives a hint to the compiler to optimise code so that the common
+case (or at least the case that matters for speed) is straight-line
+code in which conditional jumps are not taken.
+
+I am using this sparingly, only on critical paths.  It could increase
+code size unnecessarily if added everywhere.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3280
+TEST=jump count from run_signal_handler_single_step_test
+
+Review URL: https://codereview.chromium.org/12188005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-02-05T17:41:01.000Z</ns0:updated><ns0:published>2013-02-05T17:41:01.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3280#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3280/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

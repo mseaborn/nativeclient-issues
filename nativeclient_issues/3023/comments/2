@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE4CQH47eCl7ImA9WhJUE00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3023/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>b...@chromium.org</ns0:name><ns0:uri>/u/103098999265579199290/</ns0:uri></ns0:author><ns0:content type="html">right after the exit status mismatch is the standard output and error log:
+
+ERROR: Command returned exit status -1 (0xffffffff) but we expected 0 (0x0)
+======================================================================
+Stdout for nacl_glibc.run_cond_wait_test:
+======================================================================
+pthread_mutex_unlock return: 0 (should be 0)
+
+
+======================================================================
+Stderr for nacl_glibc.run_cond_wait_test:
+======================================================================
+[6292,5312:10:48:49.509000] BYPASSING ALL ACL CHECKS
+
+[6292,5312:10:48:49.509000] Native Client module will be loaded at base address 0x0000000001400000
+
+DEBUG MODE ENABLED (bypass acl)
+
+[6292,2692:10:48:49.694000] NaClAbiStatHostDescStatXlateCtor: Unusual NaCl descriptor type (not constructible). The NaCl app has a file with st_mode = 010000. (This is normal for std{in,out,err}, or other inherited/injected files.)
+
+
+[  FAILED  ] nacl_glibc.run_cond_wait_test (202 ms)
+
+the code fragment that prints the standard output message, from tests/threads/cond_wait_test.cc, is the penultimate executable line in main:
+  ...
+  printf("pthread_mutex_unlock return: %i (should be 0)\n", rc);
+  return rc;
+}
+so the code says the exit status is going to be 0, but somehow it turned to -1.
+
+my guess is that it's either a TCB issue with thread exit status on windows getting mixed up with process exit status (which we've seen before), or a glibc runtime issue.</ns0:content><ns0:updated>2012-09-10T18:49:21.000Z</ns0:updated><ns0:published>2012-09-10T18:49:21.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by b...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3023#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3023/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

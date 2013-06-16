@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMBQH47eCl7ImA9WhJQF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/41</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9333
+
+------------------------------------------------------------------------
+r9333 | mseaborn@chromium.org | 2012-07-31T22:35:25.451428Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/thread_suspension/suspend_test_guest.c?r1=9333&amp;r2=9332&amp;pathrev=9333
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_config.h?r1=9333&amp;r2=9332&amp;pathrev=9333
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_switch.S?r1=9333&amp;r2=9332&amp;pathrev=9333
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_switch_to_app_arm.c?r1=9333&amp;r2=9332&amp;pathrev=9333
+
+Thread suspension: ARM: Fix stack_ptr reported for threads in syscalls
+
+Before, stack_ptr is not reported correctly for a thread suspended
+inside a syscall: stack_ptr is 16 bytes off from what untrusted code
+resumes execution with.
+
+We fix this by setting a correct value for NACL_SYSCALLRET_FIX for
+ARM, which allows us to remove some hacky adjustments from
+nacl_switch.S and nacl_switch_to_app_arm.c, which were presumably
+added without knowing about NACL_SYSCALLRET_FIX.
+
+Add some comments to explain the NACL_*_FIX parameters in nacl_config.h.
+
+Apply constant folding to the NACL_*_FIX parameters for readability
+now that there are comments to explain the values.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2758
+TEST=run_thread_suspension_test
+
+Review URL: https://chromiumcodereview.appspot.com/10831072
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-31T22:40:51.000Z</ns0:updated><ns0:published>2012-07-31T22:40:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 41 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2758#c41" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/41" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,49 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMGSX47eCl7ImA9WhJVE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3006</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The debug stub's &amp;quot;c&amp;quot; (continue) command no longer resets the x86 trap flag, so single-stepping mode isn't exited properly.  Here's a debugging session demonstrating the problem:
+
+_start (info=0x3ffeffd4) at src/untrusted/nacl/start.c:24
+24	void _start(uint32_t *info) {
+(gdb) stepi
+0x0002afe3	24	void _start(uint32_t *info) {
+(gdb) 
+0x0002afe7	24	void _start(uint32_t *info) {
+(gdb) cont
+Continuing.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x0002afeb in _start (info=0x3ffeffd4) at src/untrusted/nacl/start.c:24
+24	void _start(uint32_t *info) {
+(gdb) 
+Continuing.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+0x0002afef in _start (info=0x3ffeffd4) at src/untrusted/nacl/start.c:24
+24	void _start(uint32_t *info) {
+(gdb) info reg
+eax            0x3ffeffd4	1073676244
+ecx            0x0	0
+edx            0x2afe0	176096
+ebx            0x0	0
+esp            0x3ffeffa0	0x3ffeffa0
+ebp            0x0	0x0
+esi            0x0	0
+edi            0x0	0
+eip            0x2afef	0x2afef &amp;lt;_start+15&amp;gt;
+eflags         0x200306	[ PF TF IF ID ]
+cs             0x7	7
+ss             0xf	15
+ds             0xf	15
+es             0xf	15
+fs             0x0	0
+gs             0x17	23
+
+
+This is regression introduced by my big change:
+http://src.chromium.org/viewvc/native_client?view=rev&amp;amp;revision=9466
+I moved the thread-&amp;gt;SetStep(false) call.
+
+I noticed this while looking at the code with fresh eyes.</ns0:content><ns0:updated>2012-08-30T16:33:48.000Z</ns0:updated><ns0:published>2012-08-29T20:11:44.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Debug stub: "cont" after "stepi" wrongly continues single-stepping</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-DebugStub</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3006/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3006" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3006" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2012-08-30T16:33:48.000Z</ns2:closedDate><ns2:id>3006</ns2:id></ns0:entry>

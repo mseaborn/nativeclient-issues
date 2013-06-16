@@ -1,0 +1,51 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEAFQX47eCl7ImA9WhBXFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3355/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11098
+
+------------------------------------------------------------------------
+r11098 | bsy@google.com | 2013-03-29T17:02:22.000157Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_dir.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_desc_postmessage.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_base.h?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_imc_shm.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/nacl_base/nacl_refcount.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_conn_cap.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/posix/nacl_desc_conn_cap.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_semaphore.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_cond.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/metadata_test.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_sync_socket.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/nacl_base/nacl_refcount.h?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_invalid.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_rng.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_quota.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/posix/nacl_makeboundsock.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_imc_bound_desc.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/posix/nacl_desc_imc_bound_desc.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_mutex.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/nacl_host_desc.h?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/build.scons?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_io.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_imc.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_null.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/linux/nacl_desc_sysv_shm.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_base.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_custom.c?r1=11098&amp;r2=11097&amp;pathrev=11098
+
+Add descriptor attributes so metadata about file identity (or other uses) can be plumbed through
+
+In order to support mmap of nexe, irt, and/or shared libraries, we
+must know that the underlying file is effectively immutable -- a
+promise made by the embedding environment -- so that we will be free
+from modify-after-validation security bugs.  This is the first step
+towards that -- we add attributes to NaclDesc objects, so that the
+embedding environment (NaCl plugin in Chrome) can bless the
+appropriate descriptors.
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3355
+
+Review URL: https://codereview.chromium.org/12593016
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-03-29T17:05:10.000Z</ns0:updated><ns0:published>2013-03-29T17:05:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3355#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3355/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

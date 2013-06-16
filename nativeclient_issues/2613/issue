@@ -1,8 +1,8 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEcGQn47eCl7ImA9WhVTEU0.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AGRn47eCl7ImA9WhBTEU0.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2613</ns0:id><ns0:author>
 			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">External developers will commonly encounter hand-coded or inline asm that needs to be ported to Native Client. We need a document to help them with these tasks.
 
-I've started collecting some notes here: https://docs.google.com/a/google.com/document/d/1NbWtwzZl8FAsaDQhtsX-HF05s4AW6olW7GP95BYW-mA/edit</ns0:content><ns0:updated>2012-02-24T16:47:03.000Z</ns0:updated><ns0:published>2012-02-24T16:46:19.000Z</ns0:published><ns2:status>Accepted</ns2:status><ns2:cc>
+I've started collecting some notes here: https://docs.google.com/a/google.com/document/d/1NbWtwzZl8FAsaDQhtsX-HF05s4AW6olW7GP95BYW-mA/edit</ns0:content><ns0:updated>2013-02-05T23:08:47.000Z</ns0:updated><ns0:published>2012-02-24T16:46:19.000Z</ns0:published><ns2:status>Accepted</ns2:status><ns2:cc>
 			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/101701583982903801272/</ns2:uri><ns2:username>awat...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/101359714341338829292/</ns2:uri><ns2:username>col...@google.com</ns2:username></ns2:cc><ns2:cc>

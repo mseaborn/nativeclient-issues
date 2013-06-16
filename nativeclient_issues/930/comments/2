@@ -1,0 +1,47 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkAAQn47eCl7ImA9Wx9WFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/930/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=3394
+
+------------------------------------------------------------------------
+r3394 | kschimpf@google.com | Fri Oct 01 16:04:42 PDT 2010
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/modeled_insts.txt?r1=3394&amp;r2=3393&amp;pathrev=3394
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nacl_disallows.enum?r1=3394&amp;r2=3393&amp;pathrev=3394
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode_onebyte.c?r1=3394&amp;r2=3393&amp;pathrev=3394
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/32/modeled_insts.txt?r1=3394&amp;r2=3393&amp;pathrev=3394
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode_forms.c?r1=3394&amp;r2=3393&amp;pathrev=3394
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/rep_tests.dis?r1=3394&amp;r2=3393&amp;pathrev=3394
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode_forms.h?r1=3394&amp;r2=3393&amp;pathrev=3394
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/build.scons?r1=3394&amp;r2=3393&amp;pathrev=3394
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncopcode_desc.h?r1=3394&amp;r2=3393&amp;pathrev=3394
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/ncdis_iter_test.internal?r1=3394&amp;r2=3393&amp;pathrev=3394
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/rep_tests.hex?r1=3394&amp;r2=3393&amp;pathrev=3394
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/testdata/64/rep_tests.rval?r1=3394&amp;r2=3393&amp;pathrev=3394
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncopcode_opcode_flags.enum?r1=3394&amp;r2=3393&amp;pathrev=3394
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/ncdecode_tablegen.c?r1=3394&amp;r2=3393&amp;pathrev=3394
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_rep_prefix.c?r1=3394&amp;r2=3393&amp;pathrev=3394
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_illegal.c?r1=3394&amp;r2=3393&amp;pathrev=3394
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/nc_rep_prefix.h?r1=3394&amp;r2=3393&amp;pathrev=3394
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/validator_x86/validator_x86.gyp?r1=3394&amp;r2=3393&amp;pathrev=3394
+
+Add support to handle REP/REPNE prefixes to the x86-64 validator.
+
+This change does:
+
+(1) Defines which instructions allow REP/REPNE prefixes.
+(2) Only validates instructions with allowable REP/REPNE prefixes.
+(3) Change instructions allowing REP/REPNE prefixes to the use
+    the new notation for modeling instructions.
+(4) Test that the validator flags REP/REPNE prefixes when appropriate.
+(5) Fix bug in scas instructions (refers to wrong segment register pair).
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=930
+
+TEST=src/trusted/validator_x86/testdata/64/rep_tests.hex
+TEST=src/trusted/validator_x86/testdata/64/rep_tests.dis
+TEST=src/trusted/validator_x86/testdata/64/rep_tests.rval
+
+Review URL: http://codereview.chromium.org/3585004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:59:03.000Z</ns0:updated><ns0:published>2011-01-21T22:59:03.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=930#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/930/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

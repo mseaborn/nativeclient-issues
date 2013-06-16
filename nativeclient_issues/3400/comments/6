@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0EDRH47eCl7ImA9WhBUEEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3400/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">------------------------------------------------------------------------
+r196881 | mseaborn@chromium.org | 2013-04-26T23:38:35.847734Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/generators/idl_c_proto.py?r1=196881&amp;r2=196880&amp;pathrev=196881
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/untrusted/pnacl_irt_shim/shim_ppapi.c?r1=196881&amp;r2=196880&amp;pathrev=196881
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/generators/idl_gen_pnacl.py?r1=196881&amp;r2=196880&amp;pathrev=196881
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/generators/idl_gen_wrapper.py?r1=196881&amp;r2=196880&amp;pathrev=196881
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/untrusted/pnacl_irt_shim/pnacl_shim.c?r1=196881&amp;r2=196880&amp;pathrev=196881
+   M http://src.chromium.org/viewvc/chrome/trunk/src/DEPS?r1=196881&amp;r2=196880&amp;pathrev=196881
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/untrusted/pnacl_irt_shim/shim_entry.c?r1=196881&amp;r2=196880&amp;pathrev=196881
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/generators/test_gen_pnacl/test_interfaces.idl?r1=196881&amp;r2=196880&amp;pathrev=196881
+
+PNaCl PPAPI shims: Update for new PNaCl ABI for by-value struct passing
+
+The PNaCl ABI is changing so that by-value struct arguments (and
+return values) are expanded out to being passed by pointer, on all
+architectures.
+
+This means that __attribute__((pnaclcall)) no longer reflects PNaCl
+user code's calling conventions, so we have to change the PNaCl PPAPI
+shims.  The new shims can be pure C without any special attributes.
+
+Remove now-unused ptr_prefix argument.
+
+This updates nacl_revision to pull in the following NaCl changes:
+r11238: (kschimpf) Update pnacl_llvm_rev to 5712db994c8a4abb8c2512fb2900650f8335af66.
+r11239: (mseaborn) Update PNaCl toolchain revision in TOOL_REVISIONS to get ExpandByVal
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3400
+TEST=cd ppapi/generators &amp;&amp; ./generator.py + compile shims
+  + "ppapi/generators/idl_gen_pnacl.py --test"
+
+Review URL: https://codereview.chromium.org/14134011
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-04-26T23:41:15.000Z</ns0:updated><ns0:published>2013-04-26T23:41:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3400#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3400/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

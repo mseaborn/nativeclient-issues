@@ -1,0 +1,41 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkADQX47eCl7ImA9WhFTGUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3486</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">PNaCl's libgcc_eh doesn't restore x86-64 registers properly in all cases when handling a C++ exception.  _Unwind_RaiseException() restores all the registers, but _Unwind_Resume() doesn't:
+
+$ objdump -dr toolchain/pnacl_linux_x86/lib-x86-64/libgcc_eh.a
+...
+0000000000000a60 &amp;lt;_Unwind_RaiseException&amp;gt;:
+...
+// This code is generated from __builtin_eh_return():
+     d51:       81 c4 c0 01 00 00       add    $0x1c0,%esp
+     d57:       4a 8d 24 3c             lea    (%rsp,%r15,1),%rsp
+     d5b:       58                      pop    %rax
+     d5c:       5a                      pop    %rdx
+     d5d:       5b                      pop    %rbx
+     d5e:       41 5c                   pop    %r12
+     d60:       41 5d                   pop    %r13
+     d62:       41 5e                   pop    %r14
+     d64:       8b 2c 24                mov    (%rsp),%ebp
+     d67:       4a 8d 6c 3d 00          lea    0x0(%rbp,%r15,1),%rbp
+...
+0000000000001700 &amp;lt;_Unwind_Resume&amp;gt;:
+...
+// This code is generated from __builtin_eh_return():
+    17f7:       4a 8d 24 3c             lea    (%rsp,%r15,1),%rsp
+    17fb:       58                      pop    %rax
+    17fc:       5a                      pop    %rdx
+    17fd:       5b                      pop    %rbx
+    17fe:       41 5e                   pop    %r14
+    1800:       8b 2c 24                mov    (%rsp),%ebp
+    1803:       4a 8d 6c 3d 00          lea    0x0(%rbp,%r15,1),%rbp
+...
+
+These functions are supposed to work as follows:
+
+ * __builtin_unwind_init() causes the function to save all callee-saved registers.
+ * The function gets the address of the saved state using __builtin_dwarf_cfa(), allowing it to overwrite the register values that will be restored.
+ * The function does __builtin_eh_return() to return and modify the stack pointer at the same time.
+
+However, under LLVM, __builtin_unwind_init() doesn't work.
+</ns0:content><ns0:updated>2013-06-11T22:46:10.000Z</ns0:updated><ns0:published>2013-06-11T05:53:17.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>PNaCl: _Unwind_Resume() does not restore r12 and r13 on x86-64</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3486/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3486" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3486" rel="self" type="application/atom+xml" /><ns2:stars>4</ns2:stars><ns2:id>3486</ns2:id></ns0:entry>

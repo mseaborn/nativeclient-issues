@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk4MQn47eCl7ImA9WhVbE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/392/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8734
+
+------------------------------------------------------------------------
+r8734 | robertm@google.com | Wed May 30 06:30:44 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=8734&amp;r2=8733&amp;pathrev=8734
+
+Enable higher optimization level when building ld-gold-sb.
+
+In particular this enables lto.
+A universal i686 binary comes in at 2.5MB
+
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=392 
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2707 
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2735 
+
+TEST= manual
+Review URL: https://chromiumcodereview.appspot.com/10440079
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-05-30T13:36:23.000Z</ns0:updated><ns0:published>2012-05-30T13:36:23.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=392#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/392/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

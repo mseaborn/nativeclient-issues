@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcARH47eCl7ImA9WhJUEUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2957/comments/full/25</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9670
+
+------------------------------------------------------------------------
+r9670 | bradnelson@google.com | 2012-09-08T22:36:26.402073Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/weak_ref/nacl.scons?r1=9670&amp;r2=9669&amp;pathrev=9670
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/weak_ref/weak_ref.gyp?r1=9670&amp;r2=9669&amp;pathrev=9670
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools.gyp?r1=9670&amp;r2=9669&amp;pathrev=9670
+
+Fixing call_on_main_thread references.
+
+More reference to call_on_main_thread that need to go.
+These went undetected due to trybots using patch
+(so deleted files stay around as empty).
+
+Also droping a reference to a ppapi file that we plan to move to
+the chrome side.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2957
+TEST=None
+R=ncbray@chromium.org,noelallen@chromium.org
+
+Review URL: https://chromiumcodereview.appspot.com/10916196
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-09-08T22:40:45.000Z</ns0:updated><ns0:published>2012-09-08T22:40:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 25 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2957#c25" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2957/comments/full/25" rel="self" type="application/atom+xml" /></ns0:entry>

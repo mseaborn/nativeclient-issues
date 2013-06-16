@@ -1,10 +1,12 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEECQH47eCl7ImA9WhVXFE4.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkAEQn47eCl7ImA9WhNSEkw.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2730</ns0:id><ns0:author>
 			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">We want to remove NaCl's circular dependency on Chromium, and remove Chromium-specific code from the NaCl source tree.
 
 As part of that, we should remove the NACL_STANDALONE #define.  Where Chromium provides services to NaCl, this should be done by runtime dependency injection of callback functions, e.g. via sel_main_chrome.h.
 
 See the linked bugs for specific cases of this.
-</ns0:content><ns0:updated>2012-04-14T19:44:21.000Z</ns0:updated><ns0:published>2012-04-14T19:44:21.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
-			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>Remove the NACL_STANDALONE #define</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2730/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2730" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2730" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
-			<ns2:id>2655</ns2:id></ns2:blockedOn><ns2:id>2730</ns2:id></ns0:entry>
+</ns0:content><ns0:updated>2012-10-26T00:18:23.000Z</ns0:updated><ns0:published>2012-04-14T19:44:21.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Remove the NACL_STANDALONE #define</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2730/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2730" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2730" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>2655</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2719</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2868</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:closedDate>2012-10-26T00:18:23.000Z</ns2:closedDate><ns2:id>2730</ns2:id></ns0:entry>

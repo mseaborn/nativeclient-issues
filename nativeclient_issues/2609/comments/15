@@ -1,0 +1,106 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMERn47eCl7ImA9WhVaEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2609/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=130436
+------------------------------------------------------------------------
+r130436 | jvoung@google.com | 2012-04-03T20:00:33.265657Z
+
+Changed paths:
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad_get_ppp_printing_crash.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_example_events/nacl.scons
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_instance/nacl.scons
+   M /trunk/src/ppapi/native_client/tests/ppapi_test_example/nacl.scons
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_file_io/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_test_example/ppapi_test_example.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/stress_many_nexes/nacl.scons
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_memory/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad_ppp_instance_didcreate_crash.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/crash/ppapi_crash_via_check_failure.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_example_audio/ppapi_example_audio.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_messaging/ppapi_messaging.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppp_input_event/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_widget/ppapi_ppb_widget.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad_no_ppp_instance.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad_ppp_initialize.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_url_request_info/ppapi_ppb_url_request_info.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppp_instance/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_file_io/ppapi_ppb_file_io.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_url_request_info/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_example_font/ppapi_example_font.nmf
+   M /trunk/src/ppapi/native_client/tests/earth/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad_ppp_instance_didcreate.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_example_post_message/ppapi_example_post_message.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_example_2d/nacl.scons
+   M /trunk/src/ppapi/native_client/tests/ppapi_example_font/nacl.scons
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_fullscreen/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppp_input_event/ppapi_ppp_input_event.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/crash/ppapi_crash_in_callback.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_pdf/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/earth/earth_c.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/earth/earth_cc.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppp_instance/ppapi_ppp_instance.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_dev/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad_event_replay_crash.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/extension_mime_handler/nacl.scons
+   M /trunk/src/ppapi/native_client/tests/ppapi_gles_book/nacl.scons
+   M /trunk/src/ppapi/native_client/tests/ppapi_example_post_message/nacl.scons
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_file_system/nacl.scons
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/progress_events/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_url_loader/ppapi_ppb_url_loader.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_core/ppapi_ppb_core.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_messaging/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/crash/ppapi_crash_via_exit_call.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad_doesnotexist.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/crash/ppapi_crash_off_main_thread.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_image_data/ppapi_ppb_image_data.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad_ppp_initialize_crash.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad_get_ppp_instance_crash.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/manifest/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_fullscreen/ppapi_ppb_fullscreen.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_geturl/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_instance/ppapi_ppb_instance.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_scrollbar/nacl.scons
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_widget/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/crash/ppapi_crash_ppapi_off_main_thread.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_graphics3d/ppapi_ppb_graphics3d.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_geturl/ppapi_geturl.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_example_audio/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_memory/ppapi_ppb_memory.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_pdf/ppapi_ppb_pdf.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/crash/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_example_gles2/ppapi_example_gles2.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_example_gles2/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_dev/ppapi_ppb_dev.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad_get_ppp_messaging_crash.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_file_system/ppapi_ppb_file_system.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_scrollbar/ppapi_ppb_scrollbar.nmf
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_graphics2d/ppapi_ppb_graphics2d.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/bad/nacl.scons
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_graphics2d/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/progress_events/ppapi_progress_events.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_graphics3d/nacl.scons
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_var/nacl.scons
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_url_loader/nacl.scons
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_core/nacl.scons
+   D /trunk/src/ppapi/native_client/tests/ppapi_browser/ppb_var/ppapi_ppb_var.nmf
+
+Port some nacl_integration tests to use autogenerated NMF
+with the "nmf_names" SCons construct. Use ProgramNameForNmf
+to generate nexe/pexe names, so that they will work with
+PNaCl pexes.
+
+This will break "tests/examples.html", since the NMF files
+are no longer staged (some complication with SCons trying to
+generate the same NMF file for different test nodes), but it
+looks like "tests/examples.html" will no longer be used in
+manual testing. Confirmed with Noel that only the SDK
+examples plus existing published Apps will be manually
+tried.  We may be able to clean out the examples.html file later.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2609
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2645
+TEST= trybots
+
+Review URL: https://chromiumcodereview.appspot.com/9834030
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-08T01:53:27.000Z</ns0:updated><ns0:published>2012-06-08T01:53:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2609#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2609/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

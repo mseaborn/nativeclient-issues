@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUMCQn47eCl7ImA9WhJVF0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2983/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9629
+
+------------------------------------------------------------------------
+r9629 | mseaborn@chromium.org | 2012-09-04T00:09:21.074239Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/target.cc?r1=9629&amp;r2=9628&amp;pathrev=9629
+
+Debug stub: Fix potential race condition in startup
+
+When GDB connects to the debug stub, it expects the process to already
+be suspended.  GDB issues a "?" command to get the thread's status,
+and we want this to report that the process stopped at the initial
+breakpoint.
+
+However, there is a race condition that means that might not always
+happen.  If the initial thread is slow to start up, the debug stub
+might receive and respond to GDB's message before the initial thread
+reaches the initial breakpoint.
+
+This can cause tests in debug_stub_test.py fail.  This can be observed
+by adding "sleep(1)" into NaClThreadLauncher() in nacl_app_thread.c,
+though I've not seen the failures occur without that change.
+
+We fix this by waiting for the breakpoint to occur before handling
+messages from GDB.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2983
+TEST=run_debug_stub_test with sleep call added to reproduce problem;
+  no test added because it's difficult to test a race condition
+
+Review URL: https://chromiumcodereview.appspot.com/10916062
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-09-04T00:11:03.000Z</ns0:updated><ns0:published>2012-09-04T00:11:03.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2983#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2983/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

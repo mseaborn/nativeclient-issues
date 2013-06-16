@@ -1,0 +1,44 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUMRH47eCl7ImA9WhJaEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2702/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Maybe you meant something other than _impure_ptr?  What did the snippets of the pexe llvm bitcode look like?
+
+Even in point.pexe (opt and unopt) there is only one definiton of _impure_ptr (as there should be?).  There are lots of loads/stores using _impure_ptr, but mostly in different functions.  There are occasionally a few loads/stores in the same function, but different basic blocks...
+
+Anyway, there are a few duplicated constants in point.pexe, but they are constants that perhaps had their address taken.  I.e., they are not adorned with the "private unnamed_addr" attribute.
+
+With 'grep " constant" point.opt.pexe.ll | cut -f 2 -d '=' | sort | uniq -c | sort -n | less'
+
+The top offenders are:
+
+      1  private unnamed_addr constant [9 x i8] c"xml:lang\00", align 1
+      1  private unnamed_addr constant [9 x i8] c"xsi:type\00", align 1
+      1  private unnamed_addr constant { i32, i32, { i32, [4 x i8] } } { i32 1, i32 0, { i32, [4 x i8] } { i32 0, [4 x i8] undef } }, align 8
+      2  internal constant [125 x i8] c"ZN26MaybeClientSpecificVisitorI19PptDataModelVisitorE11visitObjectI19PptCommentContainerEEbRT_R10EshVisitorE14VisitorVisitor\00"
+      2  internal constant [20 x i8] c"\00\00\0B\0D\00&amp;(\00:&lt;
+      2  internal constant [26 x i8] c"\00\00TV\00\9C\9E\00\9F\A2\A5\00\A6\A9\00\AC\AE\00\B9\BB\BD\00\C3\C5\00\FF", align 1
+      2  internal constant [28 x i8] c"\00\00\05\07\00\0A\0D\00\14\16\00\1C\1E\009;\00&gt;@\00DFJ\00PR\00\FF", align 1
+      2  internal constant [38 x i8] c"\00\00HJ\00MP\00VXZ\00]`\00\88\8A\00\8D\90\00\B0\B2\00\B5\B8\00\BE\C0\C2\00\C5\C8\00\D6\D8\00\FF", align 1
+      2  internal constant [3 x i8] c"\00\00\1D", align 1
+      2  internal constant [3 x i8] c"\00\004", align 1
+      2  internal constant [3 x i8] c"\00\00.", align 1
+      2  internal constant [3 x i8] c"\00\00\CB", align 1
+      2  internal constant [3 x i8] c"\00\00\D6", align 1
+      2  internal constant [3 x i8] c"\00\00\FD", align 1
+      2  internal constant [3 x i8] c"\00\00H", align 1
+      2  internal constant [3 x i8] c"\00\00n", align 1
+      2  internal constant [3 x i8] c"ID\00", align 1
+      2  internal constant [6 x i8] c"\00\00\9D\A0\00\A9", align 1
+      2  internal constant [6 x i8] c"\80\00\9C\A0\00\D0", align 1
+      2  internal constant [6 x i8] c"CDATA\00", align 1
+      2  internal constant [6 x i8] c"IDREF\00", align 1
+      2  internal constant [7 x i8] c"ENTITY\00", align 1
+      2  internal constant [7 x i8] c"IDREFS\00", align 1
+      2  internal constant [8 x i8] c"NMTOKEN\00", align 1
+      2  internal constant [9 x i8] c"\00\00-0\00mp\00\D9", align 1
+      2  internal constant [9 x i8] c"\00\00\A3\B0\00\C6\CB\00\FB", align 1
+      2  internal constant [9 x i8] c"ENTITIES\00", align 1
+      2  internal constant [9 x i8] c"NMTOKENS\00", align 1
+      4  internal constant [16 x i8] c"0000000000000000", align 1
+      4  internal constant [16 x i8] c"                ", align 1
+
+So it's not too bad, even if they didn't have their address taken, or had some other reason for not being merged. </ns0:content><ns0:updated>2012-10-01T16:18:05.000Z</ns0:updated><ns0:published>2012-10-01T16:18:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2702#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2702/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

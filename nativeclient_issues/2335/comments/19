@@ -1,0 +1,74 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUABRn47eCl7ImA9WhBVGUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2335/comments/full/19</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11231
+
+------------------------------------------------------------------------
+r11231 | mcgrathr@chromium.org | 2013-04-25T18:12:22.669727Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/imc_makeboundsock.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/dyncode_private.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/time/gettimeofday_test.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/imc_shm_mmap/imc_shm_mmap_test.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/dyncode.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/imc_accept.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/threads/main_thread_pthread_exit_test2.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/nameservice/srpc_nameservice_test.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/imc/nacl/nacl_imc.cc?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/imc_socketpair.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/syscalls/syscalls.cc?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/subprocess/init.cc?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/nrd_xfer/nrd_xfer_test2.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt_nameservice.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/manifest_file/srpc_manifest_file_test.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/srpc/accept.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/list_mappings_private.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/exception_test/exceptions_disabled_test.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt_manifest.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/barebones/barebones.h?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/nanosleep/nanosleep_test.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/mmap_race_protect/mmap_race.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/libc_free_hello_world/libc_free_hello_world.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/srpc/nacl_srpc_ppapi_plugin_internal.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/syscalls/sysbrk_test.cc?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pagesize/pagesize_test.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/srpc/srpc_nrd_client.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/imc_connect.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/imc_mem_obj_create.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pnacl_ld_experiments/hello1.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/null/null.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/loop/loop.cc?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/imc_sendmsg.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gc_instrumentation/gc_instrumentation.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/multiple_sandboxes/multidomain_test_guest.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/exception_test/exception_test.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/nrd_xfer/nrd_xfer_perf.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/custom_desc/desc_test_guest.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/DEPS?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/imc_recvmsg.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/imc_sockets/socket_transfer_test.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/sysbasic/sysbasic.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/srpc/accept_threaded.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/nameservice/nameservice_test.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/srpc/srpc_bad_service.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/srpc/srpc_nrd_server.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/sel_ldr/non_exit.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/subprocess/subprogram.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/null.c?r1=11231&amp;r2=11230&amp;pathrev=11231
+
+Include nacl_syscalls.h headers from source tree, not toolchain
+
+The bits/nacl_syscalls.h and sys/nacl_syscalls.h headers currently
+appear in toolchain include/ directories, but should not in the long
+run (and won't in the next-generation glibc toolchains).  Following
+general practice, headers that live in the native_client tree should
+be included from there using full directory names, not via toolchain
+or -I directories.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2335
+TEST= trybots
+R=sehr@chromium.org
+
+Review URL: https://codereview.chromium.org/14079015
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-04-25T18:15:57.000Z</ns0:updated><ns0:published>2013-04-25T18:15:57.000Z</ns0:published><ns2:updates /><ns0:title>Comment 19 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2335#c19" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2335/comments/full/19" rel="self" type="application/atom+xml" /></ns0:entry>

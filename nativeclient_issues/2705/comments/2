@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEIARn47eCl7ImA9WhJREEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2705/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9116
+
+------------------------------------------------------------------------
+r9116 | mseaborn@chromium.org | Wed Jul 11 14:34:04 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/imc/imc.gyp?r1=9116&amp;r2=9115&amp;pathrev=9116
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/imc/posix/nacl_imc_posix.cc?r1=9116&amp;r2=9115&amp;pathrev=9116 (from /trunk/src/native_client/src/shared/imc/nacl_imc_unistd.cc revision 9115)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/imc/posix?r1=9116&amp;r2=9115&amp;pathrev=9116
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/imc/nacl_imc_unistd.cc?r1=9116&amp;r2=9115&amp;pathrev=9116
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/imc/build.scons?r1=9116&amp;r2=9115&amp;pathrev=9116
+
+Cleanup: Move nacl_imc_unistd.cc into a "posix" directory
+
+I've renamed it as "nacl_imc_posix.cc" rather than "nacl_imc.cc" to
+avoid confusion with the "{linux,osx}/nacl_imc.cc" files.  I didn't
+name it "nacl_shm.cc" (there's a "win/nacl_shm.cc") because it
+contains a non-SHM-related function.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2705
+TEST=build
+
+Review URL: https://chromiumcodereview.appspot.com/10736033
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-11T21:35:47.000Z</ns0:updated><ns0:published>2012-07-11T21:35:47.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2705#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2705/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

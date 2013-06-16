@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUcDSX47eCl7ImA9WhBVGU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3410/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">It appears that Gyp *is* rerunning the step for rebuilding libppapi_cpp.  The more complete log output is:
+
+[65/182] ACTION ppapi_cpp_lib: build glibc x86-64 nlib_e2293fd8fee02ea053d7f49a9b67b00f
+...
+[69/182] ACTION ppapi_cpp_lib: build glibc x86-32 nlib_e2293fd8fee02ea053d7f49a9b67b00f
+...
+[89/182] STAMP obj/ppapi/ppapi_cpp_lib.actions_rules_copies.stamp
+...
+[100/182] ACTION simple_test: build glibc x86-32 nexe_252cfe1d3087fe94169bdb85e8039aec
+[101/182] ACTION simple_test: build newlib pexe_252cfe1d3087fe94169bdb85e8039aec
+[102/182] ACTION simple_test: build glibc x86-64 nexe_252cfe1d3087fe94169bdb85e8039aec
+...
+/b/build/slave/Linux_Builder/build/src/out/Release/gen/sdk/toolchain/linux_x86_glibc/bin/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/bin/ld: warning: libm.so.d7687c6a, needed by ../../../../out/Release/gen/tc_glibc/lib32/libppapi_cpp.so, not found (try using -rpath or -rpath-link)
+/b/build/slave/Linux_Builder/build/src/out/Release/gen/sdk/toolchain/linux_x86_glibc/bin/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/bin/ld: warning: libc.so.d7687c6a, needed by ../../../../out/Release/gen/tc_glibc/lib32/libppapi_cpp.so, not found (try using -rpath or -rpath-link)
+/b/build/slave/Linux_Builder/build/src/out/Release/gen/sdk/toolchain/linux_x86_glibc/bin/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/bin/ld: warning: libm.so.d7687c6a, needed by ../../../../out/Release/gen/tc_glibc/lib64/libppapi_cpp.so, not found (try using -rpath or -rpath-link)
+/b/build/slave/Linux_Builder/build/src/out/Release/gen/sdk/toolchain/linux_x86_glibc/bin/../lib/gcc/x86_64-nacl/4.4.3/../../../../x86_64-nacl/bin/ld: warning: libc.so.d7687c6a, needed by ../../../../out/Release/gen/tc_glibc/lib64/libppapi_cpp.so, not found (try using -rpath or -rpath-link)
+[111/181] ACTION simple_test: Generate GLIBC NMF and copy libs_252cfe1d3087fe94169bdb85e8039aec
+FAILED: cd ../../chrome/test/data/nacl; python ../../../../native_client_sdk/src/tools/create_nmf.py ../../../../out/Release/nacl_test_data/glibc/simple_glibc_x86_64.nexe ../../../../out/Release/nacl_test_data/glibc/simple_glibc_x86_32.nexe "--objdump=../../../../native_client/toolchain/linux_x86/bin/x86_64-nacl-objdump" "--output=../../../../out/Release/nacl_test_data/glibc/simple.nmf" "--path-prefix=simple_libs" "--stage-dependencies=../../../../out/Release/nacl_test_data/glibc" "--library-path=../../../../native_client/toolchain/linux_x86/x86_64-nacl/lib" "--library-path=../../../../out/Release/gen/tc_glibc/lib64" "--library-path=../../../../native_client/toolchain/linux_x86/x86_64-nacl/lib32" "--library-path=../../../../out/Release/gen/tc_glibc/lib32"
+create_nmf.py: cannot find library libc.so.d7687c6a
+...
+ninja: build stopped: subcommand failed.
+
+In all the failures I've seen, it was simple_test that was failing to build (actually, create_nmf fails).
+
+Possible causes:
+ * If there is a missing dependency in Gyp, libppapi_cpp might not have finished rebuilding by the time simple_test is rebuilt.
+ * build_nexe.py might be choosing not to relink libppapi_cpp based on timestamps.
+</ns0:content><ns0:updated>2013-04-26T00:44:38.000Z</ns0:updated><ns0:published>2013-04-26T00:44:38.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>binji@chromium.org</ns2:ccUpdate></ns2:updates><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3410#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3410/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

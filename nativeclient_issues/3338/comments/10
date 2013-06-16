@@ -1,0 +1,52 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkQBQH47eCl7ImA9WhBWEUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3338/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11129
+
+------------------------------------------------------------------------
+r11129 | bradnelson@google.com | 2013-04-04T18:25:56.665465Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/TOOL_REVISIONS?r1=11129&amp;r2=11128&amp;pathrev=11129
+
+Revert 11128 "Update TOOL_REVISIONS for PNaCl"
+
+This is breaking pnacl spec tests.
+
+&gt; Update TOOL_REVISIONS for PNaCl
+&gt; 
+&gt; Most recent TOOL_REVISIONS update:
+&gt;   Hash:            048eb1e2e041fc10695b0ccfd7b6927a33a0e894
+&gt;   By:              jfb@chromium.org
+&gt;   On:              2013-04-03 15:51:24 +0000
+&gt;   Subject:         Update TOOL_REVISIONS for PNaCl
+&gt;   Commits since:   6
+&gt; 
+&gt; TOOL_REVISIONS update points at PNaCl version:
+&gt;   git svn id:      11097
+&gt;   Hash:            7a18df768a8aed52f165c1a11b97c36c5f46b470
+&gt;   Date:            2013-03-29 16:37:40 +0000
+&gt;   Subject:         Disable assertions in the release sandboxed llc.nexe.
+&gt;   Commits since:   31
+&gt; 
+&gt; Oldest PNaCl change since this PNaCl version:
+&gt;   Hash:            5c471d1265fb93587248950177920d7886b7edf5
+&gt;   By:              mseaborn@chromium.org
+&gt;   On:              2013-03-29 18:59:47 +0000
+&gt;   git svn id:      11100
+&gt;   Bug:             &lt;none&gt;
+&gt;   Test:            PNaCl toolchain trybots + gcc torture tests
+&gt;   Original review: https://codereview.chromium.org/13246002
+&gt;   Subject:         PNaCl: Enable the ExpandVarArgs pass for ABI simplification (second try)
+&gt;   Body:
+&gt;   ============================================================================
+&gt;   BUG=https://code.google.com/p/nativeclient/issues/detail?id=3338
+&gt;   ============================================================================
+&gt; 
+&gt; TBR= mseaborn@chromium.org
+&gt; 
+&gt; Review URL: https://codereview.chromium.org/13459006
+
+TBR=jfb@chromium.org
+Review URL: https://codereview.chromium.org/13648008
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-04-05T16:45:51.000Z</ns0:updated><ns0:published>2013-04-05T16:45:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3338#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3338/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

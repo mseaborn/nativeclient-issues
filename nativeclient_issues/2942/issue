@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkQFSH47eCl7ImA9WhNVFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2942</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">See this build:
+
+http://build.chromium.org/p/client.nacl/builders/lucid_64-newlib-x86_32-pnacl/builds/2766/steps/scons-irt%20%5Bx86-32%5D%20%5Bchrome_browser_tests%5D%20%5B%5D/logs/stdio#failure1
+
+[   647 ms] |||| GET /ppapi_ppb_scrollbar.pexe (/ppapi_ppb_scrollbar.pexe)
+[24217,4140100464:19:32:55.308441] Native Client module will be loaded at base address 0x0000000000000000
+[24217,4148549344:19:32:55.682269] Main executable has no segment gap; not loading IRT library. This is expected for PNaCl's translator nexes.
+LLVM-SB-DBG: registering file 17 (pnacl.o) -1
+LLVM-SB-DBG: registered file (17, pnacl.o) stat_size 0
+LLVM-SB-DBG file stat info for 17 (may be fake): 
+LLVM-SB-DBG: uid: -1, gid: -1, is_reg: 1
+LLVM-SB-DBG permissions: -rw-------
+[SRPC:HOST:24167,4023651184:19:32:55.688047] NaClSrpcRpcWait(channel=0xf890b7c8): EOF is received instead of response. Probably, the other side (usually, nacl module or browser plugin) crashed.
+terminate called after throwing an instance of 'std::logic_error'
+  what():  basic_string::_S_construct NULL not valid
+[ 31061 ms] |||| 
+
+]
+
+
+According to the log, it only got past registering the .o file.  It did not show that LLVM got to the point where it tried to write anything to the file yet.
+
+
+Marking arch x86-32 for now, but it could affect others.  Please watch the build logs.
+
+
+</ns0:content><ns0:updated>2012-12-28T00:25:19.000Z</ns0:updated><ns0:published>2012-08-03T16:03:41.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pnacl translate sometimes crashes with "terminate called after throwing an instance of 'std::logic_error' ...</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-25</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2942/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2942" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2942" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-12-28T00:25:19.000Z</ns2:closedDate><ns2:id>2942</ns2:id></ns0:entry>

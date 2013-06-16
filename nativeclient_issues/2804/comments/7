@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QMR347eCl7ImA9WhVUGU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2804/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8711
+
+------------------------------------------------------------------------
+r8711 | bbudge@chromium.org | Thu May 24 16:12:29 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/threads/nacl.scons?r1=8711&amp;r2=8710&amp;pathrev=8711
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/threads/cond_timedwait.c?r1=8711&amp;r2=8710&amp;pathrev=8711 (from /trunk/src/native_client/tests/threads/cond_timedwait.c revision 8705)
+
+Revert 8706 - Revert 8704 - This is a test that demonstrates glibc pthread_cond_timedwait spinning the CPU
+
+When the glibc bug is fixed, the conditional in nacl.scons to not run
+the test in glibc should be removed.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2804
+TEST= this is a test
+Review URL: https://chromiumcodereview.appspot.com/10414059
+
+TBR=bsy@google.com
+Review URL: https://chromiumcodereview.appspot.com/10441032
+
+TBR=bbudge@chromium.org
+Review URL: https://chromiumcodereview.appspot.com/10453017
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-05-24T23:16:26.000Z</ns0:updated><ns0:published>2012-05-24T23:16:26.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2804#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2804/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

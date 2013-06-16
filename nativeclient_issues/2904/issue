@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEYBRn47eCl7ImA9WhJVEUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2904</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">PNaCl currently defines an LLVM intrinsic, &amp;quot;llvm.nacl.thread.stack.padding&amp;quot;, which specifies how user code should align the stack that it passes to thread_create() when creating a new thread.
+
+If we make the system (either the IRT or TCB) responsible for aligning the stack appropriately, we can remove this intrinsic and so simplify the PNaCl ABI.
+
+The current LLVM intrinsic only provides limited portability anyway because nc_thread.c still assumes that the stack should be 32-byte-aligned -- the intrinsic just says what the stack pointer's value should be modulo 32.
+
+(Some time ago I argued against the TCB aligning a new thread's stack on behalf of user code, on the grounds that it's up to user code what it stores on the stack and what alignment it requires.  However, it was necessary for the TCB to align the stack when pushing an exception frame for an untrusted fault handler.)
+</ns0:content><ns0:updated>2012-08-28T16:42:37.000Z</ns0:updated><ns0:published>2012-07-17T11:35:44.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Remove PNaCl's LLVM intrinsic "llvm.nacl.thread.stack.padding" for stack alignment</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>PNaClABI</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2904/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2904" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2904" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2012-08-28T16:42:37.000Z</ns2:closedDate><ns2:id>2904</ns2:id></ns0:entry>

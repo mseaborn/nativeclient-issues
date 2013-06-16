@@ -1,0 +1,73 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkEHQH47eCl7ImA9WhNSGEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3114/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10177
+
+------------------------------------------------------------------------
+r10177 | mseaborn@chromium.org | 2012-11-02T19:26:34.073333Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/lock_insts.h?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/testing/enuminsts/xed_tester.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/dfa_validate_32.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/ncdecode_forms.h?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncdis.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/validator_init.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncval.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/ncdecode_onebyte.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/testing/enuminsts/input_tester.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/testing/enuminsts/enuminsts.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/ncvalidate.h?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/testing/enuminsts/input_tester.h?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/testing/enuminsts/vdiff.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/nacl_illegal.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter.h?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_seg_sfi/generator/ncdecode_table.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/zero_extends.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncval_tests.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncdecode_tests.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/nccopycode.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/nacl_illegal.h?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/ncfileutil.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/zero_extends.h?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_seg_sfi/ncvalidate.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/dfa_validate_64.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/nc_rep_prefix.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_seg_sfi/ncvalidate.h?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/testing/enuminsts/ragel_tester.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/nc_rep_prefix.h?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/nc_def_jumps.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/test_dfa.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/nc_def_jumps.h?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/32/ncvalidate.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/defsize64.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/long_mode.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/ncdecode_tablegen.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/test_dfa.h?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/nacl_cpuid.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/64/ncvalidate.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/defsize64.h?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/lock_insts.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/long_mode.h?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/ncdecode_tablegen.h?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/ncdecode_forms.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/testing/enuminsts/nacl_tester.c?r1=10177&amp;r2=10176&amp;pathrev=10177
+
+Make the x86 validators compilable with -Wstrict-prototypes
+
+In C, "void foo();" or "void foo() { ... }" leaves the function's
+arguments unspecified.  This change fixes various cases to use "void
+foo(void)" instead, which declares the function as taking no
+arguments.
+
+This conversion was automated using the commands:
+
+  perl -pi -e 's/^([a-z].*)\(\);$/$1(void);/gi' $(git ls-files)
+  perl -pi -e 's/^([a-z].*)\(\) {$/$1(void) {/gi' $(git ls-files | grep '\.c$')
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3114
+TEST=build
+
+Review URL: https://codereview.chromium.org/11275082
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-11-02T19:30:31.000Z</ns0:updated><ns0:published>2012-11-02T19:30:31.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3114#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3114/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

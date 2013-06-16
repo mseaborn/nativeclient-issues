@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEICRX47eCl7ImA9WhNUFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3092/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10555
+
+------------------------------------------------------------------------
+r10555 | mseaborn@chromium.org | 2013-01-08T17:32:46.360651Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=10555&amp;r2=10554&amp;pathrev=10555
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_pnacl.sh?r1=10555&amp;r2=10554&amp;pathrev=10555
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/nacl.scons?r1=10555&amp;r2=10554&amp;pathrev=10555
+
+Enable most of the GDB tests on ARM
+
+The GDB tests work on ARM hardware but not on QEMU.  In order to
+disable the tests on QEMU without listing them all in
+tests_to_disable_qemu, I have fixed the problem that motivated the
+tests_to_disable_qemu list by adding "force_emulator=" in
+buildbot_pnacl.sh.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3092
+TEST=gdb_tests on trybots
+
+Review URL: https://codereview.chromium.org/11791040
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-01-08T17:36:04.000Z</ns0:updated><ns0:published>2013-01-08T17:36:04.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3092#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3092/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -4,5 +4,5 @@
 </ns0:content><ns0:updated>2011-02-18T00:06:16.000Z</ns0:updated><ns0:published>2010-09-25T20:01:23.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/103482920910451875938/</ns2:uri><ns2:username>n...@google.com</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Implement Pepper2 2D API</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-AppPlatform</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Milestone-Arctic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/901/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=901" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/901" rel="self" type="application/atom+xml" /><ns2:stars>10</ns2:stars><ns2:blocking>
-			<ns2:id>902</ns2:id></ns2:blocking><ns2:blocking>
-			<ns2:id>905</ns2:id></ns2:blocking><ns2:closedDate>2011-01-12T20:06:45.000Z</ns2:closedDate><ns2:id>901</ns2:id></ns0:entry>
+			<ns2:id>902</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>905</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2011-01-12T20:06:45.000Z</ns2:closedDate><ns2:id>901</ns2:id></ns0:entry>

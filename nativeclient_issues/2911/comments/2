@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEEMQ347eCl7ImA9WhJRGE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2911/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The debug stub already works for ARM.  I made the tests pass in https://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8868.
+
+We just need to make sure the tests continue to be run on the bots.  They are currently being run in the "scons [arm] [small_tests medium_tests large_tests] [pic no_pexe ]" step (e.g. see http://build.chromium.org/p/tryserver.nacl/builders/nacl-arm_hw_opt_panda/builds/1110).
+
+As you say, ARM does not have hardware support for single-stepping.  I don't think we are going to implement ARM single-stepping support in the debug stub.  I believe GDB has already has support for single-stepping on ARM without hardware support, so we can just use that.
+
+This issue can be closed now.  However, the conditions under which the tests are currently run on the bots seem rather fragile.  We should probably address the TODO in tests/debug_stub/nacl.scons first before closing this:
+
+  # TODO(mseaborn): Eliminate the TCP port binding by using a socketpair
+  # instead and move this into small_tests + nonpexe_tests.  Adding this to
+  # nonpexe_tests (which uses -j currently) will enable this test for
+  # ARM.
+</ns0:content><ns0:updated>2012-07-20T17:51:22.000Z</ns0:updated><ns0:published>2012-07-20T17:51:22.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2911#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2911/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

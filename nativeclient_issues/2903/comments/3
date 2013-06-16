@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMDRX47eCl7ImA9WhJRFU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2903/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">This particular case was discovered by setting breakpoint by function name. As I mentioned in http://code.google.com/p/nativeclient/issues/detail?id=2898, the problem of current x86_64-nacl-gdb is that in this case it sets breakpoint right at the function start, without skipping the prologue.
+
+If we fix skipping prologue when setting breakpoints by function name, this particular issue will not hurt as much. We'll still fail when single-stepping through function prologue explicitly, but we'll stop failing in this common case of continuing from breakpoint at function start...
+</ns0:content><ns0:updated>2012-07-17T13:07:54.000Z</ns0:updated><ns0:published>2012-07-17T13:07:54.000Z</ns0:published><ns2:updates>
+			<ns2:blockedOnUpdate>nativeclient:2898</ns2:blockedOnUpdate></ns2:updates><ns0:title>Comment 3 by eaelt...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2903#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2903/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

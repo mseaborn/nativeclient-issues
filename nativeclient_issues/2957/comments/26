@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU4AQH47eCl7ImA9WhJUEUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2957/comments/full/26</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9673
+
+------------------------------------------------------------------------
+r9673 | bradnelson@google.com | 2012-09-09T01:22:37.417234Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/untrusted.gypi?r1=9673&amp;r2=9672&amp;pathrev=9673
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/examples.html?r1=9673&amp;r2=9672&amp;pathrev=9673
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/mac/strip_from_xcode?r1=9673&amp;r2=9672&amp;pathrev=9673
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/mac/strip_save_dsym?r1=9673&amp;r2=9672&amp;pathrev=9673
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/DEPS?r1=9673&amp;r2=9672&amp;pathrev=9673
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/DEPS?r1=9673&amp;r2=9672&amp;pathrev=9673
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/common.gypi?r1=9673&amp;r2=9672&amp;pathrev=9673
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/mac?r1=9673&amp;r2=9672&amp;pathrev=9673
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/weak_ref/DEPS?r1=9673&amp;r2=9672&amp;pathrev=9673
+
+Dropping several chrome side DEPS items.
+
+We can now drop several things from the DEPS.
+Dropping missed html file.
+Adding in clones of chrome side scripts to break src/build dependency.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2957
+TEST=None
+R=ncbray@chromium.org,noelallen@chromium.org,noelallen@google.com
+
+Review URL: https://chromiumcodereview.appspot.com/10912167
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-09-09T01:25:41.000Z</ns0:updated><ns0:published>2012-09-09T01:25:41.000Z</ns0:published><ns2:updates /><ns0:title>Comment 26 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2957#c26" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2957/comments/full/26" rel="self" type="application/atom+xml" /></ns0:entry>

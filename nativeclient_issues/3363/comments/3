@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UAQX47eCl7ImA9WhBWEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3363/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>sbc@google.com</ns0:name><ns0:uri>/u/sbc@google.com/</ns0:uri></ns0:author><ns0:content type="html">We are moving towards a world where more and more people are going to be using nacl_mounts (nacl_io is the new version which ships as standard in the SDK) so not
+having this function in the headers makes porting needlessly difficult.
+
+Is it not true that there are many functions declared in the headers which are
+not present without -lnosys?  I think we shoudl be consistent here.  Either all
+the nosys functions should be included or none.  If you want to argue for none, then
+we have a problem of how to inject these extra declarations into builds that do
+link with nosys/nacl_io.  Perhaps some kind of macro which declares that nosys /
+nacl_io is being used?
+
+Personally I'd rather see a complete set of headers for posix functions and let the
+link fail if the user forgets nacl_io/nosys on the link line.</ns0:content><ns0:updated>2013-04-04T22:40:40.000Z</ns0:updated><ns0:published>2013-04-04T22:40:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by sbc@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3363#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3363/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

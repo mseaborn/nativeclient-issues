@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkQBR347eCl7ImA9WhJTEk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2736/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8994
+
+------------------------------------------------------------------------
+r8994 | eaeltsin@google.com | Wed Jun 20 12:21:20 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/debug_stub/debug_stub_test.py?r1=8994&amp;r2=8993&amp;pathrev=8994
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/target.h?r1=8994&amp;r2=8993&amp;pathrev=8994
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/target.cc?r1=8994&amp;r2=8993&amp;pathrev=8994
+
+Debug stub: support vCont command to single step one thread and continue other threads
+
+At the moment debug stub always behaves this way, but this is wrong.
+
+In all-stop mode:
+'vCont;s:&lt;tid&gt;;c' - single step thread, continue others - when user issues 'stepi';
+'vCont;s:&lt;tid&gt;' - single step thread, keep others stopped - when stepping over breakpoint;
+
+This change adds support for 'vCont;s:&lt;tid&gt;;c' form.
+Next change will fix 'vCont;s:&lt;tid&gt;' to keep all other threads stopped.
+
+Additional cleanup:
+- get rid of 'run' thread concept, it is used by commands deprecated in favor of vCont only;
+- change GetRegThread and GetRunThread to return thread instead of thread id;
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2736
+TEST=run_debug_stub_test
+
+Review URL: https://chromiumcodereview.appspot.com/10581018
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-20T19:25:56.000Z</ns0:updated><ns0:published>2012-06-20T19:25:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2736#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2736/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

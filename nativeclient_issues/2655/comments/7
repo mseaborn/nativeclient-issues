@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8DQ347eCl7ImA9WhVUE0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2655/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8656
+
+------------------------------------------------------------------------
+r8656 | mseaborn@chromium.org | Fri May 18 20:38:36 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/nacl_secure_random.h?r1=8656&amp;r2=8655&amp;pathrev=8656
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main_chrome.h?r1=8656&amp;r2=8655&amp;pathrev=8656
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/posix/nacl_secure_random.c?r1=8656&amp;r2=8655&amp;pathrev=8656
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main_chrome.c?r1=8656&amp;r2=8655&amp;pathrev=8656
+
+sel_main_chrome: Add an interface for setting the /dev/urandom FD
+
+This will allow us to remove the unclean call to Chromium's
+GetUrandomFD() function once Chromium is changed.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2655
+TEST=random_test in inbrowser_test_runner
+
+Review URL: https://chromiumcodereview.appspot.com/10387138
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-05-19T03:41:12.000Z</ns0:updated><ns0:published>2012-05-19T03:41:12.000Z</ns0:published><ns2:updates>
+			<ns2:blockedOnUpdate>-2739</ns2:blockedOnUpdate><ns2:blockedOnUpdate>nativeclient:2739</ns2:blockedOnUpdate></ns2:updates><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2655#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2655/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

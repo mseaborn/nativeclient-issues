@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04DR347eCl7ImA9WhJbGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/135</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9850
+
+------------------------------------------------------------------------
+r9850 | khim@google.com | 2012-09-26T18:52:56.362529Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/gen_dfa.cc?r1=9850&amp;r2=9849&amp;pathrev=9850
+
+Remove dot from gen_dfa-generated files.
+
+Ragel have a concatenation operator which is described like this:
+
+Concatenation produces a machine that matches all the strings in machine one
+followed by all the strings in machine two.  Concatenation draws epsilon
+transitions from the final states of the first machine to the start state of
+the second machine. The final states of the first machine lose their final
+state status, unless the start state of the second machine is final as well.
+
+Concatenation is the default operator. Two machines next to each other with
+no operator between them results in concatenation.
+
+The code which we produce right now is harder to understand because it's not
+clear what operations takes precedence in a text like this:
+  (opcode_0 . any* &amp; any @operand0_rm . any* &amp; operand_disp @check_access)
+while the equivalent version with implicit concatenation have no such problems
+  (opcode_0 any* &amp; any @operand0_rm any* &amp; operand_disp @check_access)
+even if both are functionally equivalent.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2597
+TEST=none (no functional changes)
+Review URL: https://codereview.chromium.org/10986041
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-09-28T15:26:16.000Z</ns0:updated><ns0:published>2012-09-28T15:26:16.000Z</ns0:published><ns2:updates /><ns0:title>Comment 135 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c135" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/135" rel="self" type="application/atom+xml" /></ns0:entry>

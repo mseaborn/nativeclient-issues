@@ -1,0 +1,67 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMARH47eCl7ImA9WhNXFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3117/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10367
+
+------------------------------------------------------------------------
+r10367 | jfb@chromium.org | 2012-12-03T22:38:36.321508Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/validator_tests.h?r1=10367&amp;r2=10366&amp;pathrev=10367
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/ncvalidate.cc?r1=10367&amp;r2=10366&amp;pathrev=10367
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/ncval.gyp?r1=10367&amp;r2=10366&amp;pathrev=10367
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/build.scons?r1=10367&amp;r2=10366&amp;pathrev=10367
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/validator_huge_tests.cc?r1=10367&amp;r2=10366&amp;pathrev=10367
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/validator_small_tests.cc?r1=10367&amp;r2=10366&amp;pathrev=10367
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/cpuid_arm.c?r1=10367&amp;r2=10366&amp;pathrev=10367
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/problem_reporter.cc?r1=10367&amp;r2=10366&amp;pathrev=10367
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/cpuid_arm_features.h?r1=10367&amp;r2=10366&amp;pathrev=10367
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/ncval.cc?r1=10367&amp;r2=10366&amp;pathrev=10367
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/cpuid_arm.h?r1=10367&amp;r2=10366&amp;pathrev=10367
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/validator.cc?r1=10367&amp;r2=10366&amp;pathrev=10367
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/validator.h?r1=10367&amp;r2=10366&amp;pathrev=10367
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/validator_tests.cc?r1=10367&amp;r2=10366&amp;pathrev=10367
+
+ARM validator: reject conditionalized memory accesses as a proper SFI mechanism.
+
+Conditionalized memory accesses can leak information: an attacker could
+try to load/store from an address outside the sandbox, and on some CPUs
+a TLB entry will be added even if the test failed. This allows an
+attacker to infer where trusted code resides by timing accesses to
+untrusted address space and observing cache miss timing.
+
+This issue does not exist with BIC+LDR/BIC+STR.
+
+This change hinges on CPU features to decide whether TST+LDR and TST+STR
+are valid SFI mechanisms. CPU features currently always disallow these
+patterns. At some point in time we will start detecting the CPU and
+whitelist the ones that don't leak information on TST+LDR and
+TST+STR. Neither LLVM nor GCC should be using these patterns for now
+(LLVM had issues with flag liveness), but they're desirable because they
+should perform better than BIC+LDR/BIC+STR.
+
+We want this ABI-breaking change to be in before officially shipping
+NaCl on ARM.
+
+This CL is an offshoot from the following, which was broken up into
+smaller pieces: https://codereview.chromium.org/11275161/
+
+Most notably, the following CL fixes CPU features (it was broken for all
+but x86): https://codereview.chromium.org/11413021/
+
+The following CL simply removed the TST+mem code from the checked-in
+nexes, which simplify testing of this CL because trybots can't handle
+nexe changes properly and cause false failures:
+https://codereview.chromium.org/11348120/
+
+Worry not, the current CL has small_tests which do test TST+mem
+validation, both when enabled and disabled.
+
+The actual validation change is in validator.cc.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3117
+R= kschimpf@google.com, bsy@google.com
+TEST= ./scons run_arm_validator_small_tests
+
+Review URL: https://codereview.chromium.org/11280245
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-12-03T22:40:45.000Z</ns0:updated><ns0:published>2012-12-03T22:40:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3117#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3117/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -17,5 +17,5 @@ as.exe (mingw)
 - Transfers control from/to the service runtime
 - Turn on 64-bit validator</ns0:content><ns0:updated>2010-03-09T19:41:02.000Z</ns0:updated><ns0:published>2009-12-03T19:11:19.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/104834035110555747685/</ns2:uri><ns2:username>ile...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Service Runtime for NaCl on 64 bit Windows</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Win64</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Milestone-Chromium-5</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/185/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=185" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/185" rel="self" type="application/atom+xml" /><ns2:stars>6</ns2:stars><ns2:blockedOn>
-			<ns2:id>165</ns2:id></ns2:blockedOn><ns2:blocking>
-			<ns2:id>160</ns2:id></ns2:blocking><ns2:closedDate>2010-03-09T19:41:02.000Z</ns2:closedDate><ns2:id>185</ns2:id></ns0:entry>
+			<ns2:id>165</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blocking>
+			<ns2:id>160</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2010-03-09T19:41:02.000Z</ns2:closedDate><ns2:id>185</ns2:id></ns0:entry>

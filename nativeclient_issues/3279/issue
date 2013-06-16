@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ECRn47eCl7ImA9WhBbEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3279</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">While debugging issue 3275, I saw run_thread_suspension_test hang, and GDB gave the following backtrace:
+
+(gdb) run
+Starting program: scons-out/nacl-x86-32/obj/tests/thread_suspension/suspend_test_host scons-out/nacl-x86-32/obj/tests/thread_suspension/suspend_test_guest.nexe
+Reading symbols for shared libraries ++. done
+[10981,2694788416:02:31:39.102779] Native Client module will be loaded at base address 0x0000000013fe0000
+Running TrySuspendingSyscallInvokerThread (reset_registers=1)...
+iter 0
+^C
+Program received signal SIGINT, Interrupt.
+0xffff028f in __spin_lock ()
+(gdb) thread apply all backtrace
+
+Thread 2 (process 10981):
+#0  0x98e0004e in munmap$UNIX2003 ()
+#1  0x98dfd8fe in allocate_pages ()
+#2  0x98dff01f in szone_malloc_should_clear ()
+#3  0x98dfeba8 in malloc_zone_malloc ()
+#4  0x98e03944 in realloc ()
+#5  0x98e28a09 in new_sem_from_pool ()
+#6  0x98e005f0 in pthread_mutex_lock ()
+#7  0x00034ccd in NaClMutexLock (mp=0x100740) at src/shared/platform/posix/lock.c:27
+#8  0x000381f1 in NaClXMutexLock (mp=0x100740) at src/shared/platform/nacl_sync_checked.c:26
+#9  0x00019a0f in NaClAppThreadSetSuspendState (natp=0x100680, old_state=NACL_APP_THREAD_UNTRUSTED, new_state=NACL_APP_THREAD_TRUSTED) at src/trusted/service_runtime/osx/thread_suspension.c:42
+#10 0x0000dd3e in NaClSyscallCSegHook (tls_idx=9) at src/trusted/service_runtime/nacl_syscall_hook.c:114
+#11 0x00017a34 in NaClSyscallSegSSE ()
+
+Thread 1 (process 10981):
+#0  0xffff028f in __spin_lock ()
+#1  0x00000000 in ?? ()
+
+
+I had the following patch applied:
+
+@@ -217,8 +217,9 @@ static void TrySuspendingSyscallInvokerThread(struct NaClApp *nap,
+   /* Wait for guest program to start writing to the address. */
+   while (test_shm-&amp;gt;var == 0) { /* do nothing */ }
+ 
+-  for (iteration = 0; iteration &amp;lt; 1000; iteration++) {
++  for (iteration = 0; /* iteration &amp;lt; 1000 */; iteration++) {
+     uint32_t snapshot;
++    fprintf(stderr, &amp;quot;iter %i\n&amp;quot;, iteration);
+
+
+The backtrace shows that pthread_mutex_lock() calls realloc(), so it's not async-signal-safe.  It's not safe to suspend a thread that's in pthread_mutex_lock(), which NaCl is currently doing.
+
+We should change thread suspension on OS X to use atomic ops instead.  We could use an implementation like the Linux one, except instead of doing futex_wait(), the code could spin or call sched_yield().
+</ns0:content><ns0:updated>2013-05-10T16:01:07.000Z</ns0:updated><ns0:published>2013-02-03T00:19:07.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:state>open</ns2:state><ns0:title>Mac thread suspension can deadlock because pthread_mutex_lock() calls realloc()</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Mac</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3279/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3279" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3279" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3279</ns2:id></ns0:entry>

@@ -1,0 +1,61 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QFRn47eCl7ImA9WhBaGUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3342</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Summary:  LLVM IR allows function return types such as &amp;quot;zeroext i8&amp;quot; and &amp;quot;signext i8&amp;quot;.  This complicates the language that the PNaCl translator must handle.  We should expand these out to use explicit zero/sign extension and require return types to be 32-bit or larger.  The same applies to argument types too.
+
+
+Background: Clang compiles the following C function:
+
+char return_char(char *ptr) {
+  return *ptr;
+}
+
+to the following LLVM IR:
+
+define signext i8 @return_char(i8* nocapture %ptr) nounwind readonly {
+  %1 = load i8* %ptr, align 1, !tbaa !0
+  ret i8 %1
+}
+
+For x86-64, that sign-extends the return value:
+
+return_char:
+        movsbl  (%rdi), %eax
+        ret
+
+It's possible to remove the &amp;quot;signext&amp;quot; and get the following code generated, but I don't know if Clang will generate such LLVM IR:
+
+        movb    (%rdi), %al
+        ret
+
+
+The LLVM docs (http://llvm.org/docs/LangRef.html) say:
+
+&amp;quot;zeroext
+This indicates to the code generator that the parameter or return value should be zero-extended to the extent required by the target&#8217;s ABI (which is usually 32-bits, but is 8-bits for a i1 on x86-64) by the caller (for a parameter) or the callee (for a return value).
+signext
+This indicates to the code generator that the parameter or return value should be sign-extended to the extent required by the target&#8217;s ABI (which is usually 32-bits) by the caller (for a parameter) or the callee (for a return value).&amp;quot;
+
+I haven't found ABI docs for x86 that specify that sign/zero-extension is required for %eax, but I suspect that the requirement is there to avoid getting undefined results when calling a C function without the function being declared (in which case the C return type defaults to &amp;quot;int&amp;quot;).
+
+The x86-64 ABI docs (http://www.x86-64.org/documentation/abi.pdf) say:
+
+&amp;quot;When a value of type _Bool is returned or passed in a register or on the stack,
+bit 0 contains the truth value and bits 1 to 7 shall be zero[14].
+[14] Other bits are left unspecified, hence the consumer side of those values can rely on it being 0 or 1 when truncated to 8 bit.&amp;quot;
+
+
+In order to simplify the language and reduce differences between architectures, I propose that PNaCl add in explicit sign/zero-extension operations on the user toolchain side.
+
+So, @return_char() from above would be expanded out to:
+
+define i32 @return_char(i8* nocapture %ptr) nounwind readonly {
+  %1 = load i8* %ptr, align 1, !tbaa !0
+  %2 = sext i8 %1 to i32
+  ret i32 %2
+}
+
+This is a similar proposal:
+http://nondot.org/sabre/LLVMNotes/ExtendedIntegerResults.txt
+But I don't know what its status is.
+</ns0:content><ns0:updated>2013-05-30T19:15:17.000Z</ns0:updated><ns0:published>2013-03-13T21:15:57.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>PNaCl: Require function return values and arguments to be i32 or larger</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>PNaClABI</ns2:label><ns2:label>Pri-1</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3342/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3342" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3342" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-05-30T15:44:21.000Z</ns2:closedDate><ns2:id>3342</ns2:id></ns0:entry>

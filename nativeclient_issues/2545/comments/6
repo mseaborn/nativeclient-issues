@@ -1,0 +1,78 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4MQ347eCl7ImA9WhJTEE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2545/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">An initial memory profile using tcmalloc's heap profiler.
+It seems a lot of memory us used by the MC object emitter.
+
+
+Total: 26844.9 MB
+  5235.4  19.5%  19.5%   5235.4  19.5% ::MCELFStreamer::EmitInstToData
+  4849.2  18.1%  37.6%   4849.2  18.1% llvm::MallocSlabAllocator::Allocate
+  3409.8  12.7%  50.3%   3409.8  12.7% llvm::MCObjectStreamer::getOrCreateDataFragment
+  2570.1   9.6%  59.8%   2570.1   9.6% llvm::MCObjectStreamer::EmitInstToFragment
+  2027.9   7.6%  67.4%   2027.9   7.6% llvm::StreamingMemoryObject::setKnownObjectSize
+  1975.1   7.4%  74.8%   1975.1   7.4% llvm::MCObjectStreamer::EmitLabel
+  1003.7   3.7%  78.5%   1003.7   3.7% llvm::StringMapImpl::RehashTable
+   969.2   3.6%  82.1%    969.2   3.6% ::MCELFStreamer::EmitCodeAlignment
+   731.4   2.7%  84.8%    731.4   2.7% std::vector::_M_insert_aux
+   560.8   2.1%  86.9%    560.8   2.1% ::MCELFStreamer::EmitAssignment
+   558.2   2.1%  89.0%    558.2   2.1% llvm::User::operator new
+   482.2   1.8%  90.8%    482.2   1.8% llvm::BranchProbabilityInfo::setEdgeWeight
+   456.2   1.7%  92.5%    456.2   1.7% llvm::DenseMap::grow
+   448.4   1.7%  94.2%    448.4   1.7% std::vector::_M_fill_insert
+   331.9   1.2%  95.4%    331.9   1.2% llvm::MCObjectStreamer::AddValueSymbols
+   266.7   1.0%  96.4%    266.7   1.0% std::_Rb_tree::_M_insert_
+   174.2   0.6%  97.0%    174.2   0.6% llvm::SmallVectorBase::grow_pod
+   171.4   0.6%  97.7%    171.4   0.6% std::_Vector_base::_M_allocate
+   143.7   0.5%  98.2%    143.7   0.5% llvm::InterferenceCache::Entry::reset
+    77.3   0.3%  98.5%     77.3   0.3% llvm::Function::BuildLazyArguments
+    70.9   0.3%  98.8%     70.9   0.3% ::MCELFStreamer::EmitValueToAlignment
+    63.6   0.2%  99.0%     63.6   0.2% llvm::Function::Function
+    60.1   0.2%  99.2%     60.1   0.2% llvm::StringMapImpl::init
+    53.7   0.2%  99.4%     53.7   0.2% ::MCELFStreamer::EmitSymbolAttribute
+    39.1   0.1%  99.6%     39.1   0.1% llvm::ConstantDataSequential::getImpl
+    35.0   0.1%  99.7%     35.0   0.1% llvm::SmallVectorTemplateBase::grow
+    21.9   0.1%  99.8%     21.9   0.1% llvm::MCObjectStreamer::EmitDwarfAdvanceFrameAddr
+    17.6   0.1%  99.9%     17.6   0.1% llvm::TargetData::getStructLayout
+    14.0   0.1%  99.9%     14.0   0.1% std::vector::reserve
+     4.4   0.0%  99.9%      4.4   0.0% ::FPS::runOnMachineFunction
+     2.0   0.0%  99.9%      2.0   0.0% llvm::DenseMap::operator[]
+     1.9   0.0%  99.9%      1.9   0.0% llvm::ValueSymbolTable::createValueName
+     1.7   0.0%  99.9%      1.7   0.0% llvm::BitcodeReader::ParseFunctionBody
+     1.4   0.0%  99.9%      1.4   0.0% ::MCELFStreamer::FinishImpl
+     1.3   0.0% 100.0%      1.3   0.0% llvm::Calculate
+     1.2   0.0% 100.0%      1.2   0.0% llvm::SmallPtrSetImpl::Grow
+     1.0   0.0% 100.0%      1.0   0.0% llvm::AttrListPtr::get
+     1.0   0.0% 100.0%      1.0   0.0% llvm::getStreamedBitcodeModule
+     1.0   0.0% 100.0%      1.0   0.0% llvm::PMTopLevelManager::findAnalysisUsage
+     0.9   0.0% 100.0%      0.9   0.0% llvm::RegAllocBase::LiveUnionArray::init
+     0.9   0.0% 100.0%      0.9   0.0% llvm::ArrayType::get
+     0.7   0.0% 100.0%      0.7   0.0% llvm::createGreedyRegisterAllocator
+     0.7   0.0% 100.0%      0.7   0.0% llvm::PseudoSourceValue::getFixedStack
+     0.6   0.0% 100.0%      0.6   0.0% llvm::RegAllocBase::init
+     0.5   0.0% 100.0%      0.5   0.0% llvm::PHINode::allocHungoffUses
+     0.4   0.0% 100.0%      0.4   0.0% llvm::RegisterTargetMachine::Allocator
+     0.4   0.0% 100.0%      0.4   0.0% llvm::FoldingSetImpl::GrowHashTable
+     0.3   0.0% 100.0%      0.3   0.0% std::_Rb_tree::_M_insert_unique_
+     0.3   0.0% 100.0%      0.3   0.0% llvm::callDefaultCtor
+     0.2   0.0% 100.0%      0.2   0.0% ::MCELFStreamer::EmitCommonSymbol
+     0.2   0.0% 100.0%      0.2   0.0% llc_main
+     0.2   0.0% 100.0%      0.2   0.0% llvm::ScalarEvolution::releaseMemory
+     0.2   0.0% 100.0%      0.2   0.0% llvm::SmallVectorImpl::append
+     0.2   0.0% 100.0%      0.2   0.0% llvm::BitstreamCursor::ReadAbbrevRecord
+     0.2   0.0% 100.0%      0.2   0.0% llvm::MDNode::getMDNode
+     0.1   0.0% 100.0%      0.1   0.0% llvm::MDString::get
+     0.1   0.0% 100.0%      0.1   0.0% __new_exitfn
+     0.1   0.0% 100.0%      0.1   0.0% llvm::PassRegistry::registerAnalysisGroup
+     0.1   0.0% 100.0%      0.1   0.0% llvm::RegisterClassInfo::runOnMachineFunction
+     0.1   0.0% 100.0%      0.1   0.0% llvm::MachineRegisterInfo::MachineRegisterInfo
+     0.1   0.0% 100.0%      0.1   0.0% llvm::PassNameParser::passRegistered
+     0.1   0.0% 100.0%      0.1   0.0% llvm::FunctionLoweringInfo::set
+     0.1   0.0% 100.0%      0.1   0.0% llvm::PassRegistry::registerPass
+     0.1   0.0% 100.0%      0.1   0.0% llvm::User::allocHungoffUses
+     0.1   0.0% 100.0%      0.1   0.0% llvm::SelectionDAGBuilder::init
+     0.1   0.0% 100.0%      0.1   0.0% llvm::FoldingSetImpl::FoldingSetImpl
+     0.1   0.0% 100.0%      0.1   0.0% llvm::X86_MC::InitLLVM2SEHRegisterMapping
+     0.1   0.0% 100.0%      0.1   0.0% llvm::SlotIndexes::runOnMachineFunction
+
+
+</ns0:content><ns0:updated>2012-06-18T17:03:02.000Z</ns0:updated><ns0:published>2012-06-18T17:03:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2545#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2545/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU8HQ347eCl7ImA9WhBUE0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3348/comments/full/20</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11252
+
+------------------------------------------------------------------------
+r11252 | jvoung@google.com | 2013-04-29T16:34:57.082266Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/DEPS?r1=11252&amp;r2=11251&amp;pathrev=11252
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-ld.py?r1=11252&amp;r2=11251&amp;pathrev=11252
+
+Update pnacl/DEPS to bring in stricter ABI checks for metadata.
+
+f8b761e Check for metadata in PNaCl ABI checker.
+
+Use -pnaclabi-allow-debug-metadata when checking the ABI
+in pnacl-ld, since we do not strip debug metadata until
+pnacl-finalize is run.
+
+On the other hand pnaclabi-check will not have that flag
+by default and do the full check.  Also run the
+-strip-metadata pass after optimizations in pnacl-ld to get
+through the non-debug-metadata checks.
+
+Bump DEPS at the same time, since we need to have the
+-allow-debug-metadata to pass validation.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3348
+R=mseaborn@chromium.org
+
+Review URL: https://codereview.chromium.org/14358048
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-04-30T23:17:12.000Z</ns0:updated><ns0:published>2013-04-30T23:17:12.000Z</ns0:published><ns2:updates /><ns0:title>Comment 20 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3348#c20" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3348/comments/full/20" rel="self" type="application/atom+xml" /></ns0:entry>

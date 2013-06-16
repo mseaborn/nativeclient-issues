@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMAQ347eCl7ImA9WhBRF00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3331</ns0:id><ns0:author>
+			<ns0:name>j...@chromium.org</ns0:name><ns0:uri>/u/109636895838879576326/</ns0:uri></ns0:author><ns0:content type="html">The Windows coverage bots are silently broken and don't actually perform line coverage.
+
+Failures from scons_compile:
+Warning VSP2005 : Internal Instrumentation Error: The object '\b\build\slave\xp-newlib-coverage\build\native_client\scons-out\coverage-win-x86-32\lib\cpu_features.lib(scons-out\coverage-win-x86-32\obj\src\trusted\cpu_features\arch\x86\cpu_xgetbv.obj)' was built without debug information.
+Warning VSP2005 : Internal Instrumentation Error: The object '\b\build\slave\xp-newlib-coverage\build\native_client\scons-out\coverage-win-x86-32\lib\sel.lib(scons-out\coverage-win-x86-32\obj\src\trusted\service_runtime\arch\x86_32\nacl_switch_32.obj)' was built without debug information.
+Warning VSP2005 : Internal Instrumentation Error: The object '\b\build\slave\xp-newlib-coverage\build\native_client\scons-out\coverage-win-x86-32\lib\sel.lib(scons-out\coverage-win-x86-32\obj\src\trusted\service_runtime\arch\x86_32\nacl_syscall_32.obj)' was built without debug information.
+Warning VSP2005 : Internal Instrumentation Error: The object '\b\build\slave\xp-newlib-coverage\build\native_client\scons-out\coverage-win-x86-32\lib\sel.lib(scons-out\coverage-win-x86-32\obj\src\trusted\service_runtime\arch\x86_32\springboard.obj)' was built without debug information.
+Warning VSP2005 : Internal Instrumentation Error: The object '\b\build\slave\xp-newlib-coverage\build\native_client\scons-out\coverage-win-x86-32\lib\sel.lib(scons-out\coverage-win-x86-32\obj\src\trusted\service_runtime\arch\x86_32\tramp_32.obj)' was built without debug information.
+Warning VSP2005 : Internal Instrumentation Error: The object '\b\build\slave\xp-newlib-coverage\build\native_client\scons-out\coverage-win-x86-32\lib\nccopy_x86_32.lib(scons-out\coverage-win-x86-32\obj\src\trusted\validator_x86\nccopycode_stores.obj)' was built without debug information.
+Error VSP1033 : The file 'E:\b\build\slave\xp-newlib-coverage\build\native_client\scons-out\nacl-x86-32\obj\tests\sel_main_chrome\sel_main_chrome_test.exe' does not contain a recognized executable image.
+
+
+</ns0:content><ns0:updated>2013-03-07T23:54:02.000Z</ns0:updated><ns0:published>2013-03-07T23:54:02.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Windows coverage bots silently broken</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3331/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3331" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3331" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3331</ns2:id></ns0:entry>

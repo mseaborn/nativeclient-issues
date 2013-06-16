@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4DRH47eCl7ImA9WhJSEE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2888/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mcgra...@chromium.org</ns0:name><ns0:uri>/u/109286297231979736865/</ns0:uri></ns0:author><ns0:content type="html">See also Brad's never-committed change http://codereview.chromium.org/8585036/
+That included the fix to this, but didn't mention it, didn't add a test case, etc.
+
+--- a/src/trusted/validator/x86/ncval_seg_sfi/ncvalidate_detailed.c
++++ b/src/trusted/validator/x86/ncval_seg_sfi/ncvalidate_detailed.c
+@@ -107,6 +107,7 @@ static Bool NCInstLayoutCheck(const NCDecoderInst* dinst) {
+     NCBadInstructionError(
+         dinst,
+         "Instruction begins basic block, but in middle of nacl pattern\n");
++    NCStatsBadAlignment(vstate);
+   }
+ 
+   /* Check that instruction doesn't cross block boundaries. */
+</ns0:content><ns0:updated>2012-06-29T22:12:55.000Z</ns0:updated><ns0:published>2012-06-29T22:12:55.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by mcgra...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2888#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2888/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

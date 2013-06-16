@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8FSX47eCl7ImA9WhVUEUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/53</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8608
+
+------------------------------------------------------------------------
+r8608 | pasko@google.com | Wed May 16 06:23:01 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/ncval_tests.txt?r1=8608&amp;r2=8607&amp;pathrev=8608
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator-x86_32.rl?r1=8608&amp;r2=8607&amp;pathrev=8608
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator-x86_64.rl?r1=8608&amp;r2=8607&amp;pathrev=8608
+
+validator_ragel: print offset on jmp error report
+
+Now we print 'offset 0xXXX: ' for the 'direct jump out of range' message, which
+allows the test harness to detect that we did report the validation failure.
+
+As I looked at the 'check_jump_dest' macro I realized that it is wrong in a
+number of ways:
+
+* uses 4 implicit arguments (not counting the the ones for goto, adds 2 more),
+  which makes it hard to follow what this small piece of code depends on
+
+* it is a macro =&gt; syntax highlighting is broken =&gt; harder to read, also the
+  style guide strongly discourages non-constant macro definitions
+
+* the 'jump_dest' variable in fact holds a value that differs from the jump
+  destination by 1, which makes the condition on line 2 another WTF
+
+* BitmapSetBit is used before defined, not elegant
+
+* not an all-caps name for a macro
+
+To address that I changed teh value of jump_dest to keep the actual destination,
+moved bitmap manipulation routines before the first use, finally converted the
+macro to a function.  The code grew bigger, but became significantly more
+readable.
+
+Also enabled the test that depended on the message format.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2597
+TEST=jump_outside (borrowed from the old validator)
+
+Review URL: https://chromiumcodereview.appspot.com/9689001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-05-16T13:26:58.000Z</ns0:updated><ns0:published>2012-05-16T13:26:58.000Z</ns0:published><ns2:updates /><ns0:title>Comment 53 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c53" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/53" rel="self" type="application/atom+xml" /></ns0:entry>

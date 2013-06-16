@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUYHSX47eCl7ImA9WhJWEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1577/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9489
+
+------------------------------------------------------------------------
+r9489 | mseaborn@chromium.org | 2012-08-16T14:23:36.790187Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/nacl_debug.cc?r1=9489&amp;r2=9488&amp;pathrev=9489
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/target.cc?r1=9489&amp;r2=9488&amp;pathrev=9489
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/target.h?r1=9489&amp;r2=9488&amp;pathrev=9489
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/debug_stub/debug_stub_test.py?r1=9489&amp;r2=9488&amp;pathrev=9489
+
+Debug stub: Disallow memory accesses outside of the sandbox address space
+
+The old code does:
+
+  if (addr &lt; mem_base_) {
+    addr += mem_base_;
+  }
+
+which is very kludgy and allows unlimited access to trusted addresses
+above (but not below) the sandbox area.  It is intended to allow GDB
+to use both trusted and untrusted addresses, but this can only work on
+x86-64, because on x86-32 values cannot be unambiguously classified as
+trusted or untrusted addresses.
+
+We replace this with cleaner code that allows trusted addresses on
+x86-64 only, because GDB still uses this.
+
+Also remove the mem_base_ field and use the NaClApp pointer instead.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1577
+TEST=run_debug_stub_test + GDB tests in large_tests
+
+Review URL: https://chromiumcodereview.appspot.com/10827323
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-16T14:25:38.000Z</ns0:updated><ns0:published>2012-08-16T14:25:38.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1577#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1577/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYMQ347eCl7ImA9WhNaEUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3246</ns0:id><ns0:author>
+			<ns0:name>kevin.li...@hotmail.com</ns0:name><ns0:uri>/u/115247418985246779858/</ns0:uri></ns0:author><ns0:content type="html">I followed the instruction to run a hello world (a simple main function with printf) native code with sel_ldr.  Here is my command line:
+
+nacl_sdk/pepper_25/tools/run.py myprogram_x86-32.nexe
+
+but I got the following error:
+
+Serving C:\nacl_sdk\pepper_25\tools on http://localhost:49446/...
+Running: myprogram_x86-32.nexe http://localhost:49446/index.html...
+Traceback (most recent call last):
+  File &amp;quot;C:\nacl_sdk\pepper_25\tools\run.py&amp;quot;, line 62, in &amp;lt;module&amp;gt;
+    sys.exit(main(sys.argv[1:]))
+  File &amp;quot;C:\nacl_sdk\pepper_25\tools\run.py&amp;quot;, line 53, in main
+    process = subprocess.Popen(cmd, env=env)
+  File &amp;quot;C:\Python27\lib\subprocess.py&amp;quot;, line 679, in __init__
+    errread, errwrite)
+  File &amp;quot;C:\Python27\lib\subprocess.py&amp;quot;, line 896, in _execute_child
+    startupinfo)
+WindowsError: [Error 193] %1 is not a valid Win32 application
+
+My machine is Win7 64 bits, and my python version is 2.73 (32bits).  I tried 64bits python, but I got the same error.  I am new in this area, and I cannot figure out what is wrong.    
+
+Your helps would be appreciated.  Thanks.  </ns0:content><ns0:updated>2013-01-25T21:09:42.000Z</ns0:updated><ns0:published>2013-01-06T17:18:11.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>run standalong *.nexe using sel_ldr</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>MigrateToChromium</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3246/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3246" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3246" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3246</ns2:id></ns0:entry>

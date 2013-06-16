@@ -1,0 +1,69 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUMNSX47eCl7ImA9WhJTEUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2859/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">Upstream difference.
+
+$ g++ -O2 test_pass.cc -o test_pass ; ./test_pass
+0xdfb010::Foo()
+0xdfb010::~Foo()
+0xdfb010::~Foo()
+*** glibc detected *** ./test_pass: double free or corruption (fasttop): 0x0000000000dfb010 ***
+======= Backtrace: =========
+/lib/libc.so.6(+0x77806)[0x7fafa6f59806]
+/lib/libc.so.6(cfree+0x73)[0x7fafa6f600d3]
+./test_pass[0x400e34]
+/lib/libc.so.6(__libc_start_main+0xfd)[0x7fafa6f00c4d]
+./test_pass[0x400a59]
+======= Memory map: ========
+00400000-00402000 r-xp 00000000 fc:01 8221292                            /home/khim/&#1047;&#1072;&#1075;&#1088;&#1091;&#1079;&#1082;&#1080;/test_pass
+00601000-00602000 r--p 00001000 fc:01 8221292                            /home/khim/&#1047;&#1072;&#1075;&#1088;&#1091;&#1079;&#1082;&#1080;/test_pass
+00602000-00603000 rw-p 00002000 fc:01 8221292                            /home/khim/&#1047;&#1072;&#1075;&#1088;&#1091;&#1079;&#1082;&#1080;/test_pass
+00dfb000-00e1c000 rw-p 00000000 00:00 0                                  [heap]
+7fafa0000000-7fafa0021000 rw-p 00000000 00:00 0 
+7fafa0021000-7fafa4000000 ---p 00000000 00:00 0 
+7fafa6ee2000-7fafa705c000 r-xp 00000000 fc:01 1835363                    /lib/libc-2.11.1.so
+7fafa705c000-7fafa725b000 ---p 0017a000 fc:01 1835363                    /lib/libc-2.11.1.so
+7fafa725b000-7fafa725f000 r--p 00179000 fc:01 1835363                    /lib/libc-2.11.1.so
+7fafa725f000-7fafa7260000 rw-p 0017d000 fc:01 1835363                    /lib/libc-2.11.1.so
+7fafa7260000-7fafa7265000 rw-p 00000000 00:00 0 
+7fafa7265000-7fafa727b000 r-xp 00000000 fc:01 1835026                    /lib/libgcc_s.so.1
+7fafa727b000-7fafa747a000 ---p 00016000 fc:01 1835026                    /lib/libgcc_s.so.1
+7fafa747a000-7fafa747b000 r--p 00015000 fc:01 1835026                    /lib/libgcc_s.so.1
+7fafa747b000-7fafa747c000 rw-p 00016000 fc:01 1835026                    /lib/libgcc_s.so.1
+7fafa747c000-7fafa74fe000 r-xp 00000000 fc:01 1835336                    /lib/libm-2.11.1.so
+7fafa74fe000-7fafa76fd000 ---p 00082000 fc:01 1835336                    /lib/libm-2.11.1.so
+7fafa76fd000-7fafa76fe000 r--p 00081000 fc:01 1835336                    /lib/libm-2.11.1.so
+7fafa76fe000-7fafa76ff000 rw-p 00082000 fc:01 1835336                    /lib/libm-2.11.1.so
+7fafa76ff000-7fafa77f5000 r-xp 00000000 fc:01 3674021                    /usr/lib/libstdc++.so.6.0.13
+7fafa77f5000-7fafa79f5000 ---p 000f6000 fc:01 3674021                    /usr/lib/libstdc++.so.6.0.13
+7fafa79f5000-7fafa79fc000 r--p 000f6000 fc:01 3674021                    /usr/lib/libstdc++.so.6.0.13
+7fafa79fc000-7fafa79fe000 rw-p 000fd000 fc:01 3674021                    /usr/lib/libstdc++.so.6.0.13
+7fafa79fe000-7fafa7a13000 rw-p 00000000 00:00 0 
+7fafa7a13000-7fafa7a33000 r-xp 00000000 fc:01 1835338                    /lib/ld-2.11.1.so
+7fafa7c0d000-7fafa7c11000 rw-p 00000000 00:00 0 
+7fafa7c2f000-7fafa7c32000 rw-p 00000000 00:00 0 
+7fafa7c32000-7fafa7c33000 r--p 0001f000 fc:01 1835338                    /lib/ld-2.11.1.so
+7fafa7c33000-7fafa7c34000 rw-p 00020000 fc:01 1835338                    /lib/ld-2.11.1.so
+7fafa7c34000-7fafa7c35000 rw-p 00000000 00:00 0 
+7fff6bb5b000-7fff6bb7c000 rw-p 00000000 00:00 0                          [stack]
+7fff6bbff000-7fff6bc00000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+Aborted
+$ g++ --version
+g++ (Ubuntu 4.4.3-4ubuntu5.1) 4.4.3
+Copyright (C) 2009 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Apparently fixed now:
+
+$ PATH=/usr/local/gcc47/bin:$PATH g++ -O2 test_pass.cc -o test_pass ; ./test_pass
+0x1f6d010::Foo()
+0x1f6d010::~Foo()
+$ PATH=/usr/local/gcc47/bin:$PATH g++ --version
+g++ (GCC) 4.7.0
+Copyright (C) 2012 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+As noted in CL this is violation of aliasing rules and as such can be fixed (both in native and NaCl case) with -fno-strict-aliasing</ns0:content><ns0:updated>2012-06-20T10:18:18.000Z</ns0:updated><ns0:published>2012-06-20T10:18:18.000Z</ns0:published><ns2:updates>
+			<ns2:status>WontFix</ns2:status></ns2:updates><ns0:title>Comment 2 by k...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2859#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2859/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

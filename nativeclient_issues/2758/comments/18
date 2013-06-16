@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0YBRn47eCl7ImA9WhVbGUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/18</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8825
+
+------------------------------------------------------------------------
+r8825 | eaeltsin@google.com | Wed Jun 06 01:23:16 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/posix/thread_impl.cc?r1=8825&amp;r2=8824&amp;pathrev=8825
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/win/thread_impl.cc?r1=8825&amp;r2=8824&amp;pathrev=8825
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/port/thread.h?r1=8825&amp;r2=8824&amp;pathrev=8825
+
+Debug stub: move platform-specific thread suspension code out of Thread class
+
+Debug stub: merge common threading code, part 6
+
+This is the final change before actually merging POSIX Thread with Win Thread.
+
+IThread::SuspendOneThread and IThread::ResumeOneThread are introduced for a short period of time only, before we switch to service runtime thread suspension interface. After the switch they will be gone together with IThread::Suspend and IThread::Resume. These functions are needed to keep platform-specific suspend/resume code after the rest is moved to the other source file. These functions have explicit NaClAppThread parameter so that they don't need Thread definition and friendship to get to NaClThread::tid.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2758
+TEST=run_debug_stub_test
+
+Review URL: https://chromiumcodereview.appspot.com/10544002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-06T08:25:57.000Z</ns0:updated><ns0:published>2012-06-06T08:25:57.000Z</ns0:published><ns2:updates /><ns0:title>Comment 18 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2758#c18" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/18" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQBRH47eCl7ImA9WhNSFUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3007/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I don't think we need to do this for standalone sel_ldr now:
+
+ * I found another way to make the debug stub tests work with -jN, committed in https://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9974
+
+ * Using an inherited socket on Windows might not work.
+
+ * Andrey committed code that uses the bound socket FD rather than the connected socket FD, so we wouldn't be reusing much code in standalone sel_ldr.
+
+I'll mark this as WontFix for now.  Feel free to reopen if the functionality is desired.</ns0:content><ns0:updated>2012-10-29T21:49:15.000Z</ns0:updated><ns0:published>2012-10-29T21:49:15.000Z</ns0:published><ns2:updates>
+			<ns2:status>WontFix</ns2:status><ns2:ownerUpdate>mseaborn@chromium.org</ns2:ownerUpdate></ns2:updates><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3007#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3007/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

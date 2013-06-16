@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQGRH47eCl7ImA9WhNWE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2816/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10446
+
+------------------------------------------------------------------------
+r10446 | jfb@chromium.org | 2012-12-12T18:30:13.924660Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/armv7.table?r1=10446&amp;r2=10445&amp;pathrev=10446
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/baseline_classes.cc?r1=10446&amp;r2=10445&amp;pathrev=10446
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/validator_small_tests.cc?r1=10446&amp;r2=10445&amp;pathrev=10446
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/actual_classes.cc?r1=10446&amp;r2=10445&amp;pathrev=10446
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/actual_classes.h?r1=10446&amp;r2=10445&amp;pathrev=10446
+
+ARM validator: don't allow instruction encodings that are UNPREDICTABLE but used to get emitted by compilers.
+
+Bug 2816 claims that there are some UNPREDICTABLE instructions that get
+emitted by ARM compilers. I don't know the full history, but I'd rather
+not ship this as part of our ABI!
+
+This CL stops accepting the UNPREDICTABLE encodings and all the tests as
+well as the ARM nexes I could find seem to pass.
+
+This is in no way a guarantee that compilers don't emit the instructions
+anymore, which is why I'd like to have Derek and Roland chime in on
+whether they know of any fixes that went in to the toolchains.
+
+We should discuss this before checking it in.
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=2816
+R=kschimpf@google.com, mcgrathr@chromium.org, dschuff@chromium.org
+
+Review URL: https://codereview.chromium.org/11517016
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-12-12T18:35:25.000Z</ns0:updated><ns0:published>2012-12-12T18:35:25.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2816#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2816/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

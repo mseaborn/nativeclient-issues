@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C04ASH47eCl7ImA9WhJRFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2896/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9156
+
+------------------------------------------------------------------------
+r9156 | eaeltsin@google.com | Mon Jul 16 22:05:29 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/abi.h?r1=9156&amp;r2=9155&amp;pathrev=9156
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/abi.cc?r1=9156&amp;r2=9155&amp;pathrev=9156
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/nacl.scons?r1=9156&amp;r2=9155&amp;pathrev=9156
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/thread_common.cc?r1=9156&amp;r2=9155&amp;pathrev=9156
+
+Debug stub: support x86_64
+
+Latest nacl-gdb now ignores high part of rsp, rbp and rip, so it actually works with untrusted addresses in most cases (there are several cases when GDB still uses trusted address taken directly from register, for example, from rsp, this is a subject of future fixes).
+
+This change introduces TRUSTED_PTR register type in debug stub, assigned to rsp, rbp and rip. It is supported in such a way that when GDB tries to set these registers to untrusted address (with high part of 0), their old high part remains unchanged.
+
+With this change, most GDB tests start to pass for x86_64.
+
+This change enables x86_64 support for Linux only, Win will follow in subsequent changes.
+This change enables x86_64 support for static link (newlib) only, dso will follow in subsequent changes.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2896
+TEST=run_gdb_stepi_after_break_test run_gdb_break_continue_thread_test
+
+Review URL: https://chromiumcodereview.appspot.com/10689188
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-17T05:12:29.000Z</ns0:updated><ns0:published>2012-07-17T05:12:29.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2896#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2896/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

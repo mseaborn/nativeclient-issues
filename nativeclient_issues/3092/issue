@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUNQn47eCl7ImA9WhNUF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3092</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Currently, NaCl's gdb_tests suite (in tests/gdb) is not enabled for ARM.
+
+There are a couple of things blocking this:
+
+ 1) gdb_test.py doesn't run sel_ldr through nacl_helper_bootstrap (which is optional on x86-32 but not on ARM).
+ 2) The GDB tests don't work with PNaCl in general.  See issue 3091.
+
+GDB ARM tests will only work on the ARM hardware bots, not under qemu-arm, because the debug stub doesn't work under qemu-arm.
+
+We should be able to enable the tests running against Ubuntu's version of GDB, which is now installed on the ARM hardware bots.
+</ns0:content><ns0:updated>2013-01-09T22:24:53.000Z</ns0:updated><ns0:published>2012-10-16T23:09:39.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Enable NaCl's GDB tests on ARM</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GDB</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Debugging</ns2:label><ns2:label>Mstone-26</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3092/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3092" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3092" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>3091</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blocking>
+			<ns2:id>156877</ns2:id><ns2:project>chromium</ns2:project></ns2:blocking><ns2:closedDate>2013-01-09T22:24:53.000Z</ns2:closedDate><ns2:id>3092</ns2:id></ns0:entry>

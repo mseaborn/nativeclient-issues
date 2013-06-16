@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUAGR347eCl7ImA9WhNbFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2992/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=177818
+
+------------------------------------------------------------------------
+r177818 | jvoung@chromium.org | 2013-01-19T03:54:15.910359Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/native_client_sdk/src/tools/create_nmf.py?r1=177818&amp;r2=177817&amp;pathrev=177818
+
+Have create_nmf.py generate a hash of PNaCl pexes for caching.
+
+Without it, pnacl doesn't cache any translations which means
+that pnacl browser_tests won't be able to test caching.
+It also means users won't benefit from caching.
+
+Alternatively, we could use a sha embedded within the pexe
+that the pexe linker generates, but we have not converged
+on which is better...
+
+sort of related to
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2992
+
+Review URL: https://chromiumcodereview.appspot.com/12017030
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-01-19T03:55:26.000Z</ns0:updated><ns0:published>2013-01-19T03:55:26.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2992#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2992/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

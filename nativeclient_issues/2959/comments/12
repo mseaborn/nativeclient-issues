@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU8FSH47eCl7ImA9WhJUFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2959/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=156422
+
+------------------------------------------------------------------------
+r156422 | ncbray@google.com | 2012-09-12T23:47:00.210061Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/exit_status/pm_exit_status_test.html?r1=156422&amp;r2=156421&amp;pathrev=156422
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/exit_status/pm_exit_status_test.cc?r1=156422&amp;r2=156421&amp;pathrev=156422
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest_util.cc?r1=156422&amp;r2=156421&amp;pathrev=156422
+   D http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/nacl_browser/exit_status?r1=156422&amp;r2=156421&amp;pathrev=156422
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tools/browser_tester/browserdata/nacltest.js?r1=156422&amp;r2=156421&amp;pathrev=156422
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest_util.h?r1=156422&amp;r2=156421&amp;pathrev=156422
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest.cc?r1=156422&amp;r2=156421&amp;pathrev=156422
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/exit_status?r1=156422&amp;r2=156421&amp;pathrev=156422
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/chrome_main.scons?r1=156422&amp;r2=156421&amp;pathrev=156422
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/chrome_tests.gypi?r1=156422&amp;r2=156421&amp;pathrev=156422
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/nacl_test_data.gyp?r1=156422&amp;r2=156421&amp;pathrev=156422
+
+Port nacl_integration exit_status test to browser_tests.
+
+This CL removes a sanity check in nacl_browsertest_util.cc because it is no
+longer guanteed a "test" will be a simple file name. Tests may now include a
+query string.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2959
+
+Review URL: https://chromiumcodereview.appspot.com/10918152
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-09-12T23:50:19.000Z</ns0:updated><ns0:published>2012-09-12T23:50:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2959#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2959/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

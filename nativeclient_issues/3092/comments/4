@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04HRX47eCl7ImA9WhNTGUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3092/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10072
+
+------------------------------------------------------------------------
+r10072 | mseaborn@chromium.org | 2012-10-23T07:02:12.834295Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/break_continue_thread.py?r1=10072&amp;r2=10071&amp;pathrev=10072
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/print_symbol.py?r1=10072&amp;r2=10071&amp;pathrev=10072
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/syscall_thread.py?r1=10072&amp;r2=10071&amp;pathrev=10072
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/stack_trace.py?r1=10072&amp;r2=10071&amp;pathrev=10072
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/step_from_func_start.py?r1=10072&amp;r2=10071&amp;pathrev=10072
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/stepi_after_break.py?r1=10072&amp;r2=10071&amp;pathrev=10072
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/call_from_gdb.py?r1=10072&amp;r2=10071&amp;pathrev=10072
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/change_variable.py?r1=10072&amp;r2=10071&amp;pathrev=10072
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/nacl.scons?r1=10072&amp;r2=10071&amp;pathrev=10072
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/gdb_test.py?r1=10072&amp;r2=10071&amp;pathrev=10072
+
+GDB tests: Run sel_ldr using nacl_helper_bootstrap
+
+This is in preparation for enabling the GDB tests on ARM, where
+sel_ldr must be run through nacl_helper_bootstrap (unlike on x86,
+where it is optional).
+
+In order to reuse the Scons build's existing AddBootstrap() function,
+I have changed gdb_test.py to take a command line fragment to use to
+invoke sel_ldr.  This brings it into line with what tests/debug_stub
+does.
+
+Furthermore, I've changed the other arguments to gdb_test.py to be
+passed as command line arguments rather than as environment variables.
+This simplifies the dependency setup in Scons, because dependencies
+for command line arguments are handled automatically by
+AutoDepsCommand(), unlike env vars.  It also reduces the use of global
+state in gdb_test.py.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=3092
+TEST=gdb_tests
+
+Review URL: https://codereview.chromium.org/11234045
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-23T07:05:34.000Z</ns0:updated><ns0:published>2012-10-23T07:05:34.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3092#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3092/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,62 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08NRH47eCl7ImA9WhJaEk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3057</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">When the TSAN tests are run on the bots, they pass.  But when I run the same invocation locally on my machine, many of them fail.  Brad Nelson reproduced these failures on his machine too.
+
+Specifically, I am invoking Scons with &amp;quot;small_tests --nacl_glibc buildbot=tsan&amp;quot;.
+
+These are the failures I get:
+
+$ ./scons --mode=dbg-linux,nacl platform=x86-64 small_tests buildbot=tsan -k --nacl_glibc -j1
+...
+run_socket_transfer_test (scons-out/nacl-x86-64-glibc/test_results/socket_transfer_test.out) failed: Error 1
+run_shared_lib_data_tls_test (scons-out/nacl-x86-64-glibc/test_results/shared_lib_data_tls.out) failed: Error 1
+run_simple_srpc_test_nexe (scons-out/nacl-x86-64-glibc/test_results/simple_srpc_test_nexe.out) failed: Error 1
+run_types_srpc_test_nexe (scons-out/nacl-x86-64-glibc/test_results/types_srpc_test_nexe.out) failed: Error 1
+run_redir_test (scons-out/nacl-x86-64-glibc/obj/tests/redir/redir_test_error_compare) failed: Error 255
+run_srpc_message_untrusted_test (scons-out/nacl-x86-64-glibc/test_results/srpc_message_untrusted_test.out) failed: Error 1
+run_semaphore_tests (scons-out/nacl-x86-64-glibc/test_results/semaphore_tests.out) failed: Error 1
+run_thread_test (scons-out/nacl-x86-64-glibc/test_results/thread_test.out) failed: Error 1
+run_simple_thread_test (scons-out/nacl-x86-64-glibc/test_results/simple_thread_test.out) failed: Error 1
+run_race_test (scons-out/nacl-x86-64-glibc/test_results/race_test.out) failed: Error 1
+run_cond_wait_test (scons-out/nacl-x86-64-glibc/test_results/cond_wait_test.out) failed: Error 1
+run_thread_stack_test (scons-out/nacl-x86-64-glibc/test_results/thread_stack_test.out) failed: Error 1
+run_pthread_cleanup_test (scons-out/nacl-x86-64-glibc/test_results/pthread_cleanup.out) failed: Error 1
+
+Here is an example bot run that runs the same tests:
+http://build.chromium.org/p/client.nacl/builders/lucid-64-glibc-dbg-valgrind/builds/3208/steps/tsan%28untrusted%29/logs/stdio
+
+Of these failures, run_pthread_cleanup_test is a particularly simple test.  It outputs:
+
+==32337== INFO: T3 has been created by T0. Use --announce-threads to see the creation stack.
+==32337== INFO: T4 has been created by T3. Use --announce-threads to see the creation stack.
+==32337== WARNING: Possible data race during read of size 4 at 0xB11020038: {{{
+==32337==    T3 (L{}):
+==32337==     #0  main /home/mseaborn/devel/nacl-git3/native_client/tests/toolchain/pthread_cleanup.c:49
+==32337==   Concurrent write(s) happened at (OR AFTER) these points:
+==32337==    T4 (L{}):
+==32337==     #0  thread_func /home/mseaborn/devel/nacl-git3/native_client/tests/toolchain/pthread_cleanup.c:30
+==32337==     #1  start_thread /b/build/slave/lucid64-glibc/build/native_client/tools/SRC/glibc/nptl/pthread_create.c:299
+==32337==   Location 0xB11020038 is 56 bytes inside a block starting at 0xB11020000 of size 65536 allocated by T3 from heap:
+==32337==     #0  mmap /mnt/data/build/slave/full_linux_build/build/tsan/ts_valgrind_intercepts.c:454
+==32337==     #1  NaClHostDescMap /home/mseaborn/devel/nacl-git3/native_client/src/shared/platform/posix/nacl_host_desc.c:147
+==32337==     #2  NaClDescIoDescMap /home/mseaborn/devel/nacl-git3/native_client/src/trusted/desc/nacl_desc_io.c:145
+==32337==     #3  NaClDescIoDescMapAnon /home/mseaborn/devel/nacl-git3/native_client/src/trusted/desc/nacl_desc_io.c:164
+==32337==     #4  NaClCommonSysMmapIntern /home/mseaborn/devel/nacl-git3/native_client/src/trusted/service_runtime/nacl_syscall_common.c:1356
+==32337==     #5  NaClCommonSysMmap /home/mseaborn/devel/nacl-git3/native_client/src/trusted/service_runtime/nacl_syscall_common.c:1527
+==32337==     #6  NaClCommonSysMmapDecoder /home/mseaborn/devel/nacl-git3/native_client/scons-out/dbg-linux-x86-64/gen/native_client/src/trusted/service_runtime/nacl_syscall_handlers.c:543
+==32337==     #7  NaClSyscallCSegHook /home/mseaborn/devel/nacl-git3/native_client/src/trusted/service_runtime/nacl_syscall_hook.c:144
+==32337==     #8  (no symbols) /home/mseaborn/devel/nacl-git3/native_client/src/trusted/service_runtime/arch/x86_64/nacl_syscall_64.S:203
+==32337==     #9  (no symbols) 
+==32337==    Race verifier data: 0xB010008AA,0xB01000A00
+==32337== }}}
+==32337== 
+==32337== ThreadSanitizer summary: reported 1 warning(s) (1 race(s))
+
+[  FAILED  ] nacl_glibc.run_pthread_cleanup_test (1090 ms)
+
+TSAN seems to be complaining about the use of test_variable in pthread_cleanup.c, but from the code there seems to be no problem.  Is TSAN not detecting the pthread_join() call?
+
+Why is TSAN complaining about this, and why doesn't this test fail on the buildbots and trybots?
+</ns0:content><ns0:updated>2012-10-03T00:58:15.000Z</ns0:updated><ns0:published>2012-10-02T22:11:35.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>TSAN glibc tests do not declare dependency on libvalgrind.so in Scons</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3057/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3057" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3057" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3057</ns2:id></ns0:entry>

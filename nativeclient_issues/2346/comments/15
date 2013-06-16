@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEAHQn47eCl7ImA9WhFTFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2346/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11480
+
+------------------------------------------------------------------------
+r11480 | mseaborn@chromium.org | 2013-06-05T18:22:45.450984Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/DEPS?r1=11480&amp;r2=11479&amp;pathrev=11480
+
+PNaCl: Update LLVM revision in pnacl/DEPS
+
+This pulls in the following LLVM changes:
+
+c0d9b33: (mseaborn@chromium.org) PNaCl ABI: Strip out attributes on functions and function calls
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3415
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=2346
+TEST=PNaCl toolchain trybots
+TBR=dschuff@chromium.org
+
+Review URL: https://codereview.chromium.org/16279007
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-06-05T18:25:33.000Z</ns0:updated><ns0:published>2013-06-05T18:25:33.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2346#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2346/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

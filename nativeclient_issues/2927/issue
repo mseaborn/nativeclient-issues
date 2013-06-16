@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEAHRn47eCl7ImA9WhJXFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2927</ns0:id><ns0:author>
+			<ns0:name>arben...@google.com</ns0:name><ns0:uri>/u/115623601907745403448/</ns0:uri></ns0:author><ns0:content type="html">Currently, we use %r15-relative addressing for the 64-bit sandbox.  We can shorten instruction sequences and improve performance if we know that the NaCl module is loaded at address 0x0.  For example:
+
+mov %eax, %eax
+mov (%r15, %rax, 1), %edx
+
+becomes
+
+addr32 mov (%rax), %edx
+
+addr32 is a prefix byte that treats memory references as 32-bit addresses
+
+For Linux, we need to reserve the bottom 4GB of memory with the bootstrapper.
+
+We also have the following tasks on all platforms:
+-Guard pages need to be handled more carefully
+-The validator needs to recognize the new model
+-The PNaCl translator needs to generate the code
+</ns0:content><ns0:updated>2012-08-10T02:45:37.000Z</ns0:updated><ns0:published>2012-07-27T22:10:30.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>Support for zero-based sandbox model</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2927/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2927" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2927" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2927</ns2:id></ns0:entry>

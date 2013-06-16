@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkcDRH47eCl7ImA9WhNUGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3239</ns0:id><ns0:author>
+			<ns0:name>mcgra...@chromium.org</ns0:name><ns0:uri>/u/109286297231979736865/</ns0:uri></ns0:author><ns0:content type="html">It's been seen numerous times that the new(ish) performance test fails on the lucid-64-arm-newlib-opt bot (and perhaps others).  I think I've seen this in both plain and IRT variants, but the only example I have off hand is:
+
+
+TestCatchingFault:
+
+ERROR: Command returned exit status -11 (0xfffffff5) but we expected 0 (0x0)
+[  FAILED  ] nacl_newlib.run_performance_test_irt (4970 ms)
+
+
+scons: *** [scons-out/nacl_irt_test-arm/test_results/performance_test.out] Error 1
+
+If this is a qemu bug, then the test should be added to tests_to_disable_qemu.  But first some investigation is warranted.
+</ns0:content><ns0:updated>2013-01-10T22:47:55.000Z</ns0:updated><ns0:published>2013-01-03T00:30:17.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>run_performance_test flaky on qemu-arm</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>FlakeyBots</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3239/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3239" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3239" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2013-01-10T22:42:25.000Z</ns2:closedDate><ns2:id>3239</ns2:id></ns0:entry>

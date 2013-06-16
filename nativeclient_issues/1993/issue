@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkQASH47eCl7ImA9WhNUGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1993</ns0:id><ns0:author>
+			<ns0:name>chris.ro...@gmail.com</ns0:name><ns0:uri>/u/109476958443797771315/</ns0:uri></ns0:author><ns0:content type="html">When the audio interface is first invoked with PpbAudioRpcServer::PPB_Audio_Create a new StreamCreatedCallbackData instance is created in the browser. If the NEXE module tears down the srpc channel before the stream has been created then a use after free condition will occur when the callback executes. The callback issues a call to PppAudioRpcClient::PPP_Audio_StreamCreated which calls NaClSrpcInvokeBySignature which dereferences the stale channel pointer when trying to make the following call:
+
+NaClSrpcServiceMethodIndex(channel-&amp;gt;client, rpc_signature);
+
+This is because the main srpc channel has already been torn down. You can trigger this bug by adding a simple call to exit(0) in the ppapi audio example ppapi_example_audio/audio.cc on line 206 after the TestSuite() function has completed, recompile the example, load it into the browser, it should crash/sad tab before you hear the test sound.
+
+If other PPAPI interfaces have a similar callback mechanism they should be reviewed for similar bugs. I will take a look at them this week.
+</ns0:content><ns0:updated>2013-01-10T21:45:49.000Z</ns0:updated><ns0:published>2011-07-11T03:32:49.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Security: PPB_Audio_Create SRPC Channel Use After Free</ns0:title><ns2:label>Security</ns2:label><ns2:label>Pri-0</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1993/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1993" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1993" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-01T19:33:58.000Z</ns2:closedDate><ns2:id>1993</ns2:id></ns0:entry>

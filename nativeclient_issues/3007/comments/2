@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkQNQH47eCl7ImA9WhJUGU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3007/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=156784
+
+------------------------------------------------------------------------
+r156784 | halyavin@chromium.org | 2012-09-14T12:39:18.222626Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/browser/nacl_host/nacl_process_host.cc?r1=156784&amp;r2=156783&amp;pathrev=156784
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/browser/nacl_host/nacl_process_host.h?r1=156784&amp;r2=156783&amp;pathrev=156784
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/common/nacl_types.h?r1=156784&amp;r2=156783&amp;pathrev=156784
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/common/nacl_messages.h?r1=156784&amp;r2=156783&amp;pathrev=156784
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/nacl/nacl_listener.cc?r1=156784&amp;r2=156783&amp;pathrev=156784
+   M http://src.chromium.org/viewvc/chrome/trunk/src/net/base/tcp_listen_socket.h?r1=156784&amp;r2=156783&amp;pathrev=156784
+
+NaCl: Bind TCP socket for the GDB debug stub in the browser process
+
+This allows the debug stub to work without "--no-sandbox".
+
+This change is only for POSIX since Windows requires very different code.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3007
+TEST= launch NaCl page in chrome with --enable-nacl-debug but without --no-sandbox
+try to connect nacl gdb.
+Review URL: https://chromiumcodereview.appspot.com/10928050
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-09-18T02:13:11.000Z</ns0:updated><ns0:published>2012-09-18T02:13:11.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3007#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3007/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,58 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04CQ347eCl7ImA9WhFSEEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">------------------------------------------------------------------------
+r205951 | sail@chromium.org | 2013-06-12T22:24:06.374250Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/nacl_test_data.gyp?r1=205951&amp;r2=205950&amp;pathrev=205951
+   D http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_exception_handling_disabled?r1=205951&amp;r2=205950&amp;pathrev=205951
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/common/nacl_types.cc?r1=205951&amp;r2=205950&amp;pathrev=205951
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/renderer/pepper/ppb_nacl_private_impl.cc?r1=205951&amp;r2=205950&amp;pathrev=205951
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/nacl_entry_points.h?r1=205951&amp;r2=205950&amp;pathrev=205951
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/common/nacl_types.h?r1=205951&amp;r2=205950&amp;pathrev=205951
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/plugin.cc?r1=205951&amp;r2=205950&amp;pathrev=205951
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/plugin.h?r1=205951&amp;r2=205950&amp;pathrev=205951
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/common/render_messages.h?r1=205951&amp;r2=205950&amp;pathrev=205951
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/sel_ldr_launcher_chrome.cc?r1=205951&amp;r2=205950&amp;pathrev=205951
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/service_runtime.cc?r1=205951&amp;r2=205950&amp;pathrev=205951
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/c/private/ppb_nacl_private.h?r1=205951&amp;r2=205950&amp;pathrev=205951
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/sel_ldr_launcher_chrome.h?r1=205951&amp;r2=205950&amp;pathrev=205951
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/service_runtime.h?r1=205951&amp;r2=205950&amp;pathrev=205951
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/browser/nacl_host/nacl_process_host.cc?r1=205951&amp;r2=205950&amp;pathrev=205951
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/browser/nacl_host/nacl_process_host.h?r1=205951&amp;r2=205950&amp;pathrev=205951
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/api/private/ppb_nacl_private.idl?r1=205951&amp;r2=205950&amp;pathrev=205951
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/browser/renderer_host/chrome_render_message_filter.cc?r1=205951&amp;r2=205950&amp;pathrev=205951
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest.cc?r1=205951&amp;r2=205950&amp;pathrev=205951
+
+Revert 205914 "Disable untrusted exception handling for PNaCl"
+
+It looks like NaClBrowserTestPnacl.PnaclExceptionHandlingDisabled is failing on all bots. Here's the failure log:
+NaClBrowserTestPnacl.PnaclExceptionHandlingDisabled: 
+HTTP server started on 127.0.0.1:59586...
+sending server_data: {"host": "127.0.0.1", "port": 59586} (36 bytes)
+Xlib:  extension "RANDR" missing on display ":9".
+[12210:12210:0612/145646:2107321901:INFO:nacl_browsertest_util.cc(131)] |||| [STARTUP]
+[12210:12210:0612/145646:2107342348:INFO:CONSOLE(0)] "NativeClient: NaCl module load failed: manifest: program property 'portable' does not have required key: 'url'.", source: http://127.0.0.1:59586/files/pnacl_exception_handling_disabled.html?pnacl=1 (0)
+[12210:12210:0612/145646:2107350315:INFO:nacl_browsertest_util.cc(131)] ||||
+[CLIENT_ERROR] nacl_module / test_nexe did not load. Status: DONE / 'NaCl module load failed: manifest: program property 'portable' does not have required key: 'url'.'
+[12210:12210:0612/145646:2107350584:INFO:nacl_browsertest_util.cc(131)] ||||
+[12210:12210:0612/145646:2107350767:INFO:nacl_browsertest_util.cc(131)] |||| A nexe load error occured, aborting testing.
+[12210:12210:0612/145646:2107350837:INFO:nacl_browsertest_util.cc(131)] ||||
+[12210:12210:0612/145646:2107351209:INFO:nacl_browsertest_util.cc(131)] |||| [SHUTDOWN] 0 passed, 0 failed, 1 errors
+../../chrome/test/nacl/nacl_browsertest_util.cc:254: Failure
+Value of: handler.test_passed()
+Actual: false
+Expected: true
+Test failed.
+
+&gt; Disable untrusted exception handling for PNaCl
+&gt; 
+&gt; BUG= https://code.google.com/p/nativeclient/issues/detail?id=3444
+&gt; R=dmichael@chromium.org, jln@chromium.org, mseaborn@chromium.org, thakis@chromium.org, yzshen@chromium.org
+&gt; 
+&gt; Review URL: https://codereview.chromium.org/15901015
+
+TBR=sehr@chromium.org
+
+Review URL: https://codereview.chromium.org/16844007
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-06-12T22:26:02.000Z</ns0:updated><ns0:published>2013-06-12T22:26:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

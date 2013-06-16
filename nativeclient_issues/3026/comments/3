@@ -1,0 +1,8 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYGRn47eCl7ImA9WhJUE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3026/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Will take a look later -- we have to manual test/time it the old vs new, since we haven't been tracking the self-translation time (maybe we should track that somewhere).
+
+For translating gcc (the biggest we have of spec), its gone from 80 secs (~r5942) down to 37 secs (~r6577) down to 29 secs (~r6700) down to 25 secs (~r7900) and back up to 26 secs (now ~r9600) -- definitely haven't looked at the history at all:
+
+http://build.chromium.org/f/client/perf/nacl-lucid_64-newlib-x86_64-pnacl-spec/spec2k/report.html?history=2550&amp;rev=-1&amp;graph=compiletime_gcc
+</ns0:content><ns0:updated>2012-09-11T17:05:27.000Z</ns0:updated><ns0:published>2012-09-11T17:05:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3026#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3026/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

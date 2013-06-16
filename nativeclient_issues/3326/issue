@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE8BRH47eCl7ImA9WhBRFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3326</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Not a big deal but LLVM's AsmPrinter.h API has both Emit*() and Print*() methods.  The Emit*() methods involve MC and help with emitting either asm text or emitting bytes for an object file.  They operate on MC operands.  That is fine.
+
+However, the Print*() functions *do not* operate on MC operands and instead operate on MachineInstr.  They also take a raw_ostream, and appear to be related to printing asm text only.  Quote:
+
+
+    // These are hooks that targets can override to implement inline asm
+    // support.  These should probably be moved out of AsmPrinter someday.
+
+
+Why we care:
+
+The target's Print*() method implementations depend upon the target's InstPrinter functionality.  Namely, the getRegisterName() text string provided by the InstPrinter's table-generated files.  This means that we cannot cut out the InstPrinter *completely* without editing a bunch of the code in the ${Target}AsmPrinter.cpp file.
+
+It's not a big deal though.
+
+The getRegisterName() code and tables are just a few KB.  The Print methods are a tiny bit too.  The bulk of the InstPrinter code and tables (~100KB in contrast) can be culled with 2 lines of LOCALMODs, for each Target.
+</ns0:content><ns0:updated>2013-03-04T18:47:35.000Z</ns0:updated><ns0:published>2013-03-04T18:23:37.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/112264824292994369940/</ns2:uri><ns2:username>eli...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109636895838879576326/</ns2:uri><ns2:username>j...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Possibly refactor LLVM's AsmPrinter.h API to only have Emit*() and no Print*()</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3326/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3326" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3326" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>1222</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:id>3326</ns2:id></ns0:entry>

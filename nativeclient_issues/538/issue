@@ -1,6 +1,6 @@
 <ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkQGQX47eCl7ImA9WxFWFEs.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/538</ns0:id><ns0:author>
-			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/114701340294105671768/</ns0:uri></ns0:author><ns0:content type="html">I patched tests/threads/simple_thread_test.c like this: 
+			<ns0:name>kcc@google.com</ns0:name><ns0:uri>/u/kcc@google.com/</ns0:uri></ns0:author><ns0:content type="html">I patched tests/threads/simple_thread_test.c like this: 
 @@ -174,8 +174,11 @@
    }
 
@@ -22,7 +22,7 @@ And run the test like this:
 The output has &amp;quot;JOIN 0&amp;quot; but does not have &amp;quot;JOIN done&amp;quot; or &amp;quot;PASS&amp;quot;.
 
 Either printf() or pthread_join() seems to be broken (unless I am doing something wrong)</ns0:content><ns0:updated>2010-06-02T07:38:40.000Z</ns0:updated><ns0:published>2010-06-02T07:24:41.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
-			<ns2:uri>/u/114701340294105671768/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/kcc@google.com/</ns2:uri><ns2:username>kcc@google.com</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>problem with pthread_join</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/538/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=538" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/538" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-06-02T07:38:40.000Z</ns2:closedDate><ns2:id>538</ns2:id></ns0:entry>

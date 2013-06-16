@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QFQH47eCl7ImA9WhJRFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2901/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>dsch...@google.com</ns0:name><ns0:uri>/u/104270846665912603141/</ns0:uri></ns0:author><ns0:content type="html">Here's the minimal patch:
+
+diff --git a/lib/Target/X86/X86NaClRewritePass.cpp b/lib/Target/X86/X86NaClRewritePass.cpp
+index 7db3aee..cc055a8 100644
+--- a/lib/Target/X86/X86NaClRewritePass.cpp
++++ b/lib/Target/X86/X86NaClRewritePass.cpp
+@@ -536,9 +536,23 @@ bool X86NaClRewritePass::ApplyMemorySFI(MachineBasicBlock &amp;MBB,
+     assert(Scale.getImm() == 1);
+     AddrReg = 0;
+   } else {
+-    assert(!BaseReg.getReg() &amp;&amp; "Unexpected relative register pair");
+-    BaseReg.setReg(UseZeroBasedSandbox ? 0 : X86::R15);
+-    AddrReg = IndexReg.getReg();
++    // We don't expect a base register unless RBX is used as as base ptr
++    assert((!BaseReg.getReg() || BaseReg.getReg() == X86::RBX)
++           &amp;&amp; "Unexpected relative register pair");
++    if (!BaseReg.getReg()) {
++      BaseReg.setReg(UseZeroBasedSandbox ? 0 : X86::R15);
++      AddrReg = IndexReg.getReg();
++    } else {
++      // RBX used as base pointer. Change mov d(%rbx,0,s) -&gt; mov d($r15,%rbx,s)
++      // This could be a more general transformation but currently we only
++      // expect it to be generated when a base pointer is needed.
++      if (!UseZeroBasedSandbox) {
++        assert(!IndexReg.getReg() &amp;&amp; "Unexpected index reg with RBP Base");
++        IndexReg.setReg(BaseReg.getReg());
++        BaseReg.setReg(X86::R15);
++        AddrReg = IndexReg.getReg();
++      }
++    }
+   }
+ 
+   if (AddrReg) {
+</ns0:content><ns0:updated>2012-07-16T17:21:51.000Z</ns0:updated><ns0:published>2012-07-16T17:21:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by dsch...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2901#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2901/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

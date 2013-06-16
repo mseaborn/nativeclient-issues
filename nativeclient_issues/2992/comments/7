@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEMCR347eCl7ImA9WhFTEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2992/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Part of the discussion was under issue https://code.google.com/p/nativeclient/issues/detail?id=3414.
+
+Renaming issue, to open it up to the other options.
+
+So far it seems like we can use last-modified and etags + the URL as part of the key, instead of our own hash.  Then we also won't need to be calculating a hash and speculatively streaming the translation as in option (1) from issue 3414, and we won't need to store anything in the bitcode either.
+
+
+Will need to augment the chrome-extension:// response headers to have one of those headers.  Chrome extensions currently only have a status code and CORS headers.
+</ns0:content><ns0:updated>2013-05-31T18:54:26.000Z</ns0:updated><ns0:published>2013-05-31T18:54:26.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Mstone-25</ns2:label><ns2:label>Mstone-30</ns2:label><ns2:status>Started</ns2:status><ns2:ownerUpdate>jvoung@chromium.org</ns2:ownerUpdate><ns2:summary>Converge on PNaCl cache identity tag (e.g., can we use standard tags like Last-Modified/ETag, or make our own hash)</ns2:summary></ns2:updates><ns0:title>Comment 7 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2992#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2992/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

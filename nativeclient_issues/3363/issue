@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEABSH47eCl7ImA9WhBWEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3363</ns0:id><ns0:author>
+			<ns0:name>sbc@google.com</ns0:name><ns0:uri>/u/sbc@google.com/</ns0:uri></ns0:author><ns0:content type="html">For some reason the declaration of ftruncate() gets ifdef'd out:
+
+#if defined(__CYGWIN__) || defined(__rtems__) || defined(__sh__) || defined(__SPU__)
+#if !defined(__INSIDE_CYGWIN__)
+int     _EXFUN(ftruncate, (int __fd, off_t __length));
+int     _EXFUN(truncate, (const char *, off_t __length));
+#endif
+#endif
+
+However, we can actually link against ftruncate using nosys, nacl_mounts, or nacl_io.
+
+Perhaps we should have || defined (__native_client__) to the above check?
+</ns0:content><ns0:updated>2013-04-04T23:05:59.000Z</ns0:updated><ns0:published>2013-04-02T00:06:55.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>unistd.h in newlib toolchains does not declare ftruncate()</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3363/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3363" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3363" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3363</ns2:id></ns0:entry>

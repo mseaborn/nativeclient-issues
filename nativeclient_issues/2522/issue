@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUcBR347eCl7ImA9WhRVGEk.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4BQH47eCl7ImA9WhNSEUU.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2522</ns0:id><ns0:author>
 			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">
 nacl-ports installs libraries and headers into subdirectories of the 
@@ -9,8 +9,7 @@ E.g:
 
 
 pnacl should mimic this approach and change the drivers and make
-&amp;quot;-I&amp;quot; and &amp;quot;-L&amp;quot; to the respective directories part of the default command lines  </ns0:content><ns0:updated>2012-01-18T00:37:36.000Z</ns0:updated><ns0:published>2012-01-06T16:17:02.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+&amp;quot;-I&amp;quot; and &amp;quot;-L&amp;quot; to the respective directories part of the default command lines  </ns0:content><ns0:updated>2012-10-25T17:59:11.000Z</ns0:updated><ns0:published>2012-01-06T16:17:02.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
-			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pnacl toolchain needs .../usr/lib and .../usr/include dirs</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Mstone-18</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2522/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2522" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2522" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
-			<ns2:id>2523</ns2:id></ns2:blocking><ns2:closedDate>2012-01-10T22:48:42.000Z</ns2:closedDate><ns2:id>2522</ns2:id></ns0:entry>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pnacl toolchain needs .../usr/lib and .../usr/include dirs</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Mstone-18</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2522/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2522" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2522" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-01-10T22:48:42.000Z</ns2:closedDate><ns2:id>2522</ns2:id></ns0:entry>

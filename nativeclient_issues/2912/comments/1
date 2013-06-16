@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0UNRH47eCl7ImA9WhJRF0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2912/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Hmm, but the original loop is side-effect-free.  Could just be undefined behavior.
+
+Here are some notes for c++11:
+http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1528.htm
+http://stackoverflow.com/questions/3592557/optimizing-away-a-while1-in-c0x
+
+"A loop that, outside of the for-init-statement in the case of a for statement, makes no calls to library I/O functions, and does not access or modify volatile objects, and performs no synchronization operations (1.10) or atomic operations (Clause 29) may be assumed by the implementation to terminate. [ Note: This is intended to allow compiler transformations, such as removal of empty loops, even when termination cannot be proven. &#8212; end note]"
+
+
+Not sure about the C standard, but there is at least this:
+
+http://blog.regehr.org/archives/759#comment-4640
+"Second, compilers tend to terminate infinite loops that are free of side effects."
+
+</ns0:content><ns0:updated>2012-07-20T15:48:15.000Z</ns0:updated><ns0:published>2012-07-20T15:48:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2912#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2912/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

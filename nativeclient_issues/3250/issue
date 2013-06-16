@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkENQH47eCl7ImA9WhNUGUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3250</ns0:id><ns0:author>
+			<ns0:name>damonp...@gmail.com</ns0:name><ns0:uri>/u/112358947840938663111/</ns0:uri></ns0:author><ns0:content type="html">Hi, there,
+I am struggling with the issue of -L option, where I am linking few bitcode files into *.pexe file with the following command line in Windows:
+  pnacl-clang++.bat -o my.pexe -L ../tests/lib lib_1.po lib_2.po myApp.po
+
+Please note that lib_1.po and lib_2.po are both in ../tests/lib, and myApp.po is in the current folder.
+Here is the error message &amp;quot;pnacl-clang++: C:\temp\myPnacl\lib_1.po: Unable to open file&amp;quot;
+
+Also I am working in Windows command line using pepper_canary. The error is the same when I am working in Cygwin.
+Even the full library path is provided to -L, it seems pnacl-clang++.bat is always trying to search the files in current folder or the system folder.
+As we can see in driver_log.py, it tries to open the file with the API of &amp;quot;fp = open(pathtools.tosys(filename), mode)&amp;quot;
+
+
+
+Any comments?
+Thanks a lot.
+Damon</ns0:content><ns0:updated>2013-01-11T14:31:31.000Z</ns0:updated><ns0:published>2013-01-09T15:02:31.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:state>closed</ns2:state><ns0:title>The option -L for pnacl-clang++.bat</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>MigrateToChromium</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3250/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3250" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3250" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-01-10T22:46:09.000Z</ns2:closedDate><ns2:id>3250</ns2:id></ns0:entry>

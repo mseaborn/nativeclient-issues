@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEIAQX47eCl7ImA9WhVUEE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2745/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8591
+
+------------------------------------------------------------------------
+r8591 | robertm@google.com | Mon May 14 14:53:35 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pnacl_ld_experiments/Makefile?r1=8591&amp;r2=8590&amp;pathrev=8591
+
+Cleanup the crtbegin/crtend handling.
+
+Most of these were already available in the "newlib"
+and native directories.
+
+Also, added proper shim support for x86-64
+
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2745 
+TEST= cd tests/pnacl_ld_experiments; make run1.x8632
+Review URL: https://chromiumcodereview.appspot.com/10399005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-05-14T21:55:40.000Z</ns0:updated><ns0:published>2012-05-14T21:55:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2745#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2745/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

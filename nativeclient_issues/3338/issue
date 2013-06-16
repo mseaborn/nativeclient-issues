@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0EFQn47eCl7ImA9WhFTEkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3338</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">It would simplify the PNaCl ABI if it can omit support for varargs functions, at least in a first version.
+
+In particular, varargs is tricky to support on x86-64.  Derek says that the LLVM backend for x86-64 does not support lowering va_arg() for struct types, because this is normally done by Clang.
+
+I have written an LLVM pass which expands out varargs so that a caller of, say, printf() will alloca() a buffer for the arguments and pass a pointer to the buffer to printf():
+
+https://github.com/mseaborn/tiny-llvm-codegen/blob/master/expand_varargs.cc
+
+Derek also has a Clang patch for doing a similar lowering in the frontend.
+
+Note that with this transformation, calling a varargs function in C without declaring it first won't necessarily work.
+</ns0:content><ns0:updated>2013-06-03T20:00:13.000Z</ns0:updated><ns0:published>2013-03-13T00:43:53.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PNaCl: Eliminate varargs functions from the pexe wire format -- expand them out</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>PNaClABI</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3338/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3338" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3338" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-04-13T00:43:09.000Z</ns2:closedDate><ns2:id>3338</ns2:id></ns0:entry>

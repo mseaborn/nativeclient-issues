@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMFRH47eCl7ImA9WhVaEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2719/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=132405
+------------------------------------------------------------------------
+r132405 | mseaborn@chromium.org | 2012-04-16T15:32:36.721599Z
+
+Changed paths:
+   M /trunk/src/content/public/common/sandbox_init.h
+   M /trunk/src/content/common/gpu/client/command_buffer_proxy_impl.cc
+   M /trunk/src/content/plugin/webplugin_proxy.cc
+   M /trunk/src/content/renderer/webplugin_delegate_proxy.cc
+   M /trunk/src/content/common/gpu/gpu_command_buffer_stub.cc
+   M /trunk/src/content/common/sandbox_policy.cc
+   M /trunk/src/content/common/sandbox_policy.h
+
+Move BrokerDuplicateHandle() to be declared in content/public
+
+This is necessary so that BrokerDuplicateHandle() can be used from
+chrome/browser while passing the check_deps rules.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2719
+TEST=build
+
+Review URL: https://chromiumcodereview.appspot.com/10082018
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-08T01:53:35.000Z</ns0:updated><ns0:published>2012-06-08T01:53:35.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2719#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2719/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

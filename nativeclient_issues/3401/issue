@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUAAR347eCl7ImA9WhBVE00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3401</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">After upgrading from Ubuntu Lucid to Ubuntu Precise I had to rebuild my MIPS trusted toolchain to use new versions of Ubuntu-built libmpfr etc.
+
+However, the version of MIPS QEMU I built on Precise would fail with &amp;quot;Unable to find CPU definition&amp;quot;.
+
+When I investigated, I found that target-mips/translate_init.c's call to strcasecmp() (a glibc function) was returning garbage results and was never returning a match.
+
+strcasecmp() was being statically linked into MIPS QEMU.  strcasecmp() appears to be broken in this case.  Removing &amp;quot;--static&amp;quot; from NaCl's build script (tools/trusted_cross_toolchains/trusted-toolchain-creator.mipsel.squeeze.sh) fixed the problem.
+
+I haven't investigated further to work out why strcasecmp() was broken in this case.
+</ns0:content><ns0:updated>2013-04-18T17:55:46.000Z</ns0:updated><ns0:published>2013-04-18T17:55:46.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/114801658703348884290/</ns2:uri><ns2:username>pet...@mips.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>MIPS QEMU fails on Precise with "Unable to find CPU definition": strcasecmp() broken?</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-MIPS</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3401/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3401" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3401" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3401</ns2:id></ns0:entry>

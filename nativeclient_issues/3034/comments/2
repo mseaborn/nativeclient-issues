@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEAGQX47eCl7ImA9WhJUGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3034/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9764
+
+------------------------------------------------------------------------
+r9764 | dschuff@google.com | 2012-09-18T00:01:56.083889Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=9764&amp;r2=9763&amp;pathrev=9764
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/scripts/llvm-test-suite.sh?r1=9764&amp;r2=9763&amp;pathrev=9764
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_pnacl_toolchain_tests.sh?r1=9764&amp;r2=9763&amp;pathrev=9764
+
+use x86-64 LLVM build directory in LLVM test suite
+The LLVM testsuite uses an include directory from the LLVM host build. If the 32-bit
+include directory is used on a 64 bit host, some of the benchmarks fail the output comparison because the native comparison output is different
+
+R=jvoung@chromium.org,robertm@chromium.org
+BUG=3034
+TEST=LLVM test suite
+
+Review URL: https://codereview.chromium.org/10918282
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-09-18T00:05:20.000Z</ns0:updated><ns0:published>2012-09-18T00:05:20.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3034#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3034/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

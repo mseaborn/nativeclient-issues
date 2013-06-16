@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUcAR347eCl7ImA9WhVTE0s.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AGRn47eCl7ImA9WhBTEU0.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1548</ns0:id><ns0:author>
 			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Approximate times for running hello_world.nexe on x86-32 Linux with different runtime libraries:
 
@@ -31,7 +31,7 @@ DEBUG MODE ENABLED (bypass acl)
 Hello, World!
 0.30user 0.33system 0:00.63elapsed 98%CPU (0avgtext+0avgdata 30048maxresident)k
 0inputs+0outputs (0major+68232minor)pagefaults 0swaps
-</ns0:content><ns0:updated>2012-02-27T17:17:26.000Z</ns0:updated><ns0:published>2011-03-17T21:59:56.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+</ns0:content><ns0:updated>2013-02-05T23:08:47.000Z</ns0:updated><ns0:published>2011-03-17T21:59:56.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
 			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/100177598732114324016/</ns2:uri><ns2:username>mcgra...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
@@ -39,8 +39,8 @@ Hello, World!
 			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Dynamic linking startup time is slow</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Performance</ns2:label><ns2:label>DynamicLinking</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Mstone-21</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1548/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1548" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1548" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:blockedOn>
-			<ns2:id>1534</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>2228</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>2283</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>2362</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>2515</ns2:id></ns2:blockedOn><ns2:id>1548</ns2:id></ns0:entry>
+			<ns2:id>1534</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2228</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2283</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2362</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2515</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:id>1548</ns2:id></ns0:entry>

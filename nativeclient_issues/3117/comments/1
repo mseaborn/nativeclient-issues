@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8NRn47eCl7ImA9WhNSFUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3117/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>muth02...@gmail.com</ns0:name><ns0:uri>/u/107483993863532168907/</ns0:uri></ns0:author><ns0:content type="html">Do we have any recent data for how much performance we are losing by not using
+TST+load/store
+Anecdotally, this was pretty high -- several percent.
+Maybe we can run some micro benchmarks on the Pandas.
+
+How does an attacker do the timing?
+Should we disallow any high resolution timer for M24 to be safe?
+Especially since there likely wont be a way to generate cycle counter 
+reads with pnacl anyway.
+</ns0:content><ns0:updated>2012-10-30T01:01:37.000Z</ns0:updated><ns0:published>2012-10-30T01:01:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by muth02...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3117#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3117/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

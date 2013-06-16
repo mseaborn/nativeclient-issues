@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkYBSX47eCl7ImA9WhNTFko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2938</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">See llvm PR11018.  That issue hasn't been closed upstream, but they have changed some of how byval is handled in the backend.  Maybe it works now, but someone will need to check.
+
+For the localmod, check llvm/lib/Target/ARM/ARMISelLowering.cpp line 1707 or so.  In function, ARMTargetLowering::HandleByVal() plus a few other places.
+
+This may improve performance when byvals are not optimized out, and may make the ABI a little closer to gcc's.
+
+
+</ns0:content><ns0:updated>2012-10-19T18:09:18.000Z</ns0:updated><ns0:published>2012-08-02T18:07:16.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:state>closed</ns2:state><ns0:title>Ensure LLVM ARM can assign byvals to r0-r3 and/or the stack for compatibility with GCC.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-24</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2938/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2938" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2938" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-10-19T18:09:18.000Z</ns2:closedDate><ns2:id>2938</ns2:id></ns0:entry>

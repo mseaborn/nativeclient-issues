@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcHRn47eCl7ImA9WhBQGE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3318/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11021
+
+------------------------------------------------------------------------
+r11021 | bsy@google.com | 2013-03-20T17:19:06.993193Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=11021&amp;r2=11020&amp;pathrev=11021
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main_chrome.c?r1=11021&amp;r2=11020&amp;pathrev=11021
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=11021&amp;r2=11020&amp;pathrev=11021
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=11021&amp;r2=11020&amp;pathrev=11021
+
+Prevent attempting to load the IRT twice
+
+The command channel has an RPC where the IRT can be specified.  (This
+is a "dev" interface.)  Since the service runtime may also want to
+load the IRT as a result of the -B flag (in the standalone executable)
+or as a result of the NaClChromeMainArgs irt_fd member set to a file
+descriptor, this results in the IRT being loaded twice.  This change
+records whether the IRT has been loaded by the command channel RPC,
+and avoids reloading it again.
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3318
+
+Review URL: https://codereview.chromium.org/12945003
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-03-20T17:20:37.000Z</ns0:updated><ns0:published>2013-03-20T17:20:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3318#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3318/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

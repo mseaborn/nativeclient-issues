@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYHQ347eCl7ImA9WhRaE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2594/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7807
+
+------------------------------------------------------------------------
+r7807 | bsy@google.com | Wed Feb 15 16:44:40 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_tls_64.c?r1=7807&amp;r2=7806&amp;pathrev=7807
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.c?r1=7807&amp;r2=7806&amp;pathrev=7807
+
+make thread index and tls index correspondence be identity function.
+
+with this CL, the thread index for referring into nacl_sys, nacl_user,
+nacl_tls etc will be just the value returned from NaClTlsAllocate,
+rather than try to bias the TLS index value by 1.  From the x86-32
+API, LDT/TLS index of 0 was an error, and we make the virtual LDT for
+x86-64 behave similarly.  The bias was just unnecessary complexity and
+caused problems with the indexing for the global arrays.
+
+unfortunately, we cannot readily create a test that use all 8k threads
+to verify that the thread index is in range and be able to run it on
+our bots (some of the bots already has problems with the egyptian
+cotton test).  instead, we add a CHECK in the thread creation code to
+ensure that the index is in range.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2594
+TEST= existing threading tests.
+Review URL: https://chromiumcodereview.appspot.com/9359049
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-02-16T00:45:32.000Z</ns0:updated><ns0:published>2012-02-16T00:45:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2594#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2594/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,62 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcESX47eCl7ImA9WhBVE00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3399</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using?  PNACL_VERSION=11198
+
+What version of the runtime are you using? 11209
+
+On what operating system? Linux
+
+ERROR LOG:
+
+/usr/bin/python tools/command_tester.py --name pnacl_newlib.run_futex_test --time_warning 10 --time_error 100 --perf_env_description arm_pnacl_newlib_static --using_nacl_signal_handler True --subarch 32 --arch arm --report /b/build/slave/oneiric_32-newlib-arm_hw-pnacl-panda-dbg/build/native_client/scons-out/nacl-arm-pnacl-pic-clang/test_results/futex_test.out scons-out/opt-linux-arm/staging/nacl_helper_bootstrap scons-out/opt-linux-arm/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX --reserved_at_zero=0xXXXXXXXXXXXXXXXX -- scons-out/nacl-arm-pnacl-pic-clang/obj/tests/futexes/futex_test.nexe
+[ RUN      ] pnacl_newlib.run_futex_test
+======================================================================
+running ['scons-out/opt-linux-arm/staging/nacl_helper_bootstrap', 'scons-out/opt-linux-arm/staging/sel_ldr', '--r_debug=0xXXXXXXXXXXXXXXXX', '--reserved_at_zero=0xXXXXXXXXXXXXXXXX', '--', 'scons-out/nacl-arm-pnacl-pic-clang/obj/tests/futexes/futex_test.nexe']
+======================================================================
+scons-out/opt-linux-arm/staging/nacl_helper_bootstrap scons-out/opt-linux-arm/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX --reserved_at_zero=0xXXXXXXXXXXXXXXXX -- scons-out/nacl-arm-pnacl-pic-clang/obj/tests/futexes/futex_test.nexe
+
+ERROR: Command returned exit status 252 (0xfc) but we expected 0 (0x0)
+
+ERROR: Command printed the signal info (4, 'untrusted') to stderr but we expected (None, 'normal')
+======================================================================
+Stdout for pnacl_newlib.run_futex_test:
+======================================================================
+
+======================================================================
+Stderr for pnacl_newlib.run_futex_test:
+======================================================================
+[28801,3067154432:09:27:39.285687] Native Client module will be loaded at base address 0x0000000000000000
+
+** Signal 4 from untrusted code: pc=108c0
+
+[  FAILED  ] pnacl_newlib.run_futex_test (30 ms)
+
+
+Not sure how often that happens, but there have been two crashes this week.  The other is a SIGSEGV:
+
+
+[ RUN      ] pnacl_newlib.run_futex_test
+======================================================================
+running ['scons-out/opt-linux-arm/staging/nacl_helper_bootstrap', 'scons-out/opt-linux-arm/staging/sel_ldr', '--r_debug=0xXXXXXXXXXXXXXXXX', '--reserved_at_zero=0xXXXXXXXXXXXXXXXX', '--', 'scons-out/nacl-arm-pnacl-pic-clang/obj/tests/futexes/futex_test.nexe']
+======================================================================
+scons-out/opt-linux-arm/staging/nacl_helper_bootstrap scons-out/opt-linux-arm/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX --reserved_at_zero=0xXXXXXXXXXXXXXXXX -- scons-out/nacl-arm-pnacl-pic-clang/obj/tests/futexes/futex_test.nexe
+
+ERROR: Command returned exit status 245 (0xf5) but we expected 0 (0x0)
+
+ERROR: Command printed the signal info (11, 'trusted') to stderr but we expected (None, 'normal')
+======================================================================
+Stdout for pnacl_newlib.run_futex_test:
+======================================================================
+Running test_futex_wait_value_mismatch...
+Running test_futex_wait_timeout...
+Running test_futex_wakeup...
+
+======================================================================
+Stderr for pnacl_newlib.run_futex_test:
+======================================================================
+[11482,3067121664:12:02:00.645219] Native Client module will be loaded at base address 0x0000000000000000
+
+** Signal 11 from trusted code: pc=b6d64fd4
+
+[  FAILED  ] pnacl_newlib.run_futex_test (30 ms)
+</ns0:content><ns0:updated>2013-04-18T17:26:48.000Z</ns0:updated><ns0:published>2013-04-18T17:11:09.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>Occasional SIGILL/SEGV on ARM under run_futex_test</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3399/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3399" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3399" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3399</ns2:id></ns0:entry>

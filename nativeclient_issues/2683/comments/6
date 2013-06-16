@@ -1,0 +1,53 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIBRX47eCl7ImA9WhJQFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2683/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=148964
+
+------------------------------------------------------------------------
+r148964 | jvoung@google.com | 2012-07-30T17:13:01.786033Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_streaming_translate_thread.cc?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_streaming_translate_thread.h?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/browser/renderer_host/chrome_render_message_filter.cc?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/browser/renderer_host/chrome_render_message_filter.h?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/local_temp_file.cc?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/local_temp_file.h?r1=148964&amp;r2=148963&amp;pathrev=148964
+   A http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/temporary_file.cc?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/plugin.gypi?r1=148964&amp;r2=148963&amp;pathrev=148964
+   A http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/temporary_file.h?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/c/private/pp_file_handle.h?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/api/private/finish_writing_these/ppb_nacl_private.idl?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/browser/nacl_host/pnacl_file_host.cc?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/browser/nacl_host/pnacl_file_host.h?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/renderer/pepper/ppb_nacl_private_impl.cc?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/ppapi_sources.gypi?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/build.scons?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_coordinator.cc?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/plugin.h?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/common/render_messages.h?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_translate_thread.cc?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_coordinator.h?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/c/private/ppb_nacl_private.h?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_translate_thread.h?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/service_runtime.cc?r1=148964&amp;r2=148963&amp;pathrev=148964
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/service_runtime.h?r1=148964&amp;r2=148963&amp;pathrev=148964
+
+Add an interface for nacl to create delete-on-close temp files,
+to be used by pnacl for scratch files during compilation and linking.
+
+This is in-lieu of the current use of pepper temp files, which are not
+allowed in incognito mode, and are more cumbersome to clean up on surfaway.
+
+Use this interface for the .o file in pnacl coordinator.  The .nexe still uses
+pepper temp files, since we haven't moved that over for caching yet.
+We will clean that up later.
+
+Also do some crude quota enforcement for these files, using the
+existing reverse service interface.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2683
+TEST= none -- pnacl compilation still works
+
+Review URL: https://chromiumcodereview.appspot.com/10815080
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-30T17:15:54.000Z</ns0:updated><ns0:published>2012-07-30T17:15:54.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2683#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2683/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

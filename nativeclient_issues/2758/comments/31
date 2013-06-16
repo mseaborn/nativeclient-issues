@@ -1,0 +1,61 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkcCSH47eCl7ImA9WhJREE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/31</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9104
+
+------------------------------------------------------------------------
+r9104 | eaeltsin@google.com | Wed Jul 11 04:59:53 PDT 2012
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/gdb_test_guest_thread.c?r1=9104&amp;r2=9103&amp;pathrev=9104
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/posix/thread_impl.cc?r1=9104&amp;r2=9103&amp;pathrev=9104
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/target.h?r1=9104&amp;r2=9103&amp;pathrev=9104
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/nacl.scons?r1=9104&amp;r2=9103&amp;pathrev=9104
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/break_continue_thread.py?r1=9104&amp;r2=9103&amp;pathrev=9104
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/target.cc?r1=9104&amp;r2=9103&amp;pathrev=9104
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/posix/nacl_signal.c?r1=9104&amp;r2=9103&amp;pathrev=9104
+
+Debug stub: support multithreading on Linux
+
+This change brings in several small fixes that enable the whole thing:
+
+- Allow interruption of signal handlers with suspend signal
+This prevents the following deadlock:
+  1. Thread A traps and starts signal handler
+  2. Thread A sends suspend signal to thread B, and starts waiting for suspension ack from B
+  3. Thread B traps and starts signal handler
+  4. Suspend signal arrives to thread B and blocks, as interruption is not allowed
+  5. Thread B wants to suspend threads and waits for thread suspension lock held by A
+When we allow interruption, suspend signal does not block, thus thread B trap handler gets suspended and thread A receives its suspend ack
+
+- Use kind of spinlock to queue arrived signals on Linux, so that target processes them one at a time
+This is an in-place hack that prevents segfault in trusted code.
+Original code queues signals using debug stub events, but on Linux this does not work as intended.
+The problem might be in implementation of events, as in fact it uses mutexes and condvars inside signal handlers, which is not recommended. However, there are other ideas as well.
+Spinlock is not too bad here, as it only spins for a very short time, until the suspend signal actually arrives.
+
+- Implement single step with one thread only, while others remain stopped
+Here is how GDB processes breakpoints:
+  1. to insert breakpoint, GDB replaces original instruction with trap instruction
+  2. execution of trap instruction generates trap :)
+  3. GDB checks the trap was raised at inserted breakpoint (if not, GDB just reports 'trap signal arrived')
+  4. GDB un-inserts breakpoints, replacing trap instructions with original instructions (so disassembler shows original code)
+  5. GDB reports breakpoint hit
+  6. User tells GDB to continue
+  7. GDB single steps, executing original instruction at breakpoint address
+  8. GDB re-inserts breakpoints, replacing original instructions with trap instructions again
+  9. GDB really continues
+If step 7 is implemented by running all threads, then if another thread is executing code at the same address, it will miss the breakpoint.
+Another problem with continuing all threads when single stepping over breakpoint is when we have queued breakpoint hit from other thread. If running all threads in step 7, next trap to arrive will be that queued breakpoint hit instead of single step from our thread. As a result, GDB will examine that breakpoint hit from other thread while all breakpoints are un-inserted, so it will consider this to be trap from the code instead of breakpoint hit (will report 'trap signal arrived').
+
+- Add multi-threaded GDB test
+The test sets breakpoints in functions called from multiple threads, and verifies total count of hits.
+Though very simple, the test revealed most of the situations described above
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2758
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2736
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2733
+TEST=run_gdb_break_continue_thread_test
+
+Review URL: https://chromiumcodereview.appspot.com/10704076
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-11T12:01:09.000Z</ns0:updated><ns0:published>2012-07-11T12:01:09.000Z</ns0:published><ns2:updates /><ns0:title>Comment 31 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2758#c31" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/31" rel="self" type="application/atom+xml" /></ns0:entry>

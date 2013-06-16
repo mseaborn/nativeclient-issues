@@ -1,0 +1,101 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkENQ347eCl7ImA9WhNSEUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3092/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">On ARM Ubuntu Precise (currently on the panda2 device), we have the following version of GDB:
+
+$ gdb --version
+GNU gdb (Ubuntu/Linaro 7.4-2012.04-0ubuntu2) 7.4-2012.04
+$ dpkg -s gdb | grep ^Version
+Version: 7.4-2012.04-0ubuntu2
+
+4 of NaCl's GDB tests pass here, but 3 fail:
+
+[       OK ] pnacl_newlib.run_gdb_stepi_after_break_test (720 ms)
+[       OK ] pnacl_newlib.run_gdb_break_continue_thread_test (950 ms)
+[       OK ] pnacl_newlib.run_gdb_call_from_gdb_test (1130 ms)
+[       OK ] pnacl_newlib.run_gdb_syscall_thread_test (1040 ms)
+[  FAILED  ] pnacl_newlib.run_gdb_step_from_func_start_test (889 ms)
+[  FAILED  ] pnacl_newlib.run_gdb_print_symbol_test (820 ms)
+[  FAILED  ] pnacl_newlib.run_gdb_stack_trace_test (730 ms)
+
+Here is the log output from the test failures:
+
+
+Failure 1:
+
+...
+From GDB: ~"1, test_step_from_function_start (arg=2) at tests/gdb/gdb_test_guest.c:47\n"
+From GDB: ~"47\t  int local_var = arg - 1;\n"
+...
+From GDB: ~"48\t  global_var = local_var;\n"
+...
+From GDB: ~"54\t  global_ptr = alloca(arg);\n"
+...
+From GDB: ~"48\t  global_var = local_var;\n"
+...
+  File "./step_from_func_start.py", line 16, in test
+    AssertEquals(gdb.Eval('global_var'), '1')
+AssertionError: '0' != '1'
+[  FAILED  ] pnacl_newlib.run_gdb_step_from_func_start_test (880 ms)
+
+-- This failure seems to happen because the code generator is reordering the source code lines.  Although we're compiling and linking with -O0, the PNaCl translator is presumably still applying some optimisation.
+
+
+Failure 2:
+
+...
+[2357,3066848336:12:25:02.681307] RX $vCont;c
+[2357,3067117568:12:25:02.682131] TX $W02
+From GDB: ~"[Inferior 1 (Remote target) exited with code 02]\n"
+Traceback (most recent call last):
+  File "./print_symbol.py", line 22, in &lt;module&gt;
+    gdb_test.RunTest(test, 'print_symbol')
+  File "/home/nacl/mseaborn/tmp_for_test/gdb_test.py", line 276, in RunTest
+    test_func(gdb)
+  File "./print_symbol.py", line 15, in test
+    AssertEquals(gdb.ResumeCommand('finish')['reason'], 'function-finished')
+  File "/home/nacl/mseaborn/tmp_for_test/gdb_test.py", line 232, in ResumeCommand
+    status, items = self._GetLastExecAsyncRecord(self._GetResponse())
+  File "/home/nacl/mseaborn/tmp_for_test/gdb_test.py", line 222, in _GetLastExecAsyncRecord
+    % result)
+AssertionError: No asynchronous execute status record found in ['~"[Inferior 1 (Remote target) exited with code 02]\\n"']
+[  FAILED  ] pnacl_newlib.run_gdb_print_symbol_test (820 ms)
+
+-- The function's finish is being missed for some reason.
+
+
+Failure 3:
+
+...
+From GDB: ^done,stack=[frame={level="0",addr="0x00020184",func="leaf_call",file="tests/gdb/gdb_test_guest.c",fullname="/home/nacl/mseaborn/tmp_for_test/tests/gdb/gdb_test_guest.c",line="29"},frame={level="1",addr="0x000201f0",func="nested_calls",file="tests/gdb/gdb_test_guest.c",fullname="/home/nacl/mseaborn/tmp_for_test/tests/gdb/gdb_test_guest.c",line="34"},frame={level="2",addr="0x00000000",func="??"}]
+From GDB: (gdb)
+Traceback (most recent call last):
+  File "./stack_trace.py", line 27, in &lt;module&gt;
+    gdb_test.RunTest(test, 'stack_trace')
+  File "/home/nacl/mseaborn/tmp_for_test/gdb_test.py", line 276, in RunTest
+    test_func(gdb)
+  File "./stack_trace.py", line 16, in test
+    AssertEquals(result['stack'][2]['frame']['func'], 'main')
+  File "/home/nacl/mseaborn/tmp_for_test/gdb_test.py", line 17, in AssertEquals
+    raise AssertionError('%r != %r' % (x, y))
+AssertionError: '??' != 'main'
+[  FAILED  ] pnacl_newlib.run_gdb_stack_trace_test (730 ms)
+
+-- Something is wrong with stack unwinding.  Running this test manually shows the following backtrace:
+
+(gdb) bt
+#0  leaf_call (arg=2) at tests/gdb/gdb_test_guest.c:29
+#1  0x000201f0 in nested_calls (arg=268637056)
+    at tests/gdb/gdb_test_guest.c:34
+#2  0x00000000 in ?? ()
+
+Disassembly shows:
+...
+00020180 &lt;leaf_call&gt;:
+   20180:       e52d0004        push    {r0}            ; (str r0, [sp, #-4]!)
+...
+000201b0 &lt;nested_calls&gt;:
+   201b0:       e92d4800        push    {fp, lr}
+...
+
+Maybe the problem is with functions that push lr in the prologue?
+</ns0:content><ns0:updated>2012-10-25T19:51:32.000Z</ns0:updated><ns0:published>2012-10-25T19:51:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3092#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3092/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

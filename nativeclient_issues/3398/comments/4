@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck8MRn47eCl7ImA9WhBVE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3398/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>ig...@chromium.org</ns0:name><ns0:uri>/u/111131028404116469990/</ns0:uri></ns0:author><ns0:content type="html">I'm planning to override thread stack sizes to make them smaller than the default (or otherwise we run out of memory). I was planning to:
+1. Wrap pthread_create
+2. Make a copy of incoming "attr"
+3. Update the stack size in the new "attr" unless stack size or address were explicitly set in the original attributes
+
+So, the getters are used to a) make a copy of pthread_attr_t, and b) figure out whether stack size or stack address was already set by the caller code.
+
+Querying most attributes (e.g. guard size, etc) seems to work fine. The only issue I encountered so far was with stack address. However, knowing we depend on a particular version of GLIBC we may just have to make some assumptions.</ns0:content><ns0:updated>2013-04-19T00:21:27.000Z</ns0:updated><ns0:published>2013-04-19T00:21:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by ig...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3398#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3398/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

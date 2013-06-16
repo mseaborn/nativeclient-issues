@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUFQn47eCl7ImA9WhFTGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3476</ns0:id><ns0:author>
+			<ns0:name>s...@chromium.org</ns0:name><ns0:uri>/u/100592414910994572397/</ns0:uri></ns0:author><ns0:content type="html">The pnacl builder is failing to build naclports, and it looks like a
+pnacl validation issue.
+
+http://build.chromium.org/p/client.nacl.ports/builders/linux-pnacl_newlib-all/builds/211/steps/pnacl%20newlib%20scummvm/logs/stdio
+
+
+pnacl-ar cru base/libbase.a base/main.o base/commandLine.o base/plugins.o base/version.o
+pnacl-ranlib base/libbase.a
+/mnt/data/b/build/slave/linux-pnacl_newlib-all/build/src/pepper_XX/toolchain/linux_x86_pnacl/newlib/bin/pnacl-clang++  -L/mnt/data/b/build/slave/linux-pnacl_newlib-all/build/src/pepper_XX/toolchain/linux_x86_pnacl/newlib/usr/lib -L/mnt/data/b/build/slave/linux-pnacl_newlib-all/build/src/pepper_XX/lib/pnacl/Release -O0 -static  backends/platform/sdl/events.o backends/platform/sdl/graphics.o backends/platform/sdl/hardwarekeys.o backends/platform/sdl/main.o backends/platform/sdl/ppapi/scummvm_pepper_instance.o backends/platform/sdl/ppapi/scummvm_pepper_module.o backends/platform/sdl/sdl.o base/libbase.a engines/lure/liblure.a engines/sky/libsky.a gui/libgui.a sound/libsound.a backends/libbackends.a engines/libengines.a graphics/libgraphics.a common/libcommon.a   -Wl,--whole-archive -lvorbisfile -lvorbis -logg -lnacl-mounts -lppapi -lppapi_cpp -lppapi_cpp_private -Wl,--no-whole-archive -lm   -lvorbisfile -lvorbis -logg -L/mnt/data/b/build/slave/linux-pnacl_newlib-all/build/src/pepper_XX/toolchain/linux_x86_pnacl/newlib/usr/lib -lSDL -lpthread -lm -lpthread -o scummvm
+Function _ZN4Lure7HotspotC2EPNS_11HotspotDataE disallowed: bad instruction opcode:   %.fca.0.insert.i = insertvalue { i32, i32 } undef, i32 %retval.sroa.0.0.i, 0, !dbg !429909
+Function _ZN4Lure7HotspotC2EPNS_11HotspotDataE disallowed: bad instruction opcode:   %.fca.1.insert.i = insertvalue { i32, i32 } %.fca.0.insert.i, i32 0, 1, !dbg !429909
+Function _ZN4Lure7HotspotC2EPNS_11HotspotDataE disallowed: bad instruction opcode:   %26 = extractvalue { i32, i32 } %.fca.1.insert.i, 0
+Function _ZN4Lure7HotspotC2EPNS_11HotspotDataE disallowed: bad instruction opcode:   %27 = extractvalue { i32, i32 } %.fca.1.insert.i, 1
+LLVM ERROR: PNaCl ABI verification failed
+make[1]: *** [scummvm] Error 1
+make[1]: Leaving directory `/mnt/data/b/build/slave/linux-pnacl_newlib-all/build/src/out/repository/scummvm-1.2.1/build-nacl-pnacl-newlib'
+make: *** [out/sentinels/pnacl_newlib/examples/games/scummvm] Error 2
+naclports: Install FAILED for all (pnacl)
+@@@STEP_FAILURE@@@
+</ns0:content><ns0:updated>2013-06-11T21:30:13.000Z</ns0:updated><ns0:published>2013-06-06T23:04:34.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>recent PNaCl validation change is breaking naclports</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3476/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3476" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3476" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2013-06-10T22:29:44.000Z</ns2:closedDate><ns2:id>3476</ns2:id></ns0:entry>

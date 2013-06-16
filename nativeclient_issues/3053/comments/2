@@ -1,0 +1,44 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04GQ347eCl7ImA9WhJaEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3053/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9892
+
+------------------------------------------------------------------------
+r9892 | bsy@google.com | 2012-10-01T18:23:32.510372Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_io.c?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/osx/nacl_host_dir.c?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/linux/nacl_desc_sysv_shm.c?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_base.c?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_text.c?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_dir.c?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_imc_shm.c?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/mmap_test.c?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_cond.c?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_semaphore.c?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/include/sys/mman.h?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gio/gio_shm_test.c?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gio/gio_shm.c?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/win/nacl_host_dir.c?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gio/gio_shm_unbounded_test.c?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/linux/nacl_host_dir.c?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/imc/win/nacl_shm.cc?r1=9892&amp;r2=9891&amp;pathrev=9892
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_mutex.c?r1=9892&amp;r2=9891&amp;pathrev=9892
+
+change native_client/.../sys/mman.h to native_client/.../bits/mman.h
+
+A bunch of code included sys/mman.h where mprotect and friends are
+declared, when they really only need the NACL_ABI_* definitions for
+PROT_* macros.  This wasn't a problem since the declarations in
+mman.h, even though they didn't have nacl_abi_ prefixes, are standard
+POSIX type signatures, but in some compilation environments we're
+seeing additional const attributes used in the system header files,
+resulting in compile-time errors.  This CL removes all uses of
+native_client/src/.../sys/mman.h from the TCB.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3053
+TEST= it builds
+Review URL: https://codereview.chromium.org/10981077
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-01T18:25:22.000Z</ns0:updated><ns0:published>2012-10-01T18:25:22.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3053#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3053/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

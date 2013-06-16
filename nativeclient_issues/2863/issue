@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE4ESX47eCl7ImA9WhJbFkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2863</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I'm currently running nacl_deps_bump.py regularly to update nacl_revision in Chromium's DEPS, and I'm gradually automating this more (see issue 2862).
+
+nacl_deps_bump.py has the ability to update the NaCl toolchain revisions in Chromium's DEPS too, but I'm not doing these updates currently.  That's mostly because I don't want to pull new toolchain tarballs into Chromium when the toolchain hasn't really changed.
+
+The common practice in the NaCl tree is to update &amp;quot;x86_toolchain_version&amp;quot; in DEPS frequently, in sync with &amp;quot;pnacl_toolchain_version&amp;quot;, even when the x86 GNU toolchain hasn't really changed.
+
+If I synced those changes into Chromium's DEPS, that would produce a lot of unnecessary downloads, which would slow down the bots and Chromium developers.  (Other Chromium devs have voiced this sentiment, e.g. see https://chromiumcodereview.appspot.com/9564018/.)
+
+Some possibilities are:
+
+ 1) Non-technical fix:  Change the practice so that &amp;quot;x86_toolchain_version&amp;quot; does not get bumped when changing &amp;quot;pnacl_toolchain_version&amp;quot;.  (This practice originates from when the toolchain tarballs included stuff built by Scons, such as libppruntime and crt1.o, but this became obsolete when the extra_sdk steps were removed back in July 2011!)
+
+    This should just be a matter of changing the comments in native_client/DEPS, assuming people read them!
+
+ 2) Technical fix:  Remove timestamps, SVN revision numbers, and other sources of non-determinism from the toolchain tarball build so that it produces tarballs with stable hashes.  Then I only need to update the toolchain revs in Chromium's DEPS when the hashes change.
+
+    This would make it easier to automate updating the toolchain revs in native_client/DEPS too.
+
+ 3) Furthermore, we could split the toolchain into components (binutils, gcc, newlib, glibc, gdb) to reduce the time to download updates.
+</ns0:content><ns0:updated>2012-09-26T18:08:28.000Z</ns0:updated><ns0:published>2012-06-20T23:18:07.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Automate updating NaCl toolchain revisions in Chromium's DEPS</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2863/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2863" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2863" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-09-26T18:08:28.000Z</ns2:closedDate><ns2:id>2863</ns2:id></ns0:entry>

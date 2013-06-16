@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcNQn47eCl7ImA9WhFTEko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3460/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11453
+
+------------------------------------------------------------------------
+r11453 | eugenis@chromium.org | 2013-06-03T15:37:22.472379Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/seccomp_bpf/seccomp_bpf.c?r1=11453&amp;r2=11452&amp;pathrev=11453
+
+Allow sched_getaffinity in seccomp-bpf policy.
+
+ASan runtime uses pthread_getattr_np to figure out thread stack limits. In
+GLibC pthread_getattr_np calls NR_sched_getaffinity.
+
+A similar change has been already done in Chromium.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3460
+TEST=run_sel_ldr_seccomp_test with --asan
+
+Review URL: https://chromiumcodereview.appspot.com/15930009
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-06-03T15:41:33.000Z</ns0:updated><ns0:published>2013-06-03T15:41:33.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3460#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3460/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

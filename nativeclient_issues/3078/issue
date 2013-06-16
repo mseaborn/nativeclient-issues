@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMMRn47eCl7ImA9WhNTE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3078</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Today, run_nacl_bootstrap_prereservation_test failed with the following output:
+
+/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_arm-trusted/run_under_qemu_arm /mnt/data/b/build/slave/nacl/build/native_client/scons-out/opt-linux-arm/staging/nacl_helper_bootstrap /mnt/data/b/build/slave/nacl/build/native_client/scons-out/opt-linux-arm/obj/src/trusted/service_runtime/nacl_bootstrap_prereservation_test --r_debug=0xXXXXXXXXXXXXXXXX --reserved_at_zero=0xXXXXXXXXXXXXXXXX
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+======================================================================
+Stdout for pnacl_newlib.run_nacl_bootstrap_prereservation_test:
+======================================================================
+FAIL
+
+======================================================================
+Stderr for pnacl_newlib.run_nacl_bootstrap_prereservation_test:
+======================================================================
+[6645,4098101248:12:51:42.212420] /proc/sys/vm/mmap_min_addr contains: 4097
+[6645,4098101248:12:51:42.221192] Read line from /proc/self/maps: 0000d000-0001d000 ---p 00000000 00:00 0 
+Error at line 90, src/trusted/service_runtime/linux/nacl_bootstrap_prereservation_test.c:
+Error: g_prereserved_sandbox_size &amp;lt;= FindMinUnreservedAddress() is FALSE
+[6645,4098101248:12:51:42.222481] /proc/sys/vm/mmap_min_addr contains: 4097
+[6645,4098101248:12:51:42.222630] Read line from /proc/self/maps: 0000d000-0001d000 ---p 00000000 00:00 0 
+[6645,4098101248:12:51:42.222774] /proc/sys/vm/mmap_min_addr contains: 4097
+[6645,4098101248:12:51:42.222908] Read line from /proc/self/maps: 0000d000-0001d000 ---p 00000000 00:00 0 
+got 0x40002000 (1073750016); comparison value 0x00002000 (8192)
+
+[  FAILED  ] pnacl_newlib.run_nacl_bootstrap_prereservation_test (70 ms)
+
+See http://build.chromium.org/p/tryserver.nacl/builders/nacl-lucid_64-newlib-arm_qemu-pnacl/builds/3143/steps/scons%20%5Barm%5D%20%5Bsmall_tests%20medium_tests%5D%20%5Bpic%20no_pexe%20%5D/logs/stdio
+
+This test has failed before (which prompted me to add the logging which gave the output above).
+</ns0:content><ns0:updated>2012-10-15T20:54:47.000Z</ns0:updated><ns0:published>2012-10-05T20:12:00.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>run_nacl_bootstrap_prereservation_test is flaky on ARM QEMU</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>FlakeyBots</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3078/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3078" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3078" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3078</ns2:id></ns0:entry>

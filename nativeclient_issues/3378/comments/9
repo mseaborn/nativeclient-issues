@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0IGSH47eCl7ImA9WhBbEUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3378/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11329
+
+------------------------------------------------------------------------
+r11329 | jvoung@google.com | 2013-05-10T15:23:13.046600Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/toolchain/nacl.scons?r1=11329&amp;r2=11328&amp;pathrev=11329
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/known_failures_pnacl.txt?r1=11329&amp;r2=11328&amp;pathrev=11329
+
+Skip ABI verification for tests of __builtin_{frame,return}_address.
+
+Skip in scons and the gcc torture test suite.
+
+Also skip ABI verification for the LLVM math intrinsics,
+bitmanip intrinsics, and atomic intrinsics in scons for now.
+Haven't hunted those down in gcc torture test suite yet.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3378
+R=mseaborn@chromium.org
+
+Review URL: https://codereview.chromium.org/14619022
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-05-10T15:25:29.000Z</ns0:updated><ns0:published>2013-05-10T15:25:29.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3378#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3378/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,47 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UMR347eCl7ImA9WhVUE0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2788/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8650
+
+------------------------------------------------------------------------
+r8650 | mseaborn@chromium.org | Fri May 18 11:18:38 PDT 2012
+
+Changed paths:
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pthread/nc_hash.h?r1=8650&amp;r2=8649&amp;pathrev=8650
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pthread/pthread.h?r1=8650&amp;r2=8649&amp;pathrev=8650
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pthread/nacl.scons?r1=8650&amp;r2=8649&amp;pathrev=8650
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pthread/nc_thread.c?r1=8650&amp;r2=8649&amp;pathrev=8650
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/threads/thread_test.c?r1=8650&amp;r2=8649&amp;pathrev=8650
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pthread/pthread.gyp?r1=8650&amp;r2=8649&amp;pathrev=8650
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pthread/nc_hash.c?r1=8650&amp;r2=8649&amp;pathrev=8650
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pthread/pthread_types.h?r1=8650&amp;r2=8649&amp;pathrev=8650
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt_private_pthread.c?r1=8650&amp;r2=8649&amp;pathrev=8650
+
+libpthread: Make pthread_t a pointer instead of a small integer ID
+
+This removes a lot of complexity: we don't need a hash table to map
+integer IDs back to pointers, so we can remove nc_hash.c.  There was
+no particular need for pthread_t to be an integer ID; for comparison,
+pthread_t is a pointer in glibc's libpthread.  This just changes
+libpthread's behaviour when given invalid pthread_t values.  After
+this change, libpthread is more likely to crash instead of returning
+an error.
+
+This is in preparation for using nc_thread.c inside the IRT so that
+pthread_create() works inside the IRT.  Removing the use of integer
+IDs will make it easier for IRT pthread_mutexes to work on
+user-created threads since we won't have to allocate IDs for these
+threads.
+
+We add a "__" prefix to "struct nc_basic_thread_data" to avoid
+namespace collisions since it now has a forward declaration in a
+public header.
+
+thread_test.c: Remove a pthread_join() check because it relies on
+undefined behaviour (as previously commented in the code).
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2788
+TEST=run_thread_test run_main_thread_pthread_exit_test
+
+Review URL: https://chromiumcodereview.appspot.com/10382235
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-05-18T18:21:26.000Z</ns0:updated><ns0:published>2012-05-18T18:21:26.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2788#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2788/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

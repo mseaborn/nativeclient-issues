@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMDR347eCl7ImA9WhVUEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2778</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I tried enabling the nacl-glibc tests in nacl_integration in the Chromium build.  This causes sel_ldr to be built inside nacl_integration (because the manifest file generator still invokes sel_ldr as part of finding library dependencies).
+
+That failed with this compile error on Chromium's 32-bit Windows XP bot:
+
+src\trusted\validator\x86\nacl_cpuid.c(351) : warning C4013: '__cpuidex' undefined; assuming extern returning int
+
+(from http://build.chromium.org/p/chromium/builders/NACL%20Tests/builds/26559/steps/nacl_integration/logs/stdio)
+
+This was caused by the following code, which was introduced in https://chromiumcodereview.appspot.com/10273018:
+
+#ifdef _MSC_VER
+#if _MSC_VER &amp;lt; 1500
+  reg[0] = 0;
+  reg[1] = 0;
+  reg[2] = 0;
+  reg[3] = 0;
+#else
+  __cpuidex((uint32_t*)reg, op, ecx);
+#endif
+#else /* NACL_WINDOWS, but _MSC_VER is not defined */
+/* This is Windows but not MSVC: who knows if __cpuidex is available?  */
+# error Unsupported compiler
+#endif
+</ns0:content><ns0:updated>2012-05-15T19:34:36.000Z</ns0:updated><ns0:published>2012-05-14T18:57:06.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>sel_ldr fails to build inside nacl_integration with "'__cpuidex' undefined"</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2778/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2778" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2778" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>2648</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2012-05-15T19:21:54.000Z</ns2:closedDate><ns2:id>2778</ns2:id></ns0:entry>

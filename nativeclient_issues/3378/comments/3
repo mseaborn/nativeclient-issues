@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUCRH47eCl7ImA9WhBUGEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3378/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I'd suggest starting with a large list of all the intrinsics that the tests currently rely on, and then whittle it down.  If we start off with a small list that isn't enforced, I think it would be less useful -- it doesn't give us a guaranteed to-do list to review.
+
+&gt; - We have some intrinsics that return struct types
+&gt; (https://code.google.com/p/nativeclient/issues/detail?id=3343#c6),
+&gt; and those can be are inserted by Clang.
+
+BTW, I have a plan for the *.with.overflow intrinsics that I need to write up.
+
+&gt; - We have tests that intentionally test a bunch of llvm intrinsics.
+&gt; (a) tests/toolchain/llvm_bitmanip_intrinsics.c (and other test
+&gt; suites test popcount, etc.) -- these might be okay, as long as we
+&gt; supply compiler_rt support?
+
+We could err on the side of omitting these from v1 until we know that developers definitely need them.  In that case, we can turn off the ABI verifier for this test.  On the other hand, these intrinsics seem innocuous.
+
+&gt; (c) tests/toolchain/frame_addresses.c, etc (and torture test
+&gt; suite). use llvm.frameaddress and llvm.returnaddress.  They might be
+&gt; useful for crude debugging, but are less likely to be used by real
+&gt; pexes?
+
+We should definitely disallow those intrinsics.  A future sandbox might hide the return address from user code.  We can turn off the ABI verifier for those tests.
+
+&gt; - Some tests like the "run_barebones_vaarg_test" don't have dead
+&gt; prototypes stripped, so they retain the decls for va_* intrinsics,
+&gt; even after expanding out va_arg instrinsics.  This makes it hard to
+&gt; blacklist the va_arg intrinsics.
+
+Why aren't the unused function decls stripped in that case?
+</ns0:content><ns0:updated>2013-05-06T23:17:45.000Z</ns0:updated><ns0:published>2013-05-06T23:17:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3378#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3378/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

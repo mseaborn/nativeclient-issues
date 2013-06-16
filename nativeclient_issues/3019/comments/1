@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEAESX47eCl7ImA9WhJUF0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3019/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9749
+
+------------------------------------------------------------------------
+r9749 | phosek@chromium.org | 2012-09-15T22:04:44.730443Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_kernel_service.c?r1=9749&amp;r2=9748&amp;pathrev=9749
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_kern_services.c?r1=9749&amp;r2=9748&amp;pathrev=9749
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=9749&amp;r2=9748&amp;pathrev=9749
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=9749&amp;r2=9748&amp;pathrev=9749
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_kernel_service.h?r1=9749&amp;r2=9748&amp;pathrev=9749
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/include/sys/nacl_kernel_service.h?r1=9749&amp;r2=9748&amp;pathrev=9749
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_kern_services.h?r1=9749&amp;r2=9748&amp;pathrev=9749
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=9749&amp;r2=9748&amp;pathrev=9749
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=9749&amp;r2=9748&amp;pathrev=9749
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/include/sys/nacl_kern_rpc.h?r1=9749&amp;r2=9748&amp;pathrev=9749
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/srpc/nacl_srpc_ppapi_plugin_internal.c?r1=9749&amp;r2=9748&amp;pathrev=9749
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=9749&amp;r2=9748&amp;pathrev=9749
+
+Renamed NaClKernService to NaClKernelService
+
+The NaClKernService has been renamed to NaClKernelService as well as the file
+name which was changed from nacl_kern_services.{h,c} to
+nacl_kernel_service.{h,c} to maintain consistency with other services.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=3019
+TESTS=small_tests
+
+Review URL: https://codereview.chromium.org/10908273
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-09-15T22:05:08.000Z</ns0:updated><ns0:published>2012-09-15T22:05:08.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3019#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3019/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

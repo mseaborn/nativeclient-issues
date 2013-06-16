@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C04AR347eCl7ImA9WhBbEUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3425</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">From issue 3424, I am able to generate ELF core dumps for untrusted code using Breakpad's minidump-2-core tool.
+
+However, nacl-gdb refuses to load ELF core dump files, whereas Linux GDB loads them fine:
+
+$ nacl-gdb out/minidump_for_nacl.nexe out/nacl_core -ex bt -ex quit
+...
+&amp;quot;.../out/nacl_core&amp;quot;: no core file handler recognizes format
+No stack.
+
+$ gdb out/minidump_for_nacl.nexe out/nacl_core -ex bt -ex quit
+...
+#0  0x00000000000213ab in crash () at minidump_for_nacl.cc:270
+...
+
+The cause of this is that tdep-&amp;gt;gregset_reg_offset doesn't get filled out.  This normally gets set by i386_linux_init_abi() in i386-linux-tdep.c and amd64_linux_init_abi() in amd64-linux-tdep.c.  nacl-tdep.c calls linux_init_abi() and i386_elf_init_abi() but not i386_linux_init_abi().
+
+I can make this work by copying the code out of {i386,amd64}-linux-tdep.c:
+https://codereview.chromium.org/14757004
+
+However, that's obviously not the right way to do it.  Andrey, do you know what the right way is?
+</ns0:content><ns0:updated>2013-05-10T02:12:26.000Z</ns0:updated><ns0:published>2013-05-05T16:48:53.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>nacl-gdb will not read ELF core dump files</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GDB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3425/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3425" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3425" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-05-10T02:12:26.000Z</ns2:closedDate><ns2:id>3425</ns2:id></ns0:entry>

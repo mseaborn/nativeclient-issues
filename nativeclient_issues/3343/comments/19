@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0EFRX47eCl7ImA9WhFTEkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3343/comments/full/19</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11456
+
+------------------------------------------------------------------------
+r11456 | mseaborn@chromium.org | 2013-06-03T19:55:57.654012Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/DEPS?r1=11456&amp;r2=11455&amp;pathrev=11456
+
+PNaCl: Update LLVM revision in pnacl/DEPS
+
+This pulls in the following LLVM changes:
+
+4358dd3: (mseaborn@chromium.org) PNaCl: ExpandVarArgs: Use memcpy() instead of struct load+store for struct args
+eedf1e2: (mseaborn@chromium.org) PNaCl: Fix ReplacePtrsWithInts so that ptrtoint always casts to i32
+8253f25: (mseaborn@chromium.org) PNaCl ABI checker: Disallow ExtractValue and InsertValue instructions (2nd try)
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3343
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3338
+TEST= changes already tested via PNaCl toolchain trybots
+
+Review URL: https://codereview.chromium.org/16295019
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-06-03T20:00:14.000Z</ns0:updated><ns0:published>2013-06-03T20:00:14.000Z</ns0:published><ns2:updates /><ns0:title>Comment 19 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3343#c19" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3343/comments/full/19" rel="self" type="application/atom+xml" /></ns0:entry>

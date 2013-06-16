@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0EHRX47eCl7ImA9WhJQF0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2927/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=149333
+
+------------------------------------------------------------------------
+r149333 | arbenson@google.com | 2012-08-01T00:36:32.876833Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/app/nacl_fork_delegate_linux.cc?r1=149333&amp;r2=149332&amp;pathrev=149333
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/nacl/nacl_helper_linux.cc?r1=149333&amp;r2=149332&amp;pathrev=149333
+
+NaCl: Support 64-bit reserved_at_zero value
+
+This change will make the x86-32 sandbox on Linux non-zero-based until the change at http://codereview.chromium.org/10832040/ is committed in Chromium. Also, on Atom, performance will be temporarily reduced but not broken. 
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2927
+TEST=trybots
+
+Review URL: https://chromiumcodereview.appspot.com/10826039
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-01T00:40:34.000Z</ns0:updated><ns0:published>2012-08-01T00:40:34.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2927#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2927/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ANQn47eCl7ImA9WhJbEEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2813/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Christian, I wasn't sure if you were looking at this too, but I took a quick look.  The code to show the puzzle piece seems to be related to "plugin_placeholder"s.  See chrome_content_renderer_client.cc.
+
+
+This is already used by NaCl when NaCl is blocked (e.g., for non-webstore nexes).
+
+Options to show a plugin_placeholder:
+
+(1) Check early, before the trusted NaCl plugin is created and the NMF file is downloaded.
+We can check around where we currently check if NaCl is enabled.
+
+
+(1a) For PNaCl, we can have a different mime type for the embed tags, so that we can avoid creating the "NaCl plugin" for PNaCl if PNaCl is missing, and not affect NaCl nexes.
+  - means that people need to change their html, not just their NMF
+
+
+(1b) Continue to share the same mime type for the embed as NaCl, but require PNaCl be installed if "--enable-pnacl" is used, for ANY NaCl page that is visited.  This may accidentally block uses of nexes.  It might not be so bad while we are behind a flag.  It would be better if the install is easy to do.  If NaCl is also moved to a component, then NaCl + PNaCl could be the same component and it wouldn't matter either.
+
+
+(2) Check after NaCl plugin is already created and NMF file is downloaded.  We then need to hack it in pretty late.  Since we've already started the NaCl plugin, we need to shut it down and replace it the placeholder plugin.  It's not yet clear how to return a placeholder WebPlugin back to WebKit so late in the game, so that it can re-render the embed tag.  NPAPI plugins have a way of swapping back and forth between the placeholder and the real plugin, but not PPAPI, from what I could tell... further investigation needed.
+
+
+(3) Don't use placeholder plugins but use something entirely different... This may mean that we need to will then need to implement the event handlers from scratch, including (a) click-handlers for initiating install (b) click-handlers for "click to play blocking" (c) handler for swapping back to the real plugin after install, etc.
+
+
+(4) Other...
+</ns0:content><ns0:updated>2012-09-18T23:43:13.000Z</ns0:updated><ns0:published>2012-09-18T23:43:13.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2813#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2813/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

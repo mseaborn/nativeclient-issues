@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0YGQH47eCl7ImA9WhBVEkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3377/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11208
+
+------------------------------------------------------------------------
+r11208 | mseaborn@chromium.org | 2013-04-17T23:20:30.707316Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/toolchain/nacl.scons?r1=11208&amp;r2=11207&amp;pathrev=11208
+
+PNaCl: Use "--pnacl-allow-exceptions" following toolchain roll
+
+The option is now available outside of the toolchain bots.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3377
+TEST=run_eh_virtual_dtor_noopt_noframe_test
+
+Review URL: https://codereview.chromium.org/13865009
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-04-17T23:25:21.000Z</ns0:updated><ns0:published>2013-04-17T23:25:21.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3377#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3377/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE8CSH47eCl7ImA9WhBaEks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3447</ns0:id><ns0:author>
+			<ns0:name>nfulla...@google.com</ns0:name><ns0:uri>/u/118309011164612460950/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? near TOT
+What version of the runtime are you using? near TOT
+On what operating system? Linux
+What browser are you using? near TOT (29.0.1510...)
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. in nmf for pnacl, specify a &amp;quot;quoted&amp;quot; optimization value for pnacl-translate
+  &amp;quot;-O&amp;quot;: &amp;quot;2&amp;quot;,
+2. reload page containing pexe, see aw, snap!
+3. change optimization value to un-quoted:
+  &amp;quot;-O&amp;quot;: 2,
+4. reload page and watch pexe run.
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+An invalid nmf shouldn't snap the page.
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+</ns0:content><ns0:updated>2013-05-22T22:47:49.000Z</ns0:updated><ns0:published>2013-05-22T22:47:49.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>quoted optimization value in nmf aw-snaps</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-</ns2:label><ns2:label>OS-</ns2:label><ns2:label>Arch-</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3447/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3447" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3447" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3447</ns2:id></ns0:entry>

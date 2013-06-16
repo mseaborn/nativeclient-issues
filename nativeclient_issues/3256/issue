@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08BRH47eCl7ImA9WhNbEkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3256</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Currently we can't see the output from NaClLog when NaCl is running inside Chrome on Windows.  NaClLog outputs to stderr, and stdout/stderr output is blocked by Windows Chrome by two mechanisms:
+
+ * chrome.exe is marked as a Windows app, not a console app.  You can undo this by linking with &amp;quot;/subsystem:console&amp;quot; (https://codereview.chromium.org/9348114/) or by changing a field in chrome.exe's header.
+
+ * Chrome's Windows sandbox seems to turn off stdout/stderr.  So, to see NaClLog output, you'd currently also need to use --no-sandbox.
+
+In contrast, Chrome's LOG() macro sends output to the Windows event log.
+
+We should change NaClLog so that it can do the same inside Chrome.  There are two ways we could do this:
+
+ 1) Duplicate Chrome's code for sending messages to the Windows event log.  This code is surprisingly complicated.  It involves setting up an EVENT_TRACE_HEADER.  base/logging_win.cc does this using the helper code in base/win/event_trace_provider.h.
+
+ 2) Have NaClLog send output to Chrome's base/logging.h using dependency injection.
+
+(2) seems the better option.
+</ns0:content><ns0:updated>2013-01-15T02:10:55.000Z</ns0:updated><ns0:published>2013-01-11T21:42:24.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/phajdan.jr@chromium.org/</ns2:uri><ns2:username>phajdan.jr@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Make NaClLog() produce output inside Chrome on Windows</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Debugging</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3256/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3256" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3256" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3256</ns2:id></ns0:entry>

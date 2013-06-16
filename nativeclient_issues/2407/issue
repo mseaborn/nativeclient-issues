@@ -10,5 +10,5 @@ We may also need to tweak the pnacl drivers a little bit</ns0:content><ns0:updat
 			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>activate translator testing on the arm hw bots</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2407/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2407" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2407" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
-			<ns2:id>2609</ns2:id></ns2:blockedOn><ns2:blocking>
-			<ns2:id>311</ns2:id></ns2:blocking><ns2:closedDate>2012-05-08T17:19:01.000Z</ns2:closedDate><ns2:id>2407</ns2:id></ns0:entry>
+			<ns2:id>2609</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blocking>
+			<ns2:id>311</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2012-05-08T17:19:01.000Z</ns2:closedDate><ns2:id>2407</ns2:id></ns0:entry>

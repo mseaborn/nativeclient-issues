@@ -1,0 +1,115 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUHQH47eCl7ImA9WhVaFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2843</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">This test was always quite slow but recently it's speed took a nosedive.
+
+Here are stats from last 100 trybot runs:
+
+http://build.chromium.org/p/tryserver.nacl/builders/nacl-lucid64_glibc_dbg_valgrind/builds/XXXX/steps/memcheck/logs/stdio
+
+1129: nacl_glibc.run_many_threads_sequential_test (190550 ms)
+1133: nacl_glibc.run_many_threads_sequential_test (418409 ms)
+1136: nacl_glibc.run_many_threads_sequential_test (280950 ms)
+1137: nacl_glibc.run_many_threads_sequential_test (187820 ms)
+1139: nacl_glibc.run_many_threads_sequential_test (400260 ms)
+1141: nacl_glibc.run_many_threads_sequential_test (397730 ms)
+1143: nacl_glibc.run_many_threads_sequential_test (329940 ms)
+1144: nacl_glibc.run_many_threads_sequential_test (196170 ms)
+1145: nacl_glibc.run_many_threads_sequential_test (486960 ms)
+1146: nacl_glibc.run_many_threads_sequential_test (240030 ms)
+1147: nacl_glibc.run_many_threads_sequential_test (344160 ms)
+1148: nacl_glibc.run_many_threads_sequential_test (417210 ms)
+1149: nacl_glibc.run_many_threads_sequential_test (515110 ms)
+1150: nacl_glibc.run_many_threads_sequential_test (445490 ms)
+1152: nacl_glibc.run_many_threads_sequential_test (406679 ms)
+1155: nacl_glibc.run_many_threads_sequential_test (859140 ms)
+1156: nacl_glibc.run_many_threads_sequential_test (192640 ms)
+1157: nacl_glibc.run_many_threads_sequential_test (213970 ms)
+1158: nacl_glibc.run_many_threads_sequential_test (516230 ms)
+1159: nacl_glibc.run_many_threads_sequential_test (589449 ms)
+1160: nacl_glibc.run_many_threads_sequential_test (380290 ms)
+1161: nacl_glibc.run_many_threads_sequential_test (383909 ms)
+1164: nacl_glibc.run_many_threads_sequential_test (387060 ms)
+1165: nacl_glibc.run_many_threads_sequential_test (616880 ms)
+1166: nacl_glibc.run_many_threads_sequential_test (281610 ms)
+1167: nacl_glibc.run_many_threads_sequential_test (687140 ms)
+1168: nacl_glibc.run_many_threads_sequential_test (287720 ms)
+1169: nacl_glibc.run_many_threads_sequential_test (511590 ms)
+1170: nacl_glibc.run_many_threads_sequential_test (383990 ms)
+1174: nacl_glibc.run_many_threads_sequential_test (673510 ms)
+1175: nacl_glibc.run_many_threads_sequential_test (318429 ms)
+1176: nacl_glibc.run_many_threads_sequential_test (275000 ms)
+1177: nacl_glibc.run_many_threads_sequential_test (447900 ms)
+1178: nacl_glibc.run_many_threads_sequential_test (229340 ms)
+1179: nacl_glibc.run_many_threads_sequential_test (289740 ms)
+1180: nacl_glibc.run_many_threads_sequential_test (248489 ms)
+1181: nacl_glibc.run_many_threads_sequential_test (831439 ms)
+1182: nacl_glibc.run_many_threads_sequential_test (228910 ms)
+1183: nacl_glibc.run_many_threads_sequential_test (893240 ms)
+1184: nacl_glibc.run_many_threads_sequential_test (429090 ms)
+1185: nacl_glibc.run_many_threads_sequential_test (900430 ms)
+1187: nacl_glibc.run_many_threads_sequential_test (885650 ms)
+1188: nacl_glibc.run_many_threads_sequential_test (318240 ms)
+1189: nacl_glibc.run_many_threads_sequential_test (452590 ms)
+1191: nacl_glibc.run_many_threads_sequential_test (277700 ms)
+1193: nacl_glibc.run_many_threads_sequential_test (926350 ms)
+1194: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 1893
+1195: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 2301
+1196: nacl_glibc.run_many_threads_sequential_test (1863490 ms)
+1197: nacl_glibc.run_many_threads_sequential_test (1633060 ms)
+1198: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 1971
+1199: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 1933
+1200: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 1959
+1201: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 2109
+1202: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 2002
+1203: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 1957
+1204: nacl_glibc.run_many_threads_sequential_test (1680270 ms)
+1206: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 1986
+1207: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 2107
+1208: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 3391
+1209: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 2381
+1210: nacl_glibc.run_many_threads_sequential_test (1797370 ms)
+1211: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 2012
+1212: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 2127
+1213: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 1949
+1214: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 1969
+1216: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 1978
+1217: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 1954
+1218: nacl_glibc.run_many_threads_sequential_test (1787399 ms)
+1219: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 1930
+1220: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 1957
+1221: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 1974
+1222: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 1963
+1223: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 2789
+1226: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 2123
+1227: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 2094
+1228: src/third_party/valgrind/memcheck.sh --error-exitcode=1 scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/nacl/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/nacl/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/threads/many_threads_sequential.nexe
+command timed out: 1500 seconds without output, killing pid 2128
+1229: nacl_glibc.run_many_threads_sequential_test (1649480 ms)
+</ns0:content><ns0:updated>2012-06-14T09:30:31.000Z</ns0:updated><ns0:published>2012-06-11T12:59:03.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>many_threads_sequential_test is extremely slow on nacl-lucid64_glibc_dbg_valgrind bot</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2843/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2843" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2843" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
+			<ns2:id>2670</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:id>2843</ns2:id></ns0:entry>

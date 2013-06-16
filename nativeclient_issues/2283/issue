@@ -11,6 +11,6 @@ It might be more appropriate to maintain this as a Chrome issue. Owner can decid
 Related issues: 417, 912, 1714, 1921</ns0:content><ns0:updated>2012-02-27T17:16:09.000Z</ns0:updated><ns0:published>2011-09-22T20:58:38.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:owner>
 			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Need a nexe code cache for Chrome</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>CoreRuntime</ns2:label><ns2:label>Mstone-19</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2283/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2283" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2283" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blocking>
-			<ns2:id>1548</ns2:id></ns2:blocking><ns2:blocking>
-			<ns2:id>2098</ns2:id></ns2:blocking><ns2:closedDate>2012-02-27T17:16:09.000Z</ns2:closedDate><ns2:id>2283</ns2:id><ns2:mergedInto>
-			<ns2:id>2515</ns2:id></ns2:mergedInto></ns0:entry>
+			<ns2:id>1548</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>2098</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2012-02-27T17:16:09.000Z</ns2:closedDate><ns2:id>2283</ns2:id><ns2:mergedInto>
+			<ns2:id>2515</ns2:id><ns2:project>nativeclient</ns2:project></ns2:mergedInto></ns0:entry>

@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkEHQn47eCl7ImA9WhJTEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2673/comments/full/44</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8975
+
+------------------------------------------------------------------------
+r8975 | kschimpf@google.com | Tue Jun 19 09:49:37 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode_named_classes.h?r1=8975&amp;r2=8974&amp;pathrev=8975
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode_tests.cc?r1=8975&amp;r2=8974&amp;pathrev=8975
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/armv7.table?r1=8975&amp;r2=8974&amp;pathrev=8975
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode.cc?r1=8975&amp;r2=8974&amp;pathrev=8975
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode_named_decoder.h?r1=8975&amp;r2=8974&amp;pathrev=8975
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode_named.cc?r1=8975&amp;r2=8974&amp;pathrev=8975
+
+Fix table parallel_add_sub_unsigned in ARM validator.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2673
+Review URL: https://chromiumcodereview.appspot.com/10563008
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-19T16:50:33.000Z</ns0:updated><ns0:published>2012-06-19T16:50:33.000Z</ns0:published><ns2:updates /><ns0:title>Comment 44 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2673#c44" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2673/comments/full/44" rel="self" type="application/atom+xml" /></ns0:entry>

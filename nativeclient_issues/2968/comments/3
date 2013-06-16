@@ -1,0 +1,41 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0MAQ347eCl7ImA9WhJWEEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2968/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Background:  The reason for investigating this was a recent chrome_rev update (http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9471, reverted in http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9480).  This update caused run_ppapi_bad_native_test to start failing with the following:
+
+[   505 ms] |||| GET /partly_invalid.nexe (/partly_invalid.nexe)
+[ 30619 ms] |||| 
+[ 30619 ms] |||| [SERVER_ERROR] Did not hear from the test for 30.0 seconds.
+[ 30619 ms] |||| Heard from Javascript 30.1 seconds ago.
+[ 30619 ms] |||| The renderer probably hung or crashed.
+KILLING the browser
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+[  FAILED  ] nacl_newlib.run_ppapi_bad_native_test (218 ms)
+
+Traceback (most recent call last):
+  File "E:\b\build\slave\vista-64-newlib-opt\build\native_client\tools\browser_tester\browser_tester.py", line 351, in &lt;module&gt;
+    sys.exit(RunFromCommandLine())
+  File "E:\b\build\slave\vista-64-newlib-opt\build\native_client\tools\browser_tester\browser_tester.py", line 347, in RunFromCommandLine
+    return Run(url, options)
+  File "E:\b\build\slave\vista-64-newlib-opt\build\native_client\tools\browser_tester\browser_tester.py", line 318, in Run
+    result = RunTestsOnce(url, options)
+  File "E:\b\build\slave\vista-64-newlib-opt\build\native_client\tools\browser_tester\browser_tester.py", line 299, in RunTestsOnce
+    browser.Cleanup()
+  File "E:\b\build\slave\vista-64-newlib-opt\build\native_client\tools\browser_tester\browsertester\browserlauncher.py", line 133, in Cleanup
+    RemoveDirectory(self.profile)
+  File "E:\b\build\slave\vista-64-newlib-opt\build\native_client\tools\browser_tester\browsertester\browserlauncher.py", line 51, in RemoveDirectory
+    shutil.rmtree(path)
+  File "E:\b\depot_tools\python_bin\lib\shutil.py", line 221, in rmtree
+    onerror(os.remove, fullname, sys.exc_info())
+  File "E:\b\depot_tools\python_bin\lib\shutil.py", line 219, in rmtree
+    os.remove(fullname)
+WindowsError: [Error 32] The process cannot access the file because it is being used by another process: 'e:\\temp\\browserprofile_q3rbod\\chrome_debug.log'
+scons: *** [scons-out\nacl-x86-64\test_results\ppapi_bad_native_test.out] Error 1
+
+Logging into the bot shows that sel_ldr produces a Windows crash dialog, which is why the test times out and why browser_tester fails to remove the temporary profile (which contains a file held open by sel_ldr).
+
+The log is from:
+http://build.chromium.org/p/client.nacl/builders/vista-64-newlib-opt/builds/3381/steps/chrome_browser_tests/logs/stdio
+
+If this is caused by SetErrorMode() being set badly due to a race condition, it's odd that it should happen in chrome_browser_tests, because these are run with "-j1".
+</ns0:content><ns0:updated>2012-08-16T00:04:02.000Z</ns0:updated><ns0:published>2012-08-16T00:04:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2968#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2968/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

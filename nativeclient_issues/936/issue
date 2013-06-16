@@ -14,7 +14,7 @@ This is a prerequisite for essentially all PPAPIv2-linked NaCl features: 2D, aud
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Umbrella Issue for PPAPI NaCl in Chrome loading nexes with sandbox on</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-AppPlatform</ns2:label><ns2:label>Milestone-Arctic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/936/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=936" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/936" rel="self" type="application/atom+xml" /><ns2:stars>11</ns2:stars><ns2:blockedOn>
-			<ns2:id>932</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>933</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>934</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>938</ns2:id></ns2:blockedOn><ns2:closedDate>2010-10-14T23:27:02.000Z</ns2:closedDate><ns2:id>936</ns2:id></ns0:entry>
+			<ns2:id>932</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>933</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>934</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>938</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:closedDate>2010-10-14T23:27:02.000Z</ns2:closedDate><ns2:id>936</ns2:id></ns0:entry>

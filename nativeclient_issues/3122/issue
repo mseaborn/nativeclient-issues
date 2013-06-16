@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08DSX47eCl7ImA9WhNSFk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3122</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">When we make driver changes, we are not sure if it will handle the gyp steps until we try to bump TOOL_REVISIONS, because:
+
+(a) We do not have a gyp step on the PNaCl toolchain bots / trybots, but
+\
+(b) We do have gyp steps on the main waterfall bots, which now run with pnacl to build a hello world pexe (I think).
+
+
+Recently, we made a driver change at SVN rev 10115 to fix a windows issue with &amp;quot;.d&amp;quot; files (http://code.google.com/p/chromium/issues/detail?id=157946).
+
+That is good, but that change may be breaking our gyp build on windows (reproducible on the bots and locally).  See toolchain roll attempt:
+
+http://codereview.chromium.org/11342048/
+
+http://build.chromium.org/p/tryserver.nacl/builders/nacl-win64_newlib_opt/builds/3550/steps/gyp_compile/logs/stdio
+
+Another thing that could help with this is driver-specific tests (issue 2845).</ns0:content><ns0:updated>2012-10-30T22:24:38.000Z</ns0:updated><ns0:published>2012-10-30T22:24:38.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>Add gyp step to PNaCl toolchain bots</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3122/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3122" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3122" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3122</ns2:id></ns0:entry>

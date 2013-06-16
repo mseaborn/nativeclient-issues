@@ -1,6 +1,6 @@
 <ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUENR347eCl7ImA9WhZWFk4.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1804</ns0:id><ns0:author>
-			<ns0:name>aba...@chromium.org</ns0:name><ns0:uri>/u/117420925389613150407/</ns0:uri></ns0:author><ns0:content type="html">There's something wrong with how NaCl is talking with the IRT:
+			<ns0:name>abarth@chromium.org</ns0:name><ns0:uri>/u/abarth@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">There's something wrong with how NaCl is talking with the IRT:
 
 [13767:22531:665852935637825:FATAL:ipc_message_utils.cc(386)] Check failed: false. 
 Backtrace:

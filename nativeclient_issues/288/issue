@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE4MR347eCl7ImA9WhNUGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/288</ns0:id><ns0:author>
+			<ns0:name>bradnelson@google.com</ns0:name><ns0:uri>/u/bradnelson@google.com/</ns0:uri></ns0:author><ns0:content type="html">We are running out of bits from /dev/random when running the latest version 
+of selenium. To work around this temporarily we have copied urandom to 
+random, but this is not ideal.
+
+</ns0:content><ns0:updated>2013-01-10T22:29:46.000Z</ns0:updated><ns0:published>2010-02-03T02:28:51.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:owner>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109634856544190381405/</ns2:uri><ns2:username>nsylv...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>32-bit hardy and jaunty /dev/random running out </ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Security</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>FlakeyBots</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/288/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=288" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/288" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2011-06-14T20:09:01.000Z</ns2:closedDate><ns2:id>288</ns2:id></ns0:entry>

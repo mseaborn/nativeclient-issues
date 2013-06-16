@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcGSX47eCl7ImA9WhNTFkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2787/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10057
+
+------------------------------------------------------------------------
+r10057 | mseaborn@chromium.org | 2012-10-19T21:55:30.124500Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/toolchain/nacl.scons?r1=10057&amp;r2=10056&amp;pathrev=10057
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/toolchain/stack_frame.cc?r1=10057&amp;r2=10056&amp;pathrev=10057
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/toolchain/eh_return.c?r1=10057&amp;r2=10056&amp;pathrev=10057
+
+Fix some PNaCl toolchain tests to build with -Wundef
+
+-Wundef warns about "#if FOO" when FOO is undefined.
+
+The test was doing, for example, "#if TARGET_FULLARCH == x86-32".  It
+was only distinguishing ARM, x86-32 and x86-64 by luck because, in
+this context, "x86-32" was treated as "0-32" because "x86" is not
+#defined.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2787
+TEST=toolchain_tests
+
+Review URL: https://codereview.chromium.org/11186067
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-19T22:00:28.000Z</ns0:updated><ns0:published>2012-10-19T22:00:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 13 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2787#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2787/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUAESH47eCl7ImA9WhJWFEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2879/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9520
+
+------------------------------------------------------------------------
+r9520 | mseaborn@chromium.org | 2012-08-20T18:34:01.416312Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_signal.h?r1=9520&amp;r2=9519&amp;pathrev=9520
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/nacl_switch_all_regs_32.c?r1=9520&amp;r2=9519&amp;pathrev=9520
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/nacl_switch_all_regs_asm_32.S?r1=9520&amp;r2=9519&amp;pathrev=9520
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/nacl_switch_all_regs_32.h?r1=9520&amp;r2=9519&amp;pathrev=9520
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_switch_to_app.h?r1=9520&amp;r2=9519&amp;pathrev=9520
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/osx/thread_suspension.c?r1=9520&amp;r2=9519&amp;pathrev=9520
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/osx/nacl_signal_32.c?r1=9520&amp;r2=9519&amp;pathrev=9520
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/thread_suspension/suspend_test_host.c?r1=9520&amp;r2=9519&amp;pathrev=9520
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_switch_all_regs_64.c?r1=9520&amp;r2=9519&amp;pathrev=9520
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/osx/nacl_signal_64.c?r1=9520&amp;r2=9519&amp;pathrev=9520
+
+Thread suspension: Allow modifying registers on Mac OS X
+
+This is tricky on x86-32 because Mac's thread_set_state() call resets
+%cs back to the trusted-code value.  We reuse the NaClSwitchAllRegs()
+code to work around this.
+
+Move the definition of "struct NaClSwitchAllRegsState" into a header
+so that osx/thread_suspension.c can allocate an instance of it.
+Similarly, split NaClSwitchAllRegsSetup() out from NaClSwitchAllRegs()
+so that the Mac code can call it.
+
+Change the Mac code to restore control to untrusted code via a subset
+of the NaClSwitchAllRegsAsm routine.
+
+Add a missing 'const' to NaClSwitchAllRegs().
+
+Enable the register modification test to run on Mac.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2879
+TEST=run_thread_suspension_test
+
+Review URL: https://chromiumcodereview.appspot.com/10825433
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-20T18:35:09.000Z</ns0:updated><ns0:published>2012-08-20T18:35:09.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2879#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2879/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

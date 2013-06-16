@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYERX47eCl7ImA9WhJTEkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1918/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>bradnelson@google.com</ns0:name><ns0:uri>/u/bradnelson@google.com/</ns0:uri></ns0:author><ns0:content type="html">This is likely the same thing we see regularly on the naclports waterfall.
+Our windows toolchain (which is built with cygwin), randomly fails in this way.
+The theory I've regularly heard floated, is that it's because cygwin's method of emulating fork is imperfect in the face of ALSR, which then causes it to croak trying to spawn cpp. 
+The naclports waterfall has a retry of failed compiles on windows for this reason.
+I gather moving the toolchain to mingw would solve this (as it doesn't provide fork), but I would assume this is a non-trivial switch?</ns0:content><ns0:updated>2012-06-20T17:41:44.000Z</ns0:updated><ns0:published>2012-06-20T17:41:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 13 by bradnelson@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1918#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1918/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE4FRX47eCl7ImA9WhBWFkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3377/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">&gt; So is the problem with the whole of option (1) or just the "make
+&gt; this the default when compiling C++" part?
+
+I think option (1) is impractical unless we make -fno-exceptions the default, otherwise we'd have to require every project to change its build system to add -fno-exceptions, including our own (for libstdc++).  That's too invasive.
+
+Note that -fno-exceptions has three effects:
+
+ a) Disallows using "try" and "catch" in the input source code.
+ b) Adds "nounwind" attributes to functions in the output IR.
+ c) Omits calling C++ destructors via landingpads in the output IR.
+
+
+&gt; What about user code (which is the important thing to consider
+&gt; w.r.t. bitcode stability), do we still require to compile with
+&gt; -fno-exceptions?
+
+libstdc++ *is* user code from the ABI point of view...
+
+
+&gt; Otherwise users may expect their exceptions to work.
+
+I agree it would be a usability problem if try/catch are accepted in the source but fail at run time (which is what -lowerinvoke would do).  We could recommend compiling with -fno-exceptions to provide some linting against this.  In the longer term we will fix the usability problem by adding support for C++ exceptions. :-)
+</ns0:content><ns0:updated>2013-04-10T18:01:54.000Z</ns0:updated><ns0:published>2013-04-10T18:01:54.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3377#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3377/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

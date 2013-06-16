@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0IFRH47eCl7ImA9WhBWFk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3382</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">We currently do not run the stabilization passes on intermediate object files and libraries.  Some of the passes simply can't run without the whole program.
+
+Noel brought up the point that we may want a clearer error message, for cases where we may end up linking different non-stable IR, and if we know that it will cause trouble:
+
+https://codereview.chromium.org/13466021/
+
+Given a nice error message, developer will then know that they need to do a clean rebuild.
+</ns0:content><ns0:updated>2013-04-10T21:31:55.000Z</ns0:updated><ns0:published>2013-04-10T21:31:55.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>Provide graceful errors if linking incompatible PNaCl IR, if not run through stabilization passes.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3382/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3382" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3382" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3382</ns2:id></ns0:entry>

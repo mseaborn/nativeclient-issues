@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0MMRX47eCl7ImA9WhNWGEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3223</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">(I'm splitting this out from issue 2122.)
+
+Currently, NaCl always runs untrusted code on a dedicated host OS thread.  These threads are created by nacl_app_thread.c solely for the purpose of executing untrusted code (and for executing the syscalls that untrusted code calls).
+
+We'd like to extend this so that an embedder of NaCl can reuse an existing thread for running sandboxed code.
+
+We want the embedder to be able to call sandboxed code as if it is a function, without requiring use of host OS IPC and threads, because host OS IPC and thread switching is often slow.
+
+This would work as follows:
+
+ * In the setup phase, the embedder creates a NaClApp and a NaClAppThread (without creating a new host OS thread).
+
+ * To perform an invocation, the embedder does the following:
+    * Embedder saves current continuation using setjmp().
+    * Embedder sets up the NaClAppThread's trusted stack (natp-&amp;gt;user.trusted_stack_ptr).  The embedder can reuse the current stack pointer (as long as it's below the stack pointer saved by setjmp()), or create a dedicated stack using mmap().
+    * Embedder calls into sandboxed code.  The NaCl function for doing this does not return.
+    * Sandboxed code may call a NaCl syscall.
+    * Embedder handles the NaCl syscall.
+    * Embedder's syscall implementation may do longjmp() to return to the caller, or may return to sandboxed code.
+
+
+I plan to do the following:
+
+ * Split NaClAppThreadMake() into two separate parts for creating a NaClAppThread object and for creating a host OS thread.  The latter part will be optional for an embedder.
+
+ * Add a NaClCallWithCurrentStackPtr(f) function that calls f() with the current stack pointer so that this can be used as a trusted stack for NaCl syscalls.
+
+   That should be a little cleaner and more explicit than the current arrangement in NaClStartThreadInApp(), which calls NaClGetStackPtr() to borrow the stack.  This current arrangement should be safe since we're stealing the whole thread's stack.  It is less clear whether using NaClGetStackPtr() would be safe when longjmp()'ing to an earlier stack frame, because NaClStartThreadInApp() might get inlined by a whole-program optimiser.
+
+
+For my current use case, there are two simplifying assumptions:
+
+ * The embedder does not need to use thread suspension.  This is because we will not open up holes in the sandbox's address space while untrusted code is running in that address space.  We will only have one thread running in the address space at a time; we won't allow thread_create().
+
+ * The embedder will implement all the NaCl syscalls it exposes to untrusted code.  We do not need to extend exit(), thread_exit() or other NaCl syscalls to notify the embedder, because these syscalls won't be callable.
+</ns0:content><ns0:updated>2012-12-19T03:58:04.000Z</ns0:updated><ns0:published>2012-12-18T23:48:21.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>Allow embedders of NaCl to run sandboxed code without creating a dedicated thread</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3223/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3223" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3223" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3223</ns2:id></ns0:entry>

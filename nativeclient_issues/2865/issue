@@ -1,0 +1,70 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0MGQ347eCl7ImA9WhJTGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2865</ns0:id><ns0:author>
+			<ns0:name>amis...@google.com</ns0:name><ns0:uri>/u/101568905635420902229/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+PNaCl - SVN r8890
+x86-64 NaCl - r8953
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+r8997 (checkout using gclient)
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Ubuntu 10.04, x86-64
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+&lt;b&gt;1.&lt;/b&gt;
+Create the following two source files.
+foo.c:
+#include &amp;lt;stddef.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;dlfcn.h&amp;gt;
+
+int main(int argc, char* argv[]) {
+  void* handle = dlopen(&amp;quot;foo_module.so&amp;quot;, RTLD_NOW);
+  if (!handle) {
+    printf(&amp;quot;Uanble to dlopen foo_module.so\n&amp;quot;);
+    printf(&amp;quot;Error: %s\n&amp;quot;, dlerror());
+    return 1;
+  }
+
+  void (*fcn)(void) = dlsym(handle, &amp;quot;foo_function&amp;quot;);
+  if (!fcn) {
+    printf(&amp;quot;Unable to find function foo_function\n&amp;quot;);
+    return 1;
+  }
+
+  (*fcn)();
+
+  return 0;
+}
+
+foo_module.c:
+#include &amp;lt;stdio.h&amp;gt;
+
+char* strs[] = {
+  &amp;quot;bye&amp;quot;,
+};
+
+void foo_function() {
+  printf(&amp;quot;%s\n&amp;quot;, strs[0]);
+}
+
+&lt;b&gt;2.&lt;/b&gt;
+Compile:
+pnacl-clang foo.c -o foo.pnexe -ldl
+pnacl-translate -arch x86_64 foo.pnexe -o foo.nexe --noirtshim
+pnacl-clang foo_module.c -o foo_module.pso -shared
+pnacl-translate -arch x86_64 foo_module.pso -o foo_module.so --noirtshim -fPIC -shared
+
+&lt;b&gt;3.&lt;/b&gt;
+Run:
+sel_ldr -B irt.nexe -a -E &amp;quot;LD_LIBRARY_PATH=&amp;lt;path_to_lib_dir&amp;gt;:.&amp;quot; -- lib/runnable-ld.so ./foo.nexe
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+Expected:
+bye
+Actual:
+segmentation fault (core dumped)
+
+If you compile foo_module.so with x86_64-nacl-gcc, it works as expected and outputs &amp;quot;bye&amp;quot; (how foo.c was compiled doesn't make a difference).
+
+Attached is the output of pnacl-clang and pnacl-translate with --pnacl-driver-verbose when compiling foo_module.so</ns0:content><ns0:updated>2012-06-28T04:57:02.000Z</ns0:updated><ns0:published>2012-06-21T06:06:22.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>PNaCl/glibc compiled dynamic modules (.so) not loading correctly.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>SharedLibrary</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2865/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2865" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2865" rel="self" type="application/atom+xml" /><ns2:stars>0</ns2:stars><ns2:id>2865</ns2:id></ns0:entry>

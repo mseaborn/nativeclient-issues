@@ -1,0 +1,47 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU4DRH47eCl7ImA9WhJSE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2884/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9079
+
+------------------------------------------------------------------------
+r9079 | mcgrathr@chromium.org | Tue Jul 03 09:43:31 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_seg_sfi/ncvalidate.c?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/test-4.nvalds?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/test-4.nvals?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/call_not_aligned.val?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/test-5.nvals?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/branch-middle.nvalds?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/call_not_aligned_16.val?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/call_not_aligned_16.rval?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/crosses_block.nvald?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/call_not_aligned.rval?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/call_not_aligned.vd-rval?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_jumps.c?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/call_not_aligned_16.vd-rval?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/call_not_aligned.rvald?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/branch-middle.nvals?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/crosses_block.nval?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/call_not_aligned_16.rvald?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/test-1.nvals?r1=9079&amp;r2=9078&amp;pathrev=9079
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/test-5.nvalds?r1=9079&amp;r2=9078&amp;pathrev=9079
+
+Don't check alignment of call instructions in x86-32 validator
+
+The checks that a call instruction appears only at the end of a
+bundle are not a security/safety requirement, just a "courtesy".
+For the next-generation x86 nacl-gcc, we're not generating calls
+at the ends of bundles any more, so it has become discourteous to
+diagnose it.
+
+The ideal would be to look ahead and give a friendly warning if a
+call appears in a bundle followed by any instructions that are
+not recognized nops.  But that seems to be difficult to implement
+given the structure of the validator.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2884
+TEST= trybots
+
+Review URL: https://chromiumcodereview.appspot.com/10703054
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-03T16:46:15.000Z</ns0:updated><ns0:published>2012-07-03T16:46:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2884#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2884/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

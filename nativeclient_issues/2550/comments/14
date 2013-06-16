@@ -1,0 +1,52 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EFQX47eCl7ImA9WhVbFUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2550/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8793
+
+------------------------------------------------------------------------
+r8793 | mseaborn@chromium.org | Fri Jun 01 17:04:01 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_io.c?r1=8793&amp;r2=8792&amp;pathrev=8793
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_base.h?r1=8793&amp;r2=8792&amp;pathrev=8793
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=8793&amp;r2=8792&amp;pathrev=8793
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_effector.h?r1=8793&amp;r2=8792&amp;pathrev=8793
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/posix/nacl_host_desc.c?r1=8793&amp;r2=8792&amp;pathrev=8793
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_desc_effector_ldr.c?r1=8793&amp;r2=8792&amp;pathrev=8793
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_quota.c?r1=8793&amp;r2=8792&amp;pathrev=8793
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_imc_shm.c?r1=8793&amp;r2=8792&amp;pathrev=8793
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_conn_cap.c?r1=8793&amp;r2=8792&amp;pathrev=8793
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_base.c?r1=8793&amp;r2=8792&amp;pathrev=8793
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/win/nacl_host_desc.c?r1=8793&amp;r2=8792&amp;pathrev=8793
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/win/nacl_desc.c?r1=8793&amp;r2=8792&amp;pathrev=8793
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_effector_trusted_mem.c?r1=8793&amp;r2=8792&amp;pathrev=8793
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/mmap_unittest.cc?r1=8793&amp;r2=8792&amp;pathrev=8793
+
+munmap(): Move responsibility for filling the memory mapping hole on Windows
+
+Move the responsibility for filling the memory hole from the Unmap()
+NaClDesc method to the munmap() syscall.  Instead of calling Unmap(),
+MunmapInternal() now calls UnmapUnsafe() and fills the hole itself
+using VirtualAlloc().
+
+This replaces two inconsistent implementations of Unmap():
+
+ * nacl_desc_imc_shm.c called MapAnonymousMemory() to fill the hole,
+   which called NaClHostDescMap(), which calls VirtualAlloc().
+ * nacl_desc_io.c called NaClHostDescUnmap() to fill the hole, which
+   called VirtualAlloc().
+
+The Unmap() method is no longer used, so we can remove it and its
+implementations.
+
+This means MapAnonymousMemory() is no longer used, so we can remove
+that too.
+
+This allows us to simplify some Unmap/UnmapUnsafe function pairs,
+where only the latter remains.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2550
+TEST=run_service_runtime_tests
+
+Review URL: https://chromiumcodereview.appspot.com/10448094
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-02T00:06:50.000Z</ns0:updated><ns0:published>2012-06-02T00:06:50.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2550#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2550/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

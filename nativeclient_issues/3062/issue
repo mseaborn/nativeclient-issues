@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AHSH47eCl7ImA9WhNTGUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3062</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">So far we have observed two problems (on linux):
+
+1) the 32bit clang fails while the 64bit clang works:
+
+pepper_24.works/toolchain/linux_x86_pnacl/host_x86_32/bin/clang -cc1 -triple le32-unknown-nacl -emit-llvm-bc -disable-free -main-file-name String.cpp -mrelocation-model static -mdisable-fp-elim -fmath-errno -mconstructor-aliases -target-linker-version 2.20.1 -momit-leaf-frame-pointer -ffunction-sections -fdata-sections -nostdsysteminc -nobuiltininc -D &amp;quot;NACL_LINUX=1&amp;quot; -D &amp;quot;unix&amp;quot; -D &amp;quot;NACL&amp;quot; -O2 -Wall -Wfatal-errors -Wno-overloaded-virtual -Wno-variadic-macros -Wno-long-long -fdeprecated-macro -fno-dwarf-directory-asm -ferror-limit 19 -fmessage-length 158 -mstackrealign -fobjc-runtime=gcc -fcxx-exceptions -fexceptions -fno-common -fdiagnostics-show-option -fcolor-diagnostics -x c++ /home/robertm/StringTokenizer-n6gR2V.cpp
+clang: /mnt/data/b/build/slave/linux-pnacl-x86_64/build/native_client/pnacl/git/llvm/include/llvm/Support/Casting.h:197: typename llvm::cast_retty&amp;lt;To, From&amp;gt;::ret_type llvm::cast(const Y&amp;amp;) [with X = clang::CXXConstructorDecl, Y = clang::NamedDecl*]: Assertion `isa&amp;lt;X&amp;gt;(Val) &amp;amp;&amp;amp; &amp;quot;cast&amp;lt;Ty&amp;gt;() argument of incompatible type!&amp;quot;' failed.
+
+2) the 64bit clang fails:
+
+pepper_24.works/toolchain/linux_x86_pnacl/host_x86_64/bin/clang -cc1 -triple le32-unknown-nacl -emit-llvm-bc -disable-free -main-file-name String.cpp -mrelocation-model static -mdisable-fp-elim -fmath-errno -mconstructor-aliases -target-linker-version 2.20.1 -momit-leaf-frame-pointer -ffunction-sections -fdata-sections -nostdsysteminc -nobuiltininc -D &amp;quot;NACL_LINUX=1&amp;quot; -D &amp;quot;unix&amp;quot; -D &amp;quot;NACL&amp;quot; -O2 -Wall -Wfatal-errors -Wno-overloaded-virtual -Wno-variadic-macros -Wno-long-long -fdeprecated-macro -fno-dwarf-directory-asm -ferror-limit 19 -fmessage-length 158 -mstackrealign -fobjc-runtime=gcc -fcxx-exceptions -fexceptions -fno-common -fdiagnostics-show-option -fcolor-diagnostics -x c++ /home/robertm/String-ncS5xE.cpp
+
+
+1.	&amp;lt;eof&amp;gt; parser at end of file
+2.	...../platform/build-tools/common/../../../thirdparty/boost/boost/algorithm/string/regex.hpp:469:35: instantiating function definition 'split_regex'
+3.	...../platform/build-tools/common/../../../thirdparty/boost/boost/algorithm/string/iter_find.hpp:143:9: instantiating function definition 'iter_split'
+Segmentation fault (core dumped)
+</ns0:content><ns0:updated>2012-10-22T22:42:19.000Z</ns0:updated><ns0:published>2012-10-03T19:33:24.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>latest pnacl SDK fails to compile a cpp file</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-24</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3062/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3062" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3062" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-10-22T22:42:19.000Z</ns2:closedDate><ns2:id>3062</ns2:id></ns0:entry>

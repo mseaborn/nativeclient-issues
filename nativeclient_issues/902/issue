@@ -8,8 +8,8 @@ the trusted Pepper APIs is also available to Native Client applications. </ns0:c
 			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/110455494792614626431/</ns2:uri><ns2:username>or...@chromium.org</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/100268164290167392978/</ns2:uri><ns2:username>mmorten...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Run Pepper unit tests in Native Client</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Test</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>TeamBoulder</ns2:label><ns2:label>Milestone-Baltic-Sea-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/902/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=902" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/902" rel="self" type="application/atom+xml" /><ns2:stars>6</ns2:stars><ns2:blockedOn>
-			<ns2:id>900</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>901</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>903</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>904</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>956</ns2:id></ns2:blockedOn><ns2:closedDate>2011-04-16T06:39:39.000Z</ns2:closedDate><ns2:id>902</ns2:id></ns0:entry>
+			<ns2:id>900</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>901</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>903</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>904</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>956</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:closedDate>2011-04-16T06:39:39.000Z</ns2:closedDate><ns2:id>902</ns2:id></ns0:entry>

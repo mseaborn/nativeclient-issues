@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEcHQn47eCl7ImA9WhBWEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2346/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>eli...@google.com</ns0:name><ns0:uri>/u/114831583435496442738/</ns0:uri></ns0:author><ns0:content type="html">&gt; in nacl-glibc's pthread.h, the macros for pthread_cleanup_push and friends
+&gt; call glibc functions such as __pthread_register_cancel which have an attribute 
+&gt; __cleanup_fct_attribute, which is defined as regparm(1) in  
+&gt; include/bits/pthreadtypes.h
+
+I mentioned this to David and he said he thinks the pnacl-glibc tests can be turned off for now. I recall we kind-of reached this agreement before while I was merging LLVM, so maybe it's time?
+
+Incidentally, this should allow us to get rid of regparm in Clang's handling of the PNaCl calling convention altogether.
+</ns0:content><ns0:updated>2013-04-05T22:47:13.000Z</ns0:updated><ns0:published>2013-04-05T22:47:13.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by eli...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2346#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2346/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

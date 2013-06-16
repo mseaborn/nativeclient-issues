@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEIAQ347eCl7ImA9WhBWF0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3366</ns0:id><ns0:author>
+			<ns0:name>bradnelson@google.com</ns0:name><ns0:uri>/u/bradnelson@google.com/</ns0:uri></ns0:author><ns0:content type="html">For debugging purposes a syscall that allows us to inspect the memory map would be useful.
+We should add something like:
+int get_map(struct MemoryMapRegion *buffer, int buffer_count);
+struct MemoryMapRegion {
+  void *start;
+  size_t size;
+  int prot;
+};
+</ns0:content><ns0:updated>2013-04-12T19:55:42.000Z</ns0:updated><ns0:published>2013-04-03T19:48:55.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105479985155688818885/</ns2:uri><ns2:username>kmix...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Add a syscall to inspect the memory map</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3366/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3366" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3366" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3366</ns2:id></ns0:entry>

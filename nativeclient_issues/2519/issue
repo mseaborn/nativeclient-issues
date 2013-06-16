@@ -38,6 +38,6 @@ Instead of creating a new context with shared resources, the creating the contex
 </ns0:content><ns0:updated>2012-01-11T18:21:40.000Z</ns0:updated><ns0:published>2012-01-05T13:56:00.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
 			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/116351505165496571679/</ns2:uri><ns2:username>g...@google.com</ns2:username></ns2:cc><ns2:cc>
-			<ns2:uri>/u/110174592293525866339/</ns2:uri><ns2:username>jbau...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/jbauman@chromium.org/</ns2:uri><ns2:username>jbauman@chromium.org</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/107703401167120146751/</ns2:uri><ns2:username>vange...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Graphics3D context sharing does not seem to work.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Pepper</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2519/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2519" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2519" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2519</ns2:id></ns0:entry>

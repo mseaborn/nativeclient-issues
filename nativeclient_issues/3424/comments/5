@@ -1,0 +1,53 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU8FRn47eCl7ImA9WhBbEEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3424/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11320
+
+------------------------------------------------------------------------
+r11320 | mseaborn@chromium.org | 2013-05-09T04:26:43.472622Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pthread/stack_end.c?r1=11320&amp;r2=11319&amp;pathrev=11320
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/threads/stack_end_test.c?r1=11320&amp;r2=11319&amp;pathrev=11320
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pthread/pthread.h?r1=11320&amp;r2=11319&amp;pathrev=11320
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pthread/nacl.scons?r1=11320&amp;r2=11319&amp;pathrev=11320
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pthread/pthread_types.h?r1=11320&amp;r2=11319&amp;pathrev=11320
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/threads/nacl.scons?r1=11320&amp;r2=11319&amp;pathrev=11320
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/start.c?r1=11320&amp;r2=11319&amp;pathrev=11320
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pthread/pthread.gyp?r1=11320&amp;r2=11319&amp;pathrev=11320
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pthread/nc_thread.c?r1=11320&amp;r2=11319&amp;pathrev=11320
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/start.h?r1=11320&amp;r2=11319&amp;pathrev=11320
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pthread/pthread_internal.h?r1=11320&amp;r2=11319&amp;pathrev=11320
+
+libpthread: Add pthread_get_stack_end_np() API for use by crash dumper
+
+The minidump generator will need to get the address from which the
+stack grows so that it can dump the stack contents.
+
+I considered implementing glibc's pthread_getattr_np() API for newlib.
+On Linux, this can be used with pthread_attr_getstack() to find the
+full range of the stack (minimum address and size).  However:
+
+ * Under NaCl, there's no way to find the minimum address of the
+   initial thread's stack.  The initial stack is currently 16MB
+   (NACL_DEFAULT_STACK_MAX) but this isn't guaranteed by the ABI.
+
+ * Consequently, glibc's pthread_getattr_np() does not work under NaCl
+   on the initial thread.  It tries to open /proc/self/maps and fails.
+
+ * If we implemented pthread_getattr_np(), it would need to return
+   other attributes correctly too (e.g.
+   pthread_attr_getdetachstate()), so it is more burdensome to
+   implement.
+
+I've added the function in a separate .c file so that the IRT doesn't
+have to define __nacl_initial_thread_stack_end, so:
+
+ * Moved NODE_TO_PAYLOAD() to a header and cleaned it up a little.
+ * Made __nc_initial_thread_id non-static.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3424
+TEST=run_stack_end_test
+
+Review URL: https://codereview.chromium.org/14925008
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-05-09T04:30:17.000Z</ns0:updated><ns0:published>2013-05-09T04:30:17.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3424#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3424/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

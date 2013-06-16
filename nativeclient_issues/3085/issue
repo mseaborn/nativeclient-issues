@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUGSH47eCl7ImA9WhNTFUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3085</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">When I tried to update nacl_revision in Chromium's DEPS today (see https://codereview.chromium.org/11147028), I got the following build failure on Mac:
+
+FAILED: cd ../../ppapi/native_client/src/shared/ppapi_proxy; export BUILT_PRODUCTS_DIR=/Volumes/data/b/build/slave/mac/build/src/out/Release; ...  &amp;quot; &amp;quot;--source-list=newlib-x86-32.ppruntime_lib.source_list.gypcmd&amp;quot;
+Traceback (most recent call last):
+  File &amp;quot;../../../../../native_client/build/build_nexe.py&amp;quot;, line 529, in &amp;lt;module&amp;gt;
+    sys.exit(Main(sys.argv))
+  File &amp;quot;../../../../../native_client/build/build_nexe.py&amp;quot;, line 520, in Main
+    out = build.Compile(filename)
+  File &amp;quot;../../../../../native_client/build/build_nexe.py&amp;quot;, line 357, in Compile
+    if not self.NeedsRebuild(outd, out, src):
+  File &amp;quot;../../../../../native_client/build/build_nexe.py&amp;quot;, line 320, in NeedsRebuild
+    file_tm = os.path.getmtime(filename)
+  File &amp;quot;/System/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/genericpath.py&amp;quot;, line 54, in getmtime
+    return os.stat(filename).st_mtime
+OSError: [Errno 2] No such file or directory: '../../../../../gpu/command_buffer/client/../client/../client/../client/gles2_interface.h'
+ninja: build stopped: subcommand failed.
+
+from http://build.chromium.org/p/tryserver.chromium/builders/mac_rel/builds/63819/steps/compile/logs/stdio
+
+This looks like a bug in build_nexe.py, since it should handle the case when a header file (which once was depended on) has disappeared.
+
+I don't know if this was caused by a NaCl change brought in by https://codereview.chromium.org/11147028.  I don't see any suspicious changes, although http://src.chromium.org/viewvc/native_client?view=rev&amp;amp;revision=9975 has changes in this area.
+
+Setting Pri-0 for now since this might block a DEPS update.
+</ns0:content><ns0:updated>2012-10-17T21:43:49.000Z</ns0:updated><ns0:published>2012-10-15T21:46:30.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>build_nexe.py failure checking timestamp on deleted header file</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Mac</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3085/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3085" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3085" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-10-17T21:43:49.000Z</ns2:closedDate><ns2:id>3085</ns2:id></ns0:entry>

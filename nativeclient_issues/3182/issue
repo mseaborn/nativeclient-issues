@@ -1,0 +1,104 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUMEQX47eCl7ImA9WhBQE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3182</ns0:id><ns0:author>
+			<ns0:name>olo...@google.com</ns0:name><ns0:uri>/u/113921375080395685545/</ns0:uri></ns0:author><ns0:content type="html"> it seems C++ code has different notion of how to create va_list out of ellipsis than C code. 
+Namely, C considers va_list(x, y, z) being pointer to
+(&amp;amp;x, &amp;amp;y, &amp;amp;z), while C++ makes it pointer to (x, y, z). 
+
+Consider this:
+
+Dump of assembler code for function snprintf:
+   0x0fe82760 &amp;lt;+0&amp;gt;:	sub	sp, sp, #16
+   0x0fe82764 &amp;lt;+4&amp;gt;:	bic	sp, sp, #-1073741824	; 0xc0000000
+   0x0fe82768 &amp;lt;+8&amp;gt;:	push	{r4, r5, lr}
+   0x0fe8276c &amp;lt;+12&amp;gt;:	nop	{0}
+   0x0fe82770 &amp;lt;+16&amp;gt;:	sub	sp, sp, #148	; 0x94
+   0x0fe82774 &amp;lt;+20&amp;gt;:	bic	sp, sp, #-1073741824	; 0xc0000000
+   0x0fe82778 &amp;lt;+24&amp;gt;:	mov	r4, r1
+   0x0fe8277c &amp;lt;+28&amp;gt;:	mov	r1, r0
+   0x0fe82780 &amp;lt;+32&amp;gt;:	movw	r0, #61708	; 0xf10c
+   0x0fe82784 &amp;lt;+36&amp;gt;:	str	r3, [sp, #172]	; 0xac
+^^^^^^^^ move first va_list element on stack
+   0x0fe82788 &amp;lt;+40&amp;gt;:	movt	r0, #16124	; 0x3efc
+   0x0fe8278c &amp;lt;+44&amp;gt;:	nop	{0}
+   0x0fe82790 &amp;lt;+48&amp;gt;:	bic	r0, r0, #-1073741824	; 0xc0000000
+   0x0fe82794 &amp;lt;+52&amp;gt;:	ldr	r5, [r0]
+   0x0fe82798 &amp;lt;+56&amp;gt;:	nop	{0}
+   0x0fe8279c &amp;lt;+60&amp;gt;:	bl	0xfea2ae0 &amp;lt;__aeabi_read_tp&amp;gt;
+   0x0fe827a0 &amp;lt;+64&amp;gt;:	add	r0, r0, r5
+   0x0fe827a4 &amp;lt;+68&amp;gt;:	cmp	r4, #0
+   0x0fe827a8 &amp;lt;+72&amp;gt;:	bic	r0, r0, #-1073741824	; 0xc0000000
+   0x0fe827ac &amp;lt;+76&amp;gt;:	ldr	r5, [r0]
+   0x0fe827b0 &amp;lt;+80&amp;gt;:	blt	0xfe8283c &amp;lt;snprintf+220&amp;gt;
+   0x0fe827b4 &amp;lt;+84&amp;gt;:	add	r0, sp, #20
+   0x0fe827b8 &amp;lt;+88&amp;gt;:	mov	r3, #520	; 0x208
+   0x0fe827bc &amp;lt;+92&amp;gt;:	cmp	r4, #0
+   0x0fe827c0 &amp;lt;+96&amp;gt;:	bic	r0, r0, #-1073741824	; 0xc0000000
+   0x0fe827c4 &amp;lt;+100&amp;gt;:	strh	r3, [r0]
+   0x0fe827c8 &amp;lt;+104&amp;gt;:	add	r3, sp, #128	; 0x80
+^^^^^^^^^ va_list argument: pointer to pointer: see later
+   0x0fe827cc &amp;lt;+108&amp;gt;:	str	r1, [sp, #8]
+   0x0fe827d0 &amp;lt;+112&amp;gt;:	str	r1, [sp, #24]
+   0x0fe827d4 &amp;lt;+116&amp;gt;:	mov	r1, r4
+   0x0fe827d8 &amp;lt;+120&amp;gt;:	subne	r1, r1, #1
+   0x0fe827dc &amp;lt;+124&amp;gt;:	str	r1, [sp, #16]
+   0x0fe827e0 &amp;lt;+128&amp;gt;:	str	r1, [sp, #28]
+   0x0fe827e4 &amp;lt;+132&amp;gt;:	movw	r1, #65535	; 0xffff
+   0x0fe827e8 &amp;lt;+136&amp;gt;:	bic	r0, r0, #-1073741824	; 0xc0000000
+   0x0fe827ec &amp;lt;+140&amp;gt;:	strh	r1, [r0, #2]
+   0x0fe827f0 &amp;lt;+144&amp;gt;:	add	r0, sp, #172	; 0xac
+^^^^^^^^^^^^^^^^^^ first va_list element address in r0
+   0x0fe827f4 &amp;lt;+148&amp;gt;:	add	r1, sp, #8
+   0x0fe827f8 &amp;lt;+152&amp;gt;:	str	r0, [sp, #128]	; 0x80
+  ^^^^ first element of va_list: address of first value 
+   0x0fe827fc &amp;lt;+156&amp;gt;:	mov	r0, r5
+   0x0fe82800 &amp;lt;+160&amp;gt;:	nop	{0}
+   0x0fe82804 &amp;lt;+164&amp;gt;:	nop	{0}
+   0x0fe82808 &amp;lt;+168&amp;gt;:	nop	{0}
+=&amp;gt; 0x0fe8280c &amp;lt;+172&amp;gt;:	bl	0xfe86db0 &amp;lt;_svfprintf_r&amp;gt;
+
+ That works fine, as matching _svfprintf_r expectation on how to obtain va_list elements:
+
+   0xfe86dc8 &amp;lt;_svfprintf_r+24&amp;gt;:	str	r3, [sp, #132]	; 0x84
+  ^^^^^^^ save va_list
+.....
+   0xfe885f8 &amp;lt;_svfprintf_r+6216&amp;gt;:	ldr	r2, [sp, #132]	; 0x84
+  ^^^^^^^ read va_list
+   0xfe885fc &amp;lt;_svfprintf_r+6220&amp;gt;:	tst	r11, #512	; 0x200
+   0xfe88600 &amp;lt;_svfprintf_r+6224&amp;gt;:	bic	r2, r2, #-1073741824	; 0xc0000000
+   0xfe88604 &amp;lt;_svfprintf_r+6228&amp;gt;:	ldr	r0, [r2]
+^^^^^ load current va_list element
+   0xfe88608 &amp;lt;_svfprintf_r+6232&amp;gt;:	add	r1, r0, #4
+^^^^ increment current va_arg pointer
+   0xfe8860c &amp;lt;_svfprintf_r+6236&amp;gt;:	nop	{0}
+   0xfe88610 &amp;lt;_svfprintf_r+6240&amp;gt;:	bic	r2, r2, #-1073741824	; 0xc0000000
+   0xfe88614 &amp;lt;_svfprintf_r+6244&amp;gt;:	str	r1, [r2]
+^^^^^ store incremented va_arg pointer 
+   0xfe88618 &amp;lt;_svfprintf_r+6248&amp;gt;:	bic	r0, r0, #-1073741824	; 0xc0000000
+=&amp;gt; 0xfe8861c &amp;lt;_svfprintf_r+6252&amp;gt;:	ldr	r0, [r0]
+^^^^^ and read value from current va_list element
+
+ And compare that to
+(gdb) disas 'base::StringAppendF(std::string*, char const*, ...)' 
+Dump of assembler code for function _ZN4base13StringAppendFEPSsPKcz:
+   0x0fdcaff0 &amp;lt;+0&amp;gt;:	sub	sp, sp, #16
+   0x0fdcaff4 &amp;lt;+4&amp;gt;:	bic	sp, sp, #-1073741824	; 0xc0000000
+   0x0fdcaff8 &amp;lt;+8&amp;gt;:	push	{lr}		; (str lr, [sp, #-4]!)
+   0x0fdcaffc &amp;lt;+12&amp;gt;:	nop	{0}
+   0x0fdcb000 &amp;lt;+16&amp;gt;:	sub	sp, sp, #12
+   0x0fdcb004 &amp;lt;+20&amp;gt;:	bic	sp, sp, #-1073741824	; 0xc0000000
+   0x0fdcb008 &amp;lt;+24&amp;gt;:	str	r3, [sp, #28]
+^^^^ second reg argument to va_list: by value!
+   0x0fdcb00c &amp;lt;+28&amp;gt;:	str	r2, [sp, #24]
+^^^^ first reg argument to va_list: by value! 
+   0x0fdcb010 &amp;lt;+32&amp;gt;:	add	r2, sp, #24
+^^^^^^^ va_list argument: pointer to values
+   0x0fdcb014 &amp;lt;+36&amp;gt;:	str	r2, [sp, #8]
+   0x0fdcb018 &amp;lt;+40&amp;gt;:	nop	{0}
+   0x0fdcb01c &amp;lt;+44&amp;gt;:	bl	0xfdca450 &amp;lt;_ZN4base13StringAppendVEPSsPKcSt9__va_list&amp;gt;
+
+ This, of course, crashes, as consumer of va_list is still similar C code, so it tries to dereference value (Mark, that's why we were seeing 0x3fffffff - it was masked -1 integer passed to that function) .
+
+ So it means, problem manifests itself only when we create va_list
+in C++ code and process it in C (or vice versa). I have no idea how
+we end up in such strange situation.
+</ns0:content><ns0:updated>2013-03-15T21:36:40.000Z</ns0:updated><ns0:published>2012-11-30T19:01:12.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:state>closed</ns2:state><ns0:title>Mismatch of va_list handling in untrusted runtime for ARM.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3182/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3182" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3182" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2013-03-15T21:36:40.000Z</ns2:closedDate><ns2:id>3182</ns2:id></ns0:entry>

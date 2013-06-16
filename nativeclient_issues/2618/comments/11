@@ -1,0 +1,47 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMGQn47eCl7ImA9WhVaEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2618/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=134189
+------------------------------------------------------------------------
+r134189 | mseaborn@chromium.org | 2012-04-27T00:42:25.180384Z
+
+Changed paths:
+   M /trunk/src/chrome/browser/nacl_host/nacl_process_host.cc
+   M /trunk/src/chrome/common/nacl_debug_exception_handler_win.h
+   M /trunk/src/chrome/nacl/nacl_broker_listener.h
+   M /trunk/src/chrome/browser/nacl_host/nacl_broker_host_win.cc
+   M /trunk/src/chrome/browser/nacl_host/nacl_broker_host_win.h
+   M /trunk/src/chrome/browser/nacl_host/nacl_broker_service_win.cc
+   M /trunk/src/chrome/browser/nacl_host/nacl_broker_service_win.h
+   M /trunk/src/chrome/common/nacl_messages.h
+   M /trunk/src/ipc/ipc_message_utils.h
+   M /trunk/src/chrome/common/nacl_debug_exception_handler_win.cc
+   M /trunk/src/chrome/nacl/nacl_broker_listener.cc
+
+NaCl: Pass the process handle to the broker rather than reopening it
+
+Previously, we would open the NaCl loader's Windows process handle by
+its PID in the NaCl broker (when attaching a Windows debug exception
+handler).  But there is a potential race condition here: if the NaCl
+loader dies, and its PID is reused, we could be opening the wrong
+process.
+
+Fix this by opening the process handle in the browser process and
+passing it to the 64-bit NaCl broker.
+
+This requires fixing a bug in ipc_message_utils.h.  This code could
+cope with sending a handle from a 64-bit process to a 32-bit process
+(NaCl broker to browser), but the DCHECK would fail when sending a
+handle from a 32-bit process to a 64-bit process (browser to NaCl
+broker).
+
+This change is in preparation for changing NaCl's Windows debug
+exception handler to attach on demand, which would allow untrusted
+NaCl code to cause the NaCl process to exit before
+OnDebugExceptionHandlerLaunched() runs.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2618
+TEST=run_inbrowser_exception_test in nacl_integration
+
+Review URL: https://chromiumcodereview.appspot.com/10174031
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-08T01:53:43.000Z</ns0:updated><ns0:published>2012-06-08T01:53:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2618#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2618/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

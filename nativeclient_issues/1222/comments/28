@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AEQH47eCl7ImA9WhNSEkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1222/comments/full/28</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Ok the filtered version of the coverage is here:
+
+http://www.corp.google.com/~jvoung/llc_coverage_html_filtered/
+
+It's pretty gross to generate:
+
+(1) Build our LLVM with --coverage as CFLAGS, CXXFLAGS, LDFLAGS.
+(2) Run all of our tests (scons, spec, llvm, gcc torture tests).
+(3) Run lcov to get a *base* set of coverage files (.gcda), which includes clang, opt, etc.
+
+(4) Try to get a list of Symbols X Files that LLC *actually* uses (to exclude clang and opt).  To do this, we don't use the PNaCl version of llc, because PNaCl llc uses shared libraries, which makes it hard to get that full list of files.  Instead, separately build a static debug version of LLC at the same rev as us.  This allows you to run "nm -l -n --print-size Debug+Asserts/bin/llc", to get a [ Address -&gt; Symbol ] mapping.  Note that "nm's -l" prints *some* line numbers, but we have to collect the Addresses that don't have line numbers and try to get "addr2line" to make a stab at that too.  There is still missing line number info, but I'm not sure why.
+
+(5) Run the attached script ("nm_size_by_file") to get a list of files that LLC covers.  This script does the addr2line stuff for you.
+(6) Run the attached script ("filter_lcov") to filter lcov data, to contain only the files that you have from step (5).
+(7) Run lcov's genhtml to get the web view.
+
+
+Anyway, so far, a lot of the unused code is what was already mentioned earlier in this bug.
+
+E.g., the InstPrinter, AsmParser, COFF support, MachO support, unused register allocators like PBQP, Graphvis printing... The question is really how to disable these bits cleanly, which we already had wondered.
+
+
+
+</ns0:content><ns0:updated>2012-10-26T21:08:21.000Z</ns0:updated><ns0:published>2012-10-26T21:08:21.000Z</ns0:published><ns2:updates /><ns0:title>Comment 28 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1222#c28" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1222/comments/full/28" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,52 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYGQX47eCl7ImA9WhNTGU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1222/comments/full/25</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10063
+
+------------------------------------------------------------------------
+r10063 | jvoung@google.com | 2012-10-22T20:34:24.602657Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=10063&amp;r2=10062&amp;pathrev=10063
+
+Build sandboxed llc and ld w/ -ffunction-sections and --gc-sections.
+
+This will make the nexes smaller.  When we remove
+--export-dynamic without triggering ARM bugs, we can rely
+on the optimizer to reduce the size of the nexes even more.
+
+For now, this reduces LLC by 1MB per architecture and it
+also reduces gold size by a tiny bit too.
+
+before:
+RESULT llc_armv7_size: total= 16801608 bytes
+RESULT llc_i686_size: total= 16489508 bytes
+RESULT llc_x86_64_size: total= 17229352 bytes
+RESULT ld_armv7_size: total= 2786976 bytes
+RESULT ld_i686_size: total= 2503688 bytes
+RESULT ld_x86_64_size: total= 2873508 bytes
+
+after:
+RESULT llc_armv7_size: total= 15665888 bytes
+RESULT llc_i686_size: total= 15373968 bytes
+RESULT llc_x86_64_size: total= 16060772 bytes
+RESULT ld_armv7_size: total= 2771316 bytes
+RESULT ld_i686_size: total= 2488984 bytes
+RESULT ld_x86_64_size: total= 2858368 bytes
+
+Without --export-dynamic, in a 2-week old tryjob I had:
+
+RESULT llc_i686_size: total= 13569584 bytes
+
+even without -ffunction-sections and --gc-sections:
+
+http://build.chromium.org/p/tryserver.nacl/builders/nacl-toolchain-linux-pnacl-x86_64/builds/165/steps/compile_translator/logs/stdio
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1222
+
+Will need to remove these flags to test:
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1591
+
+Review URL: https://codereview.chromium.org/11234014
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-22T20:35:20.000Z</ns0:updated><ns0:published>2012-10-22T20:35:20.000Z</ns0:published><ns2:updates /><ns0:title>Comment 25 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1222#c25" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1222/comments/full/25" rel="self" type="application/atom+xml" /></ns0:entry>

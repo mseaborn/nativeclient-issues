@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C04HSH47eCl7ImA9WhJaEkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3018/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9904
+
+------------------------------------------------------------------------
+r9904 | mseaborn@chromium.org | 2012-10-02T21:01:09.777748Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/support/crtbegin.c?r1=9904&amp;r2=9903&amp;pathrev=9904
+
+PNaCl: Register unwind info before calling any user code
+
+Before this change, the PNaCl startup interface assumes that user code
+will run an initializer that PNaCl system code provides and inserts
+into __init_array_start/end (the .init_array section).  If user code
+does not do this, C++ exception handling will not work, because unwind
+info won't have been registered.
+
+This change cleans up PNaCl startup so that the system code internally
+registers unwind info before any user code runs, so that user code
+does not have to know to run any special system-provided initializers.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=3018
+TEST=exception-handling and unwinding tests in "tests/toolchain"
+
+Review URL: https://codereview.chromium.org/11027010
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-02T21:05:39.000Z</ns0:updated><ns0:published>2012-10-02T21:05:39.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3018#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3018/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

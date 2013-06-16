@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMFRX47eCl7ImA9WhJRGEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2909/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9201
+
+------------------------------------------------------------------------
+r9201 | mcgrathr@chromium.org | 2012-07-20T19:56:01.045704Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/barebones/nacl.scons?r1=9201&amp;r2=9200&amp;pathrev=9201
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/barebones/top_of_sandbox.c?r1=9201&amp;r2=9200&amp;pathrev=9201
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=9201&amp;r2=9200&amp;pathrev=9201
+
+Leave a gap at the top of the address space above the useful stack contents
+
+The ARM GCC compiler likes to compute address+CONSTANT into a register
+so that it can then use a memory reference [basereg, -CONSTANT].  This
+maximizes its potential to reuse a base register given the limited
+range of immediate offsets (13 bits signed).
+
+When we apply our sandboxing mask to the base register, this can
+truncate the address if the original address was close to the top of
+the sandbox region (e.g. 1G minus a little) and +CONSTANT pushes it
+over the top.
+
+To avoid this problem, simply don't use the topmost part of the
+address space.  Leave a gap above the stack space used for the
+startup information block.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2909
+TEST= run_top_of_sandbox_test
+
+R=bsy@google.com
+
+Review URL: https://chromiumcodereview.appspot.com/10804043
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-20T20:00:14.000Z</ns0:updated><ns0:published>2012-07-20T20:00:14.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2909#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2909/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

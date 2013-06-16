@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4HSH47eCl7ImA9WhNbE0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3136/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=177220
+
+------------------------------------------------------------------------
+r177220 | jvoung@chromium.org | 2013-01-16T21:13:12.809181Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_coordinator.cc?r1=177220&amp;r2=177219&amp;pathrev=177220
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_translate_thread.cc?r1=177220&amp;r2=177219&amp;pathrev=177220
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad.html?r1=177220&amp;r2=177219&amp;pathrev=177220
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/plugin_error.h?r1=177220&amp;r2=177219&amp;pathrev=177220
+
+Refine PNaCl pexe fetch UMA errors to know if the user aborted, etc.
+
+Also check if it's access denied (e.g,, cross origin requests).
+
+These additions mean that we are shifting the UMA codes
+for PNaCl around.  This is okay since we haven't collected
+any user samples yet.
+
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3136
+
+
+Review URL: https://chromiumcodereview.appspot.com/11881038
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-01-16T21:15:39.000Z</ns0:updated><ns0:published>2013-01-16T21:15:39.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3136#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3136/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

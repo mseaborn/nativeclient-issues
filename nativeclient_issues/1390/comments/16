@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEFQn47eCl7ImA9WhJQGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1390/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>will.jen...@demiurgestudios.com</ns0:name><ns0:uri>/u/116733920599951284397/</ns0:uri></ns0:author><ns0:content type="html">Thanks, Brad.
+
+After more thorough testing, you're right: I'm experiencing a bunch of possibly unrelated issues.  After seeing the nexe fail to load in our project, I tried a bunch of different NaCl applications similar to what we're working on (Battle for Wesnoth, AirMech, Bastion) and all failed to load completely -- but looking at the console output, there are different failure messages for each (our app shows no error messages at all, and the others show, respectively, "NaCL module load error: NaCl module load failed: Nexe crashed during startup", "GET https://rs.carbongames.com/startup?ua=Rook%3B11058%eBNaCl64 404 (Not Found)", and "NativeClient: NaCl module load failed: Validation failure. File violates Native Client safety rules.").
+
+When our own project has progressed enough to know better whether this is something we've botched ourselves, if this is still happening, we'll file a separate issue.
+
+Thanks again!</ns0:content><ns0:updated>2012-08-01T14:50:13.000Z</ns0:updated><ns0:published>2012-08-01T14:50:13.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by will.jen...@demiurgestudios.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1390#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1390/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

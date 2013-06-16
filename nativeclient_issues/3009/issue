@@ -1,0 +1,108 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEFRH47eCl7ImA9WhJUGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3009</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+
+svn rev 9598
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+
+Linux
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+
+Can also be seen on buildbot logs: 
+http://build.chromium.org/p/client.nacl.toolchain/builders/linux-pnacl-x86_64/builds/1965/steps/scons%20%5Bx86-64%5D%20%5Bsmall_tests%20medium_tests%20large_tests%5D%20%5Bglibc%20no_pexe%20%5D/logs/stdio
+
+ERROR: Command returned exit status -11 (0xfffffff5) but we expected 0 (0x0)
+======================================================================
+Stdout for pnacl_glibc.run_atomic_ops_nexe_test:
+======================================================================
+
+======================================================================
+Stderr for pnacl_glibc.run_atomic_ops_nexe_test:
+======================================================================
+DEBUG MODE ENABLED (bypass acl)
+[10209,4037273408:03:07:40.796726] BYPASSING ALL ACL CHECKS
+[10209,4037273408:03:07:40.798959] Native Client module will be loaded at base address 0x00007f1b00000000
+[10209,4037048064:03:07:40.853842] NaClHostDescOpen: open returned -1, errno 2
+[10209,4037048064:03:07:40.857330] NaClHostDescOpen: open returned -1, errno 2
+[10209,4037048064:03:07:40.857399] NaClHostDescOpen: open returned -1, errno 2
+[10209,4037048064:03:07:40.872605] NaClHostDescOpen: open returned -1, errno 2
+[10209,4037048064:03:07:41.092959] NaClHostDescOpen: open returned -1, errno 2
+[10209,4037048064:03:07:41.204109] NaClHostDescOpen: open returned -1, errno 2
+[10209,4037048064:03:07:41.249384] NaClHostDescOpen: open returned -1, errno 2
+
+[  FAILED  ] pnacl_glibc.run_atomic_ops_nexe_test (340 ms)
+
+
+1.  Use svn rev 9589 (and higher), when the chrome-nacl repo was separated a bit more by disabling the PNaCl PPAPI shim on x86-64.  Alternatively, substitute the existing shim with a small dummy shim and do not change any other commandline flags.
+
+2. run ./scons --verbose bitcode=1 enable_chrome_side=False -k skip_trusted_tests=1 -j8 --nacl_glibc pnacl_generate_pexe=0 --mode=opt-host,nacl platform=x86-64 run_atomic_ops_nexe_test
+
+3. See a segfault instead of passing.  Compare to x86-32 run and the run with enable_chrome_side=True, which does link in the real PPAPI shim.
+
+
+Additional info:
+
+It looks like this is the only nexe test that uses NaClMutexCtor().  In any case, the test gets through that, and ends up crashing some time after that, as pthread_mutex_init() is running.
+
+
+LOG w/ extra prints and -S:
+
+cons-out/opt-linux-x86-64/staging/nacl_helper_bootstrap scons-out/opt-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX --reserved_at_zero=0xXXXXXXXXXXXXXXXX -a -S -- /usr/local/google/home/nacl1/native_client/toolchain/pnacl_linux_x86_64/lib-x86-64/runnable-ld.so --library-path /usr/local/google/home/nacl1/native_client/scons-out/nacl-x86-64-pnacl-glibc-clang/lib:/usr/local/google/home/nacl1/native_client/toolchain/pnacl_linux_x86_64/lib-x86-64 scons-out/nacl-x86-64-pnacl-glibc-clang/obj/tests/unittests/shared/platform/atomic_ops_test_nexe.nexe 25
+Running pthread_mutex_init on 0x7faa0a8ffcc0
+Running pthread_mutex_init on 0x7faa0a8ff840
+Running pthread_mutex_init on 0x1ceb270
+Running pthread_mutex_init on 0x7faa0a8ff560
+Running pthread_mutex_init on 0x7faa0a8f6f40
+Running pthread_mutex_init on 0x7faa0a8ce780
+Running pthread_mutex_init on 0x7fff26623e20
+Running pthread_mutex_init on 0x7fff26623cf0
+Running pthread_mutex_init on 0x1ceb408
+Running pthread_mutex_init on 0x1ceb478
+Running pthread_mutex_init on 0x7fff26623ed0
+Running pthread_mutex_init on 0x7fff26623f88
+DEBUG MODE ENABLED (bypass acl)
+[10554,155903808:08:35:50.938901] BYPASSING ALL ACL CHECKS
+[10554,155903808:08:35:50.940484] Native Client module will be loaded at base address 0x00007f9f00000000
+Running pthread_mutex_init on 0x1cec9f0
+Running pthread_mutex_init on 0x1ceca40
+Running pthread_mutex_init on 0x1ced260
+[10554,155744000:08:35:50.959750] NaClHostDescOpen: open returned -1, errno 2
+[10554,155744000:08:35:50.963971] NaClHostDescOpen: open returned -1, errno 2
+[10554,155744000:08:35:50.963996] NaClHostDescOpen: open returned -1, errno 2
+[10554,155744000:08:35:50.976111] NaClHostDescOpen: open returned -1, errno 2
+[10554,155744000:08:35:51.069139] NaClHostDescOpen: open returned -1, errno 2
+[10554,155744000:08:35:51.122277] NaClHostDescOpen: open returned -1, errno 2
+[10554,155744000:08:35:51.136837] NaClHostDescOpen: open returned -1, errno 2
+Starting main!
+Calling strol
+Calling malloc
+MutexCtor on 0x11020050
+Running pthread_mutex_init on 0x11020050
+
+** Signal 11 from untrusted code: pc=7f9f01172842
+
+======
+
+0x11020050 is indeed the &amp;amp;gMutex from the test, so the parameter seems right.
+
+======
+
+
+With -E LD_TRACE_LOADED_OBJECTS=1 I see:
+
+	libplatform.so =&amp;gt; /usr/local/google/home/nacl1/native_client/scons-out/nacl-x86-64-pnacl-glibc-clang/lib/libplatform.so (0xt000001030000)
+	libgio.so =&amp;gt; /usr/local/google/home/nacl1/native_client/scons-out/nacl-x86-64-pnacl-glibc-clang/lib/libgio.so (0xt000001060000)
+	libpthread.so.a9de5678 =&amp;gt; /usr/local/google/home/nacl1/native_client/toolchain/pnacl_linux_x86_64/lib-x86-64/libpthread.so.a9de5678 (0xt000001090000)
+	libc.so.a9de5678 =&amp;gt; /usr/local/google/home/nacl1/native_client/toolchain/pnacl_linux_x86_64/lib-x86-64/libc.so.a9de5678 (0xt0000010f0000)
+	libstdc++.so.6 =&amp;gt; /usr/local/google/home/nacl1/native_client/toolchain/pnacl_linux_x86_64/lib-x86-64/libstdc++.so.6 (0xt0000012a0000)
+	libm.so.a9de5678 =&amp;gt; /usr/local/google/home/nacl1/native_client/toolchain/pnacl_linux_x86_64/lib-x86-64/libm.so.a9de5678 (0xt000001390000)
+	libgcc_s.so.1 =&amp;gt; /usr/local/google/home/nacl1/native_client/toolchain/pnacl_linux_x86_64/lib-x86-64/libgcc_s.so.1 (0xt000001420000)
+	ld-nacl-x86-64.so.1 =&amp;gt; NaClMain (0xt000000020000)
+
+If this is the right way to calculate... 0x1172842 - 0x 10f0000 = 0x82842.  In libc.so.s, around 0x82842 is _IO_fwrite...
+
+
+Might be some race condition or memory bug in the test:  could try - padding the dummy shim with nops, to see if it passes again, but may disable the test for now to green the bot...
+</ns0:content><ns0:updated>2012-09-17T22:56:55.000Z</ns0:updated><ns0:published>2012-08-30T15:42:13.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>switching to small/no irt shim breaks run_atomic_ops_nexe_test for x86-64 PNaCl + Glibc</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>SharedLibrary</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3009/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3009" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3009" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3009</ns2:id></ns0:entry>

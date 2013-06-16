@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck8MSH47eCl7ImA9WhFSEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2870/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>binji@chromium.org</ns0:name><ns0:uri>/u/binji@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I'm also seeing flake on xp-newlib-opt bots:
+
+[3856,4476:22:58:25.083000] Fatal error in file tests\multiple_sandboxes\multidomain_test_host.c, line 71: !(NaClAppLoadFileAslr(nd, &amp;app[i], NACL_DISABLE_ASLR) == LOAD_OK)
+
+
+See for example, http://build.chromium.org/p/client.nacl/builders/xp-newlib-opt/builds/4950/steps/small_tests/logs/stdio
+
+Is this related?</ns0:content><ns0:updated>2013-06-12T23:48:09.000Z</ns0:updated><ns0:published>2013-06-12T23:48:09.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by binji@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2870#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2870/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

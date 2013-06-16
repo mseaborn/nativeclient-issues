@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QBQX47eCl7ImA9WhNaE0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3154/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10668
+
+------------------------------------------------------------------------
+r10668 | shcherbina@google.com | 2013-01-28T10:33:11.727599Z
+
+Changed paths:
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/one_instruction_x86_64.rl?r1=10668&amp;r2=10667&amp;pathrev=10668
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/decoder_x86_64.c?r1=10668&amp;r2=10667&amp;pathrev=10668
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/build.scons?r1=10668&amp;r2=10667&amp;pathrev=10668
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/one_instruction_x86_32.rl?r1=10668&amp;r2=10667&amp;pathrev=10668
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/parse_instruction.rl?r1=10668&amp;r2=10667&amp;pathrev=10668
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/decoder_x86_32.c?r1=10668&amp;r2=10667&amp;pathrev=10668
+
+Validator_ragel: remove one_instruction.rl and associated dead code.
+
+It was only needed for check_decoder test, but now it uses directly decoder automaton.
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3154
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3228
+TEST= bots, also run ./scons dfagen &amp;&amp; ./scons dfacheckdecoder and make sure that it enumerates the same number of instructions
+
+Review URL: https://codereview.chromium.org/12042104
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-01-28T10:35:50.000Z</ns0:updated><ns0:published>2013-01-28T10:35:50.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3154#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3154/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

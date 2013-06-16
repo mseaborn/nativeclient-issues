@@ -1,0 +1,76 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkABSX47eCl7ImA9WhJREkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2883/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Some data for a different target: bitcode linking for llc.pre_opt.pexe takes 2 min 6 secs, generating a 49MB file.
+
+The 30 min case just seems so much worse.  Is there so many more types or instructions?
+
+Anyway, here is profiler data for the 49MB LLVM pre-opt pexe:
+
+// Most of this stems from llvm's LinkModule code.  findUsedStructTypes(#1) uses
+// incorporateValue(#3), and whole bunch of DenseSet inserts(#4), and incorparateType(#5),
+// etc... So it's mostly dominated by that code path in LinkModule.
+// This goes through every single instruction/variable and every single type recursively.
+
+00f14c80 1915935  37.3915  arm-pc-nacl-ld.gold      arm-pc-nacl-ld.gold      llvm::Module::findUsedStructTypes(std::vector&lt;llvm::StructType*, std::allocator&lt;llvm::StructType*&gt; &gt;&amp;, bool) const
+00f0f980 1036440  20.2272  arm-pc-nacl-ld.gold      arm-pc-nacl-ld.gold      llvm::Instruction::getAllMetadataOtherThanDebugLocImpl(llvm::SmallVectorImpl&lt;std::pair&lt;unsigned int, llvm::MDNode*&gt; &gt;&amp;) const
+00f148f0 492942    9.6203  arm-pc-nacl-ld.gold      arm-pc-nacl-ld.gold      (anonymous namespace)::TypeFinder::incorporateValue(llvm::Value const*)
+010c0890 453846    8.8573  arm-pc-nacl-ld.gold      arm-pc-nacl-ld.gold      llvm::DenseSet&lt;llvm::Value const*, llvm::DenseMapInfo&lt;llvm::Value const*&gt; &gt;::insert(llvm::Value const* const&amp;)
+00f12970 385812    7.5295  arm-pc-nacl-ld.gold      arm-pc-nacl-ld.gold      (anonymous namespace)::TypeFinder::incorporateType(llvm::Type*)
+010bfcb0 77907     1.5204  arm-pc-nacl-ld.gold      arm-pc-nacl-ld.gold      llvm::DenseMap&lt;llvm::Value const*, char, llvm::DenseMapInfo&lt;llvm::Value const*&gt; &gt;::grow(unsigned int)
+00f273a0 27672     0.5400  arm-pc-nacl-ld.gold      arm-pc-nacl-ld.gold      llvm::Value::getContext() const
+
+// ...
+
+// Way down the list we finally see some of the gold code coming in...
+
+0064ee00 413       0.0081  arm-pc-nacl-ld.gold      arm-pc-nacl-ld.gold      unsigned long gold::string_hash&lt;char&gt;(char const*, unsigned long)
+
+// ...
+
+004808cc 222       0.0043  arm-pc-nacl-ld.gold      arm-pc-nacl-ld.gold      gold::Symbol::is_undefined() const
+
+// ...
+
+
+
+Some of the llvm-bcanalyzer data for the llc.pexe:
+
+	Record Histogram:
+		  Count    # Bits   % Abv  Record Kind
+		  18350    367000  100.00  POINTER
+		  10157    735823  100.00  FUNCTION
+		   6392   2773010    4.36  STRUCT_NAME
+		   6334    324442  100.00  STRUCT_NAMED
+		    860     27168  100.00  ARRAY
+		     58      1276          OPAQUE
+		     34    317838  100.00  STRUCT_ANON
+		     13       346          INTEGER
+		      4       124          VECTOR
+		      1        16          METADATA
+		      1        16          LABEL
+		      1        16          DOUBLE
+		      1        16          FLOAT
+		      1        16          VOID
+		      1        40          NUMENTRY
+
+
+In comparison, one of the other 150MB unopt pexe I've seen has:
+
+	Record Histogram:
+		  Count    # Bits   % Abv  Record Kind
+		  77979   1715538  100.00  POINTER
+		  42913   3062477  100.00  FUNCTION
+		  27173  10459964   33.32  STRUCT_NAME
+		  26720   1541938  100.00  STRUCT_NAMED
+		    914     31564  100.00  ARRAY
+		    453      9966          OPAQUE
+		     31      7697  100.00  STRUCT_ANON
+		      6       150          INTEGER
+		      1        16          METADATA
+		      1        16          LABEL
+		      1        16          DOUBLE
+		      1        16          FLOAT
+		      1        16          VOID
+		      1        40          NUMENTRY
+
+Is the profile itself any different?</ns0:content><ns0:updated>2012-07-13T22:32:38.000Z</ns0:updated><ns0:published>2012-07-13T22:32:38.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2883#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2883/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0UBSX47eCl7ImA9WhRbFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2578/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I was wrong about the size of the jump offset: it's not always 4 bytes for these instructions.  Victor discovered that this differs between Intel and AMD CPUs:
+
+AMD64:
+$ gcc -m64 test.c -o test &amp;&amp; ./test
+operand size is 2 bytes
+$ cat /proc/cpuinfo | grep model\ name
+model name : Dual-Core AMD Opteron(tm) Processor 8214 HE
+...
+
+Intel64:
+$ gcc -m64 test.c -o test &amp;&amp; ./test
+operand size is 4 bytes
+$ cat /proc/cpuinfo | grep model\ name
+model name : Intel(R) Core(TM) i5-2520M CPU @ 2.50GHz
+...
+
+This means there is a hole in the x86-64 sandbox on AMD CPUs.
+
+Incidentally, x86-64 QEMU follows the AMD behaviour.
+</ns0:content><ns0:updated>2012-02-06T23:34:18.000Z</ns0:updated><ns0:published>2012-02-06T23:34:18.000Z</ns0:published><ns2:updates>
+			<ns2:summary>x86-64: DATA16 prefix on direct jumps allows sandbox escape on AMD CPUs</ns2:summary><ns2:ccUpdate>k...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2578#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2578/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

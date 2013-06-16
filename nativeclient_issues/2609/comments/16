@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMFRn47eCl7ImA9WhVaEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2609/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=132886
+------------------------------------------------------------------------
+r132886 | jvoung@google.com | 2012-04-18T22:57:59.723579Z
+
+Changed paths:
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/manifest/manifest_top.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/manifest/manifest_subdir.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad_crossorigin.nmf
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/bad/nacl.scons
+   M /trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad.html
+
+Change the rest of old nacl ppapi tests to be compatible with pnacl.
+This allows us to remove the silly white-list of ported tests in
+"native_client/buildbot/buildbot_pnacl.sh" when pnacl_generate_pexe=1,
+and just say "chrome_browser_tests".
+
+This was split out of:
+http://codereview.chromium.org/9834030/
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2609
+TEST= chrome_browser_tests
+
+Review URL: https://chromiumcodereview.appspot.com/10115044
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-08T01:53:37.000Z</ns0:updated><ns0:published>2012-06-08T01:53:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2609#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2609/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

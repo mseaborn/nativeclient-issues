@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEAGQ347eCl7ImA9WhNWEUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3161</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">NaCl currently has no performance tests for core runtime functionality.
+
+We used to have a startup time performance test, but it was part of chrome_browser_tests and we lost this when we removed Chromium testing from the NaCl buildbots.
+
+PNaCl has performance tests (based on Spec), but this is largely for testing the performance of generated code, not the runtime.
+
+I would like to add performance tests to cover:
+
+ * syscall time
+ * mmap() time (various cases)
+ * mprotect() time
+ * thread suspension time (for 1, 2, many threads)
+ * startup time (with/without dyncode)
+ * exception handling
+ * debug stub
+ * TLS access (user and IRT)
+ * thread start and exit
+    * with and without libc
+    * it's hard to measure these separately
+ * mutex lock, uncontended
+ * condvar signal, no-wakeups case
+ * thread wakeup via condvar signal
+ * thread wakeup via mutex unlock
+
+The initial motivation for this is to measure how much switching nacl-newlib to using futexes improves performance, and to check that this doesn't regress performance.
+</ns0:content><ns0:updated>2012-12-11T02:25:22.000Z</ns0:updated><ns0:published>2012-11-21T17:34:31.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/jvoung@chromium.org/</ns2:uri><ns2:username>jvoung@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Add performance tests for runtime (libc, IRT, service_runtime)</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Performance</ns2:label><ns2:label>Test</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3161/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3161" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3161" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>562</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:id>3161</ns2:id></ns0:entry>

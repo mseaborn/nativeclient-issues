@@ -1,0 +1,52 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQHRn47eCl7ImA9WhNTFEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2830/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10015
+
+------------------------------------------------------------------------
+r10015 | mseaborn@chromium.org | 2012-10-16T19:52:11.206945Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/nacl_syscall_32.S?r1=10015&amp;r2=10014&amp;pathrev=10015
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_syscall.S?r1=10015&amp;r2=10014&amp;pathrev=10015
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_config.h?r1=10015&amp;r2=10014&amp;pathrev=10015
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_hook.c?r1=10015&amp;r2=10014&amp;pathrev=10015
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_syscall_64.S?r1=10015&amp;r2=10014&amp;pathrev=10015
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/mips/nacl_syscall.S?r1=10015&amp;r2=10014&amp;pathrev=10015
+
+Thread suspension: In syscall entry, adjust saved stack_ptr earlier
+
+Change the syscall entry path so that the stack_ptr value saved into
+NaClThreadContext is always the value we restore when returning to
+untrusted code (after any return address has been popped from the
+stack).
+
+Before, an adjustment (NACL_SYSCALLRET_FIX) was applied in
+nacl_syscall_hook.c.  We move this adjustment to be done earlier, in
+assembly code in nacl_syscall*.S.
+
+We do this for the benefit of capturing register state of a thread
+suspended during a trusted/untrusted context switch.  We want to
+minimise the parts of the code path in which NaClThreadContext does
+not reflect the register state the syscall we return to.  We need to
+restrict these parts to assembly code so that we can recover return
+register state based on prog_ctr.
+
+We introduce NACL_TRAMPRET_FIX.  Before, this would always have been
+zero, because NaClThreadContext's stack_ptr always pointed to the
+trampoline return address (which is used to determine the syscall
+number).
+
+We subtract NACL_SYSCALLRET_FIX from all the NACL_*_FIX constants.
+This means NACL_SYSCALLRET_FIX becomes zero and can be removed.
+
+ * x86-32: add an %esp adjustment.
+ * x86-64: simplify the existing %rsp adjustments.
+ * ARM: add an sp adjustment.
+ * MIPS: remove the existing $sp adjustment.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2830
+TEST=run_hello_world_test, run_thread_suspension_test
+
+Review URL: https://codereview.chromium.org/11147036
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-16T19:55:37.000Z</ns0:updated><ns0:published>2012-10-16T19:55:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 13 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2830#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2830/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

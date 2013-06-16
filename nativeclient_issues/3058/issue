@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8GR347eCl7ImA9WhNUGU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3058</ns0:id><ns0:author>
+			<ns0:name>j...@google.com</ns0:name><ns0:uri>/u/116152729282206039235/</ns0:uri></ns0:author><ns0:content type="html">mseaborn@ had an executable like:
+  /usr/arm-linux-gnueabi/bin/objdump -d ~/debugger_test.nexe
+  0002fa80 &amp;lt;fault_addr&amp;gt;:
+     2fa80:       e1277777        bkpt    0x7777
+     2fa84:       e320f000        nop     {0}
+     2fa88:       e320f000        nop     {0}
+     2fa8c:       e320f000        nop     {0}
+
+     2fbb0:       eaffffb2        b       2fa80 &amp;lt;fault_addr&amp;gt;
+
+     30030:       eafffe92        b       2fa80 &amp;lt;fault_addr&amp;gt;
+
+And the results varied between debug and release:
+  jfb@poil:~/sandbox/nacl/native_client$ ./scons-out/dbg-linux-x86-32/staging/arm-ncval-core ~/debugger_test.nexe ; echo $?
+  0
+  jfb@poil:~/sandbox/nacl/native_client$ ./scons-out/opt-linux-x86-32/staging/arm-ncval-core ~/debugger_test.nexe ; echo $?
+  ncval: 0002fbb0 Instruction branches into middle of 2-instruction pattern at 0002fa80.
+  ncval: 00030030 Instruction branches into middle of 2-instruction pattern at 0002fa80.
+  1
+
+I narrowed down the issue to
+  src/trusted/validator_arm/model.h:Instruction::Bits()
+which was being called by
+  src/trusted/validator_arm/actual_classes.cc:Breakpoint::is_literal_pool_head()
+with Bits(31, 0), which executes as:
+  uint32_t right_justified = bits_ &amp;gt;&amp;gt; lo;
+  int bit_count = hi - lo + 1;
+  uint32_t mask = (1 &amp;lt;&amp;lt; bit_count) - 1;
+  return right_justified &amp;amp; mask;
+
+This is undefined behavior because it left shifts 1 by 32 and then subtracts 1.
+
+SetBits has the same issue, but I don't think any code ran into it.
+
+The net effect is that on different optimization levels we could get different results, and in this case BKPT wasn't being recognized as a constant pool literal head, which means that we allowed internal jumps to literal pools, which an attacker can craft as pretty much any code they want, and break our sandbox.
+
+The following patch fixes the issue:
+  https://codereview.chromium.org/11037011/
+
+And I'm working on a patch that will use clang's -fcatch-undefined-behavior for our bot tests: we'll run all the tests with undefined behavior catching. I'm currently running into failures that look like more undefined behavior in other code.
+
+</ns0:content><ns0:updated>2013-01-11T20:07:06.000Z</ns0:updated><ns0:published>2012-10-02T22:46:04.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/116152729282206039235/</ns2:uri><ns2:username>j...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/mseaborn@google.com/</ns2:uri><ns2:username>mseaborn@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Security: ARM BKPT not properly detected by validator</ns0:title><ns2:label>Security</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Mstone-24</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3058/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3058" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3058" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-10-02T22:46:04.000Z</ns2:closedDate><ns2:id>3058</ns2:id></ns0:entry>

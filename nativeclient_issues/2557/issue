@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UESX47eCl7ImA9WhNUGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2557</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">For issue 140, I implemented an attempted fix that uses SuspendThread() on Windows to pause threads prior to opening up any memory map holes.
+
+However, I've discovered that SuspendThread() can return before the thread has actually been suspended.  See http://www.dcl.hpi.uni-potsdam.de/research/WRK/2009/01/what-does-suspendthread-really-do/index.html.  (I found that after coming across reports that GetThreadContext() can return incorrect results, such as http://zachsaw.blogspot.com/2010/11/wow64-bug-getthreadcontext-may-return.html.)
+
+This means the fix is not really safe.
+
+I wrote a test case that demonstrates this: https://chromiumcodereview.appspot.com/9146048
+
+The original test case I wrote for issue 140, tests/mmap/mmap_atomicity.c, was not enough to trigger the problem, presumably because it's not fine-grained enough.  It suspends a thread and then does an mmap call.  The mmap call probably takes long enough or does enough synchronisation for the thread to actually suspend.
+
+The new test case tests thread suspension without any mmap calls that might get in the way.  The thread to be suspended repeatedly writes to a location in memory; the test checks whether this location changes after SuspendThread().
+
+This bug probably explains the one failure of mmap_atomicity_test we've seen (issue 2469).
+
+The fix *might* be to call GetThreadContext() to check that the thread has been sufficiently suspended for its register contents to be available.
+</ns0:content><ns0:updated>2013-01-10T22:00:08.000Z</ns0:updated><ns0:published>2012-01-24T19:36:08.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Windows: SuspendThread() can return before the thread is suspended</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Security</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2557/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2557" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2557" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-02-06T21:54:42.000Z</ns2:closedDate><ns2:id>2557</ns2:id></ns0:entry>

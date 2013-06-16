@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEBR347eCl7ImA9WhBSFEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3298/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10866
+
+------------------------------------------------------------------------
+r10866 | mseaborn@chromium.org | 2013-02-21T02:08:45.071624Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/common/register_set.c?r1=10866&amp;r2=10865&amp;pathrev=10866
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/exception_test/exception_test.c?r1=10866&amp;r2=10865&amp;pathrev=10866
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/common/register_set.h?r1=10866&amp;r2=10865&amp;pathrev=10866
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/osx/mach_exception_handler.c?r1=10866&amp;r2=10865&amp;pathrev=10866
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/posix/nacl_signal.c?r1=10866&amp;r2=10865&amp;pathrev=10866
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/debug_exception_handler.c?r1=10866&amp;r2=10865&amp;pathrev=10866
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_signal.h?r1=10866&amp;r2=10865&amp;pathrev=10866
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/include/sys/nacl_exception.h?r1=10866&amp;r2=10865&amp;pathrev=10866
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_signal_common.c?r1=10866&amp;r2=10865&amp;pathrev=10866
+
+Exception handling: Report all registers to the exception handler
+
+Introduce NaClUserRegisterState&lt;ARCH&gt; struct types.
+
+Note that this is not to be considered a stable ABI yet.  I'm leaving
+prog_ctr/stack_ptr/frame_ptr in NaClExceptionContext so as not to
+break existing programs that use these yet, but I may move the
+NaClExceptionContext fields around in a later change.
+
+Remove the "pad" field from NaClExceptionContext since it's no longer
+necessary for the test to pass.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3298
+TEST=run_exception_test
+
+Review URL: https://codereview.chromium.org/12287019
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-02-21T02:10:56.000Z</ns0:updated><ns0:published>2013-02-21T02:10:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3298#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3298/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

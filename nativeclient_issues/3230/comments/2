@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4EQn47eCl7ImA9WhNaEko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3230/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=179087
+
+------------------------------------------------------------------------
+r179087 | jvoung@google.com | 2013-01-27T07:12:55.012463Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest_util.cc?r1=179087&amp;r2=179086&amp;pathrev=179087
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest_util.h?r1=179087&amp;r2=179086&amp;pathrev=179087
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest.cc?r1=179087&amp;r2=179086&amp;pathrev=179087
+
+Revert 179077
+&gt; Test that pnacl translates and loads in incognito (and with ASAN).
+&gt; 
+&gt; Use IN_PROC_BROWSER_TEST_F instead of NACL_BROWSER_TEST_F to
+&gt; only test under PNaCl.  This also lets us test pnacl_coordinator
+&gt; under ASAN, since it avoids reading/writing to the "cache",
+&gt; and PNaCl is disabled under ASAN when using NACL_BROWSER_TEST_F.
+&gt; 
+&gt; 
+&gt; 
+&gt; BUG=https://code.google.com/p/nativeclient/issues/detail?id=3230
+&gt; 
+&gt; Review URL: https://chromiumcodereview.appspot.com/11896114
+
+It broke linux_asan browser_tests (forgot that on x86-64 we need
+to avoid the NaCl DEP check while running ASAN).
+
+TBR=jvoung@chromium.org
+Review URL: https://codereview.chromium.org/12092015
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-01-27T07:15:03.000Z</ns0:updated><ns0:published>2013-01-27T07:15:03.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3230#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3230/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

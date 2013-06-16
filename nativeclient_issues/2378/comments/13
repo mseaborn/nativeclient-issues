@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4ESX47eCl7ImA9WhJaGE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2378/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">I have simplified the caller further to
+(c.f.  https://codereview.chromium.org/11090025):
+
+#define ASSERT2(cond) if (!(cond)) return #cond
+char* F36(const char *fmt, char a_0, char a_1, double a_2, ...) {
+  ASSERT2(a_2 == v_t_double[2]);
+  return 0;
+}
+
+
+
+On the callsite we get:
+  
+   2d6dc:	ed8d0b00 	vstr	d0, [sp]   ((push a_2, the double, on the stack))
+   2d6e0:	e320f000 	nop	{0}
+   2d6e4:	e320f000 	nop	{0}
+   2d6e8:	e320f000 	nop	{0}
+   2d6ec:	ebffffc7 	bl	2d610 &lt;F36&gt;
+
+Note: llvm is sort of clever and seems to be noticing that not all args are used by the callee
+
+On the called side we get:
+  2d610:	e24dd008 	sub	sp, sp, #8
+   2d614:	e3cdd103 	bic	sp, sp, #-1073741824	; 0xc0000000
+   2d618:	e3000e20 	movw	r0, #3616	; 0xe20
+   2d61c:	e58d300c 	str	r3, [sp, #12]        &lt;&lt;&lt; this seems wrong - writing into the caller frame
+   2d620:	e3410003 	movt	r0, #4099	; 0x1003
+   2d624:	ed9d0b00 	vldr	d0, [sp]             &lt;&lt;&lt;  retrieve "a_2" THIS IS WRONG - as the stack was changed in the prolog
+
+</ns0:content><ns0:updated>2012-10-09T18:55:08.000Z</ns0:updated><ns0:published>2012-10-09T18:55:08.000Z</ns0:published><ns2:updates /><ns0:title>Comment 13 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2378#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2378/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

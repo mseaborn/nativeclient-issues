@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08GQ347eCl7ImA9WhVUFkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2797</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I tried adding &amp;quot;-g&amp;quot; to the compile flags to get debugging information, and got the following assertion failure at codegen/link time:
+
+While deleting: metadata %
+An asserting value handle still pointed to this value!
+UNREACHABLE executed at /mnt/data/b/build/slave/linux-pnacl-x86_64/build/native_client/pnacl/src/upstream/llvm/lib/VMCore/Value.cpp:620!
+0  llc             0x0000000000db02cf
+1  llc             0x0000000000db2542
+2  libpthread.so.0 0x00007fa4066848f0
+3  libc.so.6       0x00007fa40597ea75 gsignal + 53
+4  libc.so.6       0x00007fa4059825c0 abort + 384
+5  llc             0x0000000000d9ae92 llvm::llvm_unreachable_internal(char const*, char const*, unsigned int) + 354
+6  llc             0x0000000000d083b3 llvm::ValueHandleBase::ValueIsDeleted(llvm::Value*) + 2547
+7  llc             0x0000000000d09165 llvm::Value::~Value() + 597
+8  llc             0x0000000000ce34af llvm::MDNode::destroy() + 15
+9  llc             0x0000000000cdd34d llvm::LLVMContextImpl::~LLVMContextImpl() + 2333
+10 llc             0x0000000000cdc101 llvm::LLVMContext::~LLVMContext() + 17
+11 llc             0x0000000000cdc90e
+12 llc             0x0000000000d9eb5d llvm::ManagedStaticBase::destroy() const + 45
+13 llc             0x0000000000d9ebc5 llvm::llvm_shutdown() + 21
+14 llc             0x00000000004f5fc5 llc_main(int, char**) + 981
+15 libc.so.6       0x00007fa405969c4d __libc_start_main + 253
+16 llc             0x00000000004ee7f9
+
+See http://codereview.chromium.org/10413019/ for the change that produced this.
+</ns0:content><ns0:updated>2012-05-21T15:57:02.000Z</ns0:updated><ns0:published>2012-05-21T15:35:27.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PNaCl: ARM irt.nexe fails to build if "-g" is added to CCFLAGS</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2797/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2797" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2797" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-05-21T15:57:02.000Z</ns2:closedDate><ns2:id>2797</ns2:id><ns2:mergedInto>
+			<ns2:id>2786</ns2:id><ns2:project>nativeclient</ns2:project></ns2:mergedInto></ns0:entry>

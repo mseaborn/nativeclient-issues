@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0cFSX47eCl7ImA9WhNVF0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3238</ns0:id><ns0:author>
+			<ns0:name>shcherb...@google.com</ns0:name><ns0:uri>/u/105197577636354702799/</ns0:uri></ns0:author><ns0:content type="html">test = env.CommandTest(
+    'test.out',
+    ['${PYTHON}', env.File('test.py')])
+
+
+Apparently it runs wrong python binary (x86 instead of ARM) under qemu...
+
+
+Excerpt from lucid-64-arm-newlib-opt bot log:
+
+/usr/bin/python /mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/tools/command_tester.py --name nacl_newlib.run_gen_dfa_test --time_warning 2 --time_error 20 --perf_env_description arm_nnacl_newlib_static --subarch 32 --arch arm --report /mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/scons-out/opt-linux-arm/test_results/gen_dfa_test.out /mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/toolchain/linux_arm-trusted/run_under_qemu_arm /usr/bin/python /mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/gen_dfa_test.py /mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/general_purpose_instructions.def /mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/system_instructions.def /mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/x87_instructions.def /mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/mmx_instructions.def /mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/xmm_instructions.def /mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/nops.def
+[ RUN      ] nacl_newlib.run_gen_dfa_test
+======================================================================
+running ['/mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/toolchain/linux_arm-trusted/run_under_qemu_arm', '/usr/bin/python', '/mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/gen_dfa_test.py', '/mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/general_purpose_instructions.def', '/mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/system_instructions.def', '/mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/x87_instructions.def', '/mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/mmx_instructions.def', '/mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/xmm_instructions.def', '/mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/nops.def']
+======================================================================
+/mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/toolchain/linux_arm-trusted/run_under_qemu_arm /usr/bin/python /mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/gen_dfa_test.py /mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/general_purpose_instructions.def /mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/system_instructions.def /mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/x87_instructions.def /mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/mmx_instructions.def /mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/xmm_instructions.def /mnt/data/b/build/slave/lucid-64-arm-newlib-opt/build/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/nops.def
+
+ERROR: Command returned exit status 255 (0xff) but we expected 0 (0x0)
+======================================================================
+Stdout for nacl_newlib.run_gen_dfa_test:
+======================================================================
+
+======================================================================
+Stderr for nacl_newlib.run_gen_dfa_test:
+======================================================================
+/usr/bin/python: Invalid ELF image for this architecture
+
+[  FAILED  ] nacl_newlib.run_gen_dfa_test (0 ms)
+</ns0:content><ns0:updated>2012-12-29T15:30:18.000Z</ns0:updated><ns0:published>2012-12-29T14:21:52.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>CommandTest (or command_tester) fails to run python under qemu</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3238/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3238" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3238" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3238</ns2:id></ns0:entry>

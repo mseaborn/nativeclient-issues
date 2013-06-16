@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYBR347eCl7ImA9WhBTF00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2484/comments/full/21</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10746
+
+------------------------------------------------------------------------
+r10746 | jvoung@google.com | 2013-02-11T16:24:45.802367Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/untrusted.gypi?r1=10746&amp;r2=10745&amp;pathrev=10746
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/build_nexe.py?r1=10746&amp;r2=10745&amp;pathrev=10746
+
+build_nexe.py: Be sure to pass link_flags to pnacl-translate to find the shim.
+
+Otherwise, the &lt;blah&gt;/tc_pnacl_translate/lib-x86-64 dir is not found,
+and translation proceeds with just the dummy shim.
+
+Do not point the ARM biased pnacl build to the ARM shim,
+otherwise it will accidentally pull in the shim, even
+for ARM-biased bitcode, which doesn't need shimming.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2484
+
+Review URL: https://codereview.chromium.org/12224041
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-02-12T22:29:16.000Z</ns0:updated><ns0:published>2013-02-12T22:29:16.000Z</ns0:published><ns2:updates /><ns0:title>Comment 21 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2484#c21" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2484/comments/full/21" rel="self" type="application/atom+xml" /></ns0:entry>

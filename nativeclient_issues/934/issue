@@ -16,11 +16,11 @@ The built-in PPAPIv2 plugin (see blocking issue) can launch and use the built-in
 
 &lt;b&gt;- Anticipated impact:&lt;/b&gt;
 PPAPIv2 comes closer to working.</ns0:content><ns0:updated>2011-02-18T00:06:16.000Z</ns0:updated><ns0:published>2010-09-29T21:13:49.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
-			<ns2:uri>/u/117420925389613150407/</ns2:uri><ns2:username>aba...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/abarth@chromium.org/</ns2:uri><ns2:username>abarth@chromium.org</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Chrome's built-in sel_ldr must be able to communicate with the built-in PPAPIv2 plugin.</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-AppPlatform</ns2:label><ns2:label>Milestone-Arctic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/934/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=934" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/934" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
-			<ns2:id>933</ns2:id></ns2:blockedOn><ns2:blocking>
-			<ns2:id>936</ns2:id></ns2:blocking><ns2:closedDate>2010-12-22T18:55:39.000Z</ns2:closedDate><ns2:id>934</ns2:id></ns0:entry>
+			<ns2:id>933</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blocking>
+			<ns2:id>936</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2010-12-22T18:55:39.000Z</ns2:closedDate><ns2:id>934</ns2:id></ns0:entry>

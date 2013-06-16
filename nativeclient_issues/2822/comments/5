@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QNQn47eCl7ImA9WhVbFUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2822/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8789
+
+------------------------------------------------------------------------
+r8789 | mcgrathr@chromium.org | Fri Jun 01 15:54:09 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=8789&amp;r2=8788&amp;pathrev=8789
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/elf_util.h?r1=8789&amp;r2=8788&amp;pathrev=8789
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=8789&amp;r2=8788&amp;pathrev=8789
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/testdata/auxv_phdr.c?r1=8789&amp;r2=8788&amp;pathrev=8789
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/elf_util.c?r1=8789&amp;r2=8788&amp;pathrev=8789
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=8789&amp;r2=8788&amp;pathrev=8789
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/include/elf_auxv.h?r1=8789&amp;r2=8788&amp;pathrev=8789
+
+Pass AT_PHDR, AT_PHNUM, AT_PHENT when phdrs are visible in the address space
+
+Traditional ELF layout makes the ELF program headers visible in the
+process address space.  The next-generation linkers for NaCl do this too
+(in a sandbox-compatible fashion).  This will let us use the canonical,
+and cleaner, methods for recognizing the TLS layout requirements and for
+glibc's dl_iterate_phdr (used for C++ exception handling among other
+things).
+
+To make this useful, sel_ldr must pass the canonical auxv entries
+informing the untrusted process where its own phdrs appear in its
+address space.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2822
+TEST= trybots
+
+R=bsy@google.com
+
+Review URL: https://chromiumcodereview.appspot.com/10449111
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-01T22:56:33.000Z</ns0:updated><ns0:published>2012-06-01T22:56:33.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2822#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2822/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

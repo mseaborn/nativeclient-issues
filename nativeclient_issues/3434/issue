@@ -1,0 +1,65 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0MHRX47eCl7ImA9WhBaF0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3434</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I'm splitting this out from issue 3343.
+
+LLVM has a family of intrinsics for integer arithmetic which indicate whether the operation overflowed, covering 16/32/64-bit signed/unsigned add/sub/mul:
+
+  declare {i32, i1} @llvm.sadd.with.overflow.i32(i32 %a, i32 %b)
+  declare {i64, i1} @llvm.umul.with.overflow.i64(i64 %a, i64 %b)
+  etc.
+
+These return a struct value and require using the &amp;quot;extractvalue&amp;quot; instruction.  However, we want to remove struct types from the PNaCl ABI (issue 3343) and disallow &amp;quot;extractvalue&amp;quot; and &amp;quot;insertvalue&amp;quot;.
+
+Uses of the with.overflow intrinsics are introduced in the following places:
+
+ a) In the LLVM optimiser, by the InstCombine pass.  (See lib/Transforms/InstCombine/InstCombineCompares.cpp.)  This recognises the C idiom for addition overflow checks.  We could disable this part of InstCombine.
+
+ b) In Clang, for the multiplication in a new[] expression.  (See lib/CodeGen/CGExprCXX.cpp.)  That generates code like this:
+
+      %6 = tail call { i32, i1 } @llvm.umul.with.overflow.i32(i32 %add, i32 4)
+      %7 = extractvalue { i32, i1 } %6, 1
+      %8 = extractvalue { i32, i1 } %6, 0
+      %9 = select i1 %7, i32 -1, i32 %8
+      %call.i = call fastcc noalias i8* @_Znwj(i32 %9)
+
+    We could expand out this overflow check using an IR pass.  Although expanding out multiplication overflow checks is complicated in the general case, expanding out a check for unsigned X*Const is much simpler.  X*Const overflows iff X &amp;gt; UINT_MAX/Const.  Expanding out new[]'s overflow check would have a negligible run time overhead.
+
+ c) In Clang, for the -ftrapv compile switch.  (See EmitAddConsiderOverflowBehavior() in lib/CodeGen/CGExprScalar.cpp and LangOptions::SOB_Trapping more generally.)  For a first release, we could address this by not supporting -ftrapv.
+
+
+We have two options:
+
+Option 1: Expand out these intrinsics entirely, into regular arithmetic + comparisons.  We can add an IR pass to do this for new[] only.  Handling -ftrapv would be optional.
+
+
+Option 2: Add replacement intrinsics that return the overflow bit on its own, and rewrite the IR to use these.
+
+The new intrinsics would be:
+
+  declare i1 @llvm.nacl.sadd.overflows.i32(i32 %a, i32 %b)
+  declare i1 @llvm.nacl.umul.overflows.i64(i64 %a, i64 %b)
+  etc.
+
+The user-toolchain IR pass would rewrite as follows:
+
+  ; Input:
+  %pair = call {i32, i1} @llvm.uadd.with.overflow.i32(i32 %a, i32 %b)
+  %sum = extractvalue {i32, i1} %pair, 0
+  %overflowed = extractvalue {i32, i1} %pair, 1
+
+  ; Would be rewritten to:
+  %sum = add i32 %a, %b
+  %overflowed = call i1 @llvm.nacl.uadd.overflows.i32(i32 %a, i32 %b)
+
+A simple IR pass implementation would only allow @llvm.*.with.overflow.*() calls to be referenced by &amp;quot;extractvalue&amp;quot; instructions.  Handling &amp;quot;insertvalue&amp;quot; and phi nodes would make this a lot more complicated, but these aren't used with @llvm.*.with.overflow.*() in practice.
+
+On the PNaCl translator side, we can do the reverse conversion on the IR, so that we don't need to implement the new intrinsics in the backend.
+
+This would require fixing issue 3381 so that @llvm.*.with.overflow.*() work in all cases.
+
+
+Option 1 is a lot simpler, so I propose to implement that.  We might consider adding the intrinsics for Option 2 in a later release.
+</ns0:content><ns0:updated>2013-05-29T02:43:54.000Z</ns0:updated><ns0:published>2013-05-13T21:45:33.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/jvoung@chromium.org/</ns2:uri><ns2:username>jvoung@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PNaCl: Deal with "llvm.*.with.overflow" intrinsics for struct types removal</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>PNaClABI</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3434/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3434" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3434" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-05-29T02:43:54.000Z</ns2:closedDate><ns2:id>3434</ns2:id></ns0:entry>

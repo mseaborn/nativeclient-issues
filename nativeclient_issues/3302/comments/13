@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkABRn47eCl7ImA9WhBSFEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3302/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>damonp...@gmail.com</ns0:name><ns0:uri>/u/112358947840938663111/</ns0:uri></ns0:author><ns0:content type="html">As far as we tried th new translate, it does not work for the following test.c:
+
+int32_t  main(void)  
+{
+    int32_t i  = -270770481;
+    int32_t j  = -1912319477;
+    uint32_t const  m2[1][1]  = {4234550229};
+    uint32_t* madat ;    
+    madat = &amp;(((uint32_t*)(uint32_t const *)&amp;(((uint32_t const (*)[1])&amp;m2)[i * 947877507 + 1574375955]))[j * 233468377 + 689019309]); 
+    if ( *madat == 
+         ( ( (3795428823 * ((uint32_t*)(uint32_t const *)&amp;(((uint32_t const (*)[1])&amp;m2)[i * 947877507 + 1574375955]))[j * 233468377 + 689019309]) - 
+             (2597389499 ^ ((j * 233468377 + 689019309) % 4294967295)) * 3795428823
+           ) + 3829710203
+         ) * 2824337475 + 2376483023
+       )
+    {
+        return 1;
+    }
+    return 0;
+}
+
+May I ask your help to verify your fix with the above piece of code?
+Thanks.
+Damon</ns0:content><ns0:updated>2013-02-21T21:05:57.000Z</ns0:updated><ns0:published>2013-02-21T21:05:57.000Z</ns0:published><ns2:updates /><ns0:title>Comment 13 by damonp...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3302#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3302/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

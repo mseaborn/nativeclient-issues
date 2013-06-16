@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUFSH47eCl7ImA9WhBaEks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3414/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Over email, I asked one of the browser cache guys, Ricardo, about 1.1, and the other schemes.
+
+An internal api (1.1) is going to be a hard sell, since it could make it easier for an attacker to directly profile users (without working harder to do a timing attack).  
+
+It also seems like we could get the implementation of 1.1 wrong, since the part of the files could be cached and part of it not.
+
+Otherwise, he thought that the hash would have been as good as the server's headers. 
+
+"It seems better to have a direct identifier somewhere, call it X-Hash header, a hash somewhere else (not part of the HTTP response headers), or Etag and/or LastModified."
+
+If neither part of the header is present for some reason, then we would not cache.</ns0:content><ns0:updated>2013-05-23T00:00:19.000Z</ns0:updated><ns0:published>2013-05-23T00:00:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3414#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3414/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUMHRn47eCl7ImA9WhJbEEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3036</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">for the TCB, at least, we should try to get all const variables into ro pages.  e.g., vtables.
+
+i'm marking this as an infrastructure issue, since no (shipped) TCB code changes should be required -- it's our use of the various toolchains.
+
+when work start to progress on this, remember to split into 3 (or more) sub-issues, one per host-OS-specific toolchain, and use this one as a tracking bug / parent node.
+
+security risk is small -- this is a defense-in-depth issue.</ns0:content><ns0:updated>2012-09-19T22:23:57.000Z</ns0:updated><ns0:published>2012-09-19T22:04:52.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>const variables should go into ro pages</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Security</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3036/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3036" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3036" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:id>3036</ns2:id></ns0:entry>

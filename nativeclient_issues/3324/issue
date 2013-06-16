@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EFQn47eCl7ImA9WhBXFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3324</ns0:id><ns0:author>
+			<ns0:name>kschi...@google.com</ns0:name><ns0:uri>/u/108470876877739532758/</ns0:uri></ns0:author><ns0:content type="html">The current ARM validator is used in two ways. The first is to validate a code segment (inside of NaCl) before it is run. The second is a command-line tool (NCVAL) that verbosely reports reasons why code doesn't validate.
+
+For the command-line tool, it would be nice to not only report why the code doesn't validate, but diagnostics that would help the developer know how they should fix code.  This CL is for adding this new capability.
+
+This was prompted by the following case:
+
+A developer was porting an application that used &amp;quot;mcr p15, 0, rX, c7, c10, 5&amp;quot; to implement memory barrier. However, NaCl doesn't allow this instruction because most forms can only be run in system mode (rather than user mode). In addition, this form of the instruction is deprecated and one should use he DSB instruction defined in ARMv7.
+
+Rather than requiring users to hunt for this answer (hopefully somewhere in the provided documentation), it would be better if the command-line version would report the explanation that DSB should be used instead.
+
+The proposed solution is to allow us to add diagnostic messages to the ARM's validator specification (i.e. file native_client/src/trusted/validator_arm/armv7.table). Then automatically regenerate the corresponding sources that will cause command-line NCVAL to report the diagnostic. Further, these diagnostics should not be added to the validator used by sel_ldr. This will allow us to simply add diagnostics to the validator without effecting the performance of sel_ldr.
+</ns0:content><ns0:updated>2013-03-28T21:20:13.000Z</ns0:updated><ns0:published>2013-03-01T16:44:54.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108470876877739532758/</ns2:uri><ns2:username>kschi...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109636895838879576326/</ns2:uri><ns2:username>j...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110547710856190289770/</ns2:uri><ns2:username>s...@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Add ability to report diagnostics during validation.</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Mstone-28</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3324/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3324" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3324" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-03-28T17:21:28.000Z</ns2:closedDate><ns2:id>3324</ns2:id></ns0:entry>

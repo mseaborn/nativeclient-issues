@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A04FRH47eCl7ImA9WhJWGE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2799</ns0:id><ns0:author>
+			<ns0:name>dsch...@google.com</ns0:name><ns0:uri>/u/104270846665912603141/</ns0:uri></ns0:author><ns0:content type="html">As reported on the mailing list, the code:
+
+int f()
+  {
+  unsigned int x = 0xf2a3e218;
+
+  return ((int*)x)[0];
+  }
+
+results in
+
+0000000000000000 &amp;lt;f&amp;gt;:
+   0:   55                      push   %rbp
+   1:   48 89 e5                mov    %rsp,%rbp
+   4:   c7 45 fc 18 e2 a3 f2    movl   $0xf2a3e218,-0x4(%rbp)
+   b:   41 8b 87 18 e2 a3 f2    mov    -0xd5c1de8(%r15),%eax
+
+on PNaCl. The negative displacement is obviously wrong;
+instead we need to mov the immediate to a register, zero-extend and use base/index to do the load.</ns0:content><ns0:updated>2012-08-24T17:38:35.000Z</ns0:updated><ns0:published>2012-05-21T18:47:09.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Don't use 32-bit displacement on R15 when the value is negative</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-23</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2799/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2799" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2799" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-08-24T17:38:35.000Z</ns2:closedDate><ns2:id>2799</ns2:id></ns0:entry>

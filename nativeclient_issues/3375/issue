@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU4BQX47eCl7ImA9WhBVEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3375</ns0:id><ns0:author>
+			<ns0:name>olo...@google.com</ns0:name><ns0:uri>/u/113921375080395685545/</ns0:uri></ns0:author><ns0:content type="html">Newlib implmentation of pthread has cleanup jandler unimplemented, so following test (compiled with -lnosys -lpthread)
+
+#include &amp;lt;pthread.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+
+static int g_val = 0;
+
+static void cleanup_handler(void *arg)
+{
+  g_val = 1;
+}
+
+int main() {
+  g_val = 0;
+  pthread_cleanup_push(cleanup_handler, NULL);
+  pthread_cleanup_pop(1);
+  if (g_val != 1) {
+    printf(&amp;quot;FAIL\n&amp;quot;);
+    return 1;
+  } else {
+    printf(&amp;quot;PASS\n&amp;quot;);
+    return 0;
+  }
+}
+
+just fail. Unfortunately, recent Mono relies on idiom
+
+ pthread_cleanup_push(unlocker);
+ mutex_lock();
+ pthread_cleanup_pop(1);
+
+for cancellable mutex locking. As it just doesn't work in newlib, mutex
+stays locked and we getting a deadlock.
+
+We don't have to implement real cancellation handlers, and have no way to cancel thread, but we need to be able to run those functions  correctly in non-cancellation scenario. 
+
+
+
+</ns0:content><ns0:updated>2013-04-15T11:05:50.000Z</ns0:updated><ns0:published>2013-04-08T10:49:24.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Newlib has no pthread_cleanup_push()/pthread_cleanup_pop()</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3375/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3375" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3375" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3375</ns2:id></ns0:entry>

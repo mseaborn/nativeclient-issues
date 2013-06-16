@@ -23,5 +23,5 @@ APIs tend to be non-blocking.
 </ns0:content><ns0:updated>2011-08-03T22:41:59.000Z</ns0:updated><ns0:published>2010-07-06T09:06:05.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
 			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Plugin does many synchronous, blocking calls to NaCl process</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Component-Pepper</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/673/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=673" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/673" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
-			<ns2:id>1501</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>91605</ns2:id><ns2:project>chromium</ns2:project></ns2:blockedOn><ns2:id>673</ns2:id></ns0:entry>
+			<ns2:id>91605</ns2:id><ns2:project>chromium</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1501</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:id>673</ns2:id></ns0:entry>

@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4CSH47eCl7ImA9WhNUGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3250/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Please look at a doc such as: 
+(1) http://gcc.gnu.org/onlinedocs/gcc/Link-Options.html#Link-Options
+and (2) http://gcc.gnu.org/onlinedocs/gcc/Directory-Options.html#Directory-Options
+or http://linux.die.net/man/1/gcc.
+
+
+If you have a library named "libfoo.a", then you should have the commandline flag "-lfoo", or "-l foo" in place of specifying "libfoo.a".  Or if you wish, you could say "-l:libfoo.a".
+
+Again, the "-L" will only help you look up the actual libraries.  The help message should describe the -L option as: "-Ldir
+Add directory dir to the list of directories to be searched for -l."
+
+For test.bc, etc. you'll just need to specify the relative or full paths.</ns0:content><ns0:updated>2013-01-10T22:46:09.000Z</ns0:updated><ns0:published>2013-01-10T22:46:09.000Z</ns0:published><ns2:updates>
+			<ns2:status>Invalid</ns2:status></ns2:updates><ns0:title>Comment 3 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3250#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3250/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

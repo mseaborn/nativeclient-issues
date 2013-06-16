@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0cEQn47eCl7ImA9WhdWFU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/965/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">raw data and initial analysis from code search:
+
+NACL_TMPFS_PREFIX causes files of the form &lt;prefix&gt;-&lt;pid&gt;.&lt;counter&gt; to be created (w/ O_RDWR | O_CREAT | O_EXCL).  if the envariable points to an unsafe path prefix (note prefix does not have to end in /) and another process needs to create files of the same form and does not use O_EXCL, this could cause problems.  somewhat unlikely, though we might consider sanity checking the value or baking in the final desired value, or enabling only for CrOS builds.
+
+NACL_SEL_LDR in the nonnacl_util/sel_ldr_launcher.cc (not used by chrome, but by sel_universal and ???) can cause a different binary to run.  probably not critical, since this code is used only by developers.
+
+NACL_IRT_LIBRARY in nonnacl_util/sel_ldr_launcher.cc (not used by chrome,....) not critical.
+
+NACL_DANGEROUS_IGNORE_VALIDATOR causes validation errors to be ignored.  dangerous.
+
+NACL_DANGEROUS_ENABLE_FILE_ACCESS allows open syscall.  dangerous.
+
+NACL_DISABLE_DYNAMIC_LOADING.  not dangerous.  at most DOS opportunity.
+
+NACL_CRASH_TEST -- for a fault injection test.  should be at most DOS opportunity
+
+NACL_FAULT_INJECTION -- can inject bogus return values at some call sites.  currently not dangerous since no wild pointers etc can be injected, though this may change as new fault injection sites are added.</ns0:content><ns0:updated>2011-09-09T01:16:43.000Z</ns0:updated><ns0:published>2011-09-09T01:16:43.000Z</ns0:published><ns2:updates>
+			<ns2:status>Started</ns2:status></ns2:updates><ns0:title>Comment 10 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=965#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/965/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

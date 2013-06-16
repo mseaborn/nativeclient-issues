@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkEHRX47eCl7ImA9WhFTE0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3437</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">This recent toolchain update caused a failure in 176.gcc in Spec2k when run on ARM hardware:
+http://src.chromium.org/viewvc/native_client?revision=11359&amp;amp;view=revision
+(ARM QEMU was not affected.)
+
+The log output wasn't very helpful:
+
+ Benchmarking: 176.gcc
+----------------------------------------------------------------------
+/b/build/slave/oneiric_32-newlib-arm_hw-pnacl-panda-spec/build/native_client/tests/spec2k/176.gcc /b/build/slave/oneiric_32-newlib-arm_hw-pnacl-panda-spec/build/native_client/tests/spec2k
+   text	   data	    bss	    dec	    hex	filename
+1991144	  39904	  69276	2100324	 200c64	./gcc.pnacl_translator.opt.hw.arm
+Running benchmark 2 times
++ handle-error
++ RETCODE=1
++ echo @@@STEP_FAILURE@@@
+@@@STEP_FAILURE@@@
+(from http://build.chromium.org/p/client.nacl/builders/oneiric_32-newlib-arm_hw-pnacl-panda-spec/builds/2101/steps/spec2k%20run%20%5BSetupPnaclTranslatorArmOptHW%5D%20%5Ball%20tests%5D/logs/stdio)
+
+
+Derek debugged this and found that untrusted code was crashing with SIGBUS.  The reported crash address was after a &amp;quot;vstr&amp;quot; instruction (floating point store) on an unaligned memory address.
+
+It turns out that, on ARM, LLVM applies a pass called GlobalMerge which merges global variables into larger variables.  This seems to be breaking when combined with the FlattenGlobals pass (from issue 3113).  I suspect GlobalMerge is not respecting globals' &amp;quot;align&amp;quot; attribute properly.
+</ns0:content><ns0:updated>2013-06-04T16:50:34.000Z</ns0:updated><ns0:published>2013-05-17T20:22:15.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PNaCl: FlattenGlobals + GlobalMerge breaks 176.gcc in Spec2k on ARM</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3437/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3437" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3437" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-06-04T16:50:34.000Z</ns2:closedDate><ns2:id>3437</ns2:id></ns0:entry>

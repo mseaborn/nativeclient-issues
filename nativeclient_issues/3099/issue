@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU8DRH47eCl7ImA9WhNTF0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3099</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">If I compile the following code in C with PNaCl with the option -fexceptions, it will fail to link.  Linking gives the error:
+  .../c_cleanup.bc: error: undefined reference to '__gcc_personality_v0'
+
+static void cleanup_func(int *arg) {
+  // ...
+}
+
+void func_using_cleanup(void (*thrower_func)(void)) {
+  int foo __attribute__((cleanup(cleanup_func))) = 1234;
+  thrower_func();
+}
+
+For a test case, see http://codereview.chromium.org/11230020/.
+
+__gcc_personality_v0() is normally defined by libgcc.  See gcc's gcc/unwind-c.c file.
+
+This is easy to make work because the C personality function just provides a subset of the functionality of the C++ personality function.  Defining the former as follows makes the test pass:
+
+int __gxx_personality_v0(
+    int version, int actions, uint64_t exception_class,
+    struct _Unwind_Exception *ue_header, struct _Unwind_Context *context);
+
+int __gcc_personality_v0(
+    int version, int actions, uint64_t exception_class,
+    struct _Unwind_Exception *ue_header, struct _Unwind_Context *context) {
+  return __gxx_personality_v0(version, actions, exception_class,
+                              ue_header, context);
+}
+</ns0:content><ns0:updated>2012-10-21T01:44:35.000Z</ns0:updated><ns0:published>2012-10-21T01:44:35.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>PNaCl: __attribute__((cleanup(F))) does not work in C with -fexceptions</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3099/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3099" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3099" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3099</ns2:id></ns0:entry>

@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4FQH47eCl7ImA9WhBRFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3232/comments/full/63</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10945
+
+------------------------------------------------------------------------
+r10945 | shcherbina@google.com | 2013-03-06T11:03:24.791890Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/decoder_x86_32.c?r1=10945&amp;r2=10944&amp;pathrev=10945
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/decoder_x86_64.c?r1=10945&amp;r2=10944&amp;pathrev=10945
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/system_instructions.def?r1=10945&amp;r2=10944&amp;pathrev=10945
+
+Validator_ragel: disable MOVs involving debug registers.
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3329
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3232
+TEST= ./scons dfacheckdecoder
+
+Review URL: https://codereview.chromium.org/12523007
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-03-06T11:05:11.000Z</ns0:updated><ns0:published>2013-03-06T11:05:11.000Z</ns0:published><ns2:updates /><ns0:title>Comment 63 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3232#c63" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3232/comments/full/63" rel="self" type="application/atom+xml" /></ns0:entry>

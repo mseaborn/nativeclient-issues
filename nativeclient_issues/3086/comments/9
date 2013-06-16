@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEIFQX47eCl7ImA9WhNSEko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3086/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10110
+
+------------------------------------------------------------------------
+r10110 | mcgrathr@chromium.org | 2012-10-26T18:34:27.810532Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/toolchain_build/command.py?r1=10110&amp;r2=10109&amp;pathrev=10110
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/toolchain_build/toolchain_build.py?r1=10110&amp;r2=10109&amp;pathrev=10110
+
+Refactor new toolchain recipes, build the compiler
+
+This gets us as far as building the compiler.
+Target libraries remain to be done.
+
+Outside the recipes module, this enhances command.Command to support a
+'path_dirs' keyword argument, a list of value-substituted directory names
+to prepend to the PATH in the environment of the run command.  It also
+adds a convenience function for removing a directory tree.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3086
+TEST= trybots
+
+R=bradnelson@google.com,ncbray@google.com
+
+Review URL: https://codereview.chromium.org/11293003
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-26T18:35:10.000Z</ns0:updated><ns0:published>2012-10-26T18:35:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3086#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3086/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

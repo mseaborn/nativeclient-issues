@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0EDQH47eCl7ImA9WhBTE08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3271</ns0:id><ns0:author>
+			<ns0:name>shcherb...@google.com</ns0:name><ns0:uri>/u/105197577636354702799/</ns0:uri></ns0:author><ns0:content type="html">For example, here is a generic form of the instruction cmppd:
+  cmppd &amp;lt;immediate&amp;gt;, &amp;lt;operand1&amp;gt;, &amp;lt;operand2&amp;gt;
+
+But if immediate is 0, this instruction is disassembled as
+  cmpeqpd &amp;lt;operand1&amp;gt;, &amp;lt;operand2&amp;gt;
+
+If immediate is 1, it's
+  cmpltpd &amp;lt;operand1&amp;gt;, &amp;lt;operand2&amp;gt;
+
+And so on (there are 8 special forms).
+
+Full list of generic xmm instructions admitting special forms:
+  cmppd
+  vcmppd
+  cmpps
+  vcmpps
+  cmpsd
+  vcmpsd
+  cmpss
+  vcmpss
+  pclmulqdq
+  vpclmulqdq
+
+
+The problem is that until last byte is read, DFA does not know whether it's a generic or specific form, so it emits operand parsing actions for both (and since types of operands and even numbers of them are different, that's unfortunate).
+</ns0:content><ns0:updated>2013-02-08T11:07:51.000Z</ns0:updated><ns0:published>2013-01-25T08:42:29.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105197577636354702799/</ns2:uri><ns2:username>shcherb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Validator_ragel: some xmm instructions have different generic and special forms</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3271/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3271" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3271" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>3232</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>3299</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:id>3271</ns2:id></ns0:entry>

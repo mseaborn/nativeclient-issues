@@ -1,0 +1,83 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0MARX47eCl7ImA9WhJWEkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2897/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9505
+
+------------------------------------------------------------------------
+r9505 | mseaborn@chromium.org | 2012-08-17T22:08:47.013132Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/abi.h?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/debug_stub.gyp?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/transport.h?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_debug_init_dummy.c?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/transport_common.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/mutex.h?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/packet_test.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/nacl_signal_32.h?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/packet.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/posix/platform_impl.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/thread.h?r1=9505&amp;r2=9504&amp;pathrev=9505
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/site_scons/site_tools/library_deps.py?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/util_test.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/all.gyp?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/util.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/thread_common.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/win/mutex_impl.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/test.h?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/session_test.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/nacl_debug.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/session.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/posix/mutex_impl.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/target.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_signal_arm.h?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/target.h?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/abi_test.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/posix/thread_impl.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/abi.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/win/debug_stub_win.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/build.scons?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/win/platform_impl.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/packet.h?r1=9505&amp;r2=9504&amp;pathrev=9505
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/port?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/util.h?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/test.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_signal_64.h?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/session.h?r1=9505&amp;r2=9504&amp;pathrev=9505
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/win/thread_impl.cc?r1=9505&amp;r2=9504&amp;pathrev=9505
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/platform.h?r1=9505&amp;r2=9504&amp;pathrev=9505
+
+Debug stub: Move port/* and gdb_rsp/* into debug_stub/
+
+The "port" directory is poorly named, and there is no particular need
+to split the debug stub between "debug_stub" and "gdb_rsp"
+directories.  Moving the files will allow the debug stub to be
+simplified further.
+
+Merge gdb_rsp.gyp into debug_stub.gyp.
+
+Merge gdb_rsp/build.scons into debug_stub/build.scons.
+
+Remove the unused file port.gyp.
+
+Remove gdb_rsp/OWNERS, which is the same as debug_stub/OWNERS.
+
+Merge the "debug_stub_init" library into "debug_stub", since we no
+longer have a circular dependency between "debug_stub" and "gdb_rsp".
+
+The dependency of "sel" on "debug_stub" was removed in an earlier
+change, so the comment in service_runtime/build.scons about a circular
+dependency can be removed.
+
+Remove an incorrect comment about PPAPI from debug_stub/build.scons
+and remove an obsolete comment about Linux/Mac.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2897
+TEST=Scons and Gyp builds
+
+Review URL: https://chromiumcodereview.appspot.com/10834366
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-17T22:10:44.000Z</ns0:updated><ns0:published>2012-08-17T22:10:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2897#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2897/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0MCQn47eCl7ImA9WhJbFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3048</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I'm splitting this out from issue 2903.
+
+To work around a problem with the debug stub's fault handling on 64-bit Windows, we switched nacl-gdb to using software single stepping instead of hardware single stepping.
+
+Now that the debug stub has been fixed, this change to nacl-gdb can be reverted.</ns0:content><ns0:updated>2012-09-26T11:37:43.000Z</ns0:updated><ns0:published>2012-09-26T04:07:49.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>GDB: Turn off software single stepping -- it's no longer needed</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GDB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3048/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3048" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3048" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3048</ns2:id></ns0:entry>

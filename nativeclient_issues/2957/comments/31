@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0MGQX47eCl7ImA9WhJaEkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2957/comments/full/31</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9910
+
+------------------------------------------------------------------------
+r9910 | bradnelson@google.com | 2012-10-03T17:26:46.340483Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=9910&amp;r2=9909&amp;pathrev=9910
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-nmf.py?r1=9910&amp;r2=9909&amp;pathrev=9910
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/DEPS?r1=9910&amp;r2=9909&amp;pathrev=9910
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/third_party_mod/jsoncpp?r1=9910&amp;r2=9909&amp;pathrev=9910
+
+Drop simplejson and jsoncpp.
+
+Dropping components we don't need anymore.
+Removes workaround for python 2.5 that we don't support anymore.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2957
+TEST=None
+R=ncbray@chromium.org
+
+Review URL: https://codereview.chromium.org/11049017
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-03T17:30:20.000Z</ns0:updated><ns0:published>2012-10-03T17:30:20.000Z</ns0:published><ns2:updates /><ns0:title>Comment 31 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2957#c31" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2957/comments/full/31" rel="self" type="application/atom+xml" /></ns0:entry>

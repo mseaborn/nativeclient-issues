@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08BQ347eCl7ImA9WhNUF0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3232/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10562
+
+------------------------------------------------------------------------
+r10562 | khim@google.com | 2013-01-09T14:25:36.449875Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/mmx_instructions.def?r1=10562&amp;r2=10561&amp;pathrev=10562
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions/x87_instructions.def?r1=10562&amp;r2=10561&amp;pathrev=10562
+
+Disable instructions with fwait "prefix" in validator
+
+These instructions are only needed in decoder to match objdump.
+Ragel automatically removes them in minimization process but it's cleaner to
+not use them in it at all.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=3232
+TEST=./scons dfagen keeps {decoder,validator}_x86_{32,64}.c unchanged
+Review URL: https://codereview.chromium.org/11829023
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-01-09T14:30:52.000Z</ns0:updated><ns0:published>2013-01-09T14:30:52.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3232#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3232/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

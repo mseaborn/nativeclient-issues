@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0cBRn47eCl7ImA9WhJXFEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2950</ns0:id><ns0:author>
+			<ns0:name>arben...@google.com</ns0:name><ns0:uri>/u/115623601907745403448/</ns0:uri></ns0:author><ns0:content type="html">It is unclear whether or not the addresses that get mapped in NaClVmmapAdd() are trusted or untrusted.  In some cases, the addresses is simply 0, but the code looks like it is calculating some trusted address.
+
+These inconsistencies can be found in the arch-specific NaClMprotectGuards() calls:
+src/trusted/service_runtime/arch/arm/sel_addrspace_arm.c
+src/trusted/service_runtime/arch/x86_32/sel_addrspace_x86_32.c
+src/trusted/service_runtime/arch/x86_64/sel_addrspace_x86_64.c
+</ns0:content><ns0:updated>2012-08-08T15:50:57.000Z</ns0:updated><ns0:published>2012-08-07T21:06:26.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>NaClVmmapAdd() is inconsistent</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2950/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2950" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2950" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>2950</ns2:id></ns0:entry>

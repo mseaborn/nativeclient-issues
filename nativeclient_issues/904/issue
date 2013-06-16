@@ -5,5 +5,5 @@
 			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Implement Pepper2 Audio</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-AppPlatform</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Milestone-Arctic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/904/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=904" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/904" rel="self" type="application/atom+xml" /><ns2:stars>14</ns2:stars><ns2:blocking>
-			<ns2:id>902</ns2:id></ns2:blocking><ns2:blocking>
-			<ns2:id>905</ns2:id></ns2:blocking><ns2:closedDate>2011-01-13T01:46:32.000Z</ns2:closedDate><ns2:id>904</ns2:id></ns0:entry>
+			<ns2:id>902</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>905</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2011-01-13T01:46:32.000Z</ns2:closedDate><ns2:id>904</ns2:id></ns0:entry>

@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUMFSX47eCl7ImA9WhJVEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2997/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">Interesting. Looking at the source I'm pretty sure vdiff is testing this byte sequence. Also, from my current build it looks like RDFA accepts this. How are you invoking RDFA? Here's what I'm doing:
+
+bradchen@trontano:~/lproj/nacl-git/native_client$ ./scons-out/opt-linux-x86-64/staging/vdiff 0fae1c24
+trying 0fae1c24 (0fae1c24)
+================0fae1c24
+ NaCl: 0000000000001000: 0f ae 1c 24                                  stmxcsr [%rsp]
+Ragel: 0f ae 1c 24 : stmxcsr
+valid: 1
+invalid: 0
+errors: 0
+tried: 1
+    =? 1 valid + invalid + errors
+bradchen@trontano:~/lproj/nacl-git/native_client$ 
+</ns0:content><ns0:updated>2012-08-27T16:03:38.000Z</ns0:updated><ns0:published>2012-08-27T16:03:38.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bradc...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2997#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2997/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

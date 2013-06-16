@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE4FRn47eCl7ImA9WhJVEkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2957/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=154021
+
+------------------------------------------------------------------------
+r154021 | bradnelson@google.com | 2012-08-30T00:31:12.826122Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/tools/build/masters/master.tryserver.chromium/master.cfg?r1=154021&amp;r2=154020&amp;pathrev=154021
+   M http://src.chromium.org/viewvc/chrome/trunk/tools/build/masters/master.tryserver.chromium/slaves.cfg?r1=154021&amp;r2=154020&amp;pathrev=154021
+
+Adding naclmore trybots to match fyi bots.
+
+Folks landing changes that affect the chrome-nacl boundary
+currently don't have trybots that test what will be build on
+this fyi bot. As keeping it green is critical, we need trybots.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2957
+TEST=None
+R=maruel@chromium.org,ncbray@chromium.org
+
+Review URL: https://chromiumcodereview.appspot.com/10898042
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-30T00:35:17.000Z</ns0:updated><ns0:published>2012-08-30T00:35:17.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2957#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2957/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

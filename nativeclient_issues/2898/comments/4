@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EEQX47eCl7ImA9WhJWEk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2898/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">Here is the second part of the story:
+
+The test that actually failed was compiled with -O2 -fomit-frame-pointer (that was the build system that confused me, but verbose output made things clear).
+
+With -fomit-frame-pointer there was actually no prologue recognizable by GDB. However, we don't have to compile with -fomit-frame-pointer, so this particular problem in our case has the same scale as for stock gcc/gdb, which seems minor (not fixed yet :)).
+
+However, even without -fomit-frame-pointer and thus with recognizable prologue the test didn't pass. The reason was GDB was trying the wrong hook to recognize the prologue, because it was detecting wrong gdbarch from function symbol objfile.
+</ns0:content><ns0:updated>2012-08-17T17:46:40.000Z</ns0:updated><ns0:published>2012-08-17T17:46:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by eaelt...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2898#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2898/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

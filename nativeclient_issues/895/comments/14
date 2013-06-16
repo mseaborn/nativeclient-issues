@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUFQH47eCl7ImA9WhJbGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/895/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9876
+
+------------------------------------------------------------------------
+r9876 | mseaborn@chromium.org | 2012-09-28T18:49:04.170863Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=9876&amp;r2=9875&amp;pathrev=9876
+
+Fix Windows XP tests by increasing time allotted to run_service_runtime_tests
+
+Following r9855 (which added some tests to run_service_runtime_tests),
+this test is "failing" on xp-glibc-opt only with:
+
+ERROR: should have taken less than 20.000000 secs
+[  FAILED  ] nacl_glibc.run_service_runtime_tests (27734 ms)
+
+This is not a real failure because the test passes fine but is
+regarded as taking too long.
+
+In contrast, xp-newlib-opt gives:
+WARNING: should have taken less than 2.000000 secs
+[       OK ] nacl_newlib.run_service_runtime_tests (10781 ms)
+
+And win7-64-glibc-opt gives:
+WARNING: should have taken less than 2.000000 secs
+[       OK ] nacl_glibc.run_service_runtime_tests (2203 ms)
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=895
+TEST=none
+
+Review URL: https://codereview.chromium.org/10986090
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-09-28T18:50:11.000Z</ns0:updated><ns0:published>2012-09-28T18:50:11.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=895#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/895/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

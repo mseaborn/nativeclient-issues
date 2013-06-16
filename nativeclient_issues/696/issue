@@ -1,6 +1,6 @@
 <ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0YBSX47eCl7ImA9WxFaFUo.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/696</ns0:id><ns0:author>
-			<ns0:name>ali00000...@gmail.com</ns0:name><ns0:uri>/u/113506611525348822942/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+			<ns0:name>al...@cs.stanford.edu</ns0:name><ns0:uri>/u/113506611525348822942/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
 &lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
 Building using gclient
 Revision 2690

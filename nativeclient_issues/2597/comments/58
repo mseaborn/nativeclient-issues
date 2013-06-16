@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQHQH47eCl7ImA9WhVUF00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/58</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8673
+
+------------------------------------------------------------------------
+r8673 | khim@google.com | Tue May 22 10:17:45 PDT 2012
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/deps/third_party/ragel/02-ragel-6.7.LL.patch?r1=8673&amp;r2=8672&amp;pathrev=8673
+ A http://src.chromium.org/viewvc/native_client/trunk/deps/third_party/ragel/ragel.linux?r1=8673&amp;r2=8672&amp;pathrev=8673
+ A http://src.chromium.org/viewvc/native_client/trunk/deps/third_party/ragel/build.sh?r1=8673&amp;r2=8672&amp;pathrev=8673
+ A http://src.chromium.org/viewvc/native_client/trunk/deps/third_party/ragel/01-ragel-6.7.GT2.patch?r1=8673&amp;r2=8672&amp;pathrev=8673
+ A http://src.chromium.org/viewvc/native_client/trunk/deps/third_party/ragel/README.nacl?r1=8673&amp;r2=8672&amp;pathrev=8673
+ A http://src.chromium.org/viewvc/native_client/trunk/deps/third_party/ragel/ragel-6.7.tar.gz?r1=8673&amp;r2=8672&amp;pathrev=8673
+ A http://src.chromium.org/viewvc/native_client/trunk/deps/third_party/ragel/COPYING?r1=8673&amp;r2=8672&amp;pathrev=8673
+ A http://src.chromium.org/viewvc/native_client/trunk/deps/third_party/ragel?r1=8673&amp;r2=8672&amp;pathrev=8673
+
+Add ragel to third_party.
+
+Different versions of ragel produce slightly different versions
+of generated code and we commit this code to repository.
+
+To stop endless churn it's better to commit one single prebuilt
+version of ragel to the repo.
+
+Includes ragel sources, prebuilt binary and script which builds
+said binary.
+
+Additionally this version includes -GT2 patch which produces
+faster code on MSVC 2008/2010.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2597
+TEST=none
+Review URL: https://chromiumcodereview.appspot.com/10383152
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-05-22T17:22:11.000Z</ns0:updated><ns0:published>2012-05-22T17:22:11.000Z</ns0:published><ns2:updates /><ns0:title>Comment 58 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c58" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/58" rel="self" type="application/atom+xml" /></ns0:entry>

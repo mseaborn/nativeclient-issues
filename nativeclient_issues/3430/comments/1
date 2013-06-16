@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIGR347eCl7ImA9WhBbEEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3430/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11319
+
+------------------------------------------------------------------------
+r11319 | bsy@google.com | 2013-05-09T00:11:22.493330Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=11319&amp;r2=11318&amp;pathrev=11319
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/mmap_prot_exec/mmap_prot_exec.c?r1=11319&amp;r2=11318&amp;pathrev=11319
+
+fixes bug in mmap failures not being propagated
+
+Mapping in a file opened with O_RDONLY, with PROT_READ | PROT_WRITE
+and MAP_SHARED instead of MAP_PRIVATE should fail, but it should
+return MAP_FAILED with errno set to EACCES.  Currently, it aborts the
+process.  This fixes the errno propagation, and adds a test (to the
+prot_exec test framework) to verify the fix / prevent re-introduction.
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3430
+TEST= mmap_prot_exec
+R=mcgrathr@chromium.org
+
+Review URL: https://codereview.chromium.org/14587004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-05-09T00:15:26.000Z</ns0:updated><ns0:published>2013-05-09T00:15:26.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3430#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3430/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

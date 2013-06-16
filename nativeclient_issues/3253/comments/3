@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEQARn47eCl7ImA9WhNUGEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3253/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=176224
+
+------------------------------------------------------------------------
+r176224 | mseaborn@chromium.org | 2013-01-11T01:04:41.860316Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl_test_injection/buildbot_chrome_nacl_stage.py?r1=176224&amp;r2=176223&amp;pathrev=176224
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/chrome_main.scons?r1=176224&amp;r2=176223&amp;pathrev=176224
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/nacl_browser/inbrowser_test_runner/nacl.scons?r1=176224&amp;r2=176223&amp;pathrev=176224
+
+NaCl: Move all browser tests into nacl_irt_test_env
+
+IRT-using nexes are normally built in nacl_irt_test_env, not nacl_env.
+All of chrome_browser_tests uses the IRT, so changing these tests to
+use nacl_irt_test_env brings chrome_browser_tests into line with the
+rest of the NaCl Scons build.
+
+This will let us fix libimc_syscalls to call GC hooks without breaking
+linking the nexes in chrome_browser_tests (since some tests there use
+libimc_syscalls).
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3253
+TEST=nacl_integration + count tests to check we haven't lost any
+
+Review URL: https://codereview.chromium.org/11613012
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-01-11T01:05:47.000Z</ns0:updated><ns0:published>2013-01-11T01:05:47.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3253#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3253/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

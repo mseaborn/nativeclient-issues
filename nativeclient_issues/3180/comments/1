@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUAHQX47eCl7ImA9WhNXEkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3180/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I think I see the problem.  NaClAppThreadGetSuspendedRegistersInternal() does the following:
+
+  struct NaClAppThreadSuspendedRegisters *state = natp-&gt;suspended_registers;
+  uint32_t eip = state-&gt;context.uts.ts32.__eip;
+  if (eip &gt;= (uintptr_t) NaClSwitchRemainingRegsViaECX &amp;&amp;
+      eip &lt; (uintptr_t) NaClSwitchRemainingRegsAsmEnd) {
+    state-&gt;context.uts.ts32.__eip = natp-&gt;user.gs_segment.new_prog_ctr;
+    state-&gt;context.uts.ts32.__ecx = natp-&gt;user.gs_segment.new_ecx;
+    ...
+
+This conditional should first check that %cs has the trusted-code value.  A code address in untrusted address space might coincidentally fall inside the range of NaClSwitchRemainingRegsViaECX/NaClSwitchRemainingRegsAsmEnd in trusted address space.</ns0:content><ns0:updated>2012-11-29T19:35:30.000Z</ns0:updated><ns0:published>2012-11-29T19:35:30.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3180#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3180/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

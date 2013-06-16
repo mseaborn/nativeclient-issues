@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUICRH47eCl7ImA9WhBTEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3280/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10705
+
+------------------------------------------------------------------------
+r10705 | mseaborn@chromium.org | 2013-02-05T01:24:47.294531Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/sel_ldr_x86_32.c?r1=10705&amp;r2=10704&amp;pathrev=10705
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/nacl_syscall_32.S?r1=10705&amp;r2=10704&amp;pathrev=10705
+
+x86-32: Simplify fetching of nacl_user[] address in syscall path
+
+Before, %ecx points to a pointer to nacl_user[].
+
+After, %ecx points to nacl_user[].
+
+This saves one memory fetch.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3280
+TEST=run_hello_world_test
+
+Review URL: https://codereview.chromium.org/12186023
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-02-05T01:26:05.000Z</ns0:updated><ns0:published>2013-02-05T01:26:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3280#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3280/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

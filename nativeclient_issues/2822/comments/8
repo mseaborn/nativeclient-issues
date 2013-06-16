@@ -1,0 +1,62 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QCQX47eCl7ImA9WhJTGUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2822/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9054
+
+------------------------------------------------------------------------
+r9054 | mseaborn@chromium.org | Thu Jun 28 14:31:06 PDT 2012
+
+Changed paths:
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/testdata/x86_64/auxv_phdr.stdout?r1=9054&amp;r2=9053&amp;pathrev=9054
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=9054&amp;r2=9053&amp;pathrev=9054
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/elf_util.h?r1=9054&amp;r2=9053&amp;pathrev=9054
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/testdata/x86_32/auxv_phdr.nexe?r1=9054&amp;r2=9053&amp;pathrev=9054
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/testdata/x86_64/auxv_phdr.nexe?r1=9054&amp;r2=9053&amp;pathrev=9054
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=9054&amp;r2=9053&amp;pathrev=9054
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/testdata/auxv_phdr.c?r1=9054&amp;r2=9053&amp;pathrev=9054
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/elf_util.c?r1=9054&amp;r2=9053&amp;pathrev=9054
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=9054&amp;r2=9053&amp;pathrev=9054
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/testdata/x86_32/auxv_phdr.stdout?r1=9054&amp;r2=9053&amp;pathrev=9054
+
+Undo filling out AT_PHDR, AT_PHNUM and AT_PHENT in the auxv array at startup
+
+This mostly reverts:
+  r8784: "Add testdata binaries for auxv_phdr test"
+  r8789: "Pass AT_PHDR, AT_PHNUM, AT_PHENT when phdrs are visible in the address space"
+with the exceptions that it leaves the elf_auxv.h change which is
+still used by untrusted code, and it keeps the cleanup that introduces
+"struct NaClElfImageInfo".
+
+The background is that there are three ways a program could locate its
+TLS templates:
+
+ 1) Via special __tls_template_start/end symbols defined by a custom
+    linker script.
+ 2) Via the ELF PHDRs, with NaCl's system ABI modified to tell the user
+    program where its PHDRs are in memory via AT_PHDR etc.
+ 3) Via the ELF PHDRs, with the toolchain's linker modified so that
+    the user program can locate its own PHDRs by itself without
+    outside help.
+
+We want to remove the linker script modifications in (1) and so
+simplify the future NaCl GNU toolchain.
+
+Earlier, (3) was considered the ideal solution but it was argued to be
+too much work, so (2) was considered an acceptable trade-off even
+though it added a little complexity to the system ABI.  However:
+
+ * we've since implemented (3) in the upstream binutils linker anyway;
+ * we found that (2) doesn't work when the IRT library needs to find
+   its own PHDRs.
+
+Since we've implemented (3) we can remove the change for (2).  This
+change doesn't remove the untrusted-code changes (which I'll do
+separately), and this demonstrates that nexes built in the intervening
+period that look for AT_PHDR continue to work without AT_PHDR being
+present.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2822
+TEST=small_tests
+
+Review URL: https://chromiumcodereview.appspot.com/10659034
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-28T21:36:00.000Z</ns0:updated><ns0:published>2012-06-28T21:36:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2822#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2822/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

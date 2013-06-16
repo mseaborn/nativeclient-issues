@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QMQH47eCl7ImA9WhNXF0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3192/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>j...@chromium.org</ns0:name><ns0:uri>/u/109636895838879576326/</ns0:uri></ns0:author><ns0:content type="html">I believe that this was on purpose. We discussed it in the context of:
+  https://chromiumcodereview.appspot.com/10916277
+
+Unfortunately the discussion was verbal, but basically this code:
+  bool always_postdominates(const DecodedInstruction&amp; other) const {
+    nacl_arm_dec::Instruction::Condition cond1 = other.inst_.GetCondition();
+    nacl_arm_dec::Instruction::Condition cond2 = inst_.GetCondition();
+    return !other.defines(nacl_arm_dec::Register::Conditions()) &amp;&amp;
+         !other.defines(nacl_arm_dec::Register::CondsDontCareFlag()) &amp;&amp;
+         SfiValidator::condition_implies[cond1][cond2];
+  }
+Is meant to be conservative. At the time we decided that it wasn't worth complicating it any more, for simplicity as well as speed.
+
+A fix could be:
+    return ((!other.defines(nacl_arm_dec::Register::Conditions()) ||
+            (cond2 == nacl_arm_dec::Instruction::AL)) &amp;&amp;
+         !other.defines(nacl_arm_dec::Register::CondsDontCareFlag()) &amp;&amp;
+         SfiValidator::condition_implies[cond1][cond2];
+
+
+Do conditional SP update actually occur?
+ - Maybe inlining + if-conversion could generate this? I'd expect the SP update to get propagated.
+ - Maybe alloca + if-conversion?
+
+If it does occur with our current compilers then I'd fix the validator. Otherwise I'd only update it when we actually start generating this sequence (which implies that we find a perf advantage to it).</ns0:content><ns0:updated>2012-12-06T02:03:01.000Z</ns0:updated><ns0:published>2012-12-06T02:03:01.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>s...@chromium.org</ns2:ccUpdate></ns2:updates><ns0:title>Comment 4 by j...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3192#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3192/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

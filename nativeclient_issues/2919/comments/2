@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYCQ347eCl7ImA9WhJQGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2919/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9343
+
+------------------------------------------------------------------------
+r9343 | mseaborn@chromium.org | 2012-08-01T17:42:50.147381Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/syscall_return_regs/syscall_return_regs_test.c?r1=9343&amp;r2=9342&amp;pathrev=9343
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/springboard.S?r1=9343&amp;r2=9342&amp;pathrev=9343
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=9343&amp;r2=9342&amp;pathrev=9343
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_switch_64.S?r1=9343&amp;r2=9342&amp;pathrev=9343
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/thread_suspension/suspend_test_guest.c?r1=9343&amp;r2=9342&amp;pathrev=9343
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/common/register_set.c?r1=9343&amp;r2=9342&amp;pathrev=9343
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/syscall_return_regs?r1=9343&amp;r2=9342&amp;pathrev=9343
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/syscall_return_regs/nacl.scons?r1=9343&amp;r2=9342&amp;pathrev=9343
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_switch.S?r1=9343&amp;r2=9342&amp;pathrev=9343
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/common/register_set.h?r1=9343&amp;r2=9342&amp;pathrev=9343
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_syscall_64.S?r1=9343&amp;r2=9342&amp;pathrev=9343
+
+Fix two register leaks in the trusted-&gt;untrusted context switch
+
+x86-32: Stop leaking the address of the NaClThreadContext in %ecx.
+
+ARM: Stop leaking the value of r12 from trusted code.
+
+Add a comprehensive test to check that registers are reset when a
+syscall returns.
+
+Add some comments about resetting flags.  On x86-64, reorder an
+instruction which resets flags so that the flags don't depend on the
+return address, to ease testing.
+
+Move UnsetNonCalleeSavedRegisters() out of suspend_test_guest.c into
+tests/common.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2919
+TEST=run_syscall_return_regs_test
+
+Review URL: https://chromiumcodereview.appspot.com/10829110
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-01T17:46:02.000Z</ns0:updated><ns0:published>2012-08-01T17:46:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2919#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2919/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

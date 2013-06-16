@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUFSH47eCl7ImA9WhBaFEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3435</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Currently the process for adding a PNaCl ABI simplification IR pass involves a lot of commits:
+
+ 1) pnacl-llvm.git:  Add pass implementation with *.ll tests
+ 1a) native_client SVN:  Update pnacl/DEPS in native_client to pull in LLVM change
+ 2) native_client SVN:  Add pass to list in pnacl-ld.py
+ 3) pnacl-llvm.git:  Change PNaCl ABI checker to check the new constraints
+ 3a) native_client SVN:  Update pnacl/DEPS in native_client to pull in LLVM change
+
+We started off with just a couple of ABI simplification passes (ExpandCtors and ExpandTls).  But now that we have quite a few passes it would make more sense to move the list out of pnacl-ld.py and into the LLVM repo.  This would reduce cross-repo dependencies.  This would allow us to add a pass, enable it, and add ABI checks for it atomically, in the same LLVM Git commit.
+
+I envisage having two passes that pnacl-ld.py would invoke like this:
+
+  opt -pnacl-abi-simplify-preopt \
+      -std-link-opts \
+      -pnacl-abi-simplify-postopt
+
+This also has the benefit that pnacl-ld.py would be invoking &amp;quot;opt&amp;quot; just once, rather than the current three times.
+
+Currently pnacl-ld.py has options for omitting some ABI simplification passes while leaving others:
+
+ * ALLOW_CXX_EXCEPTIONS:  omits -lowerinvoke
+ * DISABLE_ABI_CHECK:  disables ABI checker, for tests that cover computed gotos and dubious intrinsics
+ * &amp;quot;--pnacl-disable-pass&amp;quot;:  omits named pass; not used by any tests
+ * &amp;quot;len(native_objects) != 0&amp;quot;:  turns off passes which affect between-function ABI, leaving only passes that affect within-function things
+
+We could attempt to keep these, but I think it might be simpler just to turn off all the ABI simplification passes for some of these corner cases.  That would mean we won't attempt to run (for example) ExpandConstantExpr when C++ exception handling is enabled.  That reduces the number of strange cases we'd need to test, which is both good and bad.  We wouldn't be testing ExpandConstantExpr end-to-end on the &amp;quot;invoke&amp;quot; instruction, but it doesn't need to work for that case anyway.</ns0:content><ns0:updated>2013-05-25T00:36:59.000Z</ns0:updated><ns0:published>2013-05-16T18:38:37.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112264824292994369940/</ns2:uri><ns2:username>eli...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/jvoung@chromium.org/</ns2:uri><ns2:username>jvoung@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PNaCl: Move list of ABI simplification passes into PNaCl LLVM repo</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3435/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3435" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3435" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-05-25T00:36:59.000Z</ns2:closedDate><ns2:id>3435</ns2:id></ns0:entry>

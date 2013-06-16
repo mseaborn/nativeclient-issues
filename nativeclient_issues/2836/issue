@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEHRX47eCl7ImA9WhJTEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2836</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I'm splitting this out from issue 2758 (which I committed the Linux thread suspension implementation under).  We need to implement thread suspension for Mac OS X.  This is less urgent since the debug stub isn't being tested on Mac yet, hence the separate issue.
+
+I did a simple implementation which mirrors the Windows implementation, but using the Mach thread_suspend() interface instead of SuspendThread() etc.: http://codereview.chromium.org/10540018/
+
+I hit some interesting issues:
+
+ * The simple implementation deadlocks.  On Mac, when the suspender releases natp-&amp;gt;mu, the suspendee thread gets ownership of that mutex *even though it is suspended*.  The suspender thread therefore deadlocks when it tries to re-claim the mutex.
+
+ * On OS X 10.5 and 10.6 I found I was able to work around that deadlock by calling thread_abort() or thread_abort_safely().
+
+ * On OS X 10.7, though, the pthread implementation has changed, and using thread_abort() didn't stop the deadlock.
+
+ * I realised we can fix the deadlock by not releasing natp-&amp;gt;mu between thread_suspend() and thread_resume().  This means we don't need the condvar or the SUSPENDING state at all, and we can significantly simplify the thread suspension implementation!
+
+ * We should apply the same simplification to the Windows version.
+
+ * If a thread fails to suspend in the trusted-&amp;gt;untrusted transition, the current tests don't catch that bug.  We need to extend the tests to cover this.
+</ns0:content><ns0:updated>2012-06-19T19:03:54.000Z</ns0:updated><ns0:published>2012-06-06T21:11:11.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Implement thread suspension for Mac OS X (for use by the debug stub)</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>OS-Windows</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2836/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2836" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2836" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-06-19T19:03:54.000Z</ns2:closedDate><ns2:id>2836</ns2:id></ns0:entry>

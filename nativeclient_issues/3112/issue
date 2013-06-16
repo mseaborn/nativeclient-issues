@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYCRn47eCl7ImA9WhNSEko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3112</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Some of the codebase uses a style where variable and argument declarations are indented to line up like this:
+
+void NaClSetUpBootstrapChannel(struct NaClApp  *nap,
+                               NaClHandle      inherited_desc) {
+  struct NaClDescImcDesc      *channel;
+  struct NaClImcTypedMsgHdr   hdr;
+  struct NaClDesc             *descs[2];
+  ssize_t                     rv;
+  ...
+
+This alignment style has various disadvantages:
+
+ * It is tedious to maintain.
+ * It produces extra code churn when reindenting variables to match, which increases the chances of merge conflicts.
+ * It is not applied consistently, which creates confusion about when to follow this indenting style.
+ * It makes it more likely that some line will overflow the 80 column line limit and require manual wrapping.
+ * It is not consistent with Chromium style, and in general this alignment style is not widely used these days.
+
+I propose that we drop this style.  This would mean that new functions would not use this style, and we would apply some cleanup changes to remove this alignment indentation.
+</ns0:content><ns0:updated>2012-10-26T17:39:27.000Z</ns0:updated><ns0:published>2012-10-26T17:39:27.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Coding style: Drop the practice of indenting variable/argument names</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3112/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3112" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3112" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3112</ns2:id></ns0:entry>

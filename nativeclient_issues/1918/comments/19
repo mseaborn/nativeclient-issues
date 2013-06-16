@@ -1,0 +1,54 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4MSH47eCl7ImA9WhJRFU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1918/comments/full/19</ns0:id><ns0:author>
+			<ns0:name>halya...@chromium.org</ns0:name><ns0:uri>/u/103196427465586990847/</ns0:uri></ns0:author><ns0:content type="html">Current status: Crash happens in cygwin1.dll initialization in cc1.exe process. The crash reason is null pointer access.
+
+Registers:
+ntdll!_CONTEXT
+   +0x000 ContextFlags     : 0x1003f
+   +0x004 Dr0              : 0
+   +0x008 Dr1              : 0
+   +0x00c Dr2              : 0
+   +0x010 Dr3              : 0
+   +0x014 Dr6              : 0
+   +0x018 Dr7              : 0
+   +0x01c FloatSave        : _FLOATING_SAVE_AREA
+   +0x08c SegGs            : 0
+   +0x090 SegFs            : 0x3b
+   +0x094 SegEs            : 0x23
+   +0x098 SegDs            : 0x23
+   +0x09c Edi              : 0
+   +0x0a0 Esi              : 0x16ae610
+   +0x0a4 Ebx              : 0
+   +0x0a8 Edx              : 0x7c90e514
+   +0x0ac Ecx              : 0x16ae600
+   +0x0b0 Eax              : 0
+   +0x0b4 Ebp              : 0x16ae5d0
+   +0x0b8 Eip              : 0x6102e714
+   +0x0bc SegCs            : 0x1b
+   +0x0c0 EFlags           : 0x10212
+   +0x0c4 Esp              : 0x16ae558
+   +0x0c8 SegSs            : 0x23
+   +0x0cc ExtendedRegisters : [512]  "???"
+
+Code:
+6102e700 55              push    ebp
+6102e701 89e5            mov     ebp,esp
+6102e703 83ec78          sub     esp,78h
+6102e706 a1a8a71961      mov     eax,dword ptr [cygwin1!sys_nerr+0x11388 (6119a7a8)]
+6102e70b 895df4          mov     dword ptr [ebp-0Ch],ebx
+6102e70e 8975f8          mov     dword ptr [ebp-8],esi
+6102e711 897dfc          mov     dword ptr [ebp-4],edi
+6102e714 6683781800      cmp     word ptr [eax+18h],0
+
+Stack trace without symbols:
+016ae5d0 6102efee 016ae804 7c90e920 000002d6 cygwin1!dll_entry+0x67c
+016ae610 6102f50b 016ae610 00000000 00000000 cygwin1!getenv+0x322e
+016ae900 6100612c 6119dda0 00008000 00000000 cygwin1!getenv+0x374b
+016af930 61006168 611f1be0 016af95c 7ffd5002 cygwin1!_main+0x4ac
+016af950 6110c548 611f1be0 016afb04 7c90e920 cygwin1!_main+0x4e8
+016af980 610073a4 61272080 016afa04 016af9b0 cygwin1!cuserid+0x2058
+016af9b0 6107f467 00000000 00000000 00142130 cygwin1!dll_crt0__FP11per_process+0xd54
+016af9f0 7c90118a 61000000 00000001 016afd30 cygwin1!dll_entry+0xd7
+016afa10 7c91b5d2 6107f390 61000000 00000001 ntdll!LdrpCallInitRoutine+0x14
+016afb18 7c91fbdc 016afd30 7ffdf000 7ffd5000 ntdll!LdrpRunInitializeRoutines+0x344
+016afc94 00000000 016afca0 00000000 016afd1c ntdll!LdrpInitializeProcess+0x114b</ns0:content><ns0:updated>2012-07-17T15:13:09.000Z</ns0:updated><ns0:published>2012-07-17T15:13:09.000Z</ns0:published><ns2:updates /><ns0:title>Comment 19 by halya...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1918#c19" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1918/comments/full/19" rel="self" type="application/atom+xml" /></ns0:entry>

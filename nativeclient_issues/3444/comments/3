@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0MCQX47eCl7ImA9WhFSEUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3444/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">------------------------------------------------------------------------
+r206158 | sehr@chromium.org | 2013-06-13T20:29:26.425879Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/browser/nacl_host/nacl_process_host.h?r1=206158&amp;r2=206157&amp;pathrev=206158
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/api/private/ppb_nacl_private.idl?r1=206158&amp;r2=206157&amp;pathrev=206158
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/browser/renderer_host/chrome_render_message_filter.cc?r1=206158&amp;r2=206157&amp;pathrev=206158
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest.cc?r1=206158&amp;r2=206157&amp;pathrev=206158
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_exception_handling_disabled/pnacl_exception_handling_disabled.cc?r1=206158&amp;r2=206157&amp;pathrev=206158
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/nacl_test_data.gyp?r1=206158&amp;r2=206157&amp;pathrev=206158
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_exception_handling_disabled?r1=206158&amp;r2=206157&amp;pathrev=206158
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/common/nacl_types.cc?r1=206158&amp;r2=206157&amp;pathrev=206158
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/renderer/pepper/ppb_nacl_private_impl.cc?r1=206158&amp;r2=206157&amp;pathrev=206158
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/common/nacl_types.h?r1=206158&amp;r2=206157&amp;pathrev=206158
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/nacl_entry_points.h?r1=206158&amp;r2=206157&amp;pathrev=206158
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/plugin.cc?r1=206158&amp;r2=206157&amp;pathrev=206158
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/plugin.h?r1=206158&amp;r2=206157&amp;pathrev=206158
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_exception_handling_disabled/pnacl_exception_handling_disabled.html?r1=206158&amp;r2=206157&amp;pathrev=206158
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/common/render_messages.h?r1=206158&amp;r2=206157&amp;pathrev=206158
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/sel_ldr_launcher_chrome.cc?r1=206158&amp;r2=206157&amp;pathrev=206158
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/c/private/ppb_nacl_private.h?r1=206158&amp;r2=206157&amp;pathrev=206158
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/service_runtime.cc?r1=206158&amp;r2=206157&amp;pathrev=206158
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/sel_ldr_launcher_chrome.h?r1=206158&amp;r2=206157&amp;pathrev=206158
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/service_runtime.h?r1=206158&amp;r2=206157&amp;pathrev=206158
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/browser/nacl_host/nacl_process_host.cc?r1=206158&amp;r2=206157&amp;pathrev=206158
+
+Disable untrusted exception handling for PNaCl
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3444
+R=dmichael@chromium.org, jln@chromium.org, mseaborn@chromium.org, thakis@chromium.org, yzshen@chromium.org
+
+Committed: https://src.chromium.org/viewvc/chrome?view=rev&amp;revision=205914
+
+Review URL: https://codereview.chromium.org/15901015
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-06-13T20:31:00.000Z</ns0:updated><ns0:published>2013-06-13T20:31:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3444#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3444/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

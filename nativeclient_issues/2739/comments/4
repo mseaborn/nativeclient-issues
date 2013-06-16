@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU8AQX47eCl7ImA9WhNSEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2739/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I'm closing this because the objective was achieved.
+
+I had been keeping this open because of a TODO I left in the code:
+
+# Note that we have to add nacl_irt_test to --mode in order to get
+# inbrowser_test_runner to run.
+# TODO(mseaborn): Change it so that inbrowser_test_runner is not a
+# special case.
+
+Since the Scons-based chrome_browser_tests are deprecated, I don't intend to fix that TODO.  We expect to migrate inbrowser_test_runner away from the tools/browser_tester framework instead.</ns0:content><ns0:updated>2012-10-24T21:24:00.000Z</ns0:updated><ns0:published>2012-10-24T21:24:00.000Z</ns0:published><ns2:updates>
+			<ns2:status>Fixed</ns2:status></ns2:updates><ns0:title>Comment 4 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2739#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2739/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

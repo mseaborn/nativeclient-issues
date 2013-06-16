@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU8GSX47eCl7ImA9WhBTEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3167/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10713
+
+------------------------------------------------------------------------
+r10713 | khim@google.com | 2013-02-05T18:08:20.621982Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/verify_validators_dfa.py?r1=10713&amp;r2=10712&amp;pathrev=10713
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/verify_superinstructions.py?r1=10713&amp;r2=10712&amp;pathrev=10713
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/build.scons?r1=10713&amp;r2=10712&amp;pathrev=10713
+
+Verify superinstructions list using regexp
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=3167
+TEST=this is test
+Review URL: https://codereview.chromium.org/12089017
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-02-05T18:10:28.000Z</ns0:updated><ns0:published>2013-02-05T18:10:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3167#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3167/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

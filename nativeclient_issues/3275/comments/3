@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0IDQH47eCl7ImA9WhBTEE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3275/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I ran run_thread_suspension_test on my Macbook (OS X 10.6) and found that the failure reproduced itself much more readily than on the bots or on my desktop Mac.
+
+I saw the following crashes:
+
+[11138,2694788416:04:24:45.673999] Native Client module will be loaded at base address 0x0000000027840000
+...
+Program received signal EXC_BAD_ACCESS, Could not access memory.
+Reason: KERN_PROTECTION_FAILURE at address: 0x279406c8
+[Switching to process 11138]
+0x0001ffe4 in ComputeFragmentSizes (header=Cannot access memory at address 0x3ffeff70
+...
+(gdb) info reg ecx
+ecx            0x100680	1050240
+
+
+Program received signal EXC_BAD_ACCESS, Could not access memory.
+Reason: KERN_PROTECTION_FAILURE at address: 0x432a06e8
+[Switching to process 11146]
+0x0001ffe1 in ComputeFragmentSizes (header=Cannot access memory at address 0x3ffeff70
+
+
+Program received signal EXC_BAD_ACCESS, Could not access memory.
+Reason: KERN_PROTECTION_FAILURE at address: 0x357c06dc
+[Switching to process 11150]
+0x0001ffe8 in ComputeFragmentSizes (header=Cannot access memory at address 0x3ffeff70
+
+
+Those crashes are in this code:
+
+00000000 &lt;NaCl_springboard&gt;:
+   0:   f4                      hlt    
+   1:   8b 41 68                mov    0x68(%ecx),%eax
+   4:   0f b2 61 48             lss    0x48(%ecx),%esp
+   8:   8e 59 5c                mov    0x5c(%ecx),%ds
+   b:   31 c9                   xor    %ecx,%ecx
+   d:   ff e2                   jmp    *%edx
+</ns0:content><ns0:updated>2013-02-04T19:19:31.000Z</ns0:updated><ns0:published>2013-02-04T19:19:31.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3275#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3275/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

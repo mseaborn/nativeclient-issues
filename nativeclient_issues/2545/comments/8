@@ -1,0 +1,52 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkIEQX47eCl7ImA9WhJTEEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2545/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">This is pprof output from tcmalloc profiles generated with
+pnacl/unsupported/llc-builder.sh 
+
+
+My working hypothesis is that these are pretty much all long lived.
+
+I diff'ed two adjacent check-points (out 31 total) and this yields
+very similar results:
+
+25-&gt;26
+
+Total: 40.0 MB
+    12.2  30.5%  30.5%     12.2  30.5% ::MCELFStreamer::EmitInstToData
+     7.9  19.8%  50.3%      7.9  19.8% llvm::MallocSlabAllocator::Allocate
+     7.1  17.6%  67.9%      7.1  17.6% llvm::MCObjectStreamer::EmitInstToFragment
+     5.4  13.6%  81.5%      5.4  13.6% llvm::MCObjectStreamer::getOrCreateDataFragment
+     2.5   6.2%  87.6%      2.5   6.2% llvm::MCObjectStreamer::EmitLabel
+     2.2   5.6%  93.2%      2.2   5.6% ::MCELFStreamer::EmitCodeAlignment
+     0.9   2.2%  95.4%      0.9   2.2% ::MCELFStreamer::EmitAssignment
+     0.7   1.6%  97.0%      0.7   1.6% llvm::MCObjectStreamer::AddValueSymbols
+     0.6   1.4%  98.4%      0.6   1.4% std::vector::_M_insert_aux
+     0.3   0.8%  99.2%      0.3   0.8% llvm::StringMapImpl::RehashTable
+     0.1   0.3%  99.5%      0.1   0.3% llvm::SmallVectorBase::grow_pod
+     0.1   0.3%  99.8%      0.1   0.3% llvm::Function::BuildLazyArguments
+     0.1   0.2% 100.0%      0.1   0.2% std::_Rb_tree::_M_insert_
+     0.1   0.1% 100.1%      0.1   0.1% ::MCELFStreamer::EmitValueToAlignment
+
+and here diff'ing check-point two apart:
+
+25-&gt;27
+
+Total: 85.1 MB
+    23.9  28.1%  28.1%     23.9  28.1% ::MCELFStreamer::EmitInstToData
+    18.0  21.1%  49.2%     18.0  21.1% llvm::MallocSlabAllocator::Allocate
+    13.8  16.3%  65.5%     13.8  16.3% llvm::MCObjectStreamer::EmitInstToFragment
+    12.6  14.8%  80.3%     12.6  14.8% llvm::MCObjectStreamer::getOrCreateDataFragment
+     5.3   6.2%  86.5%      5.3   6.2% llvm::MCObjectStreamer::EmitLabel
+     4.5   5.2%  91.7%      4.5   5.2% ::MCELFStreamer::EmitCodeAlignment
+     2.1   2.5%  94.2%      2.1   2.5% ::MCELFStreamer::EmitAssignment
+     1.8   2.1%  96.3%      1.8   2.1% std::vector::_M_insert_aux
+     1.4   1.7%  98.0%      1.4   1.7% llvm::MCObjectStreamer::AddValueSymbols
+     0.5   0.6%  98.6%      0.5   0.6% llvm::StringMapImpl::RehashTable
+     0.3   0.3%  98.9%      0.3   0.3% std::_Rb_tree::_M_insert_
+     0.3   0.3%  99.2%      0.3   0.3% llvm::SmallVectorBase::grow_pod
+     0.2   0.2%  99.5%      0.2   0.2% llvm::Function::BuildLazyArguments
+     0.2   0.2%  99.6%      0.2   0.2% ::MCELFStreamer::EmitValueToAlignment
+     0.1   0.2%  99.8%      0.1   0.2% llvm::User::operator new
+     0.1   0.1%  99.9%      0.1   0.1% ::MCELFStreamer::EmitSymbolAttribute
+     0.1   0.1% 100.0%      0.1   0.1% llvm::StringMapImpl::init
+</ns0:content><ns0:updated>2012-06-18T18:35:00.000Z</ns0:updated><ns0:published>2012-06-18T18:35:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2545#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2545/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,6 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUECSX47eCl7ImA9WhNQFE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3102/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I tried this first with a stock GDB (rather than our nacl-gdb branch) and it was just a matter of configuring GDB with "--enable-targets=arm-linux-gnu,x86_64-unknown-linux-gnu".  This produces a GDB capable of cross-debugging ARM with NaCl's debug stub.
+
+It's necessary to do "sudo apt-get install libexpat1-dev" first otherwise GDB will say "warning: Can not parse XML target description; XML support was disabled at compile time" and fail to decode the ARM registers.
+</ns0:content><ns0:updated>2012-11-20T18:54:28.000Z</ns0:updated><ns0:published>2012-11-20T18:54:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3102#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3102/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck8ERX47eCl7ImA9WhJVEkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3008</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+pepper_21
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+pepper_21, sel_ldr
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Ubuntu 10.04, x86_64
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Compile the attached program
+
+./nacl_sdk/pepper_21/toolchain/linux_x86_newlib/bin/x86_64-nacl-gcc -o nacl_realloc.nexe nacl_realloc.c
+
+2. Run it
+
+./nacl_sdk/pepper_21/tools/sel_ldr_x86_64 -B ./nacl_sdk/pepper_21/tools/irt_core_x86_64.nexe -- ./nacl_realloc.nexe
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Expected: exit status 0
+Actual output:
+
+[16281,1821263680:18:16:10.130066] Native Client module will be loaded at base address 0x00007f1700000000
+realloc(large, 12) failed with errno=268566864Segmentation fault
+
+As you can see, realloc returns a very strange errno and segfault happens on strerror(errno).
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+This bug is newlib specific. If the same program is compiled with glibc, the following results are observed:
+
+./nacl_sdk/pepper_21/toolchain/linux_x86_glibc/bin/x86_64-nacl-gcc -o nacl_realloc_glibc.nexe nacl_realloc.c
+./nacl_sdk/pepper_21/tools/sel_ldr_x86_64 -a -B ./nacl_sdk/pepper_21/tools/irt_core_x86_64.nexe -- ./nacl_sdk/pepper_21/toolchain/linux_x86_glibc/x86_64-nacl/lib/runnable-ld.so --library-path ./nacl_sdk/pepper_21/toolchain/linux_x86_glibc/x86_64-nacl/lib/ ./nacl_realloc_glibc.nexe 
+DEBUG MODE ENABLED (bypass acl)
+[16330,442046272:18:20:08.599811] BYPASSING ALL ACL CHECKS
+[16330,442046272:18:20:08.609208] Native Client module will be loaded at base address 0x00007f3500000000
+[16330,441837312:18:20:08.641500] NaClHostDescOpen: open returned -1, errno 2
+[16330,441837312:18:20:08.647045] NaClHostDescOpen: open returned -1, errno 2
+realloc(large, 12) failed with errno=285942667 (null)
+</ns0:content><ns0:updated>2012-08-30T01:40:04.000Z</ns0:updated><ns0:published>2012-08-30T01:22:39.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:state>closed</ns2:state><ns0:title>[newlib]realloc can cause subtle segfault</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3008/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3008" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3008" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-08-30T01:40:04.000Z</ns2:closedDate><ns2:id>3008</ns2:id></ns0:entry>

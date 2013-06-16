@@ -1,0 +1,63 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU8FRH47eCl7ImA9WhBTEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2830/comments/full/17</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10726
+
+------------------------------------------------------------------------
+r10726 | mseaborn@chromium.org | 2013-02-06T02:26:50.792129Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/sel_rt_64.h?r1=10726&amp;r2=10725&amp;pathrev=10726
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/thread_suspension_unwind.c?r1=10726&amp;r2=10725&amp;pathrev=10726
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=10726&amp;r2=10725&amp;pathrev=10726
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/thread_suspension_unwind.h?r1=10726&amp;r2=10725&amp;pathrev=10726
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=10726&amp;r2=10725&amp;pathrev=10726
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_rt.h?r1=10726&amp;r2=10725&amp;pathrev=10726
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/nacl_syscall_32.S?r1=10726&amp;r2=10725&amp;pathrev=10726
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/sel_rt_32.c?r1=10726&amp;r2=10725&amp;pathrev=10726
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=10726&amp;r2=10725&amp;pathrev=10726
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/sel_ldr_x86_32.c?r1=10726&amp;r2=10725&amp;pathrev=10726
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/sel_rt_32.h?r1=10726&amp;r2=10725&amp;pathrev=10726
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_syscall_64.S?r1=10726&amp;r2=10725&amp;pathrev=10726
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/signal_handler_single_step/regs_step_test_host.c?r1=10726&amp;r2=10725&amp;pathrev=10726
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/sel_rt_64.c?r1=10726&amp;r2=10725&amp;pathrev=10726
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/sel_ldr_x86_64.c?r1=10726&amp;r2=10725&amp;pathrev=10726
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=10726&amp;r2=10725&amp;pathrev=10726
+
+Thread suspension: Add logic to infer untrusted register state in context switch
+
+Implement unwinding logic for getting untrusted register state if a
+thread is interrupted during a context switch between untrusted and
+trusted code.
+
+This involves looking at prog_ctr to determine whether registers have
+been saved in NaClThreadContext yet.  If not, we work out what
+adjustment to apply to the stack pointer and we recover the user
+return address.
+
+This is not hooked up to NaClAppThreadGetSuspendedRegisters() or the
+debug stub yet.  It is only used by a test.  Also, this is only
+implemented for x86.  We'll need to implement single-stepping on ARM
+to test the unwinding logic thoroughly there.
+
+ * Add NaClSyscallSegRegsSaved labels to nacl_syscall*.S.
+
+ * Tweak nacl_syscall_64.S so that it doesn't clobber %rbx before all
+   registers are saved.
+
+ * Tweak sel_rt_64.c to make it clearer which registers are clobbered
+   by a syscall.  Some fields (r[acd]x, r[sd]i, r8-r11) in
+   NaClThreadContext are never set; we've been keeping them around
+   because of nacl64-gdb.
+
+ * Add dispatch_thunk_end to keep track of the size of dispatch_thunk.
+   (Same for pcrel_thunk.)
+
+ * Swap args of RegsAssertEqual() in test so that "Expected" and
+   "Actual" labels are printed properly.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=2830
+TEST=run_signal_handler_regs_single_step_test
+
+Review URL: https://codereview.chromium.org/12221004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-02-06T02:30:15.000Z</ns0:updated><ns0:published>2013-02-06T02:30:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 17 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2830#c17" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2830/comments/full/17" rel="self" type="application/atom+xml" /></ns0:entry>

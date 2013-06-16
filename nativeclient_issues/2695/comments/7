@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMGRn47eCl7ImA9WhVaEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2695/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=135361
+------------------------------------------------------------------------
+r135361 | mseaborn@chromium.org | 2012-05-04T16:46:48.325343Z
+
+Changed paths:
+   M /trunk/src/chrome/browser/nacl_host/nacl_process_host.cc
+   M /trunk/src/chrome/common/nacl_debug_exception_handler_win.h
+   M /trunk/src/chrome/nacl/nacl_broker_listener.h
+   M /trunk/src/chrome/browser/nacl_host/nacl_broker_host_win.cc
+   M /trunk/src/chrome/browser/nacl_host/nacl_broker_host_win.h
+   M /trunk/src/chrome/browser/nacl_host/nacl_broker_service_win.cc
+   M /trunk/src/chrome/browser/nacl_host/nacl_broker_service_win.h
+   M /trunk/src/chrome/common/nacl_messages.h
+   M /trunk/src/chrome/common/nacl_debug_exception_handler_win.cc
+   M /trunk/src/chrome/nacl/nacl_broker_listener.cc
+
+NaCl: Pass process info through to the Windows debug exception handler
+
+This removes the assumption that NaCl's data structures are located at
+the same addresses in the debugger and debuggee processes, because we
+pass the addresses of the data structures through IPC instead.
+
+This fixes the debug exception handler to work in cases where
+chrome.dll or nacl64.exe get relocated, which tends to happen for
+chrome.dll on Windows XP.  (However, since there are no trybots for
+32-bit Windows, I will enable the test on 32-bit Windows in a separate
+change.)
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2695
+TEST=run_inbrowser_exception_test in nacl_integration
+
+Review URL: https://chromiumcodereview.appspot.com/10351016
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-08T01:53:47.000Z</ns0:updated><ns0:published>2012-06-08T01:53:47.000Z</ns0:published><ns2:updates>
+			<ns2:blockedOnUpdate>-2618</ns2:blockedOnUpdate><ns2:blockedOnUpdate>nativeclient:2618</ns2:blockedOnUpdate></ns2:updates><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2695#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2695/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

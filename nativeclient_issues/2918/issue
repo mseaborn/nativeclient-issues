@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkcMR347eCl7ImA9WhNRE0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2918</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">The cygwin version on this bot was recently upgraded which seem
+the have aggravated problems we already had with many 
+rcs tool existing in two often incompatible flavors, e.g.:
+
+gclient (&amp;quot;cygwin version&amp;quot;) and gclient.bat (&amp;quot;native version&amp;quot;).
+
+We would really like to switch everything to the native version because
+those tend to run faster but it seems that we are running
+into problems with that, e.g. cr/lf issues.</ns0:content><ns0:updated>2012-11-08T18:08:06.000Z</ns0:updated><ns0:published>2012-07-23T14:22:03.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pnacl windows tc bot is not working</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2918/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2918" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2918" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-08-10T20:06:35.000Z</ns2:closedDate><ns2:id>2918</ns2:id></ns0:entry>

@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0AMRH47eCl7ImA9WhJTE00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2853/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9002
+
+------------------------------------------------------------------------
+r9002 | robertm@google.com | Thu Jun 21 13:10:24 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-translate.py?r1=9002&amp;r2=9001&amp;pathrev=9002
+
+Add -fdata-sections and -ffunction-sections to pnacl-translator
+
+These will be passed through to llc and help dealing with the 
+branch overflows in gold for arm
+
+Note we do not want to enable these by default as they bloat the
+.o substantially. 
+
+sizes substantially:
+arm.o, built with none of the flags:       68497kB (does not link)
+arm.o, built with -ffunction-sections:     83390kB
+arm.o, built with both of the flags:       89533kB
+
+Resulting nexe size for the last two cases was: 60189kb
+
+Passing  --gc-sections to the linker which is the usual
+way these options are used resulted in a nexe size of:
+54579kB
+This is a little surprising and could mean that "opt"
+does not work as well as expected.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2853
+TEST= manual
+Review URL: https://chromiumcodereview.appspot.com/10583043
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-21T20:16:25.000Z</ns0:updated><ns0:published>2012-06-21T20:16:25.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2853#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2853/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

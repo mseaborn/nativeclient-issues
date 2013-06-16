@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkcNQX47eCl7ImA9WhNRE0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2881</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">In NaCl, every thread has two thread-pointer/TLS fields, for use by user code and the IRT library respectively.  Access to the first TLS field is optimised, but the IRT reads the second TLS field via the second_tls_get() syscall, which is fairly slow.
+
+We should be able to optimise this:
+
+* x86-64:  We can add a fast path for the second_tls_get() syscall, as we have for the first tls_get() syscall (see NaClGetTlsFastPath).
+
+* ARM:  We can add a fast path syscall as with x86-64.
+
+* x86-32:  Currently the first TLS field is read by doing &amp;quot;mov %gs:0, %REG&amp;quot; (see issue 2250), and the 4-byte %gs segment points into untrusted address space.
+
+We can expand the %gs segment to 8 bytes and change it to point into trusted address space (e.g. into a region of NaClAppThread).  Then the second TLS field would be read by doing &amp;quot;mov %gs:4, %REG&amp;quot;.
+
+(As an aside, we can extend the %gs segment further for implementing a sigreturn-style operation.  We can make %gs read-only, expand it to 12 bytes, and use &amp;quot;jmp *%gs:8&amp;quot; to jump to an address previously vetted by the TCB.  This is described in https://docs.google.com/document/d/1OtVmgJFC7X7aa57DnyiL4V10vAVax_vcRJp4Mw86lIU/edit.)
+
+Furthermore, we could stop building nacl-newlib with &amp;quot;-mtls-use-call&amp;quot;, which slows down user code too.  We can build newlib to access TLS with &amp;quot;%gs:0&amp;quot; and rewrite instructions in irt.nexe, after linking, to use &amp;quot;%gs:4&amp;quot;.</ns0:content><ns0:updated>2012-11-08T18:08:10.000Z</ns0:updated><ns0:published>2012-06-28T17:19:11.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Optimise the IRT's TLS access</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Component-IRT</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>Performance</ns2:label><ns2:label>Security</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2881/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2881" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2881" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:blocking>
+			<ns2:id>2879</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2012-11-02T22:04:00.000Z</ns2:closedDate><ns2:id>2881</ns2:id></ns0:entry>

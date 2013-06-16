@@ -11,7 +11,7 @@ hopefully it won't come to that.
 </ns0:content><ns0:updated>2010-10-07T18:09:30.000Z</ns0:updated><ns0:published>2010-03-19T22:10:46.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
-			<ns2:uri>/u/110783171813691645727/</ns2:uri><ns2:username>dpoluk...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dpolukhin@google.com/</ns2:uri><ns2:username>dpolukhin@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/114685308157308201595/</ns2:uri><ns2:username>grego...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>make NaCl executables smaller</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Performance</ns2:label><ns2:label>Milestone-Chromium-8</ns2:label><ns2:label>Component-SDK</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/365/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=365" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/365" rel="self" type="application/atom+xml" /><ns2:stars>5</ns2:stars><ns2:closedDate>2010-10-07T18:09:30.000Z</ns2:closedDate><ns2:id>365</ns2:id></ns0:entry>

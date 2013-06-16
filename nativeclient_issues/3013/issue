@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYCSX47eCl7ImA9WhBaGE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3013</ns0:id><ns0:author>
+			<ns0:name>shcherb...@google.com</ns0:name><ns0:uri>/u/105197577636354702799/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+Currently there are two enumeration tests, vdiff (former enuminst) and check_decoder (RDFA only). vdiff enumerate only singular instructions. Check_decoder enumerates all acceptable pseudoinstructions as well, but, as name suggests, only evaluates the RDFA decoder.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+These tests can overlook plenty of differences between prod validator and rdfa (where problematic code contains more than one instruction). Several such cases are known already (found by tests written manually): http://code.google.com/p/nativeclient/issues/detail?id=2999 , http://code.google.com/p/nativeclient/issues/detail?id=2998 . They are not security-related, but still...
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+While enumerating instructions in vdiff, try to prepend them with few variations of sandboxing sequences (such as 'mov %edi,%edi; lea (%r15,%rdi,1),%rdi', same for SI, and both).
+OR
+Create validator comparison test based on DFA traversal (like check_decoder).
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+New disagreements between prod validator and RDFA are found and hopefully eliminated.
+</ns0:content><ns0:updated>2013-05-29T11:49:28.000Z</ns0:updated><ns0:published>2012-09-04T15:22:54.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:owner>
+			<ns2:uri>/u/105197577636354702799/</ns2:uri><ns2:username>shcherb...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Tests for validators: enumerate instructions together with sandboxing sequences (x86-64)</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3013/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3013" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3013" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-05-29T11:49:28.000Z</ns2:closedDate><ns2:id>3013</ns2:id></ns0:entry>

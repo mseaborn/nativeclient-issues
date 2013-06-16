@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcHRH47eCl7ImA9WhVbGUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2550/comments/full/17</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8828
+
+------------------------------------------------------------------------
+r8828 | mseaborn@chromium.org | Wed Jun 06 07:41:11 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_io.c?r1=8828&amp;r2=8827&amp;pathrev=8828
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/imc/nacl_imc_c.cc?r1=8828&amp;r2=8827&amp;pathrev=8828
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_effector.h?r1=8828&amp;r2=8827&amp;pathrev=8828
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/posix/nacl_host_desc.c?r1=8828&amp;r2=8827&amp;pathrev=8828
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_desc_effector_ldr.c?r1=8828&amp;r2=8827&amp;pathrev=8828
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/imc/nacl_imc.h?r1=8828&amp;r2=8827&amp;pathrev=8828
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/imc/nacl_imc_unistd.cc?r1=8828&amp;r2=8827&amp;pathrev=8828
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/imc/nacl_imc_c.h?r1=8828&amp;r2=8827&amp;pathrev=8828
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/imc/win/nacl_shm.cc?r1=8828&amp;r2=8827&amp;pathrev=8828
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_imc_shm.c?r1=8828&amp;r2=8827&amp;pathrev=8828
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/win/nacl_host_desc.c?r1=8828&amp;r2=8827&amp;pathrev=8828
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/addrspace_teardown.c?r1=8828&amp;r2=8827&amp;pathrev=8828
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_effector_trusted_mem.c?r1=8828&amp;r2=8827&amp;pathrev=8828
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/imc/nacl/nacl_imc.cc?r1=8828&amp;r2=8827&amp;pathrev=8828
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/nacl_host_desc.h?r1=8828&amp;r2=8827&amp;pathrev=8828
+
+mmap(): Move responsibility for using 64k chunks to Windows-only code
+
+This will speed up NaCl on Unix since we will no longer do mmap() in
+64k chunks there.
+
+This removes the 64k-page-loops from nacl_desc_imc_shm.c and
+nacl_desc_io.c.  Instead we have 64k-page-loops in the functions they
+call, which gain a NaClDescEffector argument so that they can call
+UnmapMemory() to unmap each page before it is remapped:
+
+ * nacl_desc_imc_shm.c calls nacl::Map(), which we add a 64k loop to.
+ * nacl_desc_io.c calls NaClHostDescMap(), which already has a 64k loop.
+
+We remove the unused error return code from UnmapMemory().  Errors
+from UnmapMemory() were fatal already.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2550
+TEST=run_service_runtime_tests
+
+Review URL: https://chromiumcodereview.appspot.com/10503005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-06T14:47:15.000Z</ns0:updated><ns0:published>2012-06-06T14:47:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 17 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2550#c17" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2550/comments/full/17" rel="self" type="application/atom+xml" /></ns0:entry>

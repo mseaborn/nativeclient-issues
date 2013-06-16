@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0EHQn47eCl7ImA9WhVUEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2780/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">As was explained in the commit message: this change WAS tested on bots (on dozens of them, in fact) and on all correctly configured bots (with MSVC 2008 SP1 installed as per requirements) it worked. We can not support arbitrarily broken configurations of bots even with .S file: what if someone forgets to add requires headers or libraries, what if someone would corrupt the compiler itself?
+
+I don't even consider the committed change fix for the 2778 issue. The fix for 2778 issue was tracked here:  http://code.google.com/p/chromium/issues/detail?id=128063, sorry I forgot to add it to 2778 bug.
+
+I've changed the the check mainly to make life easier for the non-Chrome users, but I don't think there are enough of them to warrant additional complexity WRT separate .S file. If we'll need support for the AVX2, BMI, HLE, or RTM instructions before "the grand 2010 switchover" then we may decide to reopen this bug.
+</ns0:content><ns0:updated>2012-05-15T19:53:53.000Z</ns0:updated><ns0:published>2012-05-15T19:53:53.000Z</ns0:published><ns2:updates>
+			<ns2:status>WontFix</ns2:status></ns2:updates><ns0:title>Comment 1 by k...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2780#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2780/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

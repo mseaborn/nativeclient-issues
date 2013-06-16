@@ -1,0 +1,47 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4HR347eCl7ImA9WhNTFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3081</ns0:id><ns0:author>
+			<ns0:name>shcherb...@google.com</ns0:name><ns0:uri>/u/105197577636354702799/</ns0:uri></ns0:author><ns0:content type="html">@hex:
+  # fine
+  # mov %esp, %ebp
+  89 e5
+  # add %r15, %rbp
+  4c 01 fd
+  
+  # wrong
+  # mov %esp, %ebp
+  89 e5
+  # lea (%r15, %rbp), %rbp
+  49 8d 2c 2f
+  
+  # also fine
+  # mov %ebp, %esp
+  89 ec
+  # lea (%rsp, %r15), %rsp
+  4a 8d 24 3c
+@rval:
+  VALIDATOR: 0000000000000007: 49 8d 2c 2f                                  lea %rbp, [%r15+%rbp*1]
+  VALIDATOR: ERROR: Illegal change to register RBP
+  VALIDATOR: 0000000000000005: 89 e5                                        mov %ebp, %esp
+  VALIDATOR: ERROR: Illegal assignment to EBP
+  VALIDATOR: Checking jump targets: 0 to 11
+  VALIDATOR: Checking that basic blocks are aligned
+  *** &amp;lt;input&amp;gt; IS UNSAFE ***
+@dis:
+  0000000000000000: 89 e5                                        mov %ebp, %esp
+  0000000000000002: 4c 01 fd                                     add %rbp, %r15
+  0000000000000005: 89 e5                                        mov %ebp, %esp
+  0000000000000007: 49 8d 2c 2f                                  lea %rbp, [%r15+%rbp*1]
+  000000000000000b: 89 ec                                        mov %esp, %ebp
+  000000000000000d: 4a 8d 24 3c                                  lea %rsp, [%rsp+%r15*1]
+@rdfa_output:
+  return code: 0
+@validators_disagree:
+  TODO: explain this
+  old validator verdict: False
+  rdfa validator verdict: True
+  errors reported by old validator but not by rdfa one:
+    0x5
+    0x7
+</ns0:content><ns0:updated>2012-10-18T14:35:36.000Z</ns0:updated><ns0:published>2012-10-10T16:02:59.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105197577636354702799/</ns2:uri><ns2:username>shcherb...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>RDFA validator accepts lea sandboxing for %rbp</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3081/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3081" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3081" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-10-18T12:01:31.000Z</ns2:closedDate><ns2:id>3081</ns2:id></ns0:entry>

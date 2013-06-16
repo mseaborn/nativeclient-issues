@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8CRn47eCl7ImA9WhJSGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2844/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=145664
+
+------------------------------------------------------------------------
+r145664 | mseaborn@chromium.org | Mon Jul 09 07:19:10 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/chrome/trunk/src/tools/perf_expectations/perf_expectations.json?r1=145664&amp;r2=145663&amp;pathrev=145664
+
+Update perf_expectations.json for nacl_helper_bootstrap (x86-32)
+
+This change addresses a build break from r145661.
+
+This is the same as r145663, but for the 32-bit version of
+nacl_helper_bootstrap which I missed before.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2844
+TEST=none
+
+Review URL: https://chromiumcodereview.appspot.com/10690107
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-09T14:41:07.000Z</ns0:updated><ns0:published>2012-07-09T14:41:07.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2844#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2844/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

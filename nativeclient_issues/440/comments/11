@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEESH47eCl7ImA9Wx9WFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/440/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=2093
+
+------------------------------------------------------------------------
+r2093 | cbiffle@google.com | Tue Apr 20 15:03:03 PDT 2010
+
+Changed paths:
+ R http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/arch/arm/nacl_dep_qualify.c?r1=2093&amp;r2=2092&amp;pathrev=2093 (from /trunk/src/native_client/src/trusted/platform_qualify/arch/arm/nacl_dep_qualify.c revision 2069)
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/vcpuid.h?r1=2093&amp;r2=2092&amp;pathrev=2093
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/platform_qual_test.c?r1=2093&amp;r2=2092&amp;pathrev=2093
+ R http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/arch/x86_64?r1=2093&amp;r2=2092&amp;pathrev=2093 (from /trunk/src/native_client/src/trusted/platform_qualify/arch/x86_64 revision 2069)
+ R http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/arch/x86_32?r1=2093&amp;r2=2092&amp;pathrev=2093 (from /trunk/src/native_client/src/trusted/platform_qualify/arch/x86_32 revision 2069)
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=2093&amp;r2=2092&amp;pathrev=2093
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/tests/nrd_xfer/nacl.scons?r1=2093&amp;r2=2092&amp;pathrev=2093
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/posix?r1=2093&amp;r2=2092&amp;pathrev=2093 (from /trunk/src/native_client/src/trusted/platform_qualify/posix revision 2069)
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/build.scons?r1=2093&amp;r2=2092&amp;pathrev=2093
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/platform_qualify.gyp?r1=2093&amp;r2=2092&amp;pathrev=2093
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/plugin/plugin.gyp?r1=2093&amp;r2=2092&amp;pathrev=2093
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/nacl_dep_qualify.h?r1=2093&amp;r2=2092&amp;pathrev=2093 (from /trunk/src/native_client/src/trusted/platform_qualify/nacl_dep_qualify.h revision 2069)
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/arch?r1=2093&amp;r2=2092&amp;pathrev=2093 (from /trunk/src/native_client/src/trusted/platform_qualify/arch revision 2069)
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/dummy_qualify.c?r1=2093&amp;r2=2092&amp;pathrev=2093
+ M http://src.chromium.org/viewvc/chrome/trunk/src/native_client/SConstruct?r1=2093&amp;r2=2092&amp;pathrev=2093
+ R http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/posix/nacl_dep_qualify.c?r1=2093&amp;r2=2092&amp;pathrev=2093 (from /trunk/src/native_client/src/trusted/platform_qualify/posix/nacl_dep_qualify.c revision 2069)
+ R http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/arch/x86_32/nacl_dep_qualify.c?r1=2093&amp;r2=2092&amp;pathrev=2093 (from /trunk/src/native_client/src/trusted/platform_qualify/arch/x86_32/nacl_dep_qualify.c revision 2069)
+ R http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/arch/x86?r1=2093&amp;r2=2092&amp;pathrev=2093 (from /trunk/src/native_client/src/trusted/platform_qualify/arch/x86 revision 2069)
+ R http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/arch/x86_64/nacl_dep_qualify.c?r1=2093&amp;r2=2092&amp;pathrev=2093 (from /trunk/src/native_client/src/trusted/platform_qualify/arch/x86_64/nacl_dep_qualify.c revision 2069)
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/vcpuid.c?r1=2093&amp;r2=2092&amp;pathrev=2093
+ A http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/win/nacl_dep_qualify.c?r1=2093&amp;r2=2092&amp;pathrev=2093 (from /trunk/src/native_client/src/trusted/platform_qualify/win/nacl_dep_qualify.c revision 2069)
+ R http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/arch/arm?r1=2093&amp;r2=2092&amp;pathrev=2093 (from /trunk/src/native_client/src/trusted/platform_qualify/arch/arm revision 2069)
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/nacl_cpuwhitelist.c?r1=2093&amp;r2=2092&amp;pathrev=2093
+ D http://src.chromium.org/viewvc/chrome/trunk/src/native_client/src/trusted/platform_qualify/nacl_cpuwhitelist_test.c?r1=2093&amp;r2=2092&amp;pathrev=2093
+
+Roll-forward of my rollback in 2070.  This refactors the Platform Qualification tests to have both OS- and architecture-specific components; introduces an explicit test for Data Execution Prevention on x86-64 and ARM; fixes some build issues on certain platforms; and (new in this version) works around the fact that our ARM emulator will never pass platform qualification.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=239
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=440 (partial fix)
+Review URL: http://codereview.chromium.org/1610036
+------------------------------------------------------------------------</ns0:content><ns0:updated>2011-01-21T22:23:29.000Z</ns0:updated><ns0:published>2011-01-21T22:23:29.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=440#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/440/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

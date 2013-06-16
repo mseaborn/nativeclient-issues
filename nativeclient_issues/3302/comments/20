@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkQEQH47eCl7ImA9WhBREEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3302/comments/full/20</ns0:id><ns0:author>
+			<ns0:name>damonp...@gmail.com</ns0:name><ns0:uri>/u/112358947840938663111/</ns0:uri></ns0:author><ns0:content type="html">Thanks a lot for your feedback.
+But even with specified casting, it has the same issue.
+Here are two samples with specified castings.
+test1.c
+int32_t  main(void)  
+{
+	int32_t tmp1;
+	int32_t tmp2;
+	int32_t i  = (int32_t)-270770481;
+	int32_t j  = (int32_t)-1912319477;
+	int32_t* madat ;
+	int32_t const  array2[1][1]  = {{(int32_t)-60417067}};
+
+	madat = &amp;((((int32_t*)(int32_t const *)(int32_t const *)&amp;(((int32_t const (*)[1])&amp;(array2))[((int32_t)((((uint32_t)i) * (uint32_t)947877507) + (uint32_t)1574375955))])))[((int32_t)((((uint32_t)j) * (uint32_t)233468377) + (uint32_t)689019309))]);
+	tmp1 = ((int32_t)((int32_t const *)&amp;(((int32_t const (*)[1])&amp;(array2))[((int32_t)((((uint32_t)i) * (uint32_t)947877507) + (uint32_t)1574375955))]))[((int32_t)((((uint32_t)j) * (uint32_t)233468377) + (uint32_t)689019309))]);
+	tmp2 = ((int32_t)((int32_t)((int32_t)((((uint32_t)1543242523 * ((uint32_t)((int32_t)(*(madat))))) + (uint32_t)3995974015) + ((uint32_t)1208482250 * (((uint32_t)((int32_t)(*(madat)))) &amp; (uint32_t)2141234541))))));
+	
+	return (int32_t)0;
+}
+
+test2.c
+int32_t  main(void)  
+{
+	int64_t r_Ng;
+	int32_t i  = -270770481;
+	int64_t * adat;
+	int64_t array[]  = {1438933078946427748ll};
+	i = -270770481;
+	((int64_t*)&amp;(array))[((int32_t)((((uint32_t)i) * (uint32_t)947877507) + (uint32_t)1574375955))] = ((int64_t)((int64_t)(((uint64_t)((int64_t)((int64_t*)&amp;(array))[((int32_t)((((uint32_t)i) * (uint32_t)947877507) + (uint32_t)1574375955))])) + (uint64_t)12739147934127424699ull)));
+   	array[i*947877507+1574375955] = array[i*947877507+1574375955] + 12739147934127424699ull;
+
+	adat = &amp;((((int64_t*)(int64_t*)&amp;(array)))[i * 947877507 + 1574375955]);
+	r_Ng = ((int64_t)((int64_t)((int64_t)((((uint64_t)((int64_t)(*(adat)))) * (uint64_t)16715455638787156661ull) + (uint64_t)10701393058170856654ull))));
+
+	return 0;
+}</ns0:content><ns0:updated>2013-02-28T19:38:21.000Z</ns0:updated><ns0:published>2013-02-28T19:38:21.000Z</ns0:published><ns2:updates /><ns0:title>Comment 20 by damonp...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3302#c20" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3302/comments/full/20" rel="self" type="application/atom+xml" /></ns0:entry>

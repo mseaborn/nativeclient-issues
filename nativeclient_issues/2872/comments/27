@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUYARH47eCl7ImA9WhJWFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2872/comments/full/27</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">With Derek's last two fixes (no nls + removal of libclang.so) we have
+
+            compressed    uncompressed [as reported by 'du']
+linux-32:   28.6M            86.1M
+linux-64:   29.2M            88.7M
+mac:        32.3M            97.3M
+win:        33.3M            96.2M
+
+
+mac and win do not use shared lib so we could probably save another 3M
+but the numbers look good enough that this is no longer a pri-1
+This makes at least 5MB smaller than the nacl-gcc toolchain
+</ns0:content><ns0:updated>2012-08-21T16:39:05.000Z</ns0:updated><ns0:published>2012-08-21T16:39:05.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Pri-1</ns2:label><ns2:label>Pri-2</ns2:label></ns2:updates><ns0:title>Comment 27 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2872#c27" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2872/comments/full/27" rel="self" type="application/atom+xml" /></ns0:entry>

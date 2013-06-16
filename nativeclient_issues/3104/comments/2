@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0MFQn47eCl7ImA9WhNSEEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3104/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>halya...@chromium.org</ns0:name><ns0:uri>/u/103196427465586990847/</ns0:uri></ns0:author><ns0:content type="html">clang output (32-bit, version 3.2):
+func2():
+debug_test.c:8
+ 8048420:	83 ec 08             	sub    $0x8,%esp
+ 8048423:	8b 44 24 0c          	mov    0xc(%esp),%eax
+ 8048427:	89 44 24 04          	mov    %eax,0x4(%esp)
+debug_test.c:9
+ 804842b:	8b 44 24 04          	mov    0x4(%esp),%eax
+ 804842f:	c1 e0 01             	shl    $0x1,%eax
+ 8048432:	89 04 24             	mov    %eax,(%esp)
+debug_test.c:10
+ 8048435:	8b 04 24             	mov    (%esp),%eax
+ 8048438:	03 44 24 04          	add    0x4(%esp),%eax
+ 804843c:	8b 0d 1c a0 04 08    	mov    0x804a01c,%ecx
+ 8048442:	01 c1                	add    %eax,%ecx
+ 8048444:	89 0d 1c a0 04 08    	mov    %ecx,0x804a01c
+debug_test.c:11
+ 804844a:	83 c4 08             	add    $0x8,%esp
+ 804844d:	c3                   	ret   
+I looked into debug information. Compiler doesn't generate multiple locations for arg and local_var. So it looks like some optimization passed removed instructions that loaded their values from memory to %eax.</ns0:content><ns0:updated>2012-10-24T09:36:53.000Z</ns0:updated><ns0:published>2012-10-24T09:36:53.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by halya...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3104#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3104/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

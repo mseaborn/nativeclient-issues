@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0YDR347eCl7ImA9WhVaEEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/22</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8840
+
+------------------------------------------------------------------------
+r8840 | eaeltsin@google.com | Thu Jun 07 02:23:52 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/target.cc?r1=8840&amp;r2=8839&amp;pathrev=8840
+
+Debug stub: suspend/resume threads only from debug stub thread
+
+Before this change untrusted threads were stopped by signaled thread and resumed by debug stub thread, now only debug stub thread stops and resumes untrusted threads.
+
+This makes synchronization within the debug stub a bit cleaner. When we want a lock to prevent creation of new threads while all threads are stopped, we will be taking it when suspending threads and releasing it when resuming threads. With this fix, it will be the same (debug stub) thread that takes and releases that lock.
+
+However, this change gives other threads some more time to work after some thread signaled, especially with the current implementation of the debug stub thread that activates not when asked by signaled thread but by timeout. At some point we should get rid of timeouts in favor of some better synchronization mechanism (events, cond vars, ...).
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2758
+TEST=run_debug_stub_test
+
+Review URL: https://chromiumcodereview.appspot.com/10532026
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-07T09:26:16.000Z</ns0:updated><ns0:published>2012-06-07T09:26:16.000Z</ns0:published><ns2:updates /><ns0:title>Comment 22 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2758#c22" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/22" rel="self" type="application/atom+xml" /></ns0:entry>

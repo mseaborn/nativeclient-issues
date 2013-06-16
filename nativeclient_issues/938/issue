@@ -31,7 +31,7 @@ We can load a nexe in sel_ldr and get one step closer to shipping PPAPI NaCl.
 			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/106710594185928520364/</ns2:uri><ns2:username>bbu...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/112723007196297768207/</ns2:uri><ns2:username>dsprin...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PPAPI NaCl Plugin needs to give the NEXE file descriptor to sel_ldr</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-AppPlatform</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Milestone-Arctic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/938/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=938" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/938" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
-			<ns2:id>932</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>1123</ns2:id></ns2:blockedOn><ns2:blocking>
-			<ns2:id>928</ns2:id></ns2:blocking><ns2:blocking>
-			<ns2:id>936</ns2:id></ns2:blocking><ns2:closedDate>2010-12-13T20:01:50.000Z</ns2:closedDate><ns2:id>938</ns2:id></ns0:entry>
+			<ns2:id>932</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1123</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blocking>
+			<ns2:id>928</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>936</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2010-12-13T20:01:50.000Z</ns2:closedDate><ns2:id>938</ns2:id></ns0:entry>

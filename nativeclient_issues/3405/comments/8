@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkMDRn47eCl7ImA9WhBaF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3405/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11411
+
+------------------------------------------------------------------------
+r11411 | mseaborn@chromium.org | 2013-05-28T21:57:33.535378Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=11411&amp;r2=11410&amp;pathrev=11411
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/computed_gotos/nacl.scons?r1=11411&amp;r2=11410&amp;pathrev=11411
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/nacl.scons?r1=11411&amp;r2=11410&amp;pathrev=11411
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/untrusted_minidump/nacl.scons?r1=11411&amp;r2=11410&amp;pathrev=11411
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/barebones/nacl.scons?r1=11411&amp;r2=11410&amp;pathrev=11411
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/toolchain/nacl.scons?r1=11411&amp;r2=11410&amp;pathrev=11411
+
+PNaCl: Factor out use of {skip_,}nonstable_bitcode flags into method
+
+Before, the two steps of setting "nonstable_bitcode" and checking
+"skip_nonstable_bitcode" were duplicated across a few files.  The
+replacement, AllowNonStableBitcode(), is modeled on
+AllowInlineAssembly(): it modifies the environment and returns False
+if the test should be skipped entirely.
+
+Also add the check to tests/computed_gotos since we won't be
+supporting "indirectbr" in PNaCl bitcode.
+
+This change prepares for potential changes to PNaCl's bitcode
+reader/writer that break compatibility with upstream LLVM's
+reader/writer.  In future, AllowNonStableBitcode() can turn off
+PNaCl's bitcode reader/writer for features that it might reject, such
+as the "invoke" instruction.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3405
+TEST=trybots
+
+Review URL: https://codereview.chromium.org/15917007
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-05-28T22:01:17.000Z</ns0:updated><ns0:published>2013-05-28T22:01:17.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3405#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3405/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

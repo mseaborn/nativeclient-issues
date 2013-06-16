@@ -1,0 +1,48 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU4CSX47eCl7ImA9WhBVE00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3372/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Old document discussing pros/cons and alternatives:
+https://docs.google.com/a/google.com/document/d/1ucpRjP2r4Y8evwfYDE9t7he2H250_ygYkiktsW19RT0/edit.
+
+Newer doc with just some of the alternatives:
+https://docs.google.com/a/google.com/document/d/1hKv1zxt0EQVswqLR487EMnn92seZgHmwyJ4sR2SqwLU/edit
+
+Inline:
+
+=== PNaCl cache with hidden filesystem:
+Would need a private interface to create/convert a temp-file-system into something private, since we don&#8217;t want it part of the public API.
+
+* Either have a separate Create since we can&#8217;t take over the enum space (unless we make some negative valued enum), or use the public Create and have a private Convert.
+Would otherwise need to support the same operations, and &#8220;automatic&#8221; reaping as the temporary FS.
+* How long does temporary FS persist?
+* The specs make it seem like eventually the implementation will start clearing after reboot.  The fact that it persists longer, right now, may change.
+Will the private FS eventually allow cross-origin sharing?
+* Possible contacts: see document
+
+
+=== PNaCl with IndexedDB or LevelDB
+asm.js folks are talking about exposing a Javascript API for compiling asm.js into some blob and then using IndexedDB to store the blob.
+https://bugzilla.mozilla.org/show_bug.cgi?id=854627
+
+* We probably don&#8217;t want that, since we&#8217;ll have the same problems as we do now, where the content is visible and modifiable by the application.  It would mean that we need to re-validate all of the time.
+* We could spin up a private DB based on LevelDB instead of using IndexedDB.
+* Will certainly persist, but need to add code to reap?
+* What is the quota?
+* Transaction overhead (double the writes)? 16.6 MB/s on Xeon workstation.
+* Has snappy compression, which could save on space.
+* Can control per-origin or not by changing the key.
+* Possible contacts: see doc
+
+=== PNaCl cache with net/disk_cache + net/disk_cache&#8217;s string interface:
+For now, we could avoid some of the complexity of working with disk_cache by using its string / buffer interface instead of directly handling the file descriptors.  (No changes to the current API).
+
+* In the future we can ask about getting read-only direct access to the file descriptors.  It sounded like that might be okay (rvargas and gavinp) as long as the files are over 64KB (could always pad to that size), but it&#8217;s been over a year since I last asked.
+* IPCs: We send a file descriptor across the IPC boundaries.  However, initially they will not be FDs of the underlying cache implementations, but FDs of delete-on-close temp files.  Initially, we would use the disk_cache&#8217;s buffer interface to copy data out of or into those temp files.  In the future, the &#8220;get&#8221; interface may not need to create a temp file and not need to do a copy.  The latency the &#8220;put&#8221; is not so important since that can be done asynchronously while the app is running.
+* Need to estimate cost of copying for the initial "get".
+* We initially don&#8217;t get mmap.
+* Control over caching is per-origin or not by playing with &#8220;key&#8221;.
+* We can start with per-origin, and relax that later.
+* Will certainly persist, and automatically reaps.
+Possible contacts: see doc
+
+</ns0:content><ns0:updated>2013-04-18T16:52:48.000Z</ns0:updated><ns0:published>2013-04-18T16:52:48.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>erik...@chromium.org</ns2:ccUpdate></ns2:updates><ns0:title>Comment 1 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3372#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3372/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

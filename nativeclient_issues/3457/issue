@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEECSH47eCl7ImA9WhBaF0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3457</ns0:id><ns0:author>
+			<ns0:name>darin@chromium.org</ns0:name><ns0:uri>/u/darin@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Generate helpful error message when NEXE wrongly links in its own &amp;quot;main&amp;quot; function
+
+&lt;b&gt;- Where are we today?&lt;/b&gt;
+Today, it is possible to link in your own main function when building a NEXE.
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+When loading a NEXE (as a Pepper plug-in) the presence of the main function confuses the run-time and causes the NEXE to crash or exit early.  There is not much indication of what went wrong.  This is very confusing to developers.
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+It would help a ton to include an error message in the Dev Tools console indicating that the NEXE could not be run because of an errant main symbol (or something like that).
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+Developer should have some way of realizing that they made a mistake by linking in their own main function.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+New developers will be happier as they will not trip over this mistake as I did.  I took me a while to realize that I had mistakenly linked in a command line utility as I was starting to port a library.</ns0:content><ns0:updated>2013-05-28T17:37:49.000Z</ns0:updated><ns0:published>2013-05-28T17:37:49.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>Generate helpful error message when NEXE wrongly links in its own "main" function</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3457/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3457" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3457" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3457</ns2:id></ns0:entry>

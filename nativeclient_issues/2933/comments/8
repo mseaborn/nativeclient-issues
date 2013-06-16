@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AGQX47eCl7ImA9WhJaE0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2933/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9925
+
+------------------------------------------------------------------------
+r9925 | mcgrathr@chromium.org | 2012-10-04T18:30:12.114776Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/tls.c?r1=9925&amp;r2=9924&amp;pathrev=9925
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/support/aeabi_read_tp.S?r1=9925&amp;r2=9924&amp;pathrev=9925
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/aeabi_read_tp.S?r1=9925&amp;r2=9924&amp;pathrev=9925
+
+Make first word at thread pointer point to itself on ARM
+
+This makes nacl-newlib libpthread for ARM initialize the first word at
+the thread pointer to point at itself.  This will enable switching ARM
+compilers from r9-direct to r9-indirect code generation before the TCB
+is changed, so the pieces of the ABI shift can happen incrementally.
+At the same time, we change the __aeabi_read_tp implementations to
+use r9-indirect, thus verifying that it works with the unmodified TCB
+so it's safe to update the compilers.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2933
+TEST= trybots
+
+R=mseaborn@chromium.org
+
+Review URL: https://codereview.chromium.org/11029018
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-04T18:35:20.000Z</ns0:updated><ns0:published>2012-10-04T18:35:20.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2933#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2933/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0QFRn47eCl7ImA9WhNQEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/948/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10293
+
+------------------------------------------------------------------------
+r10293 | mseaborn@chromium.org | 2012-11-16T22:32:20.238167Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/futexes?r1=10293&amp;r2=10292&amp;pathrev=10293
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/futexes/nacl.scons?r1=10293&amp;r2=10292&amp;pathrev=10293
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=10293&amp;r2=10292&amp;pathrev=10293
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/futexes/futex_test.c?r1=10293&amp;r2=10292&amp;pathrev=10293
+
+Add tests for nacl-glibc's futex implementation
+
+This is in preparation for adding a futex implementation for
+nacl-newlib.  When I add that, I will extend the tests to run against
+both futex implementations.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=948
+TEST=run_futex_test --nacl_glibc
+
+Review URL: https://codereview.chromium.org/11412024
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-11-16T22:35:17.000Z</ns0:updated><ns0:published>2012-11-16T22:35:17.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=948#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/948/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

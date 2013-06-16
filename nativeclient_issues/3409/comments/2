@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0MASX47eCl7ImA9WhBUFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3409/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11272
+
+------------------------------------------------------------------------
+r11272 | bsy@google.com | 2013-05-01T17:25:32.441369Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/posix/nacl_host_desc.c?r1=11272&amp;r2=11271&amp;pathrev=11272
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/build.scons?r1=11272&amp;r2=11271&amp;pathrev=11272
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_io.c?r1=11272&amp;r2=11271&amp;pathrev=11272
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_io_alloc_ctor_test.c?r1=11272&amp;r2=11271&amp;pathrev=11272
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/win/nacl_host_desc.c?r1=11272&amp;r2=11271&amp;pathrev=11272
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_io.h?r1=11272&amp;r2=11271&amp;pathrev=11272
+
+Added NaClDescIoDescFromHandleAllocCtor, deprecated NaClDescIoDescMakeFromHandle.  Fixed error propagation bugs.
+
+This CL deprecates NaClDescIoDescMakeFromHandle, introduced in https://chromiumcodereview.appspot.com/12929033/, which is a proximal cause of the problem described in chromium:183015, and adds replacement function NaClDescIoDescFromHandleAllocCtor which accepts a flags argument.
+
+The introduced test, in nacl_desc_io_alloc_ctor_test.c, exercises the new interface with a variety of flag arguments and attempts to read, write, and mmap using the resultant NaClDesc object to check against expected results.
+
+Fixed a bug found by this test where, in Windows, mmap with an O_WRONLY file, a CHECK was triggered when an error should have been detected.
+
+Fixed a bug found by this test where errno returns from NaClHostDescMap was not being propagated properly.
+
+TEST= run_nacl_desc_io_alloc_ctor_test
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3409 https://code.google.com/p/nativeclient/issues/detail?id=3416 https://code.google.com/p/nativeclient/issues/detail?id=3418
+R=mcgrathr@chromium.org
+
+Review URL: https://codereview.chromium.org/14276005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-05-01T17:30:48.000Z</ns0:updated><ns0:published>2013-05-01T17:30:48.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3409#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3409/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

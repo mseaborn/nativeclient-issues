@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck8ARn47eCl7ImA9WhNbEUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3037</ns0:id><ns0:author>
+			<ns0:name>shcherb...@google.com</ns0:name><ns0:uri>/u/105197577636354702799/</ns0:uri></ns0:author><ns0:content type="html">Plan:
+
+Step 1. Merge and delete hex and golden files. Run prod. validator on bots for merged files.
+
+Step 1.5 (optional). Add script (or mode) that regenerates golden sections instead of comparing.
+
+Step 2. Add RDFA output section to each file or at least to some files. Run new validator on bots as well. Note that at this point we are not strictly speaking testing new validator - only testing that it won&#8217;t change. Because we are not relating results of old validator to results of new one.
+
+Step 3. Add script that compares outputs of two validators. Carefully review all discrepancies (there are about 50 of them, if we count each offset reported by one validator but not the other as one discrepancy). When discrepancies are reviewed, corresponding dfa_out sections are added to test files and commited. There is no reason to keep comparison script around anymore, because from this point all changes in golden sections have to be reviewed manually.
+For convenience it could be split into three CLs:
+add comparison script and add rdfa golden section to all tests where it does not cause discrepancies
+add rdfa golden sections to the remaining problematic tests
+remove comparison script
+
+It&#8217;s crucial that we don&#8217;t review all output from RDFA (it&#8217;s too much of it), but only cases where there are discrepancies.
+
+
+Tricky part. If we just run RDFA and collect validator messages there will be too much discrepancies. If RDFA encounters invalid instruction, it resumes validation from the beginning of a next bundle, while prod. validator skips maybe one or two bytes and recovers. And there are plenty of tests where there are more than one error in a single bundle. To mitigate such spurious disagreements, the following procedure is used: when RDFA complaints that particular piece can&#8217;t be decoded, problematic line in hex section (which usually corresponds to one instruction) is replaced with NOPS and validator is rerun from the beginning. This process may take several iterations (it seems it always converges in practice). All errors reported on all such runs (sans duplicate ones) are taken as validation result. So, in a sense, this trick is to emulate line-level recovery as opposed to bundle-level. In practice it turns out ok, and lots of spurious errors are eliminated. To each error message we add at which stage it was produced, so we can destinguish &#8216;primary&#8217; errors from additional ones.</ns0:content><ns0:updated>2013-01-14T16:27:27.000Z</ns0:updated><ns0:published>2012-09-20T12:06:24.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/105197577636354702799/</ns2:uri><ns2:username>shcherb...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/mseaborn@google.com/</ns2:uri><ns2:username>mseaborn@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Use hex tests for prod. validator to test RDFA validator</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3037/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3037" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3037" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-10-18T12:08:57.000Z</ns2:closedDate><ns2:id>3037</ns2:id></ns0:entry>

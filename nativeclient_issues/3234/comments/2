@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04FQn47eCl7ImA9WhNbFUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3234/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Could this be related to:
+
+http://build.chromium.org/p/client.nacl/builders/lucid_64-newlib-x86_32-pnacl/builds/3842/steps/scons-irt%20%5Bx86-32%5D%20%5Bsmall_tests_irt%20medium_tests_irt%5D%20%5Bsbtc%20%5D/logs/stdio
+
+?
+
+The log only shows:
+
+--------------stdout: begin
+rpc call intiated StreamInit:h:s
+input 0:  h(objfile)
+
+--------------stdout: end
+--------------stderr: begin
+[4311,4148296560:16:18:39.063163] Native Client module will be loaded at base address 0x0000000000000000
+0&gt; 1&gt; [SRPC:HOST:4310,4148610784:16:18:39.441657] NaClSrpcRpcWait(channel=0xf77a91d4): EOF is received instead of response. Probably, the other side (usually, nacl module or browser plugin) crashed.
+[4310,4148610784:16:18:39.441823] RPC call failed: Internal error in rpc method.
+[4310,4148610784:16:18:39.441868] Command [rpc] failed.
+
+
+Normally, it would have:
+
+[7708,4147211072:16:37:26.268917] Native Client module will be loaded at base address 0x0000000000000000
+0&gt; 1&gt; rpc call intiated StreamInit:h:s
+input 0:  h(objfile)
+rpc call complete StreamInit:h:s
+output 0:  s("no error")
+
+2&gt; [7707,4147914496:16:37:26.473321] Streaming file at 1000000000 bps
+3&gt; rpc call intiated StreamEnd::isss
+rpc call complete StreamEnd::isss
+output 0:  i(0)
+output 1:  s("")
+output 2:  s("")
+output 3:  s("\x98\xf0\xfe?\x1c")
+
+4&gt; llc complete
+5&gt; 6&gt; 
+
+
+Showing that StreamInit completed.</ns0:content><ns0:updated>2013-01-19T00:38:33.000Z</ns0:updated><ns0:published>2013-01-19T00:38:33.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3234#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3234/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

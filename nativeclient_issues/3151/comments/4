@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0QHQ347eCl7ImA9WhNQFEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3151/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10317
+
+------------------------------------------------------------------------
+r10317 | jfb@chromium.org | 2012-11-21T02:32:21.061224Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/validator_tests.h?r1=10317&amp;r2=10316&amp;pathrev=10317
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/validator_small_tests.cc?r1=10317&amp;r2=10316&amp;pathrev=10317
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/validator.cc?r1=10317&amp;r2=10316&amp;pathrev=10317
+
+ARM validator: allow arbitrary dyncode replacement inside literal pool.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=3151
+R=kschimpf@google.com, bsy@google.com
+TEST=./scons run_arm_validator_small_tests
+
+Review URL: https://codereview.chromium.org/11417101
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-11-21T02:35:32.000Z</ns0:updated><ns0:published>2012-11-21T02:35:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3151#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3151/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

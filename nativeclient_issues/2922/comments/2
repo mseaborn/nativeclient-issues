@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIBSH47eCl7ImA9WhJQE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2922/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">Given that it is getting harder and harder to buy a development machine with
+&lt;= 4GB of RAM  time works against 32bit support.
+
+There are a few other things working against 32bit:
+* As Jan pointed out, a 32bit (host) toolchain would inconvenience
+the 64bit (host) developers on Linux, 
+* IIRC, we had problems building a 32bit host TC for linux and
+  we resorted to building one  on a 32 bit box but we pretty much never use it. 
+* I believe we ship sel_ldr instances for x86-32, x86-64,arm
+  in our 64bit linux TC, I do not think we can build all these on 
+  32bit linux - not sure what we are doing for mac/win in that regard
+
+
+My proposal would be to advertise the pnacl TCs as 64bit host only but 
+still keep building the mac/win version as 32bit until we find time to switch them to 64bit.
+Assuming, unlike Linux, running 32bit (host) compiler binaries works seamlessly for mac/win.
+Would this cause any problems on the SDK side? Would it help simplifying things?
+
+
+
+
+
+
+</ns0:content><ns0:updated>2012-07-26T22:09:19.000Z</ns0:updated><ns0:published>2012-07-26T22:09:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2922#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2922/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

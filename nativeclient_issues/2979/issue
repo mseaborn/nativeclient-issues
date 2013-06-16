@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4GRX47eCl7ImA9WhJWFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2979</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The test run_stack_alignment_asm_test_irt is apparently flaky and failed once today with the following output:
+
+ERROR: Command returned exit status -11 (0xfffffff5) but we expected 0 (0x0)
+======================================================================
+Stdout for nacl_newlib.run_stack_alignment_asm_test_irt:
+======================================================================
+Checking offset 0: stack_top=0x10041700...
+got g_stack_ptr=0x100416ec
+Checking offset 1: stack_top=0x100416ff...
+got g_stack_ptr=0x100416ec
+Checking offset 2: stack_top=0x100416fe...
+got g_stack_ptr=0x100416ec
+Checking offset 3: stack_top=0x100416fd...
+
+======================================================================
+Stderr for nacl_newlib.run_stack_alignment_asm_test_irt:
+======================================================================
+[19279,3075966688:16:03:39.378998] Native Client module will be loaded at base address 0x0000000000000000
+[19279,3075693424:16:03:39.641248] NaClAbiStatHostDescStatXlateCtor: Unusual NaCl descriptor type (not constructible). The NaCl app has a file with st_mode = 010600. (This is normal for std{in,out,err}, or other inherited/injected files.)
+[19279,3075414896:16:03:39.642102] NaClUserToSys: uaddr 0x00000000, addr space 30 bits
+
+[  FAILED  ] nacl_newlib.run_stack_alignment_asm_test_irt (280 ms)
+</ns0:content><ns0:updated>2012-08-20T16:08:44.000Z</ns0:updated><ns0:published>2012-08-17T23:35:26.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>run_stack_alignment_asm_test is flaky and failed once today</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Test</ns2:label><ns2:label>FlakeyBots</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2979/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2979" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2979" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-08-20T16:08:44.000Z</ns2:closedDate><ns2:id>2979</ns2:id></ns0:entry>

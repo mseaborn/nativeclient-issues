@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUcHR347eCl7ImA9WhJXEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2683/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=149917
+
+------------------------------------------------------------------------
+r149917 | jvoung@google.com | 2012-08-03T20:49:03.324208Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/api/private/finish_writing_these/ppb_nacl_private.idl?r1=149917&amp;r2=149916&amp;pathrev=149917
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/renderer/pepper/ppb_nacl_private_impl.cc?r1=149917&amp;r2=149916&amp;pathrev=149917
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/local_temp_file.h?r1=149917&amp;r2=149916&amp;pathrev=149917
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_coordinator.cc?r1=149917&amp;r2=149916&amp;pathrev=149917
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_translate_thread.cc?r1=149917&amp;r2=149916&amp;pathrev=149917
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/temporary_file.cc?r1=149917&amp;r2=149916&amp;pathrev=149917
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_coordinator.h?r1=149917&amp;r2=149916&amp;pathrev=149917
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/c/private/ppb_nacl_private.h?r1=149917&amp;r2=149916&amp;pathrev=149917
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_translate_thread.h?r1=149917&amp;r2=149916&amp;pathrev=149917
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/temporary_file.h?r1=149917&amp;r2=149916&amp;pathrev=149917
+
+Revert "Add an IPC for PNaCl to check if the session is incognito,"
+
+This reverts commit 0a3abb8418affb13cfc7b848ef69ce867ccaaad7.
+
+This is breaking the pnacl_bad_browser_test on Windows
+(some how the NaCl plugin itself fails to load for that test).
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2683
+TBR=jvoung@chromium.org
+
+Review URL: https://chromiumcodereview.appspot.com/10823167
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-03T20:50:36.000Z</ns0:updated><ns0:published>2012-08-03T20:50:36.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2683#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2683/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

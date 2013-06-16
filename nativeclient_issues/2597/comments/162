@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0cERH47eCl7ImA9WhBRFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/162</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10955
+
+------------------------------------------------------------------------
+r10955 | khim@google.com | 2013-03-07T15:09:30.693448Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/instruction_definitions/system_instructions.def?r1=10955&amp;r2=10954&amp;pathrev=10955
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/build.scons?r1=10955&amp;r2=10954&amp;pathrev=10955
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/instruction_definitions/x87_instructions.def?r1=10955&amp;r2=10954&amp;pathrev=10955
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/instruction_definitions/general_purpose_instructions.def?r1=10955&amp;r2=10954&amp;pathrev=10955
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/instruction_definitions/nops.def?r1=10955&amp;r2=10954&amp;pathrev=10955
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/instruction_definitions?r1=10955&amp;r2=10954&amp;pathrev=10955
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/instruction_definitions?r1=10955&amp;r2=10954&amp;pathrev=10955
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/instruction_definitions/mmx_instructions.def?r1=10955&amp;r2=10954&amp;pathrev=10955
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/instruction_definitions/xmm_instructions.def?r1=10955&amp;r2=10954&amp;pathrev=10955
+
+Move instruction_definitions out of unreviewed.
+
+These files are reflection of facts (x86 instruction set architecture).
+The only thing to "review" in these are comments.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=2597
+TEST= validator tests on trybots (in particular, ./scons run_x86_rdfa_validator_testdata_tests)
+TEST= ./scons dfacheckdecoder
+TEST= ./scons dfacheckvalidator
+TEST= vdiff/enuminst
+TEST= validator regression tests (files from CWS store)
+Review URL: https://codereview.chromium.org/12475005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-03-07T15:10:05.000Z</ns0:updated><ns0:published>2013-03-07T15:10:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 162 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c162" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/162" rel="self" type="application/atom+xml" /></ns0:entry>

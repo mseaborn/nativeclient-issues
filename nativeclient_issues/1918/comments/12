@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkQDQH47eCl7ImA9WhJTEEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1918/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">it's probably because of my windows antipathy or some curse that correlated with my being sheriff today that this error has become more frequent.  the last two vista64-newlib-dbg builds (the 2nd forced) failed with Error 5 from running gcc, on different input source files.
+
+while finding the root cause may be very difficult, this is bad for us.  not only for our own build/try iteration, but the chrome team has been complaining of our test flakiness, and this is one of the contributors to the perception of flakiness.
+
+could we wrap the gcc/g++ driver to detect Error 5 and just retry a few times?  if it's some deep cygwin library race condition (or is gcc built using mingw?), the likelihood that we will be able to determine and fix the root cause quickly is low, but a (hacky, admittedly) workaround is hopefully simple.
+
+andrey:  could you please tilt at this particular windows^W windmill?</ns0:content><ns0:updated>2012-06-19T00:06:11.000Z</ns0:updated><ns0:published>2012-06-19T00:06:11.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Pri-2</ns2:label><ns2:label>-Mstone-19</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:ownerUpdate>halya...@google.com</ns2:ownerUpdate></ns2:updates><ns0:title>Comment 12 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1918#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1918/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

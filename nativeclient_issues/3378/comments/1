@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0cNQH47eCl7ImA9WhBUGEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3378/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Thinking of getting something started here, with a small list.
+
+However, with a small list there are going to be a lot of failures.  Known failures:
+
+- We have some intrinsics that return struct types (https://code.google.com/p/nativeclient/issues/detail?id=3343#c6), and those can be are inserted by Clang.
+
+- We have tests that intentionally test a bunch of llvm intrinsics.
+  (a) tests/toolchain/llvm_bitmanip_intrinsics.c (and other test suites test popcount, etc.) -- these might be okay, as long as we supply compiler_rt support?
+
+  (b) tests/toolchain/llvm_math_intrinsics.c, except for sqrt the others are transcendentals and may not have the same rounding behavior (llvm.sin, llvm.cos, llvm.log...).
+
+  (c) tests/toolchain/frame_addresses.c, etc (and torture test suite). use llvm.frameaddress and llvm.returnaddress.  They might be useful for crude debugging, but are less likely to be used by real pexes?
+
+- Some tests like the "run_barebones_vaarg_test" don't have dead prototypes stripped, so they retain the decls for va_* intrinsics, even after expanding out va_arg instrinsics.  This makes it hard to blacklist the va_arg intrinsics.
+
+
+So, thinking of adding a basic list that is insufficient, but have a flag is set to disable warnings.  Then we can toggle the flag and find more problems and incrementally add fixes.  That flag can also be used to allow some of the tests which aren't fully supported.
+</ns0:content><ns0:updated>2013-05-06T22:58:11.000Z</ns0:updated><ns0:published>2013-05-06T22:58:11.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>dschuff@chromium.org</ns2:ccUpdate><ns2:ccUpdate>eli...@chromium.org</ns2:ccUpdate></ns2:updates><ns0:title>Comment 1 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3378#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3378/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

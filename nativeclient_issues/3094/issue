@@ -1,0 +1,53 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUICR347eCl7ImA9WhNaF0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3094</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+
+PNACL_VERSION=10018
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+
+svn rev 10024
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. patch in: http://codereview.chromium.org/11055011/
+2. pnacl/build.sh translator-clean-all
+3. pnacl/build.sh translator-all
+4. run pnacl/test.sh test-arm-sbtc barebones_tests --verbose
+
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Expect: Tests translate and pass.
+Instead: the sandboxed arm llc crashes with:
+
+
+3&amp;gt; assertion &amp;quot;HT.TopLevelMap[ThisEntry-&amp;gt;getKey()] == ThisEntry &amp;amp;&amp;amp; &amp;quot;Scope imbalance!&amp;quot;&amp;quot; failed: file &amp;quot;/usr/local/google/home/nacl2/native_client/pnacl/git/llvm/include/llvm/ADT/ScopedHashTable.h&amp;quot;, line 238, function: llvm::ScopedHashTableScope&amp;lt;llvm::MachineInstr *, unsigned int, llvm::MachineInstrExpressionTrait, llvm::RecyclingAllocator&amp;lt;llvm::BumpPtrAllocator, llvm::ScopedHashTableVal&amp;lt;llvm::MachineInstr *, unsigned int&amp;gt;, 16, 4&amp;gt; &amp;gt;::~ScopedHashTableScope() [K = llvm::MachineInstr *, V = unsigned int, KInfo = llvm::MachineInstrExpressionTrait, AllocatorTy = llvm::RecyclingAllocator&amp;lt;llvm::BumpPtrAllocator, llvm::ScopedHashTableVal&amp;lt;llvm::MachineInstr *, unsigned int&amp;gt;, 16, 4&amp;gt;]
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+Attached is an llvm patch for getting some debug output from llc, around the ScopedHashTable code, when run with -debug (you'll need to change pnacl-translate.py to handle the -debug flag).
+
+Comparing the debug logs of a good llc.arm.nexe with the bad one, they both make it through quite a few passes (ISel, stack coloring, etc.) without divergence.  The divergence is when you hit the MachineCSE pass.
+
+There's a bunch of insertIntoScope calls that modify the &amp;quot;HT.TopLevelMap&amp;quot; bindings.  Then the destructor runs and tries to pop a bunch of values out.  The bad code gets:
+
+  ThisEntry-&amp;gt;getKey() = 0xeb0948 HT.TopLevelMap[ThisEntry-&amp;gt;getKey()] = 0x0 ThisEntry = 0xeb0940
+
+where the key maps to the value 0x0, while the good code:
+
+ThisEntry-&amp;gt;getKey() = 0xf82288 HT.TopLevelMap[ThisEntry-&amp;gt;getKey()] = 0xf82280 ThisEntry = 0xf82280          
+
+maps the key to an address 8 bytes off the the key, and is == ThisEntry.
+
+The local variable &amp;quot;ThisEntry&amp;quot; comes from LastValInScope, which is also set by insertIntoScope().
+
+So at a first glance it seems that *one* of the updates in insertIntoScope() happens correctly (the one for LastValInScope), while the key-value binding update doesn't seem to be happening correctly.  From a first pass, the ARM assembly for insertIntoScope of the good and bad build seem very similar.  The only difference appears to be the addresses of things (which could matter I guess)...
+
+</ns0:content><ns0:updated>2013-02-01T19:39:26.000Z</ns0:updated><ns0:published>2012-10-17T18:18:37.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:state>closed</ns2:state><ns0:title>ARM sbtc breaks when built without --export-dynamic</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-25</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3094/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3094" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3094" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>1746</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>3080</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2012-11-02T16:10:37.000Z</ns2:closedDate><ns2:id>3094</ns2:id></ns0:entry>

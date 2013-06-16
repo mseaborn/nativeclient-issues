@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk4ER347eCl7ImA9WhBTEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2484/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">For the PPAPI* tests (versus the NaClBrowserTestPnacl*), all of the untrusted test code is merged into one program.
+
+That can make it very slow to test with the in-browser-translator, unless each run shares a translation cache.
+
+The combined PPAPI* untrusted test code is an over 2MB, pexe.  At the moment, to translate that once will take 15 seconds, on a fast machine.  Unless we switch the in-browser-translator over to using -translate-fast, that will certainly cause timeouts.
+
+In contrast, the individual NaClBrowserTestPnacl test code is 200KB each, so 10x faster.
+
+If we do PNaCl tests with the monolithic PPAPI* tests, I think it makes sense to do the translation offline (only once).  Otherwise, we'll need to break apart the test nexe so that it's not so large, or we'll need to use -translate-fast, or ???
+</ns0:content><ns0:updated>2013-02-05T22:55:06.000Z</ns0:updated><ns0:published>2013-02-05T22:55:06.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>-robertm@google.com</ns2:ccUpdate><ns2:blockedOnUpdate>-nativeclient:2465</ns2:blockedOnUpdate></ns2:updates><ns0:title>Comment 14 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2484#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2484/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

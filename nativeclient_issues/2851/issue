@@ -1,0 +1,34 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AGRn47eCl7ImA9WhBTEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2851</ns0:id><ns0:author>
+			<ns0:name>cstefan...@google.com</ns0:name><ns0:uri>/u/113511172007743761909/</ns0:uri></ns0:author><ns0:content type="html">[Assigning to Mark, to take a look or re-assign.]
+
+Version: 21.0.1163.0
+OS: Seen on both 32-bit and 64-bit Windows
+
+See, e.g.,
+http://crash/reportdetail?reportid=5edadfb0319a1396
+http://crash/reportdetail?reportid=875142aceb2a0ce6
+http://crash/reportdetail?reportid=2981fdd4e808c9b3
+
+
+0x6bce67aa	 [chrome.dll]	 - nacl_exit.c:30]	NaClAbort
+0x6bce6461	 [chrome.dll]	 - nacl_log.c:326]	NaClLogUnlock
+0x6bce7941	 [chrome.dll]	 - nacl_host_desc.c:218]	NaClHostDescMap
+0x6bcef9da	 [chrome.dll]	 - nacl_desc_io.c:177]	NaClDescIoDescMap
+0x6bcefa20	 [chrome.dll]	 - nacl_desc_io.c:192]	NaClDescIoDescMapAnon
+0x6bce4e0f	 [chrome.dll]	 - nacl_syscall_common.c:1394]	NaClCommonSysMmapIntern
+0x6bce4f8c	 [chrome.dll]	 - nacl_syscall_common.c:1559]	NaClCommonSysMmap
+0x6bce1a31	 [chrome.dll]	 - nacl_syscall_handlers.c:545]	NaClCommonSysMmapDecoder
+0x6bd76425	 [chrome.dll]	 - nacl_syscall_hook.c:143]	NaClSyscallCSegHook
+0x6bcf470c	 [chrome.dll]	 + 0x0184470c]	NaClSyscallSeg
+0x6bcf42df	 [chrome.dll]	 - nacl_switch_to_app_32.c:90]	NaClStartThreadInApp
+0x6bcdfa92	 [chrome.dll]	 - nacl_app_thread.c:79]	NaClThreadLauncher
+0x6a58dd0f	 [chrome.dll]	 - threadex.c:314]	_callthreadstartex
+0x6a58ca0f	 [chrome.dll]	 - threadex.c:292]	_threadstartex
+0x771ced6b	 [kernel32.dll]	 + 0x0004ed6b]	BaseThreadInitThunk
+0x77c7377a	 [ntdll.dll]	 + 0x0006377a]	__RtlUserThreadStart
+0x77c7374d	 [ntdll.dll]	 + 0x0006374d]	_RtlUserThreadStart</ns0:content><ns0:updated>2013-02-05T23:08:47.000Z</ns0:updated><ns0:published>2012-06-13T18:45:24.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>LOG_FATAL error in NaClHostDescMap(): "Could not VirtualAlloc anonymous memory"</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-22</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2851/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2851" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2851" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2851</ns2:id></ns0:entry>

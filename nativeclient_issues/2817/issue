@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcAQ347eCl7ImA9WhNXF0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2817</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Currently, dyncode_delete() expects untrusted threads to 'check in' to update dynamic_delete_generation to demonstrate that they are not running the code that is about to be deleted.
+
+This is an awkward and intrusive interface because it can require invasive modifications of programs in order to ensure that all their threads 'check in' at appropriate intervals.
+
+Furthermore, the current plans for switching to the new Chrome-IPC-based PPAPI proxy involve the IRT creating its own internal threads (see issue 2788).  Unless we take extra steps, this would break dyncode_delete() for user programs.
+
+(It's also not clear what the interface for 'checking in' is supposed to be, and the functionality is not tested.  See issue 2815.)
+
+I propose that we use thread suspension to check that untrusted threads are not running the code we are about to delete.  We already deploy thread suspension on Windows (for the mmap hole problem) and we have a Linux implementation for the debug stub.
+
+If an untrusted thread is running the code to be deleted, NaCl can exit with a fatal error.</ns0:content><ns0:updated>2012-12-06T01:07:22.000Z</ns0:updated><ns0:published>2012-05-31T19:03:58.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Change dyncode_delete() to use thread suspension for ensuring safety</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2817/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2817" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2817" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2817</ns2:id></ns0:entry>

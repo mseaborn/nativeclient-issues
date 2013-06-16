@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0IAQH47eCl7ImA9WhdWGEg.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYERX47eCl7ImA9WhBaF0o.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1546</ns0:id><ns0:author>
 			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">The the current sandboxed (nexe) version of llc is &amp;quot;much&amp;quot; slower than the unsandboxed version. We need this to be fast.
 
@@ -39,10 +39,8 @@ A few of the top functions for llc.nonsrpc.tcmalloc.nexe (sorry, in mangled form
 1729		_ZNK4llvm15SmallPtrSetImpl13FindBucketForEPKv [0xb3ffa0, 0xb400df]
 1599		_ZN12_GLOBAL__N_115VectorLegalizer10LegalizeOpEN4llvm7SDValueE [0x381ee0, 0x38539b]
 1545		_ZNK4llvm12MachineInstr25findRegisterDefOperandIdxEjbbPKNS_18TargetRegisterInfoE [0x4b3320, 0x4b363b]
-1479		memmove [0xc3df20, 0xc3e13f]</ns0:content><ns0:updated>2011-09-12T19:25:41.000Z</ns0:updated><ns0:published>2011-03-17T21:51:03.000Z</ns0:published><ns2:status>Accepted</ns2:status><ns2:owner>
+1479		memmove [0xc3df20, 0xc3e13f]</ns0:content><ns0:updated>2013-05-28T20:31:44.000Z</ns0:updated><ns0:published>2011-03-17T21:51:03.000Z</ns0:published><ns2:status>Accepted</ns2:status><ns2:owner>
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:cc>
-			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
-			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:cc><ns2:cc>
-			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>pnacl: sandboxed llc should be faster</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1546/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1546" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1546" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
-			<ns2:id>1591</ns2:id></ns2:blockedOn><ns2:id>1546</ns2:id></ns0:entry>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>pnacl: sandboxed llc should be faster</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1546/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1546" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1546" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>1591</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:id>1546</ns2:id></ns0:entry>

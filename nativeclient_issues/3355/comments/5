@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUFQn47eCl7ImA9WhBWF00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3355/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11169
+
+------------------------------------------------------------------------
+r11169 | bsy@google.com | 2013-04-11T17:06:33.489731Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=11169&amp;r2=11168&amp;pathrev=11169
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/mmap_prot_exec/nacl.scons?r1=11169&amp;r2=11168&amp;pathrev=11169
+
+Made fallback mode memory mapping use read/write memory.
+
+The NaClTextDyncodeCreate function may need to stub out unimplemented instructions.  We need to make the memory mapping be read/write, so that it will not fault during stubout.
+
+TEST= run_mmap_prot_exec_test
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3355
+
+Review URL: https://codereview.chromium.org/13828009
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-04-11T17:10:13.000Z</ns0:updated><ns0:published>2013-04-11T17:10:13.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3355#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3355/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

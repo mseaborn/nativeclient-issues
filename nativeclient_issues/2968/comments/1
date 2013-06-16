@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUHR347eCl7ImA9WhJWEEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2968/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">[+jvoung, who also noticed this problem when running chrome_browser_tests a while ago]
+
+To investigate, I added the following to command_tester.py:
+
+  import win32api
+  import win32con
+  existing_flags = win32api.SetErrorMode(0)
+  win32api.SetErrorMode(existing_flags)
+  print 'FLAGS=0x%x' % existing_flags
+
+It starts off by printing FLAGS=0x3 for many runs (the value set by SConstruct), but at some point it switches to printing FLAGS=0x8001.  Something we run in the Scons process is changing these flags.</ns0:content><ns0:updated>2012-08-15T22:03:56.000Z</ns0:updated><ns0:published>2012-08-15T22:03:56.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>jvo...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2968#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2968/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYGRX47eCl7ImA9WhNSFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2881/comments/full/20</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10140
+
+------------------------------------------------------------------------
+r10140 | mseaborn@chromium.org | 2012-10-31T00:20:58.532495Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/platform.gyp?r1=10140&amp;r2=10139&amp;pathrev=10140
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/build.scons?r1=10140&amp;r2=10139&amp;pathrev=10140
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/win/aligned_malloc.c?r1=10140&amp;r2=10139&amp;pathrev=10140
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.c?r1=10140&amp;r2=10139&amp;pathrev=10140
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_test.cc?r1=10140&amp;r2=10139&amp;pathrev=10140
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/sel_rt_32.h?r1=10140&amp;r2=10139&amp;pathrev=10140
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/posix/aligned_malloc.c?r1=10140&amp;r2=10139&amp;pathrev=10140
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/aligned_malloc.h?r1=10140&amp;r2=10139&amp;pathrev=10140
+
+x86-32: Align the %gs segment for better performance on Intel Atom
+
+Ensure that the %gs segment is 64-byte-aligned because this makes TLS
+accesses faster on Intel Atom CPUs.
+
+Add alignment declarations to the NaClAppThread struct.
+
+Add NaClAlignedAlloc()/NaClAlignedFree() functions that we use for
+allocating NaClAppThread.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=2881
+TEST=run_service_runtime_tests run_hello_world_test
+
+Review URL: https://codereview.chromium.org/11311022
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-31T00:25:24.000Z</ns0:updated><ns0:published>2012-10-31T00:25:24.000Z</ns0:published><ns2:updates /><ns0:title>Comment 20 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2881#c20" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2881/comments/full/20" rel="self" type="application/atom+xml" /></ns0:entry>

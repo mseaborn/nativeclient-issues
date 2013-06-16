@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EHRn47eCl7ImA9WhNXEUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3179/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10343
+
+------------------------------------------------------------------------
+r10343 | bsy@google.com | 2012-11-29T02:16:00.708749Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gio/gio_shm.c?r1=10343&amp;r2=10342&amp;pathrev=10343
+
+Fix a refcount leak for the allocated shm object in NaClGioShmAllocCtor.
+
+NaClGioShmCtorIntern takes a reference to the passed-in shm object if
+it succeeds, so the NaClGioShmAllocCtor should always unref the shm
+object that it created regardless of whether the NaClGioShmCtorIntern
+function succeeds or fails.  If it failed, the NaClDescUnref will
+remove the last reference and trigger the dtor chain.  If it succeeds,
+then ownership of the shm object will have a single reference count
+left, i.e., the ownership has been passed into the Gio object.
+
+R=mseaborn@google.com,sehr@google.com
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3179
+
+Review URL: https://codereview.chromium.org/11411252
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-11-29T02:20:37.000Z</ns0:updated><ns0:published>2012-11-29T02:20:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3179#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3179/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

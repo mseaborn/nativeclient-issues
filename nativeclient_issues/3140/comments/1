@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUAGQH47eCl7ImA9WhNRGEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3140/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10256
+
+------------------------------------------------------------------------
+r10256 | jvoung@google.com | 2012-11-13T21:53:33.377481Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=10256&amp;r2=10255&amp;pathrev=10256
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-driver.py?r1=10256&amp;r2=10255&amp;pathrev=10256
+
+Build PNaCl newlib and libstdc++ bitcode libs with opts.
+
+This lowers our dependence on LTO for decent performance.
+Without it, basic functions like strlen will be using the
+stack quite a lot.  A strlen microbenchmark shows that we
+get 2.8 second runs with this and 5.5 sec runs without it,
+if the test object file was compiled with -O3 but linked
+without -O3.
+
+Using -O2 for now + an inline threshold, so that inlining is
+not as aggressive and libs don't become too large.
+
+newlib: 74KB difference in size with -O3 vs -O2
+(stock), and 115KB diff between stock -O2 and -O2 with an
+inline threshold (out of ~1.5MB)
+
+libstdcpp: 600KB difference between stock -O2 and -O2 with
+an inline threshold (out of ~1.9MB).
+
+252.eon: 150KB difference between stock -O2 and -O2 with
+an inline threshold (only for the libs) when pexe stripped
+(440KB diff unstripped).
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3140
+
+Review URL: https://codereview.chromium.org/11369199
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-11-13T21:55:21.000Z</ns0:updated><ns0:published>2012-11-13T21:55:21.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3140#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3140/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

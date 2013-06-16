@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkECR347eCl7ImA9WhNXGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3199</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Since the switch to the new Chrome-IPC-based PPAPI proxy, the tests for dyncode_delete() are failing when run inside Chromium.  They give this output:
+
+...
+[  3845 ms] |||| [dynamic_load_test.nmf LOG] 'Running test_deleting_code...\n'
+[  3850 ms] |||| [dynamic_load_test.nmf LOG] 'assertion &amp;quot;'
+[  3[23904,977204992:16:42:13.739412] Native Client module will be loaded at base address 0x00000a7400000000
+[23904,976840448:16:42:13.803963] SerializeAllProcessors: g_firstbyte is -12
+854 ms] |||| [dynamic_load_test.nmf LOG] 'rc == 0'
+[  3860 ms] |||| [dynamic_load_test.nmf LOG] '&amp;quot; failed: file &amp;quot;'
+[  3866 ms] |||| [dynamic_load_test.nmf LOG] 'tests/dynamic_code_loading/dynamic_load_test.c'
+[  3870 ms] |||| [dynamic_load_test.nmf LOG] '&amp;quot;, line '
+[  3875 ms] |||| [dynamic_load_test.nmf LOG] '402'
+[  3879 ms] |||| [dynamic_load_test.nmf LOG] ', function: '
+[  3883 ms] |||| [dynamic_load_test.nmf LOG] 'test_deleting_code'
+[  3887 ms] |||| [dynamic_load_test.nmf LOG] '\n'
+[  4397 ms] |||| [dynamic_load_test.nmf LOG] 'Did not see the END_OF_LOG message after timeout; continuing anyway'
+[  4403 ms] |||| [dynamic_load_test.nmf FAIL] undefined
+
+We didn't see this when Chromium was switched to use the new proxy, because this test is run as part of run_inbrowser_test_runner, which accidentally got disabled (issue chromium:162037).
+
+This breakage was predicted and explained in issue 2817.  dyncode_delete() only succeeds if all threads have 'checked in'.  The new proxy adds a background thread which does not 'check in' the way that dyncode_delete() requires.
+</ns0:content><ns0:updated>2012-12-06T21:51:06.000Z</ns0:updated><ns0:published>2012-12-06T01:06:13.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/106710594185928520364/</ns2:uri><ns2:username>bbu...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>dyncode_delete() is broken in the new Chrome-IPC-based PPAPI proxy</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3199/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3199" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3199" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3199</ns2:id></ns0:entry>

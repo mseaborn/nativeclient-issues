@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkcNRn47eCl7ImA9WhBbEE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3429/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>eli...@google.com</ns0:name><ns0:uri>/u/114831583435496442738/</ns0:uri></ns0:author><ns0:content type="html">Another point of decision is: how should these intrinsics be named? Should we remain with their existing names in LLVM (llvm.setjmp, llvm.memcpy) or have our own intrinsics (llvm.nacl.XXX)?
+
+Note that these intrinsics will make part of the stable bitcode ABI.
+
+In favor of having our own intrinsic names:
+
+* More stable in a sense?
+
+In favor of using existing intrinsic names:
+
+* Less localmods in LLVM code (it already knows to lower intrinsics like llvm.setjmp to C library calls, no need to teach it other names)
+
+Additional thoughts welcome.
+
+
+
+
+
+
+
+</ns0:content><ns0:updated>2013-05-08T18:34:57.000Z</ns0:updated><ns0:published>2013-05-08T18:34:57.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by eli...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3429#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3429/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

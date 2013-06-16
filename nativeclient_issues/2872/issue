@@ -1,0 +1,54 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcGRH47eCl7ImA9WhBTEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2872</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">Status Quo:
+
+TC tarballs:
+linux (64) - 210 MB (compressed)   
+mac -        279 MB (compressed)   
+win -        195 MB (compressed)   
+
+
+Breakdown (linux - ignores hard-linking):
+
+MBs     directory
+30      toolchain/pnacl_linux_x86_64/glibc
+1       toolchain/pnacl_linux_x86_64/lib-arm
+23      toolchain/pnacl_linux_x86_64/lib-x86-32
+25      toolchain/pnacl_linux_x86_64/lib-x86-64
+36      toolchain/pnacl_linux_x86_64/newlib
+502     toolchain/pnacl_linux_x86_64/pkg
+1       toolchain/pnacl_linux_x86_64/REV
+1       toolchain/pnacl_linux_x86_64/SOURCE_SHA1
+1       toolchain/pnacl_linux_x86_64/SOURCE_URL
+1       toolchain/pnacl_linux_x86_64/tools-arm
+1       toolchain/pnacl_linux_x86_64/tools-x86
+---
+224     toolchain/pnacl_linux_x86_64/pkg/binutils
+278     toolchain/pnacl_linux_x86_64/pkg/llvm
+----
+135     toolchain/pnacl_linux_x86_64/pkg/binutils/arm-pc-nacl
+80      toolchain/pnacl_linux_x86_64/pkg/binutils/bin
+1       toolchain/pnacl_linux_x86_64/pkg/binutils/lib
+10      toolchain/pnacl_linux_x86_64/pkg/binutils/share
+--- 
+....
+
+
+
+The biggest problem is that that we started using static linking and most llvm and binutils binaries
+pull in a massive llvm archive of (guestimated) 15MB.
+
+Note, that we are already using hard links to deal with duplicates binaries (at least on linux), e.g.
+toolchain/pnacl_linux_x86_64/pkg/binutils/bin/* vs
+toolchain/pnacl_linux_x86_64/pkg/binutils/arm-pc-nacl/bin/
+
+
+Plan:
+* try to switch at least the linux and mac TC build back to shared.
+* do some archaeology and document what was going on windows which caused us to switch to the static model
+  
+
+</ns0:content><ns0:updated>2013-02-05T23:13:45.000Z</ns0:updated><ns0:published>2012-06-22T15:09:38.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>pnacl toolchain size is too large and needs to be reduced</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2872/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2872" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2872" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2872</ns2:id></ns0:entry>

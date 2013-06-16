@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0YDQ347eCl7ImA9WhNRGUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1137/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">&gt; Do we have a plan, as Cliff mentions, to change an application's address space size, or bundle alignment?
+
+We don't have any plans to do that.  As with x86-32 and x86-64, the ARM sandbox gets a fixed address space size (1GB), and we have no plans to change that to 512MB or 2GB or anything else.  Even if we did, *allowing* stricter masks (for smaller sandbox sizes) does not make it any easier to have the validator automatically rewrite mask instructions -- if anything, it makes it harder.
+
+Consider that if a nexe contains:
+
+  bic r0, r0, #0xc0000000  // 1GB mask
+  ldr r1, [r0]
+
+We could rewrite it to the stricter mask:
+
+  bic r0, r0, #0xe0000000  // 512MB mask
+  ldr r1, [r0]
+
+but we can't rewrite it to a less strict mask:
+
+  bic r0, r0, #0x80000000  // 2GB mask
+  ldr r1, [r0]
+
+because the code could have been generated from "*(int *) (ptr &amp; ~0xc0000000)" and we can't relax the mask without changing the meaning of this code, even though it's unlikely anyone would write a C expression like this.
+
+Clearly we can't change the bundle size of a given ARM nexe without non-trivial rewriting of the binary, so I don't know what you're thinking of there.</ns0:content><ns0:updated>2012-11-14T16:39:32.000Z</ns0:updated><ns0:published>2012-11-14T16:39:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1137#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1137/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

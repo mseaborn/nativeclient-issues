@@ -1,0 +1,72 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8CQX47eCl7ImA9WhBWFk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3113/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">We would like to simplify the representation of global variable initialisers in order to simplify the PNaCl ABI and possibly speed up translation.
+
+I propose flattening global variable initializers to remove the use of arbitrary nested ConstantExprs.  (See issue 3337 for expanding out ConstantExprs in functions.)
+
+Consider this C initialiser as an example:
+
+struct S {
+  struct Pair {
+    char c1;
+    char c2;
+  } p;
+  int *ptr;
+};
+extern int global;
+struct S x[] = { { { 1, 2, }, &amp;global },
+                 { { 3, 4, }, &amp;global + 1 } };
+
+
+In LLVM this currently gets represented as:
+
+@x = global [2 x %struct.S]
+  [%struct.S { %struct.Pair { i8 1, i8 2 }, i32* @global },
+   %struct.S { %struct.Pair { i8 3, i8 4 },
+               i32* getelementptr (i32* @global, i64 1) }], align 16
+
+
+I propose flattening this so that, in a simplified PNaCl wire format, it is represented as:
+
+ * an array of bytes
+ * an array of 32-bit relocations to globals (variables or functions), where a relocation is an (offset_into_bytes, global_var) pair
+
+The example above would be represented as:
+
+Bytes:
+  [1, 2, 0, 0,  // c1, c2, padding
+   0, 0, 0, 0,  // addend 0: @global's address will be added
+   3, 4, 0, 0,  // c1, c2, padding
+   4, 0, 0, 0]  // addend 4: @global's address with be added
+Relocations:
+  [(4, @global),
+   (12, @global)]
+
+
+For interoperability with the normal LLVM backend, we want the PNaCl bitcode reader to be able to convert this back into a valid LLVM ConstantExpr at PNaCl translation time.  There are two ways to do this:
+
+1) As an array of i32s:
+
+@x_flattened_as_array = global [4 x i32] [
+  i32 513,   ; == 0x00000201 (LLVM assembly does not allow hex constants)
+  i32 ptrtoint (i32* @global to i32),
+  i32 1027,  ; == 0x00000403
+  i32 add (i32 ptrtoint (i32* @global to i32), i32 4)
+]
+
+Here, each array field is either an i32 literal (unrelocated data) or a cast from a pointer (a relocation) with optional addend.
+
+This has the limitation that it doesn't allow relocations to occur at non-4-byte-aligned addresses.  That shouldn't normally occur, unless you have a C struct type declared with __attribute__((aligned)).
+
+2) As a flattened struct:
+
+%flattened_data = type &lt;{ [4 x i8], i32, [4 x i8], i32 }&gt;
+@x_flattened_as_struct = global %flattened_data &lt;{
+  [4 x i8] c"\01\02\00\00",
+  i32 ptrtoint (i32* @global to i32),
+  [4 x i8] c"\03\04\00\00",
+  i32 add (i32 ptrtoint (i32* @global to i32), i32 4)
+}&gt;
+
+Here, each struct field is either a byte array (unrelocated data of any length) or, again, a pointer with optional addend.  This allows relocations at any offset.
+</ns0:content><ns0:updated>2013-04-10T20:14:20.000Z</ns0:updated><ns0:published>2013-04-10T20:14:20.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3113#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3113/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -3,7 +3,7 @@
 			<ns0:name>hbridge@google.com</ns0:name><ns0:uri>/u/hbridge@google.com/</ns0:uri></ns0:author><ns0:content type="html">Before NaCl is developer ready, we need to update the scripting interfaces to support arbitrarily long strings.  The actual support of these longer strings can come later.  And is tracked in nativeclient:906
 </ns0:content><ns0:updated>2011-02-18T00:06:16.000Z</ns0:updated><ns0:published>2010-09-29T21:17:50.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Update NaCl interfaces to support arbitrarily long strings</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Component-AppPlatform</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Milestone-Arctic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/935/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=935" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/935" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
-			<ns2:id>1062</ns2:id></ns2:blockedOn><ns2:blocking>
-			<ns2:id>906</ns2:id></ns2:blocking><ns2:blocking>
-			<ns2:id>1031</ns2:id></ns2:blocking><ns2:blocking>
-			<ns2:id>1050</ns2:id></ns2:blocking><ns2:closedDate>2010-12-15T00:55:02.000Z</ns2:closedDate><ns2:id>935</ns2:id></ns0:entry>
+			<ns2:id>1062</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blocking>
+			<ns2:id>906</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>1031</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>1050</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2010-12-15T00:55:02.000Z</ns2:closedDate><ns2:id>935</ns2:id></ns0:entry>

@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04CRn47eCl7ImA9WhFTGUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3484/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11525
+
+------------------------------------------------------------------------
+r11525 | mseaborn@chromium.org | 2013-06-11T21:23:46.355821Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt.gyp?r1=11525&amp;r2=11524&amp;pathrev=11525
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/futexes/futex_test.c?r1=11525&amp;r2=11524&amp;pathrev=11525
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/nacl.scons?r1=11525&amp;r2=11524&amp;pathrev=11525
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt_interfaces.c?r1=11525&amp;r2=11524&amp;pathrev=11525
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt.h?r1=11525&amp;r2=11524&amp;pathrev=11525
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/futexes/nacl.scons?r1=11525&amp;r2=11524&amp;pathrev=11525
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt_interfaces.h?r1=11525&amp;r2=11524&amp;pathrev=11525
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt_futex.c?r1=11525&amp;r2=11524&amp;pathrev=11525
+
+Add a futex IRT interface
+
+This doesn't change nacl-newlib's libpthread to using the futex IRT
+interface yet.  I will leave that until after the next branch point,
+so that trunk SDK builds remain compatible with currently released
+versions of Chrome for now.
+
+Extend the existing futex test to cover IRT futexes.
+
+For now we're just focusing on providing a futex interface that is
+usable by nacl-newlib's libpthread.  We will probably want to add some
+extensions later for glibc:
+
+ * A futex_wait() variant that takes a relative timeout or an absolute
+   monotonic time rather than an absolute real time value.
+ * A futex_requeue() operation, used by optimised implementations of
+   condvars.
+ * Futex bitsets and FUTEX_OP_CMP_{EQ,NE,LT,...}.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3484
+TEST=run_irt_futex_test_irt
+
+Review URL: https://codereview.chromium.org/16626008
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-06-11T21:26:07.000Z</ns0:updated><ns0:published>2013-06-11T21:26:07.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3484#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3484/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

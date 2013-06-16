@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUICR347eCl7ImA9WhNaF0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3105</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">The easy way to do this is switch &amp;quot;SBTC_PRODUCTION&amp;quot; in pnacl/build.sh to &amp;quot;true&amp;quot;.  However:
+
+
+- This adds to bot turnaround time.  We could default SBTC_PRODUCTION to PNACL_BUILDBOT, so that our local builds stick with the universal build for faster turnaround, and only override that if have to debug the production build.
+
+
+- By default, this will build LLVM three times, when it only needs to be built twice (wasting an extra 20+ minutes). LLVM only needs to be built twice: once as ARM and once as X86 (since x86 and x86_64 cannot be separated in LLVM).  Unlike LLVM, gold could be built 3x, since x86 and x86_64 are separate there.  In any case, we could make the build script smart enough if we wanted to.
+
+
+- The archived translator build currently depends on the universal pexe.  We could archive the x86 pexes and the arm pexes separately.
+
+
+Are we willing to do this now and pay cost of extra turnaround time, so that we know what *else* could be pruned, or do we want to wait longer before pulling the trigger?</ns0:content><ns0:updated>2013-02-01T19:39:26.000Z</ns0:updated><ns0:published>2012-10-23T23:22:35.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Switch sandboxed translator build from a fat universal build to a slimmer build</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-25</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3105/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3105" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3105" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-10-31T21:00:32.000Z</ns2:closedDate><ns2:id>3105</ns2:id></ns0:entry>

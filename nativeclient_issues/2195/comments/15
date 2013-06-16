@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0EESH47eCl7ImA9WhJXEE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2195/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=149982
+
+------------------------------------------------------------------------
+r149982 | dschuff@chromium.org | 2012-08-04T00:17:27.050344Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/srpc_client.h?r1=149982&amp;r2=149981&amp;pathrev=149982
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_coordinator.cc?r1=149982&amp;r2=149981&amp;pathrev=149982
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_translate_thread.cc?r1=149982&amp;r2=149981&amp;pathrev=149982
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_translate_thread.h?r1=149982&amp;r2=149981&amp;pathrev=149982
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/srpc_client.cc?r1=149982&amp;r2=149981&amp;pathrev=149982
+
+Kill pnacl translation processes immediately on coordinator error and destruction
+
+On errors and destruction, use the service_runtime object in the subprocess
+to kill the translator processes immediately rather than just signaling the
+translation thread, which may be blocked on an RPC.
+Any pending or new RPC calls will fail immediately, and the translation thread
+can simply bail.
+This makes destruction/surfaway much faster and more responsive and simplifies
+error handling and object cleanup. The only caveat is that now the translation
+thread and NaClSubprocess must be careful not to race service runtime operations
+(which are protected by subprocess_mu_) with RPCs (which are called
+without a mutex because they block). This is currently already ensured because
+srpc_client is a separate object from service_runtime in NaClSubprocess.
+
+R=sehr@chromium.org,jvoung@chromium.org,robertm@chromium.org
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2195
+TEST=nacl_integration (especially pnacl_bad_browser_test)
+
+
+Review URL: https://chromiumcodereview.appspot.com/10830149
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-04T00:20:09.000Z</ns0:updated><ns0:published>2012-08-04T00:20:09.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2195#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2195/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

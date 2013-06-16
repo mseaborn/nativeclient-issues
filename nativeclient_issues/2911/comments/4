@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkAGRH47eCl7ImA9WhJUFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2911/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The native GDB in ARM Ubuntu 11.10 on the ARM bots doesn't work with the NaCl debug stub at the moment because there's a mismatch in the register set it expects the debug stub to provide.  Roland noticed this when he tried to use it.
+
+Here's a debugging session that demonstrates the problem:
+
+$ gdb hello_world.nexe -ex 'target remote :4014'
+...
+0x00020050 in __pnacl_start ()
+(gdb) bt
+#0  0x00020050 in __pnacl_start ()
+(gdb) break main
+Register 25 is not available
+(gdb) info reg
+r0             0x3ffeffd0	1073676240
+r1             0x20050	131152
+r2             0x0	0
+r3             0x0	0
+r4             0x0	0
+r5             0x0	0
+r6             0x0	0
+r7             0x0	0
+r8             0x0	0
+r9             0x10030dec	268635628
+r10            0x0	0
+r11            0x0	0
+r12            0x0	0
+sp             0x3ffeffd0	0x3ffeffd0
+lr             0x0	0
+pc             0x20050	0x20050 &lt;__pnacl_start&gt;
+cpsr           *value not available*
+(gdb) break _start
+Register 25 is not available
+(gdb) stepi
+Register 25 is not available
+</ns0:content><ns0:updated>2012-09-13T00:05:25.000Z</ns0:updated><ns0:published>2012-09-13T00:05:25.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2911#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2911/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

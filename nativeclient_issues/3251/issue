@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkAAQX47eCl7ImA9WhBaE0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3251</ns0:id><ns0:author>
+			<ns0:name>shcherb...@google.com</ns0:name><ns0:uri>/u/105197577636354702799/</ns0:uri></ns0:author><ns0:content type="html">In assembler syntax, fwait instruction (0x9b) is often treated as part of following instruction, for example
+  db e3           fninit,
+but
+  9b db e3        finit
+instead of
+  9b              fwait
+  db e3           fninit
+
+
+On the other hand, for validation purposes fwait is completely separate instruction with regular behavior.
+
+
+Currently in RDFA instructions that 'merge' with fwait have special form where fwait behaves like prefix, not as self-sufficient instruction. On the other hand, we still need fwait as instruction for cases where it's not followed by some instruction that does not have such special form. It significantly complicates gen_dfa for no substantial reason.
+
+Instead, since alternate instruction names are purely disassembler's problem, it would be better to move all special logic to disassembler itself (decoder_test.c), and treat fwait as ordinary instruction at automaton level.
+
+
+Furthermore, since disassembler is currently used only in dfacheckdecoder test (where all instructions are enumerated and RDFA disassembler output is compared with objdump output), it is actually not that critical to mimic objdump behavior for instruction pairs like &amp;quot;fwait; fninit&amp;quot; (we only have to make sure that such pairs won't arise by accident), so it will probably be postponed indefinitely.</ns0:content><ns0:updated>2013-05-24T12:32:20.000Z</ns0:updated><ns0:published>2013-01-09T16:00:11.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Validator_ragel: Move fwait special handling to disassembler</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3251/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3251" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3251" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>3232</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2013-05-24T12:32:20.000Z</ns2:closedDate><ns2:id>3251</ns2:id></ns0:entry>

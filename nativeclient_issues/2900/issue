@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUAQX47eCl7ImA9WhJWFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2900</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The PNaCl ARM buildbots and trybots don't run any tests against the IRT, because they don't run small_tests_irt, medium_tests_irt etc.  There's one exception: run_srpc_nameservice_test uses the IRT explicitly, so that's the only testing we get that the IRT works on ARM.
+
+I discovered this when I ran a try job with a change that broke the IRT, and only got a single test failure: http://codereview.chromium.org/10694135/#ps1
+
+We need to add small_tests_irt etc. to the set of suites that are run for PNaCl.
+</ns0:content><ns0:updated>2012-08-21T16:57:20.000Z</ns0:updated><ns0:published>2012-07-16T14:40:51.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>ARM bots are not running any tests against the IRT (except one, by accident)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2900/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2900" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2900" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-08-21T16:57:20.000Z</ns2:closedDate><ns2:id>2900</ns2:id></ns0:entry>

@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck8GQ347eCl7ImA9WhBQGEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3340</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">PNACL_VERSION=10956
+
+It seems that the -simplify-libcalls pass is converting fputs() calls into puts() calls sometimes.
+
+However, we often run opt after linking.  After linking, we've already decided to not link in certain library object files that aren't referenced.  So if for some reason puts() is not referenced, but fputs() is, the bitcode pexe won't have a puts() implementation and only a fputs() implementation.
+
+If at this point -simplify-libcalls converts fputs() -&amp;gt; puts(), the translator will have undefined symbols at native link time.
+
+
+
+Current Repro that's still big:
+
+(1) go to nacl ports
+(2) NACL_ARCH=pnacl make snes9x
+(3) run pnacl-opt -O3 out/publish/snes9x-1.53/snes_x86_pnacl.nexe -o snes.O3.pexe
+
+compare to
+
+(4) run pnacl-opt -O3 -disable-simplify-libcalls out/publish/snes9x-1.53/snes_x86_pnacl.nexe -o snes.O3_nolibcalls.pexe
+
+
+&amp;gt; pnacl-dis snes.O3_nolibcalls.pexe | grep &amp;quot;puts&amp;quot; 
+shows calls to fputs + define ... fputs
+
+&amp;gt; pnacl-dis snes.O3.pexe | grep &amp;quot;puts&amp;quot;
+shows calls to puts and only a declare ... puts
+
+
+
+Derek, what did you end up doing for the math intrinsic issue last time?  Note that this isn't an intrinsic though, just a normal library function.</ns0:content><ns0:updated>2013-03-20T20:20:22.000Z</ns0:updated><ns0:published>2013-03-13T16:50:08.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>LLVM Opt can convert fputs -&gt; puts, after linking has omitted puts</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-27</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3340/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3340" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3340" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-03-20T01:25:17.000Z</ns2:closedDate><ns2:id>3340</ns2:id></ns0:entry>

@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMHQ347eCl7ImA9WhVaEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2648/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=136382
+------------------------------------------------------------------------
+r136382 | mseaborn@chromium.org | 2012-05-10T20:49:12.901414Z
+
+Changed paths:
+   M /trunk/src/ppapi/native_client/ppapi_scons_files.py
+
+NaCl: Stop building ppapi_proxy (libppruntime) as a user library
+
+We no longer need to need to build ppapi_proxy in nacl_env now that
+I've removed the irt=0 build option from the NaCl side, and now that
+I've fixed a test that was accidentally bypassing the IRT.
+
+This change should make the NaCl build faster since it will compile
+ppapi_proxy once rather than twice.  It should also stop us bypassing
+the IRT accidentally.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2648
+TEST=nacl_integration
+
+Review URL: https://chromiumcodereview.appspot.com/10384094
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-08T01:53:52.000Z</ns0:updated><ns0:published>2012-06-08T01:53:52.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2648#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2648/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

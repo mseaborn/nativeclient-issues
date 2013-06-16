@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIGQH47eCl7ImA9WhBQEUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3336/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mark@chromium.org</ns0:name><ns0:uri>/u/mark@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Looking at tests/exception_test/exception_test.c, when I don&#8217;t run test_exceptions_on_non_main_thread in exception_test, run_mach_forward_untrusted_caught_test passes reliably. When I do run test_exceptions_on_non_main_thread but add a sleep(1) after the pthread_join, the test also passes reliably. When I leave things as-is, it appears that pthread_join returns before the thread is actually gone.
+
+pthread_join is reporting the correct view of the thread from the untrusted environment&#8217;s perspective, but what&#8217;s actually relevant to this crash is in the trusted environment. The main thread exits shortly after joining the second thread in the untrusted environment, meaning that there&#8217;s a race for trusted shutdown of both threads. If the main thread completes trusted shutdown first and main is allowed to exit, shutdown can trash the process while other threads are still eligible for scheduling. NaCl normally goes out of its way to use NaClExit (which calls _exit) to avoid this situation, but tests/trusted_crash/osx_crash_forwarding/mach_crash_forwarding_test.c doesn&#8217;t do this, it just returns from main and is thus an implicit exit (not _exit). I think the problem of this sort of exit with other threads running is pretty well-understood.
+
+This comports with the messed-up state of the main thread that I see in the crash logs for these test failures:
+
+Thread 0:: Dispatch queue: com.apple.main-thread
+0   libc++.1.dylib                      0x00007fff8dd00673 std::__1::__stdoutbuf&lt;wchar_t&gt;::sync() + 65
+(and that&#8217;s it)
+
+Making this test _exit when it&#8217;s done makes it pass reliably. That&#8217;s easy enough. sel_ldr uses _exit, but shouldn&#8217;t all tests that load a NaCl module that uses threads without sel_ldr be doing the same thing?</ns0:content><ns0:updated>2013-03-13T15:12:01.000Z</ns0:updated><ns0:published>2013-03-13T15:12:01.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by mark@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3336#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3336/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

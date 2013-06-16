@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0EAQn47eCl7ImA9WhNaEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3269</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">It would be useful if NaCl's debug stub supported watchpoints.  It could help in debugging bugs like issue chromium:169586.
+
+Watchpoints are normally implemented using hardware support, and debuggers often rely on the OS to expose the hardware support.
+
+e.g. On x86, watchpoints can be implemented using debug registers.  On Linux these can be set using ptrace().  It might be difficult for NaCl to use ptrace() in the Chromium sandbox.  I'm not sure how Windows and Mac OS X expose the debug registers.
+
+I'm not sure what ARM provides in the way of watchpoint registers.
+
+Another approach is to have the debug stub unmap the page containing the watched location (or mprotect() it as PROT_NONE).  The debug stub can catch the page fault, remap the page, single-step through the faulted instruction, and unmap the page again.  This could be prohibitively slow.
+</ns0:content><ns0:updated>2013-01-25T13:14:03.000Z</ns0:updated><ns0:published>2013-01-24T17:33:44.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/113921375080395685545/</ns2:uri><ns2:username>olo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Debug stub: Add support for watchpoints to track accesses to memory locations</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-DebugStub</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3269/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3269" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3269" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3269</ns2:id></ns0:entry>

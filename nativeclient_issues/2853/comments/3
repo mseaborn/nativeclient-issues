@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEcGQH47eCl7ImA9WhJTEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2853/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">Here is what happens on the gold side:
+
+gold has some heuristic to group objects files and minimize branch ranges
+but this does not quite apply to pnacl because we have one giant group
+consisting of just one .o.
+Each group has *one* Stub_table associated with it.
+I our case that table ends up in front of "very_large.arm.o".
+Overflowing calls are redirected to the table from which they
+are trampolined to their actual location.
+
+This works well for the first 32MB of very_large.arm.o but for the second half
+the distance to the Stub_table is overflowing as well.
+I talked to Doug Kwan (who wrote gold/arm.cc) about adding a second table to the end, which would by us some time/space but that is not a great solution either. I could be done, though, and probably would be upstreamable.
+
+Fun fact: one function which gets called a lot is _Unwind_Resume (30k times statically) because
+ "very_large.arm.o" uses exceptions.
+
+
+</ns0:content><ns0:updated>2012-06-19T18:53:41.000Z</ns0:updated><ns0:published>2012-06-19T18:53:41.000Z</ns0:published><ns2:updates>
+			<ns2:blockedOnUpdate>-nativeclient:2818</ns2:blockedOnUpdate><ns2:blockedOnUpdate>nativeclient:2818</ns2:blockedOnUpdate></ns2:updates><ns0:title>Comment 3 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2853#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2853/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEcFQ347eCl7ImA9WhVaEE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2776/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8832
+
+------------------------------------------------------------------------
+r8832 | bsy@google.com | Wed Jun 06 09:57:41 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gio/gio_nacl_desc.c?r1=8832&amp;r2=8831&amp;pathrev=8832
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/gio/gio.c?r1=8832&amp;r2=8831&amp;pathrev=8832
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_error_gio.h?r1=8832&amp;r2=8831&amp;pathrev=8832
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gio/gio_shm.c?r1=8832&amp;r2=8831&amp;pathrev=8832
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/gio/gio_mem_snapshot.c?r1=8832&amp;r2=8831&amp;pathrev=8832
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/gio/gio.h?r1=8832&amp;r2=8831&amp;pathrev=8832
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/gio/gio_mem.c?r1=8832&amp;r2=8831&amp;pathrev=8832
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=8832&amp;r2=8831&amp;pathrev=8832
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/gio/gio_pio.c?r1=8832&amp;r2=8831&amp;pathrev=8832
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gio/gio_shm_unbounded.c?r1=8832&amp;r2=8831&amp;pathrev=8832
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_error_gio.c?r1=8832&amp;r2=8831&amp;pathrev=8832
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_error_gio_test.c?r1=8832&amp;r2=8831&amp;pathrev=8832
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=8832&amp;r2=8831&amp;pathrev=8832
+
+An Gio subclass that captures the last N (512) bytes of output.
+
+This Gio subclass implementation is the first step toward better error
+reporting / instrumentation.
+
+This class is intended to be used in conjunction with the NaClLog
+module's NaclLogAbortBehavior to send the last few lines of log output
+to the plugin (and to the JavaScript console) and to try to capture
+this data in the minidump that's sent back to Google by breakpad (if
+users authorized, etc).  This will hopefully both let developers know
+what happened and let us know what might be going on in the field with
+early, startup "command channel failed" crashes.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2776
+TEST= run_nacl_error_gio_test
+Review URL: https://chromiumcodereview.appspot.com/10514006
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-06T17:00:12.000Z</ns0:updated><ns0:published>2012-06-06T17:00:12.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2776#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2776/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIGQ347eCl7ImA9WhBbEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3323/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Just thought about this again, after a codereview about intrinsic whitelisting...
+
+
+Should be pretty easy to set this under our #if defined(__native_client__) blocks, or when we make "our own llc".
+
+
+As for trying to prune the code as well (an idea mentioned offline?).  That would not be as simple as setting the flag to false, unfortunately.  The way the flag is used is:
+
+
+  // Targets may override createPassConfig to provide a target-specific sublass.
+  TargetPassConfig *PassConfig = TM-&gt;createPassConfig(PM);
+
+  //...
+
+  // Set PassConfig options provided by TargetMachine.
+  PassConfig-&gt;setDisableVerify(DisableVerify);
+
+
+the actual checks are against the class instance field "DisableVerify"...  Pruning that code would be a bit more invasive of a localmod.</ns0:content><ns0:updated>2013-05-08T15:55:22.000Z</ns0:updated><ns0:published>2013-05-08T15:55:22.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Mstone-27</ns2:label><ns2:label>Mstone-29</ns2:label></ns2:updates><ns0:title>Comment 2 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3323#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3323/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

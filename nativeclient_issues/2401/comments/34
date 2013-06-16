@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0MBR347eCl7ImA9WhBVEUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2401/comments/full/34</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">------------------------------------------------------------------------
+r194537 | mseaborn@chromium.org | 2013-04-17T05:08:35.172019Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/common/chrome_switches.cc?r1=194537&amp;r2=194536&amp;pathrev=194537
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/app/generated_resources.grd?r1=194537&amp;r2=194536&amp;pathrev=194537
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/common/chrome_switches.h?r1=194537&amp;r2=194536&amp;pathrev=194537
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/nacl_browser/inbrowser_test_runner/nacl.scons?r1=194537&amp;r2=194536&amp;pathrev=194537
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/browser/nacl_host/nacl_process_host.cc?r1=194537&amp;r2=194536&amp;pathrev=194537
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/browser/about_flags.cc?r1=194537&amp;r2=194536&amp;pathrev=194537
+
+NaCl: Enable untrusted hardware exception handling by default
+
+I'm leaving in NaClProcessHost's enable_exception_handling_ field
+because we will want to disable exception handling under PNaCl.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=2401
+TEST=inbrowser_test_runner in nacl_integration
+
+Review URL: https://codereview.chromium.org/14122010
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-04-17T05:10:56.000Z</ns0:updated><ns0:published>2013-04-17T05:10:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 34 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2401#c34" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2401/comments/full/34" rel="self" type="application/atom+xml" /></ns0:entry>

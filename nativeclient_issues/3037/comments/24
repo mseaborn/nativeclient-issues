@@ -1,0 +1,58 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck8AR347eCl7ImA9WhNbEUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3037/comments/full/24</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10586
+
+------------------------------------------------------------------------
+r10586 | shcherbina@google.com | 2013-01-14T07:21:10.157245Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/mov_esp_add_rsp_r15.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/call0.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/stosd.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/valid_lea_store.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/lea-rbp-rsp-order.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/valid_and_store.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/or_sp_sandboxing.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/call_aligned.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/direct-call-32.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/mov-lea-rsp.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/direct-jump-32.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/update-rsp-b32.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/tests_from_pydfa.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/test-7.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/update-rsp.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testscripts/run_rdfa_validator_tests.py?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testscripts/run_old_validator_tests.py?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/lea-add-rsp.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/call_short.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/sse.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/extensions.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/direct-jump-32.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/mov-esi-nop-use.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/direct-call-32.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/jmp0.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/jump_atomic.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/string_rep_data16.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/call_not_aligned.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/return.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/mov-lea-rbp.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/direct-cond-jump-32.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/sub-add-rsp.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/inc_dec.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/call_not_aligned_16.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/call-ex.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/push-memoff.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/direct-cond-jump-32.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/fpu.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/32/test_insts.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/3DNow.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/call_long.test?r1=10586&amp;r2=10585&amp;pathrev=10586
+
+Validator testing: check valid jump targets in all safe tests from testdata.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3037
+TEST= bots, in particular ./scons run_x86_rdfa_validator_testdata_tests
+
+Review URL: https://codereview.chromium.org/11647016
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-01-14T16:27:26.000Z</ns0:updated><ns0:published>2013-01-14T16:27:26.000Z</ns0:published><ns2:updates /><ns0:title>Comment 24 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3037#c24" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3037/comments/full/24" rel="self" type="application/atom+xml" /></ns0:entry>

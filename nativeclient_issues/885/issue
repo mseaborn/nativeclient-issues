@@ -10,7 +10,7 @@ Who is the right person to work on this?
 			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/hbridge@google.com/</ns2:uri><ns2:username>hbridge@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Need to revisit how ISA dispatch works.</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>TeamBoulder</ns2:label><ns2:label>Milestone-Arctic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/885/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=885" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/885" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
-			<ns2:id>1039</ns2:id></ns2:blockedOn><ns2:blocking>
-			<ns2:id>368</ns2:id></ns2:blocking><ns2:blocking>
-			<ns2:id>693</ns2:id></ns2:blocking><ns2:blocking>
-			<ns2:id>1163</ns2:id></ns2:blocking><ns2:closedDate>2010-11-18T16:37:29.000Z</ns2:closedDate><ns2:id>885</ns2:id></ns0:entry>
+			<ns2:id>1039</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blocking>
+			<ns2:id>368</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>693</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>1163</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2010-11-18T16:37:29.000Z</ns2:closedDate><ns2:id>885</ns2:id></ns0:entry>

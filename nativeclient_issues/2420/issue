@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QFQH47eCl7ImA9WhVVFUw.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0YCR347eCl7ImA9WhJTGEg.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2420</ns0:id><ns0:author>
 			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">
 &lt;b&gt;- Where are we today?&lt;/b&gt;
@@ -20,7 +20,7 @@ No native .so is required to build .pexe or .pso
 
 &lt;b&gt;- Anticipated impact:&lt;/b&gt;
 This will provide a consistent experience for the developers, will simplify the PNaCl development (no more patched binutils for bitcode linking) and make it possible to track differences in the exported symbols for any shared library on different platforms (glibc has a different set of exported symbols for x86-32 and x86-64)
-</ns0:content><ns0:updated>2012-05-08T23:21:51.000Z</ns0:updated><ns0:published>2011-11-04T20:06:38.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
-			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>Disable linking with native shared objects, use portable link-time stubs instead</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2420/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2420" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2420" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
-			<ns2:id>2429</ns2:id></ns2:blockedOn><ns2:blocking>
-			<ns2:id>2422</ns2:id></ns2:blocking><ns2:id>2420</ns2:id></ns0:entry>
+</ns0:content><ns0:updated>2012-06-28T04:52:46.000Z</ns0:updated><ns0:published>2011-11-04T20:06:38.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>Disable linking with native shared objects, use portable link-time stubs instead</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>SharedLibrary</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2420/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2420" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2420" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>2429</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blocking>
+			<ns2:id>2422</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:id>2420</ns2:id></ns0:entry>

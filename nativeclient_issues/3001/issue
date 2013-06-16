@@ -1,0 +1,75 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYEQX47eCl7ImA9WhJVEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3001</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+pepper_21
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+pepper_21 sel_ldr
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+Ubuntu Linux 10.04
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+
+it's just sel_ldr
+
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Create the following test program:
+
+$ cat lala.c
+#include &amp;lt;stdio.h&amp;gt;
+
+int a[1&amp;lt;&amp;lt;26];
+
+int main(void) {
+  printf(&amp;quot;lala\n&amp;quot;);
+}
+
+
+2. Compile it:
+
+nacl_sdk/pepper_21/toolchain/linux_x86_glibc/bin/x86_64-nacl-gcc -o lala.nexe lala.c
+
+3. Run it:
+
+./nacl_sdk/pepper_21/tools/sel_ldr_x86_64 -a -B ./nacl_sdk/pepper_21/tools/irt_core_x86_64.nexe  -- ./nacl_sdk/pepper_21/toolchain/linux_x86_glibc/x86_64-nacl/lib/runnable-ld.so --library-path ./nacl_sdk/pepper_21/toolchain/linux_x86_glibc/x86_64-nacl/lib/ ./lala.nexe
+
+Expected output:
+
+lala
+
+Real output:
+
+DEBUG MODE ENABLED (bypass acl)
+[1731,647530304:17:15:50.236979] BYPASSING ALL ACL CHECKS
+[1731,647530304:17:15:50.239698] Native Client module will be loaded at base address 0x00007f9200000000
+[1731,647321344:17:15:50.266168] NaClHostDescOpen: open returned -1, errno 2
+./lala.nexe: error while loading shared libraries: libgcc_s.so.1: failed to load code from shared object: Error 14
+
+
+The same with -v:
+
+[1742,3507431232:17:17:12.453581] NACL: Application output follows
+[1742,3507431232:17:17:12.453756] NaClPerfCounterInterval(SelMain BlobLoaded:CreateMainThread): 368 microsecs
+[1742,3507222272:17:17:12.453865] NaClOpenAclCheck(0x7fffea5eb630, ./lala.nexe, 00, 00)
+[1742,3507222272:17:17:12.453896] NaClHostDescOpen(0x7f5cd270f2f0, ./lala.nexe, 00, 00) returned 0
+[1742,3507222272:17:17:12.453902] Entered into open file table at 5
+[1742,3507222272:17:17:12.453929] mmap: rounded length to 0x10000
+[1742,3507222272:17:17:12.454126] NaClPerfCounterInterval(NaClTextDyncodeCreate __start__:*DynRegionValidate): 179 microsecs
+[1742,3507222272:17:17:12.454213] mmap: rounded length to 0x10010000
+[1742,3507222272:17:17:12.454250] NaClOpenAclCheck(0x7fffea5eb630, /home/krasin/Downloads/nacl_sdk/pepper_21/toolchain/linux_x86_glibc/x86_64-nacl/lib/tls/libgcc_s.so.1, 00, 00)
+[1742,3507222272:17:17:12.454274] NaClHostDescOpen: open returned -1, errno 2
+[1742,3507222272:17:17:12.454279] NaClHostDescOpen(0x7f5cd2711230, /home/krasin/Downloads/nacl_sdk/pepper_21/toolchain/linux_x86_glibc/x86_64-nacl/lib/tls/libgcc_s.so.1, 00, 00) returned -2
+[1742,3507222272:17:17:12.454287] NaClOpenAclCheck(0x7fffea5eb630, /home/krasin/Downloads/nacl_sdk/pepper_21/toolchain/linux_x86_glibc/x86_64-nacl/lib/libgcc_s.so.1, 00, 00)
+[1742,3507222272:17:17:12.454299] NaClHostDescOpen(0x7f5cd2711250, /home/krasin/Downloads/nacl_sdk/pepper_21/toolchain/linux_x86_glibc/x86_64-nacl/lib/libgcc_s.so.1, 00, 00) returned 0
+[1742,3507222272:17:17:12.454304] Entered into open file table at 6
+[1742,3507222272:17:17:12.454321] mmap: rounded length to 0x10000
+[1742,3507222272:17:17:12.454368] NaClTextDyncodeCreate: Above dynamic code area
+./lala.nexe: error while loading shared libraries: libgcc_s.so.1: failed to load code from shared object: Error 14
+[1742,3507222272:17:17:12.454399] Exit syscall handler: 127
+[1742,3507431232:17:17:12.454417] NaClPerfCounterInterval(SelMain CreateMainThread:WaitForMainThread): 661 microsecs
+[1742,3507431232:17:17:12.454427] NaClPerfCounterInterval(SelMain __start__:SelMainEnd): 28229 microsecs
+
+</ns0:content><ns0:updated>2012-08-28T00:18:20.000Z</ns0:updated><ns0:published>2012-08-28T00:18:20.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>[glibc] Error 14 when loading a program with large bss</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3001/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3001" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3001" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3001</ns2:id></ns0:entry>

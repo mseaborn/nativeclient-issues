@@ -1,0 +1,51 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIGSX47eCl7ImA9WhJUE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2922/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9702
+
+------------------------------------------------------------------------
+r9702 | jvoung@google.com | 2012-09-11T18:31:43.359802Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/minnacl/nacl.scons?r1=9702&amp;r2=9701&amp;pathrev=9702
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/unsupported/split-pexe.sh?r1=9702&amp;r2=9701&amp;pathrev=9702
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/unsupported/llc-builder.sh?r1=9702&amp;r2=9701&amp;pathrev=9702
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/trusted_crash/crash_in_syscall/nacl.scons?r1=9702&amp;r2=9701&amp;pathrev=9702
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/unsupported/non_bitcode_symbols.txt?r1=9702&amp;r2=9701&amp;pathrev=9702
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_selector.py?r1=9702&amp;r2=9701&amp;pathrev=9702
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/testdata/compile_tests.sh?r1=9702&amp;r2=9701&amp;pathrev=9702
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/toolchain_config.py?r1=9702&amp;r2=9701&amp;pathrev=9702
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/site_scons/site_tools/naclsdk.py?r1=9702&amp;r2=9701&amp;pathrev=9702
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/multiple_sandboxes/nacl.scons?r1=9702&amp;r2=9701&amp;pathrev=9702
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=9702&amp;r2=9701&amp;pathrev=9702
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=9702&amp;r2=9701&amp;pathrev=9702
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/signal_handler_single_step/nacl.scons?r1=9702&amp;r2=9701&amp;pathrev=9702
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/scripts/llvm-test-suite.sh?r1=9702&amp;r2=9701&amp;pathrev=9702
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/custom_desc/nacl.scons?r1=9702&amp;r2=9701&amp;pathrev=9702
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/testdata-thumb/compile_tests.sh?r1=9702&amp;r2=9701&amp;pathrev=9702
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_pnacl_toolchain_tests.sh?r1=9702&amp;r2=9701&amp;pathrev=9702
+
+Make pnacl toolchain tester bot find the right toolchain.
+SCons currently no longer supports 64-bit sdks, but the
+tester bots: download the 32-bit host TC, clobber the 32-bit
+host tc, build a 64-bit one and then fail to find the
+32-bit one.
+
+This adds a pnaclsdk_mode="custom:&lt;path&gt;" flag so that we
+can redirect scons to the "right" toolchain, e.g., while
+running "pnacl/build.sh sdk newlib" we can pick the TC that
+we had just built, and while running the archived frontend
+test we can pick the archived frontend.
+
+Also move some of the 32-bit vs 64-bit configuration stuff
+closer together.
+
+Call out some of the rest of the hardcoded paths that we
+will need to change.
+
+BUG= red bots!
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2922
+TEST=bash buildbot/buildbot_pnacl_toolchain_tests.sh tc-test-bot x86-64
+
+Review URL: https://chromiumcodereview.appspot.com/10919196
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-09-11T18:35:28.000Z</ns0:updated><ns0:published>2012-09-11T18:35:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2922#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2922/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

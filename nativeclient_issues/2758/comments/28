@@ -1,0 +1,41 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C04BRH47eCl7ImA9WhJTFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/28</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9032
+
+------------------------------------------------------------------------
+r9032 | mseaborn@chromium.org | Mon Jun 25 15:02:35 PDT 2012
+
+Changed paths:
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main_chrome_test.c?r1=9032&amp;r2=9031&amp;pathrev=9032
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/site_scons/site_tools/library_deps.py?r1=9032&amp;r2=9031&amp;pathrev=9032
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=9032&amp;r2=9031&amp;pathrev=9032
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/sel_main_chrome/nacl.scons?r1=9032&amp;r2=9031&amp;pathrev=9032
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/sel_main_chrome/sel_main_chrome_test.cc?r1=9032&amp;r2=9031&amp;pathrev=9032
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/sel_main_chrome/sel_main_chrome.gyp?r1=9032&amp;r2=9031&amp;pathrev=9032
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=9032&amp;r2=9031&amp;pathrev=9032
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/sel_main_chrome?r1=9032&amp;r2=9031&amp;pathrev=9032
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_valgrind_hooks.h?r1=9032&amp;r2=9031&amp;pathrev=9032
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/all.gyp?r1=9032&amp;r2=9031&amp;pathrev=9032
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=9032&amp;r2=9031&amp;pathrev=9032
+
+Add a test for sel_main_chrome.c
+
+The existing sel_main_chrome_test.c only checked that
+sel_main_chrome.c can be linked successfully, and did not try to run
+it.  Since I broke sel_main_chrome.c in r8988 (fixed in r8997), it's
+time to improve the test to catch this kind of mistake.
+
+We extend the test to use sel_main_chrome.c to run hello_world.nexe
+and check its output.
+
+Change library_deps.py to declare some of the "sel" library's
+dependencies.
+
+Fix nacl_valgrind_hooks.h to be #includable from C++.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2758
+TEST=run_sel_main_chrome_test
+
+Review URL: https://chromiumcodereview.appspot.com/10604003
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-25T22:05:55.000Z</ns0:updated><ns0:published>2012-06-25T22:05:55.000Z</ns0:published><ns2:updates /><ns0:title>Comment 28 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2758#c28" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/28" rel="self" type="application/atom+xml" /></ns0:entry>

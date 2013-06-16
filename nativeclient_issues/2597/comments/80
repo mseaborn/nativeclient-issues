@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEECSH47eCl7ImA9WhJQE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/80</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9277
+
+------------------------------------------------------------------------
+r9277 | pasko@google.com | 2012-07-27T09:47:01.570511Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/run_ncval_tests.py?r1=9277&amp;r2=9276&amp;pathrev=9277
+
+validator_ragel: allow multiple errors in tests
+
+With latest changes te R-DFA validator command line tool may produce more than
+on error. Avoid assert and take the first error.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2597
+TEST=cd .../unreviewed &amp;&amp; make check-ncval
+
+Review URL: https://chromiumcodereview.appspot.com/10835004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-27T09:51:09.000Z</ns0:updated><ns0:published>2012-07-27T09:51:09.000Z</ns0:published><ns2:updates /><ns0:title>Comment 80 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c80" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/80" rel="self" type="application/atom+xml" /></ns0:entry>

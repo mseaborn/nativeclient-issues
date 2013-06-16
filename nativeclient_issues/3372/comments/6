@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEABSH47eCl7ImA9WhBVF00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3372/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>kinuko@chromium.org</ns0:name><ns0:uri>/u/kinuko@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Hi,
+
+I have a few elementary questions:
+- Does the pnacl cache need to be origin-private or is it just so because current HTML5 tempfs is origin-private?
+- How big the cache space could become? Do we need to think about the possibility of 'fill-disk' type exploitation via the cache?
+
+WRT the lifetime of temporary FS, we automatically evict (delete) the FS data when the available disk space is getting short. So when it goes away is not deterministic.
+
+My current feeling is we could probably use IsolatedFS pointing to a specific (per-origin or shared) directory under the profile dir, but I'll need some more info.
+(I've also left some comments in the doc.)</ns0:content><ns0:updated>2013-04-23T07:39:19.000Z</ns0:updated><ns0:published>2013-04-23T07:39:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by kinuko@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3372#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3372/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

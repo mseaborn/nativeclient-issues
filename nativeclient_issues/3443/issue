@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkUFR347eCl7ImA9WhFTEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3443</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">LLVM's lifetime.start/end() intrinsics are used to declare ranges during which stack-allocated alloca blocks are dead.  This allows the backend to merge alloca stack slots (lib/CodeGen/StackColoring.cpp).
+
+However, the semantics of lifetime.start/end are poorly specified.  The LLVM Language Reference does not specify the kinds of arguments that are valid for lifetime.start/end.  e.g. Are bitcasts/GEPs/PHIs arguments valid?  Currently they are.  Is a ptrtoint+inttoptr argument valid?  Currently it's not, and such lifetime markers are ignored.
+
+This is a problem because ignoring a subset of a function's lifetime markers is not safe: it can lead to stack slots being wrongly merged.  See http://llvm.org/bugs/show_bug.cgi?id=16095.
+
+I ran into this in Spec2k's 176.gcc because LLVM's GVN pass generates markers referring to PHI nodes:
+
+  %.pre-phi = phi i8* [ %.pre52, %if.end36.if.end48_crit_edge ], [ %26, %if.then39 ], !dbg !13847
+  ...
+  call void @llvm.lifetime.start(i64 16, i8* %.pre-phi) #1, !dbg !13847
+
+My work-in-progress ReplacePtrsWithInts pass (for issue 3343) converted this to:
+
+  %.pre-phi = phi i32 [ %ap.i.asint, %if.end36.if.end48_crit_edge ], [ %ap.i.asint, %if.then39 ], !dbg !13847
+  ...
+  %.pre-phi.asptr = inttoptr i32 %.pre-phi to i8*
+  call void @llvm.lifetime.start(i64 16, i8* %.pre-phi.asptr) #1, !dbg !13847
+
+This produced a miscompile because lifetime.start on an inttoptr value is ignored.  This resulted in a stack slot being wrongly merged with another.
+
+Some options are:
+
+ 1) Continue allowing lifetime.start/end in the current form.
+ 2) Allow lifetime.start/end but define their semantics better.  e.g. Add checks to PNaCl ABI checker to require that lifetime.start/end are only used on bitcasts of allocas.
+ 3) Strip lifetime.start/end from ABI-stable pexes.
+   3a) Also reimplement StackColoring as an IR pass (so that it can be run in the user toolchain rather than in the PNaCl translator).  Note that StackColoring takes O(basic_block_count * alloca_count) time so it's not great to be doing this in the PNaCl translator.
+
+I think we should do (3) for now.  We can consider doing (2) or (3a) later.
+</ns0:content><ns0:updated>2013-05-31T18:16:56.000Z</ns0:updated><ns0:published>2013-05-21T18:18:20.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112264824292994369940/</ns2:uri><ns2:username>eli...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/jvoung@chromium.org/</ns2:uri><ns2:username>jvoung@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PNaCl: Restrict or disallow llvm.lifetime.start/end markers</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>PNaClABI</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3443/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3443" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3443" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-05-31T18:16:56.000Z</ns2:closedDate><ns2:id>3443</ns2:id></ns0:entry>

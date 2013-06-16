@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0UFRH47eCl7ImA9WhJXFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2948/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9406
+
+------------------------------------------------------------------------
+r9406 | mseaborn@chromium.org | 2012-08-08T18:38:02.528504Z
+
+Changed paths:
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/host.cc?r1=9406&amp;r2=9405&amp;pathrev=9406
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/build.scons?r1=9406&amp;r2=9405&amp;pathrev=9406
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/host.h?r1=9406&amp;r2=9405&amp;pathrev=9406
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/test.cc?r1=9406&amp;r2=9405&amp;pathrev=9406
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/test.h?r1=9406&amp;r2=9405&amp;pathrev=9406
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/gdb_rsp.gyp?r1=9406&amp;r2=9405&amp;pathrev=9406
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/host_test.cc?r1=9406&amp;r2=9405&amp;pathrev=9406
+
+Debug stub: Remove superfluous file 'gdb_rsp/host.cc'
+
+This file provides a Host class which appears to be a wrapper for
+talking to a GDB RSP server.  If this were used for testing our GDB
+RSP server, it might be useful, but it's not used for that.
+(debug_stub_test.py talks to our GDB RSP server and is much simpler
+than host.cc.)  The Host object is not used outside of host_test.cc.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2948
+TEST=run_gdb_rsp_tests
+
+Review URL: https://chromiumcodereview.appspot.com/10825247
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-08T18:40:15.000Z</ns0:updated><ns0:published>2012-08-08T18:40:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2948#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2948/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

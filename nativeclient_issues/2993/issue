@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkAGRn47eCl7ImA9WhJVEUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2993</ns0:id><ns0:author>
+			<ns0:name>kschi...@google.com</ns0:name><ns0:uri>/u/108470876877739532758/</ns0:uri></ns0:author><ns0:content type="html">One of the problems with the production x86-32 validator is that it assumes that if a multibyte opcode instruction has a data 66 prefix, the data 66 prefix should be part of the opcode. It can't be a prefix on the multibyte opcode that omits the data 66 prefix.
+
+This limitation makes the comparison of the production x86-32 validator, and the DFA (x86-32, x86-64)  and x86-64 production validators hard, because all but the production x86-32 validator handles these instructions correctly.
+
+Examples of instructions with this problem are:
+
+66 0f bc d8   bsf %ax,%bx
+66 0f bd d8   bsr %ax,%bx
+66 0f b1 c3   cmpxchg %ax,%bx
+66 0f 38 f0 45 00  movbe  0x0(%ebp),%ax # ia32 mode
+66 0f 38 f0 45 00  movbe  0x0(%rbp),%ax # amd64 mode
+66 0f a4 c3 01  shld  $0x1,%ax,%bx
+66 0f a5 c3     shld  %cl,%ax,%bx
+66 0f ac c3 01  shrd  $0x1,%ax,%bx
+66 0f ad c3     shrd  %cl,%ax,%bx
+66 0f c1 c3             xadd   %ax,%bx
+
+To fix this, the following issue must be dealt with in the x86-32 production validator:
+
+The table for the &amp;quot;66 0f&amp;quot; version of the multibyte instruction doesn't apply, and in such cases, the
+&amp;quot;0f&amp;quot; version should be applied.
+
+This may not be that difficult to add to the current validator.
+
+On the other hand, it needs to be verified that the above instructions represent all of the differences between the x86-32 production and DFA validators. If there are other forms of overlap, the problem may be more difficult. Initially assigning this to kschimpf to take the current (unused) X86-32 SFI decoder table generator and verify what instructions may have this issue (i.e. multibyte instructions with a prefix byte, and whether the corresponding multibyte instruction with out the prefix, can accept the corresponding prefix). This will verify the size of the problem.</ns0:content><ns0:updated>2012-08-28T19:05:27.000Z</ns0:updated><ns0:published>2012-08-24T20:00:09.000Z</ns0:published><ns2:status>Accepted</ns2:status><ns2:owner>
+			<ns2:uri>/u/108470876877739532758/</ns2:uri><ns2:username>kschi...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>x86-32 production validator doesn't allow all multibyte opcodes due to implementation restriction.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-25</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2993/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2993" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2993" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2993</ns2:id></ns0:entry>

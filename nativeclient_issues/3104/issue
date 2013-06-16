@@ -1,0 +1,101 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4DR347eCl7ImA9WhNWF0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3104</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">NaCl's GDB test &amp;quot;run_gdb_change_variable_test&amp;quot; from tests/gdb currently fails when using a nexe built with PNaCl.
+
+This test checks that modifying an argument variable in GDB works.  This fails with the PNaCl-built executable because the breakpoint that GDB sets on test_change_variable() is too late.  The breakpoint is after the variable is read from the stack into a register.
+
+I don't know whether this is a problem with the debugging info that PNaCl generates or with GDB's prologue detection.
+
+
+Expected behaviour:
+
+With nacl-gcc, GDB breaks before the argument is read from the stack:
+
+$ ./toolchain/linux_x86_newlib/bin/x86_64-nacl-gdb scons-out/nacl-x86-32/obj/tests/gdb/gdb_test_guest.nexe -ex 'target remote :4014'
+...
+_start (info=0x3ffeffb4) at src/untrusted/nacl/start.c:24
+24	void _start(uint32_t *info) {
+(gdb) break test_change_variable
+Breakpoint 1 at 0x203a6: file tests/gdb/gdb_test_guest.c, line 63.
+(gdb) cont
+Continuing.
+Breakpoint 1, test_change_variable (arg=1) at tests/gdb/gdb_test_guest.c:63
+63	  int local_var = 2 * arg;
+(gdb) disass
+Dump of assembler code for function test_change_variable:
+   0x000203a0 &amp;lt;+0&amp;gt;:	push   %ebp
+   0x000203a1 &amp;lt;+1&amp;gt;:	mov    %esp,%ebp
+   0x000203a3 &amp;lt;+3&amp;gt;:	sub    $0x10,%esp
+=&amp;gt; 0x000203a6 &amp;lt;+6&amp;gt;:	mov    0x8(%ebp),%eax
+   0x000203a9 &amp;lt;+9&amp;gt;:	add    %eax,%eax
+   0x000203ab &amp;lt;+11&amp;gt;:	mov    %eax,-0x4(%ebp)
+...
+(gdb) print arg
+$1 = 1
+(gdb) set var arg = 123
+(gdb) print arg
+$2 = 123
+(gdb) step
+64	  global_var += local_var + arg;
+(gdb) print local_var
+$3 = 246
+
+
+Actual behaviour, with PNaCl:
+
+$ ./toolchain/linux_x86_newlib/bin/x86_64-nacl-gdb scons-out/nacl-x86-32-pnacl-pexe-clang/obj/tests/gdb/gdb_test_guest.nexe -ex 'target remote :4014'
+...
+0x00020000 in __pnacl_start ()
+(gdb) break test_change_variable
+Breakpoint 1 at 0x2030b: test_change_variable. (2 locations)
+(gdb) cont
+Continuing.
+Breakpoint 1, test_change_variable (arg=1) at tests/gdb/gdb_test_guest.c:63
+63	  int local_var = 2 * arg;
+(gdb) disass
+Dump of assembler code for function test_change_variable:
+   0x00020300 &amp;lt;+0&amp;gt;:	sub    $0x8,%esp
+   0x00020303 &amp;lt;+3&amp;gt;:	mov    0xc(%esp),%eax
+   0x00020307 &amp;lt;+7&amp;gt;:	mov    %eax,0x4(%esp)
+=&amp;gt; 0x0002030b &amp;lt;+11&amp;gt;:	add    %eax,%eax
+   0x0002030d &amp;lt;+13&amp;gt;:	mov    %eax,(%esp)
+   0x00020310 &amp;lt;+16&amp;gt;:	add    0x4(%esp),%eax
+...
+(gdb) print arg
+$1 = 1
+(gdb) set var arg = 123
+(gdb) print arg
+$3 = 123
+(gdb) step
+64	  global_var += local_var + arg;
+(gdb) print local_var
+$1 = 2
+
+
+If I manually set the breakpoint at the very start of the function, however, it works.  I think this bypasses GDB's prologue detection, which suggests that GDB's prologue detection is at fault:
+
+0x00020000 in __pnacl_start ()
+(gdb) break *0x20300
+Breakpoint 1 at 0x20300: file tests/gdb/gdb_test_guest.c, line 59.
+(gdb) cont
+Continuing.
+Breakpoint 1, 0x00020300 in test_change_variable (arg=1)
+    at tests/gdb/gdb_test_guest.c:59
+59	  return 3 * arg;
+(gdb) print arg
+$1 = 1
+(gdb) set var arg = 123
+(gdb) print arg
+$2 = 123
+(gdb) step
+63	  int local_var = 2 * arg;
+(gdb) print local_var
+$3 = 1073676272
+(gdb) step
+64	  global_var += local_var + arg;
+(gdb) print local_var
+$4 = 246
+</ns0:content><ns0:updated>2012-12-18T00:02:56.000Z</ns0:updated><ns0:published>2012-10-23T16:55:33.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>NaCl's GDB test "test_change_variable" fails with PNaCl</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GDB</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3104/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3104" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3104" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
+			<ns2:id>2544</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:closedDate>2012-12-18T00:02:56.000Z</ns2:closedDate><ns2:id>3104</ns2:id></ns0:entry>

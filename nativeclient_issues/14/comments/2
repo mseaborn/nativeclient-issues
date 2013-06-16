@@ -1,8 +1,8 @@
 <ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEMRX47eCl7ImA9WxRaGUk.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/14/comments/full/2</ns0:id><ns0:author>
-			<ns0:name>Cyruz...@gmail.com</ns0:name><ns0:uri>/u/111336095470686135105/</ns0:uri></ns0:author><ns0:content type="html">same problem
+			<ns0:name>Cyruz...@googlemail.com</ns0:name><ns0:uri>/u/111336095470686135105/</ns0:uri></ns0:author><ns0:content type="html">same problem
 sys: linux opensuse 11 with kde 3.5 
 browser: firefox 3.0.5-2.2
 
 Additional i cant open any standalone example. The Example Window closes directly.
-Python verson: 2.5</ns0:content><ns0:updated>2008-12-22T12:24:44.000Z</ns0:updated><ns0:published>2008-12-22T12:24:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by Cyruz...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=14#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/14/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>
+Python verson: 2.5</ns0:content><ns0:updated>2008-12-22T12:24:44.000Z</ns0:updated><ns0:published>2008-12-22T12:24:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by Cyruz...@googlemail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=14#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/14/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

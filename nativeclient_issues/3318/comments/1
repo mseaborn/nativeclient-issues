@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUAQ347eCl7ImA9WhBSGU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3318/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10909
+
+------------------------------------------------------------------------
+r10909 | bsy@google.com | 2013-02-26T19:47:29.802182Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/serialization?r1=10909&amp;r2=10908&amp;pathrev=10909
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/serialization/serialization_test.cc?r1=10909&amp;r2=10908&amp;pathrev=10909
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/serialization/serialization.cc?r1=10909&amp;r2=10908&amp;pathrev=10909
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/serialization/build.scons?r1=10909&amp;r2=10908&amp;pathrev=10909
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/serialization/serialization.h?r1=10909&amp;r2=10908&amp;pathrev=10909
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/site_scons/site_tools/library_deps.py?r1=10909&amp;r2=10908&amp;pathrev=10909
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/all.gyp?r1=10909&amp;r2=10908&amp;pathrev=10909
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/serialization/serialization.gyp?r1=10909&amp;r2=10908&amp;pathrev=10909
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=10909&amp;r2=10908&amp;pathrev=10909
+
+Serialization library.  Useful for sending more complex data in RPCs.
+
+This CL contains a definition for the SerializationBuffer class, which
+allows simple numeric types, std::string, and std::vector to be
+serialized into a byte buffer for transmission via some IPC mechanism
+or for storage.  The SerializationBuffer can be constructed from
+received data, and the data elements deserialized.
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3318
+
+Review URL: https://codereview.chromium.org/12316093
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-02-26T19:50:42.000Z</ns0:updated><ns0:published>2013-02-26T19:50:42.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3318#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3318/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

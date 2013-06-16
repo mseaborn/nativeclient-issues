@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkICRH47eCl7ImA9WhJbGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1591/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Hmm, even some non-c++ related symbols remain when I check the llc.pexe and try to compare the list of symbols using "-ffunction-sections -fdata-sections --gc-sections":
+
+__env_lock
+define void @__env_lock(%9047* nocapture) nounwind
+...
+kSrpcStandalone
+...
+LLVMBuildInBoundsGEP
+define %8335* @LLVMBuildInBoundsGEP(%8338* nocapture, %8335*, %8335**, i32, i8*) nounwind
+
+etc.
+
+See the two attached files for listings to compare.
+
+We should probably run with sandboxed translator production build with "-ffunction-sections -fdata-sections --gc-sections" too, to shave off about 1.5 MB from the translator install size.
+
+
+
+</ns0:content><ns0:updated>2012-09-28T16:42:45.000Z</ns0:updated><ns0:published>2012-09-28T16:42:45.000Z</ns0:published><ns2:updates>
+			<ns2:ownerUpdate>robertm@google.com</ns2:ownerUpdate><ns2:ccUpdate>-pdox%goo...@gtempaccount.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 7 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1591#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1591/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

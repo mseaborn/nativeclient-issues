@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEHR347eCl7ImA9WhJQGU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2746/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Original issues fixed and no more references to this bug.  The ABI is still different on x86-64 and ARM (hmm...), but that is a separate issue.
+
+We should check if the LLVM code for splitting a byval between the stack and r0-r3 works now, after upstream changes.  That might make the ABI more similar (but likely still different for some cases where we've lost the C-level type information).  Will file a separate issue.
+</ns0:content><ns0:updated>2012-08-02T18:03:56.000Z</ns0:updated><ns0:published>2012-08-02T18:03:56.000Z</ns0:published><ns2:updates>
+			<ns2:status>Fixed</ns2:status></ns2:updates><ns0:title>Comment 8 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2746#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2746/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

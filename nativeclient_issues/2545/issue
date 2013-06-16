@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEECQn47eCl7ImA9WhRaE04.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A04NRH47eCl7ImA9WhBQE0s.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2545</ns0:id><ns0:author>
 			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">llc is not only slow but also consumes a lot of memory.
 A 100MB pexe takes 6min to process and consumes &amp;gt; 5GB in the process.
@@ -11,7 +11,7 @@ http://codereview.chromium.org/9240026
 and using  -disable-global-opts there is no much reason
 for llc to keep lots of bitcode information around for a function once it has been processed. But there could still lots of MC related data-structures.
 
-</ns0:content><ns0:updated>2012-02-15T19:04:23.000Z</ns0:updated><ns0:published>2012-01-17T23:16:49.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
-			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:owner><ns2:cc>
+</ns0:content><ns0:updated>2013-03-15T17:53:15.000Z</ns0:updated><ns0:published>2012-01-17T23:16:49.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
 			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
-			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>llc consumes too much memory</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2545/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2545" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2545" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2545</ns2:id></ns0:entry>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>llc consumes too much memory</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Mstone-26</ns2:label><ns2:label>Performance</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2545/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2545" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2545" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>2545</ns2:id></ns0:entry>

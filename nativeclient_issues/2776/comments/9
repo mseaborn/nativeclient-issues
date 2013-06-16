@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEMSH47eCl7ImA9WhJRF0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2776/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=147408
+
+------------------------------------------------------------------------
+r147408 | jochen@chromium.org | 2012-07-19T07:19:20.843022Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/DEPS?r1=147408&amp;r2=147407&amp;pathrev=147408
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/plugin.cc?r1=147408&amp;r2=147407&amp;pathrev=147408
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/plugin.h?r1=147408&amp;r2=147407&amp;pathrev=147408
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/service_runtime.cc?r1=147408&amp;r2=147407&amp;pathrev=147408
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/service_runtime.h?r1=147408&amp;r2=147407&amp;pathrev=147408
+
+Revert 147401 - Merge branch 'master' of http://git.chromium.org/chromium/src into mywork
+
+
+Collect NaClLog messages from just prior to crash and display in JavaScript console.
+
+Test command line, after building chrome:
+
+NACLVERBOSITY=6 NACL_PLUGIN_DEBUG=1 NACL_FAULT_INJECTION=BeforeLoadIrt=GF2   out/Release/chrome --user-data-dir=/tmp/udd
+
+This causes the service runtime to abort just prior to loading the
+IRT.  After this "crash", open up the JavaScript console and see the
+log messages, including those from the fault injection library.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2776
+TEST= manual, using the fault injection library
+
+
+Review URL: https://chromiumcodereview.appspot.com/10806005
+
+TBR=bsy@google.com
+Review URL: https://chromiumcodereview.appspot.com/10800032
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-19T17:24:49.000Z</ns0:updated><ns0:published>2012-07-19T17:24:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2776#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2776/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

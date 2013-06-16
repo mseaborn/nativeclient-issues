@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08CQ347eCl7ImA9WhNWE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3106</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">There are various NaCl tests that don't work on qemu-arm, such as run_thread_suspension_test, which relies on Linux signals that qemu-arm emulates imperfectly.  These tests need to be run on real ARM hardware or a QEMU full-machine VM.
+
+So far, to run this test, my steps have been:
+ * ./scons -j4 run_thread_suspension_test do_not_run-tests=1 ...
+ * copy nacl_bootstrap, suspend_test_{host,guest} to an ARM device using rsync
+ * manually reconstruct the nacl_helper_bootstrap command line to run on the ARM device
+
+I would like to extend Scons to do this for me, so that I can run a single command like:
+
+  ./scons platform=arm -j4 run_thread_suspension_test test_wrapper=&amp;quot;./tools/run_test_via_ssh.py --host=panda --subdir=test_tmp&amp;quot;
+
+Scons already tracks most dependencies, so it knows what files to rsync to the remote device.
+
+I imagine a couple of other uses for this test_wrapper option:
+
+ * Testing on a 32-bit Windows machine without having to install MSVC on it.  Only installing Cygwin sshd would be required.
+ * Archiving prebuilt test suites.
+</ns0:content><ns0:updated>2012-12-12T20:57:42.000Z</ns0:updated><ns0:published>2012-10-23T23:35:41.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Add Scons option for running NaCl tests via SSH, for testing ARM</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3106/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3106" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3106" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-12-12T20:57:42.000Z</ns2:closedDate><ns2:id>3106</ns2:id></ns0:entry>

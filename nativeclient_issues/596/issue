@@ -4,6 +4,6 @@
 code against nacl-glibc, as an alternative to nacl-newlib.
 </ns0:content><ns0:updated>2011-06-22T23:07:24.000Z</ns0:updated><ns0:published>2010-06-12T02:01:01.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Integrate nacl-glibc into the Scons build</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>DynamicLinking</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/596/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=596" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/596" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
-			<ns2:id>594</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>631</ns2:id></ns2:blockedOn><ns2:blocking>
-			<ns2:id>565</ns2:id></ns2:blocking><ns2:closedDate>2011-06-22T23:07:24.000Z</ns2:closedDate><ns2:id>596</ns2:id></ns0:entry>
+			<ns2:id>594</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>631</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blocking>
+			<ns2:id>565</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2011-06-22T23:07:24.000Z</ns2:closedDate><ns2:id>596</ns2:id></ns0:entry>

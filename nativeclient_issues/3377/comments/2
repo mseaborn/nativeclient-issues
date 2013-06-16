@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQAQn47eCl7ImA9WhBWFUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3377/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I started looking at this (because of issue 3337's dependency on it).
+
+There's a problem with option (1) when producing C++-exception-enabled nexes offline.  If we make -fno-exceptions the default, it gets applied to libstdc++, and so __cxa_throw() (which implements "throw") gets defined with a "nounwind" attribute.  This will prevent any exceptions from working, so we get test failures like this:
+
+terminate called after throwing an instance of 'int'
+[  FAILED  ] pnacl_newlib.run_eh_loop_single_noopt_frame_test (10 ms)
+
+(2) looks like a better option now.  "-dce" doesn't work for stripping the landingpad blocks but "-simplifycfg" does.  (2) is also more consistent with how we've been adding simplification passes in pnacl-ld.py.
+</ns0:content><ns0:updated>2013-04-10T01:29:03.000Z</ns0:updated><ns0:published>2013-04-10T01:29:03.000Z</ns0:published><ns2:updates>
+			<ns2:status>Started</ns2:status><ns2:ownerUpdate>mseaborn@chromium.org</ns2:ownerUpdate></ns2:updates><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3377#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3377/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

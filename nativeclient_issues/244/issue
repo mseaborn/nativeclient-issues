@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE4FRH47eCl7ImA9WhZXFEk.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYMRX47eCl7ImA9WhJTEEg.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/244</ns0:id><ns0:author>
 			<ns0:name>cbiffle@google.com</ns0:name><ns0:uri>/u/cbiffle@google.com/</ns0:uri></ns0:author><ns0:content type="html">On ARM, we currently limit untrusted memory like so:
 - Code and read-only data in the bottom 256MiB.
@@ -19,11 +19,11 @@ nexes more freedom on how much heap and code to use.
 
 This would require changes to the toolchain's code generator, the service 
 runtime's trampoline/springboard setup code, and some validator 
-adjustments.  Possibly others.</ns0:content><ns0:updated>2011-05-03T18:21:55.000Z</ns0:updated><ns0:published>2010-01-12T23:12:29.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
-			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:owner><ns2:cc>
+adjustments.  Possibly others.</ns0:content><ns0:updated>2012-06-18T21:16:24.000Z</ns0:updated><ns0:published>2010-01-12T23:12:29.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
-			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>ARM should use same 1GiB limit for both code and data</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/244/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=244" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/244" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>244</ns2:id></ns0:entry>
+			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>ARM should use same 1GiB limit for both code and data</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/244/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=244" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/244" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2012-06-11T21:00:10.000Z</ns2:closedDate><ns2:id>244</ns2:id></ns0:entry>

@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C04FRX47eCl7ImA9WhJWEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/98</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9491
+
+------------------------------------------------------------------------
+r9491 | khim@google.com | 2012-08-16T15:44:12.015183Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/decoder_x86_32.c?r1=9491&amp;r2=9490&amp;pathrev=9491
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/general_purpose_instructions.def?r1=9491&amp;r2=9490&amp;pathrev=9491
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/decoder_x86_64.c?r1=9491&amp;r2=9490&amp;pathrev=9491
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/validator_x86_64.c?r1=9491&amp;r2=9490&amp;pathrev=9491
+
+Disable branch prediction prefixes for loop/loope/loopne.
+
+Manual is quite vague WRT usability of branch prediction prefixes combined
+with &#8220;loop/loope/loopne&#8221; instructions. Old optimization manual (from P4) says
+about them the following: &#8220;These hints take the form of prefixes to any type
+of branch instruction.  Branch hints are not guaranteed to have any effect,
+and their function may vary across implementations. On the Pentium 4
+processor, branch hints are active only for relative conditional branches.&#8221;
+And today's manual says:
+  &#8212; Branch hints:
+    &#8226; 2EH&#8212;Branch not taken (used only with Jcc instructions)
+    &#8226; 3EH&#8212;Branch taken (used only with Jcc instructions)
+Since they never had any effect on the code execution their usability is
+quite limited.  Disable them.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2597
+TEST=enuminst
+Review URL: https://chromiumcodereview.appspot.com/10831287
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-16T15:45:14.000Z</ns0:updated><ns0:published>2012-08-16T15:45:14.000Z</ns0:published><ns2:updates /><ns0:title>Comment 98 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c98" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/98" rel="self" type="application/atom+xml" /></ns0:entry>

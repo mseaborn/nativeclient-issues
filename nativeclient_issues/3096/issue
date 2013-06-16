@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMMSX47eCl7ImA9WhNTFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3096</ns0:id><ns0:author>
+			<ns0:name>shcherb...@google.com</ns0:name><ns0:uri>/u/105197577636354702799/</ns0:uri></ns0:author><ns0:content type="html">@hex:
+  # mov %ebp, %esp
+  89 ec
+  # lea (%rsp, %r15), %rsp
+  4a 8d 24 3c
+  
+  # mov %ebp, %esp
+  89 ec
+  # lea 0x00(%rsp, %r15), %rsp
+  4a 8d 64 3c 00
+  
+  # mov %ebp, %esp
+  89 ec
+  # lea 0x42(%rsp, %r15), %rsp
+  4a 8d 64 3c 42
+  
+  # mov %ebp, %esp
+  89 ec
+  # lea 0x00000000(%rsp, %r15), %rsp
+  4a 8d a4 3c 00 00 00 00
+@rval:
+  VALIDATOR: 000000000000000f: 4a 8d 64 3c 42                               lea %rsp, [%rsp+%r15*1+0x42]
+  VALIDATOR: ERROR: Illegal assignment to RSP
+  VALIDATOR: 000000000000000d: 89 ec                                        mov %esp, %ebp
+  VALIDATOR: ERROR: Illegal assignment to ESP
+  VALIDATOR: Checking jump targets: 0 to 1e
+  VALIDATOR: Checking that basic blocks are aligned
+  *** &amp;lt;input&amp;gt; IS UNSAFE ***
+@dis:
+  0000000000000000: 89 ec                                        mov %esp, %ebp
+  0000000000000002: 4a 8d 24 3c                                  lea %rsp, [%rsp+%r15*1]
+  0000000000000006: 89 ec                                        mov %esp, %ebp
+  0000000000000008: 4a 8d 64 3c 00                               lea %rsp, [%rsp+%r15*1]
+  000000000000000d: 89 ec                                        mov %esp, %ebp
+  000000000000000f: 4a 8d 64 3c 42                               lea %rsp, [%rsp+%r15*1+0x42]
+  0000000000000014: 89 ec                                        mov %esp, %ebp
+  0000000000000016: 4a 8d a4 3c 00 00 00 00                      lea %rsp, [%rsp+%r15*1]
+@rdfa_output:
+  8: [0] improper %rsp sandboxing
+  8: [0] error - %spl or %sp is changed
+  f: [0] improper %rsp sandboxing
+  f: [0] error - %spl or %sp is changed
+  16: [0] improper %rsp sandboxing
+  16: [0] error - %spl or %sp is changed
+  return code: 1
+</ns0:content><ns0:updated>2012-10-18T15:34:48.000Z</ns0:updated><ns0:published>2012-10-18T11:46:16.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/105197577636354702799/</ns2:uri><ns2:username>shcherb...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>RDFA validator does not accept lea rsp sandboxing with explicit zero offset</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3096/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3096" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3096" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-10-18T15:34:48.000Z</ns2:closedDate><ns2:id>3096</ns2:id></ns0:entry>

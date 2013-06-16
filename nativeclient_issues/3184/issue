@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUIGRn47eCl7ImA9WhNXFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3184</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The call &amp;quot;free(get_malloc_block_from_tdb(tdb))&amp;quot; in irt_thread.c calls free() on an invalid address.  The calculation to recover the combined_area pointer from when the thread was created is not correct.
+
+This mistake was introduced in https://src.chromium.org/viewvc/native_client?view=rev&amp;amp;revision=8685 (by me :-( ).
+
+I discovered this because a futex-related change I'm making perturbed the memory layout enough to cause the free() call to abort() (which in nacl-newlib currently calls _exit(1) without any useful diagnostics).
+
+We would have caught this earlier if Valgrind/Memcheck were enabled for tests/irt_private_pthread.
+</ns0:content><ns0:updated>2012-12-03T22:25:27.000Z</ns0:updated><ns0:published>2012-12-01T03:56:43.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>IRT does free() on invalid address in thread_exit() implementation</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-IRT</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3184/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3184" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3184" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>3185</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:id>3184</ns2:id></ns0:entry>

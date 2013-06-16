@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEQFSX47eCl7ImA9WhJSE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2884</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">There is a proposal to change the sandboxing model so that:
+
+ 1) CALLs are no longer placed at the ends of bundles;
+ 2) the return address pushed onto the stack may be unaligned;
+ 3) a callee must round the return address up before returning.
+
+* Part of the motivation is to remove the need for the assembler to place CALLs at the end of bundles.
+
+* On the one hand, this might be slower since the function return sequence will be longer.  On the other hand, it might improve performance, since there will be fewer nops before CALLs.
+
+* This involves changing the validator to allow unaligned calls (previously proposed in issue 229).  However, the validator would not need to be changed to allow this return sequence:
+    add $31, %ecx
+    and $~31, %ecx
+    jmp *%ecx
+
+* The IRT needs to remain compatible with existing nexes that don't expect to be given unaligned return addresses when called via PPAPI callbacks.  We could change the PPAPI proxy to do these calls via inline assembly that manually aligns the return address.</ns0:content><ns0:updated>2012-07-03T20:11:58.000Z</ns0:updated><ns0:published>2012-06-28T20:48:08.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Sandboxing model: Round return addresses up not down, allowing unaligned CALLs</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Component-IRT</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2884/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2884" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2884" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2884</ns2:id></ns0:entry>

@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IHQ347eCl7ImA9WhNTE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2911/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9996
+
+------------------------------------------------------------------------
+r9996 | mseaborn@chromium.org | 2012-10-15T15:27:24.530889Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/abi_test.cc?r1=9996&amp;r2=9995&amp;pathrev=9996
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/abi.cc?r1=9996&amp;r2=9995&amp;pathrev=9996
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/abi.h?r1=9996&amp;r2=9995&amp;pathrev=9996
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/debug_stub/debugger_test.c?r1=9996&amp;r2=9995&amp;pathrev=9996
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/target.cc?r1=9996&amp;r2=9995&amp;pathrev=9996
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/debug_stub/debug_stub_test.py?r1=9996&amp;r2=9995&amp;pathrev=9996
+
+Debug stub: ARM: Report the CPSR flags register to GDB
+
+This involves providing an XML description of the register set to GDB.
+
+Without this description, ARM GDB assumes a default register set
+layout that has various old-style floating point registers between
+"pc" and "cpsr".  In that case, GDB queries CPSR via the "p" command
+for reading a single register (which the debug stub doesn't currently
+support).  Since there are so many ARM variants, providing a register
+set description seems like the right thing to do.
+
+For consistency, I've extended the test to check x86 flags as well as
+ARM CPSR flags.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2911
+TEST=run_debug_stub_test + tested manually with GDB on an ARM system
+
+Review URL: https://codereview.chromium.org/11144014
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-16T01:38:52.000Z</ns0:updated><ns0:published>2012-10-16T01:38:52.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2911#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2911/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

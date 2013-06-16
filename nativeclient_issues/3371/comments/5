@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUEBRX47eCl7ImA9WhBVGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3371/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11224
+
+------------------------------------------------------------------------
+r11224 | mcgrathr@chromium.org | 2013-04-24T19:58:30.956731Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/REVISIONS?r1=11224&amp;r2=11223&amp;pathrev=11224
+
+Update glibc revision in tools/REVISIONS
+
+This brings in:
+
+a589e0a Prepare for fast loading through mmap'ing text.
+
+This changes the dynamic text mapping code to attempt PROT_EXEC
+mapping the text and only if it fails, falling back to read-mapping
+and using dyncode create.
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3371
+TEST= toolchain trybot
+R=kmixter@chromium.org
+
+Review URL: https://codereview.chromium.org/14049029
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-04-24T20:00:54.000Z</ns0:updated><ns0:published>2013-04-24T20:00:54.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3371#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3371/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

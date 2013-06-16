@@ -1,0 +1,47 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8ERn47eCl7ImA9WhNaFEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3128</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">See comments in this CL:
+
+http://codereview.chromium.org/11263026/
+
+ERROR: test_CacheResultsFalse (once_test.TestOnce)
+&amp;gt;
+&amp;gt; ------------------------------**------------------------------**----------
+&amp;gt;
+&amp;gt; Traceback (most recent call last):
+&amp;gt;
+&amp;gt;   File
+&amp;gt; &amp;quot;E:\b\build\slave\nacl-**toolchain\build\native_client\**
+&amp;gt; toolchain_build\once_test.py&amp;quot;,
+&amp;gt; line 127, in test_CacheResultsFalse
+&amp;gt;
+&amp;gt;     [command.Copy('%(input0)s/in0'**, '%(output)s/out')])
+&amp;gt;
+&amp;gt;   File
+&amp;gt; &amp;quot;E:\b\build\slave\nacl-**toolchain\build\native_client\**
+&amp;gt; toolchain_build\once.py&amp;quot;,
+&amp;gt; line 199, in Run
+&amp;gt;
+&amp;gt;     build_signature=build_**signature)
+&amp;gt;
+&amp;gt;   File
+&amp;gt; &amp;quot;E:\b\build\slave\nacl-**toolchain\build\native_client\**
+&amp;gt; toolchain_build\command.py&amp;quot;,
+&amp;gt; line 80, in Invoke
+&amp;gt;
+&amp;gt;     values['top_srcdir'] = FixPath(os.path.relpath(NACL_**DIR,
+&amp;gt; kwargs['cwd']))
+&amp;gt;
+&amp;gt;   File
+&amp;gt; &amp;quot;E:\b\build\slave\nacl-**toolchain\build\third_party\**
+&amp;gt; python_26\lib\ntpath.py&amp;quot;,
+&amp;gt; line 486, in relpath
+&amp;gt;
+&amp;gt;     % (path_list[0], start_list[0]))
+&amp;gt;
+&amp;gt; ValueError: path is on drive E:, start on drive c:
+&amp;gt;
+
+http://build.chromium.org/p/tryserver.nacl/builders/nacl-toolchain-win7-pnacl-x86_64/builds/189/steps/scons%20%5Bx86-64%5D%20%5Bsmall_tests%20medium_tests%5D%20%5B%5D/logs/stdio</ns0:content><ns0:updated>2013-01-29T18:40:07.000Z</ns0:updated><ns0:published>2012-11-02T22:32:55.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>toolchain_build/once_test.py assumes temp dir is on same drive as script?</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-25</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3128/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3128" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3128" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-01-29T18:40:07.000Z</ns2:closedDate><ns2:id>3128</ns2:id></ns0:entry>

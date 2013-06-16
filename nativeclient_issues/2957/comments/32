@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQAQX47eCl7ImA9WhJaE0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2957/comments/full/32</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9920
+
+------------------------------------------------------------------------
+r9920 | bradnelson@google.com | 2012-10-04T16:14:33.270400Z
+
+Changed paths:
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/find_chrome_revisions.py?r1=9920&amp;r2=9919&amp;pathrev=9920
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/pnacl_packaging/pnacl_component_crx_gen.py?r1=9920&amp;r2=9919&amp;pathrev=9920
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/download_chrome.py?r1=9920&amp;r2=9919&amp;pathrev=9920
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/validate_chrome_revision.py?r1=9920&amp;r2=9919&amp;pathrev=9920
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/DEPS?r1=9920&amp;r2=9919&amp;pathrev=9920
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/chromebinaries.py?r1=9920&amp;r2=9919&amp;pathrev=9920
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/PRESUBMIT.py?r1=9920&amp;r2=9919&amp;pathrev=9920
+
+Removing chromebinaries_rev.
+
+Dropping chromebinaries_rev from the DEPS.
+Replacing the one instance of downloading chrome for
+crx generation (which can just use local chrome)
+with an option to select local chrome.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2957
+TEST=crx gen still runs
+R=jvoung@chromium.org,ncbray@chromium.org
+
+Review URL: https://codereview.chromium.org/11016033
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-04T16:15:40.000Z</ns0:updated><ns0:published>2012-10-04T16:15:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 32 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2957#c32" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2957/comments/full/32" rel="self" type="application/atom+xml" /></ns0:entry>

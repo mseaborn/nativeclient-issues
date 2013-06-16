@@ -2,6 +2,6 @@
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/168</ns0:id><ns0:author>
 			<ns0:name>or...@chromium.org</ns0:name><ns0:uri>/u/110455494792614626431/</ns0:uri></ns0:author><ns0:content type="html">Finish the implementation of PluginThreadAsyncCall in NaCl plugin</ns0:content><ns0:updated>2010-03-23T23:15:06.000Z</ns0:updated><ns0:published>2009-12-02T21:23:40.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Implement PluginThreadAsyncCall in plugin</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/168/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=168" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/168" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
-			<ns2:id>171</ns2:id></ns2:blocking><ns2:blocking>
-			<ns2:id>172</ns2:id></ns2:blocking><ns2:blocking>
-			<ns2:id>174</ns2:id></ns2:blocking><ns2:closedDate>2010-01-25T17:29:52.000Z</ns2:closedDate><ns2:id>168</ns2:id></ns0:entry>
+			<ns2:id>171</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>172</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>174</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2010-01-25T17:29:52.000Z</ns2:closedDate><ns2:id>168</ns2:id></ns0:entry>

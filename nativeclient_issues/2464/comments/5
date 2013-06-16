@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUAQX47eCl7ImA9WhVaFUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2464/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8909
+
+------------------------------------------------------------------------
+r8909 | bsy@google.com | Tue Jun 12 15:28:32 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/nacl_log.c?r1=8909&amp;r2=8908&amp;pathrev=8909
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_error_log_test.c?r1=8909&amp;r2=8908&amp;pathrev=8909
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_error_log_test.stdout?r1=8909&amp;r2=8908&amp;pathrev=8909
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_error_log_hook.c?r1=8909&amp;r2=8908&amp;pathrev=8909
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=8909&amp;r2=8908&amp;pathrev=8909
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/nacl_log.h?r1=8909&amp;r2=8908&amp;pathrev=8909
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=8909&amp;r2=8908&amp;pathrev=8909
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_error_log_hook.h?r1=8909&amp;r2=8908&amp;pathrev=8909
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=8909&amp;r2=8908&amp;pathrev=8909
+
+Add NaClLogAbortBehavior, NaClErrorLogHookInit, and nacl_error_log_test.
+
+NaClLogSetAbortBehavior can now be used to add additional behavior
+prior to invoking NaClAbort, e.g., dump output from captured log
+output.  NaClErrorLogHookInit ties this together with NaClErrorGio to
+expose the captured NaClLog output.
+
+The test primarily exercises the bits of common code that will be
+shared with sel_main_chrome.c, where it will be harder to test.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2464 
+TEST= run_nacl_error_log_test
+Review URL: https://chromiumcodereview.appspot.com/10539079
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-12T22:30:40.000Z</ns0:updated><ns0:published>2012-06-12T22:30:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2464#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2464/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,65 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYGR347eCl7ImA9WhBXE0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3347</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+
+PNACL_VERSION=11003
+
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. download the attached reproducer and unpack &amp;quot;bugpoint-reduced-simplified.ll&amp;quot;
+2. run: &amp;quot;toolchain/pnacl_linux_x86/host_x86_64/bin/opt bugpoint-reduced-simplified.ll -o temp.pexe -nacl-expand-tls&amp;quot;
+3. See:
+
+pnacl/git/llvm/include/llvm/Support/Casting.h:208: typename llvm::cast_retty&amp;lt;To, From&amp;gt;::ret_type llvm::cast(const Y&amp;amp;) [with X = llvm::Instruction, Y = llvm::User*, typename llvm::cast_retty&amp;lt;To, From&amp;gt;::ret_type = llvm::Instruction*]: Assertion `isa&amp;lt;X&amp;gt;(Val) &amp;amp;&amp;amp; &amp;quot;cast&amp;lt;Ty&amp;gt;() argument of incompatible type!&amp;quot;' failed.
+0  libLLVM-3.3svn.so 0x00007f7328c0d432 llvm::sys::PrintStackTrace(_IO_FILE*) + 34
+1  libLLVM-3.3svn.so 0x00007f7328c0c859
+2  libpthread.so.0   0x00007f7327c2ccb0
+3  libc.so.6         0x00007f7327594425 gsignal + 53
+4  libc.so.6         0x00007f7327597b8b abort + 379
+5  libc.so.6         0x00007f732758d0ee
+6  libc.so.6         0x00007f732758d192
+7  libLLVM-3.3svn.so 0x00007f7328cc7648
+8  libLLVM-3.3svn.so 0x00007f7328cc881d
+9  libLLVM-3.3svn.so 0x00007f73286bf670 llvm::MPPassManager::runOnModule(llvm::Module&amp;amp;) + 688
+10 libLLVM-3.3svn.so 0x00007f73286c2807 llvm::PassManagerImpl::run(llvm::Module&amp;amp;) + 247
+11 opt               0x000000000040c837 main + 4647
+12 libc.so.6         0x00007f732757f76d __libc_start_main + 237
+13 opt               0x000000000040d191
+Stack dump:
+0.	Program arguments: toolchain/pnacl_linux_x86/host_x86_64/bin/opt bugpoint-reduced-simplified.ll -o temp.pexe -nacl-expand-tls 
+1.	Running pass 'Expand out TLS variables and fix TLS variable layout' on module 'bugpoint-reduced-simplified.ll'.
+Aborted (core dumped)
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+The expand TLS pass should be able to handle the input bitcode.
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+Once the smaller reproducer is handled, be sure to check the original reproducer:
+
+https://docs.google.com/a/google.com/file/d/0B0xcJBCRsQRTNG9oYWZWa3Z3UXM/edit
+
+
+Other notes:
+
+If you need to bugpoint the original reproducer, some useful commandline flags are:
+
+
+toolchain/pnacl_linux_x86/host_x86_64/bin/bugpoint -disable-global-remove -mlimit=800 --compile-custom -compile-command ./bugpoint
+2.sh orig.pexe
+
+
+If you don't do -disable-global-remove, then the initializers for the TLS variables will get removed, which gives you a different assertion.  You also need -mlimit=800 since the default mlimit of 100MB is not enough.
+
+
+
+</ns0:content><ns0:updated>2013-03-26T16:08:46.000Z</ns0:updated><ns0:published>2013-03-19T18:24:28.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dpolukhin@google.com/</ns2:uri><ns2:username>dpolukhin@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>"-nacl-expand-tls" pass gives an assertion failure on GlobalAliases</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-27</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3347/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3347" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3347" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-03-26T16:08:46.000Z</ns2:closedDate><ns2:id>3347</ns2:id></ns0:entry>

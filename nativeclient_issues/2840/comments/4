@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYBRn47eCl7ImA9WhVaF0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2840/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Hmm at least the unsandboxed version works.
+
+Using an unstripped pexe and nexe for LLC, and if the sel_ldr -S and -g + stock gdb is doing the right thing, it looks like the segfault is roughly in:
+
+
+#0  0x00007f8200b12643 in memcpy
+#1  0x00007f82ffffd0b0 in ?? ()
+#2  0x00007f8200aa6640 llvm::Twine::printOneChild(llvm::raw_ostream&amp;, llvm::Twine::Child, llvm::Twine::NodeKind) const
+#3  0x00000000ffffd130 in ?? ()
+// ... More junk
+#8  0x00007f8200aa5ec0 in llvm::Twine::toStringRef(llvm::SmallVectorImpl&lt;char&gt;&amp;) const
+// ... Lots of other junk
+#17 0x00007f82ffffd390 in ?? ()
+#18 0x00007f82009d6800 in llvm::Value::setName(llvm::Twine const&amp;)
+// ... Unending junk in stacktrace...
+
+
+Well, I guess that's a start =)</ns0:content><ns0:updated>2012-06-14T22:32:37.000Z</ns0:updated><ns0:published>2012-06-14T22:32:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2840#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2840/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,49 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkcARH47eCl7ImA9WhNUGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3227</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">x87 floating point arithmetic operations often crash inside NaCl syscalls on 32-bit Windows.  This is because NaCl sets the x87 Control Word Register (FCW) to the wrong value when switching to trusted code.  NaCl uses the following code to get the FCW:
+
+  /*
+   * Save the system's state of the x87 FPU control word so we can restore
+   * the same state when returning to trusted code.
+   */
+#if NACL_WINDOWS
+  ntcp-&amp;gt;sys_fcw = _control87(0, 0);
+#else
+  __asm__ __volatile__(&amp;quot;fnstcw %0&amp;quot; : &amp;quot;=m&amp;quot; (ntcp-&amp;gt;sys_fcw));
+#endif
+
+_control87() does not return the x87 FCW literally; it returns an alternative encoding of it.  (This is clear from looking at the disassembly of _control87(): it shuffles the bits around.)
+
+The following test program demonstrates the problem:
+
+#include &amp;lt;float.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+
+int main() {
+  int fcw1 = 0, fcw2, fcw3;
+  __asm { fstcw fcw1 };
+  fcw2 = _control87(0, 0);
+  fcw3 = _controlfp(0, 0);
+  printf(&amp;quot;fstcw returns 0x%x\n&amp;quot;, fcw1);
+  printf(&amp;quot;_control87(0, 0) returns 0x%x\n&amp;quot;, fcw2);
+  printf(&amp;quot;_controlfp(0, 0) returns 0x%x\n&amp;quot;, fcw3);
+  return 0;
+}
+
+This prints:
+
+fstcw returns 0x27f
+_control87(0, 0) returns 0x9001f
+_controlfp(0, 0) returns 0x9001f
+
+This means NaCl is setting FCW to 0x1f, which unsets bit 5, the Precision Exception Mask (PM).  This means that operations that lose precision will generate a floating point exception, giving the exit status STATUS_FLOAT_INEXACT_RESULT (0xc000008f) on Windows.
+
+I found this as a result of investigating issue chromium:132359.  This bug causes a slew of failures on every run of Chromium's browser_tests on Windows XP (the only version of Windows for which Chromium has 32-bit test bots).  These failures have been being ignored because browser_tests retries tests that fail.
+</ns0:content><ns0:updated>2013-01-10T22:47:25.000Z</ns0:updated><ns0:published>2012-12-21T23:37:57.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Floating point operations often crash inside NaCl syscalls on 32-bit Windows</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>FlakeyBots</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3227/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3227" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3227" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blocking>
+			<ns2:id>130349</ns2:id><ns2:project>chromium</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>130372</ns2:id><ns2:project>chromium</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>130377</ns2:id><ns2:project>chromium</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>130380</ns2:id><ns2:project>chromium</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>132359</ns2:id><ns2:project>chromium</ns2:project></ns2:blocking><ns2:closedDate>2013-01-10T22:47:25.000Z</ns2:closedDate><ns2:id>3227</ns2:id></ns0:entry>

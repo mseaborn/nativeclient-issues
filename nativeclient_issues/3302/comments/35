@@ -1,0 +1,44 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcHQ347eCl7ImA9WhBUFE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3302/comments/full/35</ns0:id><ns0:author>
+			<ns0:name>damonp...@gmail.com</ns0:name><ns0:uri>/u/112358947840938663111/</ns0:uri></ns0:author><ns0:content type="html">It seems the fix is still not complete yet.
+Here is a sample piece of code which trigger the crash again; although it seems to be a different issue.
+int32_t  main()  
+{
+	int32_t r_1Ae;
+	int32_t r_1Af;
+    int32_t __t_t__i ;
+	int32_t __t_t__arr[1]    = {(int32_t)-510487816};
+	int32_t __t_t__verify[]  = {(int32_t)-510487816};
+
+	__t_t__i = (int32_t)606978378;
+	r_1Ae = ((int32_t)((int32_t*)&amp;(__t_t__verify))[((int32_t)((((uint32_t)806694431 * ((uint32_t)__t_t__i)) + (uint32_t)1431811062) - (((uint32_t)1613388862 * ((uint32_t)__t_t__i)) &amp; (uint32_t)2863622124)))]); 
+	r_1Af = ((int32_t)((int32_t*)&amp;(__t_t__arr))   [((int32_t)((((uint32_t)806694431 * ((uint32_t)__t_t__i)) + (uint32_t)1431811062) - (((uint32_t)1613388862 * ((uint32_t)__t_t__i)) &amp; (uint32_t)2863622124)))]); 
+    return (int32_t)0;
+}
+
+Here is the assemble code:
+	movl	$0, -4(%rsp)
+	movl	.Lmain.__t_t__arr(%rip), %eax
+	movl	%eax, -20(%rsp)
+	movl	.Lmain.__t_t__verify(%rip), %eax
+	movl	%eax, -24(%rsp)
+	movl	$606978378, -16(%rsp)   # imm = 0x242DC14A
+	movl	-24(%rsp), %eax
+	movl	%eax, -8(%rsp)
+	movl	-16(%rsp), %ecx
+	imull	$1613388862, %ecx, %eax # imm = 0x602A5C3E
+	andl	$716138476, %eax        # imm = 0x2AAF67EC
+	imull	$806694431, %ecx, %ecx  # imm = 0x30152E1F
+	addl	$1431811062, %ecx       # imm = 0x5557B3F6
+	subl	%eax, %ecx
+	movl	%nacl:-20(%rsp,%rcx,4), %eax
+	movl	%eax, -12(%rsp)
+	xorl	%eax, %eax
+	popq	%rcx
+	nacljmp	%ecx, %r15
+	.align	32, 0x90
+
+
+It seems when "(uint32_t)2863622124" is translated into assemble, it goes to 0x2AAF67EC instead of 0xAAAF67EC
+Thanks.
+Damon</ns0:content><ns0:updated>2013-05-01T19:20:32.000Z</ns0:updated><ns0:published>2013-05-01T19:20:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 35 by damonp...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3302#c35" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3302/comments/full/35" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,59 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0EARH47eCl7ImA9WhJWFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2596/comments/full/17</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">Adding Roland and Nick in case they have some more insights 
+
+Since CL is broken here is the diff:
+
+
+ git diff 93e90b5a96349c67ef5c4ce93e84de57dae7367b a8b45d06c8fdf36cfdb7c996393940077097d988
+ diff --git a/libstdc++-v3/include/std/chrono b/libstdc++-v3/include/std/chrono
+ index 27f4516..2bb58e5 100644
+ --- a/libstdc++-v3/include/std/chrono
+ +++ b/libstdc++-v3/include/std/chrono
+ @@ -139,7 +139,9 @@ _GLIBCXX_END_NAMESPACE_VERSION
+           {
+             typedef typename _ToDur::rep                        __to_rep;
+             return _ToDur(static_cast&lt;__to_rep&gt;(
+ -             static_cast&lt;_CR&gt;(__d.count()) / static_cast&lt;_CR&gt;(_CF::den)));
+ +                // hack around
+ +                //http://code.google.com/p/nativeclient/issues/detail?id=2596
+ +             static_cast&lt;_CR&gt;(__d.count()) / (_CF::den)));
+           }
+        };
+  
+ @@ -152,7 +154,9 @@ _GLIBCXX_END_NAMESPACE_VERSION
+           {
+             typedef typename _ToDur::rep                        __to_rep;
+             return _ToDur(static_cast&lt;__to_rep&gt;(
+ -             static_cast&lt;_CR&gt;(__d.count()) * static_cast&lt;_CR&gt;(_CF::num)));
+ +                // hack around
+ +                // http://code.google.com/p/nativeclient/issues/detail?id=2596
+ +             static_cast&lt;_CR&gt;(__d.count()) * (_CF::num)));
+           }
+        };
+  
+ diff --git a/libstdc++-v3/src/chrono.cc b/libstdc++-v3/src/chrono.cc
+ index 6b5e669..d172b81 100644
+ --- a/libstdc++-v3/src/chrono.cc
+ +++ b/libstdc++-v3/src/chrono.cc
+ @@ -22,6 +22,12 @@
+  // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+  // &lt;http://www.gnu.org/licenses/&gt;.
+  
+ +#ifndef __pnacl__
+ +// This hack works around
+ +// http://code.google.com/p/nativeclient/issues/detail?id=2596
+ +// It can be removed if a) gcc's behavior changes to match clang and the
+ +// chrono header is fixed accordingly, or b) clang's behavior is currently
+ +// wrong and gets fixed
+  #include &lt;chrono&gt;
+  
+  #ifdef _GLIBCXX_USE_C99_STDINT_TR1
+ @@ -81,3 +87,4 @@ namespace std _GLIBCXX_VISIBILITY(default)
+  } // namespace std
+  
+  #endif // _GLIBCXX_USE_C99_STDINT_TR1
+ +#endif // __pnacl__ hack
+
+
+</ns0:content><ns0:updated>2012-08-21T17:20:45.000Z</ns0:updated><ns0:published>2012-08-21T17:20:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 17 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2596#c17" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2596/comments/full/17" rel="self" type="application/atom+xml" /></ns0:entry>

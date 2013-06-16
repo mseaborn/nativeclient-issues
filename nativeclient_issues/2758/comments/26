@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEHR347eCl7ImA9WhJTEUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/26</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8988
+
+------------------------------------------------------------------------
+r8988 | mseaborn@chromium.org | Tue Jun 19 17:31:32 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=8988&amp;r2=8987&amp;pathrev=8988
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=8988&amp;r2=8987&amp;pathrev=8988
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=8988&amp;r2=8987&amp;pathrev=8988
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=8988&amp;r2=8987&amp;pathrev=8988
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main_chrome.c?r1=8988&amp;r2=8987&amp;pathrev=8988
+
+Debug stub: Move initialisation out of sel_ldr_standard.c
+
+The initialisation was only done in sel_ldr_standard.c because the
+debug stub wanted to get the argv/env arrays, but this has since been
+removed.
+
+Doing the initialisation from sel_main*.c will make it easier to avoid
+a circular dependency between the 'sel' and 'debug_stub' libraries.
+This dependency would occur when the debug stub starts to use
+service_runtime's thread suspension functions.  sel_main.c is not in
+the 'sel' library (and sel_main_chrome.c doesn't have to be in 'sel',
+although we need a Chromium-side change before we can move it out of
+'sel').
+
+This doesn't really complicate sel_main.c/sel_main_chrome.c since they
+already needed to pass through a debug_stub_enabled setting.
+
+This change would also make it easier, in the future, to initialise
+the debug stub's TCP port before the Mac outer sandbox is enabled.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2758
+TEST=run_debug_stub_test
+
+Review URL: https://chromiumcodereview.appspot.com/10580025
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-20T00:37:16.000Z</ns0:updated><ns0:published>2012-06-20T00:37:16.000Z</ns0:published><ns2:updates /><ns0:title>Comment 26 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2758#c26" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/26" rel="self" type="application/atom+xml" /></ns0:entry>

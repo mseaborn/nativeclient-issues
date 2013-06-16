@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUEBRX47eCl7ImA9WhJaF04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3018/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9955
+
+------------------------------------------------------------------------
+r9955 | mseaborn@chromium.org | 2012-10-08T21:56:04.602098Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_pnacl_toolchain_tests.sh?r1=9955&amp;r2=9954&amp;pathrev=9955
+
+PNaCl: Update ARCHIVED_PEXE_TRANSLATOR_REV to fix version skew in testing
+
+Since r9949, the PNaCl toolchain bots fail in the step
+"archived_pexe_translator x86-32" with the following error:
+
+crtbegin.o:.../toolchain/pnacl_linux_x86/lib-x86-32/crtbegin.o---crtbegin.c---.po:
+function __pnacl_start: error: undefined reference to '_pnacl_wrapper_start'
+
+These tests translate an old copy of "ld.pexe" and drop it into the
+current PNaCl toolchain and test whether this combination works.  This
+will break whenever internal NaCl interfaces (like syscalls) or
+internal PNaCl interfaces change.  The latter changed in r9890 and
+r9915 when I made PNaCl's internal interfaces more consistent between
+architectures.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=3018
+TEST=none (no trybot coverage)
+
+Review URL: https://codereview.chromium.org/11028078
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-08T22:00:54.000Z</ns0:updated><ns0:published>2012-10-08T22:00:54.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3018#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3018/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

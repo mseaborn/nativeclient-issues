@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0QFQX47eCl7ImA9WhBQEEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/163</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10967
+
+------------------------------------------------------------------------
+r10967 | khim@google.com | 2013-03-12T13:33:22.848190Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder_x86_32.rl?r1=10967&amp;r2=10966&amp;pathrev=10967
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator_x86_32.rl?r1=10967&amp;r2=10966&amp;pathrev=10967
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/decoder_x86_32.c?r1=10967&amp;r2=10966&amp;pathrev=10967
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/validator_x86_32.c?r1=10967&amp;r2=10966&amp;pathrev=10967
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder_x86_64.rl?r1=10967&amp;r2=10966&amp;pathrev=10967
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator_x86_64.rl?r1=10967&amp;r2=10966&amp;pathrev=10967
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/decoder_x86_64.c?r1=10967&amp;r2=10966&amp;pathrev=10967
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/validator_x86_64.c?r1=10967&amp;r2=10966&amp;pathrev=10967
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoding.h?r1=10967&amp;r2=10966&amp;pathrev=10967
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/build.scons?r1=10967&amp;r2=10966&amp;pathrev=10967
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/parse_instruction.rl?r1=10967&amp;r2=10966&amp;pathrev=10967
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator_internal.h?r1=10967&amp;r2=10966&amp;pathrev=10967
+
+Move x86-64 specific code out of validator_internal.h
+
+Substantial part of validator_internals.h implements functionality which
+is only used in x86-64 validator.  Move it to validator_x86_64.rl to
+simplify understanding of ia32 validator.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2597
+TEST=trybots (no changes in functionality)
+Review URL: https://codereview.chromium.org/12655005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-03-12T13:35:10.000Z</ns0:updated><ns0:published>2013-03-12T13:35:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 163 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c163" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/163" rel="self" type="application/atom+xml" /></ns0:entry>

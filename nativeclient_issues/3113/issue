@@ -1,0 +1,94 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08MQn47eCl7ImA9WhFTEE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3113</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The bitcode format stores global variables as ASTs rather than as the simple binary data that will get emitted (along with relocation info) to the resulting native object file.
+
+For some sparse data, this makes LLVM bitcode smaller than the binary data.  However, in other cases, the LLVM bitcode is bigger.  There is a 22% size increase for an array of uint64_t or double values, and a 32% increase for an array of float values.  Structs can have higher overheads.
+
+This size increase could be a problem for programs that use large precomputed arrays, e.g. crypto libraries, mathematical libraries.
+
+This representation might also make PNaCl translation slower and more complex than it needs to be.  If PNaCl's wire format stored globals as arrays of bytes, translating the data segment would simply be a memcpy() (along with translating relocations for any embedded pointers).  As it is, the PNaCl translator presumably copies the bitcode-based AST to an in-memory AST, which might have a large memory cost.
+
+This will be surprising to developers.  Historically, nesting C structs has had no cost at run time.
+
+
+I wrote a script to measure the size overhead (attached), which produces the following results:
+
+
+Simple types:
+
+Type: char
+Native bytes per element: 1.0
+Bitcode bytes per element: 1.0
+Size ratio: 1.0
+
+Type: short
+Native bytes per element: 2.0
+Bitcode bytes per element: 2.26
+Size ratio: 1.13
+
+Type: int
+Native bytes per element: 4.0
+Bitcode bytes per element: 4.5
+Size ratio: 1.125
+
+Type: long long
+Native bytes per element: 8.0
+Bitcode bytes per element: 9.76
+Size ratio: 1.22
+
+Type: float
+Native bytes per element: 4.0
+Bitcode bytes per element: 5.26
+Size ratio: 1.315
+
+Type: double
+Native bytes per element: 8.0
+Bitcode bytes per element: 9.76
+Size ratio: 1.22
+
+Struct types:
+
+Type: struct nest1 { int x; }
+Native bytes per element: 4.0
+Bitcode bytes per element: 9.5
+Size ratio: 2.375
+
+Type: struct nest2 { struct nest1 { int x; } x; }
+Native bytes per element: 4.0
+Bitcode bytes per element: 12.52
+Size ratio: 3.13
+
+Type: struct nest3 { struct nest2 { struct nest1 { int x; } x; } x; }
+Native bytes per element: 4.0
+Bitcode bytes per element: 15.26
+Size ratio: 3.815
+
+Type: struct nest4 { struct nest3 { struct nest2 { struct nest1 { int x; } x; } x; } x; }
+Native bytes per element: 4.0
+Bitcode bytes per element: 18.02
+Size ratio: 4.505
+
+Type: struct nest5 { struct nest4 { struct nest3 { struct nest2 { struct nest1 { int x; } x; } x; } x; } x; }
+Native bytes per element: 4.0
+Bitcode bytes per element: 21.5
+Size ratio: 5.375
+
+Type: struct nest6 { struct nest5 { struct nest4 { struct nest3 { struct nest2 { struct nest1 { int x; } x; } x; } x; } x; } x; }
+Native bytes per element: 4.0
+Bitcode bytes per element: 24.38
+Size ratio: 6.095
+
+Type: struct nest7 { struct nest6 { struct nest5 { struct nest4 { struct nest3 { struct nest2 { struct nest1 { int x; } x; } x; } x; } x; } x; } x; }
+Native bytes per element: 4.0
+Bitcode bytes per element: 27.24
+Size ratio: 6.81
+
+Type: struct pair { int val1; int val2; }
+Native bytes per element: 8.0
+Bitcode bytes per element: 16.78
+Size ratio: 2.0975
+</ns0:content><ns0:updated>2013-05-31T21:31:23.000Z</ns0:updated><ns0:published>2012-10-26T19:22:26.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PNaCl: Flatten ConstantExprs in global initializers to simplify ABI &amp; reduce size</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Performance</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>PNaClABI</ns2:label><ns2:label>Pri-1</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3113/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3113" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3113" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2013-05-31T21:31:23.000Z</ns2:closedDate><ns2:id>3113</ns2:id></ns0:entry>

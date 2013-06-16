@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEGQX47eCl7ImA9WhBREU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2275/comments/full/53</ns0:id><ns0:author>
+			<ns0:name>hehe...@gmail.com</ns0:name><ns0:uri>/u/117839212510605709442/</ns0:uri></ns0:author><ns0:content type="html">I have a question about runing mips version nexe in mips operation.
+Following the instruction of developing pnacl. I did blew steps, generating nexe file is in x86_64 and runing is in mips.
+1. Download sourcecode of nacl sdk
+2.Open mips flag "export PNACL_BUILD_MIPS=true"
+3.Build in pnacl folder.
+4.Execute pnacl-clang and pnacl-translate commands to generate mips verion nexe files
+5.Copy all sdk files from x86_64 machine to mips machine
+6. Run run.py
+But it can't run well. I check run.py and find it doesn't support mips version.
+Is there any other way to run mips version nexe files? Hope you can answer me. thanks 
+</ns0:content><ns0:updated>2013-03-01T07:23:40.000Z</ns0:updated><ns0:published>2013-03-01T07:23:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 53 by hehe...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2275#c53" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2275/comments/full/53" rel="self" type="application/atom+xml" /></ns0:entry>

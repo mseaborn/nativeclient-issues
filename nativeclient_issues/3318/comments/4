@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8FRH47eCl7ImA9WhBQE0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3318/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=188462
+
+------------------------------------------------------------------------
+r188462 | bsy@google.com | 2013-03-15T20:17:09.670129Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/nacl_browser/manifest_file/pm_pre_init_manifest_file_test.html?r1=188462&amp;r2=188461&amp;pathrev=188462
+
+NaCl: Fix test to accept old, erroneous behavior and new correct behavior pending DEPS roll
+
+The manifest lookup code, when a lookup fails, returns a -1 for the
+descriptor and should return a status value which should contain an
+errno.  The old code erroneously returned a 0 status, and that got
+captured in the golden output unnoticed.  This temporary fix will
+accept both the old and new behavior, so that the DEPS roll will not
+turn the tree red.
+
+R=sehr@chromium.org
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3318
+
+
+Review URL: https://chromiumcodereview.appspot.com/12601013
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-03-15T20:20:15.000Z</ns0:updated><ns0:published>2013-03-15T20:20:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3318#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3318/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

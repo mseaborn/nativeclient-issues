@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEMFRn47eCl7ImA9WhNSEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2787/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10089
+
+------------------------------------------------------------------------
+r10089 | mseaborn@chromium.org | 2012-10-24T20:55:18.139676Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/build_nexe.py?r1=10089&amp;r2=10088&amp;pathrev=10089
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/standalone_flags.gypi?r1=10089&amp;r2=10088&amp;pathrev=10089
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/gyp_nacl?r1=10089&amp;r2=10088&amp;pathrev=10089
+
+Gyp build: Enable -Wundef warnings for untrusted code
+
+-Wundef warns about "#if FOO" when FOO is undefined.
+
+We have to ensure NACL_LINUX, NACL_WINDOWS etc. are defined, because
+various header files check them.
+
+We don't want to enable this for Chrome source because that produces
+errors such as:
+  ../base/logging.h:187:5: error: "NDEBUG" is not defined
+  ../base/pending_task.h:21:5: error: "_MSC_VER" is not defined
+
+Also enable -Werror for ARM untrusted code built with Gyp inside the
+NaCl tree so that we catch -Wundef problems in this case.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2787
+TEST=Gyp build + tested in Chromium
+
+Review URL: https://codereview.chromium.org/11262013
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-24T21:00:17.000Z</ns0:updated><ns0:published>2012-10-24T21:00:17.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2787#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2787/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,60 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE4ARX47eCl7ImA9WhBQEUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3325/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=187764
+
+------------------------------------------------------------------------
+r187764 | jvoung@chromium.org | 2013-03-13T03:52:09.186078Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_options.h?r1=187764&amp;r2=187763&amp;pathrev=187764
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest_util.h?r1=187764&amp;r2=187763&amp;pathrev=187764
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest.cc?r1=187764&amp;r2=187763&amp;pathrev=187764
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/plugin.gypi?r1=187764&amp;r2=187763&amp;pathrev=187764
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/nacl_test_data.gyp?r1=187764&amp;r2=187763&amp;pathrev=187764
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_nmf_options?r1=187764&amp;r2=187763&amp;pathrev=187764
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_nmf_options/pnacl_o_large.nmf?r1=187764&amp;r2=187763&amp;pathrev=187764
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/plugin.cc?r1=187764&amp;r2=187763&amp;pathrev=187764
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/json_manifest.cc?r1=187764&amp;r2=187763&amp;pathrev=187764
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_coordinator.cc?r1=187764&amp;r2=187763&amp;pathrev=187764
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_translate_thread.cc?r1=187764&amp;r2=187763&amp;pathrev=187764
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/json_manifest.h?r1=187764&amp;r2=187763&amp;pathrev=187764
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_nmf_options/pnacl_time_passes.nmf?r1=187764&amp;r2=187763&amp;pathrev=187764
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_coordinator.h?r1=187764&amp;r2=187763&amp;pathrev=187764
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_nmf_options/pnacl_o_0.nmf?r1=187764&amp;r2=187763&amp;pathrev=187764
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_translate_thread.h?r1=187764&amp;r2=187763&amp;pathrev=187764
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/service_runtime.cc?r1=187764&amp;r2=187763&amp;pathrev=187764
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_nmf_options/pnacl_options.html?r1=187764&amp;r2=187763&amp;pathrev=187764
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_nmf_options/pnacl_o_2.nmf?r1=187764&amp;r2=187763&amp;pathrev=187764
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/service_runtime.h?r1=187764&amp;r2=187763&amp;pathrev=187764
+   A http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_options.cc?r1=187764&amp;r2=187763&amp;pathrev=187764
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/manifest.h?r1=187764&amp;r2=187763&amp;pathrev=187764
+
+Allow PNaCl NMF to set translator optimization options for experimentation.
+
+This adds two fields:
+(1) "-O": i
+(2) "experimentation_flags": "arbitrary flags"
+
+We may want to remove (2) soon... or just omit it.
+The optimization flag is separated and made a uint so that
+it can be tracked as a UMA stat more easily.
+
+Also set default to -O0 for now.
+
+
+
+TEST= browser_tests --gtest_filter=*Pnacl*Options*
+
+This only tests that the plugin doesn't barf on those
+new NMF options. To really test it we'd need to instrument
+LLC to know that it's really getting these flags and get
+output from LLC confirming that.  For now I have a manual
+test:
+http://www/~jvoung/IrrLicht/testirrnacl_portable.html
+showing that it works though.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3325
+
+Review URL: https://chromiumcodereview.appspot.com/12623004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-03-13T03:55:44.000Z</ns0:updated><ns0:published>2013-03-13T03:55:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3325#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3325/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

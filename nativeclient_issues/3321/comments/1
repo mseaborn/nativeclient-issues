@@ -1,0 +1,83 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8CRH47eCl7ImA9WhBREEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3321/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Well, here are some preliminary estimates for X86-64.  The impact isn't too great there. Perhaps it's a bigger win on ARM.  Perhaps the impact is greater on Atom.  Perhaps my hacked patch isn't complete, or the optimizer could do a better job.  Perhaps the cost is really somewhere else, like in the addOperand(), etc. for building a machineinstr.
+
+
+Anyway, here are some numbers.  This is for 10 runs on 176.gcc with -translate-fast:
+
+========================
+
+Without any change:
+
+ Performance counter stats for 'toolchain/pnacl_translator/bin/pnacl-translate -arch x86-64 tests/spec2k/176.gcc/gcc.opt.stripped.pexe -o temp.nexe -translate-fast --pnacl-sb --pnacl-driver-set-LLC_SB=llc.orig64.nexe' (10 runs):
+
+       4901.562697 task-clock                #    0.999 CPUs utilized            ( +-  0.29% )
+               916 context-switches          #    0.000 M/sec                    ( +-  0.71% )
+               289 CPU-migrations            #    0.000 M/sec                    ( +-  2.55% )
+            40,947 page-faults               #    0.008 M/sec                    ( +-  0.06% )
+    16,951,060,925 cycles                    #    3.458 GHz                      ( +-  0.17% )
+     6,661,106,644 stalled-cycles-frontend   #   39.30% frontend cycles idle     ( +-  0.43% )
+     5,577,155,019 stalled-cycles-backend    #   32.90% backend  cycles idle     ( +-  4.38% )
+    22,539,656,079 instructions              #    1.33  insns per cycle        
+                                             #    0.30  stalled cycles per insn  ( +-  0.01% )
+     3,473,717,669 branches                  #  708.696 M/sec                    ( +-  0.01% )
+       157,383,651 branch-misses             #    4.53% of all branches          ( +-  0.05% )
+
+       4.904168662 seconds time elapsed                                          ( +-  0.32% )
+
+size of LLC = 13107376
+size of X86FastISel::FastEmit_rr is 0x00008320 bytes
+size of all X86FastISel::* is 129KB
+
+========================
+
+With just hard-coding little-endian, 64-bits, SSE, NaCl, ELF (10 runs on 176.gcc with -translate-fast):
+
+
+       4874.007452 task-clock                #    1.001 CPUs utilized            ( +-  0.20% )
+               917 context-switches          #    0.000 M/sec                    ( +-  0.38% )
+               276 CPU-migrations            #    0.000 M/sec                    ( +-  2.05% )
+            40,817 page-faults               #    0.008 M/sec                    ( +-  0.07% )
+    16,964,191,017 cycles                    #    3.481 GHz                      ( +-  0.18% )
+     6,744,335,710 stalled-cycles-frontend   #   39.76% frontend cycles idle     ( +-  0.45% )
+     5,511,058,537 stalled-cycles-backend    #   32.49% backend  cycles idle     ( +-  5.53% )
+    22,397,087,972 instructions              #    1.32  insns per cycle        
+                                             #    0.30  stalled cycles per insn  ( +-  0.01% )
+     3,450,133,700 branches                  #  707.864 M/sec                    ( +-  0.01% )
+       158,085,297 branch-misses             #    4.58% of all branches          ( +-  0.07% )
+
+       4.870758843 seconds time elapsed                                          ( +-  0.20% )
+
+
+size of LLC = 12814856 (~300KB smaller)
+size of X86FastISel::FastEmit_rr is 0x000077a0 bytes
+size of all X86FastISel::* is 112KB
+
+=============================
+
+
+With SSE* and AVX hardcoded too (since those make up a majority of the checks):
+
+       4895.984282 task-clock                #    1.001 CPUs utilized            ( +-  0.28% )
+               927 context-switches          #    0.000 M/sec                    ( +-  0.52% )
+               284 CPU-migrations            #    0.000 M/sec                    ( +-  1.99% )
+            40,790 page-faults               #    0.008 M/sec                    ( +-  0.06% )
+    16,952,025,194 cycles                    #    3.462 GHz                      ( +-  0.15% )
+     6,732,750,329 stalled-cycles-frontend   #   39.72% frontend cycles idle     ( +-  0.38% )
+     5,479,117,206 stalled-cycles-backend    #   32.32% backend  cycles idle     ( +-  4.17% )
+    22,386,853,857 instructions              #    1.32  insns per cycle        
+                                             #    0.30  stalled cycles per insn  ( +-  0.01% )
+     3,446,376,058 branches                  #  703.919 M/sec                    ( +-  0.01% )
+       158,487,774 branch-misses             #    4.60% of all branches          ( +-  0.05% )
+
+       4.893515643 seconds time elapsed                                          ( +-  0.28% )
+
+size of LLC = 12748144 (~360KB smaller than orig)
+size of X86FastISel::FastEmit_rr is 0x00005300 bytes
+size of all X86FastISel::* is 96KB
+
+======================
+
+Time-passes reports that all ISel takes about 1.9 seconds, and the DAG parts take about 1.1 second.  Total of all passes is about 3.4 seconds.  Total wallclock time is 4.9 seconds(!).  This includes setting up sel_universal, etc.
+
+</ns0:content><ns0:updated>2013-02-28T20:54:25.000Z</ns0:updated><ns0:published>2013-02-28T20:54:25.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3321#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3321/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

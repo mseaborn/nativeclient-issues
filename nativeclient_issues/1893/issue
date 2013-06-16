@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEQFRX47eCl7ImA9WhRaGUg.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIERn47eCl7ImA9WhJbFU4.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1893</ns0:id><ns0:author>
 			<ns0:name>mball@google.com</ns0:name><ns0:uri>/u/mball@google.com/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? N/A
 What version of the runtime are you using? N/A
@@ -53,10 +53,10 @@ FAILED (errors=1)
 &lt;b&gt;source files.&lt;/b&gt;
 
 
-Other test runs fail while loading different tabs (e.g., Tab 4) and in different tests.  However, it's always while trying to load a tab that the test fails.</ns0:content><ns0:updated>2012-02-23T00:18:34.000Z</ns0:updated><ns0:published>2011-06-07T16:46:42.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+Other test runs fail while loading different tabs (e.g., Tab 4) and in different tests.  However, it's always while trying to load a tab that the test fails.</ns0:content><ns0:updated>2012-09-25T02:01:47.000Z</ns0:updated><ns0:published>2011-06-07T16:46:42.000Z</ns0:published><ns2:status>Obsolete</ns2:status><ns2:owner>
 			<ns2:uri>/u/118309011164612460950/</ns2:uri><ns2:username>nfulla...@google.com</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/100893057764035413344/</ns2:uri><ns2:username>rsi...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:cc><ns2:cc>
-			<ns2:uri>/u/106710594185928520364/</ns2:uri><ns2:username>bbu...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Bot flakiness during pyauto_tests</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>FlakeyBots</ns2:label><ns2:label>Mstone-19</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1893/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1893" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1893" rel="self" type="application/atom+xml" /><ns2:stars>0</ns2:stars><ns2:blocking>
-			<ns2:id>1917</ns2:id></ns2:blocking><ns2:id>1893</ns2:id></ns0:entry>
+			<ns2:uri>/u/106710594185928520364/</ns2:uri><ns2:username>bbu...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Bot flakiness during pyauto_tests</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>FlakeyBots</ns2:label><ns2:label>Mstone-19</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1893/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1893" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1893" rel="self" type="application/atom+xml" /><ns2:stars>0</ns2:stars><ns2:blocking>
+			<ns2:id>1917</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2012-09-25T02:01:47.000Z</ns2:closedDate><ns2:id>1893</ns2:id></ns0:entry>

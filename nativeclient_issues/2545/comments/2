@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4AQ347eCl7ImA9WhVaFkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2545/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">Some more details and suggestion from dschuff based on a 70MB pexe:
+
+With a very brief and low-granularity test (i.e. looking at top
+output) I found that it reaches that peak memory very quickly. Also I
+tried x86-32 sandboxed translation and it ran out of memory very
+quickly. Just for the heck of it, I also tried streaming translation,
+and it ran out much more slowly. I wonder if there's some kind of
+non-linearity in memory size with the size of the module. Maybe I'll
+take a look at trying to free the compilation data structures in the
+streaming case. Might also be worth running memcheck over llc to look
+for leaks. Also, last I checked, which was a while ago, there was a
+heap profiler (called massif? i think?) that was bundled with
+valgrind. but you might also look at tcmalloc which IIRC has a hep
+profiler as well.
+
+----
+
+After looking at the (non-srpc) bitcode streaming code again, I think
+the behavior of streaming wrt memory should be pretty similar for that
+compared to SRPC. It reads the bytes from a file into a buffer on
+demand, and uses that buffer to serve requests from the bitcode
+reader. (the SRPC streamer does the same, except it blocks when it
+doesn't have the bytes available). If you search llc.cpp for
+LazyBitcode you can see the differences between the paths; in
+particular if you look at the the actual pass manager loops on lines
+719 and 748 you can see where the compilation is called. If you add
+I-&gt;Dematerialize() after the call to P-&gt;run() it should deallocate the
+in-memory representation of the IR (it builds but I haven't tried to
+run it). We can also try hacking StreamableMemoryObject to free the
+bitcode itself if we think that will help.</ns0:content><ns0:updated>2012-06-14T18:19:02.000Z</ns0:updated><ns0:published>2012-06-14T18:19:02.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Pri-1</ns2:label><ns2:label>Pri-0</ns2:label><ns2:ownerUpdate>robertm@google.com</ns2:ownerUpdate><ns2:ccUpdate>-pdox%goo...@gtempaccount.com</ns2:ccUpdate><ns2:ccUpdate>dsch...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 2 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2545#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2545/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

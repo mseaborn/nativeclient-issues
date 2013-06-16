@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0cAQn47eCl7ImA9WhBbFEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3378/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11338
+
+------------------------------------------------------------------------
+r11338 | jvoung@google.com | 2013-05-13T17:07:08.374289Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/extra_flags_pnacl.txt?r1=11338&amp;r2=11337&amp;pathrev=11338
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/torture_test.py?r1=11338&amp;r2=11337&amp;pathrev=11338
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/toolchain_config.py?r1=11338&amp;r2=11337&amp;pathrev=11338
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/toolchain_tester.py?r1=11338&amp;r2=11337&amp;pathrev=11338
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/known_failures_pnacl.txt?r1=11338&amp;r2=11337&amp;pathrev=11338
+
+Add a way to specialize flags to append in gcc torture tests.
+
+A file will list a bunch of tests in the form:
+
+&lt;test1&gt;,CFLAGS:&lt;flag1a&gt;,CFLAGS:&lt;flag1b&gt;...
+&lt;test2&gt;,CFLAGS:&lt;flag2&gt;
+&lt;test3&gt;,CFLAGS:&lt;flag3&gt;
+
+Each of the flags only append (like the current commandline
+option --append).  Use this listing to specify
+--pnacl-disable-abi-check, instead of simply not running
+the tests when they don't match the stable ABI.
+That way we can be more aggressive at disallowing
+certain intrinsics that are currently being used,
+while still getting code-gen coverage.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3378
+TEST=tools/toolchain_tester/torture_test.py pnacl x86-64 --verbose --concurrency=8
+tools/toolchain_tester/torture_test.py pnacl x86-32 --verbose --concurrency=8
+tools/toolchain_tester/torture_test.py pnacl arm --verbose --concurrency=8
+
+R=dschuff@chromium.org, mseaborn@chromium.org
+
+Review URL: https://codereview.chromium.org/15028019
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-05-13T17:10:43.000Z</ns0:updated><ns0:published>2013-05-13T17:10:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 13 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3378#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3378/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

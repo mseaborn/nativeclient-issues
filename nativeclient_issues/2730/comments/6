@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QNQn47eCl7ImA9WhJSE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2730/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9083
+
+------------------------------------------------------------------------
+r9083 | mseaborn@chromium.org | Tue Jul 03 11:11:24 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=9083&amp;r2=9082&amp;pathrev=9083
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=9083&amp;r2=9082&amp;pathrev=9083
+
+Move Mac OS X outer sandbox initialisation into sel_main.c
+
+This removes an instance of "#ifdef NACL_STANDALONE".
+
+Note that this only affects the Mac outer sandbox used in the
+standalone build of NaCl, which we use largely for testing purposes.
+
+NaClEnableOuterSandbox() was originally called from sel_main.c (prior
+to r3800/r3957), but it was called too early in the startup sequence,
+such that it worked when the nexe was passed via the command line but
+not when the nexe was passed via the load_module SRPC call.  The
+sandbox can only be enabled after load_module has finished since this
+creates the dynamic code area, which requires accesss to /tmp on Mac.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=2730
+TEST=chrome_browser_tests in the NaCl build
+
+Review URL: https://chromiumcodereview.appspot.com/10697059
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-03T18:16:33.000Z</ns0:updated><ns0:published>2012-07-03T18:16:33.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2730#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2730/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

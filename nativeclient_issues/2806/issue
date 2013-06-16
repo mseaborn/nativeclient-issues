@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ENSH47eCl7ImA9WhVUGEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2806</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">we should be able to add support for the clock IDs CLOCK_PROCESS_CPUTIME_ID and CLOCK_THREAD_CPUTIME_ID.
+
+on Linux, the POSIX interface functions just work.
+on OSX, clock_gettime is not supported.  thread_info and thread_basic_info_t, and task_info and task_basic_info_t should yield the desired information.
+on Windows, GetProcessTimes and GetThreadTimes with GetCurrentProcess() and GetCurrentThread() will give the desired info -- summing *lpSystemTime + *lpUserTime will do.
+
+(toolchain changes is likely also needed to expose new TCB functionality.)</ns0:content><ns0:updated>2012-05-23T22:21:39.000Z</ns0:updated><ns0:published>2012-05-23T22:21:39.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:state>open</ns2:state><ns0:title>support for clock_id CLOCK_PROCESS_CPUTIME_ID and CLOCK_THREAD_CPUTIME_ID in clock_gettime and clock_getres</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2806/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2806" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2806" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2806</ns2:id></ns0:entry>

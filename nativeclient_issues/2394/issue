@@ -28,12 +28,12 @@ http://build.chromium.org/p/client.nacl/builders/lucid-32-newlib-dbg/builds/1473
 </ns0:content><ns0:updated>2011-11-09T19:57:45.000Z</ns0:updated><ns0:published>2011-10-26T19:09:58.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/dmichael@google.com/</ns2:uri><ns2:username>dmichael@google.com</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:cc>
-			<ns2:uri>/u/110736501920010896250/</ns2:uri><ns2:username>timur...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/timurrrr@google.com/</ns2:uri><ns2:username>timurrrr@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/109494838902877177630/</ns2:uri><ns2:username>bruen...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/rnk@google.com/</ns2:uri><ns2:username>rnk@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/106321947286816917100/</ns2:uri><ns2:username>zhao...@google.com</ns2:username></ns2:cc><ns2:cc>
-			<ns2:uri>/u/114701340294105671768/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/kcc@google.com/</ns2:uri><ns2:username>kcc@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/dmichael@google.com/</ns2:uri><ns2:username>dmichael@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Broken unicode sequences instead of ascii in browser tests</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2394/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2394" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2394" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blocking>
-			<ns2:id>2392</ns2:id></ns2:blocking><ns2:blocking>
-			<ns2:id>2400</ns2:id></ns2:blocking><ns2:closedDate>2011-11-09T19:57:45.000Z</ns2:closedDate><ns2:id>2394</ns2:id></ns0:entry>
+			<ns2:id>2392</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>2400</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2011-11-09T19:57:45.000Z</ns2:closedDate><ns2:id>2394</ns2:id></ns0:entry>

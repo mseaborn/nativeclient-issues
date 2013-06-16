@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08BQ347eCl7ImA9WhJaGE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2948</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">We need to change the debug stub on Windows to use the debug exception handler process for catching untrusted faults.  This is for three reasons:
+
+ 1) To handle single-stepping through %rsp-modifying instructions (issue 2903)
+ 2) To support x86-32 Windows (issue 2880)
+ 3) To ensure that thread suspension interacts properly with fault handling and always returns coherent untrusted register state (part of issue 2830)
+
+I've decided to make this a separate tracking issue for clarity.
+
+My original plan had been that the debug stub would have a handler for untrusted faults that runs on the thread that faulted, as we currently have on Windows and Linux.  The debug exception handler would write a stack frame to the trusted stack and set up a call to the debug stub's trusted handler.  The debug stub's handler would return to untrusted code using NaClSwitchAllRegs() (like sigreturn), which I implemented for this purpose under issue 2903.
+
+However, I've realised that scheme doesn't coexist well with thread suspension.
+
+Suppose we initiate the suspension of a thread.  Before the suspension kicks in, the thread faults (in untrusted code), and our fault handler runs.  Then thread suspension kicks in and interrupts the fault handler.  We need to ensure that thread suspension reports the untrusted register state from the point at which the thread faulted.  We don't want thread suspension to report trusted-code register state that comes from interrupting a fault handler.
+
+In my revised plan, the debug stub never runs a fault handler on a faulted thread.
+
+My revised plan is:  When a thread faults in untrusted code, it gets suspended, and the debug stub (running on its own thread) is notified.  The debug stub uses the thread suspension APIs to query and modify the thread's registers, and to resume the thread.  This is turning out to be nice and simple to implement.
+
+This plan will also address (3) on Linux.
+
+NaClSwitchAllRegs() will still be needed for Mac (in some form), but it's much less necessary than I originally thought.
+</ns0:content><ns0:updated>2012-10-09T22:30:52.000Z</ns0:updated><ns0:published>2012-08-07T17:56:25.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Make the debug stub use the Windows debug exception handler process</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-DebugStub</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>OS-Linux</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2948/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2948" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2948" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>2880</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>2903</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>2930</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2012-08-16T21:23:29.000Z</ns2:closedDate><ns2:id>2948</ns2:id></ns0:entry>

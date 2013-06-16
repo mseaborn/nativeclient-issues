@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0AGRn47eCl7ImA9WhBbGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3437/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11365
+
+------------------------------------------------------------------------
+r11365 | jvoung@chromium.org | 2013-05-18T04:33:36.028237Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/tests/translate_options_test.py?r1=11365&amp;r2=11364&amp;pathrev=11365
+
+Fix driver test of default translate options on ARM: temporarily not using default
+
+The default options are not used in the default case,
+because we override the default with -global-merge=0, for now.
+
+TEST=./scons bitcode=1 run_pnacl_driver_tests --verbose platform=arm
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3437
+
+Review URL: https://chromiumcodereview.appspot.com/15393003
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-05-18T04:35:27.000Z</ns0:updated><ns0:published>2013-05-18T04:35:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3437#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3437/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

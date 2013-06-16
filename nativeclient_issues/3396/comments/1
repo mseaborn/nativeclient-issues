@@ -1,0 +1,251 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYCQH47eCl7ImA9WhBVEkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3396/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">For reference, the current failures are in the following tests:
+
+**********************************************************************
+ERROR REPORT: 13 failures
+**********************************************************************
+
+run_socket_transfer_test (scons-out/nacl-x86-64-glibc/test_results/socket_transfer_test.out) failed: Error 1
+
+run_shared_lib_data_tls_test (scons-out/nacl-x86-64-glibc/test_results/shared_lib_data_tls.out) failed: Error 1
+
+run_simple_srpc_test_nexe (scons-out/nacl-x86-64-glibc/test_results/simple_srpc_test_nexe.out) failed: Error 1
+
+run_types_srpc_test_nexe (scons-out/nacl-x86-64-glibc/test_results/types_srpc_test_nexe.out) failed: Error 1
+
+run_futex_test (scons-out/nacl-x86-64-glibc/test_results/futex_test.out) failed: Error 1
+
+run_stack_alignment_test (scons-out/nacl-x86-64-glibc/test_results/stack_alignment_test.out) failed: Error 1
+
+run_sse_alignment_test (scons-out/nacl-x86-64-glibc/test_results/sse_alignment_test.out) failed: Error 1
+
+run_main_thread_pthread_exit_test2 (scons-out/nacl-x86-64-glibc/test_results/main_thread_pthread_exit_test2.out) failed: Error 1
+
+run_exit_with_thread_test (scons-out/nacl-x86-64-glibc/test_results/exit_with_thread.out) failed: Error 1
+
+run_cond_wait_test (scons-out/nacl-x86-64-glibc/test_results/cond_wait_test.out) failed: Error 1
+
+run_thread_stack_test (scons-out/nacl-x86-64-glibc/test_results/thread_stack_test.out) failed: Error 1
+
+run_second_tls_test (scons-out/nacl-x86-64-glibc/test_results/second_tls_test.out) failed: Error 1
+
+run_pthread_cleanup_test (scons-out/nacl-x86-64-glibc/test_results/pthread_cleanup.out) failed: Error 1
+
+
+=============
+
+All of the tests have the following assert fire:
+
+ThreadSanitizer: thread_sanitizer.cc:7748 (void Detector::HandleThreadStackTop(Event*)): Assertion '(sp_max - sp_min) &gt;= 8 * 1024' failed.
+
+
+Example error log:
+
+
+
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+======================================================================
+Stdout for nacl_glibc.run_socket_transfer_test:
+======================================================================
+
+======================================================================
+Stderr for nacl_glibc.run_socket_transfer_test:
+======================================================================
+==3074== ThreadSanitizer, a data race detector
+==3074== Copyright (C) 2008-2010, and GNU GPL'd, by Google Inc.
+==3074== Using Valgrind-3.7.0.SVN and LibVEX; rerun with -h for copyright info
+==3074== Command: scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap scons-out/dbg-linux-x86-64/staging/sel_ldr --r_debug=0xXXXXXXXXXXXXXXXX --reserved_at_zero=0xXXXXXXXXXXXXXXXX -cc -Q -a -- /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so --library-path /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/scons-out/nacl-x86-64-glibc/lib:/mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib scons-out/nacl-x86-64-glibc/obj/tests/imc_sockets/socket_transfer_test.nexe
+==3074== 
+==3074== ThreadSanitizerValgrind r3685: hybrid=no
+==3074== INFO: Reading ignore file: src/third_party/valgrind/nacl.ignore
+==3074== INFO: reading suppressions file src/third_party/valgrind/nacl.supp
+==3074== INFO:      7 suppression(s) read from file src/third_party/valgrind/nacl.supp
+==3074== INFO: reading suppressions file src/third_party/valgrind/tests.supp
+==3074== INFO:      4 suppression(s) read from file src/third_party/valgrind/tests.supp
+==3074== INFO: Allocating 256Mb (32 * 8M) for Segments.
+==3074== INFO: Will allocate up to 640Mb for 'previous' stack traces.
+--3074-- WARNING: Serious error when reading debug info
+--3074-- When reading debug info from /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap:
+--3074-- ELF Program Headers are not in ascending order
+--3074-- WARNING: Serious error when reading debug info
+--3074-- When reading debug info from /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap:
+--3074-- ELF Program Headers are not in ascending order
+PLATFORM QUALIFICATION DISABLED BY -Q - Native Client's sandbox will be unreliable!
+DEBUG MODE ENABLED (bypass acl)
+DEBUG MODE ENABLED (skip validator)
+[3074,102052448:13:33:38.655876] BYPASSING ALL ACL CHECKS
+*********************** NaCl nacl_file: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/runnable-ld.so
+Valgrind: ignoring NaCl's mmap(84G)
+[3074,102052448:13:33:38.744305] Native Client module will be loaded at base address 0x00000af200000000
+*********************** NaCl nacl_mmap: af200020000 30000 10000 0
+*********************** NaCl nacl_mmap: af210020000 8a28 40000 0
+*********************** NaCl nacl_mmap: af210030000 1071c 40000 0
+[3074,102052448:13:33:38.777742] VALIDATION SKIPPED.
+*********************** NaCl mem_start: 0xAF200000000
+Segment at 0xAF200020000 belongs to the loader
+Segment at 0xAF210020000 belongs to the loader
+Segment at 0xAF210030000 belongs to the loader
+[3074,102196992:13:33:38.941769] VALIDATION SKIPPED.
+*********************** NaCl nacl_mmap: af201000000 10000 10000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/scons-out/nacl-x86-64-glibc/obj/tests/imc_sockets/socket_transfer_test.nexe
+*********************** NaCl nacl_mmap: af211000000 10000 20000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/scons-out/nacl-x86-64-glibc/obj/tests/imc_sockets/socket_transfer_test.nexe
+*********************** NaCl nacl_mmap: af211010000 10000 20000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/scons-out/nacl-x86-64-glibc/obj/tests/imc_sockets/socket_transfer_test.nexe
+[3074,102196992:13:33:39.004035] VALIDATION SKIPPED.
+*********************** NaCl nacl_mmap: af201030000 10000 10000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/scons-out/nacl-x86-64-glibc/lib/libvalgrind.so
+*********************** NaCl nacl_mmap: af211030000 10000 20000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/scons-out/nacl-x86-64-glibc/lib/libvalgrind.so
+*********************** NaCl nacl_mmap: af211040000 10000 20000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/scons-out/nacl-x86-64-glibc/lib/libvalgrind.so
+[3074,102196992:13:33:39.017368] VALIDATION SKIPPED.
+*********************** NaCl nacl_mmap: af201060000 10000 10000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/scons-out/nacl-x86-64-glibc/lib/libimc_syscalls.so
+*********************** NaCl nacl_mmap: af211060000 10000 20000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/scons-out/nacl-x86-64-glibc/lib/libimc_syscalls.so
+*********************** NaCl nacl_mmap: af211070000 10000 20000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/scons-out/nacl-x86-64-glibc/lib/libimc_syscalls.so
+[3074,102196992:13:33:39.022939] VALIDATION SKIPPED.
+*********************** NaCl nacl_mmap: af201090000 20000 10000 af2fefe0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/libpthread.so.d7687c6a
+*********************** NaCl nacl_mmap: af211090000 10000 30000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/libpthread.so.d7687c6a
+*********************** NaCl nacl_mmap: af2110a0000 20000 30000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/libpthread.so.d7687c6a
+[3074,102196992:13:33:39.042659] VALIDATION SKIPPED.
+*********************** NaCl nacl_mmap: af2010d0000 f0000 10000 af2fef10000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/libstdc++.so.6
+*********************** NaCl nacl_mmap: af2110d0000 80000 100000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/libstdc++.so.6
+*********************** NaCl nacl_mmap: af211150000 20000 170000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/libstdc++.so.6
+[3074,102196992:13:33:39.098267] VALIDATION SKIPPED.
+*********************** NaCl nacl_mmap: af2011c0000 50000 10000 af2fefb0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/libm.so.d7687c6a
+*********************** NaCl nacl_mmap: af2111c0000 40000 60000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/libm.so.d7687c6a
+*********************** NaCl nacl_mmap: af211200000 20000 90000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/libm.so.d7687c6a
+[3074,102196992:13:33:39.110809] VALIDATION SKIPPED.
+*********************** NaCl nacl_mmap: af201230000 10000 10000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/libgcc_s.so.1
+*********************** NaCl nacl_mmap: af211230000 10000 20000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/libgcc_s.so.1
+*********************** NaCl nacl_mmap: af211240000 10000 20000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/libgcc_s.so.1
+[3074,102196992:13:33:39.129574] VALIDATION SKIPPED.
+*********************** NaCl nacl_mmap: af201260000 1b0000 10000 af2fee50000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/libc.so.d7687c6a
+*********************** NaCl nacl_mmap: af211260000 60000 1c0000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/libc.so.d7687c6a
+*********************** NaCl nacl_mmap: af2112c0000 20000 210000 af2feff0000
+*********************** NaCl DSO file_name: /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/toolchain/linux_x86/x86_64-nacl/lib/libc.so.d7687c6a
+
+ThreadSanitizer: thread_sanitizer.cc:7748 (void Detector::HandleThreadStackTop(Event*)): Assertion '(sp_max - sp_min) &gt;= 8 * 1024' failed.
+==3074==    at 0x3807A6E7: report_and_quit (in /tmp/valgrind.sKqjX3/lib/valgrind/tsan-amd64-linux)
+==3074==    by 0x3807A920: vgPlain_assert_fail (in /tmp/valgrind.sKqjX3/lib/valgrind/tsan-amd64-linux)
+==3074==    by 0x3803116D: ThreadSanitizerHandleOneEvent(Event*) (in /tmp/valgrind.sKqjX3/lib/valgrind/tsan-amd64-linux)
+==3074==    by 0x38066691: Put(EventType, int, unsigned long, unsigned long, unsigned long) (in /tmp/valgrind.sKqjX3/lib/valgrind/tsan-amd64-linux)
+==3074==    by 0x38067A55: ts_handle_client_request(unsigned int, unsigned long*, unsigned long*) (in /tmp/valgrind.sKqjX3/lib/valgrind/tsan-amd64-linux)
+==3074==    by 0x380B4871: vgPlain_scheduler (in /tmp/valgrind.sKqjX3/lib/valgrind/tsan-amd64-linux)
+==3074==    by 0x380DE374: run_a_thread_NORETURN (in /tmp/valgrind.sKqjX3/lib/valgrind/tsan-amd64-linux)
+==3074==    by 0x380DE59A: vgModuleLocal_start_thread_NORETURN (in /tmp/valgrind.sKqjX3/lib/valgrind/tsan-amd64-linux)
+==3074==    by 0x380E0F3D: ??? (in /tmp/valgrind.sKqjX3/lib/valgrind/tsan-amd64-linux)
+==3074==    by 0xDEADBEEFDEADBEEE: ???
+==3074==    by 0xDEADBEEFDEADBEEE: ???
+==3074==    by 0xDEADBEEFDEADBEEE: ???
+
+sched status:
+  running_tid=5
+
+Thread 1: status = VgTs_WaitSys
+==3074==    at 0x540B85C: pthread_cond_wait@@GLIBC_2.3.2 (pthread_cond_wait.S:162)
+==3074==    by 0x4FC1F0B: pthread_cond_wait_WRK (ts_valgrind_intercepts.c:1178)
+==3074==    by 0x4FC2068: pthread_cond_wait@* (ts_valgrind_intercepts.c:1202)
+==3074==    by 0x487C48B: NaClCondVarWait (condition_variable.c:42)
+==3074==    by 0x48825AA: NaClXCondVarWait (nacl_sync_checked.c:81)
+==3074==    by 0x482D13C: NaClWaitForMainThreadToExit (sel_ldr_standard.c:893)
+==3074==    by 0x480C2DC: NaClSelLdrMain (sel_main.c:808)
+==3074==    by 0x480AA8B: main (nacl_test_injection_main.c:11)
+
+Thread 2: status = VgTs_WaitSys
+==3074==    at 0x540EE1D: ??? (syscall-template.S:82)
+==3074==    by 0x4FBFE44: recvmsg (ts_valgrind_intercepts.c:2057)
+==3074==    by 0x4857462: NaClDescImcBoundDescAcceptConn (nacl_desc_imc_bound_desc.c:106)
+==3074==    by 0x48420D8: NaClSimpleServiceAcceptConnection (nacl_simple_service.c:257)
+==3074==    by 0x4840C14: NaClSimpleLtdServiceAcceptConnection (nacl_simple_ltd_service.c:85)
+==3074==    by 0x484224D: NaClSimpleServiceAcceptAndSpawnHandler (nacl_simple_service.c:304)
+==3074==    by 0x48423E4: AcceptThread (nacl_simple_service.c:357)
+==3074==    by 0x48427CF: NaClThreadInterfaceStart (nacl_thread_interface.c:26)
+==3074==    by 0x4FC3F05: ThreadSanitizerStartThread (ts_valgrind_intercepts.c:680)
+==3074==    by 0x54069C9: start_thread (pthread_create.c:300)
+==3074==    by 0x5EB521C: clone (clone.S:112)
+
+Thread 3: status = VgTs_WaitSys
+==3074==    at 0x540EE1D: ??? (syscall-template.S:82)
+==3074==    by 0x4FBFE44: recvmsg (ts_valgrind_intercepts.c:2057)
+==3074==    by 0x4857462: NaClDescImcBoundDescAcceptConn (nacl_desc_imc_bound_desc.c:106)
+==3074==    by 0x48420D8: NaClSimpleServiceAcceptConnection (nacl_simple_service.c:257)
+==3074==    by 0x484224D: NaClSimpleServiceAcceptAndSpawnHandler (nacl_simple_service.c:304)
+==3074==    by 0x48423E4: AcceptThread (nacl_simple_service.c:357)
+==3074==    by 0x48427CF: NaClThreadInterfaceStart (nacl_thread_interface.c:26)
+==3074==    by 0x4FC3F05: ThreadSanitizerStartThread (ts_valgrind_intercepts.c:680)
+==3074==    by 0x54069C9: start_thread (pthread_create.c:300)
+==3074==    by 0x5EB521C: clone (clone.S:112)
+
+Thread 4: status = VgTs_WaitSys
+==3074==    at 0x5E83F67: sched_yield (syscall-template.S:82)
+==3074==    by 0x4FC3CA3: pthread_create_WRK (ts_valgrind_intercepts.c:712)
+==3074==    by 0x4FC3D3E: pthread_create@* (ts_valgrind_intercepts.c:732)
+==3074==    by 0x487EA53: NaClThreadCreate (nacl_threads.c:83)
+==3074==    by 0x487EB28: NaClThreadCtor (nacl_threads.c:110)
+==3074==    by 0x4838C6B: NaClAppThreadSpawn (nacl_app_thread.c:250)
+==3074==    by 0x482D20D: NaClCreateAdditionalThread (sel_ldr_standard.c:917)
+==3074==    by 0x48230E3: NaClSysThreadCreate (nacl_syscall_common.c:2774)
+==3074==    by 0x4825162: NaClSysThreadCreateDecoder (nacl_syscall_handlers.c:944)
+==3074==    by 0x483C18B: NaClSyscallCSegHook (nacl_syscall_hook.c:151)
+==3074==    by 0x4830FC7: ??? (nacl_syscall_64.S:211)
+==3074==    by 0x6175D7F: ???
+==3074==    by 0x4830F3F: NaClStartThreadInApp (nacl_switch_to_app_64.c:86)
+==3074==    by 0xAF200020B9F: ??? (rtld.c:2765)
+==3074==    by 0x4001CEF: ???
+==3074==    by 0x200000000: ???
+==3074==    by 0x6175D3F: ???
+==3074==    by 0x4001CEF: ???
+==3074==    by 0x7FFF0000C7: ???
+==3074==    by 0x6175DAF: ???
+==3074==    by 0x4838797: NaClAppThreadLauncher (nacl_app_thread.c:79)
+==3074==    by 0x6175DFF: ???
+==3074==    by 0x4001CEF: ???
+==3074==    by 0x4001CEF: ???
+==3074==    by 0x10540865C: ???
+==3074==    by 0x6175E6F: ???
+==3074==    by 0x4FC3F05: ThreadSanitizerStartThread (ts_valgrind_intercepts.c:680)
+==3074==    by 0x54530021: ???
+==3074==    by 0x6176FFF: ???
+==3074==    by 0x10FFF: ??? (in /mnt/data/b/build/slave/lucid-64-glibc-dbg-valgrind/build/native_client/scons-out/dbg-linux-x86-64/staging/nacl_helper_bootstrap)
+
+Thread 5: status = VgTs_Runnable
+==3074==    at 0xAF201032278: tsan_start_thread (valgrind_interceptors.c:368)
+==3074==    by 0xAF20109399F: start_thread (pthread_create.c:299)
+
+
+Note: see also the FAQ in the source distribution.
+It contains workarounds to several common problems.
+In particular, if Valgrind aborted or crashed after
+identifying problems in your program, there's a good chance
+that fixing those problems will prevent Valgrind aborting or
+crashing, especially if it happened in m_mallocfree.c.
+
+If that doesn't help, please report this bug to: data-race-test@googlegroups.com
+
+In the bug report, send all the above text, the valgrind
+version, and what OS and version you are using.  Thanks.
+
+
+[  FAILED  ] nacl_glibc.run_socket_transfer_test (1759 ms)
+
+</ns0:content><ns0:updated>2013-04-18T00:49:21.000Z</ns0:updated><ns0:published>2013-04-18T00:49:21.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3396#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3396/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

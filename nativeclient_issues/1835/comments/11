@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU8AQH47eCl7ImA9WhNUF0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1835/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">This bug might still be a problem on recent versions of Mac OS X.  I saw the following failure yesterday in nacl_integration on a 10.7 buildbot:
+
+[   571 ms] |||| [exception_test.nmf BEGIN]
+[   577 ms] |||| Registering ForcePluginLoadOnTimeout (Bugs: NaCl 2428, Chrome 103588)
+Jan  8 20:51:48 vm614-m1.golo.chromium.org Chromium Helper[8409] &lt;Warning&gt;: CGSLookupServerRootPort: Failed to look up the port for "com.apple.windowserver.active" (1100)
+[   674 ms] |||| GET /exception_test.nmf (/exception_test.nmf)
+[   688 ms] |||| GET /favicon.ico (/favicon.ico)
+[   694 ms] |||| GET /exception_test_x86-32.nexe (/exception_test_x86-32.nexe)
+[8409,2886668992:20:51:48.484724] SelLdrLauncher::SetupCommand: getting sel_ldr socket address failed
+[SRPC:HOST:8409,2886668992:20:51:48.484786] NaClSrpcInvokeBySignature(channel=0x47ad400):missing signature [log:is:]
+[  1223 ms] |||| [exception_test.nmf LOG] 'Did not see the END_OF_LOG message after timeout; continuing anyway'
+[  1230 ms] |||| [exception_test.nmf FAIL] undefined
+[  1238 ms] |||| 
+[  1244 ms] |||| [imc_shm_mmap_test.nmf BEGIN]
+[  1249 ms] |||| Registering ForcePluginLoadOnTimeout (Bugs: NaCl 2428, Chrome 103588)
+[  1256 ms] |||| GET /imc_shm_mmap_test.nmf (/imc_shm_mmap_test.nmf)
+[  1263 ms] |||| GET /imc_shm_mmap_test_x86-32.nexe (/imc_shm_mmap_test_x86-32.nexe)
+[8412,2963460096:20:51:49.155550] Native Client module will be loaded at base address 0x0000000008d00000
+[  1508 ms] |||| [imc_shm_mmap_test.nmf LOG] 'Loaded http://192.168.111.214:54175/imc_shm_mmap_test.nmf'
+[  1532 ms] |||| [imc_shm_mmap_test.nmf LOG] 'imc_shm_mmap: 0 failures\n'
+[  1537 ms] |||| [imc_shm_mmap_test.nmf LOG] 'TEST PASSED: imc_shm_mmap: all sizes\n\n'
+[  1549 ms] |||| [imc_shm_mmap_test.nmf PASS]
+...
+[  2570 ms] |||| [SHUTDOWN] 4 passed, 1 failed, 0 errors
+KILLING the browser
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+[  FAILED  ] nacl_newlib.run_inbrowser_test_runner (2239 ms)
+(from http://build.chromium.org/p/chromium.mac/builders/Mac10.7%20Tests%20%281%29/builds/6764/steps/nacl_integration/logs/stdio)
+
+The "Failed to look up the port" error seems to be harmless.  I've included the imc_shm_mmap_test part for comparison since that test passed.
+</ns0:content><ns0:updated>2013-01-10T06:04:01.000Z</ns0:updated><ns0:published>2013-01-10T06:04:01.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Mstone-15</ns2:label></ns2:updates><ns0:title>Comment 11 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1835#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1835/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

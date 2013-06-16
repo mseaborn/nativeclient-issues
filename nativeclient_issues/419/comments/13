@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4NRX47eCl7ImA9WhVUEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/419/comments/full/13</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">With pnacl-clang, "-g" should work.  I see .debug_* sections.
+
+Also, clang supports "-g", "-g0" and "-g2", but it currently says that "-g1" is ignored and that produces the same output as "-g0".
+
+Some concerns:
+
+(1) We ship some bitcode libraries like libnacl, etc.  I imagine that these will need to have been built with -g as well, to have the right debugging metadata in all of the untrusted code.  Perhaps when we specify "-g" the driver should link against these versions of the libraries, or perhaps it should just always have debug metadata, and have developers strip it out if they don't need it.
+
+
+(2) Memory usage. Since we link everything together into a large .pexe, it is like trying to compile a large source file.
+
+We know that translating the llc.pexe will thrash if you compile with -g.
+
+Here are some preliminary experiments with Robert's synthetic code generator (tools/synthesize_code.py), to see how bad it might be.
+
+  (A) 50MB .c file
+  -- gcc 4.4.3 uses 5GB of memory to compile with -g (for comparison)
+  -- pnacl-clang (frontend) uses 2GB, and the bitcode linker about 3GB to compile with -g.
+     The generated .pexe is 148MB.
+  -- llc (backend) uses 6GB to translate this.
+
+
+  (B) 5MB .c file
+  -- gcc 4.4.3 uses 500MB of memory to compile with -g
+  -- pnacl-clang (frontend) uses 200MB, bitcode link about 350MB to compile with -g.
+     The generated .pexe is 14MB
+  -- llc (backend) uses 600MB to translate this.
+
+That's not so bad, but the synthetic programs are not as realistic as llc.pexe.  The synthetic programs have a bound on the size of its functions.  We should see if we can reduce the memory usage more, or provide a mode that keeps things split up when compiling with -g.
+
+(3) May also be worth seeing if we could add a lighter "-g1" to LLVM upstream.
+
+(4) Actually verify that the .debug info is good with a test or something.
+
+(5) Probably have to write up how to do this.  We probably don't want developers shipping pexes with debug info, but they can do the debugging offline.
+</ns0:content><ns0:updated>2012-05-15T21:56:34.000Z</ns0:updated><ns0:published>2012-05-15T21:56:34.000Z</ns0:published><ns2:updates>
+			<ns2:ownerUpdate>---</ns2:ownerUpdate></ns2:updates><ns0:title>Comment 13 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=419#c13" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/419/comments/full/13" rel="self" type="application/atom+xml" /></ns0:entry>

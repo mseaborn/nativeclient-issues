@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUMGR347eCl7ImA9WhFTFk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3372</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
+
+We currently borrow some of the application's per-origin HTML5 file system to cache translated PNaCl bitcode (the nexes that come out of that).
+
+This may use some of the application's quota, reserves some random filenames under /.pnacl, and makes the files visible to user code.
+
+
+&lt;b&gt;- Why is this a problem?&lt;/b&gt;
+
+The files are still copied out and validated before running, but it would be cleaner if it was not visible to the app in this way.
+
+
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+
+Find a different place to cache pnacl's translated artifacts.
+
+
+</ns0:content><ns0:updated>2013-06-07T19:30:26.000Z</ns0:updated><ns0:published>2013-04-05T21:49:17.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/104389777848534510881/</ns2:uri><ns2:username>erik...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Move PNaCl translation cache outside application's view.</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-28</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3372/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3372" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3372" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:id>3372</ns2:id></ns0:entry>

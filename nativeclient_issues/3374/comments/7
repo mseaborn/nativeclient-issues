@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUEBR347eCl7ImA9WhBbGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3374/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11364
+
+------------------------------------------------------------------------
+r11364 | jvoung@google.com | 2013-05-18T00:38:46.214902Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/DEPS?r1=11364&amp;r2=11363&amp;pathrev=11364
+
+Update LLVM deps for PNaCl.
+
+2357705: (jvoung@chromium.org) Re-allow an x86-32 fast-isel optimization for NaCl / use shorter insts.
+4284726: (mseaborn@chromium.org) Cherry-pick r181922: Fix miscompile due to StackColoring incorrectly merging stack slots (PR15707)
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3359
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3374
+R=dschuff@chromium.org
+
+Review URL: https://codereview.chromium.org/15334002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-05-18T00:40:56.000Z</ns0:updated><ns0:published>2013-05-18T00:40:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3374#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3374/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

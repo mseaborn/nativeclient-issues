@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkYAQH47eCl7ImA9WhRUGUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/440/comments/full/19</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=7699
+
+------------------------------------------------------------------------
+r7699 | bradchen@google.com | Mon Jan 30 08:14:18 PST 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/nacl_cpuwhitelist.h?r1=7699&amp;r2=7698&amp;pathrev=7699
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/arch/x86/platform_qual_test.c?r1=7699&amp;r2=7698&amp;pathrev=7699
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/platform_qual_test.c?r1=7699&amp;r2=7698&amp;pathrev=7699
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/arch/x86/nacl_cpuidwhitelist.h?r1=7699&amp;r2=7698&amp;pathrev=7699
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/build.scons?r1=7699&amp;r2=7698&amp;pathrev=7699
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/arch/x86/vcpuid.c?r1=7699&amp;r2=7698&amp;pathrev=7699
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/platform_qualify.gyp?r1=7699&amp;r2=7698&amp;pathrev=7699
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/arch/x86/nacl_cpuwhitelist_test.c?r1=7699&amp;r2=7698&amp;pathrev=7699
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/arch/x86/nacl_cpuwhitelist.c?r1=7699&amp;r2=7698&amp;pathrev=7699
+
+Enable platform_qual_test on Win64. Add blacklist unit tests.
+
+Fixes for 64-bit Windows.
+Enable CPUID validation and related checks on x86 64-bit systems.
+Re-enable platform_qual_test. Add blacklist unit tests.
+Also remove dead code from src/trusted/platform_qual.
+
+BUG=440, 2144
+TEST=platform_qual_test, nacl_cpuwhitelist_test
+
+Review URL: https://chromiumcodereview.appspot.com/9290063
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-01-30T16:15:41.000Z</ns0:updated><ns0:published>2012-01-30T16:15:41.000Z</ns0:published><ns2:updates /><ns0:title>Comment 19 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=440#c19" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/440/comments/full/19" rel="self" type="application/atom+xml" /></ns0:entry>

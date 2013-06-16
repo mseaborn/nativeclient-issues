@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EFSH47eCl7ImA9WhRVEk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2532/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The problem was hinted at by the discrepancy I found in issue 2529.  Credit goes to Karl for investigating this further!
+
+The x86-64 validator defines 'movs' with:
+
+  NaClDefine("a4: Movsb {$Yb}, {$Xb}", NACLi_386, st, Move);
+  NaClDefine("a5: Movsw {$Yvw}, {$Xvw}", NACLi_386, st, Move);
+  NaClDefine("a5: Movsd {$Yvd}, {$Xvd}", NACLi_386, st, Move);
+  NaClDef_64("a5: Movsq {$Yvq}, {$Xvq}", NACLi_386, st, Move);
+
+but in ncdecode_forms.c, both X and Y are mapped to EDI/RDI:
+
+static void NaClOperandForm_Xb() {
+  NaClDefOp(RegDS_EDI, NACL_EMPTY_OPFLAGS);
+  NaClAddIFlags(NACL_IFLAG(OperandSize_b));
+}
+...
+static void NaClOperandForm_Yb() {
+  NaClDefOp(RegES_EDI, NACL_EMPTY_OPFLAGS);
+  NaClAddIFlags(NACL_IFLAG(OperandSize_b));
+}
+
+Luckily the %rdi precondition is still checked, so write sandboxing works for 'movs':
+
+$ cat movs.S
+movsb %ds:(%rsi), %es:(%rdi)
+$ nacl64 x86_64-nacl-gcc movs.S -o movs -nostdlib
+$ nacl64 ncval movs
+...
+VALIDATOR: parsing segment 1
+VALIDATOR: 1000200: Segment memory reference not allowed
+VALIDATOR: 1000200: Segment memory reference not allowed
+VALIDATOR: Checking block alignment and jump targets: 1000200 to 1000220
+...
+*** movs IS UNSAFE ***
+</ns0:content><ns0:updated>2012-01-10T20:00:19.000Z</ns0:updated><ns0:published>2012-01-10T20:00:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2532#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2532/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,41 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkAHRn47eCl7ImA9WhJQFEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/38</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9285
+
+------------------------------------------------------------------------
+r9285 | mseaborn@chromium.org | 2012-07-27T18:42:52.152815Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/thread_suspension/register_set.h?r1=9285&amp;r2=9284&amp;pathrev=9285
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/thread_suspension/suspend_test.h?r1=9285&amp;r2=9284&amp;pathrev=9285
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/thread_suspension/suspend_test_guest.c?r1=9285&amp;r2=9284&amp;pathrev=9285
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/thread_suspension/suspend_test_host.c?r1=9285&amp;r2=9284&amp;pathrev=9285
+
+Thread suspension test: Refactor how we set and check register state
+
+Saving, restoring and comparing whole sets of registers is getting to
+be a common pattern in the tests I've been writing.  It's awkward to
+write assembly code to handle every register for every test, so it's
+time to factor some of this out into reusable parts.
+
+This change factors out an ASM_WITH_REGS() macro for executing a
+fragment of assembly with all general purpose registers restored.
+
+This makes RegisterSetterThread() much simpler.  Test register values
+can now be set up in C.
+
+Since we're using NaClSignalContext to represent register state, we
+can pass this data to suspend_test_host.c at run time.  This means we
+no longer need to duplicate the test register values across two files.
+
+There is a risk that the testing becomes circular: if we mix up the
+register ordering, we might not notice if all the code shares the same
+incorrect ordering.  However, the main thing we want to check in these
+tests is that we don't lose any state.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2758
+TEST=run_thread_suspension_test
+
+Review URL: https://chromiumcodereview.appspot.com/10828040
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-27T18:45:37.000Z</ns0:updated><ns0:published>2012-07-27T18:45:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 38 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2758#c38" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/38" rel="self" type="application/atom+xml" /></ns0:entry>

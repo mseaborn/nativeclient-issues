@@ -1,0 +1,56 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUUMSX47eCl7ImA9WhBSFEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3304</ns0:id><ns0:author>
+			<ns0:name>darthbe...@gmail.com</ns0:name><ns0:uri>/u/106829083582171393452/</ns0:uri></ns0:author><ns0:content type="html">Similar to http://code.google.com/p/nativeclient/issues/detail?id=3302, but the -translate-fast workaround does not seem to help.
+
+This is another issue where array indexes are not handling over/underflow correctly in 64-bit nexes when going through the translate process.
+
+The operation that fails is
+
+int32_t  tmp_32_2 = 0;
+uint16_t* adat ;
+uint16_t array_u16[1]  = {64615};
+tmp_32_2 = -270770481;
+adat = &amp;amp;(array_u16[tmp_32_2 * 947877507 + 1574375955]);
+
+but of course this is optomized out, so the attached testcase is longer.
+
+The resulting assembly is
+
+	movw	.Lmain.array_u16(%rip), %si
+	movw	%si, -26(%rsp)
+	movl	$-270770481, -12(%rsp)  # imm = 0xFFFFFFFFEFDC5ECF
+	movl	-12(%rsp), %edi
+	imull	$947877507, %edi, %edi  # imm = 0x387F7683
+	leal	-26(%rsp,%rdi,2), %edx
+	movl	%edx, %r8d
+	movzwl	%nacl:-1146215386(%r15,%r8), %edx
+
+Which again, causes overflow loss on 
+leal	-26(%rsp,%rdi,2), %edx
+
+Commands
+
+pepper_canary/toolchain/win_x86_pnacl/newlib/bin/pnacl-clang.bat test.c -otest.o  -c -MMD -pthread -Wno-long-long -Wall -Wswitch-enum -pedantic  -x c
+pepper_canary/toolchain/win_x86_pnacl/newlib/bin/pnacl-clang.bat test.o -lppapi_cpp -lppapi -lpthread -otest.pexe
+pepper_canary/toolchain/win_x86_pnacl/newlib/bin/pnacl-translate.bat -arch x86-64 test.pexe -translate-fast -o test_fast_x86_64.nexe
+pepper_canary/toolchain/win_x86_pnacl/newlib/bin/pnacl-translate.bat -arch x86-64 test.pexe -translate-fast -o test_fast_x86_64.nexe.as -S
+pepper_canary/tools/sel_ldr_x86_64.exe -B $NACL_SDK_ROOT/tools/irt_core_newlib_x64.nexe -f test_fast_x86_64.nexe
+
+pepper_canary/toolchain/win_x86_pnacl/newlib/bin/pnacl-translate.bat -arch x86-64 test.pexe -o test_x86_64.nexe
+pepper_canary/tools/sel_ldr_x86_64.exe -B $NACL_SDK_ROOT/tools/irt_core_newlib_x64.nexe -f test_x86_64.nexe
+pepper_canary/tools/sel_ldr_x86_64.exe -B $NACL_SDK_ROOT/tools/irt_core_newlib_x64.nexe -f test_x86_64.nexe.as -S
+
+SDK:
+pepper_canary
+  repath: pepper_26
+  stability: canary
+  recommended: no
+  version: 26
+  Archive:
+    url: https://commondatastorage.googleapis.com/nativeclient-mirror/nacl/nacl_sdk/trunk.181864/naclsdk_win.tar.bz2
+    checksum: {u'sha1': u'838a1c0ca1c86d3c591f63fcc0945c6a198af6ed'}
+    host_os: win
+    size: 232209139
+  revision: 181864
+  description: Chrome 26 bundle, revision 181864</ns0:content><ns0:updated>2013-02-21T21:48:08.000Z</ns0:updated><ns0:published>2013-02-13T21:08:08.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:state>closed</ns2:state><ns0:title>PNaCl translate is not overflow/underflow safe when referencing array indexes in a way that the translate-fast workaround doesn't work</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3304/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3304" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3304" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-02-21T21:48:08.000Z</ns2:closedDate><ns2:id>3304</ns2:id><ns2:mergedInto>
+			<ns2:id>3302</ns2:id><ns2:project>nativeclient</ns2:project></ns2:mergedInto></ns0:entry>

@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEAGSX47eCl7ImA9WhRaE04.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU8MSH47eCl7ImA9WhBaF0o.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2365</ns0:id><ns0:author>
 			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
 
@@ -47,5 +47,7 @@ and its unit tests: http://www.google.com/codesearch/p?hl=en#OAMlx_jo-ck/src/chr
 and example usage for some black list: http://codereview.chromium.org/8056013/
 
 [2] http://code.google.com/chrome/extensions/crx.html
-</ns0:content><ns0:updated>2012-02-15T19:05:28.000Z</ns0:updated><ns0:published>2011-10-17T20:40:44.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
-			<ns2:uri>/u/110088500044003719179/</ns2:uri><ns2:username>jsc...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Package/Install PNaCl client-side components with Chrome</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2365/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2365" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2365" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2365</ns2:id></ns0:entry>
+</ns0:content><ns0:updated>2013-05-28T20:44:49.000Z</ns0:updated><ns0:published>2011-10-17T20:40:44.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/110088500044003719179/</ns2:uri><ns2:username>jsc...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Package/Install PNaCl client-side components with Chrome</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-26</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2365/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2365" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2365" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:blockedOn>
+			<ns2:id>2813</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:id>2365</ns2:id></ns0:entry>

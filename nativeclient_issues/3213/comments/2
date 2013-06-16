@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUAQX47eCl7ImA9WhNWEkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3213/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10431
+
+------------------------------------------------------------------------
+r10431 | mseaborn@chromium.org | 2012-12-11T17:45:56.028122Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/unittests/shared/platform/atomic_ops_test.c?r1=10431&amp;r2=10430&amp;pathrev=10431
+
+Fix atomic_ops_nexe_test not to time out on the Valgrind bot
+
+In this test, if the threads are scheduled in the order they are
+launched, the CompareAndSwap() loops will complete quickly.  However,
+if they are scheduled out-of-order, these loops could take a long time
+to complete.  This seems to be happening after changing newlib's
+libpthread to use futexes (r10391), which presumably perturbs the
+thread scheduling somewhat.
+
+Fix this by yielding the CPU rather than spinning.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3213
+TEST="run_atomic_ops_nexe_test buildbot=memcheck" on trybots
+
+Review URL: https://codereview.chromium.org/11514003
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-12-11T17:50:40.000Z</ns0:updated><ns0:published>2012-12-11T17:50:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3213#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3213/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

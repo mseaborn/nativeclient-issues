@@ -1,0 +1,4 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE8CQH47eCl7ImA9WhJRF04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2906/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>kschi...@google.com</ns0:name><ns0:uri>/u/108470876877739532758/</ns0:uri></ns0:author><ns0:content type="html" /><ns0:updated>2012-07-19T21:21:01.000Z</ns0:updated><ns0:published>2012-07-19T21:21:01.000Z</ns0:published><ns2:updates>
+			<ns2:status>Fixed</ns2:status></ns2:updates><ns0:title>Comment 3 by kschi...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2906#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2906/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

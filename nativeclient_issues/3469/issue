@@ -1,0 +1,142 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUMFRn47eCl7ImA9WhFTEkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3469</ns0:id><ns0:author>
+			<ns0:name>kschi...@google.com</ns0:name><ns0:uri>/u/108470876877739532758/</ns0:uri></ns0:author><ns0:content type="html">We are about to change PNaCl bitcode files to have a different format
+than LLVM bitcode (see CL
+https://codereview.chromium.org/15907008). PNaCl bitcode files will
+have a 'P E X E' magic number, where LLVM bitcode files have either a
+'B C 0xc0 0xde' or a '0xde 0xc0 0x17 0x0B' magic number.
+
+The implication of this is that the toolchain needs to be cognizant of
+these different file formats. In addition, we need a strategy to
+change the toolchain to appropriately process these files.
+
+The minimum number of tools that play into this decision are:
+
+pnacl-ld - Links bitcode files together to produce an LLVM bitcode file.
+
+pnacl-finalize - Strips information from the LLVM bitcode file, 
+and converts the file to a PNaCl bitcode file (Note: currently uses
+bc-wrap rather than actually generating a PNaCl bitcode file).
+
+pnacl-freeze - Converts an LLVM bitcode file to a PNaCl bitcode file.
+
+pnacl-translate - Takes the output from either ld or pnacl-finalize,
+and passes it to pnacl-llc.
+
+pnacl-llc - Translates the bitcode file to a corresponding nexe (Note:
+  there is currently both pnacl-llc and llc. llc is the current verion,
+  while pnacl-llc is the replacement for llc. In this discussion, I
+  will lump them together and just refer to them as pnacl-llc).
+
+The two common paths are:
+
+   ld -&amp;gt; pnacl-translate -&amp;gt; pnacl-llc
+      This is used for debugging stable bitcode, or to develop/test        
+      unstable bitcode (which can't be converted to a PNacl (stable) 
+      bitcode file).
+
+   ld -&amp;gt; pnacl-finalize -&amp;gt; pnacl-translate -&amp;gt; pnacl-llc
+      This is the path for generating a pexe that follows the
+      PNaCl ABI. It can be run either sandboxed (i.e. in the browser),
+      or non-sandboxed (for testing).
+      In such cases, the output of pnacl-translate must be a
+      PNaCl bitcode file when sandboxed, so that it can be used in
+      the browser.
+
+Known issues we need to deal with are:
+
+1) Make pnacl-finalize verify that the bitcode follows the stable PNACL
+   ABI format (so that problems can be reported here if it isn't). This
+   could be done by running the bitcode verifier and/or restrict the
+   writer to only accept stable bitcode.
+
+2) Make pnacl-finalize generate a PNaCl bitcode file instead of a
+   (wrapped) LLVM bitcode file.
+
+3) pnacl/driver/driver_tools.py needs to recognize the magic numbers
+   and determine if the bitcode file is LLVM or PNaCl. In particular,
+   we we can use the current test funtions IsBitcode(filename) and
+   IsWrappedBitcode(filename) to recognize LLVM bitcode files, but
+   need to add a new function IsPNaClBitcode(filename) to recognize
+   PNaCl bitcode files.
+
+4) Make pnacl-llc be able to able to read PNaCl bitcode files as well
+   as LLVM bitcode files. This needs to be done either through a
+   command-line argument, or by peeking at the file's magic number and
+   deciding from there.  In addition, if pnacl-llc is being run
+   sandboxed (i.e. in the browser) it should only accept PNaCl bitcode
+   files. Otherwise both cases can be allowed.
+
+5) pnacl-translate needs to communicate appropriately to pnacl-llc
+   which form of translation (sandboxed or non-sandboxed) is allowed,
+   and which forms of bitcode file formats are allowed.
+
+6) Various scons based tests test nonstable (PNaCl) ABI issues. We need
+   to make these tests be explicit about this (probably through a command
+   line argument) so that the tests will not break when the toolchain
+   is modified.
+
+7) GCC torture tests use pnacl-finalize and pnacl-translate. This works
+   because the current toolchain isn't strict on which kind of bitcode
+   file is generated (since it only generates LLVM bitcode formats).
+   If we make the toolchain more strict on PNaCl bitcode files, these
+   tests will fail.
+
+The strategy of how to get from the current model, to the model needed
+is as follows:
+
+1) Make pnacl-freeze generate a non-LLVM bitcode file. This will make
+   testing easier in that tools that have not been correctly changed
+   will fail hard (since they are currently expecting a specific form
+   of LLVM bitcode files). This should be done by CL
+   https://codereview.chromium.org/15907008.
+
+2) Make pnacl-llc get a CL argument '-bitcode-format={llvm,pnacl}' to
+   communicate what form of bitcode it will accept. This allows
+   pnacl-translate to carry the load of deciding which bitcode format
+   will be accepted by pnacl-llc. The default value for
+   '-bitcode-format' will be llvm. Also modify pnacl-llc to be strict
+   if CL argument '-bitcode-format=pnacl' is given.
+
+3) Make pnacl-translate act as it currently does if the input file is
+   an LLVM bitcode file. If the input file is a PNaCl bitcode file it
+   will call pnacl-llc with the CL argument '-bitcode-format=pnacl' to
+   force (strict) reading of the PNaCl bitcode file.
+
+4) Fix test cases (as much as possible) so that they won't fail once
+   we introduce (strict) PNaCl bitcode files.
+
+5) Make pnacl-finalize generate a PNaCl bitcode file, and don't call
+   bc-wrap. Base this on a CL argument &amp;quot;-bitcode-format={llvm,pnacl}&amp;quot;.
+   When the bitcode format is &amp;quot;pnacl&amp;quot;, generate a PNaCl bitcode file.
+   Otherwise, still apply the optimization cases (including converting
+   to the stable PNaCl ABI), but generate a LLVM bitcode file.
+
+6) Add a verify PNaCl bitcode step into pnacl-finalize (or one of the tools
+   it calls), so that problems are reported early (rather than when they
+   reach the browser in pnacl-translate).
+
+7) Change the PNaCl bitcode writer to contain code to write LLVM IR that
+   isn't in the PNaCL ABI.
+
+Note: Changes 1-4 are non-breaking changes from the current workflow.
+Hence, they are to be done before step 5 which will break the current
+workflow.
+
+In addition, steps 6 and 7 can be done at anytime. For the initial
+release (June 13) neither of these need to be accomplished. In
+addition, step 7 is more of a want goal rather than necessary. The
+more we don't allow non-stable PNaCL ABI LLVM IR, the less likely we
+will (accidentally) allow non-stable constructs to leak into the PNaCl
+bitcode format. Hence, the closer we get to the PNaCl ABI, the more
+stable our system will be.
+
+Finally, there is the question of whether the tools should be strict
+(i.e.  always generate/read a particular form of bitcode). However,
+this issue is not dealing with this question. Rather, it is focussing
+on how to get PNaCl bitcode files into our workchain (quickly) so that
+it can be used.
+</ns0:content><ns0:updated>2013-06-03T18:16:57.000Z</ns0:updated><ns0:published>2013-05-31T19:55:34.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
+			<ns2:uri>/u/108470876877739532758/</ns2:uri><ns2:username>kschi...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Need to change toolchain assumptions to handle PNaCL bitcode files.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-29</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>PNaClABI</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3469/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3469" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3469" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>3469</ns2:id></ns0:entry>

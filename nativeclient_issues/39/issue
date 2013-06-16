@@ -1,6 +1,6 @@
 <ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkQFQn47eCl7ImA9WxVWFk0.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/39</ns0:id><ns0:author>
-			<ns0:name>chris.fr...@gmail.com</ns0:name><ns0:uri>/u/114591516265599714542/</ns0:uri></ns0:author><ns0:content type="html">The url for &amp;quot;Tech talk slides&amp;quot; link is malformed. It is
+			<ns0:name>ch...@frostnet.net</ns0:name><ns0:uri>/u/114591516265599714542/</ns0:uri></ns0:author><ns0:content type="html">The url for &amp;quot;Tech talk slides&amp;quot; link is malformed. It is
 &amp;quot;http://nativeclient.googlecode.com/svn/data/site/NaCl_Talk_Jan09.pdf%20(PDF)&amp;quot;,
 but should not have the &amp;quot;%20(PDF)&amp;quot; at its end.
 

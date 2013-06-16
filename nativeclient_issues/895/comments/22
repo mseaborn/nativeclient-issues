@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IHQn47eCl7ImA9WhBXFUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/895/comments/full/22</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">------------------------------------------------------------------------
+r191404 | binji@chromium.org | 2013-03-29T18:20:17.694797Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/native_client_sdk/src/libraries/nacl_io/kernel_wrap_newlib.cc?r1=191404&amp;r2=191403&amp;pathrev=191404
+
+[NaCl SDK] Fix build breakage after IRT structure changed.
+
+* The struct nacl_irt_memory has been renamed to nacl_irt_memory_v0_1
+* A new struct nacl_irt_memory_v0_2 has been added.
+* The nacl_io code was trying to patch values into a struct named
+nacl_irt_memory, but it doesn't exist anymore!
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=895
+R=mseaborn@chromium.org
+
+Review URL: https://chromiumcodereview.appspot.com/13222002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-03-29T18:25:33.000Z</ns0:updated><ns0:published>2013-03-29T18:25:33.000Z</ns0:published><ns2:updates /><ns0:title>Comment 22 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=895#c22" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/895/comments/full/22" rel="self" type="application/atom+xml" /></ns0:entry>

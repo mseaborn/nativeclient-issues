@@ -1,0 +1,57 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIEQ347eCl7ImA9WhBWFEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3374/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I found the bug in StackColoring.cpp and I've managed to make a minimal reproducer (attached).
+
+Here's the buggy output:  When the bug is present, the two allocas are combined and only 10000 bytes are allocated on the stack:
+
+$ toolchain/pnacl_linux_x86/host_x86_64/bin/llc -mtriple=x86_64-none-gnu llvm_lifetime_bug.ll -O1 -o -
+...
+	subq	$10008, %rsp            # imm = 0x2718
+.Ltmp1:
+	.cfi_def_cfa_offset 10016
+	leaq	(%rsp), %rdi
+	callq	ext
+	leaq	(%rsp), %rdi
+	callq	ext
+	addq	$10008, %rsp            # imm = 0x2718
+	ret
+
+
+Expected correct output:
+
+	subq	$20008, %rsp            # imm = 0x4E28
+.Ltmp1:
+	.cfi_def_cfa_offset 20016
+	leaq	10000(%rsp), %rdi
+	callq	ext
+	leaq	(%rsp), %rdi
+	callq	ext
+	addq	$20008, %rsp            # imm = 0x4E28
+	ret
+
+
+The following change fixes the bug:
+
+@@ -434,10 +446,8 @@ void StackColoring::calculateLiveIntervals(unsigned NumSlots) {
+     if (Alive.any()) {
+       for (int pos = Alive.find_first(); pos != -1;
+            pos = Alive.find_next(pos)) {
+-        if (!Starts[pos].isValid())
+-          Starts[pos] = Indexes-&gt;getMBBStartIdx(MBB);
+-        if (!Finishes[pos].isValid())
+-          Finishes[pos] = Indexes-&gt;getMBBEndIdx(MBB);
++        Starts[pos] = Indexes-&gt;getMBBStartIdx(MBB);
++        Finishes[pos] = Indexes-&gt;getMBBEndIdx(MBB);
+       }
+     }
+
+The bug occurs when the following sequence occurs in a basic block:
+
+  llvm.lifetime.start(%buf)
+  ...
+  llvm.lifetime.end(%buf)
+  ...
+  llvm.lifetime.start(%buf)
+
+calculateLiveIntervals() ignores the second lifetime.start() and regards %buf as not being live after the lifetime.end().
+</ns0:content><ns0:updated>2013-04-09T04:08:22.000Z</ns0:updated><ns0:published>2013-04-09T04:08:22.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3374#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3374/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

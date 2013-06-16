@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0cGQ347eCl7ImA9WhVXEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2719/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I found that IMC *is* used for sending handles inside the NaCl loader process (point 2 above):
+
+ * The IRT does an imc_connect() call.  On Windows, imc_connect() sends one end of a socket pair using IMC's SendDatagram(), which uses DuplicateHandle().  I think this is within-process not cross-process: the imc_connect() is to a socket implemented inside sel_ldr, not to a socket in the trusted plugin.  It would be awkward to special-case this, though.
+
+ * The handle_pass library expects to send process handles.  Of course, this library will be going away, but it is awkward to remove the calls to it until the replacement is in place, which is a cross-repo change.
+</ns0:content><ns0:updated>2012-04-10T18:03:42.000Z</ns0:updated><ns0:published>2012-04-10T18:03:42.000Z</ns0:published><ns2:updates>
+			<ns2:status>Assigned</ns2:status></ns2:updates><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2719#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2719/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

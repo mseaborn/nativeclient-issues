@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A04HQX47eCl7ImA9WhJWEUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2967</ns0:id><ns0:author>
+			<ns0:name>bradnelson@google.com</ns0:name><ns0:uri>/u/bradnelson@google.com/</ns0:uri></ns0:author><ns0:content type="html">Failure summary code doesn't work in all cases.
+
+In this change we introduced a summary of failures: http://codereview.chromium.org/7848006
+
+It makes new use of the scons internal (GetBuildFailures) which assumes that each failure is a single scons node.
+However in some cases it appears the failure can be a list (likely of nodes?).
+http://chromegw.corp.google.com/i/client.nacl/builders/xp-bare-newlib-opt/builds/2898/steps/scons_compile_ragel/logs/stdio
+
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File &amp;quot;C:\b\depot_tools\python_bin\lib\atexit.py&amp;quot;, line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+  File &amp;quot;C:\b\build\slave\xp-bare-newlib-opt\build\native_client\SConstruct&amp;quot;, line 104, in PrintFinalReport
+    test_name = GetTestName(f.node)
+  File &amp;quot;C:\b\build\slave\xp-bare-newlib-opt\build\native_client\SConstruct&amp;quot;, line 2333, in GetTestName
+    key = str(target.path)
+AttributeError: 'list' object has no attribute 'path'
+Error in sys.exitfunc:
+Traceback (most recent call last):
+  File &amp;quot;C:\b\depot_tools\python_bin\lib\atexit.py&amp;quot;, line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+  File &amp;quot;C:\b\build\slave\xp-bare-newlib-opt\build\native_client\SConstruct&amp;quot;, line 104, in PrintFinalReport
+    test_name = GetTestName(f.node)
+  File &amp;quot;C:\b\build\slave\xp-bare-newlib-opt\build\native_client\SConstruct&amp;quot;, line 2333, in GetTestName
+    key = str(target.path)
+AttributeError: 'list' object has no attribute 'path'
+Command return code: 2</ns0:content><ns0:updated>2012-08-16T20:45:30.000Z</ns0:updated><ns0:published>2012-08-15T16:32:39.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Failure summary code doesn't work in all cases</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-24</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2967/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2967" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2967" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-08-16T20:45:30.000Z</ns2:closedDate><ns2:id>2967</ns2:id></ns0:entry>

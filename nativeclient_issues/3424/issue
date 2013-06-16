@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkEDQX47eCl7ImA9WhBaFE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3424</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">We'd like to have a crash reporting facility for crashes in untrusted code that works with Breakpad's server-side infrastructure.  This means we will want an untrusted crash dump generator that produces the minidump format that Breakpad understands.
+
+It's not yet clear whether this implementation should live in the NaCl repo, in the NaCl SDK, or be upstreamed to the Breakpad repo.
+
+There's a couple of things the minidump generator will need:
+
+ 1) The ability to locate the upper limit of the stack so that we can dump the stack contents.  We can add a function to libpthread for this.
+
+ 2) The ability for a nexe to find its own build ID at run time, so that it can include the build ID in the minidump.  Breakpad makes extensive use of build IDs.  Initially we will only need to implement this in the PNaCl toolchain.
+
+Also we will want to extend Breakpad to be able to unwind the stack for x86-64 NaCl.  This will involve changing Breakpad's stackwalker_amd64.cc to truncate rip/rsp/rbp to 32 bits.
+</ns0:content><ns0:updated>2013-05-24T22:31:10.000Z</ns0:updated><ns0:published>2013-05-05T16:20:35.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Untrusted crash reporting: Implement minidump generator that works with Breakpad</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3424/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3424" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3424" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
+			<ns2:id>2775</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:closedDate>2013-05-24T22:31:10.000Z</ns2:closedDate><ns2:id>3424</ns2:id></ns0:entry>

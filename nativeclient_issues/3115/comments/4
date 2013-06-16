@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0AFR347eCl7ImA9WhNSFkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3115/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10133
+
+------------------------------------------------------------------------
+r10133 | eliben@chromium.org | 2012-10-30T17:51:29.283796Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/support/nacl_x86_defs.h?r1=10133&amp;r2=10132&amp;pathrev=10133
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/support/setjmp_x86_32.S?r1=10133&amp;r2=10132&amp;pathrev=10133
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/support/setjmp_x86_64_zero_based.S?r1=10133&amp;r2=10132&amp;pathrev=10133
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/support/setjmp_x86_64.S?r1=10133&amp;r2=10132&amp;pathrev=10133
+
+Fix alignment constants for pnacl assembly code.
+
+Assembly code processed by Pnacl's assembler should not rely on magic
+symbols injected by the assembler for alignment, but define them
+explicitly. This is already done in the ARM version of setjmp. This CL
+modifies the x86 versions to follow suit.
+
+Also see Issue #3115 for more details. This CL implements step 1.
+
+Note: currently there's some amount of duplication between various
+instances of nacl_config.h headers defining NACL_BLOCK_SHIFT constants.
+It exists in the ARM version, and this CL extends it to the x86 version.
+It would make sense to clean this up globally, but should probably go
+into a separate CL in order to not obscure the goal of this one.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3115
+
+Review URL: https://codereview.chromium.org/11336025
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-30T17:55:16.000Z</ns0:updated><ns0:published>2012-10-30T17:55:16.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3115#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3115/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

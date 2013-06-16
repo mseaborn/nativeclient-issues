@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIAQ347eCl7ImA9WhBRFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/161</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10954
+
+------------------------------------------------------------------------
+r10954 | khim@google.com | 2013-03-07T14:40:41.376876Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/dfa_validate_common.c?r1=10954&amp;r2=10953&amp;pathrev=10954
+
+Fix asan bots
+
+CL10947 broke asan bots.  This was real off-by-one error which
+was NOT caught by all other tests (which is scary).
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=2597
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3330
+TEST=trybots (no change in functionality)
+Review URL: https://codereview.chromium.org/12576006
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-03-07T14:45:42.000Z</ns0:updated><ns0:published>2013-03-07T14:45:42.000Z</ns0:published><ns2:updates /><ns0:title>Comment 161 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c161" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/161" rel="self" type="application/atom+xml" /></ns0:entry>

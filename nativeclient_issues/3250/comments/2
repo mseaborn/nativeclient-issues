@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08MSH47eCl7ImA9WhNUGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3250/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>damonp...@gmail.com</ns0:name><ns0:uri>/u/112358947840938663111/</ns0:uri></ns0:author><ns0:content type="html">For my case, they are bitcode object files.
+But my case does not work when I was using -I option to link them.
+Here is my scenario:
+
+pnacl-clang++.bat -o tmp.pexe -I ../tests/flexlib -L ../tests/flexlib f_posix.bc f_win32_pnacl.bc main.bc test.bc  lib1.a lib2.a -L C:\Users\DAMON~1.PEN\AppData\Local\Temp\H4EqN0e9uv
+where all bitcode object files (f_posix.bc f_win32_pnacl.bc main.bc test.bc) are in ../tests/flexlib, and all library files (lib1.a and lib2.a) are in C:\Users\DAMON~1.PEN\AppData\Local\Temp\H4EqN0e9uv
+
+The error messages are all those bitcode objects and libraries "Unable to open file";
+but with the relative or pull paths for all inputs, they are fine.
+Thanks.
+Damon
+</ns0:content><ns0:updated>2013-01-10T22:11:29.000Z</ns0:updated><ns0:published>2013-01-10T22:11:29.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by damonp...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3250#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3250/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

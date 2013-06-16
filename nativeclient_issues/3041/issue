@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUADQH47eCl7ImA9WhNSFU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3041</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">arch/arm/sel_rt.c contains the following code in NaClThreadContextCtor():
+
+  /*
+   * This is set by NaClTlsAllocate before we get here, so don't wipe it.
+   */
+  uint32_t r9 = ntcp-&amp;gt;r9;
+...
+  memset((void *)ntcp, 0, sizeof(*ntcp));
+  ntcp-&amp;gt;r9 = r9;
+
+This is rather hacky.  This is only necessary because NaClTlsAllocate() and NaClThreadContextCtor() are separate calls.
+
+We could clean this up by merging those two functions into a single interface for initialising the arch-specific portions of NaClAppThread.</ns0:content><ns0:updated>2012-10-29T16:22:51.000Z</ns0:updated><ns0:published>2012-09-22T01:02:10.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>Clean up ARM TLS setup in NaClThreadContextCtor()/NaClTlsAllocate()</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3041/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3041" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3041" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>3041</ns2:id></ns0:entry>

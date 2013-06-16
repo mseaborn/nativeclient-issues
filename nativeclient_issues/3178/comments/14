@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A04CQH47eCl7ImA9WhBTEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3178/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10714
+
+------------------------------------------------------------------------
+r10714 | dschuff@chromium.org | 2013-02-05T18:43:17.349821Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/scripts/lit_known_failures.txt?r1=10714&amp;r2=10713&amp;pathrev=10714
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/DEPS?r1=10714&amp;r2=10713&amp;pathrev=10714
+
+Update pnacl/DEPS to bring in merge to r172453
+
+There was one MIPS test failure introduced, I haven't made an attempt to debug it.
+
+R=jvoung@chromium.org,eliben@chromium.org
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3178
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=2275
+
+Review URL: https://codereview.chromium.org/12180016
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-02-05T18:46:01.000Z</ns0:updated><ns0:published>2013-02-05T18:46:01.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3178#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3178/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

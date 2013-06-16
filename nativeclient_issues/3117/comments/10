@@ -1,0 +1,109 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0AFSH47eCl7ImA9WhNXEUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3117/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10342
+
+------------------------------------------------------------------------
+r10342 | jfb@chromium.org | 2012-11-29T01:12:33.450689Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/nacl_cpuid.h?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/64/ncvalidate.h?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/dfa_validate_32.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/cpuid_arm.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator_features_all.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/ncvalidate.cc?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/cpuid_arm.h?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncval.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/tools/validator_tools/ncstubout.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/ncvalidate.cc?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/validator_benchmark.cc?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_cpu_checks.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter_detailed.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/ncvalidate.h?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator_features_validator.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/ncval.cc?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter_detailed.h?r1=10342&amp;r2=10341&amp;pathrev=10342
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/cpuid_mips_features.h?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/nacl_switch_to_app_32.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/ncvalidate_iter.h?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncenuminsts_x86_64.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncval_tests.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/build.scons?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/include/nacl_macros.h?r1=10342&amp;r2=10341&amp;pathrev=10342
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/cpufeatures.h?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_seg_sfi/ncvalidate_detailed.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/validator_arm.gyp?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_seg_sfi/ncvalidate.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_seg_sfi/ncvalidate_detailed.h?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/build.scons?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_switch_to_app_64.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/dfa_validate_64.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/cpuid_arm_features.h?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/32/ncvalidate_verbose.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_validate_image.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/64/ncvalidate_verbose.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/validation_cache_test.cc?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/validator_mips.gyp?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/32/ncvalidate.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/cpuid_mips.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/ncenuminsts_x86_32.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/nacl_cpuid_test.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/platform_qualify/arch/x86/vcpuid.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/nacl_cpuid.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/64/ncvalidate.c?r1=10342&amp;r2=10341&amp;pathrev=10342
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/cpuid_mips.h?r1=10342&amp;r2=10341&amp;pathrev=10342
+
+Untangle CPU features.
+
+CPU features has grown out of its original x86-only implementation and
+is currently structured in a way that prevents other architectures from
+having their own CPU features. The includes are wrong (e.g. the ARM
+validator gets x86 CPU features when built on x86), the names of
+functions and enums clash, and architecture-independent code isn't
+actually oblivious to the architecture.
+
+This change untangles these issues with renaming, separating includes
+and only including architecture-specific headers when actually needed,
+and by passing architecture-specific CPU features information in the
+NaClValidatorInterface vtable. The architecture-independent code sees
+only the opaque NaClCPUFeatures struct and passes it around by
+pointer. The implementations that know about x86/ARM/MIPS cast from
+NaClCPUFeatures to NaClCPUFeaturesMYARCH (unfortunately I can't use
+covariance or overloading here, but the naming should be enough to catch
+bad uses).
+
+It also tries to make the x86 CPU features a bit more uniform w.r.t the
+ARM and MIPS ones: move struct fields into the data[] array instead,
+and follow similar function interfaces and header/implementation file
+layout. There are still more features in the x86 CPU features than the
+other ones, this should be fixed at some time.
+
+Remove unused:
+  NaClCPUFeaturesX86 *nc_validator_features = NULL;
+
+This is a branch from http://codereview.chromium.org/11275161/ but as
+discussed with measborn and ncbray:
+
+ - Remove the functional changes to the ARM validator (TST+mem), and
+   keep only the CPU features changes. Put these back in with a
+   different CL. This is the change I actually want to get in, but it
+   requires this CPU features CL to be in first.
+
+ - Rename the NaClCPUFeatureX86ID enum values back to be X86-less. This
+   is a temporary change to reduce the number of lines changed, and will
+   be re-renamed later. It can be done separately because there is no
+   name clash.
+
+ - Rename the .inc files to .h.
+
+R=kschimpf@google.com, mseaborn@chromium.org, ncbray@chromium.org
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=3117
+TEST=all
+
+Review URL: https://codereview.chromium.org/11413021
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-11-29T01:15:19.000Z</ns0:updated><ns0:published>2012-11-29T01:15:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3117#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3117/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

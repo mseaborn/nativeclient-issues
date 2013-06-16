@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEYNR347eCl7ImA9WhVUGE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8698
+
+------------------------------------------------------------------------
+r8698 | mseaborn@chromium.org | Wed May 23 18:12:27 PDT 2012
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/generic/vm_hole.c?r1=8698&amp;r2=8697&amp;pathrev=8698
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=8698&amp;r2=8697&amp;pathrev=8698
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=8698&amp;r2=8697&amp;pathrev=8698
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/vm_hole.c?r1=8698&amp;r2=8697&amp;pathrev=8698
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=8698&amp;r2=8697&amp;pathrev=8698
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=8698&amp;r2=8697&amp;pathrev=8698
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=8698&amp;r2=8697&amp;pathrev=8698
+
+Clean up the NaClVmHole* functions so that they are no-ops on Unix
+
+Move the NaClVmHole* functions into separate files and add no-op
+implementations for Unix.
+
+This will make creation of trusted threads a little faster on Unix
+since we do not need to delay the creation of threads' stacks while
+address space holes are opened, because we don't create address space
+holes on Unix.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2758
+TEST=run_mmap_atomicity_test etc.
+
+Review URL: https://chromiumcodereview.appspot.com/10382206
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-05-24T01:16:36.000Z</ns0:updated><ns0:published>2012-05-24T01:16:36.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2758#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

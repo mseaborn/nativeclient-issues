@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0YBQn47eCl7ImA9WhJQF0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2927/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9337
+
+------------------------------------------------------------------------
+r9337 | arbenson@google.com | 2012-08-01T02:42:16.710776Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/toolchain_config.py?r1=9337&amp;r2=9336&amp;pathrev=9337
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/linux/reserved_at_zero.c?r1=9337&amp;r2=9336&amp;pathrev=9337
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=9337&amp;r2=9336&amp;pathrev=9337
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/nonnacl_util/sel_ldr_launcher_standalone.cc?r1=9337&amp;r2=9336&amp;pathrev=9337
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/linux/nacl_bootstrap_args.c?r1=9337&amp;r2=9336&amp;pathrev=9337
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/run.py?r1=9337&amp;r2=9336&amp;pathrev=9337
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/linux/nacl_bootstrap.c?r1=9337&amp;r2=9336&amp;pathrev=9337
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/spec2k/run_all.sh?r1=9337&amp;r2=9336&amp;pathrev=9337
+
+Allow for 64-bit reserved_at_zero parameter
+
+This change will make the x86-32 sandbox on Linux non-zero-based until this change and the change at http://codereview.chromium.org/10826039/ are committed in Chromium.  Also, on Atom, performance will be temporarily reduced but not broken.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2927
+TEST=trybots
+
+Review URL: https://chromiumcodereview.appspot.com/10832040
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-01T02:45:53.000Z</ns0:updated><ns0:published>2012-08-01T02:45:53.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2927#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2927/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

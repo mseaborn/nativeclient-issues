@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IMR347eCl7ImA9WhJaFE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3074</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Today, run_faulted_thread_queue_test failed on mac10.6-newlib-opt with the error below (see http://build.chromium.org/p/client.nacl/builders/mac10.6-newlib-opt/builds/4007/steps/validator_ragel_tests/logs/stdio).  It has failed once before, on mac10.6-newlib-dbg-asan.
+
+
+ERROR: Command returned exit status -6 (0xfffffffa) but we expected 0 (0x0)
+======================================================================
+Stdout for nacl_newlib.run_faulted_thread_queue_test:
+======================================================================
+Running TestReceivingFault...
+
+======================================================================
+Stderr for nacl_newlib.run_faulted_thread_queue_test:
+======================================================================
+[53754,2688066880:12:54:57.542396] DANGER! USING THE EXPERIMENTAL DFA VALIDATOR!
+[53754,2688066880:12:54:57.542910] Native Client module will be loaded at base address 0x0000000001000000
+Now expecting to single-step through an instruction 1 bytes in size at address 0x20361
+Now expecting to single-step through an instruction 2 bytes in size at address 0x20362
+Now expecting to single-step through an instruction 3 bytes in size at address 0x20364
+Now expecting to single-step through an instruction 4 bytes in size at address 0x20367
+[53754,2688066880:12:54:57.548545] NaClUntrustedThreadResume: thread_resume() call failed: error 5
+POST-ABORT: LOG_FATAL abort exit
+
+[  FAILED  ] nacl_newlib.run_faulted_thread_queue_test (0 ms)
+
+
+In the earlier failure, it failed in TestGettingRegistersInMacSwitchRemainingRegs.
+
+Unfortunately, the error code doesn't tell us much.  From /usr/include/mach/kern_return.h:
+
+#define KERN_FAILURE                    5
+                /* The function could not be performed.  A catch-all.
+                 */
+</ns0:content><ns0:updated>2012-10-05T01:46:26.000Z</ns0:updated><ns0:published>2012-10-04T21:05:11.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>run_faulted_thread_queue_test is flaky on Mac OS X</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>FlakeyBots</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3074/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3074" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3074" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-10-05T01:46:26.000Z</ns2:closedDate><ns2:id>3074</ns2:id></ns0:entry>

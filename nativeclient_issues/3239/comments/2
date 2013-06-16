@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYBQH47eCl7ImA9WhNUE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3239/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10540
+
+------------------------------------------------------------------------
+r10540 | mcgrathr@chromium.org | 2013-01-05T00:34:46.977599Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/performance/nacl.scons?r1=10540&amp;r2=10539&amp;pathrev=10540
+
+Disable performance tests under qemu
+
+These tests are flaky under qemu due to qemu bugs.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3239
+TEST= none
+
+R=mseaborn@chromium.org,jvoung@google.com
+
+Review URL: https://codereview.chromium.org/11773006
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-01-05T00:35:51.000Z</ns0:updated><ns0:published>2013-01-05T00:35:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3239#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3239/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

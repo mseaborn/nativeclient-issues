@@ -1,0 +1,68 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUMGQ347eCl7ImA9WhJTE0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2868/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>pa...@google.com</ns0:name><ns0:uri>/u/101628056640429344673/</ns0:uri></ns0:author><ns0:content type="html">&gt; Currently the standalone x86 sel_ldr gets two validators linked into it -- the
+&gt; original validator and the Ragel-based validator -- with a runtime switch to
+&gt; select between them.
+&gt; However, there is not much point in doing that.
+
+I disagree. I did not fully give up the idea of testing two validators side by
+side in Chrome Canary.  Initially I thought we would do it with production
+Chrome to collect real-life cases when validators differ.  The r&#1075;ntime switch is
+just a step towards that direction, a build switch is a step backwards.
+
+So I did not prepare my homework on figuring out how many users send crash
+reports from Chrome Canary, and whether that would be interesting/significant if
+limited by the peope who use NaCl.
+
+Launching a validator without a test in the field is probably not a disaster,
+but we should first agree that we are going with it. There is the model checking approach to
+proving that the old validator allows a subset of what the new validator allows.
+It can help similarly. But not bug free, and also, probably won't be integrated
+into production sources.
+
+&gt;  * It is making sel_ldr unnecessarily slow to build, which causes
+
+It is necessarily slow in the sense that we are tuning the build time vs.
+performance _now_ and making sure it does not affect us when we are closer to
+the release.
+
+&gt;  nacl_integration to time out on Windows (issue chromium:133601), which has
+&gt;  forced us to disable nacl-glibc tests in nacl_integration.
+
+The chromium issue is being worked out now:
+https://chromiumcodereview.appspot.com/10641004/
+
+After this change an incremental build may be slowed down by 8 minutes in the
+worst case. On buildbots that rebuild everything the slowdown is AFAIR within 1
+minute, which is acceptable.
+
+&gt;  * It also makes standalone sel_ldr unnecessarily large.  (And yes, there are
+&gt;  people using the standalone sel_ldr outside of testing.)
+
+Who is affected? The new validator almost does not occupy physical memory when
+not used.
+
+&gt; There is no need for a runtime validator switch.  We're not doing one for
+&gt; Chromium, and really the standalone sel_ldr and Chromium should be consistent
+&gt; with each other.
+
+No, talking about consistency here is a false alarm.  The standalone sel_ldr
+will be consistent with Chromium as soon as we pass the stabilization/testing
+phase for validator_ragel. Now the question is different: whether a build time
+switch is more useful than runtime switch.
+
+&gt; For testing, the plan -- as discussed in
+&gt; https://chromiumcodereview.appspot.com/10386190/ -- is to have a Scons
+&gt; build-time switch, and extra Buildbot steps to run validator_tests for the
+&gt; Ragel-based validator.
+
+This is possible, and I would do that if we agree that trying two validators in
+the field is a bad idea.
+
+Generally I do not like build modes because it would require more hassle with
+buildbot configurations, this case is probably an exception.
+
+&gt; So, we should move to a build-time switch and remove the runtime switch.
+
+Not obvious :(
+</ns0:content><ns0:updated>2012-06-22T12:17:02.000Z</ns0:updated><ns0:published>2012-06-22T12:17:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by pa...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2868#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2868/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

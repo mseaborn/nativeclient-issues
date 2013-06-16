@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYERX47eCl7ImA9WhNbE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3258</ns0:id><ns0:author>
+			<ns0:name>damonp...@gmail.com</ns0:name><ns0:uri>/u/112358947840938663111/</ns0:uri></ns0:author><ns0:content type="html">Hi, there,
+
+I got the bitcode ABI doc from 
+http://www.chromium.org/nativeclient/pnacl/bitcode-abi 
+
+But from the link of http://code.google.com/p/nativeclient/issues/detail?id=2309#c8, it says that 
+&amp;quot;This bitcode ABI is not enforced now. &amp;quot;
+&amp;quot;I would go further and say that the PNaCl ABI should be enforced by the PNaCl translator.  Having a bitcode checker that only runs as a standalone tool or at bitcode link time is not really enough.&amp;quot;
+
+I am just wondering what is the status of bitcode ABI and bitcode checker.
+If there is a such kind of checker, I am just wondering why it should be enforced by the PNaCl translator instead of doing it at the very first stage.
+
+Thanks.
+Damon
+
+
+
+</ns0:content><ns0:updated>2013-01-16T16:18:24.000Z</ns0:updated><ns0:published>2013-01-15T15:56:52.000Z</ns0:published><ns2:status>Invalid</ns2:status><ns2:state>closed</ns2:state><ns0:title>PNaCl ABI status and checker</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3258/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3258" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3258" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-01-15T16:22:37.000Z</ns2:closedDate><ns2:id>3258</ns2:id></ns0:entry>

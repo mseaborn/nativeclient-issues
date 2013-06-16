@@ -1,0 +1,95 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0UGQ347eCl7ImA9WhBUFUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3419</ns0:id><ns0:author>
+			<ns0:name>dsch...@google.com</ns0:name><ns0:uri>/u/104270846665912603141/</ns0:uri></ns0:author><ns0:content type="html">This issue is split from comment 35 on bug 3302.
+
+The code below has a constant (uint32_t)2863622124, aka 0xAAAF67EC, or -1431345172 in LLVM IR, (which always uses signed decimal constant text representation). It looks right in the IR, but when it hits the DAG (even before the first DAGCombine pass) it becomes 716138476 (0x2AAF67EC). 
+
+This doesn't happen with fast isel (-translate-fast pnacl-translate flag) because fast isel can handle the whole block and doesn't need to fall back to the DAG)
+
+
+int32_t  main()  
+{
+	int32_t r_1Ae;
+	int32_t r_1Af;
+    int32_t __t_t__i ;
+	int32_t __t_t__arr[1]    = {(int32_t)-510487816};
+	int32_t __t_t__verify[]  = {(int32_t)-510487816};
+
+	__t_t__i = (int32_t)606978378;
+	r_1Ae = ((int32_t)((int32_t*)&amp;amp;(__t_t__verify))[((int32_t ((((uint32_t)806694431 * ((uint32_t)__t_t__i)) + (uint32_t)1431811062) - (((uint32_t)1613388862 * ((uint32_t)__t_t__i)) &amp;amp; (uint32_t)2863622124)))]); 
+	r_1Af = ((int32_t)((int32_t*)&amp;amp;(__t_t__arr))   [((int32_t)((((uint32_t)806694431 * ((uint32_t)__t_t__i)) + (uint32_t)1431811062) - (((uint32_t)1613388862 * ((uint32_t)__t_t__i)) &amp;amp; (uint32_t)2863622124)))]); 
+    return (int32_t)0;
+}
+
+IR:
+define i32 @main() #0 {
+entry:
+  %retval = alloca i32, align 4
+  %r_1Ae = alloca i32, align 4
+  %r_1Af = alloca i32, align 4
+  %__t_t__i = alloca i32, align 4
+  %__t_t__arr = alloca [1 x i32], align 4
+  %__t_t__verify = alloca [1 x i32], align 4
+  store i32 0, i32* %retval
+  %0 = bitcast [1 x i32]* %__t_t__arr to i8*
+  %expanded = bitcast [1 x i32]* @main.__t_t__arr to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i32(i8* %0, i8* %expanded, i32 4, i32 4, i1 false)
+  %1 = bitcast [1 x i32]* %__t_t__verify to i8*
+  %expanded1 = bitcast [1 x i32]* @main.__t_t__verify to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i32(i8* %1, i8* %expanded1, i32 4, i32 4, i1 false)
+  store i32 606978378, i32* %__t_t__i, align 4
+  %2 = load i32* %__t_t__i, align 4
+  %mul = mul i32 806694431, %2
+  %add = add i32 %mul, 1431811062
+  %3 = load i32* %__t_t__i, align 4
+  %mul1 = mul i32 1613388862, %3
+  %and = and i32 %mul1, -1431345172
+  %sub = sub i32 %add, %and
+  %4 = bitcast [1 x i32]* %__t_t__verify to i32*
+  %gep_int = ptrtoint i32* %4 to i32
+  %gep_array = mul i32 %sub, 4
+  %gep = add i32 %gep_int, %gep_array
+  %arrayidx = inttoptr i32 %gep to i32*
+  %5 = load i32* %arrayidx, align 4
+  store i32 %5, i32* %r_1Ae, align 4
+  %6 = load i32* %__t_t__i, align 4
+  %mul2 = mul i32 806694431, %6
+  %add3 = add i32 %mul2, 1431811062
+  %7 = load i32* %__t_t__i, align 4
+  %mul4 = mul i32 1613388862, %7
+  %and5 = and i32 %mul4, -1431345172
+  %sub6 = sub i32 %add3, %and5
+  %8 = bitcast [1 x i32]* %__t_t__arr to i32*
+  %gep_int2 = ptrtoint i32* %8 to i32
+  %gep_array3 = mul i32 %sub6, 4
+  %gep4 = add i32 %gep_int2, %gep_array3
+  %arrayidx7 = inttoptr i32 %gep4 to i32*
+  %9 = load i32* %arrayidx7, align 4
+  store i32 %9, i32* %r_1Af, align 4
+  ret i32 0
+}
+
+assembly:
+main:
+        movl    $0, -4(%rsp)
+        movl    .Lmain.__t_t__arr(%rip), %eax
+        movl    %eax, -20(%rsp)
+        movl    .Lmain.__t_t__verify(%rip), %eax
+        movl    %eax, -24(%rsp)
+        movl    $606978378, -16(%rsp)   # imm = 0x242DC14A
+        movl    -24(%rsp), %eax
+        movl    %eax, -8(%rsp)
+        movl    -16(%rsp), %ecx
+        imull   $1613388862, %ecx, %eax # imm = 0x602A5C3E
+        andl    $716138476, %eax        # imm = 0x2AAF67EC
+        imull   $806694431, %ecx, %ecx  # imm = 0x30152E1F
+        addl    $1431811062, %ecx       # imm = 0x5557B3F6
+        subl    %eax, %ecx
+        movl    %nacl:-20(%rsp,%rcx,4), %eax
+        movl    %eax, -12(%rsp)
+        xorl    %eax, %eax
+        popq    %rcx
+        nacljmp %ecx, %r15
+</ns0:content><ns0:updated>2013-05-02T17:20:22.000Z</ns0:updated><ns0:published>2013-05-02T17:20:22.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/jvoung@chromium.org/</ns2:uri><ns2:username>jvoung@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112358947840938663111/</ns2:uri><ns2:username>damonp...@gmail.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>IR constant gets mangled when building SelectionDAG</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-28</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3419/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3419" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3419" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>3419</ns2:id></ns0:entry>

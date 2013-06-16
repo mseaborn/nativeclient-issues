@@ -1,0 +1,58 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYFRH47eCl7ImA9WhBUE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3298/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11269
+
+------------------------------------------------------------------------
+r11269 | mseaborn@chromium.org | 2013-05-01T04:50:54.103687Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/crash_dump/untrusted_crash_dump.c?r1=11269&amp;r2=11268&amp;pathrev=11269
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/osx/mach_exception_handler.c?r1=11269&amp;r2=11268&amp;pathrev=11269
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/debug_exception_handler.c?r1=11269&amp;r2=11268&amp;pathrev=11269
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt_interfaces.c?r1=11269&amp;r2=11268&amp;pathrev=11269
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_exception.h?r1=11269&amp;r2=11268&amp;pathrev=11269
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/include/sys/nacl_exception.h?r1=11269&amp;r2=11268&amp;pathrev=11269
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt.h?r1=11269&amp;r2=11268&amp;pathrev=11269
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/elf_util.c?r1=11269&amp;r2=11268&amp;pathrev=11269
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt_interfaces.h?r1=11269&amp;r2=11268&amp;pathrev=11269
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_config.h?r1=11269&amp;r2=11268&amp;pathrev=11269
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/exception_test/exception_test.c?r1=11269&amp;r2=11268&amp;pathrev=11269
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt.gyp?r1=11269&amp;r2=11268&amp;pathrev=11269
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/posix/nacl_signal.c?r1=11269&amp;r2=11268&amp;pathrev=11269
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt_dev_exception_handling.c?r1=11269&amp;r2=11268&amp;pathrev=11269
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/nacl.scons?r1=11269&amp;r2=11268&amp;pathrev=11269
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt_exception_handling.c?r1=11269&amp;r2=11268&amp;pathrev=11269
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_signal.h?r1=11269&amp;r2=11268&amp;pathrev=11269
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_signal_common.c?r1=11269&amp;r2=11268&amp;pathrev=11269
+
+Exception handling: Make reported info more extensible to stabilise ABI
+
+Split NaClExceptionContext into portable and non-portable portions
+(the latter is NaClExceptionPortableContext) and add size fields so
+that the two portions can be extended independently.
+
+This will allow us to add information in future, such as:
+
+ * x87 and SSE register state on x86, and FP registers on ARM.
+ * More information about the fault, such as the memory location that
+   was accessed, and the fault type (HLT, divide-by-zero, bad memory
+   access, etc.).
+
+Add an "arch" field and an overall size field so that
+NaClExceptionContext can easily be saved to a file and processed
+separately.
+
+Move the code for setting up NaClExceptionContext into
+nacl_signal_common.c so that it is reused across host OSes.
+
+Move EM_EXPECTED_BY_NACL out of elf_util.c into nacl_config.h so that
+it can be reused, and rename it to NACL_ELF_E_MACHINE.
+
+Remove unused function frame_ptr_exception_handler() from the test.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3298
+TEST=exception_tests
+
+Review URL: https://codereview.chromium.org/14335018
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-05-01T04:55:15.000Z</ns0:updated><ns0:published>2013-05-01T04:55:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3298#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3298/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

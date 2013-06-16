@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ABR347eCl7ImA9WhNSEEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2802</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">svn rev 8667, toolchain rev 8628.
+
+Bigger reproducer is:
+
+(1) Add -g flag to pnacl's cc flags.
+
+(2)
+./scons bitcode=1 platform=x86-32 run_call_structs_self_test --verbose -j10 pnacl_generate_pexe=0
+
+Also crashes with platform=x86-64 and platform=arm (whew?).
+
+
+Stack trace:
+
+=======================================================
+
+
+scons: *** [scons-out/nacl-x86-32-pnacl-clang/obj/tests/callingconv_case_by_case/return_structs_self.nexe] Error 250
+llc: /mnt/data/b/build/slave/linux-pnacl-x86_64/build/native_client/pnacl/src/upstream/llvm/lib/MC/MCELFStreamer.cpp:163: virtual void&amp;lt;unnamed&amp;gt;::MCELFStreamer::EmitLabel(llvm::MCSymbol*): Assertion `Symbol-&amp;gt;isUndefined() &amp;amp;&amp;amp; &amp;quot;Cannot define a symbol twice!&amp;quot;' failed.
+0  llc             0x0000000000db02cf
+1  llc             0x0000000000db2542
+2  libpthread.so.0 0x00007f36bb93e8f0
+3  libc.so.6       0x00007f36bac2da75 gsignal + 53
+4  libc.so.6       0x00007f36bac315c0 abort + 384
+5  libc.so.6       0x00007f36bac26941 __assert_fail + 241
+6  llc             0x0000000000d4d6cc
+7  llc             0x00000000008ceda3 llvm::DwarfDebug::emitDebugInfo() + 323
+8  llc             0x00000000008d50bd llvm::DwarfDebug::endModule() + 3085
+9  llc             0x00000000008bdc07 llvm::AsmPrinter::doFinalization(llvm::Module&amp;amp;) + 759
+10 llc             0x0000000000cf0474 llvm::FPPassManager::doFinalization(llvm::Module&amp;amp;) + 84
+11 llc             0x0000000000cf7879 llvm::FPPassManager::runOnModule(llvm::Module&amp;amp;) + 73
+12 llc             0x0000000000cf72f1 llvm::MPPassManager::runOnModule(llvm::Module&amp;amp;) + 497
+13 llc             0x0000000000cf746b llvm::PassManagerImpl::run(llvm::Module&amp;amp;) + 171
+14 llc             0x00000000004f71ab llc_main(int, char**) + 5563
+15 libc.so.6       0x00007f36bac18c4d __libc_start_main + 253
+16 llc             0x00000000004ee7f9
+Stack dump:
+0.      Program arguments: /usr/local/google/home/nacl1/native_client/toolchain/pnacl_linux_x86_64/pkg/llvm/bin/llc -mcpu=pentium4 -mtriple=i686-none-nacl-gnu -filetype=obj -asm-verbose=false -tail-merge-threshold=50 /usr/local/google/home/nacl1/native_client/scons-out/nacl-x86-32-pnacl-clang/obj/tests/callingconv_case_by_case/call_structs_self.nexe---linked.opt.pexe -o /usr/local/google/home/nacl1/native_client/scons-out/nacl-x86-32-pnacl-clang/obj/tests/callingconv_case_by_case/call_structs_self.nexe---linked.o -metadata-text /usr/local/google/home/nacl1/native_client/scons-out/nacl-x86-32-pnacl-clang/obj/tests/callingconv_case_by_case/call_structs_self.nexe---linked.o.meta 
+1.      Running pass 'Function Pass Manager' on module '/usr/local/google/home/nacl1/native_client/scons-out/nacl-x86-32-pnacl-clang/obj/tests/callingconv_case_by_case/call_structs_self.nexe---linked.opt.pexe'.
+
+
+</ns0:content><ns0:updated>2012-10-23T17:02:36.000Z</ns0:updated><ns0:published>2012-05-21T23:34:24.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:state>closed</ns2:state><ns0:title>pnacl debug (-g) occasionally asserts in llvm/lib/MC/MCELFStreamer.cpp</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2802/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2802" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2802" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>419</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2012-05-31T18:33:39.000Z</ns2:closedDate><ns2:id>2802</ns2:id></ns0:entry>

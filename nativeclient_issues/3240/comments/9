@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYERH47eCl7ImA9WhNUE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3240/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10537
+
+------------------------------------------------------------------------
+r10537 | mseaborn@chromium.org | 2013-01-04T21:11:57.674448Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/break_continue_thread.py?r1=10537&amp;r2=10536&amp;pathrev=10537
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/print_symbol.py?r1=10537&amp;r2=10536&amp;pathrev=10537
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/syscall_thread.py?r1=10537&amp;r2=10536&amp;pathrev=10537
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/stack_trace.py?r1=10537&amp;r2=10536&amp;pathrev=10537
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/step_from_func_start.py?r1=10537&amp;r2=10536&amp;pathrev=10537
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/stepi_after_break.py?r1=10537&amp;r2=10536&amp;pathrev=10537
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/call_from_gdb.py?r1=10537&amp;r2=10536&amp;pathrev=10537
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/change_variable.py?r1=10537&amp;r2=10536&amp;pathrev=10537
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/gdb_test.py?r1=10537&amp;r2=10536&amp;pathrev=10537
+
+GDB tests: Improve error reporting when GDB's "reason" field is missing
+
+Replace
+    AssertEquals(gdb.ResumeCommand(X)['reason'], Y)
+with
+    gdb.ResumeAndExpectStop(X, Y)
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3240
+TEST=gdb_tests; insert __asm__("hlt") into f1() to test output
+
+Review URL: https://codereview.chromium.org/11784002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-01-04T21:15:05.000Z</ns0:updated><ns0:published>2013-01-04T21:15:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3240#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3240/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

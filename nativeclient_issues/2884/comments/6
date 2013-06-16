@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0cNQ347eCl7ImA9WhJSE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2884/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9082
+
+------------------------------------------------------------------------
+r9082 | mcgrathr@chromium.org | Tue Jul 03 11:06:18 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr-inl.h?r1=9082&amp;r2=9081&amp;pathrev=9082
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_syscall_64.S?r1=9082&amp;r2=9081&amp;pathrev=9082
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/syscall_return_sandboxing/sandboxed_x86_64.S?r1=9082&amp;r2=9081&amp;pathrev=9082
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/syscall_return_sandboxing/sandboxed_x86_32.S?r1=9082&amp;r2=9081&amp;pathrev=9082
+
+Make syscalls round up misaligned return address to next bundle
+
+With the original nacl-gcc toolchain, a return address is always
+on a bundle boundary and the ABI specification is that a
+misaligned return address has undefined results.  With the
+next-generation gcc toolchain, a return address on the stack may
+be mid-bundle and the ABI specification is that the real address
+to use is found by rounding up to the following bundle.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2884
+TEST= trybots
+
+R=sehr@google.com,bsy@google.com
+
+Review URL: https://chromiumcodereview.appspot.com/10700017
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-03T18:11:32.000Z</ns0:updated><ns0:published>2012-07-03T18:11:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2884#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2884/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

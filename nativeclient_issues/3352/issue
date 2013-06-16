@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0ANR347eCl7ImA9WhBVEUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3352</ns0:id><ns0:author>
+			<ns0:name>bennet....@gmail.com</ns0:name><ns0:uri>/u/111070507606950462221/</ns0:uri></ns0:author><ns0:content type="html">reading the mmap code, i believe this is a bug.
+
+the windows implementation of mmap creates a file mapping object via CreateFileMapping w/ flProtect derived from the mmap's prot argument, and then invokes MapViewOfFileEx with dwDesiredAccess that is also derived from the mmap's prot argument.
+
+this is wrong.
+
+the flProtect argument to CreateFileMapping is the maximum access allowed.  if the NaCl module invokes mmap with PROT_READ but without PROT_WRITE, then the flProtect is PAGE_READONLY, and we would MapViewOfFile with FILE_MAP_READ.  however, when mprotect is invoked to change the mapping to PROT_READ|PROT_WRITE, we end up invoking VirtualProtect to try to set the protection to PAGE_READWRITE, and since the maximum access associated with the file mapping object did not include PAGE_WRITE, the VirtualProtect fails.
+
+this need to be verified with a test case.</ns0:content><ns0:updated>2013-04-16T23:43:16.000Z</ns0:updated><ns0:published>2013-03-26T05:11:24.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/117980525918552686609/</ns2:uri><ns2:username>pho...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>windows mmap PROT_READ then mprotect PROT_READ|PROT_WRITE will fail</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Mstone-29</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3352/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3352" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3352" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:id>3352</ns2:id></ns0:entry>

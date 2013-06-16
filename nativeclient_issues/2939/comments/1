@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUEHSX47eCl7ImA9WhJQGUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2939/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">This is rather tricky to use/test.  NaClThreadLauncher() does this:
+
+  /* Add thread to list of threads. */
+  NaClXMutexLock(&amp;natp-&gt;nap-&gt;threads_mu);
+  natp-&gt;thread_num = NaClAddThreadMu(natp-&gt;nap, natp);
+  NaClXMutexUnlock(&amp;natp-&gt;nap-&gt;threads_mu);
+  ...
+  /* Notify the debug stub about a new thread. */
+  natp-&gt;nap-&gt;debug_stub_callbacks-&gt;thread_create_hook(natp);
+  ...
+  /* Suspend the thread if that was requested. */
+  NaClAppThreadSetSuspendState(natp, ...);
+
+In order to start the thread in a suspended and queryable state, the only current way is to call SuspendAllThreads() from thread_create_hook().  Doing SuspendAllThreads() before NaClAddThreadMu() means the thread can't be added to the thread list, so its registers can't be discovered.</ns0:content><ns0:updated>2012-08-02T22:47:18.000Z</ns0:updated><ns0:published>2012-08-02T22:47:18.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2939#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2939/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

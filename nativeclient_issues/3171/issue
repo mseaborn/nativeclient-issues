@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A04DQ347eCl7ImA9WhBSFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3171</ns0:id><ns0:author>
+			<ns0:name>robertm@chromium.org</ns0:name><ns0:uri>/u/robertm@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">This works:
+
+../pepper_25/toolchain/linux_x86_pnacl/newlib/bin/pnacl-opt  --use-new-sroa=false  -O2 -inline-threshold=100 /home/robertm/ssh_client_nl.pexe---linked.expand_ctors.pexe -o x.pexe
+
+This (used by regular bitcode links) does not:
+
+../pepper_25/toolchain/linux_x86_pnacl/newlib/bin/pnacl-opt  -O2 -inline-threshold=100 /home/robertm/ssh_client_nl.pexe---linked.expand_ctors.pexe -o x.pexe
+
+opt: /mnt/data/b/build/slave/linux-pnacl-x86_64/build/native_client/pnacl/git/llvm/lib/Transforms/Scalar/SROA.cpp:2378: bool&amp;lt;unnamed&amp;gt;::AllocaPartitionRewriter::visitUsers(const&amp;lt;unnamed&amp;gt;::AllocaPartitioning::PartitionUse*, const&amp;lt;unnamed&amp;gt;::AllocaPartitioning::PartitionUse*): Assertion `CanSROA' failed.
+0  libLLVM-3.2svn.so 0xf6fd5e38
+Stack dump:
+0.	Program arguments: /usr/local/google/home/robertm/pepper_25/toolchain/linux_x86_pnacl/host_x86_32/bin/opt -O2 -inline-threshold=100 /home/robertm/ssh_client_nl.pexe---linked.expand_ctors.pexe -o x.pexe 
+1.	Running pass 'CallGraph Pass Manager' on module '/home/robertm/ssh_client_nl.pexe---linked.expand_ctors.pexe'.
+2.	Running pass 'SROA' on function '@timeout_connect'
+</ns0:content><ns0:updated>2013-02-22T21:52:52.000Z</ns0:updated><ns0:published>2012-11-27T21:00:50.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/jvoung@chromium.org/</ns2:uri><ns2:username>jvoung@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/rginda@google.com/</ns2:uri><ns2:username>rginda@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pnacl opt causes assert in sroa pass</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-25</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3171/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3171" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3171" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-02-22T21:35:21.000Z</ns2:closedDate><ns2:id>3171</ns2:id></ns0:entry>

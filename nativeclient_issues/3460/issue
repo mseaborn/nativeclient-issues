@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUFQn47eCl7ImA9WhFTFUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3460</ns0:id><ns0:author>
+			<ns0:name>bradnelson@google.com</ns0:name><ns0:uri>/u/bradnelson@google.com/</ns0:uri></ns0:author><ns0:content type="html">Several tests are broken under the new asan version.
+
+run_dynamic_load_test 
+run_dynamic_modify_test 
+run_dyncode_debug_mode_test
+run_fib_array_integration_test
+run_fib_array_test 
+run_fib_scalar_integration_test
+run_fib_scalar_test 
+run_force_shutdown_test 
+run_hard_shutdown_test 
+run_mandel_integration_test
+run_mandel_test 
+run_mmap_prot_exec_test 
+run_sel_main_chrome_test
+run_service_runtime_tests 
+run_srpc_bad_service_test
+run_srpc_basic_test 
+run_srpc_hw_test 
+run_srpc_manifest_file_test
+run_srpc_nameservice_test 
+run_subprocess_test 
+run_trusted_mmap_test 
+
+These are being disabled here:
+https://codereview.chromium.org/15679008/
+
+Only run_service_runtime_tests seems to be a real asan failure, other seem to be related to incompatibility with the tests.</ns0:content><ns0:updated>2013-06-07T07:30:13.000Z</ns0:updated><ns0:published>2013-05-29T23:09:21.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/101600367715055138223/</ns2:uri><ns2:username>euge...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>New Asan version breaks many tests</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3460/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3460" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3460" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3460</ns2:id></ns0:entry>

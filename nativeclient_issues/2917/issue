@@ -1,0 +1,53 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEQNSX47eCl7ImA9WhNQFU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2917</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Related to http://code.google.com/p/nativeclient/issues/detail?id=2249
+
+The following bitcode:
+
+==========
+
+; ModuleID = 'bugpoint-reduced-simplified.bc'
+target datalayout = &amp;quot;e-i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-f32:32:32-f64:64:64-p:32:32:32-v128:32:32&amp;quot;
+target triple = &amp;quot;armv7-none-linux-gnueabi&amp;quot;
+
+declare void @llvm.prefetch(i8* nocapture, i32, i32, i32) nounwind
+
+define void @simple_local() nounwind {
+entry:
+  %ix = alloca i32, align 4
+  %0 = bitcast i32* %ix to i8*
+  call void @llvm.prefetch(i8* %0, i32 0, i32 0, i32 1)
+  ret void
+}
+
+!OutputFormat = !{!0}
+
+!0 = metadata !{metadata !&amp;quot;executable&amp;quot;}
+
+
+==========
+
+currently asserts in the ARM backend (but not the other backends).
+
+Unsupported addressing mode!
+
+UNREACHABLE executed at /BLAH/src/upstream/llvm/lib/Target/ARM/ARMBaseInstrInfo.cpp:1691!
+0  llc             0x0000000000d98f9f
+//...
+6  llc             0x00000000006a3add llvm::rewriteARMFrameIndex(llvm::MachineInstr&amp;amp;, unsigned int, unsigned int, int&amp;amp;, llvm::ARMBaseInstrInfo const&amp;amp;) + 109
+7  llc             0x00000000006a8c2f llvm::ARMBaseRegisterInfo::eliminateFrameIndex(llvm::MachineBasicBlock::bundle_iterator&amp;lt;llvm::MachineInstr, llvm::ilist_iterator&amp;lt;llvm::MachineInstr&amp;gt; &amp;gt;, int, llvm::RegScavenger*) const + 399
+8  llc             0x00000000009c6e6e llvm::PEI::replaceFrameIndices(llvm::MachineFunction&amp;amp;) + 910
+9  llc             0x00000000009ca40c llvm::PEI::runOnMachineFunction(llvm::MachineFunction&amp;amp;) + 268
+10 llc             0x0000000000cdd04d llvm::FPPassManager::runOnFunction(llvm::Function&amp;amp;) + 557
+11 llc             0x0000000000cdd133 llvm::FPPassManager::runOnModule(llvm::Module&amp;amp;) + 51
+12 llc             0x0000000000cdcbc1 llvm::MPPassManager::runOnModule(llvm::Module&amp;amp;) + 497
+13 llc             0x0000000000cdcd3b llvm::PassManagerImpl::run(llvm::Module&amp;amp;) + 171
+14 llc             0x00000000004f7cf0 llc_main(int, char**) + 5632
+15 libc.so.6       0x00007fb1ca065c4d __libc_start_main + 253
+
+
+See also torture test:
+
+builtin-prefetch-2.c
+</ns0:content><ns0:updated>2012-11-21T18:26:38.000Z</ns0:updated><ns0:published>2012-07-20T21:23:20.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/109636895838879576326/</ns2:uri><ns2:username>j...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Cannot translate llvm.prefetch for ARM (for stack locations)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2917/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2917" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2917" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2917</ns2:id></ns0:entry>

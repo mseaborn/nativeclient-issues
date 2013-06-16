@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYNQH47eCl7ImA9WhBTEEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3236/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Other observations:
+
+(1) PNaCl tests on the main chrome xp bots work okay (a different kind of 32-bit windows bot).  See this handy dashboard:
+
+http://test-results.appspot.com/dashboards/flakiness_dashboard.html#testType=browser_tests&amp;tests=NaClBrowserTestPnacl.SimpleLoad&amp;sortColumn=slowest&amp;builder=XP%20Tests%20(2)
+
+(2) They worked okay when I tried out pnacl nacl-integration browser tests on an Amazon EC2 32-bit windows image.
+
+(3a) Some of the test failures seem like timeouts on the 32-bit windows naclmore bot.
+(3b) If you log in to the bot and watch it attempt to run the *driver*, pnacl-clang, it appears to take *forever*, as if it was blocked on something...  Not sure if that blocking behavior is related or not...
+
+Over all, the nacl_integration step takes 2.5 to 5 HOURS: 
+http://build.chromium.org/p/chromium.fyi/builders/More%20NaCl%20Tests%20%28win32%29/builds/545
+
+2.5 to 5 HOURS?!?!?!
+
+Most of the time should be taken by running pnacl-clang, since the actual browser test would have timed out after 45 seconds.  45 seconds x 24 tests = 18 minutes.  That's still 2 hours of something else going on.
+
+
+In comparison, the 64-bit windows bot only takes 18 minutes to do everything (newlib, glibc, pnacl):
+http://build.chromium.org/p/chromium.fyi/builders/More%20NaCl%20Tests%20%28win64%29/builds/1747
+
+
+(4) The bot has plenty of disk space, so it's not related to disk space...
+
+
+Still looking for leads...</ns0:content><ns0:updated>2013-02-05T06:03:11.000Z</ns0:updated><ns0:published>2013-02-05T06:03:11.000Z</ns0:published><ns2:updates>
+			<ns2:summary>PNaCl on 32-bit windows naclmore bot sometimes hangs (but 64-bit naclmore is ok, and main XP bots are okay)</ns2:summary><ns2:ccUpdate>ncb...@chromium.org</ns2:ccUpdate></ns2:updates><ns0:title>Comment 4 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3236#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3236/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

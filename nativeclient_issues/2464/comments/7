@@ -1,0 +1,44 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUICQn47eCl7ImA9WhJSEE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2464/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9064
+
+------------------------------------------------------------------------
+r9064 | bsy@google.com | Fri Jun 29 15:03:51 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=9064&amp;r2=9063&amp;pathrev=9064
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_bootstrap_channel_error_reporter.c?r1=9064&amp;r2=9063&amp;pathrev=9064
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=9064&amp;r2=9063&amp;pathrev=9064
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=9064&amp;r2=9063&amp;pathrev=9064
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/include/portability_io.h?r1=9064&amp;r2=9063&amp;pathrev=9064
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main_chrome.c?r1=9064&amp;r2=9063&amp;pathrev=9064
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/fault_injection/fault_injection.h?r1=9064&amp;r2=9063&amp;pathrev=9064
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_bootstrap_channel_error_reporter.h?r1=9064&amp;r2=9063&amp;pathrev=9064
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=9064&amp;r2=9063&amp;pathrev=9064
+
+Hook up bootstrap channel and NaClErrorGio to send error msg to plugin.
+
+This CL hooks up the NaClErrorGio object via NaClErrorLogHook in
+sel_main and sel_main_chrome so that on a LOG_FATAL, we will (1) send
+an IMC message containing the recent log output to the plugin (which
+will eventually write the contents to the JavaScript console), and (2)
+invoke NaClAbort with a buffer containing the recent log output on the
+aborting thread's stack.  This enables breakpad thread stack capturing
+to recover some context just before the crash (depending on logging
+verbosity level used).
+
+This change does not depend on the plugin actually receiving the log
+output.  The send to the bootstrap channel is done in such a way as to
+ignore errors, in case the plugin has closed its end of the channel
+already.  Furthermore, the bootstrap channel send does not block
+(tested manually with tip-of-tree Chrome on Linux, OSX, and Windows):
+since the amount of data is small, if the plugin didn't close the
+bootstrap channel, the data will be buffered by the host OS and will
+get discarded when the plugin eventually closes the channel and cleans
+up in its dtor when it detects the command channel closure.
+
+TEST= manual
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2464
+Review URL: https://chromiumcodereview.appspot.com/10697027
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-29T22:06:03.000Z</ns0:updated><ns0:published>2012-06-29T22:06:03.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2464#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2464/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

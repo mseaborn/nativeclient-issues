@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkIGQn47eCl7ImA9WhBTGEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3087/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10790
+
+------------------------------------------------------------------------
+r10790 | mark@chromium.org | 2013-02-13T23:00:37.606945Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=10790&amp;r2=10789&amp;pathrev=10790
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/signal_handler/crash_in_syscall.c?r1=10790&amp;r2=10789&amp;pathrev=10790
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/signal_handler/nacl.scons?r1=10790&amp;r2=10789&amp;pathrev=10790
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_standard.py?r1=10790&amp;r2=10789&amp;pathrev=10790
+
+Mac x86_64: fix crash_in_syscall test
+
+When running on Mac x86_64, crash_in_syscall (scons run_signal_handler_test)
+was reporting SIGBUS because the system call chosen to crash was being made
+to access an unreadable page, and this produces a SIGBUS on Mac x86_64.
+
+Switch to the test_crash system call, using NACL_TEST_CRASH_MEMORY, for
+results consistent with other tests that expect trusted_segfault. Fix
+test_crash(NACL_TEST_CRASH_MEMORY) to reliably produce a SIGSEGV even when
+questionably optimized by Apple's system compiler.
+
+TEST=scons platform=x86-64 run_signal_handler_test run_signal_frame_test
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3087
+Review URL: https://codereview.chromium.org/12256012
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-02-14T20:42:03.000Z</ns0:updated><ns0:published>2013-02-14T20:42:03.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3087#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3087/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

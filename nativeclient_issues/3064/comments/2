@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEHRn47eCl7ImA9WhJaF0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3064/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9956
+
+------------------------------------------------------------------------
+r9956 | mseaborn@chromium.org | 2012-10-09T00:25:21.438161Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=9956&amp;r2=9955&amp;pathrev=9956
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_switch_all_regs_arm.S?r1=9956&amp;r2=9955&amp;pathrev=9956
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_switch_all_regs_arm.c?r1=9956&amp;r2=9955&amp;pathrev=9956
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_switch_all_regs_asm_arm.S?r1=9956&amp;r2=9955&amp;pathrev=9956
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=9956&amp;r2=9955&amp;pathrev=9956
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/debug_stub/debugger_test.c?r1=9956&amp;r2=9955&amp;pathrev=9956
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/common/register_set.c?r1=9956&amp;r2=9955&amp;pathrev=9956
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/thread_suspension/suspend_test_host.c?r1=9956&amp;r2=9955&amp;pathrev=9956
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/debug_stub/debug_stub_test.py?r1=9956&amp;r2=9955&amp;pathrev=9956
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/common/register_set.h?r1=9956&amp;r2=9955&amp;pathrev=9956
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_tls.c?r1=9956&amp;r2=9955&amp;pathrev=9956
+
+ARM: Change r9 to point into NaClAppThread rather than untrusted address space
+
+The core change is in arch/arm/nacl_tls.c.
+
+All the other changes are related to testing:
+
+ * Update NaClSwitchAllRegs() to restore r9 so that
+   run_set_all_regs_test passes.  This involves adding a C portion.
+ * Change register_set.h so that it doesn't attempt to read r9.  The
+   validator doesn't prevent reading r9 now, but it should do so in
+   the future.
+ * Update test expectations for r9 in register_set.c.
+ * Update comments so that they don't say r9 is read-only, because r9
+   isn't supposed to be readable at all.
+
+Future changes will be:
+
+ * Expose tls2 via [r9, #4] for use by the IRT.
+ * Use r9 instead of a __thread variable in arm/nacl_syscall.S.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=3064
+TEST=small_tests
+
+Review URL: https://codereview.chromium.org/11066060
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-09T00:30:37.000Z</ns0:updated><ns0:published>2012-10-09T00:30:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3064#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3064/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

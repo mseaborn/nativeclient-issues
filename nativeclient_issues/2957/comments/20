@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0cBQH47eCl7ImA9WhJVGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2957/comments/full/20</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=155160
+
+------------------------------------------------------------------------
+r155160 | bradnelson@google.com | 2012-09-06T09:49:34.363063Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/untrusted/pnacl_irt_shim/shim_ppapi.c?r1=155160&amp;r2=155159&amp;pathrev=155160
+   A http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/untrusted/pnacl_irt_shim/pnacl_shim.c?r1=155160&amp;r2=155159&amp;pathrev=155160
+   A http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/untrusted/pnacl_irt_shim?r1=155160&amp;r2=155159&amp;pathrev=155160
+   A http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/untrusted/pnacl_irt_shim/shim_entry.c?r1=155160&amp;r2=155159&amp;pathrev=155160
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/generators/generator.py?r1=155160&amp;r2=155159&amp;pathrev=155160
+   M http://src.chromium.org/viewvc/chrome/trunk/src/PRESUBMIT.py?r1=155160&amp;r2=155159&amp;pathrev=155160
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/nacl.gypi?r1=155160&amp;r2=155159&amp;pathrev=155160
+   A http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/untrusted?r1=155160&amp;r2=155159&amp;pathrev=155160
+   A http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/untrusted/pnacl_irt_shim/pnacl_irt_shim.gyp?r1=155160&amp;r2=155159&amp;pathrev=155160
+
+Add pnacl shims to the chrome build.
+
+Altering IDL generator to emit pnacl shims.
+Building pnacl shims as part of the chrome build.
+Publishing pnacl shims in the sdk.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2957
+TEST=None
+R=noelallen@chromium.org,jvoung@chromium.org,ncbray@chromium.org,nfullagar@chromium.org,brettw@chromium.org
+
+
+Review URL: https://chromiumcodereview.appspot.com/10908085
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-09-06T09:50:51.000Z</ns0:updated><ns0:published>2012-09-06T09:50:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 20 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2957#c20" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2957/comments/full/20" rel="self" type="application/atom+xml" /></ns0:entry>

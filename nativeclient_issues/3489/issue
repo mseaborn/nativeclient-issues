@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEYDQH47eCl7ImA9WhFTGUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3489</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">For issue 2346, we have disallowed the &amp;quot;fastcc&amp;quot; function/call attribute in pexes.  However, &amp;quot;fastcc&amp;quot; can be a faster calling convention on x86-32, and it would be nice to get back the speed improvement.
+
+There are two ways we could do this:
+
+1) Have the PNaCl translator add &amp;quot;fastcc&amp;quot; to all functions and calls in the pexe.  This would require shims in the IRT to wrap all interfaces (PPAPI and IRT interfaces) with fastcc-compiled wrappers.
+
+This was originally described in https://code.google.com/p/nativeclient/issues/detail?id=2346#c14.
+
+2) Add &amp;quot;fastcc&amp;quot; to all non-address-taken functions and their call sites, and have the PNaCl ABI verifier check that &amp;quot;fastcc&amp;quot; is used this way.
+
+If we change the wire format, we could simplify this to be a &amp;quot;directly-called-only&amp;quot; attribute that appears on functions but doesn't need to appear on call sites.
+
+This idea was originally described in https://codereview.chromium.org/16448004#msg5.
+
+
+(2) would be quicker to implement, but it involves a PNaCl ABI change and it would only benefit directly-called functions.
+
+(1) is more work, but it would benefit all function calls (direct and indirect), and it doesn't involve a PNaCl ABI change.
+</ns0:content><ns0:updated>2013-06-11T23:09:31.000Z</ns0:updated><ns0:published>2013-06-11T23:09:31.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/jvoung@chromium.org/</ns2:uri><ns2:username>jvoung@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>PNaCl: Get back the benefits of "fastcc" calling conventions on x86-32</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Performance</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3489/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3489" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3489" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>3489</ns2:id></ns0:entry>

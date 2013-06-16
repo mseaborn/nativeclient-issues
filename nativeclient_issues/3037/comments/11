@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IGQ347eCl7ImA9WhNTE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3037/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9981
+
+------------------------------------------------------------------------
+r9981 | shcherbina@google.com | 2012-10-12T07:49:04.659370Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testscripts/compare_validators.py?r1=9981&amp;r2=9980&amp;pathrev=9981
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/call_not_aligned.test?r1=9981&amp;r2=9980&amp;pathrev=9981
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/call_not_aligned_16.test?r1=9981&amp;r2=9980&amp;pathrev=9981
+
+Validator testing: ignore warnings
+
+Also, add @rdfa_output with two tests with warnings.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3037
+TEST= included in this CL
+
+Review URL: https://codereview.chromium.org/11085072
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-16T01:38:42.000Z</ns0:updated><ns0:published>2012-10-16T01:38:42.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3037#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3037/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,55 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkIERH47eCl7ImA9WhJQEUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2746/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">The remaining callingconv test struct-passing failure for ARM is related to var-args.
+
+
+The following test will segfault on ARM, when compiled with -O0, but not the other architectures.
+
+It passes with arm when optimized with -O3 because the function is "internal" and the byval is optimized out.
+
+
+==== BEGIN
+
+#include &lt;stdlib.h&gt;
+
+struct test_struct {
+  char* a;
+  char* b;
+};
+
+void __attribute__((noinline)) foo(struct test_struct s, char *c, ...) {
+  /* I'm not actually using var-args! */
+
+  *(s.a) = 'a';
+  *(s.b) = 'b';
+  *c = 'c';
+}
+
+int main(int argc, char* argv[]) {
+  static volatile char a, b, c;
+  struct test_struct t;
+  t.a = &amp;a;
+  t.b = &amp;b;
+  foo(t, &amp;c);
+  if (a != 'a') {
+    exit(1);
+  }
+  if (b != 'b') {
+    exit(2);
+  }
+  if (c != 'c') {
+    exit(3);
+  }
+  return 0;
+}
+
+
+==== END
+
+1249  pnacl-clang -g0 test_arm_vararg.c -O0 -o test_arm_vararg.pexe --pnacl-driver-verbose
+1250  pnacl-translate -arch arm test_arm_vararg.pexe -o test_arm_vararg.arm.nexe
+1251  ./run.py test_arm_vararg.arm.nexe 
+
+** Signal 11 from untrusted code: pc=200f4
+
+</ns0:content><ns0:updated>2012-07-25T00:01:45.000Z</ns0:updated><ns0:published>2012-07-25T00:01:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2746#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2746/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

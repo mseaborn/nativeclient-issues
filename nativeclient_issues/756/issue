@@ -12,6 +12,6 @@ LLVM ERROR: Cannot yet select: 0x1da6f48: i64 = X86ISD::MUL_IMM 0x1da6d58, 0x1da
   0x1da6e50: i64 = Constant&amp;lt;5&amp;gt; [ID=5]
 </ns0:content><ns0:updated>2010-08-03T17:52:06.000Z</ns0:updated><ns0:published>2010-08-02T20:54:22.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/101432766050863658364/</ns2:uri><ns2:username>espind...@google.com</ns2:username></ns2:owner><ns2:cc>
-			<ns2:uri>/u//</ns2:uri><ns2:username>native-c...@googlegroups.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/native-c...@googlegroups.com/</ns2:uri><ns2:username>native-c...@googlegroups.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>another x86-64 backend crash</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/756/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=756" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/756" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-08-03T17:52:06.000Z</ns2:closedDate><ns2:id>756</ns2:id></ns0:entry>

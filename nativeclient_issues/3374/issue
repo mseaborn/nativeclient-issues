@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkAESH47eCl7ImA9WhBaEkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3374</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">With -O1 or -O2 (but not -O0), the PNaCl translator miscompiles mmap_prot_exec.pexe (being added in https://codereview.chromium.org/13509002/) so that its open() calls use the wrong flags argument value.
+
+If I increase the verbosity of the open() syscall's logging, I get:
+
+[1584,1398712064:16:08:02.544236] NaClSysOpen(0x01dc4c00, 0xfffeffe4, 0x241, 0xfffefee8)
+[1584,1398712064:16:08:02.544383] NaClSysOpen(0x01dc4c00, 0xfffeffe4, 0x42, 0x1b6)
+Re-opening of /tmp/tmpJoRZP4/data_file failed, NaCl errno 13
+
+The second open() call is getting the correct flags value (0x1b6 == 0666), but the second is receiving a stack address instead of 0666.
+
+LLVM generates the code below.  I debugged it by stepping through it with nacl-gdb.
+
+LLVM seems to have put the va_list value and the result of va_arg() in the same stack slot, 0x48(%rsp).  va_start() is getting scheduled in the middle of va_arg() and is clobbering va_arg()'s result.
+
+   21c9b:       e8 60 fd 00 00          callq  31a00 &amp;lt;_vfprintf_r&amp;gt;
+native_client/src/untrusted/nacl/sys_private.c:120
+   21ca0:       8d 44 24 4c             lea    0x4c(%rsp),%eax  // calculate value to update va_list to for va_arg() call
+native_client/tests/mmap_prot_exec/mmap_prot_exec.c:355
+   21ca4:       8b 4c 24 44             mov    0x44(%rsp),%ecx  // reads 0666, correct value
+   21ca8:       89 4c 24 48             mov    %ecx,0x48(%rsp)  // writes 0666, correct value
+native_client/src/untrusted/nacl/sys_private.c:119
+   21cac:       44 89 74 24 48          mov    %r14d,0x48(%rsp)  // part of va_start(): r14 points to 0x48(%rsp) which contains 0666
+native_client/src/untrusted/nacl/sys_private.c:120
+   21cb1:       8b 54 24 48             mov    0x48(%rsp),%edx  // part of va_arg(): fetch va_arg result (but gets wrong value)
+   21cb5:       89 44 24 48             mov    %eax,0x48(%rsp)  // part of va_arg(): update va_list to point to next element for va_arg() call
+native_client/src/untrusted/nacl/sys_private.c:127
+   21cb9:       44 89 e7                mov    %r12d,%edi
+   21cbc:       0f 1f 40 00             nopl   0x0(%rax)
+   21cc0:       be 41 02 00 00          mov    $0x241,%esi
+   21cc5:       b8 40 01 01 00          mov    $0x10140,%eax
+   21cca:       66 66 66 66 66 2e 0f    data32 data32 data32 data32 nopw %cs:0x0(%rax,%rax,1)
+   21cd1:       1f 84 00 00 00 00 00 
+   21cd8:       83 e0 e0                and    $0xffffffe0,%eax
+   21cdb:       4c 01 f8                add    %r15,%rax
+   21cde:       ff d0                   callq  *%rax
+   21ce0:       89 44 24 44             mov    %eax,0x44(%rsp)
+   21ce4:       85 c0                   test   %eax,%eax
+   21ce6:       0f 88 d4 05 00 00       js     222c0 &amp;lt;main+0xd40&amp;gt;
+
+I found that commenting out &amp;quot;addPass(&amp;amp;StackColoringID);&amp;quot; in llvm/lib/CodeGen/Passes.cpp made the problem go away.  This pass is responsible for combining stack slots when their live ranges don't overlap.
+</ns0:content><ns0:updated>2013-05-22T20:31:49.000Z</ns0:updated><ns0:published>2013-04-08T03:11:11.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Miscompile by LLVM backend: Variables wrongly put in same stack slot</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3374/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3374" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3374" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>3343</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2013-05-22T20:31:49.000Z</ns2:closedDate><ns2:id>3374</ns2:id></ns0:entry>

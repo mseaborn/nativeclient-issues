@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0YFQ347eCl7ImA9WhJWEEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2959/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=151716
+
+------------------------------------------------------------------------
+r151716 | ncbray@chromium.org | 2012-08-15T18:23:37.593051Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/base/ui_test_utils.cc?r1=151716&amp;r2=151715&amp;pathrev=151716
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/OWNERS?r1=151716&amp;r2=151715&amp;pathrev=151716
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/base/ui_test_utils.h?r1=151716&amp;r2=151715&amp;pathrev=151716
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl?r1=151716&amp;r2=151715&amp;pathrev=151716
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/DEPS?r1=151716&amp;r2=151715&amp;pathrev=151716
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest.cc?r1=151716&amp;r2=151715&amp;pathrev=151716
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/OWNERS?r1=151716&amp;r2=151715&amp;pathrev=151716
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/simple.cc?r1=151716&amp;r2=151715&amp;pathrev=151716
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/nacl_load_test.html?r1=151716&amp;r2=151715&amp;pathrev=151716
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/ppapi/ppapi_test.cc?r1=151716&amp;r2=151715&amp;pathrev=151716
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl?r1=151716&amp;r2=151715&amp;pathrev=151716
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/chrome_tests.gypi?r1=151716&amp;r2=151715&amp;pathrev=151716
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/nacl_test_data.gyp?r1=151716&amp;r2=151715&amp;pathrev=151716
+
+Add NaCl smoke test to browser_tests.
+
+The smoke test is simple - it checks that Chrome can load nexes.  The more
+interesting part of this CL is that it lays the groundwork for adding more NaCl
+tests to browser_tests.  This will allow many nacl_integration tests to be
+rewritten as browser_tests.  This CL adds an extensible jig for decoding
+messages from Javascript, which makes it easier to add test logic in the web
+page.  This CL also establishes locations in the build directory for nexes and
+other test data.
+
+There are two followup CLs planned: 1) simplify how nexes are built in GYP
+and 2) share the code for running tests in Javascript with the PPAPI test
+suite.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2959
+TEST= browser_tests --gtest_filter=NaClBrowserTest*
+
+
+Review URL: https://chromiumcodereview.appspot.com/10837207
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-15T18:25:12.000Z</ns0:updated><ns0:published>2012-08-15T18:25:12.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2959#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2959/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

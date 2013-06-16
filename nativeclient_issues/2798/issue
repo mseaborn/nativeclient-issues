@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEANQ347eCl7ImA9WhBbFks.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2798</ns0:id><ns0:author>
+			<ns0:name>dsch...@google.com</ns0:name><ns0:uri>/u/104270846665912603141/</ns0:uri></ns0:author><ns0:content type="html">This bug will track the state of exception handling support for PNaCl.
+
+Currently there are some exception handling tests in tests/toolchain (see unwind_trace.cc, stack_frame.cc, eh_* listed in nacl.scons for their current state), which all pass.
+
+There are also EH tests in the torture tests, failures of which are listed in tools/toolchain_tester/known_eh_failures_pnacl.txt and EH tests in the LLVM test suite, failures of which are listed in pnacl/scripts/testsuite_known_failures_pnacl.txt.</ns0:content><ns0:updated>2013-05-16T00:06:32.000Z</ns0:updated><ns0:published>2012-05-21T17:06:59.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Tracking bug for PNaCl C++ Exception Handling</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>PNaClABI</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2798/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2798" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2798" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>1933</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2492</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>3118</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:id>2798</ns2:id></ns0:entry>

@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QHQX47eCl7ImA9WhBVGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3364/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">------------------------------------------------------------------------
+r196240 | jvoung@chromium.org | 2013-04-24T21:34:27.180699Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_error_handling/pnacl_bad_pexe.nmf?r1=196240&amp;r2=196239&amp;pathrev=196240
+   D http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/nacl_browser/pnacl_client_translator/pnacl_bad_doesnotexist_pexe_only.nmf?r1=196240&amp;r2=196239&amp;pathrev=196240
+   D http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/nacl_browser/pnacl_client_translator/program_fragment.cc?r1=196240&amp;r2=196239&amp;pathrev=196240
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/chrome_main.scons?r1=196240&amp;r2=196239&amp;pathrev=196240
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_error_handling/bad2.pexe?r1=196240&amp;r2=196239&amp;pathrev=196240
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/nacl_browser_test.gypi?r1=196240&amp;r2=196239&amp;pathrev=196240
+   D http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/nacl_browser/pnacl_client_translator/pnacl_bad2_pexe.nmf?r1=196240&amp;r2=196239&amp;pathrev=196240
+   D http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/nacl_browser/pnacl_client_translator/bad.pexe?r1=196240&amp;r2=196239&amp;pathrev=196240
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_error_handling/pnacl_error_handling.html?r1=196240&amp;r2=196239&amp;pathrev=196240
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_error_handling/program_fragment.cc?r1=196240&amp;r2=196239&amp;pathrev=196240
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest.cc?r1=196240&amp;r2=196239&amp;pathrev=196240
+   D http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/nacl_browser/pnacl_client_translator/pnacl_bad_doesnotexist.nmf?r1=196240&amp;r2=196239&amp;pathrev=196240
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_error_handling/pnacl_bad2_pexe.nmf?r1=196240&amp;r2=196239&amp;pathrev=196240
+   D http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/nacl_browser/pnacl_client_translator/pnacl_bad_pexe_undefined_syms.nmf?r1=196240&amp;r2=196239&amp;pathrev=196240
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_error_handling/bad.pexe?r1=196240&amp;r2=196239&amp;pathrev=196240
+   D http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/nacl_browser/pnacl_client_translator/nacl.scons?r1=196240&amp;r2=196239&amp;pathrev=196240
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/nacl_test_data.gyp?r1=196240&amp;r2=196239&amp;pathrev=196240
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_error_handling/pnacl_bad_doesnotexist.nmf?r1=196240&amp;r2=196239&amp;pathrev=196240
+   D http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/nacl_browser/pnacl_client_translator/pnacl_bad_pexe.nmf?r1=196240&amp;r2=196239&amp;pathrev=196240
+   D http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/nacl_browser/pnacl_client_translator/pnacl_bad_test.html?r1=196240&amp;r2=196239&amp;pathrev=196240
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_error_handling/pnacl_bad_pexe_undefined_syms.nmf?r1=196240&amp;r2=196239&amp;pathrev=196240
+   D http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/nacl_browser/pnacl_client_translator/bad2.pexe?r1=196240&amp;r2=196239&amp;pathrev=196240
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/pnacl_error_handling?r1=196240&amp;r2=196239&amp;pathrev=196240
+
+Port PNaCl error handling test from scons to gyp / browser_tests.
+
+We stopped running PNaCl scons nacl_integration, so these
+tests were no longer being run.  Port so that they run.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=3364
+
+Review URL: https://chromiumcodereview.appspot.com/14212004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-04-24T21:35:30.000Z</ns0:updated><ns0:published>2013-04-24T21:35:30.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3364#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3364/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

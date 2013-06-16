@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08FSX47eCl7ImA9WhVbFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2822/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8784
+
+------------------------------------------------------------------------
+r8784 | mcgrathr@chromium.org | Fri Jun 01 10:29:07 PDT 2012
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/testdata/x86_64/auxv_phdr.stdout?r1=8784&amp;r2=8783&amp;pathrev=8784
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/testdata/x86_32/auxv_phdr.nexe?r1=8784&amp;r2=8783&amp;pathrev=8784
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/testdata/x86_64/auxv_phdr.nexe?r1=8784&amp;r2=8783&amp;pathrev=8784
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/testdata/x86_32/auxv_phdr.stdout?r1=8784&amp;r2=8783&amp;pathrev=8784
+
+Add testdata binaries for auxv_phdr test
+
+These are the testdata files needed by the auxv_phdr test added in
+	https://chromiumcodereview.appspot.com/10449111
+They must be added separately to enable trybot runs, which cannot
+add binary files.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2822
+TEST= none
+
+R=bsy@google.com
+
+Review URL: https://chromiumcodereview.appspot.com/10453119
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-01T17:30:18.000Z</ns0:updated><ns0:published>2012-06-01T17:30:18.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2822#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2822/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIHSH47eCl7ImA9WhJWEEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2968/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I'm running Scons under Windbg.  I've set a breakpoint on SetErrorMode().
+
+Python calls spawnve() in MSVCR90 which calls CreateProcess() which calls SetErrorMode() internally.
+
+Setting the memory dump to display "esp+4" shows the first argument.  The SetErrorMode() calls are setting the flags to 0x8001 and back again to 0x3.
+
+If spawnve() is called concurrently, that may be the cause of the problem.  From issue 1201, Windows' spawnve() is known to be non-thread-safe, but we are supposed to have worked around Scons' use of it by monkey-patching Python's os.spawnve() to wrap it with a lock.</ns0:content><ns0:updated>2012-08-15T22:42:19.000Z</ns0:updated><ns0:published>2012-08-15T22:42:19.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2968#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2968/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -226,8 +226,8 @@ $ tools/checklicenses/checklicenses.py --ignore-suppressions native_client/ | gr
 'native_client/tests/nullptr/nullptr.c' has non-whitelisted license 'UNKNOWN'
 'native_client/tests/threads/main_thread_pthread_exit_test.c' has non-whitelisted license 'UNKNOWN'</ns0:content><ns0:updated>2011-10-06T15:36:03.000Z</ns0:updated><ns0:published>2011-09-27T19:36:13.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
 			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>licencecheck failures</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-17</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2314/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2314" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2314" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
-			<ns2:id>2313</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>2315</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>2316</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>2317</ns2:id></ns2:blockedOn><ns2:blocking>
+			<ns2:id>2313</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2315</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2316</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2317</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blocking>
 			<ns2:id>98099</ns2:id><ns2:project>chromium</ns2:project></ns2:blocking><ns2:id>2314</ns2:id></ns0:entry>

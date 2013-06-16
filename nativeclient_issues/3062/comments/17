@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EBQX47eCl7ImA9WhNTGUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3062/comments/full/17</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=163415
+
+------------------------------------------------------------------------
+r163415 | dschuff@chromium.org | 2012-10-22T22:35:49.146034Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/DEPS?r1=163415&amp;r2=163414&amp;pathrev=163415
+
+NaCl: Update revision in DEPS, r10041 -&gt; r10059
+
+This pulls in the following Native Client changes:
+
+r10042: (robertm) Update llvm stable rev to pull in:
+r10043: (mseaborn) Clean up indentation in sel_rt_32.h
+r10044: (mseaborn) Simplify thread_capture test to add a test syscall at a higher level
+r10045: (dschuff) Update Pnacl LLVM/clang rev to pull in merge to r166222
+r10046: (dschuff) Don't run toolchain tests on mips toolchain bot
+r10047: (bradnelson) Adding a stable hashing implementation.
+r10048: (mseaborn) ARM: Clean up where we set up r9 to address a TODO
+r10049: (robertm) Roll pnacl toolchains deps to pull in recent fixes.
+r10050: (jvoung) For the archived-frontend-test, build the IRT with the latest toolchain.
+r10051: (sbc) Remove executable bit from script that have no main function.
+r10052: (jvoung) Bump llvm and llvm_testsuite revs, updated expected passes.
+r10053: (kschimpf) Fix simd_dp_2misc table (NEON) for arm.
+r10054: (jvoung) Move pnacl_component_crx_gen to the chrome repo (remove from nacl).
+r10055: (sbc) Fix cygtar on win32 so it doesn't make archives containing 
+r10056: (kschimpf) Fix table simd_dp_1imm (NEON) and add table
+r10057: (mseaborn) Fix some PNaCl toolchain tests to build with -Wundef
+r10058: (dschuff) Update LLVM rev to pull in f31db0f
+r10059: (jfb) Add a test that all SVC encodings fail.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3062
+TEST=nacl_integration
+
+Review URL: https://chromiumcodereview.appspot.com/11226035
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-22T22:40:50.000Z</ns0:updated><ns0:published>2012-10-22T22:40:50.000Z</ns0:published><ns2:updates /><ns0:title>Comment 17 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3062#c17" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3062/comments/full/17" rel="self" type="application/atom+xml" /></ns0:entry>

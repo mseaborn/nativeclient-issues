@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUACQH47eCl7ImA9WhBXGU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3355/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11121
+
+------------------------------------------------------------------------
+r11121 | bsy@google.com | 2013-04-02T20:10:03.975138Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/nacl_host_desc.h?r1=11121&amp;r2=11120&amp;pathrev=11121
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_io.c?r1=11121&amp;r2=11120&amp;pathrev=11121
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/nacl_host_desc_mmap_test.c?r1=11121&amp;r2=11120&amp;pathrev=11121
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=11121&amp;r2=11120&amp;pathrev=11121
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_text.c?r1=11121&amp;r2=11120&amp;pathrev=11121
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_resource.c?r1=11121&amp;r2=11120&amp;pathrev=11121
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_text.h?r1=11121&amp;r2=11120&amp;pathrev=11121
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/nacl_desc_wrapper.cc?r1=11121&amp;r2=11120&amp;pathrev=11121
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=11121&amp;r2=11120&amp;pathrev=11121
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/win/nacl_host_desc_types.h?r1=11121&amp;r2=11120&amp;pathrev=11121
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/mmap_unittest.cc?r1=11121&amp;r2=11120&amp;pathrev=11121
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/build.scons?r1=11121&amp;r2=11120&amp;pathrev=11121
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/posix/nacl_host_desc_types.h?r1=11121&amp;r2=11120&amp;pathrev=11121
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/win/nacl_host_desc.c?r1=11121&amp;r2=11120&amp;pathrev=11121
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/python_bindings/python_imc.c?r1=11121&amp;r2=11120&amp;pathrev=11121
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/posix/nacl_host_desc.c?r1=11121&amp;r2=11120&amp;pathrev=11121
+
+Turned on exec at the host desc layer
+
+The syscall handler still needs work to do validation etc, and currently is stubbed out (will implement fallback to do dyncode in a separate CL).
+
+Reordered debug logging output of prot/flags to match that of argument order in map call.  Made POSIX and Windows case enforce I/O descriptor open flags semantics -- cannot write to a read-only descriptor, cannot read from a write-only descriptor, cannot map a write-only descriptor (since mmap implies read), cannot map an append-only descriptor, etc.  In the POSIX case we do not have to do enforcement per se, since the kernel should fail the operations, but it's both clearer to see parallel enforcement code, and it's nice to allow descriptors imported from the embedding environment to not necessarily be opened with the right mode (e.g., O_RDWR at the host OS level, but we can pretend that it's O_RDONLY).
+
+This passes existing tests.  This CL also adds a trusted test that executes code in memory mmapped using the host desc layer, as well as exercising and explicating the shared/private mapping semantics (and host OS differences).
+
+TEST= run_nacl_host_desc_mmap_test
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3355
+
+Review URL: https://codereview.chromium.org/13282006
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-04-02T20:16:01.000Z</ns0:updated><ns0:published>2013-04-02T20:16:01.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3355#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3355/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

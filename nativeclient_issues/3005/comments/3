@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0UMRX47eCl7ImA9WhJVEkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3005/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">Here is the data for -fasynchronous-unwind-tables:
+
+Unwinding works OK :)
+
+IRT file size increased by ~10K (fits same page, disk size not changed):
+
+$ size old_nacl_irt_x86_32.nexe.backup
+   text	   data	    bss	    dec	    hex	filename
+2322324	  11592	  31200	2365116	 2416bc
+
+$ size new_nacl_irt_x86_32.nexe
+   text	   data	    bss	    dec	    hex	filename
+2334312	  11592	  31200	2377104	 244590	
+
+Bad news is 7z-compressed file size increased by ~30K:
+
+$ ls -l old.7z new.7z 
+-rw-r----- 1 eaeltsin eng 520987 2012-08-29 20:25 old.7z
+-rw-r----- 1 eaeltsin eng 553640 2012-08-29 20:26 new.7z
+</ns0:content><ns0:updated>2012-08-29T16:54:44.000Z</ns0:updated><ns0:published>2012-08-29T16:54:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by eaelt...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3005#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3005/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

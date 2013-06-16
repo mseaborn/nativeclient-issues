@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUNQX47eCl7ImA9WhNXEk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3180</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Today, run_faulted_thread_queue_test failed on mac10.6-newlib-dbg-clang twice in a row with the following error (see http://build.chromium.org/p/client.nacl/builders/mac10.6-newlib-dbg-clang/builds/3035/steps/small_tests/logs/stdio):
+
+======================================================================
+Stdout for nacl_newlib.run_faulted_thread_queue_test:
+======================================================================
+Running TestReceivingFault...
+
+======================================================================
+Stderr for nacl_newlib.run_faulted_thread_queue_test:
+======================================================================
+[88929,2692920640:10:20:30.397777] Native Client module will be loaded at base address 0x0000000001000000
+Mismatch in register ecx
+Mismatch in register prog_ctr
+Expected register state:
+  eax=0x4030201 (67305985)
+  ecx=0x8070605 (134678021)
+  edx=0xc0b0a09 (202050057)
+  ebx=0x100f0e0d (269422093)
+  stack_ptr=0x3ffeff6c (1073676140)
+  ebp=0x18171615 (404166165)
+  esi=0x1c1b1a19 (471538201)
+  edi=0x201f1e1d (538910237)
+  prog_ctr=0x20360 (131936)
+  flags=0x44 (68)
+Actual register state:
+  eax=0x4030201 (67305985)
+  ecx=0x0 (0)
+  edx=0xc0b0a09 (202050057)
+  ebx=0x100f0e0d (269422093)
+  stack_ptr=0x3ffeff6c (1073676140)
+  ebp=0x18171615 (404166165)
+  esi=0x1c1b1a19 (471538201)
+  edi=0x201f1e1d (538910237)
+  prog_ctr=0x0 (0)
+  flags=0x10246 (66118)
+
+[  FAILED  ] nacl_newlib.run_faulted_thread_queue_test (16 ms)</ns0:content><ns0:updated>2012-11-30T01:01:30.000Z</ns0:updated><ns0:published>2012-11-29T19:31:42.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>run_faulted_thread_queue_test failing on Mac OS X with ecx/prog_ctr mismatches</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>FlakeyBots</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3180/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3180" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3180" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-11-30T01:01:30.000Z</ns2:closedDate><ns2:id>3180</ns2:id></ns0:entry>

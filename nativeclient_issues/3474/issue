@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QMQH47eCl7ImA9WhFTFUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3474</ns0:id><ns0:author>
+			<ns0:name>halya...@google.com</ns0:name><ns0:uri>/u/112856509894568708731/</ns0:uri></ns0:author><ns0:content type="html">We see perf test timeouts on Windows bots where calibration iterations are executed too quickly that leads to test choosing too many iterations and exceeding 100 second timeout as a result.
+
+Example:
+http://build.chromium.org/p/client.nacl/builders/vista-64-newlib-opt/builds/4970/steps/small_tests%20under%20IRT/logs/stdio
+
+TestThreadCreateAndJoin:
+Measuring real time:
+  0.300 usec (3e-07 sec) per iteration: 3e-05 sec for 100 iterations
+  356.471 usec (0.000356471 sec) per iteration: 118.823 sec for 333333 iterations
+  409.313 usec (0.000409313 sec) per iteration: 136.437 sec for 333333 iterations
+  414.504 usec (0.000414504 sec) per iteration: 138.168 sec for 333333 iterations
+  358.263 usec (0.000358263 sec) per iteration: 119.421 sec for 333333 iterations
+  371.423 usec (0.000371423 sec) per iteration: 123.808 sec for 333333 iterations
+  mean:   381.994798 usec
+  stddev: 25.018161 usec
+  relative stddev: 6.55%
+RESULT TestThreadCreateAndJoin: windows_x86-64_newlib_irt= {381.994798, 25.018161} microseconds
+Measuring clock cycles:
+  first runs (cycles):    532257 577674 555093 615534 557121 570303 618360 599889 582378 651468 ...
+  slowest runs (cycles):  ... 820065 821265 843669 1007091 1167786 2394975 2703075 2807376 6037695 6920180
+  min:     70 cycles
+  q1:      546387 cycles
+  median:  579603 cycles
+  q3:      651984 cycles
+  max:     6920180 cycles
+RESULT TestThreadCreateAndJoin_CycleCount: windows_x86-64_newlib_irt= {579603, 105597} cycles
+Apparent clock speed: 1517 MHz
+
+</ns0:content><ns0:updated>2013-06-06T17:56:21.000Z</ns0:updated><ns0:published>2013-06-06T17:56:03.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>perf test is flaky.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Test</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3474/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3474" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3474" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3474</ns2:id></ns0:entry>

@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUcHQX47eCl7ImA9WhJaFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2830/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9932
+
+------------------------------------------------------------------------
+r9932 | mseaborn@chromium.org | 2012-10-05T17:05:23.105433Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/common/register_set_test.c?r1=9932&amp;r2=9931&amp;pathrev=9932
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/common/nacl.scons?r1=9932&amp;r2=9931&amp;pathrev=9932
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/common/register_set.h?r1=9932&amp;r2=9931&amp;pathrev=9932
+
+Testing: Fix REGS_SAVER_FUNC() to keep the stack properly aligned
+
+We want to ensure that REGS_SAVER_FUNC() calls callee_func() with the
+stack aligned as per the architecture's ABI.
+
+For x86-64, we already do this, because I noticed before that assert()
+would fail to print a useful message if the stack wasn't aligned.
+
+For ARM, I noticed today that printf() with a "long long" argument
+would not print the argument correctly if the stack wasn't aligned
+(e.g. "0x%llx" could print 0x1234567800000000 instead of 0x12345678).
+
+I've fixed x86-32 too to be on the safe side.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2830
+TEST=run_register_set_test
+
+Review URL: https://codereview.chromium.org/11026059
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-05T17:10:30.000Z</ns0:updated><ns0:published>2012-10-05T17:10:30.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2830#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2830/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,15 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYCSH47eCl7ImA9WhBTF00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3093</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I'm splitting this out from issue 2933.
+
+Currently, the ARM validator allows untrusted code to read the value of r9 by allowing instructions such as &amp;quot;mov r0, r9&amp;quot;.  This leaks the address of NaClThreadContext, a trusted-code data structure.
+
+The validator should disallow all uses of r9 except for:
+  ldr rN, [r9]
+  ldr rN, [r9, #4]
+(where rN != r9, rN != pc, etc.)
+</ns0:content><ns0:updated>2013-02-12T22:29:29.000Z</ns0:updated><ns0:published>2012-10-17T01:47:51.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108470876877739532758/</ns2:uri><ns2:username>kschi...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/116152729282206039235/</ns2:uri><ns2:username>j...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>ARM validator: Disallow reading the value of r9</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Mstone-25</ns2:label><ns2:label>ARMABI</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3093/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3093" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3093" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>3195</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:closedDate>2013-02-12T18:02:27.000Z</ns2:closedDate><ns2:id>3093</ns2:id></ns0:entry>

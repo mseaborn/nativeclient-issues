@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8MRH47eCl7ImA9WhNWE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3200/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The rationale is:
+
+ * We would like to have parity between x86 and ARM.  Though we don't have an ARM nacl-glibc now, we should have one soon.  We don't really want to have to wait a whole release cycle to re-enable dynamic loading to make ARM nacl-glibc or ARM Mono usable.
+
+ * The risk to our users from bugs in this area is quite low.  NaCl is in an outer sandbox, inside the Web Store; ARM Chrome OS is less common than x86.  If we find a bug in this area, we can disable dyncode_create() or dyncode_modify() on the branch.  We don't know of any bugs in this area now.
+</ns0:content><ns0:updated>2012-12-12T21:48:05.000Z</ns0:updated><ns0:published>2012-12-12T21:48:05.000Z</ns0:published><ns2:updates>
+			<ns2:status>WontFix</ns2:status></ns2:updates><ns0:title>Comment 5 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3200#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3200/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08BQX47eCl7ImA9WhJSGUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2877/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9103
+
+------------------------------------------------------------------------
+r9103 | jvoung@google.com | Tue Jul 10 16:09:36 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/driver_tools.py?r1=9103&amp;r2=9102&amp;pathrev=9103
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-nativeld.py?r1=9103&amp;r2=9102&amp;pathrev=9103
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=9103&amp;r2=9102&amp;pathrev=9103
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-driver.py?r1=9103&amp;r2=9102&amp;pathrev=9103
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-ld.py?r1=9103&amp;r2=9102&amp;pathrev=9103
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-translate.py?r1=9103&amp;r2=9102&amp;pathrev=9103
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/driver_env.py?r1=9103&amp;r2=9102&amp;pathrev=9103
+
+Add a pnacl flag to allow certain private static nexes to be built
+without the IRT segment gap and with private NaCl libs to regain
+address space, avoid allocating swap, etc.
+
+Also, set up private libraries during build.sh for the translators
+and use the new --noirt flags.
+
+Requires patching llvm and gold makefiles like this:
+
+http://codereview.chromium.org/10701039/
+http://codereview.chromium.org/10696050/
+
+so that private bitcode libs are used instead of public
+ones.  I had trouble making llvm use -lpthread_private
+instead of -lpthread, so I made the --noirt bitcode linker
+flag do the rewriting underneath, which is pretty gross...
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2877
+TEST= compile sandboxed translators and use them in chrome and sel_universal
+
+Review URL: https://chromiumcodereview.appspot.com/10703013
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-10T23:10:50.000Z</ns0:updated><ns0:published>2012-07-10T23:10:50.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2877#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2877/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

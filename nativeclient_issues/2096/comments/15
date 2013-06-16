@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIASX47eCl7ImA9WhVbE08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2096/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8727
+
+------------------------------------------------------------------------
+r8727 | mseaborn@chromium.org | Tue May 29 12:38:52 PDT 2012
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/trusted_crash/crash_in_syscall/test_host.c?r1=8727&amp;r2=8726&amp;pathrev=8727 (from /trunk/src/native_client/tests/trusted_crash/win_crash_in_syscall/test_host.c revision 8726)
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=8727&amp;r2=8726&amp;pathrev=8727
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/trusted_crash/crash_in_syscall/test_guest.c?r1=8727&amp;r2=8726&amp;pathrev=8727 (from /trunk/src/native_client/tests/trusted_crash/win_crash_in_syscall/test_guest.c revision 8726)
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/trusted_crash/crash_in_syscall?r1=8727&amp;r2=8726&amp;pathrev=8727
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/trusted_crash/crash_in_syscall/nacl.scons?r1=8727&amp;r2=8726&amp;pathrev=8727 (from /trunk/src/native_client/tests/trusted_crash/win_crash_in_syscall/nacl.scons revision 8726)
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/trusted_crash/win_crash_in_syscall?r1=8727&amp;r2=8726&amp;pathrev=8727
+
+Rename "win_crash_in_syscall" -&gt; "crash_in_syscall" in tests/trusted_crash
+
+This is in preparation for extending this test to run on Linux as well
+as Windows.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2096
+TEST=run_windows_crash_in_syscall_test etc.
+
+Review URL: https://chromiumcodereview.appspot.com/10442066
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-05-29T19:42:28.000Z</ns0:updated><ns0:published>2012-05-29T19:42:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2096#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2096/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

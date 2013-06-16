@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU4NQX47eCl7ImA9WhVaFk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2841</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The Mac buildbots sometimes get into a state where every NaCl test fails with the error &amp;quot;MakeDynamicCodePageVisible: NaCl_mprotect() failed&amp;quot;.
+
+This seems to have happened since the Mac bots were switched to be on VMs instead of Mac Minis.
+
+Rebooting the machine fixes this.
+
+e.g. See http://build.chromium.org/p/client.nacl/builders/mac10.5-glibc-opt/builds/3279/steps/small_tests%20under%20IRT/logs/stdio.  This has:
+
+scons-out/opt-mac-x86-32/staging/sel_ldr -a -B scons-out/nacl_irt-x86-32/staging/irt.nexe -- /Volumes/data/b/build/slave/mac10.5-glibc-opt/build/native_client/toolchain/mac_x86/x86_64-nacl/lib32/runnable-ld.so --library-path scons-out/nacl-x86-32-glibc/lib:/Volumes/data/b/build/slave/mac10.5-glibc-opt/build/native_client/toolchain/mac_x86/x86_64-nacl/lib32 scons-out/nacl_irt_test-x86-32-glibc/obj/tests/hello_world/hello_world.nexe
+RESULT nacl_glibc.run_hello_world_test_irt: TOTAL_x86-32_nnacl_glibc_dynamic= 0.100000 secs
+
+ERROR: Command returned exit status -6 (0xfffffffa) but we expected 0 (0x0)
+======================================================================
+Stdout for nacl_glibc.run_hello_world_test_irt:
+======================================================================
+
+======================================================================
+Stderr for nacl_glibc.run_hello_world_test_irt:
+======================================================================
+DEBUG MODE ENABLED (bypass acl)
+[39679,2691053344:08:43:16.485292] BYPASSING ALL ACL CHECKS
+[39679,2691053344:08:43:16.513275] Native Client module will be loaded at base address 0x00000000017df000
+[39679,2691053344:08:43:16.521572] NaClMakePcrelThunk: got addr 0x417df000
+[39679,2691053344:08:43:16.588076] MakeDynamicCodePageVisible: NaCl_mprotect() failed
+LOG_FATAL abort exit
+
+[  FAILED  ] nacl_glibc.run_hello_world_test_irt (100 ms)
+</ns0:content><ns0:updated>2012-06-13T21:46:30.000Z</ns0:updated><ns0:published>2012-06-08T17:53:18.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Mac: out of disc space; "MakeDynamicCodePageVisible: NaCl_mprotect() failed" failures</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Mac</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2841/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2841" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2841" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2841</ns2:id></ns0:entry>

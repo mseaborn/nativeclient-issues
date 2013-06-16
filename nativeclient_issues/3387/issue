@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck8NQH47eCl7ImA9WhBWF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3387</ns0:id><ns0:author>
+			<ns0:name>olo...@google.com</ns0:name><ns0:uri>/u/113921375080395685545/</ns0:uri></ns0:author><ns0:content type="html"> Test main_thread_pthread_exit_test2 essentially checks that main thread can terminate with pthread_exit() and can be joined by other thread.
+This test hangs forever in newlib case, as void pthread_exit(void *retval) implemented as
+...
+if (__nc_initial_thread_id != basic_data) {
+...
+  } else {
+    /* This is the main thread - wait for other threads to complete. */
+    wait_for_threads();
+    exit(0);
+  }
+So it waits for other thread to terminate, but it waits for main thread to exit with pthread_join(). 
+
+ This is clearly a deadlock. Either test or newlib's implementation to be fixed.
+</ns0:content><ns0:updated>2013-04-12T12:48:11.000Z</ns0:updated><ns0:published>2013-04-12T12:48:11.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>pthread_exit() in newlib is incompatible with main_thread_pthread_exit_test2 test</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3387/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3387" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3387" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3387</ns2:id></ns0:entry>

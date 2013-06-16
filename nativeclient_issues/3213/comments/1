@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0EFRX47eCl7ImA9WhNWEUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3213/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Victor is saying this problem started after this change: https://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10391
+
+One dodgy thing that this test does is:
+
+  /* Wait for the signal to begin */
+  NaClXMutexLock(&amp;gMutex);
+  NaClXMutexUnlock(&amp;gMutex);
+
+-- This is a hacky shortcut for synchronising the startup of the threads, though it will have the opposite effect from what's intended, because the threads' startup will be serialised unnecessarily as they pass ownership of the mutex between them.  It seems unlikely this would produce the slowdown we're seeing.  However, its behaviour could have changed since we've changed the underlying mutex implementation.
+
+Another dodgy thing is this:
+
+/* Atomic compare and swap test
+   Each thread spins until gSwap == tid, and
+   then exchanges it for tid + 1
+*/
+Atomic32 gSwap = 1;
+static void CompareAndSwapTest(int32_t tid) {
+  while (CompareAndSwap(&amp;gSwap, tid, tid+1) != tid);
+}
+
+-- If the threads get scheduled in an unexpected order, this could consume a lot of CPU unnecessarily and produce a slowdown.
+</ns0:content><ns0:updated>2012-12-11T01:33:34.000Z</ns0:updated><ns0:published>2012-12-11T01:33:34.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3213#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3213/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

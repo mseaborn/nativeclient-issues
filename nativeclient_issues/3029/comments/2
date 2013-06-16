@@ -1,0 +1,34 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0EFQn47eCl7ImA9WhJUFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3029/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9715
+
+------------------------------------------------------------------------
+r9715 | mseaborn@chromium.org | 2012-09-12T17:38:43.194192Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/osx/thread_suspension.c?r1=9715&amp;r2=9714&amp;pathrev=9715
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/faulted_thread_queue/faultqueue_test_host.c?r1=9715&amp;r2=9714&amp;pathrev=9715
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/nacl.scons?r1=9715&amp;r2=9714&amp;pathrev=9715
+
+Thread suspension: Fix querying registers for a corner case on Mac OS X
+
+A thread might be suspended while executing the Mac-specific
+trusted-code routine NaClSwitchRemainingRegsViaECX.  This is
+particularly likely for a thread that is blocked because it faulted,
+since the thread will make no progress through this routine.  (We use
+this in order to test for this bug reliably.)
+
+We need to return the untrusted register state that
+NaClSwitchRemainingRegsViaECX is trying to restore rather than its
+trusted register state, so we extend
+NaClAppThreadGetSuspendedRegistersInternal() to do this.
+
+This fixes the GDB test "run_gdb_break_continue_thread_test" on Mac,
+so we can enable that test.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=3029
+TEST=run_faulted_thread_queue_test + GDB tests
+
+Review URL: https://chromiumcodereview.appspot.com/10911236
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-09-12T17:40:13.000Z</ns0:updated><ns0:published>2012-09-12T17:40:13.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3029#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3029/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

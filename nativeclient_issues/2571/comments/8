@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcNR347eCl7ImA9WhBaEkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2571/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">We can not close it as fixed because new validator still accepts these instructions. It does not confuse xrstor and lfence, but it accepts xrstor because we've tried to make our new validator as compatible-as-possible with the existing one.
+
+This means that most other bugs are still open because we've faithfully reproduced them in R-DFA. Two large exceptions are illegal instructions (we've not implemented them because it breaks dfacheckdecoder test and we decided that it's not a good idea to break valuable test just to accept illegal instructions) and %gs access (gen_dfa does not allow there and we decided not to implement complex machinery needed to support them).
+
+I'll try to go through other x86-32 validator bugs, but I expect to see them intact: the design goal was to keep them open, after all!
+
+We may decide at some point to do something with these bugs, but I don't like to touch them till M28 will reach stable channel: we have only one way to know if changes which we already introduced affect anyone or not and that's to wait for the complaints. If the changes we've introduced will not cause tons of complaints we can try to slowly start fixing other bugs.
+</ns0:content><ns0:updated>2013-05-22T20:54:56.000Z</ns0:updated><ns0:published>2013-05-22T20:54:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by k...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2571#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2571/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

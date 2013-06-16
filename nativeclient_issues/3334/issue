@@ -1,0 +1,169 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0EGQX47eCl7ImA9WhBRF0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3334</ns0:id><ns0:author>
+			<ns0:name>j...@chromium.org</ns0:name><ns0:uri>/u/109636895838879576326/</ns0:uri></ns0:author><ns0:content type="html">The current NaCl/PNaCl setup expects a cross-build on ARM machines because they've traditionally been quite slow. The Samsung Chromebook's dual-A15 is in the &amp;quot;fast-enough&amp;quot;-ish category for the type of large compile that we want to do, so it would be nice to fix the ARM build so that NaCl, PNaCl and spec testing all work locally.
+
+Here's what I did to make it work on a 3.4.0 Ubuntu kernel configure as other bots are. I based most of what I did on:
+  http://www.chromium.org/nativeclient/how-tos/how-to-use-git-svn-with-native-client
+  https://sites.google.com/a/google.com/nativeclient/testing/spec2k
+
+
+sudo apt-get install mercurial texinfo time
+cd ~
+git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+echo 'export PATH=&amp;quot;$PATH&amp;quot;:~/depot_tools' &amp;gt;&amp;gt; ~/.bashrc
+export PATH=&amp;quot;$PATH&amp;quot;:~/depot_tools
+git config --global user.name &amp;quot;xxx&amp;quot;
+git config --global user.email &amp;quot;xxx@127.0.0.1&amp;quot;
+git config --global core.autocrlf false
+git config --global core.filemode false
+gclient config https://chromium.googlesource.com/native_client/src/native_client.git --git-deps
+gclient sync -j16
+cd ~/native_client
+
+# =============================
+# Copy spec From local machine:
+rsync -az ~me/path/to/spec2k/* xxx@bot.hostname:/home/user/spec2k/
+# =============================
+
+cd ~/native_client/tests/spec2k/
+./run_all.sh CleanBenchmarks
+./run_all.sh PopulateFromSpecHarness ~/spec2k/cpu2000/
+rm -rf /home/user/spec2k/
+cd ~/native_client
+
+# Need to build toolchain. This can be cached by our infrastructure.
+./toolchain_build/toolchain_build.py # Takes ~100m.
+mkdir toolchain/linux_arm_newlib
+cd toolchain/linux_arm_newlib
+# Extract binutils_arm, gcc_arm, gcc_libs_arm, newlib_arm, from the toolchain_build/cache/object directory.
+find ../../toolchain_build/cache/object/ -name &amp;quot;*arm*&amp;quot; | xargs -n 1 tar -xzf
+cd ../..
+find ./native_client/toolchain_build/* -maxdepth 1 -type d | xargs rm -rf # Clean up 4.4GB
+
+# Build basic NaCl executables. Not strictly needed for the next steps, but I want this to work too!
+./scons platform=arm arm_hard_float=1 native_code=1 sel_ldr sel_universal irt_core -j2
+
+# Build PNaCl.
+pnacl/build.sh sync-sources
+PNACL_CONCURRENCY=2 ./pnacl/build.sh llvm      # Takes ~80m.
+PNACL_CONCURRENCY=2 ./pnacl/build.sh build-all # Takes ~22m.
+# translator-all contains the above build-all. Fix it: it wants to download things...
+# Also needs to change &amp;quot;neutral_platform&amp;quot; to &amp;quot;arm&amp;quot; (or delete platform= and let scons figure it out?).
+# Add platform/hard_float/native_code to build-validator: ./scons MODE=opt-host sysinfo=0 platform=arm arm_hard_float=1 native_code=1 arm-ncval-core
+# and change cp to opt-linux-arm.
+# Need to change scons files for this to really be fixed.
+# For the following, need to change sdk-private-libs to look in nacl-arm-pnacl-pexe-clang.
+PNACL_CONCURRENCY=2 ./pnacl/build.sh translator-all # Takes ~80m?
+cd tests/spec2k/
+./run_all.sh BuildPrerequisitesSetupBased SetupPnaclArmOpt arm_hard_float=1 # Takes ~20m?
+# This needs the extra arm_hard_float=1 and argument 2 needs to be passed from run_all.sh's BuildPrerequisitesSetupBased to BuildPrerequisites.
+./run_all.sh TimedBuildAndRunBenchmarks SetupPnaclArmOpt
+
+
+
+Here's a diff of what I changed. Not all of this is the &amp;quot;right&amp;quot; fix, since some of the scripts hard-code x86 in some places.
+
+diff --git a/pnacl/build.sh b/pnacl/build.sh
+index 20433a5..4721ffb 100755
+--- a/pnacl/build.sh
++++ b/pnacl/build.sh
+@@ -1795,9 +1795,10 @@ build-validator() {
+   spushd &amp;quot;${NACL_ROOT}&amp;quot;
+   RunWithLog ${arch}_ncval_core \
+     ./scons MODE=opt-host \
++    platform=arm arm_hard_float=1 native_code=1 \
+     sysinfo=0 \
+     ${arch}-ncval-core
+-  cp ${SCONS_OUT}/opt-linux-x86-32/obj/src/trusted/\
++  cp ${SCONS_OUT}/opt-linux-arm/obj/src/trusted/\
+ validator_${arch}/${arch}-ncval-core ${INSTALL_ROOT}/tools-x86
+   spopd
+ }
+@@ -3092,7 +3093,7 @@ sdk-headers() {
+   mkdir -p &amp;quot;${SDK_INSTALL_INCLUDE}&amp;quot;
+ 
+   local extra_flags=&amp;quot;&amp;quot;
+-  local neutral_platform=&amp;quot;x86-32&amp;quot;
++  local neutral_platform=&amp;quot;arm&amp;quot;
+   if [ ${SDK_LIBMODE} == &amp;quot;glibc&amp;quot; ]; then
+     extra_flags=&amp;quot;--nacl_glibc&amp;quot;
+   fi
+@@ -3119,7 +3120,7 @@ sdk-libs() {
+   mkdir -p &amp;quot;${SDK_INSTALL_LIB}&amp;quot;
+ 
+   local extra_flags=&amp;quot;&amp;quot;
+-  local neutral_platform=&amp;quot;x86-32&amp;quot;
++  local neutral_platform=&amp;quot;arm&amp;quot;
+   if [ ${SDK_LIBMODE} == &amp;quot;glibc&amp;quot; ]; then
+     extra_flags=&amp;quot;--nacl_glibc&amp;quot;
+   fi
+@@ -3144,7 +3145,7 @@ sdk-private-libs() {
+   StepBanner &amp;quot;SDK&amp;quot; &amp;quot;Private (non-IRT) libs&amp;quot;
+   spushd &amp;quot;${NACL_ROOT}&amp;quot;
+ 
+-  local neutral_platform=&amp;quot;x86-32&amp;quot;
++  local neutral_platform=&amp;quot;arm&amp;quot;
+   # See above TODO about pnaclsdk_mode.
+   RunWithLog &amp;quot;sdk.libs_private.bitcode&amp;quot; \
+     ./scons \
+@@ -3157,7 +3158,7 @@ sdk-private-libs() {
+     libpthread_private \
+     libnacl_dyncode_private
+ 
+-  local out_dir_prefix=&amp;quot;${SCONS_OUT}&amp;quot;/nacl-x86-32-pnacl-pexe-clang
++  local out_dir_prefix=&amp;quot;${SCONS_OUT}&amp;quot;/nacl-arm-pnacl-pexe-clang
+   local outdir=&amp;quot;${out_dir_prefix}&amp;quot;/lib
+   mkdir -p &amp;quot;${SDK_INSTALL_LIB}&amp;quot;
+   cp &amp;quot;${outdir}&amp;quot;/lib*_private.a &amp;quot;${SDK_INSTALL_LIB}&amp;quot;
+diff --git a/tests/spec2k/run_all.sh b/tests/spec2k/run_all.sh
+index d9c35e5..a9b8eaf 100755
+--- a/tests/spec2k/run_all.sh
++++ b/tests/spec2k/run_all.sh
+@@ -363,7 +363,7 @@ SetupPnaclTranslatorFastX8632Opt() {
+ #@ SetupGccArm
+ #@   use gcc cross compiler
+ SetupGccArm() {
+-  PREFIX=&amp;quot;${QEMU_TOOL}&amp;quot;
++  PREFIX=&amp;quot;&amp;quot;
+   SUFFIX=gcc.arm
+ }
+ 
+@@ -371,13 +371,13 @@ SetupGccArm() {
+ #@ SetupGccArmOpt
+ #@   use gcc cross compiler
+ SetupGccArmOpt() {
+-  PREFIX=&amp;quot;${QEMU_TOOL}&amp;quot;
++  PREFIX=&amp;quot;&amp;quot;
+   SUFFIX=gcc.opt.arm
+ }
+ 
+ 
+ SetupPnaclArmCommon() {
+-  SetupSelLdr arm &amp;quot;${QEMU_TOOL}&amp;quot; &amp;quot;-Q&amp;quot;
++  SetupSelLdr arm &amp;quot;&amp;quot; &amp;quot;-Q&amp;quot;
+ }
+ 
+ #@
+@@ -881,6 +881,7 @@ ${extra_flags}
+ BuildPrerequisitesSetupBased() {
+   local platforms=&amp;quot;&amp;quot;
+   local bitcode=&amp;quot;&amp;quot;
++  local extrabuild=&amp;quot;${2-}&amp;quot;
+   if [[ &amp;quot;$1&amp;quot; == SetupPnacl* ]] ; then
+     bitcode=&amp;quot;bitcode&amp;quot;
+   fi
+@@ -894,7 +895,7 @@ BuildPrerequisitesSetupBased() {
+     echo &amp;quot;Bad setup [$1]&amp;quot;
+     exit -1
+   fi
+-  BuildPrerequisites &amp;quot;${platforms}&amp;quot; &amp;quot;${bitcode}&amp;quot;
++  BuildPrerequisites &amp;quot;${platforms}&amp;quot; &amp;quot;${bitcode}&amp;quot; &amp;quot;${extrabuild}&amp;quot;
+ }
+ ######################################################################
+ # Main
+
+</ns0:content><ns0:updated>2013-03-08T21:53:40.000Z</ns0:updated><ns0:published>2013-03-08T21:53:40.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109636895838879576326/</ns2:uri><ns2:username>j...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>NaCl/PNaCl on ARM: fix build and run</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3334/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3334" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3334" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3334</ns2:id></ns0:entry>

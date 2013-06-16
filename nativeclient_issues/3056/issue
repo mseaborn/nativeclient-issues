@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0AARH47eCl7ImA9WhJaEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3056</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">__attribute__((constructor)) and __attribute__((destructor)) work fine with nacl-newlib on all architectures, with nacl-glibc on x86-32.
+
+But on x86-64 glibc, __attribute__((constructor)) works but __attribute__((destructor)) does not work.  The destructor functions simply don't get called.
+
+See http://codereview.chromium.org/11027013/ for a test that demonstrates this.  It produces the output:
+
+Error stdout diff found
+======================================================================
+@@ -2,6 +2,3 @@
+
+ [init_func with priority 300]
+ [init_func with default priority]
+ [in main()]
+-['fini_func with default priority']
+-['fini_func with priority 300']
+-['fini_func with priority 200']
+</ns0:content><ns0:updated>2012-10-02T20:29:05.000Z</ns0:updated><ns0:published>2012-10-02T19:50:54.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>__attribute__((destructor)) does not work with nacl-glibc on x86-64</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3056/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3056" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3056" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3056</ns2:id></ns0:entry>

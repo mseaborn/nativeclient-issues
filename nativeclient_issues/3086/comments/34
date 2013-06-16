@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEAQn47eCl7ImA9WhNRGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3086/comments/full/34</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10255
+
+------------------------------------------------------------------------
+r10255 | bradnelson@google.com | 2012-11-13T20:30:08.578148Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/download_utils.py?r1=10255&amp;r2=10254&amp;pathrev=10255
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/build/download_toolchains.py?r1=10255&amp;r2=10254&amp;pathrev=10255
+
+Preserving the download extension and downloading if tarballs missing.
+
+The download filename extension does not match in some cases, fixing.
+Changing --keep behavior to ensure that tarballs are present for the gyp
+build in the case in which they have previously been extracted,
+but the tarball lost.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3086
+TEST=None
+R=mcgrathr@chromium.org
+
+Review URL: https://codereview.chromium.org/11359189
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-11-13T20:30:43.000Z</ns0:updated><ns0:published>2012-11-13T20:30:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 34 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3086#c34" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3086/comments/full/34" rel="self" type="application/atom+xml" /></ns0:entry>

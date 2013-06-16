@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEQER347eCl7ImA9WhJaGEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3052</ns0:id><ns0:author>
+			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? pepper_canary
+What version of the runtime are you using? pepper_canary, chromium HoT
+On what operating system? Linux
+What browser are you using? Chromium
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+gPrecise
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Compile the source as per example below
+2. observe &amp;quot;stat64&amp;quot; in output
+&lt;b&gt;3.&lt;/b&gt;
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+Output should reference &amp;quot;stat&amp;quot; not &amp;quot;stat64&amp;quot;.
+
+For complex systems that require system-call wrapping, developers expect to be able to control what glibc routines are actually used, so they can wrap them properly. Here's the example:
+
+$ cat test.c
+#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;sys/stat.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+
+int foo(char *path) {
+  struct stat mystat;
+
+  if (stat(path, &amp;amp;mystat)!=0) return 0;
+  return 1;
+}
+
+$ gcc -m32 -D_FILE_OFFSET_BITS=32 -c test.c; nm test.o | fgrep stat
+         U stat
+$ x86_64-nacl-gcc -m32 -D_FILE_OFFSET_BITS=64 -c test.c; nm test.o | fgrep stat
+         U stat64
+</ns0:content><ns0:updated>2012-10-10T15:18:26.000Z</ns0:updated><ns0:published>2012-09-28T16:09:56.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Impossibility of preventing references to stat64 from source that references stat()</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3052/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3052" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3052" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-10-10T15:18:26.000Z</ns2:closedDate><ns2:id>3052</ns2:id></ns0:entry>

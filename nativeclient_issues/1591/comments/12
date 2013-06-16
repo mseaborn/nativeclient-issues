@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0IFRH47eCl7ImA9WhJaEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1591/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">I mean point.pexe when I said "big app" above, so the marking of "internal" is not a problem.
+
+I compared the --gc-sections version of the nexe coming out of point.opt.pexe, with the non-gc-sections version.  The nexe size difference is now 85KB.  Since I think llc translation is all function passes, there couldn't be much function pruning happening that late, so there couldn't have been much more left in the pexe itself.
+
+When you compare the difference in "nm" symbols list, there aren't any dead constructors/destructors, so it is not issue 1746.  There are, however, 145 out of 99000 symbols that got gc'ed.
+
+* Some of the things that are gc'ed are "exp", "cos", "log", "sqrt", "__crtbegin_dummy", and "nacl_add_tp" which we have forced to be live by being placed in @llvm.used, plus some functions transitively required by them like "__ieee754_log".
+
+* Most of the rest of the things look like visitor methods, typeinfos for visitors.  These visitors were *also* all listed in the @llvm.used array for some reason.  Did they have some attribute in the source that made that happen?</ns0:content><ns0:updated>2012-10-01T16:38:35.000Z</ns0:updated><ns0:published>2012-10-01T16:38:35.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1591#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1591/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

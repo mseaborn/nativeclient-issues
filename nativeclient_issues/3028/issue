@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkAFRH47eCl7ImA9WhBXEk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3028</ns0:id><ns0:author>
+			<ns0:name>olo...@google.com</ns0:name><ns0:uri>/u/113921375080395685545/</ns0:uri></ns0:author><ns0:content type="html"> When running hterm SSH plugin on ARM Chrome build, we hit an interesting crash. Crash is during early bootstrap, and happens in
+NaClLogDefaultLogGio() when it tries to use stderr FILE* pointer.
+stderr pointer is NULL, so everything just crashes.
+Stacktrace is (obtained by manual corefile analysis):
+ NaClLogDefaultLogGio
+ NaClLogModuleInit
+ IrtInit
+ PpapiPluginMain
+
+ Analysis of libc sources shows, that for reentrancy thread local variable (using compiler's __thread keyword) is used, and for some reason values for standard streams read from TLS are NULLs.
+
+ Interesting that nexes compiled out of the same .pexe for x86 32 and 64 bits works just fine, so it's likely genuine NaCl for ARM issue, not an application artifact.</ns0:content><ns0:updated>2013-03-25T16:58:35.000Z</ns0:updated><ns0:published>2012-09-11T16:25:29.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100592414910994572397/</ns2:uri><ns2:username>s...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Wrong __aeabi_read_tp linked into IRT (caused crash of ssh hterm plugin on ARM)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-25</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>OS-Chrome</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3028/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3028" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3028" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>159519</ns2:id><ns2:project>chromium</ns2:project></ns2:blockedOn><ns2:id>3028</ns2:id></ns0:entry>

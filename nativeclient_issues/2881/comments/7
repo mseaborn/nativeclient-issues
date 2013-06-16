@@ -1,0 +1,51 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkEMQ347eCl7ImA9WhJRF0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2881/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9180
+
+------------------------------------------------------------------------
+r9180 | mseaborn@chromium.org | 2012-07-19T14:09:05.825393Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=9180&amp;r2=9179&amp;pathrev=9180
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_tls_64.c?r1=9180&amp;r2=9179&amp;pathrev=9180
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.c?r1=9180&amp;r2=9179&amp;pathrev=9180
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.h?r1=9180&amp;r2=9179&amp;pathrev=9180
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_tls.h?r1=9180&amp;r2=9179&amp;pathrev=9180
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr_standard.c?r1=9180&amp;r2=9179&amp;pathrev=9180
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_handlers_gen.py?r1=9180&amp;r2=9179&amp;pathrev=9180
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/nacl_tls_32.c?r1=9180&amp;r2=9179&amp;pathrev=9180
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.h?r1=9180&amp;r2=9179&amp;pathrev=9180
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=9180&amp;r2=9179&amp;pathrev=9180
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_tls.c?r1=9180&amp;r2=9179&amp;pathrev=9180
+
+x86-32: Change the gs TLS segment to point into trusted address space
+
+With this change, reading "%gs:0" in untrusted code reads the user
+thread pointer from the value stored in NaClAppThread rather than from
+the value stored in untrusted address space.
+
+This will allow the gs segment to be extended in later changes
+(including using "%gs:4" for the IRT's TLS field).
+
+This also saves us from having to modify the gs segment during
+startup, saving one host OS syscall.
+
+This makes the first and second TLS fields (for user code and IRT
+code) more uniform.  We just store them as user addresses now.
+
+We remove an argument from NaClTlsAllocate() and NaClTlsChange() since
+they can read tls1 from NaClAppThread (which makes it a little easier
+to see where the tls1 field is used).
+
+NaClTlsChange() can no longer return an error, so we remove its return
+value.
+
+We still check that the first TLS field is a valid untrusted address
+in case we want to allow "ldr reg, [r9, #const]" on ARM.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2881
+TEST=run_hello_world_test run_thread_test
+
+Review URL: https://chromiumcodereview.appspot.com/10692159
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-19T17:24:42.000Z</ns0:updated><ns0:published>2012-07-19T17:24:42.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2881#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2881/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

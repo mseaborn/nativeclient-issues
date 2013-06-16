@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04HQ347eCl7ImA9WhVUGE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2765/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8694
+
+------------------------------------------------------------------------
+r8694 | robertm@google.com | Wed May 23 13:41:31 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/site_scons/site_tools/naclsdk.py?r1=8694&amp;r2=8693&amp;pathrev=8694
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/wrapper-link-and-translate.py?r1=8694&amp;r2=8693&amp;pathrev=8694
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=8694&amp;r2=8693&amp;pathrev=8694
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=8694&amp;r2=8693&amp;pathrev=8694
+
+scons support for building pnacl shared libs via bitcode
+
+The main problems addressed here is that the notion of
+bitcode and native file is not quite compatible with 
+scons' way of doing things (assuming pnacl_geneate_pexe=0).
+Currently we just build everything as native code and even the bitcode 
+link uses native code.
+
+The solution is to pretend everything is native but make
+sure that bitcode intermediate files (i.e. libraries)
+are copied to the staging directories.
+
+A wrapper scripts bridges the gap between the bitcode
+world and the native code.
+The script is similar to a driver but intentionally named differently
+as it is not a suggested way of using the toolchain.
+The script is kept simple and only meant to handle our scons usage scenarios.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2765
+TESTS= manual
+Review URL: https://chromiumcodereview.appspot.com/10386210
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-05-23T20:45:32.000Z</ns0:updated><ns0:published>2012-05-23T20:45:32.000Z</ns0:published><ns2:updates>
+			<ns2:blockedOnUpdate>-2766</ns2:blockedOnUpdate><ns2:blockedOnUpdate>-2767</ns2:blockedOnUpdate><ns2:blockedOnUpdate>-2770</ns2:blockedOnUpdate><ns2:blockedOnUpdate>nativeclient:2766</ns2:blockedOnUpdate><ns2:blockedOnUpdate>nativeclient:2767</ns2:blockedOnUpdate><ns2:blockedOnUpdate>nativeclient:2770</ns2:blockedOnUpdate></ns2:updates><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2765#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2765/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8NQH47eCl7ImA9WhVbFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2737/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8770
+
+------------------------------------------------------------------------
+r8770 | ncbray@google.com | Thu May 31 16:59:09 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/sel_memory.c?r1=8770&amp;r2=8769&amp;pathrev=8770
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_addrspace.h?r1=8770&amp;r2=8769&amp;pathrev=8770
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_memory.h?r1=8770&amp;r2=8769&amp;pathrev=8770
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/posix/sel_addrspace_posix.c?r1=8770&amp;r2=8769&amp;pathrev=8770
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/sel_addrspace_win.c?r1=8770&amp;r2=8769&amp;pathrev=8770
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/sel_addrspace_arm.c?r1=8770&amp;r2=8769&amp;pathrev=8770
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/linux/sel_memory.c?r1=8770&amp;r2=8769&amp;pathrev=8770
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/sel_addrspace_x86_32.c?r1=8770&amp;r2=8769&amp;pathrev=8770
+
+Move sandbox memory preservation from sel_memory.h to sel_addrspace.h
+
+Sandbox memory preservation has more cohesion with the address space code,
+and this change also sets us up for future refactoring.
+
+Incidental cleanups were performed in this CL, such as removing dead defines
+and making function names match established style.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2737
+TEST= compile
+
+Review URL: https://chromiumcodereview.appspot.com/10447120
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-01T00:01:31.000Z</ns0:updated><ns0:published>2012-06-01T00:01:31.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2737#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2737/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

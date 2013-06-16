@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04HSH47eCl7ImA9WhJaF0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2996</ns0:id><ns0:author>
+			<ns0:name>shcherb...@google.com</ns0:name><ns0:uri>/u/105197577636354702799/</ns0:uri></ns0:author><ns0:content type="html">
+- Where are we today? Why is this a problem?
+Currently there are golden-based tests for production validator, that reside in src/trusted/validator_x86/testdata. They rely significantly on production validator implementation details. For instance, for every input file several golden files are provided corresponding to various modes of validator/disassembler operation (including even those assuming 16-byte bundles). There is no straightforward way to run the same tests against RDFA validator, although some partially successful attempt was made (validator_ragel/unreviewed/make check-ncval).
+
+&lt;b&gt;- The proposed enhancement:&lt;/b&gt;
+Provide test format and tools allowing unified testing of either validator. For details see https://docs.google.com/a/google.com/document/d/16cUGZiAiG6DgEF8zGXe0CNJ_mRAttawrIjCPW2GxJV8/edit
+
+Only small tests that are written manually are in the scope of this enhancement. Enuminst and alike have nothing to do with it.
+
+&lt;b&gt;- Exit criteria:&lt;/b&gt;
+Existing tests converted to new format, as well as freshly added tests, are routinely run on bots for both validators. Tests in old format become redundant and are removed.
+
+&lt;b&gt;- Anticipated impact:&lt;/b&gt;
+None</ns0:content><ns0:updated>2012-10-09T12:32:19.000Z</ns0:updated><ns0:published>2012-08-27T07:46:39.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
+			<ns2:uri>/u/105197577636354702799/</ns2:uri><ns2:username>shcherb...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Introduce new format for validator tests (.tf)</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2996/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2996" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2996" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2012-10-09T12:32:19.000Z</ns2:closedDate><ns2:id>2996</ns2:id></ns0:entry>

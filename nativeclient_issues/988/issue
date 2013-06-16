@@ -6,5 +6,5 @@
 			<ns2:uri>/u/104834035110555747685/</ns2:uri><ns2:username>ile...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/100268164290167392978/</ns2:uri><ns2:username>mmorten...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/112723007196297768207/</ns2:uri><ns2:username>dsprin...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>VSX: Support structures in watch windows</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Mstone-15</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/988/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=988" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/988" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
-			<ns2:id>985</ns2:id></ns2:blockedOn><ns2:blocking>
-			<ns2:id>1008</ns2:id></ns2:blocking><ns2:closedDate>2011-08-05T18:08:44.000Z</ns2:closedDate><ns2:id>988</ns2:id></ns0:entry>
+			<ns2:id>985</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blocking>
+			<ns2:id>1008</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2011-08-05T18:08:44.000Z</ns2:closedDate><ns2:id>988</ns2:id></ns0:entry>

@@ -1,0 +1,55 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMFRn47eCl7ImA9WhVaEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2719/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=133016
+------------------------------------------------------------------------
+r133016 | mseaborn@chromium.org | 2012-04-19T18:12:52.017896Z
+
+Changed paths:
+   M /trunk/src/ppapi/native_client/src/trusted/plugin/service_runtime.cc
+   M /trunk/src/ppapi/native_client/src/trusted/plugin/service_runtime.h
+
+NaCl: Remove code that attempts to kill the NaCl loader process
+
+In a later change, I will make KillChildProcess() not work on Windows,
+because the sandboxed renderer process will not get passed the process
+handle for the NaCl loader proces, so the renderer cannot kill the
+NaCl loader process directly.
+
+So I'm removing KillChildProcess() for consistency between OSes and to
+avoid confusion.
+
+Also, I suspect KillChildProcess() does not work in other sandboxes
+anyway:
+
+ * In the Linux SUID sandbox, the renderers run in a different PID
+   namespace, but the NaCl plugin is using a PID from the main PID
+   namespace, which is wrong.
+
+ * In the Linux seccomp sandbox (debug builds only), kill() is
+   disabled.
+
+ * I think kill() is disabled in the Mac sandbox too.
+
+Furthermore, on Unix, if the NaCl loader process dies and its PID is
+recycled, we could accidentally kill the wrong process.  (Normally the
+PID cannot be recycled until the zombie process is reaped with
+waitpid(), but in Chromium the NaCl loader process is a child of the
+browser, not the renderer.  The NaCl process gets reaped automatically
+and the NaCl plugin's call to waitpid() is useless.)
+
+Calling KillChildProcess() is unnecessary because the NaCl loader
+process is supposed to exit voluntarily when it receives EOF on its
+connection to the renderer process.
+
+Removing this call also removes the risk that we do kill(0, SIGKILL)
+(if using a dummy PID of 0 later on), which would kill all processes
+in the progress group and might bring down the browser.
+
+This will let me remove KillChildProcess() from the NaCl side.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2719
+TEST=nacl_integration etc.
+
+Review URL: https://chromiumcodereview.appspot.com/10122002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-08T01:53:37.000Z</ns0:updated><ns0:published>2012-06-08T01:53:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2719#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2719/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

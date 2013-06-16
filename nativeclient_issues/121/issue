@@ -9,5 +9,5 @@ On ARM, this doesn't work in the least -- the resulting REL32 relocation
 types aren't supported in shared objects.  We need to be consistent in our 
 use of -fPIC in shared objects.</ns0:content><ns0:updated>2011-07-29T00:16:26.000Z</ns0:updated><ns0:published>2009-11-11T00:08:35.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Plugin is building with a weird mix of -fPIC and non-fPIC code</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Milestone-Caviar</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/121/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=121" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/121" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
-			<ns2:id>202</ns2:id></ns2:blockedOn><ns2:blocking>
-			<ns2:id>568</ns2:id></ns2:blocking><ns2:closedDate>2011-02-04T18:41:00.000Z</ns2:closedDate><ns2:id>121</ns2:id></ns0:entry>
+			<ns2:id>202</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blocking>
+			<ns2:id>568</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2011-02-04T18:41:00.000Z</ns2:closedDate><ns2:id>121</ns2:id></ns0:entry>

@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A08HSX47eCl7ImA9WhBTGEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3306</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">For issue 1388 we added the &amp;quot;volatile&amp;quot; qualifier to the TCB's accesses of sandbox address space.  This is necessary to prevent compiler optimisations that could be unsafe, such as:
+
+ * Reading a location twice instead of once.  This could lead to TOCTTOU bugs.
+ * Reading a value back from a location it was written to (more exotic).
+
+However, when NaCl was converted to using NaClCopyInFromUser()/NaClCopyOutToUser(), the volatile qualifiers were dropped.  These functions use memcpy(), which doesn't have volatile behaviour.
+
+If link time optimisation (LTO) is applied to service_runtime, NaClCopyInFromUser() could be inlined into a call site.  The memcpy() could be expanded out and duplicated, leading to TOCTTOU bugs.
+
+Possible solutions:
+
+ 1) Add compiler memory barriers around the memory accesses.
+
+    I'm not convinced this is enough, because the compiler is still allowed to duplicate the memory accesses, AFAIK.
+
+    (NaClCopyTakeLock()/NaClCopyDropLock() currently claim/release a mutex on Windows, and this implies a compiler memory barrier.  I recently made them no-ops on Unix in https://src.chromium.org/viewvc/native_client?view=rev&amp;amp;revision=10732.)
+
+ 2) Add our own volatile version of memcpy().
+</ns0:content><ns0:updated>2013-02-14T22:10:38.000Z</ns0:updated><ns0:published>2013-02-14T22:10:38.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109636895838879576326/</ns2:uri><ns2:username>j...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>NaClCopyInFromUser() and NaClCopyOutToUser() no longer use "volatile"</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3306/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3306" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3306" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3306</ns2:id></ns0:entry>

@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYGRX47eCl7ImA9WhNWFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3104/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10455
+
+------------------------------------------------------------------------
+r10455 | jvoung@google.com | 2012-12-13T18:24:21.998319Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-driver.py?r1=10455&amp;r2=10454&amp;pathrev=10455
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-translate.py?r1=10455&amp;r2=10454&amp;pathrev=10455
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-ld.py?r1=10455&amp;r2=10454&amp;pathrev=10455
+
+Allow setting -O level in pnacl-translate, for debugging.
+
+This sets the -O level in llc.  This is sometimes useful for debugging
+(at least helps with changing local variables, since values are re-loaded
+from the stack at -O0).
+
+Re-arrange the flags slightly so that these extra flags
+go last and override other flags like -translate-fast.
+
+Pipe through -O level to LLC when using pnacl-clang to translate directly.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3104
+
+Review URL: https://codereview.chromium.org/11308207
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-12-13T18:25:24.000Z</ns0:updated><ns0:published>2012-12-13T18:25:24.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3104#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3104/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

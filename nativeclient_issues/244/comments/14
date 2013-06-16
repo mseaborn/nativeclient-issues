@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUYARX47eCl7ImA9WhVaFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/244/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8891
+
+------------------------------------------------------------------------
+r8891 | mcgrathr@chromium.org | Mon Jun 11 16:24:24 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/data_not_executable/execute_data.c?r1=8891&amp;r2=8890&amp;pathrev=8891
+
+Use stack space rather than data space for execute_data test
+
+Using a link-time-constant .data address for a call leads to a link-time
+error with arm-nacl-gcc because the address is too far away for a direct
+branch.  This was only using .data space rather than stack for a reason
+that was fixed long ago, so just use stack instead.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=244
+TEST= trybots
+
+R=mseaborn@chromium.org
+
+Review URL: https://chromiumcodereview.appspot.com/10535114
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-11T23:25:44.000Z</ns0:updated><ns0:published>2012-06-11T23:25:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=244#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/244/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

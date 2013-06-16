@@ -7,5 +7,5 @@ should be assigned to dspringer@google.com, but he's not in the project members 
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/dmichael@google.com/</ns2:uri><ns2:username>dmichael@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/101953680983947802512/</ns2:uri><ns2:username>pol...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Convert all Pepper v1 demos/tests/applications to v2</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Apps</ns2:label><ns2:label>Milestone-Chromium-8</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/905/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=905" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/905" rel="self" type="application/atom+xml" /><ns2:stars>9</ns2:stars><ns2:blockedOn>
-			<ns2:id>901</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>904</ns2:id></ns2:blockedOn><ns2:closedDate>2010-10-07T17:11:41.000Z</ns2:closedDate><ns2:id>905</ns2:id></ns0:entry>
+			<ns2:id>901</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>904</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:closedDate>2010-10-07T17:11:41.000Z</ns2:closedDate><ns2:id>905</ns2:id></ns0:entry>

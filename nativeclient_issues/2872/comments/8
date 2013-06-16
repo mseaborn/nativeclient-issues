@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUADR347eCl7ImA9WhJQEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2872/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>dsch...@google.com</ns0:name><ns0:uri>/u/104270846665912603141/</ns0:uri></ns0:author><ns0:content type="html">AFAICS none of the various binaries in the toolchain package are still not dynamically linked, e.g.:
+
+ds@ds:~/newgit/native_client (master)$ ldd toolchain/pnacl_linux_x86_64/pkg/llvm/bin/clang
+        linux-vdso.so.1 =&gt;  (0x00007fff78dff000)
+        libpthread.so.0 =&gt; /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f4370483000)
+        libdl.so.2 =&gt; /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f437027e000)
+        libstdc++.so.6 =&gt; /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f436ff7e000)
+        libm.so.6 =&gt; /lib/x86_64-linux-gnu/libm.so.6 (0x00007f436fc84000)
+        libgcc_s.so.1 =&gt; /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f436fa6d000)
+        libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007f436f6b0000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f43706ca000)
+
+ds@ds:~/newgit/native_client (master)$ ldd toolchain/pnacl_linux_x86_64/pkg/binutils/arm-pc-nacl/bin/ld.gold 
+        linux-vdso.so.1 =&gt;  (0x00007fff0b3ff000)
+        libdl.so.2 =&gt; /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f1408289000)
+        libz.so.1 =&gt; /lib/x86_64-linux-gnu/libz.so.1 (0x00007f1408072000)
+        libstdc++.so.6 =&gt; /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f1407d71000)
+        libm.so.6 =&gt; /lib/x86_64-linux-gnu/libm.so.6 (0x00007f1407a77000)
+        libgcc_s.so.1 =&gt; /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f1407861000)
+        libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007f14074a3000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f14084b7000)
+
+also, what is the difference between
+toolchain/pnacl_linux_x86_64/pkg/binutils/arm-pc-nacl/bin/*
+and toolchain/pnacl_linux_x86_64/pkg/binutils/bin/arm-pc-nacl-* ?
+</ns0:content><ns0:updated>2012-07-23T23:56:16.000Z</ns0:updated><ns0:published>2012-07-23T23:56:16.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by dsch...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2872#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2872/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

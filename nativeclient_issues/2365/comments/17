@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEEBQH47eCl7ImA9WhJTE08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2365/comments/full/17</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9008
+
+------------------------------------------------------------------------
+r9008 | jvoung@google.com | Thu Jun 21 17:51:40 PDT 2012
+
+Changed paths:
+ D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/pnacl_packaging/autoupdate-ascii-pnacl.config?r1=9008&amp;r2=9007&amp;pathrev=9008
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/pnacl_packaging/pnacl_component_crx_gen.py?r1=9008&amp;r2=9007&amp;pathrev=9008
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/pnacl_packaging/autoupdate-ascii-chrome-component-portable-nacl.config?r1=9008&amp;r2=9007&amp;pathrev=9008 (from /trunk/src/native_client/pnacl/pnacl_packaging/autoupdate-ascii-pnacl.config revision 9001)
+
+Be sure to exclude glibc bits in pnacl packager, instead of copying lib-*.
+Previously, we just copied all files in the native lib directory,
+and I manually deleted the files before doing a webstore push for
+dogfoodish-testing...
+
+We may also want to better separate out the glibc bits from the *SDK*,
+but we'd need to be careful about not breaking any tests we're running,
+so that would be a separate CL.
+
+Also rename the local copy of the omaha config to match the one in omaha.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2365
+TEST= trybots still work
+
+Review URL: https://chromiumcodereview.appspot.com/10626006
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-22T00:57:31.000Z</ns0:updated><ns0:published>2012-06-22T00:57:31.000Z</ns0:published><ns2:updates /><ns0:title>Comment 17 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2365#c17" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2365/comments/full/17" rel="self" type="application/atom+xml" /></ns0:entry>

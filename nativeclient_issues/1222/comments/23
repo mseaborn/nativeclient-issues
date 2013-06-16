@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEEFSX47eCl7ImA9WhJaGE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1222/comments/full/23</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9965
+
+------------------------------------------------------------------------
+r9965 | jvoung@google.com | 2012-10-09T23:46:15.673378Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/nacl_perf_expectations/nacl_perf_expectations.json?r1=9965&amp;r2=9964&amp;pathrev=9965
+
+Add nacl_perf_expectations for pnacl translator sizes.
+Try to red bot by using a really old rev to see if we
+trigger a regression.  In the next CL, I will use the
+current rev to green the bot (if the regressions really work).
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3080
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1222
+
+Review URL: https://codereview.chromium.org/11090035
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-09T23:50:18.000Z</ns0:updated><ns0:published>2012-10-09T23:50:18.000Z</ns0:published><ns2:updates /><ns0:title>Comment 23 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1222#c23" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1222/comments/full/23" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0MCRX47eCl7ImA9WhNWE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3054/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10448
+
+------------------------------------------------------------------------
+r10448 | mseaborn@chromium.org | 2012-12-12T20:49:01.516806Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/unittests/shared/srpc/nacl.scons?r1=10448&amp;r2=10447&amp;pathrev=10448
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/egyptian_cotton/nacl.scons?r1=10448&amp;r2=10447&amp;pathrev=10448
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/threads/nacl.scons?r1=10448&amp;r2=10447&amp;pathrev=10448
+
+Revert r9897: Increase verbosity for threading tests that fail with exit status -1 on Windows
+
+We now know what was causing the -1 exit status (later an 0xff exit
+status), and the cause has been fixed, so there is no need for the
+extra verbosity.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3054
+TEST=trybots
+
+Review URL: https://codereview.chromium.org/11558023
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-12-12T20:51:04.000Z</ns0:updated><ns0:published>2012-12-12T20:51:04.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3054#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3054/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,58 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUAMSX47eCl7ImA9WhBQEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3336/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mark@chromium.org</ns0:name><ns0:uri>/u/mark@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I&#8217;ll just grab the stack from ReportCrash. Here it is:
+
+Process:         mach_crash_forwarding_test [94235]
+Path:            /chrome/*/mach_crash_forwarding_test
+Identifier:      mach_crash_forwarding_test
+Version:         ???
+Code Type:       X86-64 (Native)
+Parent Process:  Python [94233]
+User ID:         502
+
+Date/Time:       2013-03-12 18:30:03.251 -0400
+OS Version:      Mac OS X 10.8.2 (12C3006)
+Report Version:  10
+
+Crashed Thread:  3
+
+Exception Type:  EXC_CRASH (SIGABRT)
+Exception Codes: 0x0000000000000000, 0x0000000000000000
+
+Application Specific Information:
+abort() called
+[&#8230;]
+Thread 3 Crashed:
+0   libsystem_kernel.dylib              0x00007fff8d9b6212 __pthread_kill + 10
+1   libsystem_c.dylib                   0x00007fff8b0c2af4 pthread_kill + 90
+2   libsystem_c.dylib                   0x00007fff8b106dce abort + 143
+3   mach_crash_forwarding_test          0x0000000106a89f29 NaClAbort + 9
+4   mach_crash_forwarding_test          0x0000000106a8d8ab NaClLogUnlock + 139 (nacl_log.c:357)
+5   mach_crash_forwarding_test          0x0000000106a8e33a NaClLog + 394 (nacl_log.c:675)
+6   mach_crash_forwarding_test          0x0000000106a8e99a NaClXMutexUnlock + 74 (nacl_sync_checked.c:48)
+7   mach_crash_forwarding_test          0x0000000106a38c9d NaClAppThreadTeardown + 509 (nacl_app_thread.c:139)
+8   mach_crash_forwarding_test          0x0000000106a3d1b9 NaClSysExit + 105 (nacl_syscall_common.c:365)
+9   mach_crash_forwarding_test          0x0000000106a43d17 NaClSysExitDecoder + 103 (nacl_syscall_handlers.c:569)
+10  mach_crash_forwarding_test          0x0000000106a45999 NaClSyscallCSegHook + 345 (nacl_syscall_hook.c:151)
+11  mach_crash_forwarding_test          0x0000000106a5277d NaClSyscallSegRegsSaved + 15
+
+Thread 3 crashed with X86 Thread State (64-bit):
+  rax: 0x0000000000000000  rbx: 0x0000000000000006  rcx: 0x0000000106d28b18  rdx: 0x0000000000000000
+  rdi: 0x0000000000001703  rsi: 0x0000000000000006  rbp: 0x0000000106d28b40  rsp: 0x0000000106d28b18
+   r8: 0x00007fff76214278   r9: 0x0000000106d28b10  r10: 0x0000000020000000  r11: 0x0000000000000206
+  r12: 0x00000000fffeffec  r13: 0x00000000fffefff0  r14: 0x0000000106d29000  r15: 0x0000000c00000000
+  rip: 0x00007fff8d9b6212  rfl: 0x0000000000000206  cr2: 0x00007fff7620dfe8
+Logical CPU: 0
+[&#8230;]
+
+nacl_app_thread.c:
+
+136    NaClLog(3, " unlocking thread\n");
+137    NaClXMutexUnlock(&amp;natp-&gt;mu);
+138    NaClLog(3, " unlocking thread table\n");
+139    NaClXMutexUnlock(&amp;nap-&gt;threads_mu);
+140    NaClLog(3, " unregistering signal stack\n");
+141    NaClSignalStackUnregister();
+142    NaClLog(3, " freeing thread object\n");
+
+That&#8217;s weird. threads_mu shouldn&#8217;t be uninitialized at this point (and in fact will have been used previously). Maybe it&#8217;s getting trashed.</ns0:content><ns0:updated>2013-03-12T22:36:28.000Z</ns0:updated><ns0:published>2013-03-12T22:36:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mark@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3336#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3336/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

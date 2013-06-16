@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE8GRX47eCl7ImA9WhVREUQ.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMFQ347eCl7ImA9WhVaEU8.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2668</ns0:id><ns0:author>
 			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">Looking at my try results I saw this flake:
 http://build.chromium.org/p/tryserver.nacl/builders/nacl-mac10.6-newlib-dbg-clang/builds/336/steps/chrome_browser_tests%20without%20IRT/logs/stdio#failure1
@@ -46,7 +46,7 @@ ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
 
 
 scons: *** [scons-out/nacl-x86-32/test_results/ppapi_example_audio_test.out] Error 255
-</ns0:content><ns0:updated>2012-03-19T22:40:24.000Z</ns0:updated><ns0:published>2012-03-18T20:58:11.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+</ns0:content><ns0:updated>2012-06-08T01:53:32.000Z</ns0:updated><ns0:published>2012-03-18T20:58:11.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
 			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Flaky audio test on Mac 10.5, 10.6, newlib and glibc</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-19</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2668/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2668" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2668" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>2668</ns2:id></ns0:entry>

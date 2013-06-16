@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A04HRX47eCl7ImA9WhNXGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3206/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10415
+
+------------------------------------------------------------------------
+r10415 | mseaborn@chromium.org | 2012-12-08T01:20:50.404126Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.c?r1=10415&amp;r2=10414&amp;pathrev=10415
+
+Debug stub: Fix assertion failure by fixing thread teardown ordering
+
+This fixes a CHECK() failure in the debug stub's TrackThread()
+function (the thread_create_hook), which checks that the thread ID
+natp-&gt;thread_num is not currently in use in the debug stub's mapping.
+
+thread_exit_hook must be called to remove the ID from the debug stub's
+mapping before service_runtime deallocates the ID, otherwise
+service_runtime could reuse the ID while the debug stub still has a
+reference to it.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3206
+TEST=none
+
+Review URL: https://codereview.chromium.org/11471038
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-12-08T01:25:34.000Z</ns0:updated><ns0:published>2012-12-08T01:25:34.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3206#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3206/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

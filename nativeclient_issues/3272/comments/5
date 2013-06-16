@@ -1,0 +1,131 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0MBRH47eCl7ImA9WhNaFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3272/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>halya...@google.com</ns0:name><ns0:uri>/u/112856509894568708731/</ns0:uri></ns0:author><ns0:content type="html">(gdb) nacl-manifest ./glibc/Debug/hello_world.nmf
+(gdb) nacl-irt ./nacl_irt_x86_64.nexe
+Reading symbols from .../nacl_irt_x86_64.nexe...(no debugging symbols found)...done.
+(gdb) target remote :4014
+Remote debugging using :4014
+0x000000000fa00200 in _start ()
+(gdb) break base::internal::LockImpl::LockImpl
+Breakpoint 1 at 0xfc94680 (2 locations)
+(gdb) c
+Continuing.
+warning: Could not load shared library symbols for runnable-ld.so.
+Do you need "set solib-search-path" or "set sysroot"?
+
+Breakpoint 1, 0x000000000fc94680 in base::internal::LockImpl::LockImpl() ()
+(gdb) bt
+#0  0x000000000fc94680 in base::internal::LockImpl::LockImpl() ()
+#1  0x00000000fffef6e0 in ?? ()
+#2  0x00000000fffef6a0 in ?? ()
+#3  0x00000000fefe1a80 in ?? ()
+#4  0x00000000fffefaa4 in ?? ()
+#5  0x000000003ef243c8 in scoped_refptr&lt;base::WaitableEvent::WaitableEventKernel&gt;::operator-&gt;() const::__PRETTY_FUNCTION__ ()
+#6  0x00000000fffefaa4 in ?? ()
+#7  0x00000000feff04d8 in ?? ()
+#8  0x0000000000000002 in ?? ()
+#9  0x0000000000000001 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x00000000fffef6b4 in ?? ()
+#12 0x000000000fc382a0 in base::AtExitManager::ProcessCallbacksNow() ()
+#13 0x000000000fa06f60 in pthread_getspecific ()
+#14 0x000000000fca78a0 in ?? ()
+#15 0x00000000fffefdc0 in ?? ()
+#16 0x00000000fffefaa0 in ?? ()
+#17 0x0000000000000001 in ?? ()
+#18 0x000000000fca4ec0 in base::SimpleThread::Join() ()
+#19 0x00000000fffefc2c in ?? ()
+#20 0x0000000010061610 in ?? ()
+#21 0x00000000000349a0 in openaux (a=&lt;optimized out&gt;) at dl-deps.c:65
+#22 0x0000000000035a60 in _dl_catch_error (objname=&lt;optimized out&gt;, errstring=&lt;optimized out&gt;, mallocedp=&lt;optimized out&gt;, operate=&lt;optimized out&gt;, args=&lt;optimized out&gt;) at dl-error.c:178
+#23 0x00000000fefe0640 in ?? ()
+#24 0x00000000fefe0448 in ?? ()
+#25 0x00000000fefe0640 in ?? ()
+#26 0x0000000000000000 in ?? ()
+(gdb) c
+Continuing.
+[New Thread 2]
+[Switching to Thread 2]
+
+Breakpoint 1, 0x000000000fc94680 in base::internal::LockImpl::LockImpl() ()
+(gdb) bt
+#0  0x000000000fc94680 in base::internal::LockImpl::LockImpl() ()
+#1  0x00000000fef7f970 in ?? ()
+#2  0x00000000fef7f930 in ?? ()
+#3  0x0000000000000000 in ?? ()
+(gdb) c
+Continuing.
+
+Breakpoint 1, 0x000000000fc94680 in base::internal::LockImpl::LockImpl() ()
+(gdb) bt
+#0  0x000000000fc94680 in base::internal::LockImpl::LockImpl() ()
+#1  0x00000000fef7edd0 in ?? ()
+#2  0x00000000fef7ed90 in ?? ()
+#3  0x0000000000000000 in ?? ()
+(gdb) c
+Continuing.
+[Switching to Thread 1]
+
+Breakpoint 1, 0x000000000fc94680 in base::internal::LockImpl::LockImpl() ()
+(gdb) bt
+#0  0x000000000fc94680 in base::internal::LockImpl::LockImpl() ()
+#1  0x00000000fffef730 in ?? ()
+#2  0x00000000fffef6f0 in ?? ()
+#3  0x00000000fefe6dc0 in ?? ()
+#4  0x00000000fefe1274 in ?? ()
+#5  0x000000003ef243c8 in scoped_refptr&lt;base::WaitableEvent::WaitableEventKernel&gt;::operator-&gt;() const::__PRETTY_FUNCTION__ ()
+#6  0x00000000fefe1274 in ?? ()
+#7  0x00000000feff04d8 in ?? ()
+#8  0x0000000000000002 in ?? ()
+#9  0x0000000000000001 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x00000000fffef704 in ?? ()
+#12 0x00000000fffef8a0 in ?? ()
+#13 0x0000000000010acc in ?? ()
+#14 0x000000000fa072c0 in pthread_setspecific ()
+#15 0x000000000fc948a0 in base::internal::LockImpl::LockImpl() ()
+#16 0x000000000fa2b860 in PpapiPluginMain ()
+#17 0x0000000001000d00 in PpapiPluginStart (funcs=0x11001508 &lt;ppapi_app_start_callbacks&gt;)
+    at /mnt/data/b/build/slave/linux-sdk-multirel/build/src/ppapi/native_client/src/untrusted/irt_stub/ppapi_plugin_start.c:69
+#18 0x00000000010e07a0 in __libc_start_main (main=&lt;optimized out&gt;, argc=&lt;optimized out&gt;, ubp_av=&lt;optimized out&gt;, init=&lt;optimized out&gt;, fini=&lt;optimized out&gt;, rtld_fini=&lt;optimized out&gt;, 
+    stack_end=0xfffeff40) at libc-start.c:227
+#19 0x00000000010005c0 in _start (info=&lt;optimized out&gt;) at ../sysdeps/nacl/start.c:39
+#20 0x0000000000021100 in _dl_start (arg=&lt;optimized out&gt;) at rtld.c:578
+(gdb) c
+Continuing.
+[Switching to Thread 2]
+
+Breakpoint 1, 0x000000000fc94680 in base::internal::LockImpl::LockImpl() ()
+(gdb) bt
+#0  0x000000000fc94680 in base::internal::LockImpl::LockImpl() ()
+#1  0x00000000fef7f970 in ?? ()
+#2  0x00000000fef7f930 in ?? ()
+#3  0x0000000000000000 in ?? ()
+(gdb) c
+Continuing.
+
+Breakpoint 1, 0x000000000fc94680 in base::internal::LockImpl::LockImpl() ()
+(gdb) bt
+#0  0x000000000fc94680 in base::internal::LockImpl::LockImpl() ()
+#1  0x00000000fef7edd0 in ?? ()
+#2  0x00000000fef7ed90 in ?? ()
+#3  0x0000000000010acc in ?? ()
+#4  0x00000000fefeafcc in ?? ()
+#5  0x000000003ef243c8 in scoped_refptr&lt;base::WaitableEvent::WaitableEventKernel&gt;::operator-&gt;() const::__PRETTY_FUNCTION__ ()
+#6  0x00000000fefeafcc in ?? ()
+#7  0x00000000fefe2098 in ?? ()
+#8  0x0000000000000002 in ?? ()
+#9  0x0000000000000001 in ?? ()
+#10 0x0000000000000001 in ?? ()
+#11 0x00000000fef7eda4 in ?? ()
+#12 0x0000000000000001 in ?? ()
+#13 0x0000000000010acc in ?? ()
+#14 0x000000000fa072c0 in pthread_setspecific ()
+#15 0x000000000fc948a0 in base::internal::LockImpl::LockImpl() ()
+#16 0x0000000000000000 in ?? ()
+(gdb) info break
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   &lt;MULTIPLE&gt;         
+        breakpoint already hit 6 times
+1.1                         y     0x000000000fc94680 &lt;base::internal::LockImpl::LockImpl()&gt;
+1.2                         y     0x000000000fc94980 &lt;base::internal::LockImpl::LockImpl()&gt;</ns0:content><ns0:updated>2013-01-29T09:24:15.000Z</ns0:updated><ns0:published>2013-01-29T09:24:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by halya...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3272#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3272/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

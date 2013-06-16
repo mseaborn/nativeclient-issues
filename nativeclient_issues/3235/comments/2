@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQMRX47eCl7ImA9WhBTEUU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3235/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Happens on main chrome mac bots too:
+
+Note: Google Test filter = NaClBrowserTestPnacl.SimpleLoad
+[==========] Running 1 test from 1 test case.
+[----------] Global test environment set-up.
+[----------] 1 test from NaClBrowserTestPnacl, where TypeParam = 
+[ RUN      ] NaClBrowserTestPnacl.SimpleLoad
+/Volumes/data/b/build/third_party/zope/__init__.py:19: UserWarning: Module twisted was already imported from /Volumes/data/b/build/third_party/twisted_10_2/twisted/__init__.pyc, but /System/Library/Frameworks/Python.framework/Versions/2.6/Extras/lib/python is being added to sys.path
+  import pkg_resources
+/Volumes/data/b/build/third_party/zope/__init__.py:19: UserWarning: Module zope was already imported from /Volumes/data/b/build/third_party/zope/__init__.pyc, but /System/Library/Frameworks/Python.framework/Versions/2.6/Extras/lib/python is being added to sys.path
+  import pkg_resources
+HTTP server started on 127.0.0.1:52211...
+sending server_data: {"host": "127.0.0.1", "port": 52211} (36 bytes)
+[2337,2962395136:20:53:47.825979] Native Client module will be loaded at base address 0x000000002428b000
+[2337,2685396288:20:53:50.889248] NaCl untrusted code called _exit(0x0)
+[2321:35075:0205/205350:618101399373:INFO:nacl_process_host.cc(201)] NaCl process exited with status 0 (0x0)
+[2327,2971426816:20:53:50.915696] SelLdrLauncherBase::RetrieveSockAddr: RecvMsg() returned -5
+[2327,2971426816:20:53:50.915758] SelLdrLauncherBase::SetupCommand: getting sel_ldr socket address failed
+[SRPC:HOST:2327,2971426816:20:53:50.915767] NaClSrpcInvokeBySignature(channel=0x336450):missing signature [log:is:]
+[2327,2971426816:20:53:50.915777] scheduling to get crash log
+[2327,2971426816:20:53:50.915783] should fire soon
+[2321:263:0205/205350:618123956400:INFO:CONSOLE(0)] "NativeClient: NaCl module load failed: PnaclCoordinator: Link process could not be created: ServiceRuntime: command channel creation failed", source: http://127.0.0.1:52211/files/nacl_load_test.html (0)
+[2321:263:0205/205350:618124450504:INFO:nacl_browsertest_util.cc(75)] LOG Load error: NaCl module load failed: PnaclCoordinator: Link process could not be created: ServiceRuntime: command channel creation failed
+[2321:263:0205/205350:618124703023:INFO:nacl_browsertest_util.cc(75)] SHUTDOWN 1 test failed.
+../../chrome/test/nacl/nacl_browsertest_util.cc:227: Failure
+Value of: handler.test_passed()
+  Actual: false
+Expected: true
+Test failed.
+[2321:35075:0205/205351:618211563891:INFO:nacl_process_host.cc(201)] NaCl process exited with status 0 (0x0)
+[2321:35075:0205/205351:618211671997:WARNING:file_descriptor_set_posix.cc(22)] FileDescriptorSet destroyed with unconsumed descriptors
+[  FAILED  ] NaClBrowserTestPnacl.SimpleLoad, where TypeParam =  and GetParam() =  (5666 ms)
+[----------] 1 test from NaClBrowserTestPnacl (5666 ms total)</ns0:content><ns0:updated>2013-02-06T20:43:04.000Z</ns0:updated><ns0:published>2013-02-06T20:43:04.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3235#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3235/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

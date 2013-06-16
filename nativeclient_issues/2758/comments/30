@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0MMRH47eCl7ImA9WhJTGEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/30</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9053
+
+------------------------------------------------------------------------
+r9053 | eaeltsin@google.com | Thu Jun 28 05:09:17 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/thread_suspension_common.c?r1=9053&amp;r2=9052&amp;pathrev=9053
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/posix/thread_impl.cc?r1=9053&amp;r2=9052&amp;pathrev=9053
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/thread_suspension.h?r1=9053&amp;r2=9052&amp;pathrev=9053
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/win/thread_impl.cc?r1=9053&amp;r2=9052&amp;pathrev=9053
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/port/thread.h?r1=9053&amp;r2=9052&amp;pathrev=9053
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/thread_common.cc?r1=9053&amp;r2=9052&amp;pathrev=9053
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=9053&amp;r2=9052&amp;pathrev=9053
+
+Debug stub: use service runtime interfaces for thread suspension
+
+Work around circular deps between debug_stub and sel by specifying sel twice.
+
+ATTENTION: this change temporarily removes the ability to set the registers on suspended threads on Windows (it never worked on platforms other than Windows). The feature will be back when supported in service_runtime.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2758
+TEST=run_debug_stub_test
+
+Review URL: https://chromiumcodereview.appspot.com/10578044
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-28T12:11:25.000Z</ns0:updated><ns0:published>2012-06-28T12:11:25.000Z</ns0:published><ns2:updates /><ns0:title>Comment 30 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2758#c30" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2758/comments/full/30" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,41 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AGRn47eCl7ImA9WhBTEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2786</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Big reproducer (TODO supply smaller one):
+
+
+######################################################################
+Translating dosbox-0.74/dosbox-0.74-build/src/dosbox
+######################################################################
+
+translating pexe [arm]
+pnacl-translate -arch arm dosbox.pexe -o dosbox-0.74-build/src/dosbox.arm.nexe
+
+
+While deleting: metadata %
+An asserting value handle still pointed to this value!
+UNREACHABLE executed at /mnt/data/b/build/slave/linux-pnacl-x86_64/build/native_client/pnacl/src/upstream/llvm/lib/VMCore/Value.cpp:613!
+0  llc             0x0000000000da761f
+1  llc             0x0000000000da9892
+2  libpthread.so.0 0x00002af99b0a28f0
+3  libc.so.6       0x00002af99bc97a75 gsignal + 53
+4  libc.so.6       0x00002af99bc9b5c0 abort + 384
+5  llc             0x0000000000d92352 llvm::llvm_unreachable_internal(char const*, char const*, unsigned int) + 354
+6  llc             0x0000000000d57e0a llvm::ValueHandleBase::ValueIsDeleted(llvm::Value*) + 2490
+7  llc             0x0000000000d58bc5 llvm::Value::~Value() + 597
+8  llc             0x0000000000d32aef llvm::MDNode::destroy() + 15
+9  llc             0x0000000000d2cadd llvm::LLVMContextImpl::~LLVMContextImpl() + 2317
+10 llc             0x0000000000d2b941 llvm::LLVMContext::~LLVMContext() + 17
+11 llc             0x0000000000d2c0ae
+12 llc             0x0000000000d9602d llvm::ManagedStaticBase::destroy() const + 45
+13 llc             0x0000000000d96095 llvm::llvm_shutdown() + 21
+14 llc             0x00000000004f36c8 llc_main(int, char**) + 2472
+15 libc.so.6       0x00002af99bc82c4d __libc_start_main + 253
+16 llc             0x00000000004eca49
+Stack dump:
+0.    Program arguments: /usr/local/google/home/nacl_sdk_install/pepper_19/toolchain/linux_x86_pnacl/pkg/llvm/bin/llc -mcpu=cortex-a8 -mtriple=armv7a-none-nacl-gnueabi -filetype=obj -asm-verbose=false -tail-merge-threshold=50 -arm-reserve-r9 -sfi-disable-cp -arm_static_tls -sfi-load -sfi-store -sfi-stack -sfi-branch -sfi-data -no-inline-jumptables dosbox.pexe -o out/repository-pnacl/dosbox-0.74/dosbox-0.74-build/src/dosbox.arm.nexe---dosbox.stripped---.o -metadata-out /usr/local/google/home/naclports/src/out/repository-pnacl/dosbox-0.74/dosbox-0.74-build/src/dosbox.arm.nexe---dosbox.stripped---.o.meta 
+make: *** [out/sentinels/bitspnacl_newlib/examples/systems/dosbox-0.74] Error 250
+</ns0:content><ns0:updated>2013-02-05T23:08:47.000Z</ns0:updated><ns0:published>2012-05-16T17:56:30.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>pnacl -g occasionally causes asserts in llvm/lib/VMCore/Value.cpp</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Mstone-26</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2786/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2786" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2786" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blocking>
+			<ns2:id>419</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>3178</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:id>2786</ns2:id></ns0:entry>

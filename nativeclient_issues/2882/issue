@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQFR347eCl7ImA9WhJREU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2882</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">See the toolchain tester steps:
+
+http://build.chromium.org/p/client.nacl.toolchain/builders/linux-pnacl-x86_64-tests-arm/builds/326/steps/scons-sb-translator%20%5Bfast%5D%20%5Barm%5D%20%5Bsmall_tests%20medium_tests%20large_tests%5D/logs/stdio
+
+
+Assertion:
+
+
+3&amp;gt; assertion &amp;quot;!GV-&amp;gt;isDeclaration() &amp;amp;&amp;amp; !GV-&amp;gt;hasAvailableExternallyLinkage() &amp;amp;&amp;amp; &amp;quot;Can only be used for global definitions&amp;quot;&amp;quot; failed: file &amp;quot;/mnt/data/b/build/slave/linux-pnacl-x86_64/build/native_client/pnacl/src/upstream/llvm/lib/Target/TargetLoweringObjectFile.cpp&amp;quot;, line 120, function: static llvm::SectionKind llvm::TargetLoweringObjectFile::getKindForGlobal(const llvm::GlobalValue *, const llvm::TargetMachine &amp;amp;)
+
+
+For some reason, I think only the sbtc version, and only ARM blows up.
+
+For example, the non-sbtc ARM compile on the main waterfall is fine:
+
+http://build.chromium.org/p/client.nacl/builders/lucid_64-newlib-arm_qemu-pnacl-dbg/builds/2280/steps/scons%20%5Barm%5D%20%5Bsmall_tests%20medium_tests%20large_tests%5D%20%5Bno_tests%20%5D/logs/stdio
+
+and the non-sbtc ARM PIC compile on the same bot is fine:
+
+http://build.chromium.org/p/client.nacl.toolchain/builders/linux-pnacl-x86_64-tests-arm/builds/325/steps/scons-tests-pic%20%5Barm%5D/logs/stdio
+
+</ns0:content><ns0:updated>2012-07-12T15:35:16.000Z</ns0:updated><ns0:published>2012-06-28T18:22:29.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>ARM sbtc assertion compiling computed_goto test</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2882/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2882" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2882" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-07-12T15:35:16.000Z</ns2:closedDate><ns2:id>2882</ns2:id></ns0:entry>

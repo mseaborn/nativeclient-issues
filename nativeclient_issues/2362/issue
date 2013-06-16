@@ -4,5 +4,5 @@
 			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Improve validator performance</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2362/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2362" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2362" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
-			<ns2:id>1548</ns2:id></ns2:blocking><ns2:blocking>
-			<ns2:id>2098</ns2:id></ns2:blocking><ns2:id>2362</ns2:id></ns0:entry>
+			<ns2:id>1548</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>2098</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:id>2362</ns2:id></ns0:entry>

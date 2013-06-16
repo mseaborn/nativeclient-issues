@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0IER347eCl7ImA9WhBUGEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3405/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11301
+
+------------------------------------------------------------------------
+r11301 | kschimpf@google.com | 2013-05-06T21:24:02.691905Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/DEPS?r1=11301&amp;r2=11300&amp;pathrev=11301
+
+Update PNaCl LLVM REV.
+
+e8e0569 Allow pnacl-freeze/thaw to redirect to stdin/stdout.
+7b64d98 Fix build warnings/UB in LTOCodeGenerator.cpp
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3405
+R=jvoung@google.com
+
+Review URL: https://codereview.chromium.org/15013002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-05-06T21:25:06.000Z</ns0:updated><ns0:published>2013-05-06T21:25:06.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3405#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3405/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkQNQX47eCl7ImA9WhNTFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3089</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+
+pepper_canary
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+
+Windows
+
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. naclsdk.bat update pepper_canary
+2. cd pepper_canary/examples/hello_world
+3. run pnacl-clang++ on hello_world.c to generate a hello_world.pexe
+
+e.g.,
+
+c:\src\nacl_sdk\pepper_canary\examples\hello_world&amp;gt;c:\src\nacl_sdk\pepper_canary
+\toolchain\win_x86_pnacl\newlib\bin\pnacl-clang++ hello_world.c -o hello_world.p
+exe --pnacl-driver-verbose -lppapi
+
+4. dir
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Only a hello_world.pexe is left.  Instead, I see hello_world.pexe---hello_world.c---.po left.  We shouldn't be leaving junk files around.
+
+
+Perhaps the default file locking on Windows is preventing the file from being deleted.  This needs to be investigated.  If we use Windows-specific file open and delete operations we may be able to control the file locking, but we need to look into the reason first.
+
+</ns0:content><ns0:updated>2012-10-16T21:53:10.000Z</ns0:updated><ns0:published>2012-10-16T17:03:16.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:state>closed</ns2:state><ns0:title>pnacl windows drivers appear to be unable to delete scratch files</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-25</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3089/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3089" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3089" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-10-16T21:51:47.000Z</ns2:closedDate><ns2:id>3089</ns2:id></ns0:entry>

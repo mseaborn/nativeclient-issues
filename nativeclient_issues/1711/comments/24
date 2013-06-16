@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU8HQ347eCl7ImA9WhNQFE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1711/comments/full/24</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10312
+
+------------------------------------------------------------------------
+r10312 | dschuff@chromium.org | 2012-11-20T17:47:29.377729Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=10312&amp;r2=10311&amp;pathrev=10312
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/DEPS?r1=10312&amp;r2=10311&amp;pathrev=10312
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/scripts/lit_known_failures.txt?r1=10312&amp;r2=10311&amp;pathrev=10312
+
+Update LLVM DEPS to enable NEON, update known test failures
+
+This pulls in:
+d57f664 Control LSDA only on native client
+c244f85 Revert the LOCALMOD that disables the NEON feature for Cortex-A8.
+4ec1f4d Fix AddrIndex for some instructions to be more precise, following Jan's comments
+bb0a8c9 Sandboxing of VLD instructions
+
+Additionally, it updates the list of known regression test failures, and updates the VFP verification check to check for VFP3+NEON and use of hard-float ABI
+
+R=jfb@chromium.org
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=1711
+
+Review URL: https://codereview.chromium.org/11414063
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-11-20T17:50:32.000Z</ns0:updated><ns0:published>2012-11-20T17:50:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 24 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1711#c24" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1711/comments/full/24" rel="self" type="application/atom+xml" /></ns0:entry>

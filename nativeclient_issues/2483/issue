@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0ECQn47eCl7ImA9WhRQGUU.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkAEQn47eCl7ImA9WhNSEUU.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2483</ns0:id><ns0:author>
 			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">When we enable nacl inside chrome we also enable the use
 of the trusted TC (including irt builds and tests).
@@ -14,10 +14,11 @@ It might also be useful for chrome developers who otherwise would just
 disable_nacl=1 to have more fine grained control when running into nacl related build problems.
 
  
-</ns0:content><ns0:updated>2011-12-15T22:54:23.000Z</ns0:updated><ns0:published>2011-12-09T20:29:09.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+</ns0:content><ns0:updated>2012-10-25T18:11:43.000Z</ns0:updated><ns0:published>2011-12-09T20:29:09.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>controlling untrusted TC use inside of chrome build independently form the nacl_disable flag</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2483/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2483" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2483" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
-			<ns2:id>2476</ns2:id></ns2:blocking><ns2:closedDate>2011-12-15T22:54:23.000Z</ns2:closedDate><ns2:id>2483</ns2:id></ns0:entry>
+			<ns2:id>2476</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>2476</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2011-12-15T22:54:23.000Z</ns2:closedDate><ns2:id>2483</ns2:id></ns0:entry>

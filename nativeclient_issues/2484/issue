@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0YFRH47eCl7ImA9WhRQFEs.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUYFRn47eCl7ImA9WhBQEE8.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2484</ns0:id><ns0:author>
 			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;- Where are we today?&lt;/b&gt;
 
@@ -54,7 +54,9 @@ Separate but related issues:
 &lt;b&gt;- Anticipated impact:&lt;/b&gt;
 
 Better test coverage: knowledge of when the shim or compiler is buggy wrt to pepper APIs.
-</ns0:content><ns0:updated>2011-12-09T21:11:55.000Z</ns0:updated><ns0:published>2011-12-09T21:11:55.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
-			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:cc>
-			<ns2:uri>/u/110605953789916471800/</ns2:uri><ns2:username>jasonw...@google.com</ns2:username></ns2:cc><ns2:cc>
-			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>pnacl ppapi test coverage</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2484/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2484" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2484" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2484</ns2:id></ns0:entry>
+</ns0:content><ns0:updated>2013-03-11T17:31:57.000Z</ns0:updated><ns0:published>2011-12-09T21:11:55.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pnacl ppapi test coverage</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-25</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2484/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2484" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2484" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blocking>
+			<ns2:id>3230</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2013-03-11T17:31:57.000Z</ns2:closedDate><ns2:id>2484</ns2:id></ns0:entry>

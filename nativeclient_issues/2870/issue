@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0ANRX47eCl7ImA9WhFSEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2870</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Recently, run_multidomain_test failed in a Windows try job with the following error:
+
+ERROR: Command returned exit status 1001 (0x3e9) but we expected 0 (0x0)
+
+(from http://build.chromium.org/p/tryserver.nacl/builders/nacl-win64_newlib_opt/builds/1405/steps/small_tests/logs/stdio)
+
+This happens because of a race between process exit (via NaClExit()'s call to TerminateProcess()) and thread exit, which was first reported in issue 1715 (on 21st April 2011).
+
+The problem is that, on Windows, a process's exit status apparently gets set to be the status of the last thread that exited.
+
+Normally that is not a problem, because Windows' ExitProcess() terminates all other threads in the process before the calling thread itself exits.
+
+However, NaCl was changed to use TerminateProcess() to exit the process instead of ExitProcess()/_exit().  This was done in in http://src.chromium.org/viewvc/native_client?view=rev&amp;amp;revision=4767 from issue 1561 (on 5th April 2011).  TerminateProcess() seems to kill all threads in any order.  This means there is a race between any threads that might already be exiting which might set the process's exit status.
+
+A workaround was put in place for issue 1715, but it cannot work in all cases.  An exiting thread will use nap-&amp;gt;exit_status as its exit status in case the &amp;quot;exit&amp;quot; syscall is also in progress.  This still has a race condition because a thread might read nap-&amp;gt;exit_status before it is written.  Also, this workaround actually causes the failure in run_multidomain_test, because this test does not use nap-&amp;gt;exit_status as its own exit status.
+
+Based on a conversation with Justin Schuh, we might consider switching to using ExitProcess() for exiting in the normal case (that is, for NaCl's &amp;quot;exit&amp;quot; syscall), so that we get a predicatable exit status.
+
+The original reason to avoid _exit() and/or ExitProcess() (from issue 1561) was that it might invoke DLLs' teardown routines.  That would be a problem for abnormal termination, where DLLs' state might be corrupted and we want to exit as quickly as possible.  It might not be an issue for normal termination where we don't expect DLL state to be corrupted.
+</ns0:content><ns0:updated>2013-06-13T00:03:14.000Z</ns0:updated><ns0:published>2012-06-21T20:24:37.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>Windows: Race between thread exit and TerminateProcess() makes tests flaky</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>FlakeyBots</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2870/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2870" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2870" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blocking>
+			<ns2:id>3054</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:id>2870</ns2:id></ns0:entry>

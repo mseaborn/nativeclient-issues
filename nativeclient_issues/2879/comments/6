@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0EFQH47eCl7ImA9WhJWFUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2879/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Adding Mac support is complicated by a Mac kernel bug:  If untrusted code executes the INT3 instruction, the process's Mach exception handler does not receive an exception.  Other people have discovered this before, but not investigated it further.
+
+The problem is that when the fault occurs, the Mac kernel examines the instruction preceding %eip to check whether it is (still) an INT3 instruction, but it fails to take the %cs segment base into account.  (Windows has a similar problem -- see the comment in command_tester.py.)
+
+I think I've found the code responsible in the Mac kernel sources:
+
+xnu-1699.22.73/osfmk/i386/trap.c handles T_INT3.  It calls dtrace_user_probe() in xnu-1699.22.73/bsd/dev/i386/dtrace_subr_x86.c, which contains the following code:
+
+		/*
+		 * If the instruction that caused the breakpoint trap doesn't
+		 * look like an int 3 anymore, it may be that this tracepoint
+		 * was removed just after the user thread executed it. In
+		 * that case, return to user land to retry the instuction.
+		 */
+		user_addr_t pc = (regs64) ? regs64-&gt;isf.rip : (user_addr_t)regs32-&gt;eip;
+		if (fuword8(pc - 1, &amp;instr) == 0 &amp;&amp; instr != FASTTRAP_INSTR &amp;&amp; // neither single-byte INT3 (0xCC)
+			!(instr == 3 &amp;&amp; fuword8(pc - 2, &amp;instr2) == 0 &amp;&amp; instr2 == 0xCD)) { // nor two-byte INT 3 (0xCD03)
+			if (regs64) {
+				regs64-&gt;isf.rip--;
+			} else {
+				regs32-&gt;eip--;
+			}
+			return KERN_SUCCESS;
+		}
+
+My plan is to switch to using the HLT instruction for breakpoints instead of INT3.  This will involve extending the debug stub to implement the 'Z' and 'z' commands for inserting and removing breakpoints.  Then GDB will not need to know about INT3 vs. HLT.</ns0:content><ns0:updated>2012-08-21T03:26:51.000Z</ns0:updated><ns0:published>2012-08-21T03:26:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2879#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2879/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

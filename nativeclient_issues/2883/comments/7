@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4HRH47eCl7ImA9WhJRFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2883/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>nlewy...@google.com</ns0:name><ns0:uri>/u/114634225736176908130/</ns0:uri></ns0:author><ns0:content type="html">What's the plan, to pick the largest module then link the second-largest
+into it and keep going that way?
+
+Also, (2) is where the link errors are supposed to be returned...
+
+There's no reason we can't move the call to lto_codegen_add_module out of
+claim_file_hook and into all_symbols_read_hook.
+
+If instead the order was more like:
+
+Linking is an overloaded term here. Do you mean llvm::Linker (ie., merge
+Module* A into Module* B)?. I'm pretty sure that's the only thing
+lto_codegen_add_module does.
+
+(4) lto_module_dispose the known modules.
+
+What makes LinkModules slow and why is this faster? I've seen a
+presentation which said that it's cheaper to merge small modules into large
+modules, but not much beyond that. I used to know the answer (the design of
+llvm::Type required an  O(n^2) merge algorithm), but that should be fixed
+post 3.0.
+
+Conceptually I love the concept of taking an ArrayRef&lt;Module*&gt; and merging
+them all together, but what you're doing under the hood is minimizing the
+number of LinkModule calls, and it's not clear to me that's necessarily the
+most efficient thing to do. What if you really could look at all modules
+and do an n-way merge instead of n pairwise merges? What would you do then?
+
+Nick</ns0:content><ns0:updated>2012-07-19T00:48:55.000Z</ns0:updated><ns0:published>2012-07-19T00:48:55.000Z</ns0:published><ns2:updates /><ns0:title>Comment 7 by nlewy...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2883#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2883/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

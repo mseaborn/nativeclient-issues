@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUIEQH47eCl7ImA9WhJaF0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3071</ns0:id><ns0:author>
+			<ns0:name>shcherb...@google.com</ns0:name><ns0:uri>/u/105197577636354702799/</ns0:uri></ns0:author><ns0:content type="html">RDFA validator correctly marks such register as restricted.
+
+@hex:
+  # xchg %esi, (%rbp)
+  87 75 00
+  # sub (%rbp, %rsi, 1), %bl
+  2a 5c 35 00
+@rval:
+  VALIDATOR: 0000000000000003: 2a 5c 35 00                                  sub %bl, [%rbp+%rsi*1]
+  VALIDATOR: ERROR: Invalid index register in memory offset
+  VALIDATOR: Checking jump targets: 0 to 7
+  VALIDATOR: Checking that basic blocks are aligned
+  *** &amp;lt;input&amp;gt; IS UNSAFE ***
+@dis:
+  0000000000000000: 87 75 00                                     xchg [%rbp], %esi
+  0000000000000003: 2a 5c 35 00                                  sub %bl, [%rbp+%rsi*1]
+@rdfa_output:
+  return code: 0
+</ns0:content><ns0:updated>2012-10-08T16:25:01.000Z</ns0:updated><ns0:published>2012-10-04T13:39:04.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/105197577636354702799/</ns2:uri><ns2:username>shcherb...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/108470876877739532758/</ns2:uri><ns2:username>kschi...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Prod. validator: xchg 32-bit register with memory does not restrict respective register</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3071/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3071" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3071" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2012-10-08T16:25:01.000Z</ns2:closedDate><ns2:id>3071</ns2:id></ns0:entry>

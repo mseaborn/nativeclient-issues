@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04CRH47eCl7ImA9WhBTEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2932</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">To reproduce:
+
+
+objdump -p toolchain/pnacl_linux_x86_64/host/bin/llc
+
+
+Dynamic Section:
+  NEEDED               libLLVM-3.2svn.so
+  NEEDED               libpthread.so.0
+  NEEDED               libdl.so.2
+  NEEDED               libstdc++.so.6
+  NEEDED               libm.so.6
+  NEEDED               libgcc_s.so.1
+  NEEDED               libc.so.6
+  RPATH                $ORIGIN/../lib:/mnt/data/b/build/slave/linux-pnacl-x86_64/build/native_client/pnacl/build/llvm/Release+Asserts/bin
+
+</ns0:content><ns0:updated>2013-02-05T23:12:45.000Z</ns0:updated><ns0:published>2012-07-30T22:28:20.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>pnacl toolchain images contain absolute rpath's</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Mstone-25</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2932/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2932" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2932" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2932</ns2:id></ns0:entry>

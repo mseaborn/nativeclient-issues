@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEYAQX47eCl7ImA9WhBQEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3336/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mark@chromium.org</ns0:name><ns0:uri>/u/mark@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">======================================================================
+Stderr for nacl_newlib.run_mach_forward_untrusted_caught_test:
+======================================================================
+[81262,2024636800:18:34:26.688095] Native Client module will be loaded at base address 0x0000000c00000000
+[81262,243634176:18:34:26.725619] Write method is not implemented for object of type NACL_DESC_CONDVAR
+[81262,243634176:18:34:26.725789] Write method is not implemented for object of type NACL_DESC_CONDVAR
+[81262,243634176:18:34:26.725848] NaClSetThreadInfo invoked twice for the same thread
+No crashes, as intended.
+** intended_exit_status=0
+[81262,243417088:18:34:26.725980] NaClSetThreadInfo invoked twice for the same thread
+[81262,243417088:18:34:26.726017] NaClMutexUnlock returned 3
+POST-ABORT: LOG_FATAL abort exit
+
+[  FAILED  ] nacl_newlib.run_mach_forward_untrusted_caught_test (40 ms)
+
+3 is NACL_SYNC_MUTEX_INVALID, so something may be racing against a mutex init.
+
+Does logging involve any mutexes? I see that &#8220;NaClSetThreadInfo invoked twice for the same thread&#8221; hasn&#8217;t been fixed yet (https://codereview.chromium.org/12326020/). Does NaCl have a facility to dump a stack trace on LOG_FATAL?</ns0:content><ns0:updated>2013-03-12T22:09:00.000Z</ns0:updated><ns0:published>2013-03-12T22:09:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by mark@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3336#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3336/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

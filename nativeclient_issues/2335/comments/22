@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEARH47eCl7ImA9WhBUEEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2335/comments/full/22</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11240
+
+------------------------------------------------------------------------
+r11240 | mcgrathr@chromium.org | 2013-04-26T21:05:42.647492Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/ldr/nacl_ldr.c?r1=11240&amp;r2=11239&amp;pathrev=11240
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/srpc/nacl_srpc_message.c?r1=11240&amp;r2=11239&amp;pathrev=11240
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/srpc/nacl_srpc.h?r1=11240&amp;r2=11239&amp;pathrev=11240
+
+Clean up use of machine/_types.h
+
+It's cleaner not to expect this file to appear in the toolchain.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2335
+TEST= trybots
+R=sehr@chromium.org
+
+Review URL: https://codereview.chromium.org/14402024
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-04-26T21:10:45.000Z</ns0:updated><ns0:published>2013-04-26T21:10:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 22 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2335#c22" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2335/comments/full/22" rel="self" type="application/atom+xml" /></ns0:entry>

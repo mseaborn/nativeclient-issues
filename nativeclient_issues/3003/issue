@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04CRH47eCl7ImA9WhBTEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3003</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">reproducer:
+
+toolchain/pnacl_linux_x86_64/newlib/bin/pnacl-clang hello.c -c -S -arch arm   --pnacl-allow-translate  -o xxx.s
+
+This is not a high priority issues but it means that some cruft could and should be removed from the llc arm backend</ns0:content><ns0:updated>2013-02-05T23:12:45.000Z</ns0:updated><ns0:published>2012-08-29T15:21:57.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/116152729282206039235/</ns2:uri><ns2:username>j...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>pnacl toolchain assembler output still uses the old macro hacks (at least for arm)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3003/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3003" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3003" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3003</ns2:id></ns0:entry>

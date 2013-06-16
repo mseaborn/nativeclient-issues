@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU4BQ347eCl7ImA9WhBVGE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">------------------------------------------------------------------------
+r196121 | ukai@chromium.org | 2013-04-24T11:42:31.090136Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/build/common.gypi?r1=196121&amp;r2=196120&amp;pathrev=196121
+
+Enable fastbuild=1 on clang/mac
+
+Before:
+$ GYP_DEFINES="disable_nacl=1 fastbuild=1" CC=clang CXX=clang++ python build/gyp_chromium
+$ ninja -C out/Release -t clean
+$ time PATH=/path/to/goma:/path/to/chromium/src/third_party/llvm-build/Release+Asserts/bin:$PATH ninja -C out/Release -j 50 chrome
+..
+real    20m28.627s
+user    9m20.091s
+sys     2m43.130s
+
+After:
+$ GYP_DEFINES="disable_nacl=1 fastbuild=1" CC=clang CXX=clang++ python build/gyp_chromium
+$ ninja -C out/Release -t clean
+$ time PATH=/path/to/goma:/path/to/chromium/src/third_party/llvm-build/Release+Asserts/bin:$PATH ninja -C out/Release -j 50 chrome
+...
+real    8m55.293s
+user    9m33.869s
+sys     2m29.931s
+
+R=thakis,shinyak,ilevy
+BUG=none
+
+Review URL: https://chromiumcodereview.appspot.com/14445005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-04-24T11:45:52.000Z</ns0:updated><ns0:published>2013-04-24T11:45:52.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

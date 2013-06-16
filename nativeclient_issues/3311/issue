@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08GRH47eCl7ImA9WhBSEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3311</ns0:id><ns0:author>
+			<ns0:name>shcherb...@google.com</ns0:name><ns0:uri>/u/105197577636354702799/</ns0:uri></ns0:author><ns0:content type="html">Some instructions are manually splitted in def files by operand size.
+
+Sometimes three variants are listed:
+rexw=0, no data16
+rexw=0, data16
+rexw=1, no data16
+
+Sometimes, there are four of them:
+rexw=0, no data16
+rexw=0, data16
+rexw=1, no data16
+rexw=1, data16 (nacl-forbidden)
+
+
+Since r10783 gen_dfa when splitting instructions automatically does not produce fourth option (rexw=1, data16), so perhaps it makes sense to remove it from .def files as well for consistency.
+</ns0:content><ns0:updated>2013-02-18T15:37:05.000Z</ns0:updated><ns0:published>2013-02-18T15:37:05.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105197577636354702799/</ns2:uri><ns2:username>shcherb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Validator_ragel: normalize instruction splitting in def files</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3311/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3311" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3311" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3311</ns2:id></ns0:entry>

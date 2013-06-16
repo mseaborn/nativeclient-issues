@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcARH47eCl7ImA9WhBWFk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3118</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">- Where are we today?
+
+C++'s try+catch generate &amp;quot;invoke&amp;quot; and &amp;quot;landingpad&amp;quot; instructions in LLVM bitcode.  From these, the PNaCl translator generates a &amp;quot;Language Specific Data Area&amp;quot; (LSDA) (a .gcc_except_table section).
+
+Currently, in PNaCl, user code is reponsible for interpreting the LSDA.  This is problematic because:
+
+ 1) It locks in the LSDA format from the GNU C++ ABI.
+
+ 2) The LSDA format is complex and allows a wide range of possible encodings.  e.g. LSDA fields can use variable-length encodings (LEB128) or fixed-length encodings, and GCC and LLVM generate different encodings.  User code in old pexes would have to cope with encodings that future translators might produce.
+
+ 3) The LSDA contains a list of code address ranges.  This might pose a problem for future sandboxing models where we might want to hide the internal structure of code that the PNaCl translator generates.
+
+- The proposed enhancement:
+
+It's not clear what the best solution is.
+
+An incremental improvement would be for PNaCl system code to provide an API for reading the LSDA.
+
+However, that doesn't solve the problem that the &amp;quot;landingpad&amp;quot; instruction is scarily complex and C++-specific.  &amp;quot;landingpad&amp;quot; incorporates two lists of C++ exception typeinfo structs.  Ideally knowledge about these lists would not be fixed into the PNaCl ABI.  We might want to change PNaCl's bitcode format to simplify this.
+
+- Exit criteria:
+
+ * The system side of PNaCl can change the LSDA format without breaking user code.
+
+- Anticipated impact:
+
+ * ABI stability for PNaCl's C++ exception handling support.
+
+See this doc for more detailed background and proposals:
+https://docs.google.com/document/d/19-oQa5DBVDjfQT2ZwN1KvF-VZpLbTJuRhGGYNYIPjPU/edit
+</ns0:content><ns0:updated>2013-04-10T18:54:05.000Z</ns0:updated><ns0:published>2012-10-30T00:38:03.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>PNaCl: C++ exception handling: User code is expected to interpret LSDA</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>PNaClABI</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3118/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3118" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3118" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>2798</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>3339</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:id>3118</ns2:id></ns0:entry>

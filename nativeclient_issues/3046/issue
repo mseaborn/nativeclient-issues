@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AGSX47eCl7ImA9WhBTEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3046</ns0:id><ns0:author>
+			<ns0:name>ncb...@google.com</ns0:name><ns0:uri>/u/100032148147647801554/</ns0:uri></ns0:author><ns0:content type="html">A try run on a Mac naclmore bot resulted in a command channel creation failiure in a pnacl variant of a test:
+
+http://build.chromium.org/p/tryserver.chromium/builders/mac_rel_naclmore/builds/71/steps/nacl_integration/logs/stdio
+
+...
+NaClOpenFileDescriptor -&amp;gt; 22
+NaClOpenFileDescriptor __PNACL_GENERATED
+NaClOpenFileDescriptor -&amp;gt; 21
+NaClReleaseFileDescriptor 21
+RunCommon status 0
+ManifestLookupFini
+[38733,2694554944:06:38:22.586549] SelLdrLauncher::SetupCommand: getting sel_ldr socket address failed
+[SRPC:HOST:38733,2694554944:06:38:22.586586] NaClSrpcInvokeBySignature(channel=0x6e29120):missing signature [log:is:]
+[38741,2953998336:06:38:22.671560] Native Client module will be loaded at base address 0x000000000be86000
+[  3143 ms] ||||  / topdir_static loaded
+[  3149 ms] |||| 
+[  3149 ms] |||| [CLIENT_ERROR]  / subdir_static did not load. Status: DONE / 'NaCl module load failed: ServiceRuntime: command channel creation failed'
+[  3153 ms] |||| 
+[  3157 ms] |||| A nexe load error occured, aborting testing.
+[  3161 ms] |||| 
+[  3165 ms] |||| [SHUTDOWN] 0 passed, 0 failed, 1 errors
+KILLING the browser
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+[  FAILED  ] pnacl_newlib.run_manifest_browser_test (9700 ms)
+
+
+What's new is this part of the log:
+[38733,2694554944:06:38:22.586549] SelLdrLauncher::SetupCommand: getting sel_ldr socket address failed
+
+
+This message may be a bug caused by recent changes to send log data back to the render process when LOG_FATAL is hit in sel_ldr.
+
+This bug may be related to general command channel creation flake: http://code.google.com/p/nativeclient/issues/detail?id=2464
+</ns0:content><ns0:updated>2013-02-05T23:08:48.000Z</ns0:updated><ns0:published>2012-09-25T22:44:45.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>SelLdrLauncher::SetupCommand: getting sel_ldr socket address failed</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-24</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3046/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3046" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3046" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3046</ns2:id></ns0:entry>

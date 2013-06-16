@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEUBSX47eCl7ImA9WhVUEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2745/comments/full/12</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8602
+
+------------------------------------------------------------------------
+r8602 | robertm@google.com | Tue May 15 14:06:36 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-translate.py?r1=8602&amp;r2=8601&amp;pathrev=8602
+
+Add --newlib-shared-experiment flag to pnacl translator 
+and use it to disable the automatic inclusion of glibc's libgcc_s.so
+
+This will allow to build shared libs for the shared newlib experiment without knowledge about bookends etc.
+(c.f. https://chromiumcodereview.appspot.com/10332182 )
+
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2745
+
+TEST= manual
+Review URL: https://chromiumcodereview.appspot.com/10391144
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-05-15T21:10:58.000Z</ns0:updated><ns0:published>2012-05-15T21:10:58.000Z</ns0:published><ns2:updates /><ns0:title>Comment 12 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2745#c12" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2745/comments/full/12" rel="self" type="application/atom+xml" /></ns0:entry>

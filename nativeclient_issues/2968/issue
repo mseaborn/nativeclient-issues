@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQHRX47eCl7ImA9WhJVFko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2968</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Steps to reproduce:
+ 1) rm -r scons-out/nacl-x86-64
+ 2) ./scons small_tests -j2 platform=x86-64
+
+Expected result:  small_tests completes successfully without hanging.
+
+Actual result:  Windows crash dialog boxes open for various crash tests, which causes the tests to hang until the crash dialogs are closed manually.
+
+Similar variants:
+ * In step 1, if I instead do &amp;quot;rm -r scons-out/dbg-win-x86-64&amp;quot;, this also reproduces the problem and opens crash dialogs.  So this is not specific to nacl-gcc or Cygwin.
+ * In step 2, if I use &amp;quot;-jN&amp;quot; where N &amp;gt;= 2, this also reproduces the problem.
+
+Without step 1, though, the problem doesn't occur.  And if I use &amp;quot;-j1&amp;quot; in step 2, the problem doesn't occur.
+
+This is strange, because the crash dialogs are supposed to be disabled by a SetErrorMode() call in SConstruct which sets the process's SEM_NOGPFAULTERRORBOX flag, which should be inherited by child processes.  This was added to address issue 1914.  It seems that somehow this flag is not being inherited properly.
+</ns0:content><ns0:updated>2012-09-03T11:55:34.000Z</ns0:updated><ns0:published>2012-08-15T21:19:05.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>small_tests sometimes produces crash dialogs on Windows, and so hangs</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2968/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2968" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2968" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-09-03T11:55:33.000Z</ns2:closedDate><ns2:id>2968</ns2:id></ns0:entry>

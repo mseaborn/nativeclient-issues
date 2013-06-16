@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIGRH47eCl7ImA9WhBQGEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3324/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11028
+
+------------------------------------------------------------------------
+r11028 | kschimpf@google.com | 2013-03-21T17:52:00.175012Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/validator.h?r1=11028&amp;r2=11027&amp;pathrev=11028
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/validator_tests.cc?r1=11028&amp;r2=11027&amp;pathrev=11028
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/validator_tests.h?r1=11028&amp;r2=11027&amp;pathrev=11028
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/inst_classes.cc?r1=11028&amp;r2=11027&amp;pathrev=11028
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/inst_classes.h?r1=11028&amp;r2=11027&amp;pathrev=11028
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/driver/ncval.cc?r1=11028&amp;r2=11027&amp;pathrev=11028
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/validator_small_tests.cc?r1=11028&amp;r2=11027&amp;pathrev=11028
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/include/portability_io.h?r1=11028&amp;r2=11027&amp;pathrev=11028
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/problem_reporter.cc?r1=11028&amp;r2=11027&amp;pathrev=11028
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/ncval.cc?r1=11028&amp;r2=11027&amp;pathrev=11028
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/problem_reporter.h?r1=11028&amp;r2=11027&amp;pathrev=11028
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/validator.cc?r1=11028&amp;r2=11027&amp;pathrev=11028
+
+Start process of cleaning up generating diagnostic messages in ARM validator.
+
+Modifies ProblemReporter to make all (current) diagnostic API functions
+generate an error message, and then pipe it though a abstract virtual
+method ReportProblemMessage.  Modify all derived classes to use this
+new API.
+
+Also start the process of simplifying the error diagnostic routines
+by simplifying method ReportProblem Saftey.
+
+Also cleans up validator tests to use a new generic API, which records
+the found violation, the address of the violation, and the error message
+associated with it.
+
+Also simplifies validator tests to not supply a problem sink unless
+it needs to query the generated results.
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3324
+Review URL: https://codereview.chromium.org/12853008
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-03-21T17:55:25.000Z</ns0:updated><ns0:published>2013-03-21T17:55:25.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3324#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3324/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

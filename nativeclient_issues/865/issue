@@ -1,10 +1,8 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0INQH47eCl7ImA9WhRQGUU.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkAEQn47eCl7ImA9WhJbEko.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/865</ns0:id><ns0:author>
 			<ns0:name>robe...@google.com</ns0:name><ns0:uri>/u/108771824208521698652/</ns0:uri></ns0:author><ns0:content type="html">I have seen this occasionally but not lately, there is a special config
 in gcc to select an arm specific atexit function via the macro
 
-TARGET_CXX_USE_AEABI_ATEXIT</ns0:content><ns0:updated>2011-12-15T20:39:51.000Z</ns0:updated><ns0:published>2010-09-02T19:50:09.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
-			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:owner><ns2:cc>
-			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
+TARGET_CXX_USE_AEABI_ATEXIT</ns0:content><ns0:updated>2012-09-22T01:51:43.000Z</ns0:updated><ns0:published>2010-09-02T19:50:09.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
 			<ns2:uri>/u/krasin@google.com/</ns2:uri><ns2:username>krasin@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>arm frontend bias: arm atexit  function</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Milestone-Caviar</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/865/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=865" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/865" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blocking>
-			<ns2:id>833</ns2:id></ns2:blocking><ns2:closedDate>2011-12-15T20:39:51.000Z</ns2:closedDate><ns2:id>865</ns2:id></ns0:entry>
+			<ns2:id>833</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2011-12-15T20:39:51.000Z</ns2:closedDate><ns2:id>865</ns2:id></ns0:entry>

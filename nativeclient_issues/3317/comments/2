@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUFR347eCl7ImA9WhBSFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3317/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mark@chromium.org</ns0:name><ns0:uri>/u/mark@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">As I mentioned last week, POSIX signal handling on Mac doesn&#8217;t avoid Mach IPC at all. What starts out as a hardware fault is mapped in the kernel to a Mach exception, which is always delivered to a Mach exception handler. Exception handlers are tried first at the thread level, then at the task (process) level, and finally at the host level. The current Native Client Mach exception handler is installed at the task level. If it were not present, the host level exception handler would pick it up. This handler lives in the kernel and is responsible for transforming Mach exceptions into POSIX signals and delivering them to the process. Good starting points for the in-kernel handler code are ux_handler_init (which starts the kernel exception handler thread, analogous to NaClInterceptMachExceptions) and catch_mach_exception_raise (which deals with the exceptions, analogous to nacl_catch_exception_raise[_state_identity]) in 10.8.2 xnu-2050.18.24/bsd/uxkern/ux_exception.c. There&#8217;s no performance advantage to using a POSIX signal handler because POSIX signals generated in response to hardware faults need to follow the exact same Mach IPC paths in the kernel, including context switching penalties, as running the Mach exception handler right in user space.
+
+But, to be sure, I ran the TestCatchingFault performance test with a few different fault-handling implementations and showed that my improved reduced-system-call Mach exception handler and a POSIX signal handler are nearly equal in performance, and both are much faster than the existing too-many-system-calls Mach exception handler.
+
+x86-32
+45.98&#181;s existing
+13.08&#181;s https://codereview.chromium.org/12316042/
+11.11&#181;s https://codereview.chromium.org/12316042/ (unsafe memcpy instead of mach_vm_write)
+13.23&#181;s POSIX signal handler
+
+x86-64
+36.69&#181;s existing
+13.28&#181;s https://codereview.chromium.org/12316042/
+10.40&#181;s https://codereview.chromium.org/12316042/ (unsafe memcpy instead of mach_vm_write)
+13.30&#181;s POSIX signal handler
+
+Note that the POSIX signal handler is writing memory directly instead of indirecting it through mach_vm_write, while the Mach exception handler in the patch proposed in https://codereview.chromium.org/12316042/ still is still being penalized for its mach_vm_write system calls. Leveling the playing field by removing that system call from the Mach exception handler gives it even more of an advantage, indicating that there&#8217;s additional overhead in using the POSIX signal handler route. We can&#8217;t switch away from mach_vm_write as it stands now because a fault on direct memory access would cause the exception handler thread to deadlock, but it&#8217;s possible to rearchitect the exception handler to avoid this problem and allow direct memory access for a 2-3&#181;s performance advantage.
+
+Note also that the POSIX signal handler implementation doesn&#8217;t work at all for dispatching signals to untrusted handlers on the Mac right now. It&#8217;s fairly easy to fix (and I&#8217;ve done it to run the performance tests in that configuration) but I won&#8217;t offer up a change for review for that unless you think it&#8217;s useful.</ns0:content><ns0:updated>2013-02-21T20:06:56.000Z</ns0:updated><ns0:published>2013-02-21T20:06:56.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mark@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3317#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3317/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

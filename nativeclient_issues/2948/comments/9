@@ -1,0 +1,67 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcHRn47eCl7ImA9WhJXGUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2948/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9466
+
+------------------------------------------------------------------------
+r9466 | mseaborn@chromium.org | 2012-08-14T15:57:20.991942Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/posix/thread_impl.cc?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main_chrome.c?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_main.c?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/thread_suspension.c?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/linux/thread_suspension.c?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/port/thread.h?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/win/debug_exception_handler.c?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/thread_suspension.h?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/thread_common.cc?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.c?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/nacl_debug.cc?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/target.cc?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/osx/thread_suspension.c?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/target.h?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/win/thread_impl.cc?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.h?r1=9466&amp;r2=9465&amp;pathrev=9466
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/posix/nacl_signal.c?r1=9466&amp;r2=9465&amp;pathrev=9466
+
+Debug stub: Switch to a thread-suspension-based model for catching faults
+
+This changes the model for how the debug stub catches faults in
+untrusted code.
+
+The old model is that the debug stub's fault handler runs on the
+thread that faulted, and this handler notifies the debug stub's main
+event loop.
+
+The new model is that service_runtime maintains a set of faulted
+threads.  A thread that faults in untrusted code gets suspended,
+allowing the debug stub to query and modify its register state before
+resuming it.  The debug stub does this from its own thread.
+
+ * Linux: We change the signal handler to mark a thread as faulted and
+   keep it suspended (by handling SIGUSR1) until the debug stub
+   unblocks it.
+
+ * Windows: We change the debug exception handler to mark a thread as
+   faulted and suspend it.
+
+    * Change sel_main.c and sel_main_chrome.c to enable using the
+      debug exception handler when using the debug stub.
+    * Since the debug stub no longer relies on Windows Vectored
+      Exception Handling (VEH), we can unconditionally enable our
+      NTDLL patch, which makes the debug stub safer.
+
+We remove a bunch of debug stub code for the old model:
+
+ * Fault handling code paths (Linux and Windows):
+   NaClExceptionCatcher(), SetExceptionCatch()
+ * target.cc: sig_start_ and sig_done_ events, and the Signal() method.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2948
+TEST=run_debug_stub_test + GDB tests
+
+Review URL: https://chromiumcodereview.appspot.com/10836171
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-14T16:00:37.000Z</ns0:updated><ns0:published>2012-08-14T16:00:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2948#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2948/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,42 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck8CQn47eCl7ImA9WhBTFk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3302/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>damonp...@gmail.com</ns0:name><ns0:uri>/u/112358947840938663111/</ns0:uri></ns0:author><ns0:content type="html">Sorry for my typo. I am using the option -translate-fast and it has the same seg fault.
+Here is part of the assembly code generated with the following commands:
+
+pnacl-clang.bat test.c -otest.o -c -O0 -MMD -pthread -Wno-long-long -Wall -Wswitch-enum -pedantic  -x c -IC:/cygwin/opt/toolchain/nacl_sdk/pepper_canary/toolchain/win_x86_pnacl/newlib/usr/include -IC:/cygwin/opt/toolchain/nacl_sdk/pepper_canary/include
+pnacl-clang++.bat test.o -L. -LC:/cygwin/opt/toolchain/nacl_sdk/pepper_canary/lib/pnacl/Debug -otest.pexe
+pnacl-translate.bat -arch x86-64 test.pexe -o test_x86_64_bad_fast.as   -translate-fast -S 
+pnacl-translate.bat -arch x86-64 test.pexe -o test_x86_64_bad_fast.nexe -translate-fast
+sel_ldr_x86_64.exe -B irt_core_newlib_x64.nexe -f test_x86_64_bad_fast.nexe
+
+
+I am just wondering if there is anything wrong with the above command.
+Part of assembly in test_x86_64_bad_fast.as:
+
+	.globl	main
+	.align	32, 0x90
+	.type	main,@function
+main:                                   # @main
+	.cfi_startproc
+# BB#0:                                 # %entry
+	movl	$0, -4(%rsp)
+	movl	$0, -8(%rsp)
+	movw	.Lmain.a(%rip), %ax
+	movw	%ax, -10(%rsp)
+	movl	$-1073741824, -8(%rsp)  # imm = 0xFFFFFFFFC0000000
+	movzwl	-10(%rsp), %eax
+	addl	$-1073741826, %eax      # imm = 0xFFFFFFFFBFFFFFFE
+	movl	%eax, -8(%rsp)
+	leal	-10(%rsp,%rax,2), %eax
+	movzwl	%nacl:-2147483648(%r15,%rax), %eax
+	movl	%eax, -8(%rsp)
+	xorl	%eax, %eax
+	popq	%rcx
+	nacljmp	%ecx, %r15
+	.align	32, 0x90
+.Ltmp3:
+	.size	main, .Ltmp3-main
+	.cfi_endproc
+
+	.globl	_exit
+	.align	32, 0x90</ns0:content><ns0:updated>2013-02-11T22:14:23.000Z</ns0:updated><ns0:published>2013-02-11T22:14:23.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by damonp...@gmail.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3302#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3302/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

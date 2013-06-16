@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0YMRX47eCl7ImA9WhJVE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3009/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">n/m about the race condition stuff since, it's not actually flaky... According to the debug stub:
+
+bt
+#0  0x0000000001172842 in _IO_fwrite (buf=&lt;optimized out&gt;, size=10, count=1, fp=0x0) at iofwrite.c:43
+#1  0x0000000001000860 in main (argc=&lt;optimized out&gt;, argv=&lt;optimized out&gt;) at tests/unittests/shared/platform/atomic_ops_test.c:122
+#2  0x00000000010f07a0 in __libc_start_main (main=&lt;optimized out&gt;, argc=&lt;optimized out&gt;, ubp_av=&lt;optimized out&gt;, init=&lt;optimized out&gt;, fini=&lt;optimized out&gt;, rtld_fini=&lt;optimized out&gt;, stack_end=0xfffeff00) at libc-start.c:227
+#3  0x00000000010004c0 in _start () from atom.64.debug/atomic_ops_test_nexe.nexe
+#4  0x0000000001000b60 in _pnacl_wrapper_start () from atom.64.debug/atomic_ops_test_nexe.nexe
+#5  0x0000000000021100 in _dl_start (arg=&lt;optimized out&gt;) at rtld.c:578
+
+
+The fprintf(stderr, ...) in main() is what causes the crash (the _IO_fwrite is given 0 as the fp).  If I move the fprintf, then the crash address changes to the later fprintf(stderr, ...).  Oddly, earlier fprintfs are OK.</ns0:content><ns0:updated>2012-08-30T16:46:24.000Z</ns0:updated><ns0:published>2012-08-30T16:46:24.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3009#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3009/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk8BRX47eCl7ImA9WhVbF0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2829/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>noelal...@google.com</ns0:name><ns0:uri>/u/113000403807150741221/</ns0:uri></ns0:author><ns0:content type="html">FYI- Gdb supports this, the question is how to pass the argument on the command-line when we launch nacl-gdb for you.
+
+In any case, even with the debug helper, the ability to specify additional parameters or change the parameters would be extremely useful.  I would hesitate to take an approach that requires one to modify and build a debug helper any time they wish to change the command-line arguments.
+
+</ns0:content><ns0:updated>2012-06-03T17:34:14.000Z</ns0:updated><ns0:published>2012-06-03T17:34:14.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by noelal...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2829#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2829/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

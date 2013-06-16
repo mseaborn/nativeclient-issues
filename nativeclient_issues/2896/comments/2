@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQFQX47eCl7ImA9WhJREUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2896/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9136
+
+------------------------------------------------------------------------
+r9136 | eaeltsin@google.com | Fri Jul 13 01:11:48 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/abi.h?r1=9136&amp;r2=9135&amp;pathrev=9136
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/abi.cc?r1=9136&amp;r2=9135&amp;pathrev=9136
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/debug_stub/debug_stub_test.py?r1=9136&amp;r2=9135&amp;pathrev=9136
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/abi_test.cc?r1=9136&amp;r2=9135&amp;pathrev=9136
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/debug_stub/thread_common.cc?r1=9136&amp;r2=9135&amp;pathrev=9136
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/target.cc?r1=9136&amp;r2=9135&amp;pathrev=9136
+
+Debug stub: change Abi::RegType meaning
+
+Previous meaning of Abi:RegType was register type from architecture point of view - general register, flags register, etc.
+
+This meaning is almost useless inside the debug stub. The only use case was to provide instruction pointer by picking the first register of type INST_PTR.
+
+This change supports instruction pointer use case directly, by specifying instruction pointer regnum at abi initialization. The rest of the old meaning support is removed.
+
+Instead of the old RegType meaning, this change suggests a new one: how this register should be exposed to the debugger - no restrictions (GENERAL), read-only (READ_ONLY).
+
+Near future use case of RegType are for x86_64 - we'll define TRUSTED_PTR register type. When GDB writes such a register, the stub ensures its high part is correct. This is needed to support x86_64 debugging when GDB works only with untrusted addresses.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2896
+TEST=run_debug_stub_test
+
+Review URL: https://chromiumcodereview.appspot.com/10695175
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-13T08:15:10.000Z</ns0:updated><ns0:published>2012-07-13T08:15:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2896#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2896/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

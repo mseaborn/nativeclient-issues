@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEQAR347eCl7ImA9WhJaFkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/142</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9944
+
+------------------------------------------------------------------------
+r9944 | khim@google.com | 2012-10-08T07:41:16.167644Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder_test.c?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/parse_instruction.rl?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/decoder_x86_32_instruction_consts.h?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder_x86_32.rl?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/decoder_x86_32.c?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder.h?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator_features_all.c?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/decoder_x86_64_instruction_consts.h?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder_x86_64.rl?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/decoder_x86_64.c?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/testing/enuminsts/ragel_tester.c?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/byte_machines.py?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator_test.c?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/x87_instructions.def?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator_internal.h?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/gen_dfa.cc?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator_features_validator.c?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator_x86_32.rl?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator.h?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/general_purpose_instructions.def?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/validator_x86_32.c?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator_x86_64.rl?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/validator_x86_64.c?r1=9944&amp;r2=9943&amp;pathrev=9944
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/xmm_instructions.def?r1=9944&amp;r2=9943&amp;pathrev=9944
+
+Make decoder.h and validator.h more style guide compliant
+
+Rename names of types and use common prefix in OperandType
+enum elements.
+
+Of course since this is public interface this simple change requires
+a lot of changes in other files.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2597
+TEST=trybots (no changes in logic)
+Review URL: https://codereview.chromium.org/11028057
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-08T07:45:46.000Z</ns0:updated><ns0:published>2012-10-08T07:45:46.000Z</ns0:published><ns2:updates /><ns0:title>Comment 142 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c142" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/142" rel="self" type="application/atom+xml" /></ns0:entry>

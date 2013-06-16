@@ -5,5 +5,5 @@ current work to test DescWrapper)
 
 </ns0:content><ns0:updated>2010-03-23T23:15:07.000Z</ns0:updated><ns0:published>2009-12-02T21:25:07.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>NaCl plugin integration - shared memory and syncsockets</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Milestone-GLQuake-x86-32</ns2:label><ns2:label>Component-TrustedRT</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/169/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=169" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/169" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
-			<ns2:id>172</ns2:id></ns2:blocking><ns2:blocking>
-			<ns2:id>174</ns2:id></ns2:blocking><ns2:closedDate>2009-12-18T17:29:40.000Z</ns2:closedDate><ns2:id>169</ns2:id></ns0:entry>
+			<ns2:id>172</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>174</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2009-12-18T17:29:40.000Z</ns2:closedDate><ns2:id>169</ns2:id></ns0:entry>

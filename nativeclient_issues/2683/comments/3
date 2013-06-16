@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0cHQH47eCl7ImA9WhJSGEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2683/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">In the process of converting our pepper temp files to private temp files that are delete-on-close.  This was also suggested for making pepper temp files work in incognito:
+
+http://code.google.com/p/chromium/issues/detail?id=93417
+
+but they have the issue that the number of open files can be unbounded.
+
+For us, we only have two temp files open during translation (while there are translator nexes running), so it's unlikely anyone could get 10000 files open at once, since that would mean we are able to run 5000 translators simultaneously =)
+
+</ns0:content><ns0:updated>2012-07-09T23:03:51.000Z</ns0:updated><ns0:published>2012-07-09T23:03:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2683#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2683/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

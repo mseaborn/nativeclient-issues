@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQBRH47eCl7ImA9WhNSEk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2885</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Today, nacl-gcc failed once on Windows with this error:
+
+96&amp;gt;------ Build started: Project: srpc_lib, Configuration: Release Win32 ------
+96&amp;gt;build newlib x86-64 nlib, and also build newlib x86-32 nlib, and also build glibc x86-64 nlib, and also build glibc x86-32 nlib
+96&amp;gt;      1 [main] cc1 (3932) C:\b\build\slave\xp-bare-glibc-opt\build\native_client\toolchain\win_x86_newlib\libexec\gcc\x86_64-nacl\4.4.3\cc1.exe: *** fatal error - Cygwin requires at least Windows 2000.
+96&amp;gt;x86_64-nacl-gcc: Internal error: Segmentation fault (program cc1)
+96&amp;gt;Please submit a full bug report.
+96&amp;gt;See &amp;lt;http://gcc.gnu.org/bugs.html&amp;gt; for instructions.
+96&amp;gt;Err 1: nacl-gcc ../../../..\native_client\build\Release\obj\srpc_lib\newlib-x86-64\srpc_lib\invoke.o
+
+From http://build.chromium.org/p/client.nacl/builders/xp-bare-glibc-opt/builds/2448/steps/gyp_compile/logs/stdio
+
+We've seen this error occur before.
+</ns0:content><ns0:updated>2012-10-26T05:12:35.000Z</ns0:updated><ns0:published>2012-06-28T22:24:12.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>On Windows, nacl-gcc sometimes fails with "Cygwin requires at least Windows 2000"</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>FlakeyBots</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2885/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2885" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2885" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-10-26T05:12:35.000Z</ns2:closedDate><ns2:id>2885</ns2:id></ns0:entry>

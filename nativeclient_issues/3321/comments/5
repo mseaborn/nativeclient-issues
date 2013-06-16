@@ -1,0 +1,84 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C04NQ347eCl7ImA9WhBQE00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3321/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>j...@chromium.org</ns0:name><ns0:uri>/u/109636895838879576326/</ns0:uri></ns0:author><ns0:content type="html">Here are some numbers from the A15 bot, compiling pexe-&gt;nexe and then running the training set for spec2k. There seems to be a bug in running/reporting ARM opt without sandboxing, but the rest of the numbers are there. Pardon my hacky bash.
+
+I've been talking to Jan and Jim about automating the production of these results, graphing them, and having more data (especially using perf).
+
+# Unsandboxed llc:
+time ./run_all.sh TimedBuildAndRunBenchmarks SetupPnaclArmOptHW |&amp; tee SetupPnaclArmOptHW.out # with lto
+time ./run_all.sh TimedBuildAndRunBenchmarks SetupPnaclArmHW |&amp; tee SetupPnaclArmHW.out       # no lto
+# Sandboxed llc running under sel_universal, requires translator-all:
+time ./run_all.sh TimedBuildAndRunBenchmarks SetupPnaclTranslatorArmHW |&amp; tee SetupPnaclTranslatorArmHW.out               # no lto
+time ./run_all.sh TimedBuildAndRunBenchmarks SetupPnaclTranslatorArmOptHW |&amp; tee SetupPnaclTranslatorArmOptHW.out         # with lto
+time ./run_all.sh TimedBuildAndRunBenchmarks SetupPnaclTranslatorFastArmOptHW |&amp; tee SetupPnaclTranslatorFastArmOptHW.out # with lto, O0
+# Collect results:
+find . -name "*compile_time" | sort | xargs cat | sed 's|^\([^ ]*\) \([^ ]*\) \([^ ]*\) .* \([^ ]*\.[\.pnacl]*[\.opt]*[\.hw]*\.arm\) .*|\4 \1 \2 \3|g' | sort &gt; compile_time
+find . -name "*run_time" | sort | xargs cat | sed 's|^\([^ ]*\) \([^ ]*\) \([^ ]*\) .* \./\([^ ]*\)|\4 \1 \2 \3|g' | sort &gt; run_time
+echo -e "c_user\tc_sys\tc_real\tr_user\tr_sys\tr_real\tbench\n`join compile_time run_time | sed 's/\([^ ]*\) \([^ ]*\) \([^ ]*\) \([^ ]*\) \([^ ]*\) \([^ ]*\) \([^ ]*\)/\2\t\3\t\4\t\5\t\6\t\7\t\1/g'`"
+
+c_user	c_sys	c_real	r_user	r_sys	r_real	bench
+6.75	0.03	6.80	81.33	0.12	81.85	ammp.pnacl.arm
+7.26	0.14	7.43	80.70	0.11	80.93	ammp.pnacl_translator.hw.arm
+6.77	0.11	6.92	47.27	0.06	47.45	ammp.pnacl_translator.opt.hw.arm
+3.45	0.14	3.62	70.47	0.09	70.61	ammp.pnacl_translator_fast.opt.hw.arm
+3.92	0.05	3.99	17.11	0.08	17.28	art.pnacl.arm
+4.66	0.13	4.81	17.13	0.06	17.26	art.pnacl_translator.hw.arm
+4.08	0.07	4.18	9.49	0.05	9.56	art.pnacl_translator.opt.hw.arm
+2.20	0.11	2.33	15.85	0.06	15.94	art.pnacl_translator_fast.opt.hw.arm
+3.08	0.24	3.48	75.90	0.06	76.01	bzip2.pnacl.arm
+3.89	0.10	4.01	76.44	0.04	76.51	bzip2.pnacl_translator.hw.arm
+3.24	0.10	3.37	29.23	0.06	29.34	bzip2.pnacl_translator.opt.hw.arm
+1.89	0.11	2.03	53.22	0.09	53.46	bzip2.pnacl_translator_fast.opt.hw.arm
+8.56	0.11	8.69	27.26	0.07	27.41	crafty.pnacl.arm
+9.05	0.10	9.17	26.98	0.03	27.04	crafty.pnacl_translator.hw.arm
+8.61	0.14	8.77	19.83	0.02	19.93	crafty.pnacl_translator.opt.hw.arm
+4.48	0.16	4.67	40.39	0.05	40.80	crafty.pnacl_translator_fast.opt.hw.arm
+27.28	0.27	27.92	38.77	0.13	39.05	eon.pnacl.arm
+27.92	0.24	28.49	38.43	0.12	38.65	eon.pnacl_translator.hw.arm
+19.23	0.24	19.61	8.23	0.14	8.40	eon.pnacl_translator.opt.hw.arm
+10.21	0.19	10.42	18.30	0.12	18.47	eon.pnacl_translator_fast.opt.hw.arm
+4.09	0.08	4.21	36.85	0.37	37.51	equake.pnacl.arm
+4.88	0.09	5.00	36.83	0.04	41.14	equake.pnacl_translator.hw.arm
+4.24	0.11	4.37	23.88	0.03	23.95	equake.pnacl_translator.opt.hw.arm
+2.30	0.10	2.42	29.82	0.06	29.92	equake.pnacl_translator_fast.opt.hw.arm
+17.66	0.27	18.04	8.98	0.14	9.15	gap.pnacl.arm
+17.97	0.23	18.26	8.92	0.20	9.16	gap.pnacl_translator.hw.arm
+16.21	0.20	16.43	5.07	0.16	5.26	gap.pnacl_translator.opt.hw.arm
+8.58	0.22	8.89	8.63	0.16	8.82	gap.pnacl_translator_fast.opt.hw.arm
+42.64	0.35	43.03	4.90	0.10	5.06	gcc.pnacl.arm
+42.92	0.32	43.32	4.88	0.07	4.96	gcc.pnacl_translator.hw.arm
+40.19	0.27	40.47	2.92	0.08	3.03	gcc.pnacl_translator.opt.hw.arm
+21.29	0.44	21.77	6.00	0.07	6.08	gcc.pnacl_translator_fast.opt.hw.arm
+3.47	0.06	3.56	44.08	0.10	44.21	gzip.pnacl.arm
+4.17	0.11	4.31	43.94	0.11	44.08	gzip.pnacl_translator.hw.arm
+3.30	0.12	3.44	27.78	0.13	27.97	gzip.pnacl_translator.opt.hw.arm
+1.93	0.10	2.04	52.85	0.12	53.07	gzip.pnacl_translator_fast.opt.hw.arm
+4.04	0.10	4.17	26.18	0.53	27.07	mcf.pnacl.arm
+4.76	0.12	4.91	26.64	0.07	26.81	mcf.pnacl_translator.hw.arm
+4.06	0.08	4.17	18.80	0.05	18.93	mcf.pnacl_translator.opt.hw.arm
+2.17	0.19	2.43	26.04	0.09	26.20	mcf.pnacl_translator_fast.opt.hw.arm
+18.35	0.14	18.52	120.85	0.16	121.07	mesa.pnacl.arm
+18.63	0.15	18.80	120.94	0.23	121.24	mesa.pnacl_translator.hw.arm
+16.57	0.16	16.76	56.74	0.15	56.97	mesa.pnacl_translator.opt.hw.arm
+8.52	0.18	8.75	187.48	0.19	187.74	mesa.pnacl_translator_fast.opt.hw.arm
+6.86	0.11	7.03	12.14	0.06	12.34	parser.pnacl.arm
+7.50	0.11	7.64	12.08	0.06	12.15	parser.pnacl_translator.hw.arm
+6.77	0.10	6.97	7.93	0.06	8.01	parser.pnacl_translator.opt.hw.arm
+3.45	0.12	3.59	11.07	0.07	11.17	parser.pnacl_translator_fast.opt.hw.arm
+18.77	0.22	19.05	75.50	0.22	75.84	perlbmk.pnacl.arm
+19.94	0.24	20.27	76.33	0.14	76.54	perlbmk.pnacl_translator.hw.arm
+20.25	0.26	20.64	52.93	0.19	53.28	perlbmk.pnacl_translator.opt.hw.arm
+10.41	0.18	10.61	100.64	0.17	101.15	perlbmk.pnacl_translator_fast.opt.hw.arm
+9.30	0.11	9.45	23.14	0.13	23.36	twolf.pnacl.arm
+9.81	0.15	9.99	23.02	0.16	23.32	twolf.pnacl_translator.hw.arm
+9.41	0.16	9.65	16.03	0.18	16.31	twolf.pnacl_translator.opt.hw.arm
+4.71	0.12	4.85	24.21	0.14	24.49	twolf.pnacl_translator_fast.opt.hw.arm
+15.92	0.15	16.10	13.41	0.03	13.46	vortex.pnacl.arm
+16.17	0.29	16.55	13.46	0.06	13.55	vortex.pnacl_translator.hw.arm
+10.35	0.16	10.54	6.98	0.03	7.06	vortex.pnacl_translator.opt.hw.arm
+5.69	0.16	5.88	10.96	0.05	11.03	vortex.pnacl_translator_fast.opt.hw.arm
+7.39	0.17	7.63	47.85	0.12	48.16	vpr.pnacl.arm
+8.03	0.13	8.18	47.79	0.11	47.98	vpr.pnacl_translator.hw.arm
+6.54	0.11	6.68	30.92	0.16	31.17	vpr.pnacl_translator.opt.hw.arm
+3.56	0.12	3.70	55.31	0.17	55.57	vpr.pnacl_translator_fast.opt.hw.arm
+</ns0:content><ns0:updated>2013-03-14T22:59:52.000Z</ns0:updated><ns0:published>2013-03-14T22:59:52.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by j...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3321#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3321/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

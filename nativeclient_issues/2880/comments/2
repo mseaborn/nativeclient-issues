@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08HR347eCl7ImA9WhJWEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2880/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9495
+
+------------------------------------------------------------------------
+r9495 | mseaborn@chromium.org | 2012-08-16T16:47:15.527470Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/debug_stub/nacl.scons?r1=9495&amp;r2=9494&amp;pathrev=9495
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/nacl.scons?r1=9495&amp;r2=9494&amp;pathrev=9495
+
+Debug stub: Enable tests on x86-32 Windows
+
+Two recent changes make this possible:
+
+r9466 switches the debug stub to use the Windows debug exception
+handler process, which is essential for handling any x86-32
+untrusted-code faults on Windows.
+
+r9489 fixes the memory access commands to work on x86-32 when
+mem_start != 0 and mem_start &lt; 1GB, which is usually the case on
+32-bit Windows.  (In contrast, on Linux, we are using a zero-based
+x86-32 sandbox so mem_start == 0.  Before the tests enabled the
+zero-based sandbox, the kernel would typically allocate addresses &gt;1GB
+for mem_start.)
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2880
+TEST=run_debug_stub_test + GDB tests in large_tests
+
+Review URL: https://chromiumcodereview.appspot.com/10823316
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-16T16:50:36.000Z</ns0:updated><ns0:published>2012-08-16T16:50:36.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2880#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2880/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

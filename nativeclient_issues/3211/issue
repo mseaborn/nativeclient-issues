@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AGSX47eCl7ImA9WhBTEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3211</ns0:id><ns0:author>
+			<ns0:name>stich...@google.com</ns0:name><ns0:uri>/u/111656935494976488934/</ns0:uri></ns0:author><ns0:content type="html">LLVM's FastISel code generator produces problematic code in some cases that is incorrectly sandboxed on x86_64, usually leading to a segmentation fault when the sequence is executed.
+
+This issue is addressed in the regular code generator, in X86DAGToDAGISel::LegalizeAddressingModeForNaCl().
+
+The problem can be seen on the spec2k benchmarks gcc and crafty, when forcing fast-isel e.g. by modifying pnacl/driver/pnacl-translate.py to set default FAST_TRANSLATION=1 and uncommenting the &amp;quot;-fast-isel&amp;quot; flag in the LLC_FLAGS_FAST_X8664 definition.
+</ns0:content><ns0:updated>2013-02-05T23:08:48.000Z</ns0:updated><ns0:published>2012-12-11T00:09:05.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
+			<ns2:uri>/u/115553580108938459101/</ns2:uri><ns2:username>stich...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/jvoung@chromium.org/</ns2:uri><ns2:username>jvoung@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>PNaCl -fast-isel broken on x86_64</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-26</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3211/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3211" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3211" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3211</ns2:id></ns0:entry>

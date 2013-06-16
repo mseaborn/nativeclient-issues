@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkUFRX47eCl7ImA9WhNUFE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2275/comments/full/48</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10543
+
+------------------------------------------------------------------------
+r10543 | petarj@mips.com | 2013-01-06T02:05:10.572712Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/DEPS?r1=10543&amp;r2=10542&amp;pathrev=10543
+
+[MIPS] Update pnacl_llvm_rev and pnacl_gcc_rev
+
+Update pnacl_llvm_rev and pnacl_gcc_rev to get recent changes for MIPS arch.
+
+This pulls in the following LLVM changes:
+
+b835840: [MIPS] Add support for nacl-expand-tls pass on MIPS.
+b9f96a1: Move VLD cases properly into IsDangerousLoad and update tests
+         that had incorrect -sfi-&lt;xx&gt; flags
+
+and the following GCC change:
+
+e09efac: [MIPS] Add support for building libgcc_eh for MIPS in PNaCl
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=2275
+TEST= pnacl/build.sh all
+
+
+Review URL: https://chromiumcodereview.appspot.com/11773010
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-01-06T02:10:14.000Z</ns0:updated><ns0:published>2013-01-06T02:10:14.000Z</ns0:published><ns2:updates /><ns0:title>Comment 48 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2275#c48" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2275/comments/full/48" rel="self" type="application/atom+xml" /></ns0:entry>

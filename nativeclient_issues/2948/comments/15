@@ -1,0 +1,51 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C08BQ347eCl7ImA9WhJaGE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2948/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9963
+
+------------------------------------------------------------------------
+r9963 | mseaborn@chromium.org | 2012-10-09T22:29:24.533092Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/nacl_switch_all_regs_32.c?r1=9963&amp;r2=9962&amp;pathrev=9963
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/service_runtime.gyp?r1=9963&amp;r2=9962&amp;pathrev=9963
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_switch_all_regs_asm_arm.S?r1=9963&amp;r2=9962&amp;pathrev=9963
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/nacl_switch_all_regs_32.h?r1=9963&amp;r2=9962&amp;pathrev=9963
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_switch_all_regs_64.c?r1=9963&amp;r2=9962&amp;pathrev=9963
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/nacl_switch_all_regs_asm_32.S?r1=9963&amp;r2=9962&amp;pathrev=9963
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/springboard.S?r1=9963&amp;r2=9962&amp;pathrev=9963
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/set_all_regs?r1=9963&amp;r2=9962&amp;pathrev=9963
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_switch_all_regs_arm.c?r1=9963&amp;r2=9962&amp;pathrev=9963
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=9963&amp;r2=9962&amp;pathrev=9963
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=9963&amp;r2=9962&amp;pathrev=9963
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_switch_to_app.h?r1=9963&amp;r2=9962&amp;pathrev=9963
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/osx/thread_suspension.c?r1=9963&amp;r2=9962&amp;pathrev=9963
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/service_runtime_x86_64.gyp?r1=9963&amp;r2=9962&amp;pathrev=9963
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.h?r1=9963&amp;r2=9962&amp;pathrev=9963
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_switch_all_regs_asm_64.S?r1=9963&amp;r2=9962&amp;pathrev=9963
+
+service_runtime: Remove NaClSwitchAllRegs(), which is unused outside of tests
+
+When I added this functionality, my plan was to use it for fault
+handling in the debug stub.  I had planned for the debug stub to
+handle a fault on the thread that generated the fault, in which case
+we would need a sigreturn-like mechanism to return to untrusted code
+with all registers restored.  However, my plan changed to handling the
+fault on a separate thread (implemented in r9466), because that
+coexisted better with thread suspension.
+
+This change leaves just the parts needed for setting x86-32 registers
+on a suspended thread on Mac OS X, which I have renamed from
+"SwitchAllRegs" to "SwitchRemainingRegs".
+
+We might want to add back NaClSwitchAllRegs() at some point in the
+future, if we want to expose a sigreturn() syscall to untrusted code.
+That would require extra work in the validators to determine safe jump
+locations.  For now, keeping NaClSwitchAllRegs() is a maintenance
+burden.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2948
+TEST=run_thread_suspension_test (on Mac in particular)
+
+Review URL: https://codereview.chromium.org/11086026
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-09T22:30:52.000Z</ns0:updated><ns0:published>2012-10-09T22:30:52.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2948#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2948/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

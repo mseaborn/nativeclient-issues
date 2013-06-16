@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMGRH47eCl7ImA9WhVaEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2750/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=134619
+------------------------------------------------------------------------
+r134619 | mseaborn@chromium.org | 2012-04-30T22:36:36.881655Z
+
+Changed paths:
+   M /trunk/src/ppapi/native_client/src/trusted/plugin/build.scons
+
+NaCl: Synchronise build.scons file with Gyp file
+
+I moved sel_ldr_launcher_chrome.cc into the Chromium repo in r134552
+but I forgot to update build.scons.  This update is necessary for
+removing sel_ldr_launcher_chrome.cc from the NaCl repo because it
+ensures that the 'launch_nacl_process' variable (which module_ppapi.cc
+assigns to) will be defined.  (The alternative would be to
+conditionalise the assignment of 'launch_nacl_process' in
+module_ppapi.cc.)
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2750
+TEST=NaCl's Scons build
+
+
+Review URL: http://codereview.chromium.org/10261016
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-08T01:53:45.000Z</ns0:updated><ns0:published>2012-06-08T01:53:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2750#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2750/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

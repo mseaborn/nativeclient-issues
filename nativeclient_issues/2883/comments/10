@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4HQX47eCl7ImA9WhJbEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2883/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Results of the change:
+
+
+(bench, secs before, secs after)
+llc, ~126, ~20 
+mesa, 2.18, 0.98
+art, 0.30, 0.32
+equake, 0.31, 0.32
+ammp, 0.61, 0.44
+gzip, 0.28, 0.26
+vpr, 0.66, 0.49
+gcc, 4.92, 2.14
+mcf, 0.30, 0.35
+crafty, 0.78, 0.53
+parser, 0.61, 0.45
+perlbmk, 2.86, 1.12
+gap, 1.58, 0.84
+vortex, 1.45, 0.92
+bzip2, 0.26, 0.23
+twolf, 1.01, 0.58
+eon, 4.45, 2.01
+
+</ns0:content><ns0:updated>2012-09-19T04:12:10.000Z</ns0:updated><ns0:published>2012-09-19T04:12:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2883#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2883/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

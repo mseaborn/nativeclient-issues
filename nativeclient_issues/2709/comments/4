@@ -1,0 +1,62 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMFQX47eCl7ImA9WhVaEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2709/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=131154
+------------------------------------------------------------------------
+r131154 | mseaborn@chromium.org | 2012-04-06T18:48:32.234281Z
+
+Changed paths:
+   M /trunk/src/DEPS
+
+NaCl: Update revision in DEPS, r8144 -&gt; r8184
+
+There's a chance that this will be flaky; some flakiness was exposed
+by r8145.  However, I've not been able to explain the flakiness and I
+suspect that the flakiness will be masked by r8183 (below).
+See http://code.google.com/p/nativeclient/issues/detail?id=2709
+
+This pulls in the following Native Client changes:
+
+r8145: (ncbray) Create parallel and sequential instantiations of the inbrowser test runner.
+r8146: (mseaborn) Scons: Change PyAutoTester() to enforce dependencies
+r8147: (dschuff) Disable srpc_manifest_file_test when running under QEMU
+r8148: (mseaborn) Exception handling: Move "struct ExceptionFrame" to a shared location
+r8149: (olonho) Typo correction for https://chromiumcodereview.appspot.com/9816003/,
+r8150: (pasko) Remove -asan-blacklist from the Clang invocation command line.
+r8152: (jvoung) Generate NMFs into target-specific staging directory for PyAuto tests.
+r8153: (bradchen) Add a '-Z' option to sel_ldr to support a fixed-feature x86 CPU.
+r8154: (jvoung) Wrap AR command lines in a temp file as well, in case it gets
+r8155: (mseaborn) NaClDesc: Add an interface for creating custom descriptors
+r8156: (robertm) Remove code for non-clang frontends from pnacl build script
+r8157: (pasko) validator_ragel: rename gen-decoder to gen-dfa
+r8158: (dschuff) Make driver produce wrapped bitcode with hash
+r8159: (pasko) Bump glibc revision
+r8160: (dschuff) cleanup imports and fix struct unpack in driver
+r8161: (dschuff) Make PNaCl toolchain builder run the same tests as the main waterfall
+r8162: (dschuff) Use sha256 hash for bitcode wrapper
+r8163: (jvoung) Downloading pnacl toolchain on windows too (at least in nacl
+r8164: (robertm) Add a support for building the new gold based final linker for pnacl to the pnacl TC build script.
+r8165: (dschuff) Only run mac exception handling tests in nonpexe mode
+r8166: (dschuff) Revert "Only run mac exception handling tests in nonpexe mode"
+r8167: (mseaborn) Cleanup: Create a "posix" directory in src/shared/platform
+r8168: (dschuff) Now with 100% less bot breakage!
+r8169: (jvoung) Make pso stubs for a few of the glibc libraries for now
+r8170: (robertm) Add support for using gold as the final linker to the pnacl driver.
+r8171: (dschuff) Merge LLVM to upstream r153975
+r8172: (dschuff) remove debug print from driver
+r8173: (robertm) this seems to confuse the gold linker.
+r8174: (robertm) Roll both nnacl and pnacl TC revs to 8169
+r8176: (dschuff) Revert "Merge LLVM to upstream r153975"
+r8177: (jvoung) In pnacl driver's library search, normalize the searchpaths
+r8178: (jvoung) Turn on test for passing/returning structs that are aligned 32-bytes,
+r8179: (robertm) Build gold as an alternative final linker as part PNaCl's TC build.
+r8180: (bbudge) DEPS roll, update Chrome's revision in NaCl
+r8182: (robertm) Simplify the gold build (as pnacl's final linker) to only depend on
+r8183: (mseaborn) Log stdout/stderr to the browser inside inbrowser_test_runner
+r8184: (bsy) Enable support for _SC_PAGESIZE at the sysconf syscall level.
+
+BUG=none
+TEST=nacl_integration
+
+Review URL: https://chromiumcodereview.appspot.com/10010026
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-08T01:53:30.000Z</ns0:updated><ns0:published>2012-06-08T01:53:30.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2709#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2709/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

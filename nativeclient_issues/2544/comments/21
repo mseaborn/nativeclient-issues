@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUGSH47eCl7ImA9WhNQEE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2544/comments/full/21</ns0:id><ns0:author>
+			<ns0:name>stich...@google.com</ns0:name><ns0:uri>/u/111656935494976488934/</ns0:uri></ns0:author><ns0:content type="html">Just to clarify what I'm seeing here.  This is just the x86-32 build of
+spec2k, with -O3 pre-codegen optimizations untimed, with the codegen/link
+time and final execution time measured across 5 of the 7 SetupPnacl*X8632*
+configurations.  And these are cumulative codegen/run times across all of
+the spec benchmarks.  Right?
+
+-- Jim</ns0:content><ns0:updated>2012-11-16T00:53:49.000Z</ns0:updated><ns0:published>2012-11-16T00:53:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 21 by stich...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2544#c21" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2544/comments/full/21" rel="self" type="application/atom+xml" /></ns0:entry>

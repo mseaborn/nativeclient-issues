@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEYHRn47eCl7ImA9WhBVGUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3364/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">------------------------------------------------------------------------
+r196618 | jvoung@chromium.org | 2013-04-26T04:53:35.634377Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/nacl_test_data.gyp?r1=196618&amp;r2=196617&amp;pathrev=196618
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/nacl_browser_test.gypi?r1=196618&amp;r2=196617&amp;pathrev=196618
+
+Make sure pnacl_error_handling_test's gyp "output" is created.
+
+Otherwise, it will always try to build the target, even
+though it has already been built.  Since we used
+build_nexe.py's --compile, we have to set the output name to
+be the object file instead of the pexe.
+
+Alternatively, we could use a separate python script
+to build this magical incomplete "pexe".  Or, we can
+look for a different way to test linker failures.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=3364
+
+Review URL: https://chromiumcodereview.appspot.com/14391006
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-04-26T04:55:37.000Z</ns0:updated><ns0:published>2013-04-26T04:55:37.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3364#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3364/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

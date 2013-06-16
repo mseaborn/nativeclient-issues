@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIARn47eCl7ImA9WhNXGE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2204/comments/full/21</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10393
+
+------------------------------------------------------------------------
+r10393 | dschuff@chromium.org | 2012-12-06T17:02:03.017004Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/known_eh_failures_pnacl.txt?r1=10393&amp;r2=10392&amp;pathrev=10393
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/known_failures_pnacl.txt?r1=10393&amp;r2=10392&amp;pathrev=10393
+
+Update pnacl torture test failures
+
+The list of excludes hasn't been updated in a long time, so there are several
+new passing tests.
+
+There is also one new failure for ARM (mul-subnormal-single-1.c),
+which seems to have been introduced when we reverted our localmods
+to disabled NEON
+
+R=robertm@chromium.org,eliben@chromium.org,jfb@chromium.org
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2204
+
+Review URL: https://codereview.chromium.org/11442014
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-12-06T21:49:07.000Z</ns0:updated><ns0:published>2012-12-06T21:49:07.000Z</ns0:published><ns2:updates>
+			<ns2:blockedOnUpdate>-nativeclient:2197</ns2:blockedOnUpdate><ns2:blockedOnUpdate>nativeclient:2197</ns2:blockedOnUpdate></ns2:updates><ns0:title>Comment 21 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2204#c21" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2204/comments/full/21" rel="self" type="application/atom+xml" /></ns0:entry>

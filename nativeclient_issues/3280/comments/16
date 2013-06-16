@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkcHRX47eCl7ImA9WhBSFE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3280/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10862
+
+------------------------------------------------------------------------
+r10862 | mseaborn@chromium.org | 2013-02-20T22:36:38.162813Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/tramp_64.S?r1=10862&amp;r2=10861&amp;pathrev=10862
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.h?r1=10862&amp;r2=10861&amp;pathrev=10862
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/sel_ldr_x86_64.c?r1=10862&amp;r2=10861&amp;pathrev=10862
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/thread_suspension_unwind.c?r1=10862&amp;r2=10861&amp;pathrev=10862
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/sel_ldr.c?r1=10862&amp;r2=10861&amp;pathrev=10862
+
+x86-64: Replace dispatch_thunk code with NaClSyscallSeg address
+
+Before this change, the trampoline jumps outside the sandbox to
+dispatch_thunk, which jumps to NaClSyscallSeg.  After, the trampoline
+fetches the address of NaClSyscallSeg from a page outside the sandbox
+and jumps to it.
+
+This saves one indirect jump in the syscall code path.  The address of
+NaClSyscallSeg remains hidden from untrusted code.
+
+tramp_64.S: Remove a comment that doesn't seem to be relevant to the
+file.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3280
+TEST=run_hello_world_test
+
+Review URL: https://codereview.chromium.org/12209084
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-02-20T22:40:34.000Z</ns0:updated><ns0:published>2013-02-20T22:40:34.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3280#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3280/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

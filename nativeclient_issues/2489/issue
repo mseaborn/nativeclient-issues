@@ -1,6 +1,6 @@
 <ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04DRX47eCl7ImA9WhRQF0Q.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2489</ns0:id><ns0:author>
-			<ns0:name>bradc...@chromium.org</ns0:name><ns0:uri>/u/115122111847126606026/</ns0:uri></ns0:author><ns0:content type="html">
+			<ns0:name>bradchen@chromium.org</ns0:name><ns0:uri>/u/bradchen@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">
 Currently we recommend this page for testing whether NaCl is enabled properly in a browser:
 http://gonativeclient.appspot.com/dev/demos/sdk_examples/load_progress/load_progress.html
 
@@ -18,4 +18,4 @@ Suggested requirements:
 			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/101359714341338829292/</ns2:uri><ns2:username>col...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/101701583982903801272/</ns2:uri><ns2:username>awat...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Need a better NaCl test link</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-SDK</ns2:label><ns2:label>Mstone-18</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2489/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2489" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2489" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-12-13T17:06:14.000Z</ns2:closedDate><ns2:id>2489</ns2:id><ns2:mergedInto>
-			<ns2:id>2054</ns2:id></ns2:mergedInto></ns0:entry>
+			<ns2:id>2054</ns2:id><ns2:project>nativeclient</ns2:project></ns2:mergedInto></ns0:entry>

@@ -10,5 +10,5 @@ We have several binaries that fluctuate around 64KiB in size.  Until this is fix
 			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/108771824208521698652/</ns2:uri><ns2:username>robe...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PNaCl-based ARM toolchain does not leave room after end-of-text</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>Arch-PNaCl</ns2:label><ns2:label>Milestone-Caviar</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/747/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=747" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/747" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blocking>
-			<ns2:id>717</ns2:id></ns2:blocking><ns2:blocking>
-			<ns2:id>859</ns2:id></ns2:blocking><ns2:closedDate>2011-03-09T17:34:28.000Z</ns2:closedDate><ns2:id>747</ns2:id></ns0:entry>
+			<ns2:id>717</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>859</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2011-03-09T17:34:28.000Z</ns2:closedDate><ns2:id>747</ns2:id></ns0:entry>

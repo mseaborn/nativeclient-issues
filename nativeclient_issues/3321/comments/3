@@ -1,0 +1,41 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4DQX47eCl7ImA9WhBRF0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3321/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>j...@chromium.org</ns0:name><ns0:uri>/u/109636895838879576326/</ns0:uri></ns0:author><ns0:content type="html">Without any changes save for those needed to get things to compiles (see https://code.google.com/p/nativeclient/issues/detail?id=3334), here are results for the Exynos 5 dual (dual A15):
+
+$./run_all.sh TimedBuildAndRunBenchmarks SetupPnaclArmOpt
+
+$ find . -name "*compile_time" | sort | xargs cat; find . -name "*run_time" | sort | xargs cat
+2.54 0.05 2.62 ../../../toolchain/pnacl_linux_x86/newlib/bin/pnacl-translate --pnacl-driver-verbose gzip.opt.stripped.pexe -o gzip.pnacl.opt.arm -arch arm
+5.82 0.08 5.93 ../../../toolchain/pnacl_linux_x86/newlib/bin/pnacl-translate --pnacl-driver-verbose vpr.opt.stripped.pexe -o vpr.pnacl.opt.arm -arch arm
+40.84 0.28 41.16 ../../../toolchain/pnacl_linux_x86/newlib/bin/pnacl-translate --pnacl-driver-verbose gcc.opt.stripped.pexe -o gcc.pnacl.opt.arm -arch arm
+15.93 0.18 16.18 ../../../toolchain/pnacl_linux_x86/newlib/bin/pnacl-translate --pnacl-driver-verbose mesa.opt.stripped.pexe -o mesa.pnacl.opt.arm -arch arm
+3.15 0.07 3.25 ../../../toolchain/pnacl_linux_x86/newlib/bin/pnacl-translate --pnacl-driver-verbose art.opt.stripped.pexe -o art.pnacl.opt.arm -arch arm
+3.13 0.07 3.23 ../../../toolchain/pnacl_linux_x86/newlib/bin/pnacl-translate --pnacl-driver-verbose mcf.opt.stripped.pexe -o mcf.pnacl.opt.arm -arch arm
+3.39 0.09 3.50 ../../../toolchain/pnacl_linux_x86/newlib/bin/pnacl-translate --pnacl-driver-verbose equake.opt.stripped.pexe -o equake.pnacl.opt.arm -arch arm
+7.75 0.09 7.87 ../../../toolchain/pnacl_linux_x86/newlib/bin/pnacl-translate --pnacl-driver-verbose crafty.opt.stripped.pexe -o crafty.pnacl.opt.arm -arch arm
+5.94 0.10 6.07 ../../../toolchain/pnacl_linux_x86/newlib/bin/pnacl-translate --pnacl-driver-verbose ammp.opt.stripped.pexe -o ammp.pnacl.opt.arm -arch arm
+5.86 0.10 5.99 ../../../toolchain/pnacl_linux_x86/newlib/bin/pnacl-translate --pnacl-driver-verbose parser.opt.stripped.pexe -o parser.pnacl.opt.arm -arch arm
+19.17 0.17 19.37 ../../../toolchain/pnacl_linux_x86/newlib/bin/pnacl-translate --pnacl-driver-verbose eon.opt.stripped.pexe -o eon.pnacl.opt.arm -arch arm
+19.80 0.19 20.02 ../../../toolchain/pnacl_linux_x86/newlib/bin/pnacl-translate --pnacl-driver-verbose perlbmk.opt.stripped.pexe -o perlbmk.pnacl.opt.arm -arch arm
+15.89 0.17 16.11 ../../../toolchain/pnacl_linux_x86/newlib/bin/pnacl-translate --pnacl-driver-verbose gap.opt.stripped.pexe -o gap.pnacl.opt.arm -arch arm
+9.63 0.09 9.75 ../../../toolchain/pnacl_linux_x86/newlib/bin/pnacl-translate --pnacl-driver-verbose vortex.opt.stripped.pexe -o vortex.pnacl.opt.arm -arch arm
+2.47 0.05 2.55 ../../../toolchain/pnacl_linux_x86/newlib/bin/pnacl-translate --pnacl-driver-verbose bzip2.opt.stripped.pexe -o bzip2.pnacl.opt.arm -arch arm
+8.56 0.10 8.69 ../../../toolchain/pnacl_linux_x86/newlib/bin/pnacl-translate --pnacl-driver-verbose twolf.opt.stripped.pexe -o twolf.pnacl.opt.arm -arch arm
+28.65 0.11 28.85 ./run.train.sh ./gzip.pnacl.opt.arm
+31.06 0.11 31.24 ./run.train.sh ./vpr.pnacl.opt.arm
+2.95 0.02 2.99 ./run.train.sh ./gcc.pnacl.opt.arm
+56.76 0.15 56.94 ./run.train.sh ./mesa.pnacl.opt.arm
+9.45 0.05 9.53 ./run.train.sh ./art.pnacl.opt.arm
+18.75 0.04 18.81 ./run.train.sh ./mcf.pnacl.opt.arm
+23.64 0.05 24.29 ./run.train.sh ./equake.pnacl.opt.arm
+19.90 0.02 19.99 ./run.train.sh ./crafty.pnacl.opt.arm
+48.09 0.09 48.25 ./run.train.sh ./ammp.pnacl.opt.arm
+7.97 0.06 8.06 ./run.train.sh ./parser.pnacl.opt.arm
+8.07 0.08 8.20 ./run.train.sh ./eon.pnacl.opt.arm
+50.88 0.12 51.03 ./run.train.sh ./perlbmk.pnacl.opt.arm
+5.12 0.17 5.31 ./run.train.sh ./gap.pnacl.opt.arm
+6.99 0.03 7.05 ./run.train.sh ./vortex.pnacl.opt.arm
+29.47 0.04 29.53 ./run.train.sh ./bzip2.pnacl.opt.arm
+16.24 0.13 16.45 ./run.train.sh ./twolf.pnacl.opt.arm
+
+I'll build perf and repeat with it as a measurement source, then I'll apply a patch similar to yours.</ns0:content><ns0:updated>2013-03-08T22:16:10.000Z</ns0:updated><ns0:published>2013-03-08T22:16:10.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by j...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3321#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3321/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

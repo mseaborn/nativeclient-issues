@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU8MRn47eCl7ImA9WhJaGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2911/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I investigated what GDB needs for retrieving CPSR's value successfully.
+
+The GDB source tree contains a number of XML definitions for ARM register sets:
+
+$ git ls-files | grep arm.*xml
+gdb/features/arm-core.xml
+gdb/features/arm-fpa.xml
+gdb/features/arm-m-profile.xml
+gdb/features/arm-vfpv2.xml
+gdb/features/arm-vfpv3.xml
+...
+
+If the debug stub does not supply an XML register set definition (as currently), GDB falls back to the default set of registers defined in gdb/arm-tdep.c in arm_register_names[].  For most of the registers, GDB is happy with reading them via the "g" command ('get all registers'), but it wants to read CPSR via "p" ('get individual register'), which NaCl's debug stub doesn't implement:
+
+[21130,3066549328:12:24:47.727121] RX $p19#da
+[21130,3066549328:12:24:47.727335] Unknown command: p19
+[21130,3066549328:12:24:47.727457] TX $#00
+
+(0x19 == 25, the GDB register number for CPSR.)
+
+If NaCl's debug stub supplies an XML register definition, GDB reads CPSR fine.  I think this is what we should do.
+
+Note that NaCl's debug stub currently sets the &lt;architecture&gt; element to "iwmmxt" for ARM.  This probably has no effect on ARM GDB, because ARM gdbserver doesn't supply an &lt;architecture&gt; element at all.  I think NaCl should omit it too.
+</ns0:content><ns0:updated>2012-10-10T19:38:07.000Z</ns0:updated><ns0:published>2012-10-10T19:38:07.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2911#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2911/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

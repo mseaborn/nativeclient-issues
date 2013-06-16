@@ -1,0 +1,56 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQNRn47eCl7ImA9WhNUGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3253/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The cleanup change I did above got reverted because it was causing run_inbrowser_test_runner_irt to fail on the 32-bit Windows bot with the failures below.  This is very strange, because the content of the test should not have changed at all.  Yet reverting the change made the failures go away.
+
+Failure 1:
+
+...
+[  3921 ms] |||| [exception_test.nmf PASS]
+[  3937 ms] |||| 
+[  3937 ms] |||| [imc_shm_mmap_test.nmf BEGIN]
+[  3952 ms] |||| Registering ForcePluginLoadOnTimeout (Bugs: NaCl 2428, Chrome 103588)
+[  3952 ms] |||| GET /imc_shm_mmap_test.nmf (/imc_shm_mmap_test.nmf)
+[  3968 ms] |||| GET /imc_shm_mmap_test_x86-32.nexe (/imc_shm_mmap_test_x86-32.nexe)
+[  5654 ms] |||| [imc_shm_mmap_test.nmf LOG] 'Loaded http://192.168.113.11:1308/imc_shm_mmap_test.nmf'
+[  5686 ms] |||| [imc_shm_mmap_test.nmf LOG] 'imc_shm_mmap: 0 failures\n'
+[  5686 ms] |||| [imc_shm_mmap_test.nmf LOG] 'TEST PASSED: imc_shm_mmap: all sizes\n\n'
+[ 35761 ms] |||| 
+[ 35761 ms] |||| [SERVER_ERROR] Did not hear from the test for 30.0 seconds.
+[ 35761 ms] |||| Heard from Javascript 30.2 seconds ago.
+[ 35761 ms] |||| The renderer probably hung or crashed.
+KILLING the browser
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+[  FAILED  ] nacl_newlib.run_inbrowser_test_runner_irt (484 ms)
+
+Failure 2:
+
+...
+[  6172 ms] |||| [exception_test.nmf LOG] 'Running test_unsetting_x86_direction_flag...\n'
+[  6187 ms] |||| [exception_test.nmf LOG] 'Running test_preserving_frame_ptr...\n'
+[  6187 ms] |||| [exception_test.nmf LOG] '** intended_exit_status=0\n'
+[ 36282 ms] |||| 
+[ 36282 ms] |||| [SERVER_ERROR] Did not hear from the test for 30.0 seconds.
+[ 36282 ms] |||| Heard from Javascript 31.5 seconds ago.
+[ 36282 ms] |||| The renderer probably hung or crashed.
+KILLING the browser
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+[  FAILED  ] nacl_newlib.run_inbrowser_test_runner_irt (734 ms)
+
+Failure 3:
+
+...
+[ 13265 ms] |||| [dynamic_load_test.nmf LOG] 'Running test_demand_alloc_surrounding_hlt_filling...\n'
+[ 13265 ms] |||| [dynamic_load_test.nmf LOG] 'Running test_stress...\n'
+[ 13375 ms] |||| [dynamic_load_test.nmf LOG] 'Running test_loading_code...\n'
+[ 43421 ms] |||| 
+[ 43421 ms] |||| [SERVER_ERROR] Did not hear from the test for 30.0 seconds.
+[ 43421 ms] |||| Heard from Javascript 30.3 seconds ago.
+[ 43421 ms] |||| The renderer probably hung or crashed.
+KILLING the browser
+
+ERROR: Command returned exit status 1 (0x1) but we expected 0 (0x0)
+[  FAILED  ] nacl_newlib.run_inbrowser_test_runner_irt (1140 ms)
+</ns0:content><ns0:updated>2013-01-11T16:56:37.000Z</ns0:updated><ns0:published>2013-01-11T16:56:37.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>ncb...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 5 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3253#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3253/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

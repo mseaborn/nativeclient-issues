@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkMAQ347eCl7ImA9WxBUFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/338/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">one worry is that since VEH is global and not per-thread according to 
+http://msdn.microsoft.com/en-us/magazine/cc301714.aspx some random third-party library may 
+install another VEH handler (similar issue w/ *x signal handlers) as a FirstHandler, and 
+while this is true, another thread generates an exception.
+
+this is something we can check for by auditing, assuming that the 3rd party libraries 
+aren't too crazy.  some are system-local DLLs (or .so) and we'd have to make assumptions 
+about these.  we may want the list of audited DLLs (or .so files) to be part of our 
+platform qualification test -- we might not want to forbid the use of new versions, but we 
+definitely want to not run w/ versions that are known to mess with VEH (signal handlers) 
+and we may want to be informed that auditing is needed for new versions of libraries 
+(though there are privacy issues -- users who are developing a custom version of one of 
+these DLLs that we depend on might not want us to know that, for example).
+
+if there is a per-thread way of doing VEH, then we can install a FirstHandler on context 
+switch to untrusted code, and RemoveVectoredExceptionHandler on context switch back.  then 
+whatever random (trusted) 3rd party libraries can do whatever they want w/ VEH.  (we cannot 
+remove their VEH entries in general, since that may cause problems w/ the correctness of 
+the 3rd party code.)
+
+w/ *x / posix threads, we need to investigate the exact semantics of thread signal masks 
+and synchronous and asynchronous signal delivery.</ns0:content><ns0:updated>2010-03-03T19:27:22.000Z</ns0:updated><ns0:published>2010-03-03T19:27:22.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by b...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=338#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/338/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

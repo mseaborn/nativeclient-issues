@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D08HR347eCl7ImA9WhJbFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3039</ns0:id><ns0:author>
+			<ns0:name>b...@google.com</ns0:name><ns0:uri>/u/105821748722532785568/</ns0:uri></ns0:author><ns0:content type="html">on a precise machine, when i build with
+
+./scons --verbose --mode=opt-host,nacl platform=x86-64 --clang --asan
+
+eventually i get the line, when non-gold binutil is used:
+
+/usr/local/google/home/bsy/nacl/svn0/third_party/asan/asan_clang_Linux/bin/clang++ -faddress-sanitizer -o scons-out/opt-linux-x86-64/obj/src/trusted/python_bindings/naclimc.so -pie -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack -m64 -L/usr/lib64 -Wl,-rpath=/usr/local/google/home/bsy/nacl/svn0/native_client/scons-out/opt-linux-x86-64/lib -shared scons-out/opt-linux-x86-64/obj/src/trusted/python_bindings/python_imc.os -L/usr/lib -Lscons-out/opt-linux-x86-64/lib -lnrd_xfer_shared -lnacl_base_shared -limc_shared -lplatform_shared -lgio_shared -lrt -lpthread
+/usr/bin/ld: warning: cannot find entry symbol _start; defaulting to 0000000000009b50
+
+
+but when binutils-gold is used, i get:
+
+...
+/usr/bin/ld: fatal error: -shared and -pie are incompatible
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+...
+
+since this doesn't seem to be affecting our bots, we must not be using binutils-gold, but iirc chrome uses gold -- though it may be using a DEPS'd in version that wouldn't complain, and/or NaCl code might still use the platform version of ld, and the gyp build probably uses yet different flags.
+
+marking as OS-Linux for now, since i don't think osx has gold....</ns0:content><ns0:updated>2012-09-24T16:57:16.000Z</ns0:updated><ns0:published>2012-09-20T22:30:06.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:state>closed</ns2:state><ns0:title>binutils-gold doesn't like -pie and -shared together, and we provide it in the scons build</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3039/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3039" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3039" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-09-24T16:55:22.000Z</ns2:closedDate><ns2:id>3039</ns2:id></ns0:entry>

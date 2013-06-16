@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AGRn47eCl7ImA9WhBTEU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3033</ns0:id><ns0:author>
+			<ns0:name>ncb...@google.com</ns0:name><ns0:uri>/u/100032148147647801554/</ns0:uri></ns0:author><ns0:content type="html">Or, more correctly, it failed to fail.
+
+From:
+http://chromegw.corp.google.com/i/client.nacl/builders/xp-bare-newlib-opt/builds/3065/steps/small_tests/logs/stdio
+
+
+[ RUN      ] nacl_newlib.run_exception_test_stack_in_rodata
+======================================================================
+running ['scons-out/opt-win-x86-32/staging/sel_ldr.exe', '-e', '-E', 'OUTSIDE_BROWSER=1', '--', 'scons-out/nacl-x86-32/obj/tests/exception_test/exception_crash_test.nexe', 'test_stack_in_rodata']
+======================================================================
+scons-out/opt-win-x86-32/staging/sel_ldr.exe -e -E OUTSIDE_BROWSER=1 -- scons-out/nacl-x86-32/obj/tests/exception_test/exception_crash_test.nexe test_stack_in_rodata
+
+ERROR: Command returned exit status 0 (0x0) but we expected -1073741819 (0xc0000005) or -1073741674 (0xc0000096)
+======================================================================
+Stdout for nacl_newlib.run_exception_test_stack_in_rodata:
+======================================================================
+
+======================================================================
+Stderr for nacl_newlib.run_exception_test_stack_in_rodata:
+======================================================================
+[3168,904:23:21:22.710000] Native Client module will be loaded at base address 0x0000000000b30000
+
+** intended_exit_status=unwritable_exception_stack
+
+
+[  FAILED  ] nacl_newlib.run_exception_test_stack_in_rodata (437 ms)</ns0:content><ns0:updated>2013-02-05T23:08:47.000Z</ns0:updated><ns0:published>2012-09-15T02:19:10.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>run_exception_test_stack_in_rodata failed.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-24</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3033/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3033" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3033" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:id>3033</ns2:id></ns0:entry>

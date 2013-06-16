@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUICRn47eCl7ImA9WhBVGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3372/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Just had a meeting with Darin and Erik about the different approaches.
+
+Summary:
+
+* Erik did not realize that disk_cache could be configured to have separate files. So it's not actually ruled out. LevelDB still is ruled out.
+* Darin would prefer not to duplicate LRU and crash-handling logic by creating a different kind of cache.  Would prefer to use disk_cache.
+
+
+
+Setting up the right thing with disk cache could take a while.  Split into short-term and long-term cases.
+
+
+Short-term:
+* Suppose we accept the startup performance of not having identity-based validation caching and mmap for the first release. (E.g., what we have now in NaCl).
+* What is the problem then?
+  ** Is the only remaining problem disk usage?
+* Could reduce disk usage by ensuring that we remove old versions of pexe-&gt;nexe translations, whenever the pexe is updated and the old one is not useful anymore.  That way, each app only has one copy.
+* Could have a way of clearing old pexe-&gt;nexe caches when we switch over to a different longer term cache.
+
+
+Long-term:
+
+* Use disk cache.  Initially we could use the inefficient API, and try to motivate/migrate to the more efficient API.
+  ** When I first last looked at it, suggestion was to use the existing buffer-based API.  With some better data, perhaps we can motivate having a more optimized API this (would need that for validation caching and mmap'ing).
+  ** Can we motivate that now and does that save on throw-away work?
+
+* Usage w/ disk_cache could look something like this:
+* Invent a URL scheme for naming PNaCl cache entries (w/ same origin restriction to begin with).
+  * E.g., "URL" = pnacl://http://origin/path_to_pexe_&lt;version_hash&gt;
+* URLLoad (URL, stream-as-file) -&gt; 404 (or "cache miss")
+* Since this is a miss, kick off translation pipeline.
+* Renderer to browser IPC: "Alloc (URL)" -&gt; get FD of some temp file
+* Translator: compile and write to FD of temp file
+* Renderer to browser: "Commit(URL, FD)", browser moves temp file to the actual entry.
+* URLLoad (URL, stream-as-file) -&gt; read-only FD of the actual entry
+  ** optimization: the URLLoad(url, stream-as-file) will not copy, but get a read-only FD from the cache directly.  This also helps NaCl nexes that use stream-as-file.
+* Sel_Ldr.Run(FD)
+</ns0:content><ns0:updated>2013-04-25T22:06:07.000Z</ns0:updated><ns0:published>2013-04-25T22:06:07.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3372#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3372/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

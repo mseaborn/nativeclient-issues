@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUEGQn47eCl7ImA9WhNWF0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3219</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+
+TOOLS_REVISION with PNACL_VERSION=10457
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+
+NaCl r10456
+
+
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1.  Set TOOLS_REVISION to the above.
+2.  Run:  ./scons bitcode=1 pnacl_generate_pexe=0 platform=x86-64 nacl_pic=1 run_unwind_trace_noopt_noframe_test 
+3.  Observe segfault.
+
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+Tests should pass.  Instead see segfault really early.
+
+According to GDB, and the &amp;quot;-S&amp;quot; option of sel_ldr, it crashes while trying to grab the address of &amp;quot;main&amp;quot; to printf, on this line:
+
+  printf(&amp;quot;main %p recurse %p\n&amp;quot;, FUNPTR2PTR(main), FUNPTR2PTR(recurse));
+
+For getting the address of &amp;quot;recurse&amp;quot; it does a RIP relative LEA, which I think is okay:
+
+   20979:	8d 15 01 ff ff ff    	lea    -0xff(%rip),%edx        # 20880 &amp;lt;_Z7recursei&amp;gt;
+
+However, to get the address of &amp;quot;main&amp;quot; it does:
+
+   20972:	41 8b b7 8b f6 00 10 	mov    0x1000f68b(%r15),%esi
+
+which crashes.
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;
+
+If you comment out the printf, there are further problems to debug...
+</ns0:content><ns0:updated>2012-12-17T22:33:43.000Z</ns0:updated><ns0:published>2012-12-14T17:41:35.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:state>closed</ns2:state><ns0:title>PNaCl LLC -O0 on x86-64 with PIC has problems with unwind_trace.cc and stack_frame.cc tests</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-26</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3219/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3219" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3219" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-12-17T22:33:43.000Z</ns2:closedDate><ns2:id>3219</ns2:id></ns0:entry>

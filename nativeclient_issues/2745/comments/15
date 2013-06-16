@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkACRX47eCl7ImA9WhVUEUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2745/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8618
+
+------------------------------------------------------------------------
+r8618 | robertm@google.com | Wed May 16 13:01:31 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=8618&amp;r2=8617&amp;pathrev=8618
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/pthread_initialize_minimal_using_ldso.c?r1=8618&amp;r2=8617&amp;pathrev=8618 (from /trunk/src/native_client/src/untrusted/nacl/pthread_initialize_minimal.c revision 8600)
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/nacl.scons?r1=8618&amp;r2=8617&amp;pathrev=8618
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/tls_using_ldso.c?r1=8618&amp;r2=8617&amp;pathrev=8618 (from /trunk/src/native_client/src/untrusted/nacl/tls.c revision 8600)
+
+Introduce a new scons Bit for the pnacl shared newlib work.
+
+Use it to guard the build of slightly modified version of libnacl
+which drops pthread stubs and tls support from libnacl as those
+are not compatible with the ld.so integration.
+
+Instead we provide code to tap into the tls support provided by ld.so.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2745
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2770
+TESTS= trybots
+Review URL: https://chromiumcodereview.appspot.com/10398045
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-05-16T20:06:04.000Z</ns0:updated><ns0:published>2012-05-16T20:06:04.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2745#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2745/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

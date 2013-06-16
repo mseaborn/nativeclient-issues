@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck4AQn47eCl7ImA9WhJWFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2959/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=152401
+
+------------------------------------------------------------------------
+r152401 | ncbray@chromium.org | 2012-08-20T22:15:01.670059Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/native_client_sdk/src/tools/create_nmf.py?r1=152401&amp;r2=152400&amp;pathrev=152401
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/nacl_browser_test.gypi?r1=152401&amp;r2=152400&amp;pathrev=152401
+
+Make each NaCl glibc test copy its shared libraries into a unique directory.
+
+This will prevent build problems when there is more than one glibc test.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2959
+TEST= none
+
+
+Review URL: https://chromiumcodereview.appspot.com/10837325
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-20T22:15:43.000Z</ns0:updated><ns0:published>2012-08-20T22:15:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2959#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2959/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

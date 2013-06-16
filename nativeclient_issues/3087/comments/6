@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0cBRn47eCl7ImA9WhBTE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3087/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10743
+
+------------------------------------------------------------------------
+r10743 | mark@chromium.org | 2013-02-08T21:26:27.423457Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/command_tester.py?r1=10743&amp;r2=10742&amp;pathrev=10743
+
+Update command_tester.py for 64-bit Mac OS X.
+
+The Mac OS X kernel isn't very consistent in its mapping of machine traps to
+POSIX signals. What's a SIGBUS in a 32-bit Mac process may be a SIGSEGV in a
+64-bit Mac process (and on Linux, too). See also
+trusted/service_runtime/nacl_signal_unittest.c, which says in a comment:
+"There are inconsistences between POSIX implementations on which errors return
+SIGSEGV vs SIGBUS, so we allow either one."
+
+This change splits the expectations in status_map for platform 'darwin' into
+'mac32' and 'mac64'. Notably, they differ for
+'untrusted_sigsegv_or_equivalent', 'trusted_segfault', and
+'trusted_sigsegv_or_equivalent'. This may change as more development is done
+for 64-bit Mac OS X.
+
+This fixes nacl_signal_frame_test for 64-bit Mac OS X.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3087
+TEST=nacl_signal_frame_test, execute_data_test
+Review URL: https://codereview.chromium.org/12209062
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-02-08T21:30:57.000Z</ns0:updated><ns0:published>2013-02-08T21:30:57.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3087#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3087/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

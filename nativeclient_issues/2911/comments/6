@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYARn47eCl7ImA9WhJaEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2911/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9891
+
+------------------------------------------------------------------------
+r9891 | mseaborn@chromium.org | 2012-10-01T17:54:52.125660Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_switch_all_regs_arm.S?r1=9891&amp;r2=9890&amp;pathrev=9891
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/set_all_regs/setregs_test_guest.c?r1=9891&amp;r2=9890&amp;pathrev=9891
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/sel_rt.c?r1=9891&amp;r2=9890&amp;pathrev=9891
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/common/register_set.c?r1=9891&amp;r2=9890&amp;pathrev=9891
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/linux/nacl_signal_arm.c?r1=9891&amp;r2=9890&amp;pathrev=9891
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_signal_arm.h?r1=9891&amp;r2=9890&amp;pathrev=9891
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/common/register_set.h?r1=9891&amp;r2=9890&amp;pathrev=9891
+
+ARM: Add the CPSR (flags) register to NaClSignalContext
+
+ * Add code for copying CPSR to and from the Linux sigcontext struct.
+
+ * Add test code to register_set.[ch] for saving and restoring CPSR.
+
+ * Extend NaClSwitchAllRegs to restore CPSR.  Extend
+   setregs_test_guest.c to test each of the flags we support; simplify
+   this file to use RegsAssertEqual() so that the register lists are
+   not duplicated here.
+
+In register_set.h, I changed "bl" to "b" to avoid the validator's
+requirement that "bl" calls appear at the end of an instruction
+bundle.  (Since callee_func() shouldn't return, and "bl" does not
+modify the stack pointer, using "bl" here is unnecessary.)
+
+This change does not hook up CPSR to be exposed by the debug stub yet.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2911
+TEST=run_thread_suspension_test run_set_all_regs_test
+
+Review URL: https://codereview.chromium.org/11008006
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-01T17:55:47.000Z</ns0:updated><ns0:published>2012-10-01T17:55:47.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2911#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2911/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

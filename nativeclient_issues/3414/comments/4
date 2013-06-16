@@ -1,0 +1,8 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUIAQ347eCl7ImA9WhBUFE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3414/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Yes, I don't think we should do share-by-hash yet for the reasons you specify.
+
+However, the hash also gives us a way to detect when we have a translation cache hit (vs a bitcode download cache hit).  Is there another way to tell that the bitcode has already been translated (under certain conditions like -O0 vs -O2), without this hash?
+
+We could try to download the pexe again, and see if the URL response is 304. That will tell us that the bitcode hasn't changed.  However, if the bitcode was evicted from the browser cache, we could end up kicking off an unnecessary translation.
+</ns0:content><ns0:updated>2013-05-01T19:45:42.000Z</ns0:updated><ns0:published>2013-05-01T19:45:42.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3414#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3414/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

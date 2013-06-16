@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkAARH47eCl7ImA9WhJQF0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1390/comments/full/15</ns0:id><ns0:author>
+			<ns0:name>bradchen@chromium.org</ns0:name><ns0:uri>/u/bradchen@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Thank you for reporting this issue.
+
+Can you please provide more details? It would be very helpful to know what NaCl content you tried to run, what failure mode you observed, any output that appears in the JavaScript console (wrench-&gt;Tools-&gt;JavaScript Console) etc. It would be helpful if you could start by testing the simplest examples in the SDK.
+
+Also please file this as a new issue because, whatever it is, there's no evidence at this point it is related to this older issue.</ns0:content><ns0:updated>2012-07-31T16:05:45.000Z</ns0:updated><ns0:published>2012-07-31T16:05:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 15 by bradchen@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1390#c15" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1390/comments/full/15" rel="self" type="application/atom+xml" /></ns0:entry>

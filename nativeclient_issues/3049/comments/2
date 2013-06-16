@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEMGRn47eCl7ImA9WhBVE0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3049/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">------------------------------------------------------------------------
+r195145 | halyavin@google.com | 2013-04-19T12:57:06.343138Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad_manifest_bad_files.nmf?r1=195145&amp;r2=195144&amp;pathrev=195145
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/json_manifest.cc?r1=195145&amp;r2=195144&amp;pathrev=195145
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/ppapi_browser/manifest/nacl.scons?r1=195145&amp;r2=195144&amp;pathrev=195145
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/ppapi_browser/bad/ppapi_bad.html?r1=195145&amp;r2=195144&amp;pathrev=195145
+   A http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/ppapi_browser/manifest/manifest_arch_specific.nmf?r1=195145&amp;r2=195144&amp;pathrev=195145
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/tests/ppapi_browser/manifest/manifest.html?r1=195145&amp;r2=195144&amp;pathrev=195145
+
+Allow having different files for different ISAs in NaCl manifest.
+
+Currently all files must have version for current ISA or
+NaCl program will not load.  I relaxed this condition.  This 
+is useful when ARM version of the program is compiled with
+newlib but x86 version is compiled with glibc.  Developer
+doesn't need to add ARM versions for all *.so libraries in
+this case.
+
+Since not having current architecture for a file is no 
+longer an error, I changed ppapi_bad_manifest_bad_files.nmf
+to test for a different error in file section.
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3049
+TEST= run_manifest_browser_test and run_ppapi_bad_browser_test
+
+Review URL: https://chromiumcodereview.appspot.com/14069002
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-04-19T13:00:27.000Z</ns0:updated><ns0:published>2013-04-19T13:00:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3049#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3049/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

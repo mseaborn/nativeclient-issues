@@ -1,0 +1,17 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU8CQn47eCl7ImA9WhNUGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/714</ns0:id><ns0:author>
+			<ns0:name>jan...@google.com</ns0:name><ns0:uri>/u/112556240084283736563/</ns0:uri></ns0:author><ns0:content type="html">nacl_dyncode_copy currently checks if a memory region is not in use by verifying it contains all hlt instructions, thus you can re-insert over an already inserted region provided the original 32 byte bundle you inserted was all hlts.
+
+The attached proof of concept executes an illegal instruction (int3), by jumping into the immediate part of an add (that was a hlt when the jump was originally verified).
+
+Run with:
+$ nacl-g++ -o dynexploit -Wl,--section-start,.rodata=0x10000000 dynexploit_asm.S dynexploit_main.cc
+$ NACLDYNCODE=1 sel_ldr -v ./dynexploit
+
+</ns0:content><ns0:updated>2013-01-10T21:37:43.000Z</ns0:updated><ns0:published>2010-07-22T22:10:38.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113734881363111092110/</ns2:uri><ns2:username>ul...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112556240084283736563/</ns2:uri><ns2:username>jan...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@google.com/</ns2:uri><ns2:username>mseaborn@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>break out of sandbox through insufficient already-inserted checks in nacl_dyncode_copy</ns0:title><ns2:label>Security</ns2:label><ns2:label>Pri-0</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/714/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=714" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/714" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2010-08-13T11:42:18.000Z</ns2:closedDate><ns2:id>714</ns2:id></ns0:entry>

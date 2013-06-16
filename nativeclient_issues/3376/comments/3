@@ -1,0 +1,35 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0cARX47eCl7ImA9WhBWFko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3376/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11168
+
+------------------------------------------------------------------------
+r11168 | khim@google.com | 2013-04-11T10:05:09.270809Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/testdata/32/modeled_insts.txt?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/legacy.test?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/testdata/64/modeled_insts.txt?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/ncdecode_onebyte.c?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_seg_sfi/gen/ncbadprefixmask_32.h?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/gen/nc_opcode_table_32.h?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_reg_sfi/nc_cpu_checks.c?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/gen/ncval_reg_sfi_opcode_table_32.h?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/x86_insts_verbose.c?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_seg_sfi/gen/ncbadprefixmask_64.h?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/instruction_definitions/general_purpose_instructions.def?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/gen/nc_opcode_table_64.h?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/gen/ncval_reg_sfi_opcode_table_64.h?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/validator_x86_64.c?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/nacl_illegal.c?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/decoder/generator/testdata/64/ncval_reg_sfi_modeled_insts.txt?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/x86_insts.h?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/ncval_seg_sfi/ncvalidate.c?r1=11168&amp;r2=11167&amp;pathrev=11168
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/validator_features_validator.c?r1=11168&amp;r2=11167&amp;pathrev=11168
+
+Enable LAHF/SAHF instructions in x86-64 mode
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3376
+TEST=vdiff, dfacheckvalidator
+Review URL: https://codereview.chromium.org/14061004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-04-11T10:10:44.000Z</ns0:updated><ns0:published>2013-04-11T10:10:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3376#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3376/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQBR347eCl7ImA9WhBXE04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3351</ns0:id><ns0:author>
+			<ns0:name>s...@chromium.org</ns0:name><ns0:uri>/u/100592414910994572397/</ns0:uri></ns0:author><ns0:content type="html">Since this library is getting linked into the IRT it should use -mtp=soft.
+
+Right now when I try to use gcc to build the ARM IRT I get crashes on
+startup:
+
+
+_start (info=0x3ffeffb0) at irt_entry.c:23
+23	void _start(uint32_t *info) {
+(gdb) c
+Continuing.
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0fc07cbc in std::ios_base::Init::Init() ()
+(gdb) bt
+#0  0x0fc07cbc in std::ios_base::Init::Init() ()
+#1  0x0fa046d0 in __static_initialization_and_destruction_0 (__initialize_p=&amp;lt;optimized out&amp;gt;, 
+    __priority=&amp;lt;optimized out&amp;gt;)
+    at /usr/local/google/home/sbc/dev/chromium/src/out/Debug/gen/sdk/toolchain/linux_arm_newlib/bin/../lib/gcc/arm-nacl/4.7.3/../../../../arm-nacl/include/c++/4.7.3/iostream:75
+#2  _GLOBAL__sub_I__ZN3gpu6Logger6streamEv () at common/logging.cc:24
+#3  0x0fc902f0 in __libc_init_array ()
+#4  0x0fa04d70 in _start (info=&amp;lt;optimized out&amp;gt;) at irt_entry.c:41
+(gdb) disassemble 
+
+
+
+</ns0:content><ns0:updated>2013-03-26T22:35:56.000Z</ns0:updated><ns0:published>2013-03-25T19:47:24.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>libstdc++ for ARM should be compiled with -mtp=soft</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3351/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3351" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3351" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-03-26T22:35:56.000Z</ns2:closedDate><ns2:id>3351</ns2:id></ns0:entry>

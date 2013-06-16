@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0cAQn47eCl7ImA9WhBUGUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3424/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11310
+
+------------------------------------------------------------------------
+r11310 | mseaborn@chromium.org | 2013-05-07T21:05:28.707543Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/DEPS?r1=11310&amp;r2=11309&amp;pathrev=11310
+
+Pull in Breakpad via DEPS in order to get the minidump format headers
+
+This is in preparation for using minidump_format.h etc. in a minidump
+generator implementation, and possibly for testing Breakpad's stack
+backtracing end-to-end.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3424
+TEST=none
+
+Review URL: https://codereview.chromium.org/14863008
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-05-07T21:10:43.000Z</ns0:updated><ns0:published>2013-05-07T21:10:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3424#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3424/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

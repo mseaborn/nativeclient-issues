@@ -1,0 +1,55 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkEFQn47eCl7ImA9WhJRGE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2912/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Ok, for C, it sounds like LLVM (after version 2.7) should actually be preserving the non-termination here :
+http://blog.regehr.org/archives/161
+
+
+If we look at just that snippet, it does seem to be okay, so we'd have to look at the whole program...
+
+The optimized bitcode:
+
+define void @test_interrupt() noreturn nounwind readnone {
+entry:
+  br label %for.cond
+
+for.cond:                                         ; preds = %for.cond, %entry
+  br label %for.cond
+}
+
+which looks like it should just loop forever.
+
+The .o files:
+temp.32.o:     file format elf32-nacl
+
+Disassembly of section .text:
+
+00000000 &lt;test_interrupt&gt;:
+   0:	55                   	push   %ebp
+   1:	89 e5                	mov    %esp,%ebp
+   3:	66 66 66 66 2e 0f 1f 	data32 data32 data32 nopw %cs:0x0(%eax,%eax,1)
+   a:	84 00 00 00 00 00 
+  10:	eb fe                	jmp    10 &lt;test_interrupt+0x10&gt;
+  12:	66 66 66 66 66 2e 0f 	data32 data32 data32 data32 nopw %cs:0x0(%eax,%eax,1)
+  19:	1f 84 00 00 00 00 00 
+
+
+temp.64.o:     file format elf64-nacl
+
+Disassembly of section .text:
+
+0000000000000000 &lt;test_interrupt&gt;:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	66 66 66 2e 0f 1f 84 	data32 data32 nopw %cs:0x0(%rax,%rax,1)
+   b:	00 00 00 00 00 
+  10:	eb fe                	jmp    10 &lt;test_interrupt+0x10&gt;
+  12:	66 66 66 66 66 2e 0f 	data32 data32 data32 data32 nopw %cs:0x0(%rax,%rax,1)
+  19:	1f 84 00 00 00 00 00 
+
+
+temp.arm.o:     file format elf32-littlearm-nacl
+
+Disassembly of section .text:
+
+00000000 &lt;test_interrupt&gt;:
+   0:	eafffffe 	b	0 &lt;test_interrupt&gt;</ns0:content><ns0:updated>2012-07-20T16:10:13.000Z</ns0:updated><ns0:published>2012-07-20T16:10:13.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2912#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2912/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

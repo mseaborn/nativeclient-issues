@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QHRH47eCl7ImA9WhNaEEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3136/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=178686
+
+------------------------------------------------------------------------
+r178686 | jvoung@chromium.org | 2013-01-24T23:11:33.239933Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/nacl_test_data.gyp?r1=178686&amp;r2=178685&amp;pathrev=178686
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/untrusted/irt_stub/irt_stub.gyp?r1=178686&amp;r2=178685&amp;pathrev=178686
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/data/nacl/nacl_browser_test.gypi?r1=178686&amp;r2=178685&amp;pathrev=178686
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest_util.cc?r1=178686&amp;r2=178685&amp;pathrev=178686
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest_util.h?r1=178686&amp;r2=178685&amp;pathrev=178686
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/ppapi_untrusted.gyp?r1=178686&amp;r2=178685&amp;pathrev=178686
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest_uma.cc?r1=178686&amp;r2=178685&amp;pathrev=178686
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/native_client.gyp?r1=178686&amp;r2=178685&amp;pathrev=178686
+
+Add support in NaClBrowserTests for PNaCl, and test PNaCl UMA.
+
+Mostly the same as the previous CL from dschuff:
+https://chromiumcodereview.appspot.com/11348048
+
+Updated to only build pexes, and test the in-browser translation
+of the pexe instead of pre-translating the pexes
+(so create_nmf calls are different, etc.).
+
+Add some UMA tests for PNaCl while we are at it.
+
+NOTE: Tests are disabled under ASAN.
+BUG=https://code.google.com/p/chromium/issues/detail?id=171810
+In a later CL we can enable a test for pnacl_coordinator
+under asan, but using incognito mode, which avoids the
+caching logic.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2484
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3136
+
+Review URL: https://chromiumcodereview.appspot.com/11956028
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-01-24T23:15:35.000Z</ns0:updated><ns0:published>2013-01-24T23:15:35.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3136#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3136/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

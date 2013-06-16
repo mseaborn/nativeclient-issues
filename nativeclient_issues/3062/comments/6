@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0UBQH47eCl7ImA9WhJaE0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3062/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Valgrind does report something:
+
+TryUserDefinedConversion reads the "invalid read" in the report, which is the parameter for getAccess(), which passes that parameter along to CheckAccessDeclContext() which crashes when accessing that parameter.
+
+
+==30576== Invalid read of size 8
+==30576==    at 0xC5B2FC: TryUserDefinedConversion(clang::Sema&amp;, clang::InitializedEntity const&amp;, clang::InitializationKind const&amp;, clang::Expr*, clang::InitializationSequence&amp;) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xC603F3: clang::InitializationSequence::InitializationSequence(clang::Sema&amp;, clang::InitializedEntity const&amp;, clang::InitializationKind const&amp;, clang::Expr**, unsigned int) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xC31191: EvaluateBinaryTypeTrait(clang::Sema&amp;, clang::BinaryTypeTrait, clang::QualType, clang::QualType, clang::SourceLocation) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xC31BAB: clang::Sema::BuildBinaryTypeTrait(clang::BinaryTypeTrait, clang::SourceLocation, clang::TypeSourceInfo*, clang::TypeSourceInfo*, clang::SourceLocation) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xD6293B: clang::TreeTransform&lt;(anonymous namespace)::TemplateInstantiator&gt;::TransformBinaryTypeTraitExpr(clang::BinaryTypeTraitExpr*) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xD6D9CA: clang::TreeTransform&lt;(anonymous namespace)::TemplateInstantiator&gt;::TransformExpr(clang::Expr*) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xD75D16: clang::TreeTransform&lt;(anonymous namespace)::TemplateInstantiator&gt;::TransformBinaryOperator(clang::BinaryOperator*) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xD6D952: clang::TreeTransform&lt;(anonymous namespace)::TemplateInstantiator&gt;::TransformExpr(clang::Expr*) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xD7D3EC: clang::TreeTransform&lt;(anonymous namespace)::TemplateInstantiator&gt;::TransformParenExpr(clang::ParenExpr*) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xD6E8AA: clang::TreeTransform&lt;(anonymous namespace)::TemplateInstantiator&gt;::TransformExpr(clang::Expr*) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xD65807: clang::TreeTransform&lt;(anonymous namespace)::TemplateInstantiator&gt;::TransformTemplateArgument(clang::TemplateArgumentLoc const&amp;, clang::TemplateArgumentLoc&amp;) [clone .constprop.2209] (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xD68F67: bool clang::TreeTransform&lt;(anonymous namespace)::TemplateInstantiator&gt;::TransformTemplateArguments&lt;clang::(anonymous namespace)::TemplateArgumentLocContainerIterator&lt;clang::TemplateSpecializationTypeLoc&gt; &gt;(clang::(anonymous namespace)::TemplateArgumentLocContainerIterator&lt;clang::TemplateSpecializationTypeLoc&gt;, clang::(anonymous namespace)::TemplateArgumentLocContainerIterator&lt;clang::TemplateSpecializationTypeLoc&gt;, clang::TemplateArgumentListInfo&amp;) [clone .isra.2198] [clone .constprop.2219] (in /usr/local/llvm-install/bin/clang)
+
+
+==30576==  Address 0x5fae0a0 is 32 bytes inside a block of size 56 free'd
+==30576==    at 0x4C2CDFD: operator delete(void*) (/home/samsonov/valgrind-variant/valgrind-test/coregrind/m_replacemalloc/vg_replace_malloc.c:456)
+==30576==    by 0x11B4127: llvm::SmallDenseMap&lt;clang::DeclarationName, clang::StoredDeclsList, 4u, llvm::DenseMapInfo&lt;clang::DeclarationName&gt; &gt;::grow(unsigned int) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0x11B14E9: llvm::DenseMapBase&lt;llvm::SmallDenseMap&lt;clang::DeclarationName, clang::StoredDeclsList, 4u, llvm::DenseMapInfo&lt;clang::DeclarationName&gt; &gt;, clang::DeclarationName, clang::StoredDeclsList, llvm::DenseMapInfo&lt;clang::DeclarationName&gt; &gt;::InsertIntoBucket(clang::DeclarationName const&amp;, clang::StoredDeclsList const&amp;, std::pair&lt;clang::DeclarationName, clang::StoredDeclsList&gt;*) [clone .constprop.413] (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0x11B165D: clang::DeclContext::makeDeclVisibleInContextImpl(clang::NamedDecl*, bool) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0x11B2044: clang::DeclContext::makeDeclVisibleInContextWithFlags(clang::NamedDecl*, bool, bool) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xB8B134: clang::Sema::DeclareImplicitDestructor(clang::CXXRecordDecl*) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xC78FB6: clang::Sema::LookupSpecialMember(clang::CXXRecordDecl*, clang::Sema::CXXSpecialMember, bool, bool, bool, bool, bool) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xC791C4: clang::Sema::LookupDestructor(clang::CXXRecordDecl*) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xC36222: clang::Sema::MaybeBindToTemporary(clang::Expr*) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xC59974: PerformConstructorInitialization(clang::Sema&amp;, clang::InitializedEntity const&amp;, clang::InitializationKind const&amp;, llvm::MutableArrayRef&lt;clang::Expr*&gt;, clang::InitializationSequence::Step const&amp;, bool&amp;) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xC631D5: clang::InitializationSequence::Perform(clang::Sema&amp;, clang::InitializedEntity const&amp;, clang::InitializationKind const&amp;, llvm::MutableArrayRef&lt;clang::Expr*&gt;, clang::QualType*) (in /usr/local/llvm-install/bin/clang)
+==30576==    by 0xC316F4: EvaluateBinaryTypeTrait(clang::Sema&amp;, clang::BinaryTypeTrait, clang::QualType, clang::QualType, clang::SourceLocation) (in /usr/local/llvm-install/bin/clang)
+==30576== 
+1 error generated.
+
+
+</ns0:content><ns0:updated>2012-10-04T19:34:11.000Z</ns0:updated><ns0:published>2012-10-04T19:34:11.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3062#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3062/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

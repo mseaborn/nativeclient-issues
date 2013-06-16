@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0YBQ347eCl7ImA9WhJWEk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2898/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>eaelt...@google.com</ns0:name><ns0:uri>/u/103360015124260446450/</ns0:uri></ns0:author><ns0:content type="html">This story has 2 parts. Here is the first one:
+
+The problem is confirmed on stock x86_64 linux gdb.
+
+When function has things not valid until function frame is fully set up (which means until function prologue ends), no surprise GDB shows them invalidly when stopped inside the prologue. To avoid that, when GDB inserts breakpoint at function start, it tries to skip prologue and actually insert the breakpoint *after* prologue.
+
+GDB skips prologue in the following way: first, ensure there actually is some prologue by trying to recognize instructions at function start. Second, if recognized instructions appear to be start of prologue, GDB uses line/addr information to skip addr range that contains start of prologue.
+
+The cause of the problem is simple: with -fomit-frame-pointer, there are no recognizable instructions at start of prologue, so GDB thinks there is no prologue and thus inserts breakpoint not after but before the prologue. As a result, when stopped on such breakpoint we see invalid values of things that are not set up yet, like arguments to be spilled from registers to stack.
+
+The problem can be fixed in the compiler by providing more complete debug info that describes how, for example, argument location is changed in the prologue. DWARF2 supports this with location lists. However, GCC does not do that. The reason might be that GCC does not want to complicate things by having location list generation specifically for prologue. Of course gcc generates location lists when it generates code that moves variables around, but that happens only for higher level of optimization and is based on data flow analysis for the function. With -O0, gcc does not bother.
+
+Another way to fix the problem is to support DWARF3 DW_LNS_set_prologue_end line machine opcode in the compiler and GDB. Here is the patch that does this (together with other things):
+  http://gcc.gnu.org/ml/gcc-patches/2011-03/msg02106.html
+
+I've prototyped second solution and it works just fine. However, the real cause of test failures was different.
+
+</ns0:content><ns0:updated>2012-08-17T17:39:12.000Z</ns0:updated><ns0:published>2012-08-17T17:39:12.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by eaelt...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2898#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2898/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEQGQH47eCl7ImA9WhFTGEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3462</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Currently a nexe can read its own build ID at run time when built with the ARM GCC and PNaCl toolchains, because these use the new-style ELF segment layout in which the ELF Program Headers can be read via __ehdr_start.  However, the ELF Program Headers aren't readable by the nexe at run time in the old x86 nacl-gcc toolchain, because the headers aren't mapped into address space.
+
+To make the build ID readable in the old toolchains, we can modify the linker script to define some symbols.  Something like this might work:
+
+  PROVIDE (__elf_note_start = .);
+  .note.gnu.build-id : { *(.note.gnu.build-id) }
+  PROVIDE (__elf_note_end = .);
+
+Exposing the build ID is necessary for making the minidump crash dump generator work fully with x86 nacl-gcc.  Currently it just reports a dummy build ID containing zeros.
+
+@Victor: would you be interested in taking this on, since you were working on build IDs before?
+</ns0:content><ns0:updated>2013-06-10T19:25:21.000Z</ns0:updated><ns0:published>2013-05-30T16:16:16.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113000403807150741221/</ns2:uri><ns2:username>noelal...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Make nexe build IDs readable at run time in the x86 nacl-gcc toolchains</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3462/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3462" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3462" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>3464</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:closedDate>2013-06-10T19:22:30.000Z</ns2:closedDate><ns2:id>3462</ns2:id></ns0:entry>

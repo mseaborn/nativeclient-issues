@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0INRn47eCl7ImA9WhJRFkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2883/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">The code that runs longest is in LLVM, but the interface w/ gold could be better.
+
+Maybe Nick can confirm if this is true, or if there are alternative ways to use the interace...
+
+
+From what I can tell, the interface is currently only set up to:
+
+(1) create lto module (lto_module_create*)
+(2) add lto module (lto_codegen_add_module), where adding does the link of a combined module w/ the new module
+(3) dispose lto module (lto_module_dispose)
+
+ repeat 1-3 for a bunch of files, so that the "combined" module keeps growing
+
+(4) finally, use the combined module (e.g., w/ lto_codegen_write_merged_modules, etc...)
+
+
+Unfortunately, because (3) happens pretty early, we can't delay linking until we have all of the modules available to do a more efficient tree reduction.
+
+Also, (2) is where the link errors are supposed to be returned...
+
+Really the LTO interface could be shuffled around.  However, gold/gold-plugin.cpp's "claim_file_hook" currently does all 3 steps, so it's hard to shuffle things around.
+
+
+If instead the order was more like:
+
+(1) create lto module (lto_module_create*)
+(2) add lto module (lto_codegen_add_module), no linking
+
+ repeat 1-2 for a bunch of files
+
+(3) finalize the combined module (actually do the linking)
+(4) lto_module_dispose the known modules.
+(5) finally, use the combined module
+
+we could do a more efficient tree reduction like this: http://codereview.chromium.org/10808021/
+</ns0:content><ns0:updated>2012-07-18T22:13:17.000Z</ns0:updated><ns0:published>2012-07-18T22:13:17.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2883#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2883/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

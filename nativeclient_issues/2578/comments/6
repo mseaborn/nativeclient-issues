@@ -1,0 +1,71 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUcARn47eCl7ImA9WhRbGE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2578/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">Commit: be84558afe83dad3f3d51553aece4a17ad985084
+ Email: kschimpf@google.com@fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+Don't allow data 66 prefix for x86-64 jump instructions.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2578
+TEST=./scons --mode=opt-linux platform=x86-64 validator_tests
+TEST=./scons --mode=opt-linux platform=x86-32 validator_tests
+Review URL: https://chromiumcodereview.appspot.com/9348023
+
+git-svn-id: svn://svn.chromium.org/native_client/trunk/src/native_client@7765 fcba33aa-ac0c-11dd-b9e7-8d5594d729c2
+
+M	src/trusted/validator/x86/decoder/gen/nc_opcode_table_32.h
+M	src/trusted/validator/x86/decoder/gen/nc_opcode_table_64.h
+M	src/trusted/validator/x86/decoder/gen/ncval_reg_sfi_opcode_table_32.h
+M	src/trusted/validator/x86/decoder/gen/ncval_reg_sfi_opcode_table_64.h
+M	src/trusted/validator/x86/decoder/generator/ncdecode_0F.c
+M	src/trusted/validator/x86/decoder/generator/ncdecode_forms.c
+M	src/trusted/validator/x86/decoder/generator/ncdecode_onebyte.c
+M	src/trusted/validator/x86/decoder/generator/ncdecode_tablegen.c
+M	src/trusted/validator/x86/decoder/generator/testdata/32/modeled_insts.txt
+M	src/trusted/validator/x86/decoder/generator/testdata/64/modeled_insts.txt
+M	src/trusted/validator/x86/decoder/generator/testdata/64/ncval_reg_sfi_modeled_insts.txt
+A	src/trusted/validator_x86/testdata/32/direct-call-16.dis
+A	src/trusted/validator_x86/testdata/32/direct-call-16.hex
+A	src/trusted/validator_x86/testdata/32/direct-call-16.nval
+A	src/trusted/validator_x86/testdata/32/direct-call-16.vdis
+A	src/trusted/validator_x86/testdata/32/direct-call-32.dis
+A	src/trusted/validator_x86/testdata/32/direct-call-32.hex
+A	src/trusted/validator_x86/testdata/32/direct-call-32.nval
+A	src/trusted/validator_x86/testdata/32/direct-call-32.vdis
+A	src/trusted/validator_x86/testdata/32/direct-cond-jump-16.dis
+A	src/trusted/validator_x86/testdata/32/direct-cond-jump-16.hex
+A	src/trusted/validator_x86/testdata/32/direct-cond-jump-16.nval
+A	src/trusted/validator_x86/testdata/32/direct-cond-jump-16.vdis
+A	src/trusted/validator_x86/testdata/32/direct-cond-jump-32.dis
+A	src/trusted/validator_x86/testdata/32/direct-cond-jump-32.hex
+A	src/trusted/validator_x86/testdata/32/direct-cond-jump-32.nval
+A	src/trusted/validator_x86/testdata/32/direct-cond-jump-32.vdis
+A	src/trusted/validator_x86/testdata/32/direct-jump-16.dis
+A	src/trusted/validator_x86/testdata/32/direct-jump-16.hex
+A	src/trusted/validator_x86/testdata/32/direct-jump-16.nval
+A	src/trusted/validator_x86/testdata/32/direct-jump-16.vdis
+A	src/trusted/validator_x86/testdata/32/direct-jump-32.dis
+A	src/trusted/validator_x86/testdata/32/direct-jump-32.hex
+A	src/trusted/validator_x86/testdata/32/direct-jump-32.nval
+A	src/trusted/validator_x86/testdata/32/direct-jump-32.vdis
+A	src/trusted/validator_x86/testdata/64/direct-call-16.dis
+A	src/trusted/validator_x86/testdata/64/direct-call-16.hex
+A	src/trusted/validator_x86/testdata/64/direct-call-16.rval
+A	src/trusted/validator_x86/testdata/64/direct-call-32.dis
+A	src/trusted/validator_x86/testdata/64/direct-call-32.hex
+A	src/trusted/validator_x86/testdata/64/direct-call-32.rval
+A	src/trusted/validator_x86/testdata/64/direct-cond-jump-16.dis
+A	src/trusted/validator_x86/testdata/64/direct-cond-jump-16.hex
+A	src/trusted/validator_x86/testdata/64/direct-cond-jump-16.rval
+A	src/trusted/validator_x86/testdata/64/direct-cond-jump-32.dis
+A	src/trusted/validator_x86/testdata/64/direct-cond-jump-32.hex
+A	src/trusted/validator_x86/testdata/64/direct-cond-jump-32.rval
+A	src/trusted/validator_x86/testdata/64/direct-jump-16.dis
+A	src/trusted/validator_x86/testdata/64/direct-jump-16.hex
+A	src/trusted/validator_x86/testdata/64/direct-jump-16.rval
+A	src/trusted/validator_x86/testdata/64/direct-jump-32.dis
+A	src/trusted/validator_x86/testdata/64/direct-jump-32.hex
+A	src/trusted/validator_x86/testdata/64/direct-jump-32.rval
+M	src/trusted/validator_x86/testdata/64/ncdis_examples.input
+M	src/trusted/validator_x86/testdata/64/ncdis_examples.internal
+M	src/trusted/validator_x86/testdata/64/ncdis_examples.vinput
+M	src/trusted/validator_x86/testdata/64/ncdis_examples.vinternal</ns0:content><ns0:updated>2012-02-09T21:30:47.000Z</ns0:updated><ns0:published>2012-02-09T21:30:47.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2578#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2578/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

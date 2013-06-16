@@ -1,0 +1,58 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEQMQn47eCl7ImA9WhJUFEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3029</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The GDB test &amp;quot;run_gdb_break_continue_thread_test&amp;quot; fails on Mac OS X with:
+
+Traceback (most recent call last):
+  File &amp;quot;/Users/mseaborn/devel/nacl/native_client/tests/gdb/break_continue_thread.py&amp;quot;, line 22, in &amp;lt;module&amp;gt;
+    gdb_test.RunTest(test, 'break_continue_thread', os.environ['GDB_TEST_GUEST'])
+  File &amp;quot;/Users/mseaborn/devel/nacl/native_client/tests/gdb/gdb_test.py&amp;quot;, line 269, in RunTest
+    test_func(gdb)
+  File &amp;quot;/Users/mseaborn/devel/nacl/native_client/tests/gdb/break_continue_thread.py&amp;quot;, line 16, in test
+    assert gdb.ResumeCommand('continue')['reason'] == 'breakpoint-hit'
+KeyError: 'reason'
+
+This fails on the 3rd (out of 4) breakpoint-hit check in break_continue_thread.py.
+
+scons-out/nacl-x86-32/test_results/gdb_break_continue_thread.log contains:
+
+(gdb)
+*running,thread-id=&amp;quot;all&amp;quot;
+=thread-created,id=&amp;quot;3&amp;quot;,group-id=&amp;quot;i1&amp;quot;
+~&amp;quot;[New Thread 3]\n&amp;quot;
+~&amp;quot;\nProgram received signal &amp;quot;
+~&amp;quot;SIGTRAP, Trace/breakpoint trap.\n&amp;quot;
+~&amp;quot;[Switching to Thread 3]\n&amp;quot;
+~&amp;quot;0x00018196 in ?? ()\n&amp;quot;
+*stopped,frame={addr=&amp;quot;0x00018196&amp;quot;,func=&amp;quot;??&amp;quot;,args=[]},thread-id=&amp;quot;3&amp;quot;,stopped-threads=&amp;quot;all&amp;quot;
+=thread-selected,id=&amp;quot;3&amp;quot;
+
+This address corresponds to the following trusted code:
+
+otool -tv scons-out/dbg-mac-x86-32/staging/sel_ldr:
+...
+_NaClSwitchRemainingRegsViaECX:
+00018196        mov     0x16(%ecx),%gs
+00018199        mov     0x14(%ecx),%fs
+0001819c        mov     0x12(%ecx),%es
+0001819f        ljmpl   *0x08(%ecx)
+...
+
+This is a problem I anticipated: it's a particular case of issue 2830 (&amp;quot;Thread suspension: Capture coherent untrusted register state in context switches&amp;quot;).
+
+Here's what I think is happening:
+
+ 1) Both threads hit a breakpoint and get handled by the Mach exception handler.
+
+ 2) The debug stub then handles thread 1's breakpoint.
+    * The debug stub suspends all threads.
+    * The debug stub reads thread 2's registers (which are returned correctly), and it sets them to the same values (which sets %eip=NaClSwitchRemainingRegsViaECX internally).
+
+ 3) The debug stub resumes thread 1 and it hits a second breakpoint, which the debug stub handles.
+    * The debug stub reads thread 2's registers again, but this time %eip=NaClSwitchRemainingRegsViaECX is returned, which is not a correct value for untrusted code.
+
+The fix shouldn't be too difficult.
+</ns0:content><ns0:updated>2012-09-12T17:53:03.000Z</ns0:updated><ns0:published>2012-09-11T22:21:37.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>GDB test "run_gdb_break_continue_thread_test" fails on Mac OS X</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Component-DebugStub</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3029/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3029" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3029" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-09-12T17:53:03.000Z</ns2:closedDate><ns2:id>3029</ns2:id></ns0:entry>

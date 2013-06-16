@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkUDQ347eCl7ImA9WhdbE0s.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0QERH47eCl7ImA9WhJSEks.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/1891</ns0:id><ns0:author>
 			<ns0:name>bradc...@google.com</ns0:name><ns0:uri>/u/110304265766688778552/</ns0:uri></ns0:author><ns0:content type="html">The IRT needs better documentation. Some specific requests from a contemporary email thread:
 - document file IO interfaces
@@ -6,7 +6,7 @@
 - what is the stable interfaces provided by the IRT
 - a spec for the ABI
 - how to port a libc implementation to the IRT
-</ns0:content><ns0:updated>2011-10-11T20:17:52.000Z</ns0:updated><ns0:published>2011-06-06T19:49:24.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+</ns0:content><ns0:updated>2012-07-02T22:48:25.000Z</ns0:updated><ns0:published>2011-06-06T19:49:24.000Z</ns0:published><ns2:status>WontFix</ns2:status><ns2:owner>
 			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
-			<ns2:uri>/u/100177598732114324016/</ns2:uri><ns2:username>mcgra...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>IRT needs better documentation</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-IRT</ns2:label><ns2:label>Mstone-17</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1891/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1891" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1891" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>1891</ns2:id></ns0:entry>
+			<ns2:uri>/u/100177598732114324016/</ns2:uri><ns2:username>mcgra...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>IRT needs better documentation</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-IRT</ns2:label><ns2:label>Mstone-17</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1891/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1891" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1891" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2012-07-02T22:48:25.000Z</ns2:closedDate><ns2:id>1891</ns2:id></ns0:entry>

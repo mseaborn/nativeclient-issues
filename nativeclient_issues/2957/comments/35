@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4ARX47eCl7ImA9WhNXGUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2957/comments/full/35</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=171857
+
+------------------------------------------------------------------------
+r171857 | mseaborn@chromium.org | 2012-12-07T22:00:32.748809Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl_test_injection/buildbot_chrome_nacl_stage.py?r1=171857&amp;r2=171856&amp;pathrev=171857
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl_test_injection/buildbot_nacl_integration.py?r1=171857&amp;r2=171856&amp;pathrev=171857
+
+NaCl: Move buildbot_chrome_nacl_stage.py into the Chromium repo
+
+This script controls what browser tests we run (via Scons, in the
+nacl_integration Buildbot step), so it really belongs in the Chromium
+repo.
+
+I have made small changes to the script to work in the new location,
+and to fix line-length presubmit warnings.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2957
+TEST=nacl_integration
+
+Review URL: https://codereview.chromium.org/11475034
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-12-07T22:05:44.000Z</ns0:updated><ns0:published>2012-12-07T22:05:44.000Z</ns0:published><ns2:updates /><ns0:title>Comment 35 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2957#c35" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2957/comments/full/35" rel="self" type="application/atom+xml" /></ns0:entry>

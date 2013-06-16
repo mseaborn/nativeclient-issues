@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0cBQH47eCl7ImA9WhNXEUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3114/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=170120
+
+------------------------------------------------------------------------
+r170120 | mseaborn@chromium.org | 2012-11-29T02:05:31.154669Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/generators/idl_c_proto.py?r1=170120&amp;r2=170119&amp;pathrev=170120
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/c/private/ppb_gpu_blacklist_private.h?r1=170120&amp;r2=170119&amp;pathrev=170120
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/c/ppb_core.h?r1=170120&amp;r2=170119&amp;pathrev=170120
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/untrusted/pnacl_irt_shim/pnacl_shim.c?r1=170120&amp;r2=170119&amp;pathrev=170120
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/c/dev/ppb_testing_dev.h?r1=170120&amp;r2=170119&amp;pathrev=170120
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/c/ppb_image_data.h?r1=170120&amp;r2=170119&amp;pathrev=170120
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/c/ppb_message_loop.h?r1=170120&amp;r2=170119&amp;pathrev=170120
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/c/ppp.h?r1=170120&amp;r2=170119&amp;pathrev=170120
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/c/private/ppb_nacl_private.h?r1=170120&amp;r2=170119&amp;pathrev=170120
+
+Make PPAPI headers compilable with -Wstrict-prototypes
+
+This changes the PPAPI headers to use "foo(void)" rather than "foo()"
+in function prototypes and definitions.
+
+In C (but not C++), "foo()" declares a function with unspecified
+arguments, which allows foo to be called with excess arguments or
+implemented with excess arguments.  Using "foo(void)" is more correct
+and will prevent such mistakes.  GCC's -Wstrict-prototypes warning
+requires using "foo(void)", and we'd like to turn this warning on for
+NaCl C code.
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3114
+TEST= rerun ppapi/generators/generator.py + compile
+
+Review URL: https://codereview.chromium.org/11419192
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-11-29T02:10:51.000Z</ns0:updated><ns0:published>2012-11-29T02:10:51.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3114#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3114/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

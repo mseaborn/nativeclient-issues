@@ -1,0 +1,46 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUADQH47eCl7ImA9WhNSFU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2819</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Unlike Unix, Windows does not allow memory mappings to be overwritten by an mmap() operation.  In order to keep untrusted address space reserved but allow each 64k page to be replaced, NaCl creates a separate mapping for each 64k page (using VirtualAlloc(), typically).
+
+This can be quite slow, because we have to do 65,000 or 16,000 VirtualAlloc() calls just to reserve untrusted address space (for x86-64 and x86-32 respectively).
+
+It seems to be particularly slow on VMs:
+
+e.g. On the trybot nacl-win32_newlib_opt:
+
+RESULT browser_startup_time.out: Total_x86-32_nnacl_newlib_static= [2532.000000,2264.000000,2298.000000,2201.000000,2262.000000] millisecs
+RESULT browser_startup_time.out: AllocAddrSpace_x86-32_nnacl_newlib_static= [705.010000,713.910000,716.840000,670.470000,673.050000] millisecs
+RESULT browser_startup_time.out: MakeDynText_x86-32_nnacl_newlib_static= [1041.280000,1009.710000,1039.620000,989.150000,982.920000] millisecs
+RESULT browser_startup_time.out: ValidateImg_x86-32_nnacl_newlib_static= [21.000000,22.370000,21.200000,20.630000,20.510000] millisecs
+RESULT browser_startup_time.out: DynRegionValidate_x86-32_nnacl_newlib_static= [99.010000,96.880000,94.390000,83.220000,94.920000] millisecs
+and trivial tests are typically slow:
+[       OK ] nacl_newlib.run_hello_world_test (2125 ms)
+[       OK ] nacl_newlib.run_at_exit_test (1984 ms)
+[       OK ] nacl_newlib.run_exit_test (1937 ms)
+
+However the non-VM Buildbot win7-32-bare-newlib-opt is much faster:
+
+RESULT browser_startup_time.out: Total_x86-32_nnacl_newlib_static= [332.000000,304.000000,763.000000,294.000000,291.000000] millisecs
+RESULT browser_startup_time.out: AllocAddrSpace_x86-32_nnacl_newlib_static= [22.840000,22.820000,22.840000,23.110000,22.810000] millisecs
+RESULT browser_startup_time.out: MakeDynText_x86-32_nnacl_newlib_static= [17.050000,17.170000,17.800000,17.100000,17.060000] millisecs
+RESULT browser_startup_time.out: ValidateImg_x86-32_nnacl_newlib_static= [15.700000,15.820000,15.700000,15.930000,15.860000] millisecs
+RESULT browser_startup_time.out: DynRegionValidate_x86-32_nnacl_newlib_static= [65.120000,64.770000,65.800000,65.550000,65.910000] millisecs
+[       OK ] nacl_newlib.run_hello_world_test (78 ms)
+[       OK ] nacl_newlib.run_at_exit_test (62 ms)
+[       OK ] nacl_newlib.run_exit_test (62 ms)
+
+We could address the slowness by reserving the whole 1GB/4GB sandbox with a single mapping.  We can then unmap this and remap smaller chunks as needed.
+
+The original reason for not doing that is that other trusted threads might accidentally map into the mmap holes that are temporarily opened up.  There are two problems with that:
+
+ 1) Security:  It potentially creates a vulnerability if untrusted threads can read or write sensitive data that is mapped in accidentally (issue 140).
+ 2) Liveness:  If we detect that something got mapped into the hole accidentally, we will have to abort the process.
+
+We addressed (1) by suspending untrusted threads while opening mmap holes.
+
+Currently, (2) is mitigated by opening only small (64k) mmap holes, which reduces the chance that something gets mapped into them.
+
+If we investigate (2) further, we might be able to get away with opening up larger mmap holes temporarily.
+</ns0:content><ns0:updated>2012-10-29T16:22:51.000Z</ns0:updated><ns0:published>2012-05-31T21:38:33.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>Windows: Make startup faster by not mapping memory in 64k chunks</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Performance</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2819/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2819" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2819" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>2550</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:id>2819</ns2:id></ns0:entry>

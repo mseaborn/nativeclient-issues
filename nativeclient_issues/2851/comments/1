@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkABQn47eCl7ImA9WhVaFk8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2851/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">http://crash.corp.google.com/reportdetail?reportid=5edadfb0319a1396
+has nacl_host_desc.c:228, which is:
+   225          NaClLog(LOG_FATAL,
+   226                  ("Could not VirtualAlloc anonymous memory at"
+   227                   " addr 0x%08x with prot %x\n"),
+   228                  addr + chunk_offset, flProtect);
+(This is since r8828, which is a recent change of mine: https://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8828)
+
+The other crash reports are the same error in earlier revisions:
+nacl_host_desc.c:218:
+   215          NaClLog(LOG_FATAL,
+   216                  ("Could not VirtualAlloc anonymous memory at"
+   217                   " addr 0x%08x with prot %x\n"),
+   218                  addr + chunk_offset, flProtect);
+</ns0:content><ns0:updated>2012-06-13T20:52:33.000Z</ns0:updated><ns0:published>2012-06-13T20:52:33.000Z</ns0:published><ns2:updates>
+			<ns2:summary>LOG_FATAL error in NaClHostDescMap(): "Could not VirtualAlloc anonymous memory"</ns2:summary></ns2:updates><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2851#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2851/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,12 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0ICQ347eCl7ImA9WhNUE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3240</ns0:id><ns0:author>
+			<ns0:name>mcgra...@chromium.org</ns0:name><ns0:uri>/u/109286297231979736865/</ns0:uri></ns0:author><ns0:content type="html">This test got an unexplained failure on a mac10.7 buildbot.
+
+http://chromegw.corp.google.com/i/client.nacl/builders/mac10.7-glibc-opt/builds/2638
+
+log file attached in case it gets GC'd.
+
+The failure mode is a Python exception that looks to me like some sort of hole in the test harness.  The test should diagnose the problem more coherently if it's in fact some unexpected output from gdb or whatever.</ns0:content><ns0:updated>2013-01-05T01:32:42.000Z</ns0:updated><ns0:published>2013-01-03T00:35:49.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112856509894568708731/</ns2:uri><ns2:username>halya...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>GDB test "run_gdb_break_continue_thread_test" flaky on Mac OS X</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-DebugStub</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>FlakeyBots</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3240/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3240" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3240" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2013-01-04T20:24:18.000Z</ns2:closedDate><ns2:id>3240</ns2:id></ns0:entry>

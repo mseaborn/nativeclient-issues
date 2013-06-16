@@ -1,6 +1,6 @@
 <ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04AR347eCl7ImA9WhVVFkw.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2741</ns0:id><ns0:author>
-			<ns0:name>jbau...@chromium.org</ns0:name><ns0:uri>/u/110174592293525866339/</ns0:uri></ns0:author><ns0:content type="html">A bunch of NaCl syscalls are taking way too much time, because ref counting is taking forever. For example, in mini ninjas for every NaClCommonSysMutex_Lock I see probably 4 WaitForSingleObject and ReleaseMutex calls. They're taking around 40% of the application time.
+			<ns0:name>jbauman@chromium.org</ns0:name><ns0:uri>/u/jbauman@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">A bunch of NaCl syscalls are taking way too much time, because ref counting is taking forever. For example, in mini ninjas for every NaClCommonSysMutex_Lock I see probably 4 WaitForSingleObject and ReleaseMutex calls. They're taking around 40% of the application time.
 
 Switching the NaCl::LockImpl from using a Mutex to a CRITICAL_SECTION probably doubles the framerate in Mini Ninjas (right after the loading screen, when the window is small) because it avoids all of those syscalls. Apparently the code originally was using CRITICAL_SECTION, but it was changed to Mutex in the distant past for some reason.
 

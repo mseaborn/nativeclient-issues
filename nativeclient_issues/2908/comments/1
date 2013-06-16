@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4HRX47eCl7ImA9WhJRF08.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2908/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Here's the problem:  nacl_check.h contains this:
+
+#if defined( __native_client__)
+# include "nacl/nacl_log.h"
+...
+
+while the PNaCl toolchain tarball contains a stale copy of nacl_log.h:
+
+$ rgrep NaClLog_Func toolchain/pnacl_linux_x86_64
+toolchain/pnacl_linux_x86_64/newlib/sdk/include/nacl/nacl_log.h:void NaClLog_Function(int         detail_level,
+...
+
+So the Gyp build infrastructure is not at fault at all.</ns0:content><ns0:updated>2012-07-19T20:15:34.000Z</ns0:updated><ns0:published>2012-07-19T20:15:34.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Component-Infrastructure</ns2:label><ns2:label>Component-PNaCl</ns2:label></ns2:updates><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2908#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2908/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

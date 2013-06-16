@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEEARn47eCl7ImA9WhBXFEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3127</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">The IRT library needs to use its own private thread local storage (TLS).  Currently we do this on x86-32 and ARM by passing &amp;quot;-mtls-use-call&amp;quot; or &amp;quot;-mtp=soft&amp;quot; to the compiler or PNaCl translator.  This tells the code generator to generate a function call instead of inlining one of these instructions:
+
+  mov %reg, %gs:0   // x86-32
+  ldr rN, [r9, #0]  // ARM
+
+This has some problems:
+
+ 1) There is a runtime cost for using function calls for TLS accesses.
+
+ 2) We build newlib with -mtls-use-call, so the runtime cost is borne by user code too.
+
+ 3) Similarly, in the Chromium/Gyp build, we build all NaCl untrusted code with -mtls-use-call.  To do otherwise would complicate the build system.
+
+An alternative approach is to drop &amp;quot;-mtls-use-call&amp;quot; and rewrite instructions in irt.nexe after linking it as follows:
+
+  &amp;quot;mov %reg, %gs:0&amp;quot; -&amp;gt; &amp;quot;mov %reg, %gs:4&amp;quot;  (x86-32)
+  &amp;quot;ldr rN, [r9, #0]&amp;quot; -&amp;gt; &amp;quot;ldr rN, [r9, #4]&amp;quot;  (ARM)
+
+On ARM, this is easy, because instructions are easy to locate.  All 32-bit words are instructions, except for constant pool bundles, which are easy to identify.
+
+On x86-32, locating instructions requires parsing instructions to find their length, so we would probably want to reuse validator code for this.
+</ns0:content><ns0:updated>2013-03-27T20:37:27.000Z</ns0:updated><ns0:published>2012-11-02T22:01:23.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109636895838879576326/</ns2:uri><ns2:username>j...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105197577636354702799/</ns2:uri><ns2:username>shcherb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Replace "-mtls-use-call" with rewriting TLS access instructions in irt.nexe</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-IRT</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:label>Arch-ARM</ns2:label><ns2:label>Performance</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3127/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3127" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3127" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:id>3127</ns2:id></ns0:entry>

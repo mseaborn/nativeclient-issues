@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0IFRn47eCl7ImA9WhBQEU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2275/comments/full/56</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10972
+
+------------------------------------------------------------------------
+r10972 | petarj@mips.com | 2013-03-13T00:43:39.355335Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/thread_capture/arch/mips/thread_capture_test_injection.c?r1=10972&amp;r2=10971&amp;pathrev=10972
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/thread_capture/nacl.scons?r1=10972&amp;r2=10971&amp;pathrev=10972
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/nacl.scons?r1=10972&amp;r2=10971&amp;pathrev=10972
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/thread_capture/arch/mips?r1=10972&amp;r2=10971&amp;pathrev=10972
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/callingconv/nacl.scons?r1=10972&amp;r2=10971&amp;pathrev=10972
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/callingconv_case_by_case/nacl.scons?r1=10972&amp;r2=10971&amp;pathrev=10972
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/thread_capture/nacl_thread_capture_test_injection_test.c?r1=10972&amp;r2=10971&amp;pathrev=10972
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/syscall_return_sandboxing/sandboxed_mips.S?r1=10972&amp;r2=10971&amp;pathrev=10972
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/syscall_return_sandboxing/nacl.scons?r1=10972&amp;r2=10971&amp;pathrev=10972
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/egyptian_cotton/nacl.scons?r1=10972&amp;r2=10971&amp;pathrev=10972
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/run.py?r1=10972&amp;r2=10971&amp;pathrev=10972
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/callingconv_ppapi/nacl.scons?r1=10972&amp;r2=10971&amp;pathrev=10972
+
+[MIPS] Support for building tests for MIPS
+
+This change includes set of small changes to enable building the tests
+for MIPS.
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=2275
+TEST= ./scons hello_world --mode=nacl platform=mips32 --verbose
+
+
+Review URL: https://chromiumcodereview.appspot.com/12667019
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-03-13T00:45:17.000Z</ns0:updated><ns0:published>2013-03-13T00:45:17.000Z</ns0:published><ns2:updates /><ns0:title>Comment 56 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2275#c56" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2275/comments/full/56" rel="self" type="application/atom+xml" /></ns0:entry>

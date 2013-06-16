@@ -1,0 +1,36 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck8FQ347eCl7ImA9WhNUFk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3243/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">(I meant to hyperlink to issue 3240 above.)
+
+I was able to reproduce this test hang by running the test repeatedly.
+
+I found that the thread has been interrupted while inside a Mac OS system call, presumably inside the pthread_mutex_lock() call inside NaClAppThreadSetSuspendState().
+
+GDB shows:
+
+(gdb) info threads
+  8                         0x000201e3 in NaClAllocateSpace (mem=Cannot access memory at address 0x3ef60018
+  6                         0x0001ffce in NaClMemoryProtection (nap=0x401080) at src/trusted/service_runtime/sel_addrspace.c:264
+...
+(gdb) thread 6
+(gdb) info reg
+...
+eip            0x1ffce	0x1ffce &lt;NaClMemoryProtection+1228&gt;
+gs             0x4f	79
+
+The %gs value means that this is thread 9:
+&gt;&gt;&gt; 0x4f &gt;&gt; 3
+9
+
+(gdb) printf "%x\n", nacl_user[9]-&gt;gs_segment.new_prog_ctr
+938adb42
+
+(gdb) disass 0x938adb42
+Dump of assembler code for function semaphore_wait_signal_trap:
+0x938adb38 &lt;semaphore_wait_signal_trap+0&gt;:	mov    $0xffffffdb,%eax
+0x938adb3d &lt;semaphore_wait_signal_trap+5&gt;:	call   0x938addd8 &lt;_sysenter_trap&gt;
+0x938adb42 &lt;semaphore_wait_signal_trap+10&gt;:	ret    
+0x938adb43 &lt;semaphore_wait_signal_trap+11&gt;:	nop    
+End of assembler dump.
+
+semaphore_wait_signal_trap is the function that pthread_mutex_lock() blocks in.  If a thread blocks in pthread_mutex_lock(), the kernel reports that the thread is at the *start* of semaphore_wait_signal_trap rather than at (or after) a syscall instruction.</ns0:content><ns0:updated>2013-01-07T23:20:12.000Z</ns0:updated><ns0:published>2013-01-07T23:20:12.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3243#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3243/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

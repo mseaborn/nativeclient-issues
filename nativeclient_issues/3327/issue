@@ -1,0 +1,20 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkAER347eCl7ImA9WhBRFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3327</ns0:id><ns0:author>
+			<ns0:name>shcherb...@google.com</ns0:name><ns0:uri>/u/105197577636354702799/</ns0:uri></ns0:author><ns0:content type="html">gen_dfa.py produces automaton that is slightly different from the one produced by gen_dfa.py (in 64-bit case it has ~10% more states and msvc takes about 2.5x longer to compile it; runtime performance of the validator is roughly the same).
+
+As a quick temporary solution, we plan to disable AVX and XOP instructions (which were initially present in the automaton, but disallowed at the level of CPU features in runtime). Note that they are only removed from validator automaton, decoder still supports them (which makes them less likely to rot, as they are tested by dfacheckdecoder). This measure makes compilation time acceptable again.
+
+In the distant future, when we finally get to add support for AVX &amp;amp; XOP, following approaches to be considered:
+ * wait for better machines and compilers in nacl/chrome build process
+ * fiddle with ragel and cl options (unlikely to solve the problem)
+ * switch to less efficient automaton representation (table-driven instead of control flow driven) and reconcile with significant slowdown
+ * fiddle with how automaton is annotated with actions (after all, we know that Victor managed to make resulting automaton compact enough; although, some fragility may or may not be added as a side effect)
+ * fiddle with ragel code generation (it is known to be imperfect; in particular, it might be benefitial to dispatch transitions by lower bits, not only by ranges as ragel currently does)
+ * put compiled object files under source control (we already have generated source files there, so not much too lose)
+ * even better, put object files cross-compiled by clang under source control (clang is know to compile RDFA code faster than cl and produce more efficient code; it would be possible to incorporate clang run into &#8216;dfagen&#8217; stage, which is only supported on linux anyway).</ns0:content><ns0:updated>2013-03-06T14:05:06.000Z</ns0:updated><ns0:published>2013-03-05T11:41:31.000Z</ns0:published><ns2:status>New</ns2:status><ns2:cc>
+			<ns2:uri>/u/105197577636354702799/</ns2:uri><ns2:username>shcherb...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dpolukhin@google.com/</ns2:uri><ns2:username>dpolukhin@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Reenable temporarily disabled AVX and XOP instructions in RDFA</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3327/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3327" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3327" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3327</ns2:id></ns0:entry>

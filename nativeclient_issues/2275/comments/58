@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQAQH47eCl7ImA9WhBQEUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2275/comments/full/58</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10978
+
+------------------------------------------------------------------------
+r10978 | petarj@mips.com | 2013-03-13T17:51:19.098574Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/trusted_cross_toolchains/packagelist.squeeze.mipsel.extra?r1=10978&amp;r2=10977&amp;pathrev=10978
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/trusted_cross_toolchains/trusted-toolchain-creator.mipsel.squeeze.sh?r1=10978&amp;r2=10977&amp;pathrev=10978
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/trusted_cross_toolchains/packagelist.squeeze.mipsel.base?r1=10978&amp;r2=10977&amp;pathrev=10978
+
+[MIPS] Update the toolchain script with packages for Chromium
+
+The script is updated to be able to produce the tarball for Chromium
+build. Depending on the input &lt;nacl_sdk|chrome_sdk&gt;, tarball for
+standalone native client or Chromium build will be created.
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=2275
+TEST= run trusted-toolchain-creator.mipsel.squeeze.sh chrome_sdk
+
+Review URL: https://chromiumcodereview.appspot.com/12315003
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-03-13T17:55:41.000Z</ns0:updated><ns0:published>2013-03-13T17:55:41.000Z</ns0:published><ns2:updates /><ns0:title>Comment 58 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2275#c58" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2275/comments/full/58" rel="self" type="application/atom+xml" /></ns0:entry>

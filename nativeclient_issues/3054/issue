@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0AMRH47eCl7ImA9WhNWE0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3054</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">A lot of threading tests that are flaky on Windows have a common failure mode: they return with exit status -1.  This seems to indicate that they have the same cause.
+
+The failures occur with both newlib and glibc.
+
+Here is a list of failures I've seen with exit status -1:
+
+nacl_glibc.run_thread_stack_alloc_test, xp-glibc-opt
+nacl_glibc.run_cond_wait_test, win7-32-bare-glibc-opt
+nacl_glibc.run_egyptian_cotton_test, xp-glibc-opt
+nacl_glibc.run_egyptian_cotton_test, win7-64-bare-glibc-opt
+nacl_newlib.run_types_srpc_test_nexe, vista-64-newlib-opt
+nacl_newlib.run_thread_stack_test_irt, windows 7 64-bit
+nacl_newlib.run_second_tls_test, win7-64-bare-newlib-opt
+</ns0:content><ns0:updated>2012-12-12T20:56:25.000Z</ns0:updated><ns0:published>2012-09-29T01:51:33.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Thread tests on Windows sometimes fail with "exit status 255 (0xff)"</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>FlakeyBots</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3054/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3054" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3054" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>2870</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:closedDate>2012-12-12T20:56:25.000Z</ns2:closedDate><ns2:id>3054</ns2:id></ns0:entry>

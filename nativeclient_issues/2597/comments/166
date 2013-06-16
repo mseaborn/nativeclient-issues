@@ -1,0 +1,51 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0IFRX47eCl7ImA9WhBXE00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/166</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11063
+
+------------------------------------------------------------------------
+r11063 | khim@google.com | 2013-03-26T13:44:42.739678Z
+
+Changed paths:
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator_x86_64.rl?r1=11063&amp;r2=11062&amp;pathrev=11063
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/validator_x86_64.c?r1=11063&amp;r2=11062&amp;pathrev=11063
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/decoder_x86_64.rl?r1=11063&amp;r2=11062&amp;pathrev=11063
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_x86/testdata/64/stack_regs.test?r1=11063&amp;r2=11062&amp;pathrev=11063
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/decoding.h?r1=11063&amp;r2=11062&amp;pathrev=11063
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder_internal.h?r1=11063&amp;r2=11062&amp;pathrev=11063
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/validator_internal.h?r1=11063&amp;r2=11062&amp;pathrev=11063
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder_x86_32.rl?r1=11063&amp;r2=11062&amp;pathrev=11063
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/driver/ncval.cc?r1=11063&amp;r2=11062&amp;pathrev=11063
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/decoder_x86_32.c?r1=11063&amp;r2=11062&amp;pathrev=11063
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen_dfa_test.py?r1=11063&amp;r2=11062&amp;pathrev=11063
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/validator_x86_32.rl?r1=11063&amp;r2=11062&amp;pathrev=11063
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen_dfa.py?r1=11063&amp;r2=11062&amp;pathrev=11063
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/validator.h?r1=11063&amp;r2=11062&amp;pathrev=11063
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder_x86_64.rl?r1=11063&amp;r2=11062&amp;pathrev=11063
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/decoder_x86_64.c?r1=11063&amp;r2=11062&amp;pathrev=11063
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator/x86/testing/enuminsts/ragel_tester.c?r1=11063&amp;r2=11062&amp;pathrev=11063
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/validator_x86_64.rl?r1=11063&amp;r2=11062&amp;pathrev=11063
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoding.h?r1=11063&amp;r2=11062&amp;pathrev=11063
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/build.scons?r1=11063&amp;r2=11062&amp;pathrev=11063
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator_internal.h?r1=11063&amp;r2=11062&amp;pathrev=11063
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/parse_instruction.rl?r1=11063&amp;r2=11062&amp;pathrev=11063
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/decoder_internal.h?r1=11063&amp;r2=11062&amp;pathrev=11063
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/validator_x86_32.rl?r1=11063&amp;r2=11062&amp;pathrev=11063
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/gen/validator_x86_32.c?r1=11063&amp;r2=11062&amp;pathrev=11063
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/decoder_x86_32.rl?r1=11063&amp;r2=11062&amp;pathrev=11063
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/decoder.h?r1=11063&amp;r2=11062&amp;pathrev=11063
+
+Move validator_x86_XX.rl out of unreviewed.
+
+validator_internal.h and validator_x86_XX.rl together implement
+the core validator logic. They all [relatively] short (about 1000 lines)
+but these are the core of validator so we need to review them carefully
+and perhaps add some more information about them.
+
+Please read the validator_internals.html before reviewing them: this
+file explains the logic which liese under all that machinery.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2597
+TEST=trybots (no changes in logic)
+Review URL: https://codereview.chromium.org/11000033
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-03-26T13:45:14.000Z</ns0:updated><ns0:published>2013-03-26T13:45:14.000Z</ns0:published><ns2:updates /><ns0:title>Comment 166 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c166" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/166" rel="self" type="application/atom+xml" /></ns0:entry>

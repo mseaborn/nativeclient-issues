@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkAHR347eCl7ImA9WhNRF0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1711/comments/full/21</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10241
+
+------------------------------------------------------------------------
+r10241 | dschuff@chromium.org | 2012-11-13T01:02:01.877735Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/scripts/llvm-test.sh?r1=10241&amp;r2=10240&amp;pathrev=10241
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/scripts/lit_known_failures.txt?r1=10241&amp;r2=10240&amp;pathrev=10241
+
+Show llvm regression output on the buildbot console, and update expected fails
+This should make the windows toolchain bot green, but something is still
+wrong since it should not take as long as it is, even on windows.
+
+Also update the known failure list to separate linux- and windows-specific
+failures and use the short form of the JIT unittest names, since they have the
+executable name embedded in them, and this does not match on Windows.
+
+With this change, the list of known failures should be complete, but there are still a few unexpected passes on mac.
+
+R=robertm@chromium.org,eliben@chromium.org
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=1711
+
+Review URL: https://codereview.chromium.org/11377115
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-11-13T01:05:36.000Z</ns0:updated><ns0:published>2012-11-13T01:05:36.000Z</ns0:published><ns2:updates /><ns0:title>Comment 21 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1711#c21" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1711/comments/full/21" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IHQn47eCl7ImA9WhNTE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2854</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Filing this bug to track... sehr noticed the following localmod in lib/Target/X86/X86ISelLowering.cpp a little while back:
+
+
+  // @LOCALMOD-START
+  if (Subtarget-&amp;gt;isTargetNaCl64()) {
+    FuncInfo-&amp;gt;setForceFramePointer(true);
+  }
+  // @TODO(pdox): This shouldn't be necessary, but there is a bug
+  // where hasFP() changes during stack-slot spilling after register
+  // allocation has allocated ebp. Look into this.
+  if (Subtarget-&amp;gt;isTargetNaCl32()) {
+    FuncInfo-&amp;gt;setForceFramePointer(true);
+  }
+  // @LOCALMOD-END
+
+
+We may not want to force the frame pointer on always?  This would also affect issue http://code.google.com/p/nativeclient/issues/detail?id=1238.</ns0:content><ns0:updated>2012-10-16T01:38:53.000Z</ns0:updated><ns0:published>2012-06-14T23:01:50.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/108394971971967673680/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/102292187274959663599/</ns2:uri><ns2:username>jvo...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>Possibly revert PNaCl localmod for setForceFramePointer</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-25</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2854/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2854" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2854" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
+			<ns2:id>1238</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2012-10-10T17:43:19.000Z</ns2:closedDate><ns2:id>2854</ns2:id></ns0:entry>

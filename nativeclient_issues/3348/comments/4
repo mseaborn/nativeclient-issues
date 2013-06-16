@@ -1,0 +1,47 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0QERn47eCl7ImA9WhBXFU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3348/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11090
+
+------------------------------------------------------------------------
+r11090 | jvoung@google.com | 2013-03-28T21:11:10.478965Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/site_scons/site_tools/component_setup.py?r1=11090&amp;r2=11089&amp;pathrev=11090
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=11090&amp;r2=11089&amp;pathrev=11090
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/custom_desc/nacl.scons?r1=11090&amp;r2=11089&amp;pathrev=11090
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/subprocess/nacl.scons?r1=11090&amp;r2=11089&amp;pathrev=11090
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/trusted_crash/crash_in_syscall/nacl.scons?r1=11090&amp;r2=11089&amp;pathrev=11090
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/gdb/nacl.scons?r1=11090&amp;r2=11089&amp;pathrev=11090
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_pnacl_toolchain_tests.sh?r1=11090&amp;r2=11089&amp;pathrev=11090
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/site_scons/site_tools/naclsdk.py?r1=11090&amp;r2=11089&amp;pathrev=11090
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/barebones/nacl.scons?r1=11090&amp;r2=11089&amp;pathrev=11090
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/toolchain/nacl.scons?r1=11090&amp;r2=11089&amp;pathrev=11090
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/minnacl/nacl.scons?r1=11090&amp;r2=11089&amp;pathrev=11090
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/multiple_sandboxes/nacl.scons?r1=11090&amp;r2=11089&amp;pathrev=11090
+
+Add a scons pnacl finalize step for pnacl_generate_pexe tests.
+
+Most of the ABI stability steps run as part of pnacl-ld.
+However, some steps such as stripping nonstable debug
+metadata can make debugging hard.  Thus, we add one more
+step to finalize the ABI.
+
+A new scons Bit 'nonstable_bitcode' can be set by individual tests
+to opt out of this prep step if the metadata is needed
+(e.g., gdb tests).  The test will still run. Add a
+commandline flag 'skip_nonstable_bitcode' if it is required
+to skip building and running such tests.
+
+An alternative way to opt out is to make the test part of
+the nonpexe_test suite.
+
+We need to roll the archived frontend rev too, since finalize
+is run during the build portion to properly work with
+triggered bots such as the ARM hw bot.
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3348
+TEST= trybots + buildbot/buildbot_pnacl_toolchain_tests.sh archived-frontend-test x86-64
+
+Review URL: https://codereview.chromium.org/12594036
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-03-28T21:15:07.000Z</ns0:updated><ns0:published>2013-03-28T21:15:07.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3348#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3348/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

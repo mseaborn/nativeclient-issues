@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QGR347eCl7ImA9WhNSEkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2581/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">The following script will reproduce the failure usually with &lt; 100 iterations.
+
+Sadly, "xargs" does not always terminate (probably because qemu does not report a failure),
+so you have to watch it.
+Also the choice of input pexe does not seem to matter
+
+
+TRANSLATOR="$(pwd)/toolchain/pnacl_translator/bin/pnacl-translate"
+
+CMD="${TRANSLATOR} -arch arm --pnacl-sb --pnacl-use-emulator -Wl,-L$(pwd)/scons-out/nacl-arm-pnacl-sbtc-pexe-clang/lib scons-out/nacl-arm-pnacl-sbtc-pexe-clang/obj/tests/threads/cond_wait_test.pexe"
+
+seq 1000 | xargs --max-procs=16 -n 1 -I OUT -t ${CMD} -o OUT
+
+
+
+The failure seems to happen during linking:
+
+--------------stdout: begin
+rpc call intiated RunWithDefaultCommandLine:hhiss:
+input 0:  h(objfile)
+input 1:  h(nexefile)
+input 2:  i(0)
+input 3:  s("")
+input 4:  s("[]")
+
+--------------stdout: end
+--------------stderr: begin
+PLATFORM QUALIFICATION DISABLED BY -Q - Native Client's sandbox will be unreliable!
+DEBUG MODE ENABLED (skip validator)
+[24357,4099109968:15:54:24.239074] Native Client module will be loaded at base address 0x0000000000000000
+[24357,4099109968:15:54:24.244949] VALIDATION SKIPPED.
+nacl_main
+ManifestLookupInit
+0&gt; 1&gt; 2&gt; 3&gt; 4&gt; 5&gt; 6&gt; 7&gt; 8&gt; 9&gt; SrpcRunWithDefaultCommandline
+RegisterPreopenedFd [__PNACL_GENERATED] 21
+RegisterPreopenedFd [a.out] 22
+RunCommon
+NaClOpenFileDescriptor crtbegin.o
+qemu: uncaught target signal 11 (Segmentation fault) - core dumped
+</ns0:content><ns0:updated>2012-10-26T19:55:26.000Z</ns0:updated><ns0:published>2012-10-26T19:55:26.000Z</ns0:published><ns2:updates>
+			<ns2:blockedOnUpdate>-nativeclient:2609</ns2:blockedOnUpdate><ns2:blockedOnUpdate>nativeclient:2609</ns2:blockedOnUpdate></ns2:updates><ns0:title>Comment 10 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2581#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2581/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

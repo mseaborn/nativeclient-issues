@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE4BSX47eCl7ImA9WhRVEEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2529/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">My mistake.  I didn't read the AMD docs closely enough.  They say:
+
+"Stores bytes from the first source operand, as selected by the second source operand, to a memory location specified in the DS:rDI registers (except that DS is ignored in 64-bit mode)."
+
+So a 'maskmovq' on its own is not safe.
+
+The validator correctly allows:
+
+  mov %edi, %edi
+  lea (%r15, %rdi), %rdi
+  maskmovq %mm1, %mm2
+
+However:
+
+ 1) There are no tests for maskmovq.  Since it's a special case it would be good to have tests.
+ 2) The comment for the "{$Xvd}" format in ncdecode_forms.h doesn't match what the validator actually allows for maskmovq, and says that 'X' uses %rsi rather than %rdi.  This is duplicated in README:
+
+"""
+ *   X - A memory operand addressed by the DS.rSI registers. Used in string
+ *       instructions.
+ *   Y - A memory operand addressed by the ES.rDI registers. Used in string
+ *       instructions.
+"""
+</ns0:content><ns0:updated>2012-01-09T05:29:18.000Z</ns0:updated><ns0:published>2012-01-09T05:29:18.000Z</ns0:published><ns2:updates>
+			<ns2:summary>x86-64 validator: maskmovq: test needed, and comment needs clarifying</ns2:summary></ns2:updates><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2529#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2529/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

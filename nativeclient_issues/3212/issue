@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEMGRn47eCl7ImA9WhNWGUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3212</ns0:id><ns0:author>
+			<ns0:name>mcgra...@chromium.org</ns0:name><ns0:uri>/u/109286297231979736865/</ns0:uri></ns0:author><ns0:content type="html">The confluence of the new-style rodata layout, the NaCl ABI note, and the use of --section-start to build test nexes results in some nexes for tests getting layout that sel_ldr doesn't accept or that breaks the test at runtime. 
+
+Some combination of fixes in the linker and the tests is required, details
+yet to be worked out.
+
+These are the current failures:
+
+run_nacl_text_no_pad_ro_test (scons-out/nacl-arm/test_results/nacl_text_no_pad_ro_test.out) failed: Error 1
+
+run_nacl_text_no_pad_ro_dyn_test (scons-out/nacl-arm/test_results/nacl_text_no_pad_ro_dyn_test.out) failed: Error 1
+
+run_nacl_text_small_pad_ro_test (scons-out/nacl-arm/test_results/nacl_text_small_pad_ro_test.out) failed: Error 1
+
+run_nacl_text_small_pad_ro_dyn_test (scons-out/nacl-arm/test_results/nacl_text_small_pad_ro_dyn_test.out) failed: Error 1
+
+run_nacl_text_large_pad_ro_test (scons-out/nacl-arm/test_results/nacl_text_large_pad_ro_test.out) failed: Error 1
+
+run_nacl_text_large_pad_ro_dyn_test (scons-out/nacl-arm/test_results/nacl_text_large_pad_ro_dyn_test.out) failed: Error 1
+
+run_nacl_text_too_small_pad_ro_test (scons-out/nacl-arm/test_results/nacl_text_too_small_pad_ro_test.out) failed: Error 1
+
+run_nacl_text_too_small_pad_ro_dyn_test (scons-out/nacl-arm/test_results/nacl_text_too_small_pad_ro_dyn_test.out) failed: Error 1
+
+run_dynamic_load_test (scons-out/nacl-arm/test_results/dynamic_load_test.out) failed: Error 1
+
+run_write_to_dyncode_test (scons-out/nacl-arm/test_results/write_to_dyncode.out) failed: Error 1
+
+run_dyncode_debug_mode_test (scons-out/nacl-arm/test_results/debug_mode_test.out) failed: Error 1
+
+run_dyncode_demand_alloc_test (scons-out/nacl-arm/test_results/dyncode_demand_alloc_test.out) failed: Error 1
+
+run_dyncode_disabled_test (scons-out/nacl-arm/test_results/dyncode_disabled_test.out) failed: Error 1
+
+run_sel_main_chrome_test (scons-out/nacl-arm/test_results/sel_main_chrome_test.out) failed: Error 1
+
+</ns0:content><ns0:updated>2012-12-20T00:13:47.000Z</ns0:updated><ns0:published>2012-12-11T00:56:47.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>halt sled tests and a few others broken with arm-nacl-gcc</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GCC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3212/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3212" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3212" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-12-20T00:13:47.000Z</ns2:closedDate><ns2:id>3212</ns2:id></ns0:entry>

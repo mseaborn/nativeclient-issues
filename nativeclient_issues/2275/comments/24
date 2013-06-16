@@ -1,0 +1,66 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEIARn47eCl7ImA9WhVbFUs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2275/comments/full/24</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8780
+
+------------------------------------------------------------------------
+r8780 | petarj@mips.com | Fri Jun 01 08:59:30 PDT 2012
+
+Changed paths:
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/dgen/dgen_opt.py?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/dgen/dgen_dump.py?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/dgen/optimize-table.py?r1=8780&amp;r2=8779&amp;pathrev=8780
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata/test_loads.S?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/validator.cc?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/validator_mips.gyp?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/dgen/dgen_input.py?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/model-inl.h?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/ncval.cc?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata/compile_tests.sh?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata/test_jmp_imm.S?r1=8780&amp;r2=8779&amp;pathrev=8780
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata/test_sp_updates.S?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/dgen/dgen_output.py?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata/test_read_only_regs.S?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata/test_invalid_dest.S?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata/test_forbidden_instructions.S?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata/test_loads.err?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/validator.h?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata/test_jmp_reg.S?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata/test_stores.S?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/gen?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/address_set.h?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata/test_jmp_imm.err?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/address_set_test.cc?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/address_set.cc?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata/test_sp_updates.err?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/validator_tests.cc?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/dgen/generate_decoder.py?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata/test_read_only_regs.err?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata/test_invalid_dest.err?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata/test_forbidden_instructions.err?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/mips32.table?r1=8780&amp;r2=8779&amp;pathrev=8780
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/build.scons?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata/test_jmp_reg.err?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/testdata/test_stores.err?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/gen/decode.cc?r1=8780&amp;r2=8779&amp;pathrev=8780
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/site_scons/site_tools/naclsdk.py?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/model.h?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/mips-opt.table?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/build.scons?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/inst_classes.h?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/decode.h?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/dgen/dgen_core.py?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/dgen?r1=8780&amp;r2=8779&amp;pathrev=8780
+ A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_mips/validation-report.py?r1=8780&amp;r2=8779&amp;pathrev=8780
+
+Initial patch for MIPS architecture that includes implementation of the validator, as well as the test code and script changes that enable building MIPS binutils and test executables.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2275
+TEST=pnacl/build.sh misc-tools ; src/trusted/validator_mips/testdata/compile_tests.sh
+
+Review URL: https://chromiumcodereview.appspot.com/9979025
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-01T16:02:27.000Z</ns0:updated><ns0:published>2012-06-01T16:02:27.000Z</ns0:published><ns2:updates /><ns0:title>Comment 24 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2275#c24" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2275/comments/full/24" rel="self" type="application/atom+xml" /></ns0:entry>

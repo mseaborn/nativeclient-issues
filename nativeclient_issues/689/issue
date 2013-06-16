@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQCRn47eCl7ImA9WhdSGEQ.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE4NR347eCl7ImA9WhNXEUg.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/689</ns0:id><ns0:author>
 			<ns0:name>pdox%goo...@gtempaccount.com</ns0:name><ns0:uri>/u/104735739662288482898/</ns0:uri></ns0:author><ns0:content type="html">I suggest allowing sequences of the form:
 
@@ -9,9 +9,8 @@ movq disp(%r15,%rax,scale), %dest
 
 The first instruction ensures that %rax is between -2^31 and 2^31 - 1.
 This should be safe, as long as the lower guard region is at least 20 GB.
-</ns0:content><ns0:updated>2011-07-29T00:12:47.000Z</ns0:updated><ns0:published>2010-07-13T13:18:53.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
-			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
+</ns0:content><ns0:updated>2012-11-29T02:43:16.000Z</ns0:updated><ns0:published>2010-07-13T13:18:53.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
 			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/103360015124260446450/</ns2:uri><ns2:username>eaelt...@google.com</ns2:username></ns2:cc><ns2:cc>
-			<ns2:uri>/u/110783171813691645727/</ns2:uri><ns2:username>dpoluk...@google.com</ns2:username></ns2:cc><ns2:cc>
-			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Allow use of negative indexes on X86-64</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Usability</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/689/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=689" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/689" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>689</ns2:id></ns0:entry>
+			<ns2:uri>/u/dpolukhin@google.com/</ns2:uri><ns2:username>dpolukhin@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Allow use of negative indexes on X86-64</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns2:label>Usability</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/689/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=689" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/689" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>689</ns2:id></ns0:entry>

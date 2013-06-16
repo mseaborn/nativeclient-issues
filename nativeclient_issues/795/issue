@@ -5,5 +5,5 @@
 			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/cbiffle@google.com/</ns2:uri><ns2:username>cbiffle@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>no /dev/random</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Milestone-Baltic-Sea</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/795/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=795" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/795" rel="self" type="application/atom+xml" /><ns2:stars>8</ns2:stars><ns2:blockedOn>
-			<ns2:id>1432</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>61250</ns2:id><ns2:project>chromium</ns2:project></ns2:blockedOn><ns2:closedDate>2011-04-06T20:27:39.000Z</ns2:closedDate><ns2:id>795</ns2:id></ns0:entry>
+			<ns2:id>61250</ns2:id><ns2:project>chromium</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1432</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:closedDate>2011-04-06T20:27:39.000Z</ns2:closedDate><ns2:id>795</ns2:id></ns0:entry>

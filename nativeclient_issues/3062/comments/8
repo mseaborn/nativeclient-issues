@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak4BQ347eCl7ImA9WhJaFEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3062/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">LLVM Rev 162331 + Clang rev 162330 is when this became more "reliable" to reproduce.  With LLVM rev 162329, it is hard to reproduce.  In both cases, Valgrind still reports a memory bug, with the same stack as above:
+
+Free in resizing SmallDenseMap, and read pulling free'd memory from the SmallDenseMap.
+
+A workaround may be to increase the size of the particular instantiation of the SmallDenseMap (from 4 to say 128), but of course, that is just a workaround and may stop working later...
+
+For reference we're at rev 164918, and 165162 still had the bug.</ns0:content><ns0:updated>2012-10-05T17:42:32.000Z</ns0:updated><ns0:published>2012-10-05T17:42:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3062#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3062/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

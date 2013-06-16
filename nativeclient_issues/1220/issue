@@ -40,5 +40,5 @@ There're no headers in service_runtime and outside of service_runtime/include wh
 1. It would be easier to use NaCl outside of Chrome environment.
 2. The code base will become a little bit less coupled and will make it easier to perform deps analysis (currently, it has a lot of cycles)
 </ns0:content><ns0:updated>2011-12-13T22:13:40.000Z</ns0:updated><ns0:published>2010-12-03T12:59:20.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:state>open</ns2:state><ns0:title>Public headers in service_runtime and outside of service_runtime/include</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/1220/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1220" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/1220" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
-			<ns2:id>1221</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>1656</ns2:id></ns2:blockedOn><ns2:id>1220</ns2:id></ns0:entry>
+			<ns2:id>1221</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>1656</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:id>1220</ns2:id></ns0:entry>

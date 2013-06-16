@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEICSH47eCl7ImA9WhNQF0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3166</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Under NaCl on Linux or Mac OS X, the following prints the machine's uptime:
+
+  struct timespec time;
+  clock_gettime(CLOCK_MONOTONIC, &amp;amp;time);
+  printf(&amp;quot;t = %.2f days\n&amp;quot;, (double) time.tv_sec / (60 * 60 * 24));
+
+For example:
+
+On Linux, the NaCl program prints &amp;quot;t = 8.55 days&amp;quot;, and:
+$ uptime
+ 15:03:18 up 8 days, 22:02,  1 user,  load average: 0.40, 0.15, 0.08
+
+On Mac, the NaCl program prints &amp;quot;t = 12.92 days&amp;quot;, and:
+MacBook-Pro:~$ uptime
+15:05  up 16 days, 21:51, 4 users, load averages: 0.71 0.47 0.33
+
+The difference on Mac might be because the test machine is a laptop that has been suspended sometimes.
+
+This information leak provides an ID for a machine that is probably unique and that persists until the machine is rebooted, which could be a long time.
+
+A fix would be to make CLOCK_MONOTONIC return the time since the NaCl process was started.  Although this will give different time results in different NaCl processes, that's already the case on Windows where NaCl emulates CLOCK_MONOTONIC.
+</ns0:content><ns0:updated>2012-11-23T23:16:09.000Z</ns0:updated><ns0:published>2012-11-23T23:16:09.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>NaCl leaks the machine's uptime via clock_gettime(CLOCK_MONOTONIC)</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Linux</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>Privacy</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3166/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3166" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3166" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3166</ns2:id></ns0:entry>

@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUMGQH47eCl7ImA9WhBTFk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3300/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>halya...@google.com</ns0:name><ns0:uri>/u/112856509894568708731/</ns0:uri></ns0:author><ns0:content type="html">uname -a on laptop: 
+Darwin halyavin-macbookpro.local 12.2.0 Darwin Kernel Version 12.2.0: Sat Aug 25 00:48:52 PDT 2012; root:xnu-2050.18.24~1/RELEASE_X86_64 x86_64
+sw_vers on laptop:
+ProductName:    Mac OS X
+ProductVersion: 10.8.2
+BuildVersion:   12C60
+I will take desktop versions tomorrow.</ns0:content><ns0:updated>2013-02-11T18:30:21.000Z</ns0:updated><ns0:published>2013-02-11T18:30:21.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by halya...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3300#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3300/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

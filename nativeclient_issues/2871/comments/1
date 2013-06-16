@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUACRH47eCl7ImA9WhJTGEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2871/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">Note: there are currently problems with  libppNaClPlugin.so not linking:
+
+
+scons-out/opt-linux-x86-64/lib/libimc_shared.a(nacl_imc_unistd.os): In function `nacl::TryShmOrTempOpen(unsigned long, char const*, bool) [clone .constprop.0]':
+nacl_imc_unistd.cc:(.text+0x8b): undefined reference to `shm_open'
+nacl_imc_unistd.cc:(.text+0xd6): undefined reference to `shm_unlink'
+scons-out/opt-linux-x86-64/lib/libplatform_shared.a(nacl_clock.os): In function `NaClClockGetRes':
+nacl_clock.c:(.text+0x59): undefined reference to `clock_getres'
+scons-out/opt-linux-x86-64/lib/libplatform_shared.a(nacl_clock.os): In function `NaClClockGetTime':
+nacl_clock.c:(.text+0xcf): undefined reference to `clock_gettime'
+nacl_clock.c:(.text+0x103): undefined reference to `clock_gettime'
+
+
+All the missing symbols are provided by "librt"</ns0:content><ns0:updated>2012-06-27T17:22:45.000Z</ns0:updated><ns0:published>2012-06-27T17:22:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by robertm@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2871#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2871/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0ACSH47eCl7ImA9WhBVFE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3402/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11215
+
+------------------------------------------------------------------------
+r11215 | bsy@google.com | 2013-04-19T22:12:22.930986Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=11215&amp;r2=11214&amp;pathrev=11215
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/mmap_prot_exec/nacl.scons?r1=11215&amp;r2=11214&amp;pathrev=11215
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/win/nacl_host_desc.c?r1=11215&amp;r2=11214&amp;pathrev=11215
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/mmap_prot_exec/mmap_prot_exec.c?r1=11215&amp;r2=11214&amp;pathrev=11215
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.h?r1=11215&amp;r2=11214&amp;pathrev=11215
+
+Ignore PROT_EXEC for data mapping.
+
+As a compatibility measure, ignore PROT_EXEC if the mapping is going to land in data memory.
+
+Added check to ensure that a file PROT_EXEC mapping must not map in beyond the end of the file.  Virtual memory systems typically zero fill any partial pages, and this may not validate.  Rather than rely on assumptions about file system buffer cache contents (due to object-reuse policy, must be initialized to something like zero), we just require that the entire mapping range is within the file.  Note that it is perfectly fine to map in *fewer* bytes than the number of bytes from the file offset to the actual end-of-file.
+
+Also made platform's NaClHostDesc's open -- used only for tests -- do more logging, since test code that map-then-truncate can hit the same issue that was hit in this test.
+
+TEST= run_mmap_prot_exec_test
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3402
+
+Review URL: https://codereview.chromium.org/14362006
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-04-19T22:16:09.000Z</ns0:updated><ns0:published>2013-04-19T22:16:09.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3402#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3402/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

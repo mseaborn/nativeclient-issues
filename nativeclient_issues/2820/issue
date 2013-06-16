@@ -1,0 +1,11 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0cBSX47eCl7ImA9WhVbFUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2820</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Currently, mmap() with MAP_ANONYMOUS calls NaClDescIoDescMapAnon() which calls NaClDescIoDescMap().  That calls UnmapMemory() which always opens up an address space hole on Windows.  We always suspend untrusted threads when opening address space holes, which carries a performance penalty.
+
+However, we could change it so that if the destination location was previously unmapped -- which is always the case with mmap() unless using MAP_FIXED -- we make the page accessible using VirtualProtect()/MEM_COMMIT, which does not open an address space hole.
+
+That is actually what NaCl's sysbrk() syscall implementation does.  (It uses VirtualProtect() via NaCl_mprotect().)
+
+That would mean that we wouldn't have to suspend untrusted threads, making mmap() less expensive.
+</ns0:content><ns0:updated>2012-06-01T00:37:38.000Z</ns0:updated><ns0:published>2012-06-01T00:37:38.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>Windows: MAP_ANONYMOUS usually does not need to open an address space hole</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Performance</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2820/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2820" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2820" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>2820</ns2:id></ns0:entry>

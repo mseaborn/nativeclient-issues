@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ck8HQ347eCl7ImA9WhJaEkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3018/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=159938
+
+------------------------------------------------------------------------
+r159938 | mseaborn@chromium.org | 2012-10-03T18:57:06.270613Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/untrusted/pnacl_support_extension/nacl.scons?r1=159938&amp;r2=159937&amp;pathrev=159938
+
+PNaCl: Use the PPAPI shims library on all architectures
+
+In NaCl-side changes, the sandboxed translator has been changed to
+link the shims library on all architectures.  (The shims library is
+defined on all architectures, if only as a dummy in some cases.)  We
+need to change the translator extension to match.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=3018
+TEST=PNaCl tests on *_naclmore trybots
+
+Review URL: https://codereview.chromium.org/11016031
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-03T19:00:32.000Z</ns0:updated><ns0:published>2012-10-03T19:00:32.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3018#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3018/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

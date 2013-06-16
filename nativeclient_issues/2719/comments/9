@@ -1,0 +1,45 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkMFRH47eCl7ImA9WhVaEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2719/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=132496
+------------------------------------------------------------------------
+r132496 | mseaborn@chromium.org | 2012-04-17T00:47:50.146713Z
+
+Changed paths:
+   M /trunk/src/chrome/browser/nacl_host/nacl_process_host.cc
+   M /trunk/src/content/public/common/sandbox_init.h
+   M /trunk/src/ppapi/native_client/src/trusted/plugin/module_ppapi.cc
+   M /trunk/src/chrome/nacl/nacl_listener.cc
+   M /trunk/src/chrome/renderer/chrome_ppapi_interfaces.cc
+   M /trunk/src/content/common/sandbox_policy.cc
+   M /trunk/src/ppapi/c/private/ppb_nacl_private.h
+   M /trunk/src/ppapi/native_client/src/trusted/plugin/service_runtime.cc
+
+Supply Windows handle-passing function to NaCl
+
+Pass BrokerDuplicateHandle() to the NaCl loader process in
+nacl_listener.cc.
+
+Pass BrokerDuplicateHandle() to the NaCl trusted plugin.  We need to
+add this to PPB_NaCl_Private in order to pass it through.
+
+Remove the use of the "init_handle_passing" SRPC call.  Otherwise the
+NaCl process will attempt to do an imc_connect() to the renderer,
+which involves sending a handle to it, which fails.
+
+Add a wrapper for AddTargetPeer() to 'content' so that
+nacl_process_host.cc can use it.
+
+Change the renderer's handle-passing policy to allow sending handles
+other than Sections.  The NaCl trusted plugin sends other handle types
+to the NaCl loader process.
+
+This change will allow the sandbox to be tightened up, in the future,
+so that the NaCl loader process and the renderer process do not have
+handles to each other.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2719
+TEST=nacl_integration etc.
+
+Review URL: https://chromiumcodereview.appspot.com/10039001
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-06-08T01:53:35.000Z</ns0:updated><ns0:published>2012-06-08T01:53:35.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2719#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2719/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

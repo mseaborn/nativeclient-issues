@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DE4ASX47eCl7ImA9WhFTFUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3339/comments/full/16</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11496
+
+------------------------------------------------------------------------
+r11496 | eliben@chromium.org | 2013-06-06T22:12:10.538096Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/build.sh?r1=11496&amp;r2=11495&amp;pathrev=11496
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-driver.py?r1=11496&amp;r2=11495&amp;pathrev=11496
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-ld.py?r1=11496&amp;r2=11495&amp;pathrev=11496
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/support/bitcode/pnacl_abi.c?r1=11496&amp;r2=11495&amp;pathrev=11496
+
+pnacl_abi.bc is no longer needed - remove it from the build.
+
+The last use of pnacl_abi.bc was to keep references to setjmp/longjmp
+alive in the resulting bitcode.  This is no longer needed, since these
+now go through nacl-specific intrinsics (rewrite-pnacl-library-calls).
+
+Now pnacl-ld has to pass --allow-unresolved for setjmp/longjmp to gold,
+because the rewrite pass runs after linking.  Otherwise gold tries to
+find these symbols in tests that actually use setjmp/longjmp.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3429
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3339
+R=mseaborn@chromium.org
+
+Review URL: https://codereview.chromium.org/16024009
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-06-06T22:15:48.000Z</ns0:updated><ns0:published>2013-06-06T22:15:48.000Z</ns0:published><ns2:updates /><ns0:title>Comment 16 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3339#c16" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3339/comments/full/16" rel="self" type="application/atom+xml" /></ns0:entry>

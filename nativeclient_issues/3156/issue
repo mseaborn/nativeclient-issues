@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIHRn47eCl7ImA9WhNQE0o.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3156</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">At some point, someone should redo the &amp;quot;startup&amp;quot; related performance tests (timing / download size):
+
+For time:
+http://code.google.com/p/nativeclient/issues/detail?id=1478
+
+Previously we had used an actual browser test to do it on the NaCl bare metal bots, for each OS.  However, browser tests have been moved out, so the tests have also been removed.
+
+Perhaps they can be replaced by browser-less tests, since most of what was measured was things like address space setup time, or they can be ported to the chrome tree.
+
+
+For size:
+http://code.google.com/p/nativeclient/issues/detail?id=1479
+
+The size tests previously measured the size of a static nexe linked with the libc, libstdc++, and the &amp;quot;partial sdk&amp;quot; (libnacl, libppapi_cpp).  Since part of those are supplied the SDK, we also don't measure that NaCl side anymore.
+
+</ns0:content><ns0:updated>2012-11-20T00:15:37.000Z</ns0:updated><ns0:published>2012-11-19T23:42:54.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>redo the startup performance tests / size tests</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Infrastructure</ns2:label><ns2:label>OS-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3156/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3156" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3156" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3156</ns2:id></ns0:entry>

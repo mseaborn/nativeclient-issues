@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQMSX47eCl7ImA9WhJRF0w.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2883/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Hmm, couldn't reply via email, so this might look a bit messy =/
+
+Yes, I mean the llvm::Linker step of LinkInModule.
+
+re: "What's the plan, to pick the largest module then link the second-largest
+into it and keep going that way?"
+
+
+Not sure what the truly optimal strategy is right now.  However,
+with a small sample (llvm self-compile, and spec's eon) I've seen
+that keeping the sizes of the intermediate modules fairly balanced
+is a good thing.   See below for why.
+
+We may also want to keep the link order the same, though, so I'm
+not sure how much wiggle room we have.  E.g., what are the
+implications of really shuffling the link order, changing associativity
+vs commuting them...  Commuting them would change the order for
+things with "appending" linkage, etc. which doesn't seem like a good
+thing to do.
+
+
+re: "What makes LinkModules slow and why is this faster? I've seen a
+presentation which said that it's cheaper to merge small modules into large
+modules, but not much beyond that."
+
+I don't think it is the case that small modules into large modules is
+the optimal strategy anymore, post 3.0.
+
+The heavy hitter I currently see in LinkInModule, is a call to findUsedStructTypes,
+which is traversing almost every bit of module A and B, *starting from scratch*,
+each time.  So if module B keeps growing, we pay the cost of traversing
+module B over and over, with increasing cost.
+
+re: "What if you really could look at all modules
+and do an n-way merge instead of n pairwise merges? What would you do then?"
+
+
+I'm not really sure how to go about doing an n-way merge right now.
+There's a bunch of things like "RemapInstruction" which seem oriented
+towards pairwise operations.  "LinkInItems", "LinkInFiles", and "LinkInArchive",
+which all take a list of files in some sense, all boil down to pairwise merges
+using ModuleLinker(Dst, Src).
+
+Of course, if we could do an n-way merge, and it actually avoided
+re-traversing any of the IR, then it would be better.  For now, I think doing
+better planning on how ModuleLinker() is used, would be a good start.
+
+</ns0:content><ns0:updated>2012-07-19T17:03:08.000Z</ns0:updated><ns0:published>2012-07-19T17:03:08.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2883#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2883/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

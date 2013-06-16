@@ -1,0 +1,34 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0UAR347eCl7ImA9WhBRFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3167/comments/full/19</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10943
+
+------------------------------------------------------------------------
+r10943 | khim@google.com | 2013-03-05T15:55:35.990715Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/build.scons?r1=10943&amp;r2=10942&amp;pathrev=10943
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/dfa_validate_32.c?r1=10943&amp;r2=10942&amp;pathrev=10943
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/dfa_validator_x86_32.gyp?r1=10943&amp;r2=10942&amp;pathrev=10943
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/dfa_validate_32.c?r1=10943&amp;r2=10942&amp;pathrev=10943
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/dfa_validate_common.c?r1=10943&amp;r2=10942&amp;pathrev=10943
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/dfa_validate_64.c?r1=10943&amp;r2=10942&amp;pathrev=10943
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/dfa_validator_x86_64.gyp?r1=10943&amp;r2=10942&amp;pathrev=10943
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/validator.h?r1=10943&amp;r2=10942&amp;pathrev=10943
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/dfa_validate_common.c?r1=10943&amp;r2=10942&amp;pathrev=10943
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/dfa_validate_64.c?r1=10943&amp;r2=10942&amp;pathrev=10943
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/dfa_validate_common.h?r1=10943&amp;r2=10942&amp;pathrev=10943
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/dfa_validate_common.h?r1=10943&amp;r2=10942&amp;pathrev=10943
+
+Move dfa_validate_XXX out of unreviewed.
+
+These files implement public interface (declared in validator/ncvalidate.h)
+using protected interface (declared in validator_ragel/validator.h).
+
+They don't use internal interfaces of the validator (decoding.h,
+validator_internal.h, etc).
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=3167
+TEST=trybots (no changes in functionality)
+Review URL: https://codereview.chromium.org/12217035
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-03-05T16:00:46.000Z</ns0:updated><ns0:published>2013-03-05T16:00:46.000Z</ns0:published><ns2:updates /><ns0:title>Comment 19 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3167#c19" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3167/comments/full/19" rel="self" type="application/atom+xml" /></ns0:entry>

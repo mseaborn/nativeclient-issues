@@ -1,0 +1,28 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IGR347eCl7ImA9WhNTE0g.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3067/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9987
+
+------------------------------------------------------------------------
+r9987 | mcgrathr@chromium.org | 2012-10-12T21:45:19.283023Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/native_client/trunk/src/third_party/mpc/mpc-1.0.tar.gz?r1=9987&amp;r2=9986&amp;pathrev=9987
+   D http://src.chromium.org/viewvc/native_client/trunk/src/third_party/mpfr/COPYING.LIB?r1=9987&amp;r2=9986&amp;pathrev=9987
+   A http://src.chromium.org/viewvc/native_client/trunk/src/third_party/mpc/COPYING.LESSER?r1=9987&amp;r2=9986&amp;pathrev=9987
+   D http://src.chromium.org/viewvc/native_client/trunk/src/third_party/mpfr/mpfr-3.1.0.tar.bz2?r1=9987&amp;r2=9986&amp;pathrev=9987
+   A http://src.chromium.org/viewvc/native_client/trunk/src/third_party/mpfr/mpfr-3.1.1.tar.bz2?r1=9987&amp;r2=9986&amp;pathrev=9987
+   D http://src.chromium.org/viewvc/native_client/trunk/src/third_party/gmp/gmp-4.3.1.tar.bz2?r1=9987&amp;r2=9986&amp;pathrev=9987
+   A http://src.chromium.org/viewvc/native_client/trunk/src/third_party/mpfr/COPYING.LESSER?r1=9987&amp;r2=9986&amp;pathrev=9987
+   D http://src.chromium.org/viewvc/native_client/trunk/src/third_party/mpfr/mpfr-2.4.1.tar.bz2?r1=9987&amp;r2=9986&amp;pathrev=9987
+   M http://src.chromium.org/viewvc/native_client/trunk/src/third_party/mpfr/COPYING?r1=9987&amp;r2=9986&amp;pathrev=9987
+
+Remove old gmp and mpfr versions not in use, add new mpc and mpf versions
+
+There are some old tarballs we haven't used any time recently.
+We need a newer mpc version to get the new toolchain build to
+be happy, and we might as well use the latest mpfr too.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3067
+TEST= none
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-10-16T01:38:46.000Z</ns0:updated><ns0:published>2012-10-16T01:38:46.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3067#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3067/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

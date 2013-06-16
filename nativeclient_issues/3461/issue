@@ -1,0 +1,68 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEUARH47eCl7ImA9WhFTE0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3461</ns0:id><ns0:author>
+			<ns0:name>krasin@google.com</ns0:name><ns0:uri>/u/krasin@google.com/</ns0:uri></ns0:author><ns0:content type="html">&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+
+pepper27
+
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+
+sel_ldr_x86_64 from pepper27 sdk
+
+&lt;b&gt;On what operating system?&lt;/b&gt;
+
+Ubuntu Linux 12.04
+
+&lt;b&gt;What browser are you using?&lt;/b&gt;
+
+no browser
+
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. Compile the following program:
+
+lala.c:
+
+int main(void) {
+  static __thread int a;
+  return a++;
+}
+
+with
+
+$ ~/nacl/nacl_sdk/pepper_27/toolchain/linux_x86_newlib/bin/x86_64-nacl-gcc -fPIC lala.c -o lala.nexe
+/tmp/ccd5F4NM.o: In function `main':
+lala.c:(.text+0x1c): undefined reference to `__nacl_add_tp'
+lala.c:(.text+0x3c): undefined reference to `__nacl_add_tp'
+collect2: ld returned 1 exit status
+
+This is completely unexpected and I have spent a few hours today why opencv compilation was failing due to this issue.
+
+Also, note that x86-32 compilation succeeds:
+
+$ ~/nacl/nacl_sdk/pepper_27/toolchain/linux_x86_newlib/bin/x86_64-nacl-gcc -m32 -fPIC lala.c -o lala.nexe
+
+And now the real surprise:
+
+go to NaCl sources and build x86-64 nacl libraries with:
+
+$ ./scons platform=x86-64 --mode=nacl,opt-linux small_tests -j4
+
+After that, take ./scons-out/nacl-x86-64/lib/libnacl.a and copy it to path/to/nacl_sdk/pepper_27/toolchain/linux_x86_newlib/x86_64-nacl/lib
+
+After that the failing command line above would succeed.
+
+The cuplrit is:
+
+$ nm libnacl.a.from.sdk | grep __nacl_add_tp
+$ nm libnacl.a.from.sources | grep __nacl_add_tp
+0000000000000000 T __nacl_add_tp
+
+as you can see, __nacl_add_tp symbol is missing from SDK version of newlib toolchain.
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;</ns0:content><ns0:updated>2013-06-04T16:10:45.000Z</ns0:updated><ns0:published>2013-05-30T05:50:49.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/100592414910994572397/</ns2:uri><ns2:username>s...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>libnacl.a in newlib toolchain from SDK is missing __nacl_add_tp symbol</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3461/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3461" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3461" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3461</ns2:id></ns0:entry>

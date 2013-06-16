@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEECQn47eCl7ImA9WhRaE04.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4BQ347eCl7ImA9WhNSEUU.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2524</ns0:id><ns0:author>
 			<ns0:name>robertm@google.com</ns0:name><ns0:uri>/u/robertm@google.com/</ns0:uri></ns0:author><ns0:content type="html">
 The pnacl toolchain has a number of &amp;quot;features&amp;quot; that are unconventional 
@@ -6,5 +6,5 @@ and hence not what developer expect, e.g.
 
 * generation of temporary files like .ll
 * logging of driver messages to obscure places (needs to be confirmed)
-</ns0:content><ns0:updated>2012-02-15T19:04:23.000Z</ns0:updated><ns0:published>2012-01-06T18:45:25.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>remove pnacl toolchain idiosyncrasies</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2524/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2524" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2524" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
-			<ns2:id>2523</ns2:id></ns2:blocking><ns2:id>2524</ns2:id></ns0:entry>
+</ns0:content><ns0:updated>2012-10-25T17:59:12.000Z</ns0:updated><ns0:published>2012-01-06T18:45:25.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:state>closed</ns2:state><ns0:title>remove pnacl toolchain idiosyncrasies</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2524/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2524" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2524" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-06-14T17:54:50.000Z</ns2:closedDate><ns2:id>2524</ns2:id><ns2:mergedInto>
+			<ns2:id>1966</ns2:id><ns2:project>nativeclient</ns2:project></ns2:mergedInto></ns0:entry>

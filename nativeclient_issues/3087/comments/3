@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DU4ESH47eCl7ImA9WhNTFEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3087/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">At the moment, we don't deploy the x86-64 sandbox on Mac in Chromium, so it's not officially supported.  Our policy has been that if we add a new feature, if it's easy to make it work on x86-64 Mac then we so do, but otherwise we don't put in the effort.  For example, NaCl's thread suspension tests should pass on x86-64 Mac, but NaCl's fault handling tests (based on Mach exception handling) don't.
+
+On the buildbots, we run "run_hello_world_test" on x86-64 Mac, but no other tests (see native_client/buildbot/buildbot_standard.py).  There's no problem with unit test coverage as such -- we just don't run all of the tests.  We are just keeping the basics working.
+
+To support x86-64 Mac fully, two things would need to be done:
+
+ 1) Make all the tests pass on x86-64 Mac.  e.g. If you run "./scons small_tests medium_tests large_tests platform=x86-64" you'll probably find a few tests that fail and need fixing.
+
+ 2) Enable all of the tests on x86-64 Mac on the NaCl buildbots/trybots.  Whether we want to do this depends on how much of a maintenance burden it is, and whether we're likely to be deploying the x86-64 sandbox on Mac soon.
+
+As a middle ground, we could add more tests to our 64-bit Mac list in buildbot_standard.py.  We could add an FYI bot for x86-64 Mac.
+</ns0:content><ns0:updated>2012-10-17T15:31:49.000Z</ns0:updated><ns0:published>2012-10-17T15:31:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3087#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3087/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

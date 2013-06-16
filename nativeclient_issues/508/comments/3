@@ -1,0 +1,30 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkQFQ347eCl7ImA9WxFXEkw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/508/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">&gt; &gt; I'm curious, what systems have per-boot address space randomisation?
+&gt; 
+&gt; That'd be Windows.
+
+OK.  So basically we want to avoid exposing the whole-system
+randomisation info to untrusted code?  Does the existing x86-64
+sandbox expose the location of the sandbox in address space to
+untrusted code?  If so, do we need to randomise the sandbox's location
+ourselves in case the randomisation provided by Windows isn't
+sufficient?
+
+If this is a Windowsism, is it necessary to do read sandboxing on ARM?
+(I wouldn't complain if we had read sandboxing just to be on the safe
+side, though.)
+
+&gt; &gt; BTW, I've been using the term "read sandboxing".  Can we settle on a term?
+&gt; &gt; It's just that it makes it easier to search for it.
+&gt; 
+&gt; Well, how about 'load sandboxing' then, as an analog to 'store
+&gt; sandboxing' in the current design?  It's more precise than read/write
+&gt; imho.  But then, I work on a machine that calls these instructions
+&gt; 'load' and 'store,' so....
+
+"Load" is a bit, um, overloaded (see? :-) ).  It could be mistaken for
+referring to ELF loading.  "Memory read sandboxing" or "memory load
+sandboxing" would be more explicit.  However, the latter sounds like
+it might refer to the "load average" sense of "load".
+</ns0:content><ns0:updated>2010-05-18T21:31:52.000Z</ns0:updated><ns0:published>2010-05-18T21:31:52.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=508#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/508/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

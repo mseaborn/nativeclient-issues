@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0YFQ347eCl7ImA9WhNUGU4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2076</ns0:id><ns0:author>
+			<ns0:name>chris.ro...@gmail.com</ns0:name><ns0:uri>/u/109476958443797771315/</ns0:uri></ns0:author><ns0:content type="html">The function PpbFileIORpcServer::PPB_FileIO_Write() receives a buffer, and a bytes_to_read parameter provided by the untrusted NEXE module. There is no check for bytes_to_read &amp;gt; sizeof(buffer). An untrusted NEXE module can send a bytes_to_read value of sizeof(buffer)+N and the RelayWrite class will perform an out of bounds read on line 580 of chrome/base/src/base/file_util_proxy.cc
+
+The constructor to RelayWrite is below:
+
+  RelayWrite(base::PlatformFile file,
+             int64 offset,
+             const char* buffer,        // size of this buffer is specified from a NEXE
+             int bytes_to_write,        // value of bytes_to_write is controlled from a NEXE
+             base::FileUtilProxy::WriteCallback* callback)
+      : file_(file),
+        offset_(offset),
+        buffer_(new char[bytes_to_write]), // Allocate a new buffer bytes_to_write in size
+        bytes_to_write_(bytes_to_write),
+        callback_(callback),
+        bytes_written_(0) {
+    memcpy(buffer_.get(), buffer, bytes_to_write);  // copy into the new buffer bytes_to_write from buffer
+
+This will result in writing to buffer_ data from beyond the bounds of the buffer array. This will result in an information leak of memory from the renderer process. The code for this CL can be found here:
+
+http://codereview.chromium.org/7441001/diff/20001/src/shared/ppapi_proxy/browser_ppb_file_io_rpc_server.cc
+</ns0:content><ns0:updated>2013-01-11T20:11:52.000Z</ns0:updated><ns0:published>2011-07-22T20:10:57.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/111227428049549265840/</ns2:uri><ns2:username>sa...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/brettw@chromium.org/</ns2:uri><ns2:username>brettw@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110088500044003719179/</ns2:uri><ns2:username>jsc...@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PpbFileIORpcServer::PPB_FileIO_Write Out Of Bounds Read Information Leak</ns0:title><ns2:label>Security</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Mstone-14</ns2:label><ns2:label>Component-Pepper</ns2:label><ns2:label>MigrateToChromium</ns2:label><ns2:label>merge-merged-835</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2076/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2076" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2076" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-19T20:21:40.000Z</ns2:closedDate><ns2:id>2076</ns2:id></ns0:entry>

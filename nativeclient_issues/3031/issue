@@ -1,0 +1,40 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0cBRH47eCl7ImA9WhJUGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3031</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Something like:
+
+  %0 = load i32* %iov_length, align 4
+  %sub.i = add i32 %0, -1
+  store i32 %sub.i, i32* %iov_length, align 4
+
+;; junk
+  call void (i32, i8*, ...)* @NaClSrpcLog(i32 -1, i8* getelementptr inbounds ([72 x i8]* @.str2788, i32 0, i32 0), i32 0) nounwind
+
+  %cmp.i = icmp eq i32 %sub.i, 0
+  br i1 %cmp.i, label %label.i, label %label.ii
+
+
+May turn into:
+
+        decl    %nacl:4(%r15,%rax)
+        movq    %nacl:4(%r15,%rax), %rbx
+
+;; junk
+;; ... other instructions that don't touch %rbx.
+
+        cmpq    $0, %rbx
+        je      .LBB0_2
+
+
+Doesn't this mean that the load could get more than the 32-bits of the field and have junk in the high 32-bits?  Then the comparison of the full 64-bits to 0 can be bogus because of the junk in the upper 32-bits?
+
+See attached for the full test.
+
+Repro steps:
+
+1) Download the test_load_i32.ll file.
+2) toolchain/pnacl_linux_x86/host/bin/llc     -mcpu=core2     -mtriple=x86_64-none-nacl-gnu     -filetype=asm     -reduce-memory-footprint     -tail-merge-threshold=50     test_load_i32.ll     -o test_load_i32.s
+3) Look at generated asm.
+
+
+This was found while trying to do another LLVM pulldown, but it's actually reproduceable from the current toolchain.</ns0:content><ns0:updated>2012-09-17T22:30:55.000Z</ns0:updated><ns0:published>2012-09-13T17:40:49.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PNaCl x86-64 code gen may turn load i32* into movq, and icmp w/ i32 may check 64 bits.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-25</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3031/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3031" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3031" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-09-17T22:30:55.000Z</ns2:closedDate><ns2:id>3031</ns2:id></ns0:entry>

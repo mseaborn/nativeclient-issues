@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUASH47eCl7ImA9WhNbEUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3111/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10599
+
+------------------------------------------------------------------------
+r10599 | kschimpf@google.com | 2013-01-14T20:56:26.236468Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode.h?r1=10599&amp;r2=10598&amp;pathrev=10599
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/generate_decoder.py?r1=10599&amp;r2=10598&amp;pathrev=10599
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode_named_classes.h?r1=10599&amp;r2=10598&amp;pathrev=10599
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode_named.cc?r1=10599&amp;r2=10598&amp;pathrev=10599
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/dgen_decoder.py?r1=10599&amp;r2=10598&amp;pathrev=10599
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/dgen_decoder_output.py?r1=10599&amp;r2=10598&amp;pathrev=10599
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/dgen_core.py?r1=10599&amp;r2=10598&amp;pathrev=10599
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode_data_processing_register_tests.cc?r1=10599&amp;r2=10598&amp;pathrev=10599
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode_named_decoder.h?r1=10599&amp;r2=10598&amp;pathrev=10599
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/dgen_actuals.py?r1=10599&amp;r2=10598&amp;pathrev=10599
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode_actuals.cc?r1=10599&amp;r2=10598&amp;pathrev=10599
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode_actuals.h?r1=10599&amp;r2=10598&amp;pathrev=10599
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/build.scons?r1=10599&amp;r2=10598&amp;pathrev=10599
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/dgen_test_output.py?r1=10599&amp;r2=10598&amp;pathrev=10599
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/gen/arm32_decode.cc?r1=10599&amp;r2=10598&amp;pathrev=10599
+
+Modify ARM generators to use automatically generated actual decoders.
+
+Adds a framework for installing automatically generated actual decoders into
+the parsed decoder tables (in armv7.table). Then extends the build.scons file
+to specify which tables these automatically generated actual decoders should
+be installed into. This allows an incremental change from hand written
+actual decoders to corresponding automatically generated decoders.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3111
+TEST= ./scons platform=arm huge_tests
+Review URL: https://codereview.chromium.org/11875018
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-01-14T21:00:49.000Z</ns0:updated><ns0:published>2013-01-14T21:00:49.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3111#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3111/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

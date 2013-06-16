@@ -1,0 +1,33 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkQGSX47eCl7ImA9WhBQE0U.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2381/comments/full/9</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Currently, pnacl-clang rejects C's va_arg on a struct type:
+
+$ pnacl-clang -c varargs_struct.c
+varargs_struct.c:13:3: error: cannot compile this aggregate va_arg expression
+      yet
+  va_arg(*args, struct SimpleStruct);
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+toolchain/pnacl_linux_x86/host_x86_64/lib/clang/3.3/include/stdarg.h:35:29: note: 
+      expanded from macro 'va_arg'
+#define va_arg(ap, type)    __builtin_va_arg(ap, type)
+                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+
+$ cat varargs_struct.c
+
+#include &lt;stdarg.h&gt;
+
+void vararg_func(int x, ...);
+
+struct SimpleStruct {
+  int x;
+};
+
+void skip(va_list *args) {
+  va_arg(*args, struct SimpleStruct);
+}
+
+
+This means PNaCl does not support the full C language.  Still, this issue should remain at Pri-2 because it doesn't affect PNaCl ABI stability, since the current plan is to expand out varargs (issue 3338).
+
+The LLVM IR docs also say that LLVM "does not currently support va_arg with aggregate types on any target" (http://llvm.org/docs/LangRef.html).  (This refers to the va_arg IR instruction, not C's va_arg.)</ns0:content><ns0:updated>2013-03-15T21:52:08.000Z</ns0:updated><ns0:published>2013-03-15T21:52:08.000Z</ns0:published><ns2:updates /><ns0:title>Comment 9 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2381#c9" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2381/comments/full/9" rel="self" type="application/atom+xml" /></ns0:entry>

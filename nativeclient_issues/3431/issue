@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEEDQ347eCl7ImA9WhBbEEo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3431</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">glibc's pthread_getattr_np() fails under NaCl when passed the process's initial thread.  It attempts to determine the initial thread's stack size by opening /proc/self/maps, which doesn't work under NaCl.
+
+Furthermore, there's no way under NaCl for user code to determine the initial thread's stack size.  It's currently 16MB (NACL_DEFAULT_STACK_MAX), but that's not something we're guaranteeing as part of the ABI.
+
+We could address this by providing an interface for finding the stack size.
+ * This could be an IRT interface.
+ * Or we could add a &amp;quot;stack size&amp;quot; or &amp;quot;stack limit&amp;quot; entry to the auxv.
+
+This crops up because a crash dumper (issue 3424) needs to get the stack's end (high) address, though not the stack's (low) limit, and pthread_getattr_np() would have been a way to do that.
+</ns0:content><ns0:updated>2013-05-09T04:11:12.000Z</ns0:updated><ns0:published>2013-05-09T04:11:12.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/109286297231979736865/</ns2:uri><ns2:username>mcgra...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>pthread_getattr_np() fails on initial thread -- initial stack size not known</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3431/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3431" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3431" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3431</ns2:id></ns0:entry>

@@ -1,0 +1,19 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkYAQn47eCl7ImA9WhBQEk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3111/comments/full/105</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10984
+
+------------------------------------------------------------------------
+r10984 | kschimpf@google.com | 2013-03-13T20:50:47.781719Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_arm/dgen_decoder.py?r1=10984&amp;r2=10983&amp;pathrev=10984
+
+Remove allowing string in safety constraints in ARM code generator.
+
+Removing special case of a string appearing in safety constraints, since
+it is no longer used or needed.
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=3111
+Review URL: https://codereview.chromium.org/12599008
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-03-13T20:55:43.000Z</ns0:updated><ns0:published>2013-03-13T20:55:43.000Z</ns0:published><ns2:updates /><ns0:title>Comment 105 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3111#c105" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3111/comments/full/105" rel="self" type="application/atom+xml" /></ns0:entry>

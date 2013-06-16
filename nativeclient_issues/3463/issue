@@ -1,0 +1,38 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkUNRn47eCl7ImA9WhBaGUk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3463</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">If __attribute__((aligned(256))) is used on a stack-allocated variable, nacl-gcc generates code that doesn't pass the validator on x86-64.
+
+Example:
+
+__attribute__((noinline))
+void ext(void *p) {
+}
+
+void foo() {
+  char x[1] __attribute__((aligned(256)));
+  ext(x);
+}
+
+This produces:
+0000000000020020 &amp;lt;foo&amp;gt;:
+   20020:       55                      push   %rbp
+   20021:       48 89 e5                mov    %rsp,%rbp
+   20024:       48 81 e4 00 ff ff ff    and    $0xffffffffffffff00,%rsp
+   2002b:       81 ec 00 01 00 00       sub    $0x100,%esp
+   20031:       4c 01 fc                add    %r15,%rsp
+
+ncval complains:
+VALIDATOR: 20024: Illegal assignment to RSP
+
+If I reduce the alignment to 128, I get:
+0000000000020020 &amp;lt;foo&amp;gt;:
+   20020:       55                      push   %rbp
+   20021:       48 89 e5                mov    %rsp,%rbp
+   20024:       48 83 e4 80             and    $0xffffffffffffff80,%rsp
+   20028:       83 c4 80                add    $0xffffff80,%esp
+   2002b:       4c 01 fc                add    %r15,%rsp
+which is accepted by the validator.
+</ns0:content><ns0:updated>2013-05-30T20:04:57.000Z</ns0:updated><ns0:published>2013-05-30T19:55:38.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/bradnelson@google.com/</ns2:uri><ns2:username>bradnelson@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>__attribute__((aligned(256))) on stack variables fails validation on x86-64</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-TCB-Validator</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3463/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3463" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3463" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:blockedOn>
+			<ns2:id>3453</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:id>3463</ns2:id></ns0:entry>

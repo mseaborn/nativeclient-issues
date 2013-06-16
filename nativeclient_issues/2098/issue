@@ -17,7 +17,7 @@ NaCl startup time on Windows is significantly less than one second.
 			<ns2:uri>/u/105821748722532785568/</ns2:uri><ns2:username>b...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/100032148147647801554/</ns2:uri><ns2:username>ncb...@google.com</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Improve Windows startup time</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>CoreRuntime</ns2:label><ns2:label>OS-Windows</ns2:label><ns2:label>Performance</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Mstone-19</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2098/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2098" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2098" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
-			<ns2:id>1897</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>2283</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>2362</ns2:id></ns2:blockedOn><ns2:blockedOn>
-			<ns2:id>2515</ns2:id></ns2:blockedOn><ns2:id>2098</ns2:id></ns0:entry>
+			<ns2:id>1897</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2283</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2362</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:blockedOn>
+			<ns2:id>2515</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:id>2098</ns2:id></ns0:entry>

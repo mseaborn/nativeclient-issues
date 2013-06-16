@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkUHR347eCl7ImA9WhBXGU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2309/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11119
+
+------------------------------------------------------------------------
+r11119 | mseaborn@chromium.org | 2013-04-02T16:27:16.602061Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/callingconv_case_by_case/nacl.scons?r1=11119&amp;r2=11118&amp;pathrev=11119
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/known_eh_failures_pnacl.txt?r1=11119&amp;r2=11118&amp;pathrev=11119
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-driver.py?r1=11119&amp;r2=11118&amp;pathrev=11119
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/toolchain_tester/known_failures_pnacl.txt?r1=11119&amp;r2=11118&amp;pathrev=11119
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/driver/pnacl-ld.py?r1=11119&amp;r2=11118&amp;pathrev=11119
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/computed_gotos/nacl.scons?r1=11119&amp;r2=11118&amp;pathrev=11119
+
+PNaCl: Enable the ABI checker
+
+Add an option to pnacl-ld/pnacl-clang to disable the ABI checks for
+programs that use features not supported in the stable pexe format.
+
+Deal with tests that use features that are not allowed by the ABI
+checker: computed gotos and vectors.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=2309
+TEST=PNaCl toolchain trybots + gcc torture tests
+
+Review URL: https://codereview.chromium.org/13144019
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-04-02T16:30:36.000Z</ns0:updated><ns0:published>2013-04-02T16:30:36.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2309#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2309/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,60 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEcARn47eCl7ImA9WhJXFEs.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2948/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9412
+
+------------------------------------------------------------------------
+r9412 | mseaborn@chromium.org | 2012-08-08T21:35:45.942385Z
+
+Changed paths:
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/session_mock.h?r1=9412&amp;r2=9411&amp;pathrev=9412
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/build.scons?r1=9412&amp;r2=9411&amp;pathrev=9412
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/test.cc?r1=9412&amp;r2=9411&amp;pathrev=9412
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/test.h?r1=9412&amp;r2=9411&amp;pathrev=9412
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/target_test.cc?r1=9412&amp;r2=9411&amp;pathrev=9412
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/gdb_rsp.gyp?r1=9412&amp;r2=9411&amp;pathrev=9412
+   D http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/gdb_rsp/session_mock.cc?r1=9412&amp;r2=9411&amp;pathrev=9412
+
+Debug stub: Remove dubious test code in 'gdb_rsp/target_test.cc'
+
+Before this change, gdb_rsp_test produces the following output:
+
+  Testing Utils.
+  Testing ABI.
+  Testing Packets.
+  Testing Session.
+  Testing Target.
+  Mismatch:
+          SENDING: PacketSize=7cf;qXfer:features:read+
+          EXPECT: PacketSize=7cf;qXfer:libraries:read+;qXfer:features:read+
+  Mismatch:
+          SENDING: l&lt;target&gt;&lt;architecture&gt;i386:x86-64&lt;/architecture&gt;&lt;osabi&gt;NaCl&lt;/osabi&gt;&lt;/target&gt;
+          EXPECT: l&lt;target&gt;&lt;architecture&gt;i386:x86-64&lt;/architecture&gt;&lt;/target&gt;
+  Mismatch:
+          SENDING: T05thread:1234;
+          EXPECT: S05
+
+The test is clearly failing in spirit, yet it still returns a success
+exit code because the errors are not propagated.
+
+This test isn't providing useful coverage, so we should remove it.  It
+mocks out too much to be useful: it does not run any untrusted code.
+In contrast, debug_stub_test.py provides much better coverage: it
+tests the real debug stub with untrusted code without mocking out
+anything.
+
+Also, target_test.cc uses the Target::Signal() method.  I will be
+removing Target::Signal() in a later change when I modify the debug
+stub to receive notifications about untrusted faults from the Windows
+debug exception handler.
+
+This allows us to also remove:
+
+ * session_mock.cc
+ * The ThreadMock and EventMock classes in test.cc
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2948
+TEST=run_gdb_rsp_tests
+
+Review URL: https://chromiumcodereview.appspot.com/10834233
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-08T21:40:47.000Z</ns0:updated><ns0:published>2012-08-08T21:40:47.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2948#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2948/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

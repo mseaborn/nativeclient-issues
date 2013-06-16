@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0UHRH47eCl7ImA9WhJaE00.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3062/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Hmm, I have a "reduced" version of this (still 655 lines) at /home/jvoung/testcase-min-linux.i, where it could crash clang "the same way" (same last function in the stack at least...), using the i686-unknown-linux triple with tip of tree clang (and our rev of clang), using this specific commandline:
+
+
+ clang -cc1 -triple i686-unknown-linux -emit-llvm-bc -disable-free -mrelocation-model static -fmath-errno  -target-linker-version 2.20.1 -momit-leaf-frame-pointer -nostdsysteminc -nobuiltininc  -O2 -Wall -Wfatal-errors -Wno-overloaded-virtual -Wno-variadic-macros -Wno-long-long -fdeprecated-macro -fno-dwarf-directory-asm  -mstackrealign -fobjc-runtime=gcc -fcxx-exceptions -fexceptions -fno-common -fdiagnostics-show-option -fcolor-diagnostics -x c++ testcase-min-linux.i
+
+
+Oddly if you change the commandline just a tiny bit, it will not crash:
+
+E.g., if you truncate
+
+i686-unknown-linux to i686-unkn-linux, it will not crash =O
+
+
+</ns0:content><ns0:updated>2012-10-04T00:07:15.000Z</ns0:updated><ns0:published>2012-10-04T00:07:15.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3062#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3062/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

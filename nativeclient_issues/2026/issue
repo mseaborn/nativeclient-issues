@@ -1,0 +1,37 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkIESX47eCl7ImA9WhNUGEg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2026</ns0:id><ns0:author>
+			<ns0:name>chris.ro...@gmail.com</ns0:name><ns0:uri>/u/109476958443797771315/</ns0:uri></ns0:author><ns0:content type="html">(This is the same issue as #2007, the code is almost identical)
+
+The PpbFileIODevRpcServer::PPB_FileIO_Dev_Read() function contains a heap overflow that may allow for arbitrary code execution.
+
+Starting on line 108 of native_client/src/shared/ppapi_proxy/browser_ppb_file_io_rpc_server.cc:
+
+...
+  *pp_error_or_bytes = PPBFileIOInterface()-&amp;gt;Read(
+      file_io,
+      offset,
+      callback_buffer,
+      bytes_to_read,
+      remote_callback);
+  DebugPrintf(&amp;quot;PPB_FileIO_Dev::Read: pp_error_or_bytes=%&amp;quot;NACL_PRId32&amp;quot;\n&amp;quot;,
+              *pp_error_or_bytes);
+
+  if (*pp_error_or_bytes &amp;gt; 0) {  // Bytes read into |callback_buffer|.
+    // No callback scheduled.
+    *buffer_size = static_cast&amp;lt;nacl_abi_size_t&amp;gt;(*pp_error_or_bytes);
+    memcpy(buffer, callback_buffer, *buffer_size);
+...
+
+bytes_to_read is controlled by the untrusted side. sizeof(buffer) should be equal to buffer_size since it was allocated by the trusted browser side. The call to memcpy on line 196 will copy buffer_size from callback_buffer into buffer.
+
+This is technically taken care of in the irt library in src/shared/ppapi_proxy/plugin_ppb_file_io.cc on line 114 in Read() by setting buffer_size to bytes_to_read:
+
+  nacl_abi_size_t buffer_size = bytes_to_read;
+
+However this is considered untrusted code as well. The trusted side fix should be simple. Comparing the value of pp_error_or_bytes to buffer_size should catch it.</ns0:content><ns0:updated>2013-01-10T21:48:28.000Z</ns0:updated><ns0:published>2011-07-14T15:41:46.000Z</ns0:published><ns2:status>Duplicate</ns2:status><ns2:owner>
+			<ns2:uri>/u/111227428049549265840/</ns2:uri><ns2:username>sa...@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/brettw@chromium.org/</ns2:uri><ns2:username>brettw@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/111227428049549265840/</ns2:uri><ns2:username>sa...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/113511172007743761909/</ns2:uri><ns2:username>cstefan...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/110088500044003719179/</ns2:uri><ns2:username>jsc...@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PpbFileIODevRpcServer::PPB_FileIO_Dev_Read Heap Overflow</ns0:title><ns2:label>Security</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>Mstone-14</ns2:label><ns2:label>Component-Pepper</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2026/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2026" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2026" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2011-08-13T02:32:34.000Z</ns2:closedDate><ns2:id>2026</ns2:id><ns2:mergedInto>
+			<ns2:id>92750</ns2:id><ns2:project>chromium</ns2:project></ns2:mergedInto></ns0:entry>

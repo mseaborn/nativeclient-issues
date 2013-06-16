@@ -1,0 +1,50 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IMSH47eCl7ImA9WhBbGE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3414/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Let me see if I summarize something brought up in the meeting correctly.
+
+
+Mark proposed that we download and generate a hash of the bitcode even if it may be that there is already a translated nexe.  This would allow us to leave out hashes from the manifest or from the bitcode header, entirely.  (Is that the proposal?)
+
+
+Here is a comparison of having a hash in the bitcode header, or not:
+
+
+(1) Leave out hash from header, no new interfaces with browser:
+
+* If bitcode is still cached, download is fast, and we can hash and identify the bitcode "fast" (fast like validation caching).  Great!
+* If bitcode is not cached in the browser cache, download can be slow, and hashing is therefore limited by download speed.
+* We would *want* to pre-emptively kick off a translation thread to do streaming translation and avoid wasting time in case of a bitcode cache miss, since that likely means that there will also be a nexe cache miss.  Otherwise, it would be as if we never had streaming translation enabled.
+* After the bitcode is fully downloaded, and the hash is fully computed, check for a nexe in the cache.
+* If nexe is already cached, we can halt the translator thread, otherwise leave it running and wait.
+
+
+
+(2) Store a hash in the bitcode header:
+
+* If the bitcode is still cached, download is fast, and we can grab the bitcode header quickly.
+* If the bitcode is not cached, download is slow, but we can still grab the bitcode header quickly, so there is no need to pre-emptively kick off off a translation thread.
+* If the hash indicates a nexe is in the cache use it, and stop streaming.
+* If not, kick off the translator thread and continue streaming.
+
+
+
+(1.x) Leave out hash from header, use the URL as part of the cache key, and add a new interface to browser.
+
+* Use new interface with browser to see if the URL was cached.  This would need to handle http:// as well as chrome-extension://.
+* If browser says bitcode was cached and unchanged, use the URL as part of the key to loop up a nexe.
+* etc...
+
+
+In all cases, the browser will check the pexe URL to see it was cached, and may re-validate with the origin server, or not re-validate, based on the cache-control parameters and current time, as usual.
+
+
+The re-validation could mean that the server doesn&#8217;t want to serve us the pexe anymore, and we don&#8217;t get to load.
+
+
+In all cases, as long as the renderer is storing nexes in the cache, we should also inspect the header to see if there is &#8220;cache-control: no-store&#8221; and not cache the nexe if "no-store" is requested.  Technically the no-store is about the pexe, but it seems better to transitively apply that to the nexe we get from the pexe.
+
+
+Scenario where we reserve some bytes in the bitcode header for a hash, as an optimization of (1):
+If in version 2+ of the wireformat, if we stop including the hash in the header, the browser/renderer would still need to inspect the header to see if the bitcode is version 1 or at version 2+.
+</ns0:content><ns0:updated>2013-05-17T20:13:09.000Z</ns0:updated><ns0:published>2013-05-17T20:13:09.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Mstone-28</ns2:label><ns2:label>Mstone-29</ns2:label></ns2:updates><ns0:title>Comment 5 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3414#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3414/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

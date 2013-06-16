@@ -14,6 +14,6 @@ In file included from hello_world.cc:10:
 
 It appears that the ppapi header file dir structure needs to be copied as is into the toolchain.  That is, under include (or under include/nacl), have ppapi/c and ppapi/cpp.</ns0:content><ns0:updated>2010-10-11T19:25:14.000Z</ns0:updated><ns0:published>2010-09-16T05:05:25.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/112723007196297768207/</ns2:uri><ns2:username>dsprin...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Cannot build with new Pepper v2 headers.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-0</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Milestone-SDK-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/886/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=886" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/886" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blocking>
-			<ns2:id>980</ns2:id></ns2:blocking><ns2:blocking>
-			<ns2:id>981</ns2:id></ns2:blocking><ns2:blocking>
-			<ns2:id>982</ns2:id></ns2:blocking><ns2:closedDate>2010-09-28T19:35:18.000Z</ns2:closedDate><ns2:id>886</ns2:id></ns0:entry>
+			<ns2:id>980</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>981</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:blocking>
+			<ns2:id>982</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blocking><ns2:closedDate>2010-09-28T19:35:18.000Z</ns2:closedDate><ns2:id>886</ns2:id></ns0:entry>

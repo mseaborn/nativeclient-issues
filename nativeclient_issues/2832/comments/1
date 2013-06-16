@@ -1,0 +1,43 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CU4CRH47eCl7ImA9WhJRF0k.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2832/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9193
+
+------------------------------------------------------------------------
+r9193 | bradnelson@google.com | 2012-07-20T00:21:33.516895Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/include/DEPS?r1=9193&amp;r2=9192&amp;pathrev=9193
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/DEPS?r1=9193&amp;r2=9192&amp;pathrev=9193
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/checkdeps?r1=9193&amp;r2=9192&amp;pathrev=9193
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/checkdeps/checkdeps.py?r1=9193&amp;r2=9192&amp;pathrev=9193
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/desc/DEPS?r1=9193&amp;r2=9192&amp;pathrev=9193
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/DEPS?r1=9193&amp;r2=9192&amp;pathrev=9193
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/shared/platform/DEPS?r1=9193&amp;r2=9192&amp;pathrev=9193
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/DEPS?r1=9193&amp;r2=9192&amp;pathrev=9193
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/DEPS?r1=9193&amp;r2=9192&amp;pathrev=9193
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/tests/DEPS?r1=9193&amp;r2=9192&amp;pathrev=9193
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/xray/DEPS?r1=9193&amp;r2=9192&amp;pathrev=9193
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/buildbot/buildbot_standard.py?r1=9193&amp;r2=9192&amp;pathrev=9193
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/weak_ref/DEPS?r1=9193&amp;r2=9192&amp;pathrev=9193
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/DEPS?r1=9193&amp;r2=9192&amp;pathrev=9193
+
+Turning on checkdeps for nacl.
+
+Chromium uses the checkdeps.py script to vet include depedencies.
+DEPS files annotate the try with allowed and disallowed paths.
+By using the same format as chromium we can remove ourselves from the
+list of components that are excluded for recursive checking.
+
+I've checked in a copy of the checkdeps script to avoid having an
+addition nacl -&gt; chrome checkout for something that rarely changes.
+If this proves to be a problem, we'll switch it to a DEPS entry.
+
+checkdeps.py is identical to the chromium version.
+
+R=bsy@chromium.org,mseaborn@chromium.org
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2832
+TEST=checkdeps
+
+Review URL: https://chromiumcodereview.appspot.com/10805028
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-20T00:26:05.000Z</ns0:updated><ns0:published>2012-07-20T00:26:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2832#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2832/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

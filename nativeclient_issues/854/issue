@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYCQ347eCl7ImA9WhRaGEk.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0YHRX47eCl7ImA9WhNSEUU.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/854</ns0:id><ns0:author>
 			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I need to get the google_nacl_platform library to build against
 nacl-glibc, but there is one remaining build failure, in
@@ -44,7 +44,6 @@ PNaCl's tools/llvm/utman.sh creates &amp;quot;sys-include&amp;quot; as a symlink
 
 I suppose I'll do the same, unless anyone has a better idea about the
 story behind &amp;quot;sys-include&amp;quot;?
-</ns0:content><ns0:updated>2012-02-21T17:09:22.000Z</ns0:updated><ns0:published>2010-08-26T20:01:34.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
-			<ns2:uri>/u/104735739662288482898/</ns2:uri><ns2:username>pdox%goo...@gtempaccount.com</ns2:username></ns2:cc><ns2:cc>
+</ns0:content><ns0:updated>2012-10-25T18:18:54.000Z</ns0:updated><ns0:published>2010-08-26T20:01:34.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
 			<ns2:uri>/u/101628056640429344673/</ns2:uri><ns2:username>pa...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>Fix nacl-glibc's &lt;limits.h&gt; to get PTHREAD_STACK_MIN</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-3</ns2:label><ns2:label>Component-TCB</ns2:label><ns2:label>Component-GLibC</ns2:label><ns2:label>Mstone-X</ns2:label><ns2:label>CoreRuntime</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/854/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=854" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/854" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>854</ns2:id></ns0:entry>

@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0QCQ347eCl7ImA9WhNQFE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3159</ns0:id><ns0:author>
+			<ns0:name>j...@google.com</ns0:name><ns0:uri>/u/116152729282206039235/</ns0:uri></ns0:author><ns0:content type="html">Same as these tests:
+https://codereview.chromium.org/11299108/
+
+But with SP as the base address. The tests should do both writeback as well as register update. The writeback case should have no BIC at all, whereas the register update case should have a BIC after the load/store.</ns0:content><ns0:updated>2012-11-20T18:16:02.000Z</ns0:updated><ns0:published>2012-11-20T18:16:02.000Z</ns0:published><ns2:status>New</ns2:status><ns2:owner>
+			<ns2:uri>/u/112264824292994369940/</ns2:uri><ns2:username>eli...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109636895838879576326/</ns2:uri><ns2:username>j...@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/jvoung@chromium.org/</ns2:uri><ns2:username>jvoung@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>LLVM test for SP-based VLD/VST{1,2,3,4}</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3159/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3159" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3159" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>3159</ns2:id></ns0:entry>

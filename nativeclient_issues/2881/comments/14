@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkIBQX47eCl7ImA9WhJQEUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2881/comments/full/14</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9235
+
+------------------------------------------------------------------------
+r9235 | mseaborn@chromium.org | 2012-07-24T19:31:22.521112Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_syscall_common.c?r1=9235&amp;r2=9234&amp;pathrev=9235
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_64/nacl_tls_64.c?r1=9235&amp;r2=9234&amp;pathrev=9235
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/check_tls.py?r1=9235&amp;r2=9234&amp;pathrev=9235
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.c?r1=9235&amp;r2=9234&amp;pathrev=9235
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/tls_segment_x86_32/gs_segment_test.c?r1=9235&amp;r2=9234&amp;pathrev=9235
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt_private_tls.c?r1=9235&amp;r2=9234&amp;pathrev=9235
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/nacl_tls_32.c?r1=9235&amp;r2=9234&amp;pathrev=9235
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/nacl_app_thread.h?r1=9235&amp;r2=9234&amp;pathrev=9235
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/arm/nacl_tls.c?r1=9235&amp;r2=9234&amp;pathrev=9235
+
+x86-32: Use "%gs:4" to store the IRT's thread value
+
+This makes the IRT's TLS access faster on x86-32, since it no longer
+needs to do a syscall to read its internal thread pointer value.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2881
+TEST=run_irt_thread_test
+
+Review URL: https://chromiumcodereview.appspot.com/10805032
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-07-24T19:35:50.000Z</ns0:updated><ns0:published>2012-07-24T19:35:50.000Z</ns0:published><ns2:updates /><ns0:title>Comment 14 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2881#c14" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2881/comments/full/14" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,14 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEcMSH47eCl7ImA9WhJQFUQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2904/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Yes, this is a reversal from issue 1043.  We are moving the responsibility to a better place. :-)
+
+Back in 2010, for issue 1043, the problem was that NaCl was inconsistent:  service_runtime would take responsibility for aligning the stack, but still assume that untrusted code should take responsibility too (because it printed a warning for unaligned stacks).  Furthermore, it wrongly assumed that untrusted code should be doing the alignment in the parent thread, not the child thread.  It seemed best to resolve this inconsistency in favour of reducing TCB code, albeit by a miniscule amount.
+
+But back in 2010, we didn't have a story for how to define a stable ABI.  Some things have changed since then:
+
+ * We added the IRT.  A new thread now starts via an IRT function which means user code doesn't get called with the exact stack pointer it asked for anyway.  (I reluctantly agreed to this in http://codereview.chromium.org/7590016. :-) )
+
+ * It has become apparent that the TCB needs to align the stack for untrusted fault handlers, so aligning the stack in thread_create too is consistent with that.  It was probably dogmatic of me to insist on reducing the TCB before by removing the alignment code. :-)
+
+ * The requirements for PNaCl have become clearer.  We really want PNaCl to be ABI-stable such that binaries will work on future architectures and in future sandbox models that no-one has thought of yet.  So it's best to remove any architecture-specific assumptions from PNaCl user code, such as assumptions about how stacks might be aligned, and move them to IRT or TCB code.
+</ns0:content><ns0:updated>2012-07-29T20:01:29.000Z</ns0:updated><ns0:published>2012-07-29T20:01:29.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2904#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2904/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

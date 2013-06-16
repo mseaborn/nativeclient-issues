@@ -1,0 +1,54 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0QNRX47eCl7ImA9WhNTFko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2986</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">We need to make the pnacl ARM ABI for returning aggregates match gcc (not just match the ABI for passing them in).
+
+
+&lt;b&gt;What version of the SDK are you using?&lt;/b&gt;
+PNACL_VERSION=9526
+
+
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+
+There is currently one known case where this doesn't match, for soft float.
+
+
+The I16_STRUCT and I32_STRUCT test case in &amp;quot;tests/callingconv_case_by_case/&amp;quot; should be the same as the I16_NON_STRUCT and I32_NON_STRUCT test case.
+
+Instead we see that structs &amp;lt;= 4 bytes do not use r0, and instead are given a parameter that is the memory location to write the return result.
+
+For example:
+
+Step 1: Run &amp;quot;pnacl/test.sh test-arm pnacl_generate_pexe=0 run_return_structs_self_test&amp;quot;
+
+
+Step 2: Inspect the nexe disassembly &amp;quot;pnacl-dis scons-out/nacl-arm-pnacl-clang/obj/tests/callingconv_case_by_case/return_structs_self.nexe&amp;quot; for something that looks like:
+
+
+   2726c:       e28d0070        add     r0, sp, #112    ; 0x70
+   27270:       e28d6070        add     r6, sp, #112    ; 0x70
+   27274:       e320f000        nop     {0}
+   27278:       e320f000        nop     {0}
+   2727c:       ebffe723        bl      20f10 &amp;lt;_Z15mod0_I16_STRUCTv&amp;gt;
+   27280:       e3c66103        bic     r6, r6, #-1073741824    ; 0xc0000000
+   27284:       e1d640b0        ldrh    r4, [r6]
+   27288:       e30f5fa9        movw    r5, #65449      ; 0xffa9
+   2728c:       e1540005        cmp     r4, r5
+   27290:       1a00053c        bne     28788 &amp;lt;main+0x1688&amp;gt;
+
+vs
+
+   2729c:       ebffe77b        bl      21090 &amp;lt;_Z19mod0_I16_NON_STRUCTv&amp;gt;
+   272a0:       e1a04000        mov     r4, r0
+   272a4:       e6ff0074        uxth    r0, r4
+   272a8:       e1500005        cmp     r0, r5
+   272ac:       1a000565        bne     28848 &amp;lt;main+0x1748&amp;gt;
+
+inside of main().
+
+It might be useful to check how the bitcode encodes returning an aggregate.
+</ns0:content><ns0:updated>2012-10-19T18:29:54.000Z</ns0:updated><ns0:published>2012-08-22T23:45:10.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/116152729282206039235/</ns2:uri><ns2:username>j...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/100177598732114324016/</ns2:uri><ns2:username>mcgra...@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pnacl ARM structure return ABI needs to match gcc</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-24</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-ARM</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2986/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2986" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2986" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2012-10-19T18:29:54.000Z</ns2:closedDate><ns2:id>2986</ns2:id></ns0:entry>

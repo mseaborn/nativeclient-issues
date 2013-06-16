@@ -1,0 +1,18 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CkIMRX47eCl7ImA9WhBSFUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2970/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">+eliben
+
+We've talked about the before in email, but the duplicate truncations came from an attempt to fix: https://code.google.com/p/nativeclient/issues/detail?id=1564.  Putting that down here, so I don't need to look through my email again...
+
+
+While fixing that bug, we also stopped using 32-bit register classes for pointers:
+
+https://codereview.chromium.org/6733025/diff/2003/llvm-trunk/lib/Target/X86/X86RegisterInfo.cpp
+
+This change conflicts with a change we made upstream for x32.  It can also conflict with how we upstream x32's choices of loads from esp vs rsp.
+
+
+If I remember correctly, for bug 1564 this came about because an IR optimization converted byval struct passing to registers in a way that i64s were used as arguments.  Thus, a pointer field and a scalar field were glommed into the same i64.  When that happened, the backend saw the opportunity to share a register, which is a bad idea when the register can hold a pointer that will ultimately be sandboxed.  It's been a long time since we fixed 1564.  In the time that has passed, we've switched over from llvm-gcc to clang, and LLVM has switched to a newer scheme of SROA.  This means that the IR can look very different now, but that needs to be investigated.
+
+</ns0:content><ns0:updated>2013-02-22T22:03:04.000Z</ns0:updated><ns0:published>2013-02-22T22:03:04.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Mstone-25</ns2:label><ns2:label>Mstone-27</ns2:label><ns2:ccUpdate>eli...@chromium.org</ns2:ccUpdate></ns2:updates><ns0:title>Comment 7 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2970#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2970/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,54 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0MMQn47eCl7ImA9WhNTFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/2926</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Sometimes the pnacl mac toolchain build flakes out while building binutils.  I'm not sure we can fix this without changing binutils (see below), but this is something to watch out for when the Mac builder fails.
+
+
+
+In the logs, I see:
+
+Making info in doc
+make chew
+make chew
+make chew
+make chew
+make chew
+/Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/scripts/mygcc32 -o chew.$$ -g -O2  \
+	   -I.. -I/Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/src/binutils/binutils-2.20/bfd/doc/.. -I/Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/src/binutils/binutils-2.20/bfd/doc/../../include -I/Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/src/binutils/binutils-2.20/bfd/doc/../../intl -I../../intl /Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/src/binutils/binutils-2.20/bfd/doc/chew.c; \
+	/bin/sh /Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/src/binutils/binutils-2.20/bfd/doc/../../move-if-change chew.$$ chew
+/Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/scripts/mygcc32 -o chew.$$ -g -O2  \
+	   -I.. -I/Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/src/binutils/binutils-2.20/bfd/doc/.. -I/Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/src/binutils/binutils-2.20/bfd/doc/../../include -I/Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/src/binutils/binutils-2.20/bfd/doc/../../intl -I../../intl /Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/src/binutils/binutils-2.20/bfd/doc/chew.c; \
+	/bin/sh /Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/src/binutils/binutils-2.20/bfd/doc/../../move-if-change chew.$$ chew
+/Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/scripts/mygcc32 -o chew.$$ -g -O2  \
+	   -I.. -I/Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/src/binutils/binutils-2.20/bfd/doc/.. -I/Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/src/binutils/binutils-2.20/bfd/doc/../../include -I/Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/src/binutils/binutils-2.20/bfd/doc/../../intl -I../../intl /Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/src/binutils/binutils-2.20/bfd/doc/chew.c; \
+	/bin/sh /Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/src/binutils/binutils-2.20/bfd/doc/../../move-if-change chew.$$ chew
+
+// ETC
+
+
+Then you see it being used w/ an error:
+
+./chew -f /Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/src/binutils/binutils-2.20/bfd/doc/doc.str &amp;lt; /Volumes/data/b/build/slave/mac-pnacl-x86_32/build/native_client/pnacl/src/binutils/binutils-2.20/bfd/doc/../bfd.c &amp;gt;bfd.tmp
+/bin/sh: ./chew: Malformed Mach-o file
+
+
+It could be that the simultaneous builds of &amp;quot;chew&amp;quot; interleave, and leave a corrupted the binary when it is actually being used.
+
+This happens on the other bots too (e.g., Linux), but it doesn't seem to get corrupted on those bots.  You just end up with a bunch of:
+
+make[4]: `chew' is up to date.
+make[4]: `chew' is up to date.
+// etc.
+
+
+It seems that this way of building &amp;quot;chew&amp;quot; is intentional. The Makefile.in says:
+
+# We do not depend on chew directly so that we can distribute the info
+# files, and permit people to rebuild them, without requiring the makeinfo
+# program.  If somebody tries to rebuild info, but none of the .texi files
+# have changed, then nothing will be rebuilt.
+
+Lots of the targets only depend on chew.c, and each target adds their own command &amp;quot;$(MAKE) $(MKDOC)&amp;quot;, in its make rule, to build &amp;quot;chew&amp;quot;.
+
+</ns0:content><ns0:updated>2012-10-17T17:38:03.000Z</ns0:updated><ns0:published>2012-07-27T16:43:22.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:cc>
+			<ns2:uri>/u/104270846665912603141/</ns2:uri><ns2:username>dsch...@google.com</ns2:username></ns2:cc><ns2:cc>
+			<ns2:uri>/u/robertm@google.com/</ns2:uri><ns2:username>robertm@google.com</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>pnacl mac toolchain build is flaky (make chew race?)</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Mstone-X</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/2926/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2926" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/2926" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:closedDate>2012-10-17T17:38:03.000Z</ns2:closedDate><ns2:id>2926</ns2:id></ns0:entry>

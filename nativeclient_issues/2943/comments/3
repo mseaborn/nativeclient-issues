@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUUGRH47eCl7ImA9WhJXEko.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2943/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=9385
+
+------------------------------------------------------------------------
+r9385 | arbenson@google.com | 2012-08-06T18:19:03.770031Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/linux/nacl_bootstrap_prereservation_test.c?r1=9385&amp;r2=9384&amp;pathrev=9385
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/arch/x86_32/sel_addrspace_x86_32.c?r1=9385&amp;r2=9384&amp;pathrev=9385
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/linux/nacl_bootstrap.c?r1=9385&amp;r2=9384&amp;pathrev=9385
+
+Move low page protection to nacl_helper_bootstrap
+
+We move the page protection to nacl_helper_bootstrap to provide a more complete guarantee of reservation.
+
+This is a retry of http://codereview.chromium.org/10830162/.  With MAP_FIXED and a starting address of 0, mmap calls may fail with errno=EINVAL, even if vm.mmap_min_addr is equal to 0 (tested on panda2.mtv).  When trying to reserve the bottom pages, we allow a failure if errno=EINVAL and address=0.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2943
+TEST=trybots
+R=mseaborn@chromium.org
+
+Review URL: https://chromiumcodereview.appspot.com/10826165
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-06T18:20:25.000Z</ns0:updated><ns0:published>2012-08-06T18:20:25.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2943#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2943/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

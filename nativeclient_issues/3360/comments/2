@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0cCQX47eCl7ImA9WhBWEUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3360/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">If we've found three places that can introduce unusual integer sizes (2 IR passes + Clang), I think it might be better to write an IR pass to legalise the integer types than to modify those three places.
+
+For comparison, Emscripten has its own type legaliser.  See the comment in https://github.com/kripken/emscripten/blob/master/src/analyzer.js:
+
+  // Legalize LLVM unrealistic types into realistic types.
+  //
+  // With full LLVM optimizations, it can generate types like i888
+  // which do not exist in any actual hardware implementation, but are
+  // useful during optimization. LLVM then legalizes these types into
+  // real ones during code generation. Sadly, there is no LLVM IR pass
+  // to legalize them, which would have been useful and nice from a
+  // design perspective.  The LLVM community is also not interested in
+  // receiving patches to implement that functionality, since it would
+  // duplicate existing code from the code generation
+  // component. Therefore, we implement legalization here in
+  // Emscripten.
+  //
+  // Currently we just legalize completely unrealistic types into
+  // bundles of i32s, and just the most common instructions that can
+  // be involved with such types: load, store, shifts, trunc and zext.
+</ns0:content><ns0:updated>2013-04-05T15:17:40.000Z</ns0:updated><ns0:published>2013-04-05T15:17:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3360#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3360/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

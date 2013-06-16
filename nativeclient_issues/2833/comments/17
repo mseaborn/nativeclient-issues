@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkcDRn47eCl7ImA9WhFTFEk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2833/comments/full/17</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11477
+
+------------------------------------------------------------------------
+r11477 | sehr@google.com | 2013-06-05T15:57:34.812699Z
+
+Changed paths:
+   A http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pnacl_abi/divide_by_zero.c?r1=11477&amp;r2=11476&amp;pathrev=11477
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/pnacl_abi/nacl.scons?r1=11477&amp;r2=11476&amp;pathrev=11477
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/command_tester.py?r1=11477&amp;r2=11476&amp;pathrev=11477
+
+Add a PNaCl test to check that division by zero always faults
+
+This required adding a SIGILL and SIGFPE exit code definition, because
+ARM will execute an illegal instruction, while x86 will generate SIGFPE in
+hardware.
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=2833
+TEST=run_div_by_zero_test
+R=mseaborn@chromium.org
+
+Review URL: https://codereview.chromium.org/15619005
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-06-05T16:01:17.000Z</ns0:updated><ns0:published>2013-06-05T16:01:17.000Z</ns0:published><ns2:updates /><ns0:title>Comment 17 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2833#c17" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2833/comments/full/17" rel="self" type="application/atom+xml" /></ns0:entry>

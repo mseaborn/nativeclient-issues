@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EHQX47eCl7ImA9WhVUGE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2788/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=8693
+
+------------------------------------------------------------------------
+r8693 | mseaborn@chromium.org | Wed May 23 13:39:05 PDT 2012
+
+Changed paths:
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/start.c?r1=8693&amp;r2=8692&amp;pathrev=8693
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/irt/irt_entry.c?r1=8693&amp;r2=8692&amp;pathrev=8693
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/pthread_initialize_minimal.c?r1=8693&amp;r2=8692&amp;pathrev=8693
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tests/irt_private_pthread/irt_thread_test.c?r1=8693&amp;r2=8692&amp;pathrev=8693
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/pthread_initialize_minimal_using_ldso.c?r1=8693&amp;r2=8692&amp;pathrev=8693
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pthread/nc_thread.c?r1=8693&amp;r2=8692&amp;pathrev=8693
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/pthread/pthread_internal.h?r1=8693&amp;r2=8692&amp;pathrev=8693
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/pthread_stubs.c?r1=8693&amp;r2=8692&amp;pathrev=8693
+ M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/untrusted/nacl/tls.h?r1=8693&amp;r2=8692&amp;pathrev=8693
+
+Clean up error handling in __pthread_initialize()
+
+Remove the return value from __pthread_initialize() and
+__pthread_initialize_minimal() and abort on error instead.
+
+Declare __pthread_initialize() in a header file so that it is declared
+with a consistent type.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2788
+TEST=trybots
+
+Review URL: https://chromiumcodereview.appspot.com/10399132
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-05-23T20:40:30.000Z</ns0:updated><ns0:published>2012-05-23T20:40:30.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2788#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2788/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

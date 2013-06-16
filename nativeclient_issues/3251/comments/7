@@ -1,0 +1,7 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkAAQX47eCl7ImA9WhBaE0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3251/comments/full/7</ns0:id><ns0:author>
+			<ns0:name>shcherb...@google.com</ns0:name><ns0:uri>/u/105197577636354702799/</ns0:uri></ns0:author><ns0:content type="html">Current situation: 
+ - From gen_dfa and validator point of view, fwait is a separate instruction (not a prefix), as it should be.
+ - Fwait does not receive special treatment in decoder_test (so 'fwait; fninit' sequence is not displayed as 'finit'). In this part decoder_test is different from objdump, but I don't think it's worthwhile to introduce additional complexity to mimic this behavior.
+ - In checkdecoder test special precautions are taken to ensure that fwait is never followed by another x87 instructions, so comparison with objdump won't show irrelevant differences (https://codereview.chromium.org/12319112)</ns0:content><ns0:updated>2013-05-24T12:32:20.000Z</ns0:updated><ns0:published>2013-05-24T12:32:20.000Z</ns0:published><ns2:updates>
+			<ns2:status>WontFix</ns2:status></ns2:updates><ns0:title>Comment 7 by shcherb...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3251#c7" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3251/comments/full/7" rel="self" type="application/atom+xml" /></ns0:entry>

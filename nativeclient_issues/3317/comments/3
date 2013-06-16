@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkMERH47eCl7ImA9WhBSGUo.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3317/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10913
+
+------------------------------------------------------------------------
+r10913 | mark@chromium.org | 2013-02-27T15:16:01.703095Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/service_runtime/osx/mach_exception_handler.c?r1=10913&amp;r2=10912&amp;pathrev=10913
+
+Mac: speed up fault handling by 250% (x86-32) and 175% (x86-64).
+
+The Mach exception handler was receiving exceptions with the EXCEPTION_DEFAULT
+behavior, which results in the message being caught by catch_exception_raise.
+HandleException needed to call thread_get_state to obtain the faulted thread's
+state, and upon successful completion, it needed to call thread_set_state to
+store a new state. Mach provides two other exception behaviors,
+EXCEPTION_STATE and EXCEPTION_STATE_IDENTITY, both of which make the thread's
+original state available to the handler, and allow the handler to set a new
+thread state. This removes the need to call thread_get_state and
+thread_set_state from within HandleException. The EXCEPTION_STATE_IDENTITY
+behavior and catch_exception_raise_state_identity catcher were chosen because
+the x86-64 implementation requires access to the thread's identity (Mach
+thread port), and this information is not present with the EXCEPTION_STATE
+behavior.
+
+On my 4-core 2.3GHz i7 MacBook Pro, this improves fault handling time reported
+by TestCatchingFault from 46us to 13us (32-bit) and 37us to 13us (64-bit).
+
+This also fixes the buffers passed to task_get_exception_ports to avoid an
+unlikely buffer overflow, and uses properly-sized buffers for Mach messaging
+based on the sizes of the messages in play rather than relying on a "fairly
+large" guess of 1kB.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3317
+TEST=scons exception_tests run_performance_test
+Review URL: https://codereview.chromium.org/12316042
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-02-27T15:20:05.000Z</ns0:updated><ns0:published>2013-02-27T15:20:05.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3317#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3317/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

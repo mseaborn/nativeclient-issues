@@ -1,0 +1,57 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkcCQn47eCl7ImA9WhBVGUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3403</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">pnacl-clang does not properly align struct arguments when the struct is declared with __attribute__((aligned)).
+
+The following program should print &amp;quot;offset=0&amp;quot;, but under PNaCl it prints non-zero values:
+
+#define ALIGN 256
+struct foo {
+  char x[100];
+} __attribute__((aligned(ALIGN)));
+
+void func(struct foo x) {
+  printf(&amp;quot;offset=%u\n&amp;quot;, (unsigned) &amp;amp;x % ALIGN);
+}
+
+int main() {
+  struct foo x;
+  func(x);
+  return 0;
+}
+
+
+Clang normally handles this in one of two ways:
+
+* On x86-64, Clang uses &amp;quot;byval align&amp;quot;, so the caller aligns the struct on the stack:
+
+$ pnacl-clang struct-pass-by-value-alignment.c -S -o - --pnacl-frontend-triple=x86_64-linux-gnu
+...
+define void @func(%struct.foo* byval align 256 %x) #0 {
+...
+define i32 @main() #0 {
+...
+  call void @func(%struct.foo* byval align 256 %x)
+...
+
+* On x86-32, the callee creates an aligned copy:
+
+$ pnacl-clang struct-pass-by-value-alignment.c -S -o - --pnacl-frontend-triple=i386-linux-gnu
+...
+define void @func(%struct.foo* byval align 4) #0 {
+entry:
+  %x = alloca %struct.foo, align 256
+  %1 = bitcast %struct.foo* %x to i8*
+  %2 = bitcast %struct.foo* %0 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i32(i8* %1, i8* %2, i32 256, i32 4, i1 false)
+  %3 = ptrtoint %struct.foo* %x to i32
+  %rem = urem i32 %3, 256
+...
+
+However, in PNaCl mode, Clang does neither, and it omits the &amp;quot;align&amp;quot; argument attribute.
+
+
+Note that GCC warns:
+
+struct-pass-by-value-alignment.c:12:6: note: The ABI for passing parameters with 256-byte alignment has changed in GCC 4.6
+</ns0:content><ns0:updated>2013-04-25T18:21:03.000Z</ns0:updated><ns0:published>2013-04-22T15:44:20.000Z</ns0:published><ns2:status>Available</ns2:status><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>pnacl-clang does not align __attribute__((aligned)) struct arguments</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3403/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3403" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3403" rel="self" type="application/atom+xml" /><ns2:stars>2</ns2:stars><ns2:id>3403</ns2:id></ns0:entry>

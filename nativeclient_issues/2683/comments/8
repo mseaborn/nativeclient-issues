@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEcCQ347eCl7ImA9WhJQGUg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2683/comments/full/8</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/chrome?view=rev&amp;revision=149749
+
+------------------------------------------------------------------------
+r149749 | jvoung@google.com | 2012-08-02T23:56:56.700475Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/api/private/finish_writing_these/ppb_nacl_private.idl?r1=149749&amp;r2=149748&amp;pathrev=149749
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/renderer/pepper/ppb_nacl_private_impl.cc?r1=149749&amp;r2=149748&amp;pathrev=149749
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/local_temp_file.h?r1=149749&amp;r2=149748&amp;pathrev=149749
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_coordinator.cc?r1=149749&amp;r2=149748&amp;pathrev=149749
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_translate_thread.cc?r1=149749&amp;r2=149748&amp;pathrev=149749
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/temporary_file.cc?r1=149749&amp;r2=149748&amp;pathrev=149749
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_coordinator.h?r1=149749&amp;r2=149748&amp;pathrev=149749
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/c/private/ppb_nacl_private.h?r1=149749&amp;r2=149748&amp;pathrev=149749
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_translate_thread.h?r1=149749&amp;r2=149748&amp;pathrev=149749
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/temporary_file.h?r1=149749&amp;r2=149748&amp;pathrev=149749
+
+Add an IPC for PNaCl to check if the session is incognito,
+before deciding to cache a translated nexe (current cache
+mechanism won't work in incognito). Use this to decide
+whether or not to cache translations for now.
+
+For now, the linker always writes to a self-deleting temp
+file, instead of to the cache directly.  We then copy the
+data from the temp file to the cache as a separate step.
+
+Took about 60ms to copy a 4.6MB nexe in debug mode with a
+128kb buffer and 15ms with a 1mb buffer...
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2683
+TEST= try compiling an app that doesn't use the File system
+in incognito mode -- we should add a test though...
+we should add a test though
+
+Review URL: https://chromiumcodereview.appspot.com/10826107
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-08-03T00:01:02.000Z</ns0:updated><ns0:published>2012-08-03T00:01:02.000Z</ns0:published><ns2:updates /><ns0:title>Comment 8 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2683#c8" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2683/comments/full/8" rel="self" type="application/atom+xml" /></ns0:entry>

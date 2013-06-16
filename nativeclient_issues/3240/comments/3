@@ -1,0 +1,29 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A04MQ347eCl7ImA9WhNUEkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3240/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">On further investigation, this problem is specific to Mac OS X.  The address 0x1ffc4 corresponds to this springboard code:
+
+DEFINE_GLOBAL_HIDDEN_IDENTIFIER(NaCl_springboard_all_regs):
+/* 0x1ffc0: */        hlt  /* one byte */
+        /* Restore state from struct NaClSwitchRemainingRegsState. */
+/* 0x1ffc1: */        lss     0(%ecx), %esp /* stack_ptr */
+/* 0x1ffc4: */        movw    0x10(%ecx), %ds /* ds */
+/* 0x1ffc7: */        movl    %gs:0xc, %ecx /* new_ecx from NaClGsSegment */
+/* 0x1ffce: */        jmp     *%gs:8 /* new_prog_ctr from NaClGsSegment */
+DEFINE_GLOBAL_HIDDEN_IDENTIFIER(NaCl_springboard_all_regs_end):
+
+Here is what is happening:
+
+ 1) Thread is suspended
+ 2) Thread is resumed.  As part of the Mac-specific workarounds, NaCl sets %eip=NaClSwitchRemainingRegsViaECX and %ecx=natp-&gt;suspended_registers-&gt;switch_state.
+ 3) Thread is suspended again.  Thread is interrupted when it has only got as far as somewhere in NaCl_springboard_all_regs
+ 4) Thread is resumed:  again, state is copied back into natp-&gt;suspended_registers-&gt;switch_state and %eip and %ecx are reset
+ 5) Thread executes NaCl_springboard_all_regs, which jumps back into the location in NaCl_springboard_all_regs where the thread was interrupted in step (3)
+
+What happens next depends on where the thread was interrupted in step (3):
+
+ * At 0x1ffc1 or 0x1ffc4:  Thread may crash since "0(%ecx)" and "0x10(%ecx)" are dereferenced in the wrong data segment.
+ * At 0x1ffc7 or 0x1ffce:  Thread will spin.  We have seen the GDB tests hang on the bots.
+
+The fix should be simple, though it might be hard to test.
+</ns0:content><ns0:updated>2013-01-03T21:53:02.000Z</ns0:updated><ns0:published>2013-01-03T21:53:02.000Z</ns0:published><ns2:updates>
+			<ns2:label>-Mstone-</ns2:label><ns2:label>-OS-</ns2:label><ns2:label>-Arch-</ns2:label><ns2:label>OS-Mac</ns2:label><ns2:label>Arch-x86-32</ns2:label><ns2:status>Assigned</ns2:status><ns2:ownerUpdate>mseaborn@chromium.org</ns2:ownerUpdate></ns2:updates><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3240#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3240/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

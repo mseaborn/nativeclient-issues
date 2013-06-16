@@ -1,0 +1,26 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUcBQX47eCl7ImA9WhBXFEw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3245/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">&gt; Suspension of threads raises the question: What happens if a thread
+&gt; is suspended while executing IRT code (especially PPAPI proxy code)?
+&gt; How can a user-code crash reporter unwind the stack?  What is a
+&gt; garbage collector allowed to assume about the stack, the stack
+&gt; pointer, and other register state?
+
+For a garbage collector, the simplifying answer can be that the GC can't assume anything about the stack pointer and other register state unless the GC knows the thread was suspended in user code.  User code can use a TLS variable to indicate whether a thread is running in user code or IRT code.
+
+For example:
+
+__thread int in_user_code = 0;  /* Threads start off in IRT code */
+
+void CallOnMainThreadWrapper(args...) {
+  dump_registers_for_gc(&amp;thread_state);
+  write_memory_barrier();  /* Needed for the compiler but not the CPU. */
+  in_user_code = 0;
+  CallOnMainThread(args...);
+  in_user_code = 1;
+}
+
+Wrapping every IRT call would be a pain, but you probably don't need to do this for a language runtime where transitions between native and managed code are already tracked by some kind of GC barrier (e.g. see '"JNI" execution barriers' in "Asymmetric Dekker Synchronization", https://blogs.oracle.com/dave/resource/Asymmetric-Dekker-Synchronization.txt).
+
+One problem is that a TLS access requires an IRT call (tls_get()) on x86-64.  We could address this by specifying stronger guarantees about what register state looks like while suspending a thread in a call to tls_get().</ns0:content><ns0:updated>2013-03-27T20:44:10.000Z</ns0:updated><ns0:published>2013-03-27T20:44:10.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>olo...@google.com</ns2:ccUpdate></ns2:updates><ns0:title>Comment 1 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3245#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3245/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

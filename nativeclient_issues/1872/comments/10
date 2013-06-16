@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUANQn47eCl7ImA9WhJSEU8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/1872/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I checked up on this because using the Mach interfaces for the dyncode area would work more easily inside the Mac outer sandbox.
+
+I learned a couple of new things:
+
+1) My plan for using Mach interfaces here was to map a chunk of memory using mmap()/vm_map() and use mach_make_memory_entry() to get a Mach port for the memory object that can then be mapped a second time using vm_map().
+
+However, if I use mmap() or vm_map() to map a 256MB chunk, mach_make_memory_entry() reports that its returned object is only 128MB.  Listing memory mappings with mach_vm_region_recurse() shows that mmap()/vm_map() are creating their mappings in 128MB chunks.  This makes the mach_make_memory_entry() interface a lot more cumbersome to use.
+
+2) My assumption that we are paying a hidden cost for writing zero pages to /tmp's partition seems to be wrong.  The Mac filesystem appears to treat unlinked files differently from files that are still named.  When I ran the following test program, I found that ftruncate()ing a file to 25GB consistently took less than 0.002s.
+
+import os
+import time
+
+size = 0
+while True:
+  t0 = time.time()
+  filename = '/tmp/zeroes'
+  fh = open(filename, 'w')
+  os.unlink(filename)
+  fh.truncate(size)
+  fh.close()
+  t1 = time.time()
+  print '%i,%f' % (size, t1 - t0)
+  size += 0x100000
+
+If I remove the unlink() call, most iterations of the loop are still fast, but a few iterations pause for delays of 2s-10s.  I'd guess that the OS is queuing up the IO, or the OS is keeping track of which pages on disc have been zeroed and is reusing zeroed pages.
+
+Since NaCl unlink()s the /tmp file, we get the faster behaviour.
+</ns0:content><ns0:updated>2012-07-01T07:29:53.000Z</ns0:updated><ns0:published>2012-07-01T07:29:53.000Z</ns0:published><ns2:updates>
+			<ns2:status>Invalid</ns2:status></ns2:updates><ns0:title>Comment 10 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=1872#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/1872/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

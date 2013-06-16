@@ -1,0 +1,32 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EARH47eCl7ImA9WhNSGU0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2581/comments/full/11</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10182
+
+------------------------------------------------------------------------
+r10182 | robertm@chromium.org | 2012-11-03T01:19:41.480081Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/tools/trusted_cross_toolchains/qemu_tool_arm.sh?r1=10182&amp;r2=10181&amp;pathrev=10182
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/SConstruct?r1=10182&amp;r2=10181&amp;pathrev=10182
+
+This will result in no action (i.e. no timeout) by default.
+
+This will allow for sandbox translator invocations with a time-limit as follows:
+ 
+QEMU_PREFIX_HOOK="timeout 1s" toolchain/pnacl_translator/bin/pnacl-translate -arch arm --pnacl-sb --pnacl-use-emulator -Wl,-L$(pwd)/scons-out/nacl-arm-pnacl-sbtc-pexe-clang/lib scons-out/nacl-arm-pnacl-sbtc-pexe-clang/obj/tests/hello_world/hello_world.pexe -o scons-out/nacl-arm-pnacl-sbtc-pexe-clang/obj/tests/hello_world/hello_world.nexe 
+
+this is also work for scons invocations:
+
+QEMU_PREFIX_HOOK="timeout 1s" ./scons --verbose bitcode=1 --mode=opt-host,nacl use_sandboxed_translator=1 do_not_run_tests=1 platform=arm  run_hello_world_test
+
+Note, some tools, notably "timeout", may change the exit code when used as a hook.
+(Happens for signal-aborts where the negative exit code is changed into a positive one.)  
+So it is best to use this with do_not_run_tests=1 for now.
+
+
+BUG= http://code.google.com/p/nativeclient/issues/detail?id=2581
+TEST= manual
+
+Review URL: https://chromiumcodereview.appspot.com/11367070
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-11-03T01:20:45.000Z</ns0:updated><ns0:published>2012-11-03T01:20:45.000Z</ns0:published><ns2:updates /><ns0:title>Comment 11 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2581#c11" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2581/comments/full/11" rel="self" type="application/atom+xml" /></ns0:entry>

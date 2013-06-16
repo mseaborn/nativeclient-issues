@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0IAQX47eCl7ImA9WhNQFE8.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/148</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=10309
+
+------------------------------------------------------------------------
+r10309 | khim@google.com | 2012-11-20T14:20:33.554927Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/parse_instruction.rl?r1=10309&amp;r2=10308&amp;pathrev=10309
+
+Fix dfacheckdecoder
+
+@~ is triggered on the transition TO disp/imm/rel field, we
+need to trigger it only IN the field itself.
+
+This only affects SIB parsing.
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=2597 
+TEST=./scons dfacheckdecoder (+manual spot inspection of generated files)
+Review URL: https://codereview.chromium.org/11280086
+------------------------------------------------------------------------</ns0:content><ns0:updated>2012-11-20T14:25:40.000Z</ns0:updated><ns0:published>2012-11-20T14:25:40.000Z</ns0:published><ns2:updates /><ns0:title>Comment 148 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2597#c148" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2597/comments/full/148" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,9 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEcAR347eCl7ImA9WhJQFE4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/2922/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>noelal...@chromium.org</ns0:name><ns0:uri>/u/105463900101606224058/</ns0:uri></ns0:author><ns0:content type="html">Are we talking about 64 bit for windows and mac as well?
+
+It's not just the various pieces of script we have that need to download the correct thing.  It's also confusing when we want to support someone.    Saying we support 32 bit, or 64 bit, or both are straight forward.  Saying we support 32 bit for newlib/glibc, 64 bit for pnacl, unless you are on Mac in which case you get 32 bit.....
+
+People are going to find it strange when they can use only half the tools in their tarball.
+
+So advertising as 64 bit only for PNaCl doesn't fix this issue.</ns0:content><ns0:updated>2012-07-28T00:40:46.000Z</ns0:updated><ns0:published>2012-07-28T00:40:46.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by noelal...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=2922#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/2922/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

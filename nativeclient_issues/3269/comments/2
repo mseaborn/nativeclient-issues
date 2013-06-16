@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;A0EFRH47eCl7ImA9WhNaEUw.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3269/comments/full/2</ns0:id><ns0:author>
+			<ns0:name>olo...@google.com</ns0:name><ns0:uri>/u/113921375080395685545/</ns0:uri></ns0:author><ns0:content type="html">This is watchpoints patch for gdbserver/ARM: 
+ http://cygwin.com/ml/gdb-patches/2011-09/msg00200.html
+
+Regarding ptrace(): somewhat ugly, but we can do something along lines of 
+what I described here:
+  https://blogs.oracle.com/nike/entry/memory_debugger_for_linux
+which essentially uses fork()+ptrace() to set debug registers, but all
+trap handling happens in-process. Maybe Chrome process could be used to set
+those registers (and we can request it via IPC).
+
+I reworked it so that it works for both ARM and x86, see attachment.
+
+So combined with set remote hardware-watchpoint-length-limit 1
+we could have watchpoints available.</ns0:content><ns0:updated>2013-01-25T13:13:35.000Z</ns0:updated><ns0:published>2013-01-25T13:13:35.000Z</ns0:published><ns2:updates /><ns0:title>Comment 2 by olo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3269#c2" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3269/comments/full/2" rel="self" type="application/atom+xml" /></ns0:entry>

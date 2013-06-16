@@ -1,0 +1,39 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUUHRH47eCl7ImA9WhBbFkg.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3337</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">LLVM allows ConstantExprs to appear in IR in two contexts:
+
+ 1) they can be used as operands of LLVM instructions;
+ 2) a subset of ConstantExpr types can be used as initializers for global variables -- this is covered by issue 3113.
+
+For the purposes of this issue, we are only considering (1).
+
+ConstantExprs are a pain to deal with because:
+
+ * They duplicate the functionality of LLVM instructions.
+
+ * They can require the code generated for a single LLVM instruction to be arbitrarily long, because ConstantExprs can be nested arbitrarily deeply and contain arithmetic, comparisons, etc. on global variables.  ConstantExprs aren't constant until link time or dynamic link time!
+
+ * They complicate handling of PHI nodes.  For example:
+
+     foo: ...
+       br i1 %cmp, label %iftrue, label %iffalse
+     iftrue:
+       %x = phi i32 [ &amp;lt;constantexpr&amp;gt;, %foo ... ]
+
+   A simple code generator will produce code that inefficiently evaluates &amp;lt;constantexpr&amp;gt; even if the iftrue branch is not taken, e.g.:
+
+     &amp;lt;evaluate &amp;lt;constantexpr&amp;gt; and store in %x&amp;gt;
+     &amp;lt;test %cmp&amp;gt;
+     b&amp;lt;cond&amp;gt; iftrue
+     b iffalse
+
+ * LLVM treats the address of a TLS variable as a ConstantExpr even though it's not constant.  (This no longer affects PNaCl because of issue 2837, though.)
+
+I have written a pass which expands out ConstantExprs into instructions:
+https://github.com/mseaborn/tiny-llvm-codegen/blob/master/expand_constantexpr.cc
+
+I should add that pass to PNaCl's LLVM branch and enable it by default.
+</ns0:content><ns0:updated>2013-05-15T21:27:15.000Z</ns0:updated><ns0:published>2013-03-13T00:25:14.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109636895838879576326/</ns2:uri><ns2:username>j...@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PNaCl: Eliminate ConstantExprs from the pexe wire format -- expand them out</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>PNaClABI</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3337/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3337" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3337" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:blockedOn>
+			<ns2:id>3377</ns2:id><ns2:project>nativeclient</ns2:project></ns2:blockedOn><ns2:closedDate>2013-05-15T21:27:15.000Z</ns2:closedDate><ns2:id>3337</ns2:id></ns0:entry>

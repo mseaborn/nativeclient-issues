@@ -1,4 +1,4 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D04DR347eCl7ImA9WxVaE0U.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEAERn47eCl7ImA9WhNbEE4.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/58</ns0:id><ns0:author>
 			<ns0:name>mark.d...@gmail.com</ns0:name><ns0:uri>/u/117634658684698531165/</ns0:uri></ns0:author><ns0:content type="html">Team: Beached As
 
@@ -6,5 +6,5 @@ The &amp;quot;src&amp;quot; parameter of NaCl objects is processed as a string w
 property is set, however no validation is done to ensure that a string is
 actually used to set this property. By setting this value to an integer
 instead, a type confusion attack occurs and the integer value is used as a
-pointer internally, and can lead to memory corruption etc.</ns0:content><ns0:updated>2009-04-10T17:52:56.000Z</ns0:updated><ns0:published>2009-03-12T13:43:27.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+pointer internally, and can lead to memory corruption etc.</ns0:content><ns0:updated>2013-01-13T00:25:07.000Z</ns0:updated><ns0:published>2009-03-12T13:43:27.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/110254776827258378715/</ns2:uri><ns2:username>s...@google.com</ns2:username></ns2:owner><ns2:state>closed</ns2:state><ns0:title>Browser Plugin SRPC Type Confusion Memory Corruption Attack</ns0:title><ns2:label>Security-Contest</ns2:label><ns2:label>Type-Defect</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/58/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=58" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/58" rel="self" type="application/atom+xml" /><ns2:stars>3</ns2:stars><ns2:closedDate>2009-04-10T17:52:56.000Z</ns2:closedDate><ns2:id>58</ns2:id></ns0:entry>
