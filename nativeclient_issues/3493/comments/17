@@ -1,0 +1,13 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Dk4CSX47eCl7ImA9WhFSEkk.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3493/comments/full/17</ns0:id><ns0:author>
+			<ns0:name>eli...@chromium.org</ns0:name><ns0:uri>/u/112264824292994369940/</ns0:uri></ns0:author><ns0:content type="html">I will attempt to implement (3), since it seems like the right way to solve the problem, although it's more involved.
+
+The solution involves these steps:
+
+A) Remove the bodies of memcpy/memset/memmove from newlib's source code (leaving only the declarations in headers).
+B) Add --allow-unresolved flags for these symbols to pnacl-ld's invocation of gold. This is necessary for EH and other non-stable tests where the pexe is not rewritten.
+C) In stable pexes, rewrite the calls to these functions into calls to corresponding intrinsics. This can be added to the RewritePNaClLibraryCalls pass, which already handles setjmp &amp; longjmp.
+
+With only (A) and (B), the non-stable bitcode tests (like EH and mmap_prot_exec) work, because the created pexe has an external dependency that gets satisfied by the native implementations during the native link. All stable tests fail, because the ABI verifier already catches the case where a function is declared but not defined in a pexe. This is indicative of a problem - that it's declared means there are calls to it (otherwise the declaration would be killed in optimization), and stable pexes are not supposed to call externals. This should be solved by (B).
+
+</ns0:content><ns0:updated>2013-06-14T21:22:48.000Z</ns0:updated><ns0:published>2013-06-14T21:22:48.000Z</ns0:published><ns2:updates /><ns0:title>Comment 17 by eli...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3493#c17" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3493/comments/full/17" rel="self" type="application/atom+xml" /></ns0:entry>

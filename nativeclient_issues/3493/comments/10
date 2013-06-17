@@ -1,0 +1,10 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CEAESH47eCl7ImA9WhFSEk4.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3493/comments/full/10</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">Another way to do option (1) would be to name your copy of memcpy in libcrt_platform.a "__pnacl_memcpy", or "__builtin_memcpy" instead, and change the codegen for the intrinsic to call __builtin_memcpy.  Then the calls will match up.  For stable bitcode, since the bitcode functions have no names, there is no danger in having duplicate symbols (some bitcode function also being named __builtin_memcpy).
+
+
+Option (2.5) might be to only change the body of newlib's memcpy to call the llvm.memcpy.  Then everything goes through llvm.memcpy, without removing -fno-builtin (option 2), and without removing memcpy from newlib (option 3).  However, that has similar issues to what you are saying w/ option 3.  E.g., what if llvm.memcpy previously tolerated overlapping regions, but later on it doesn't?  For that we could make sure it doesn't tolerate overlapping regions to begin with, I guess.  Even without option 3, we have that problem, since many of the bitcode calls will be to llvm.memcpy, so llvm.memcpy is already part of the ABI.
+
+
+To me, 1,4 are similar and 2,2.5,3 are similar.  I think I prefer 2,2.5,3 since all memcpys will the same memcpy.
+</ns0:content><ns0:updated>2013-06-14T17:58:29.000Z</ns0:updated><ns0:published>2013-06-14T17:58:29.000Z</ns0:published><ns2:updates /><ns0:title>Comment 10 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3493#c10" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3493/comments/full/10" rel="self" type="application/atom+xml" /></ns0:entry>

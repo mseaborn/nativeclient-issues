@@ -1,11 +1,11 @@
-<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DUQBQn47eCl7ImA9WhBaFE0.&quot;">
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0EBRn47eCl7ImA9WhFSEUQ.&quot;">
 		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3167</ns0:id><ns0:author>
 			<ns0:name>k...@google.com</ns0:name><ns0:uri>/u/112873510090665368075/</ns0:uri></ns0:author><ns0:content type="html">We've had troubles in the past when some superinstructions were handled incorrectly. Our DFA design allows us to parse the generated code and exhaustively enumerate all the possible superinstructions (and prove that DFA can not ever accept anything else).
 
 There are two major pieces:
   1. Prove that DFA only accepts finite number of instructions and finite number of superinstructions.
   2. Check that all acceptable instructions and superinstructions are correct from SFI viewpoint.
-</ns0:content><ns0:updated>2013-05-24T14:55:53.000Z</ns0:updated><ns0:published>2012-11-23T23:28:36.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+</ns0:content><ns0:updated>2013-06-14T07:40:57.000Z</ns0:updated><ns0:published>2012-11-23T23:28:36.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
 			<ns2:uri>/u/112873510090665368075/</ns2:uri><ns2:username>k...@google.com</ns2:username></ns2:owner><ns2:cc>
 			<ns2:uri>/u/105197577636354702799/</ns2:uri><ns2:username>shcherb...@google.com</ns2:username></ns2:cc><ns2:cc>
 			<ns2:uri>/u/110304265766688778552/</ns2:uri><ns2:username>bradc...@google.com</ns2:username></ns2:cc><ns2:cc>

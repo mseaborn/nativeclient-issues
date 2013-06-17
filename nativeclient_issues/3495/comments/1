@@ -1,0 +1,23 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0ECQX47eCl7ImA9WhFSFE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3495/comments/full/1</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11556
+
+------------------------------------------------------------------------
+r11556 | mseaborn@chromium.org | 2013-06-16T17:58:30.893552Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/DEPS?r1=11556&amp;r2=11555&amp;pathrev=11556
+
+PNaCl: Update LLVM revision in pnacl/DEPS
+
+This pulls in the following LLVM changes:
+
+263d9c7: (mseaborn@chromium.org) PNaCl ABI: Convert "private" linkage to "internal"
+8dd5d09: (mseaborn@chromium.org) PNaCl ABI: Disallow the "available_externally" linkage type
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3495
+TEST=PNaCl toolchain trybots
+
+Review URL: https://codereview.chromium.org/17115008
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-06-16T18:01:00.000Z</ns0:updated><ns0:published>2013-06-16T18:01:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 1 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3495#c1" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3495/comments/full/1" rel="self" type="application/atom+xml" /></ns0:entry>

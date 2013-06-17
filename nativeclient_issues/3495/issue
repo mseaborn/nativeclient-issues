@@ -1,0 +1,53 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;D0ECQX47eCl7ImA9WhFSFE0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3495</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">Currently, the PNaCl ABI checker allows both &amp;quot;internal&amp;quot; and &amp;quot;private&amp;quot; linkage types.  To simplify the format, we should only allow one of these.
+
+Which of the two we use only really matters for debugging.
+
+
+Currently, with both &amp;quot;internal&amp;quot; and &amp;quot;private&amp;quot; symbols, we get:
+
+$ pnacl-clang hellow.c -o hellow.nexe --pnacl-allow-translate -arch x86-64
+// Functions such as printf() are internal:
+$ nm hellow.nexe | grep -w printf
+0000000000021b40 t printf
+// String literals are private, so are omitted from the symbol table:
+$ nm hellow.nexe | grep 'str[0-9]' | head -5
+000000001002077e r .L.str211
+$ nm hellow.nexe | grep 'str[0-9]' | wc -l
+1
+
+
+If we convert &amp;quot;private&amp;quot; to &amp;quot;internal&amp;quot;, without stripping (i.e. for debugging via offline translation), string literals now appear in the symbol table:
+
+$ nm hellow.nexe | grep 'str[0-9]' | head -5
+0000000010020ad9 r .str1
+0000000010020c9b r .str10
+0000000010020ca7 r .str11
+0000000010020c34 r .str110
+00000000100211fe r .str1116
+$ nm hellow.nexe | grep 'str[0-9]' | wc -l
+71
+
+If the pexe is stripped, the effect of converting &amp;quot;private&amp;quot; to &amp;quot;internal&amp;quot; is that more &amp;quot;__unnamed_X&amp;quot; symbols show up in the nexe:
+
+$ pnacl-clang hellow.c -o hellow.pexe
+$ pnacl-finalize hellow.pexe -o hellow.pexe
+$ pnacl-translate -arch x86-64 hellow.pexe -o hellow.nexe
+$ nm hellow.nexe | sort | less
+0000000000020420 t __unnamed_1
+0000000000020440 t __unnamed_2
+0000000000020460 t __unnamed_3
+0000000000020480 t __unnamed_4
+...
+0000000010020634 r __unnamed_5
+0000000010020683 r __unnamed_8
+00000000100206d1 r __unnamed_10
+000000001002071f r __unnamed_12
+...
+
+On the other hand, if we convert &amp;quot;internal&amp;quot; to &amp;quot;private&amp;quot;, the symbol table will be empty (except for special cases like _start()).
+
+In principle, using &amp;quot;private&amp;quot; for all non-extern symbols would be more efficient for in-browser translation, because the assembler and linker wouldn't have to copy all those &amp;quot;__unnamed_X&amp;quot; symbols around.  However, the benefit is probably unmeasurable.  Using &amp;quot;private&amp;quot; would get in the way of debugging, so I think we should convert &amp;quot;private&amp;quot; to &amp;quot;internal&amp;quot; rather than vice versa.
+</ns0:content><ns0:updated>2013-06-16T18:01:00.000Z</ns0:updated><ns0:published>2013-06-14T19:06:49.000Z</ns0:published><ns2:status>Started</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:state>open</ns2:state><ns0:title>PNaCl: Merge "internal" and "private" linkage types; just use "internal"</ns0:title><ns2:label>Type-Enhancement</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>PNaClABI</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3495/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3495" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3495" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3495</ns2:id></ns0:entry>
