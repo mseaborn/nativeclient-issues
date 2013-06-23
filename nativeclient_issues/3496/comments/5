@@ -1,0 +1,25 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUIGSX47eCl7ImA9WhFSF04.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3496/comments/full/5</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11583
+
+------------------------------------------------------------------------
+r11583 | shcherbina@google.com | 2013-06-20T13:01:22.616857Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/src/trusted/validator_ragel/unreviewed/decoder_test.cc?r1=11583&amp;r2=11582&amp;pathrev=11583
+
+Partially fix bug in bug in RDFA check decoder ("rexw; fwait" at the end of chunk).
+
+Namely, make it print
+   0: 40      fwait
+   1: 9b      fwait
+instead of
+   0: 9b      fwait
+   1: 9b      fwait
+
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3503
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3496
+
+Review URL: https://codereview.chromium.org/17370004
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-06-20T13:05:28.000Z</ns0:updated><ns0:published>2013-06-20T13:05:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 5 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3496#c5" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3496/comments/full/5" rel="self" type="application/atom+xml" /></ns0:entry>

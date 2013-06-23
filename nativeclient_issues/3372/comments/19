@@ -1,0 +1,27 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DkYDRX47eCl7ImA9WhFSF0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3372/comments/full/19</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">------------------------------------------------------------------------
+r207582 | dschuff@chromium.org | 2013-06-20T21:34:56.063984Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/renderer/pepper/ppb_nacl_private_impl.cc?r1=207582&amp;r2=207581&amp;pathrev=207582
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/api/private/ppb_nacl_private.idl?r1=207582&amp;r2=207581&amp;pathrev=207582
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest_util.h?r1=207582&amp;r2=207581&amp;pathrev=207582
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest.cc?r1=207582&amp;r2=207581&amp;pathrev=207582
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_coordinator.cc?r1=207582&amp;r2=207581&amp;pathrev=207582
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/temporary_file.cc?r1=207582&amp;r2=207581&amp;pathrev=207582
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/pnacl_coordinator.h?r1=207582&amp;r2=207581&amp;pathrev=207582
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/c/private/ppb_nacl_private.h?r1=207582&amp;r2=207581&amp;pathrev=207582
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/trusted/plugin/temporary_file.h?r1=207582&amp;r2=207581&amp;pathrev=207582
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/test/nacl/nacl_browsertest_util.cc?r1=207582&amp;r2=207581&amp;pathrev=207582
+   M http://src.chromium.org/viewvc/chrome/trunk/src/ppapi/native_client/src/untrusted/pnacl_irt_shim/pnacl_shim.c?r1=207582&amp;r2=207581&amp;pathrev=207582
+
+Add new PPB_nacl_private interface for new translation cache and option in PnaclCoordinator to use it.
+
+The PNaCl translation cache is moving to be implemented in the browser process with a disk_cache, but the PnaclCoordinator in the plugin still controls all the steps required for translation, including requesting a temp file from the browser to write the translated nexe, and determining the cache key from the bitcode's HTTP headers.In the near-term, the PnaclCoordinator will continue to coordinate the process, but the browser will remember which fd is associated with each cache key, and will store the translated nexe in the cache after translation. This CL implements the PnaclCoordinator side, using a stub implementation in the renderer which doesn't actually cache anything yet.
+
+R=jvoung@chromium.org
+BUG= https://code.google.com/p/nativeclient/issues/detail?id=3372
+
+Review URL: https://chromiumcodereview.appspot.com/17335009
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-06-20T21:36:14.000Z</ns0:updated><ns0:published>2013-06-20T21:36:14.000Z</ns0:published><ns2:updates /><ns0:title>Comment 19 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3372#c19" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3372/comments/full/19" rel="self" type="application/atom+xml" /></ns0:entry>

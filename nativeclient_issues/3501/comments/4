@@ -1,0 +1,78 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;C0YCSX47eCl7ImA9WhFSFkQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3501/comments/full/4</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">The pexes appear to be identical, but they are different in various ways.
+
+- bitwise-and-0xff instead of uxtb (seems fine)
+
+- A few of the functions are *smaller*.  There seems to be about 176 bytes difference in the text segment.  That seems shady.
+
+
+Here is one difference (in unnamed function 988... yay for stripping), in case you happen to recognize something...
+
+
+==========
+Good code:
+
+(still the same)
+bne &lt;further down...&gt;
+mvn r0, #0
+ldr r1, [sp, #44]
+vmov s0, r1
+vcvt.f32.s32 s0, s0
+bic fp, fp, 0xc0000000
+vldr s2, [fp, #-28]
+vmul.f32 s0, s0, s2
+
+(now it becomes different)
+mov r2, #0
+vcmpe.f32 s2, #0.0
+vmrs    APSR_nzcv, fpscr
+mov r3, r2
+mvnmi   r3, #0
+vcmpe.f32   s2, #0.0
+vmrs    APSR_nzcv, fpscr
+movmi   r2, #1
+vcvt.s32.f32    s0, s0
+vmov    ip, s0
+add r3, ip, r3
+add r0, r1, r0
+and r0, r3, r0
+str r2, [sp, #40]   ; 0x28
+str r0, [sp, #36]   ; 0x24
+b    &lt;__unnamed_988+0x150&gt;
+
+(destination of the earlier branch, code becomes the same again)
+
+movw  r0, #0
+
+
+==========
+Bad code:
+
+(still the same)
+bne  &lt;__unnamed_988+0xc8&gt;
+mvn r0, #0
+ldr r1, [sp, #44]   ; 0x2c
+vmov    s0, r1
+vcvt.f32.s32    s0, s0
+bic fp, fp, #0xc0000000
+vldr    s2, [fp, #-28]
+vmul.f32    s0, s0, s2
+
+(becomes different)
+vcvt.s32.f32    s0, s0
+vmov    r2, s0
+vcmpe.f32   s2, #0.0
+vmrs    APSR_nzcv, fpscr
+movw    r3, #0
+movmi   r3, #1
+add r2, r2, r3
+add r0, r1, r0
+and r0, r2, r0
+str r0, [sp, #40]   ; 0x28
+b    &lt;__unnamed_988+0x140&gt;
+
+(destination of the earlier branch, code becomes the same again)
+movw    r0, #0
+
+</ns0:content><ns0:updated>2013-06-20T01:19:28.000Z</ns0:updated><ns0:published>2013-06-20T01:19:28.000Z</ns0:published><ns2:updates /><ns0:title>Comment 4 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3501#c4" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3501/comments/full/4" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,51 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE8AQ347eCl7ImA9WhFSF0s.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3378/comments/full/24</ns0:id><ns0:author>
+			<ns0:name>jvo...@google.com</ns0:name><ns0:uri>/u/102292187274959663599/</ns0:uri></ns0:author><ns0:content type="html">We have a few intrinsics left in the undecided dev list.  Here are some notes about some of them.  Anyone have other reasons to support or not each?
+
+
+
+Intrinsic::prefetch
+
+Argument for supporting prefetch:
+ * Some targets can benefit in terms of perf
+ * Easy to support: Backend can ignore if unsupported.
+ * Probably won't be used too much, so won't contribute much to bitcode size.
+ * Complicated, but not that complicated: Parameters are already flattened, so we don't need to worry about what happens with prefetching "p-&gt;next" when "p" is null.
+
+
+Argument against prefetch:
+ * How do people know how much to prefetch by?  What if things programs are tuned for the cache sizes of one architecture?
+ * Complexity: Do we allow prefetching function pointers?  Could probably be done even with a different sandbox model, but w/ some indirection?
+
+Unknown:
+ * Parameters much directly modeled on top of __builtin_prefetch (and at least it's not var-args like the builtin).  Does that mean it's unlikely to change?
+
+
+// Used to support C99 VLAs.
+Intrinsic::stackrestore
+Intrinsic::stacksave
+
+Argument for:
+ * Be able to support C99 VLAs easily.
+
+Argument against:
+ * Can lead to bugs if not well nested, or if used in a loop body: http://llvm.org/bugs/show_bug.cgi?id=16099
+ * More stack operations to support.
+ * Can we rewrite the alloca + stacksave instruction sequences in terms of malloc calls?  Such a rewrite requires the user to link against malloc though.  Does clang already have a way to use malloc and free so that the rewrite happens before linking?
+
+
+
+Intrinsic::ctlz
+Intrinsic::ctpop
+Intrinsic::cttz
+
+
+Intrinsic::nacl_target_arch
+
+
+Intrinsic::pow:  // Introduced by clang
+Intrinsic::powi: // rounding not well defined for "powi" (imprecise)
+
+Intrinsic::sqrt: // Rounding is well-defined, but setting errno up to libm.
+</ns0:content><ns0:updated>2013-06-20T21:14:02.000Z</ns0:updated><ns0:published>2013-06-20T21:14:02.000Z</ns0:published><ns2:updates>
+			<ns2:ccUpdate>stich...@chromium.org</ns2:ccUpdate><ns2:ccUpdate>mseaborn@chromium.org</ns2:ccUpdate></ns2:updates><ns0:title>Comment 24 by jvo...@google.com</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3378#c24" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3378/comments/full/24" rel="self" type="application/atom+xml" /></ns0:entry>

@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CE4HQn47eCl7ImA9WhFSFEQ.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3345/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">------------------------------------------------------------------------
+r206754 | jvoung@chromium.org | 2013-06-17T18:12:28.299944Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/browser/component_updater/pnacl/pnacl_component_installer.cc?r1=206754&amp;r2=206753&amp;pathrev=206754
+   M http://src.chromium.org/viewvc/chrome/trunk/src/chrome/browser/ui/webui/nacl_ui.cc?r1=206754&amp;r2=206753&amp;pathrev=206754
+
+Switch the AppID for PNaCl from 3 separate ones to a single multi-CRX.
+
+
+BUG=http://code.google.com/p/nativeclient/issues/detail?id=3345
+
+Review URL: https://chromiumcodereview.appspot.com/15942011
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-06-17T18:15:33.000Z</ns0:updated><ns0:published>2013-06-17T18:15:33.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3345#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3345/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

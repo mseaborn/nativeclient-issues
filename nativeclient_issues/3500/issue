@@ -1,0 +1,24 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;DEMFQH47eCl7ImA9WhFSFk0.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3500</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">nc_mutex.c contains the following assignment to release a mutex:
+
+    /* ...
+     * No further memory barrier is required for the following
+     * modification of mutex_state.  The full memory barrier from the
+     * atomic decrement acts as a release memory barrier for the
+     * following modification.
+     */
+    mutex-&amp;gt;mutex_state = UNLOCKED;
+
+When compiled to LLVM IR, the resulting store instruction is not declared as atomic or volatile.  Declaring the store as atomic provides three protections:
+
+ 1) It prevents the store from being split up into smaller, non-atomic parts.
+ 2) It prevents other memory accesses from being reordered across the store (by the compiler or by the CPU), to an extent depending on the store's ordering attribute.
+ 3) It prevents the store from being duplicated.  Doing the store twice would be bad because, if the mutex were claimed by another thread between the two stores, it would undo that thread's ownership of the mutex.
+
+Declaring the store as volatile gives us (3), but not (1) or (2).
+
+The fix is to use __sync_lock_release(&amp;amp;mutex-&amp;gt;mutex_state) instead.
+</ns0:content><ns0:updated>2013-06-19T01:46:51.000Z</ns0:updated><ns0:published>2013-06-19T01:11:41.000Z</ns0:published><ns2:status>Assigned</ns2:status><ns2:owner>
+			<ns2:uri>/u/mseaborn@chromium.org/</ns2:uri><ns2:username>mseaborn@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/109636895838879576326/</ns2:uri><ns2:username>j...@chromium.org</ns2:username></ns2:cc><ns2:state>open</ns2:state><ns0:title>nc_mutex.c's "mutex_state = UNLOCKED" assignment should be made atomic</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-1</ns2:label><ns2:label>Component-Newlib</ns2:label><ns2:label>OS-All</ns2:label><ns2:label>Arch-All</ns2:label><ns2:label>PNaClABI</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3500/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3500" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3500" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3500</ns2:id></ns0:entry>

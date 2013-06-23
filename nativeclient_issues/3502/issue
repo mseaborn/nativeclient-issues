@@ -1,0 +1,16 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8CQX47eCl7ImA9WhFSFkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3502</ns0:id><ns0:author>
+			<ns0:name>stich...@chromium.org</ns0:name><ns0:uri>/u/115553580108938459101/</ns0:uri></ns0:author><ns0:content type="html">One of the gcc torture tests (pr40657.c) segfaults at runtime when translated with &amp;quot;-O2 -fast-isel&amp;quot;.  Here is the relevant assembly excerpt:
+
+   20b56:       bb e0 ff ff 7f          mov    $0x7fffffe0,%ebx
+   [...]
+   20bdb:       48 8d 44 24 08          lea    0x8(%rsp),%rax
+   20be0:       8d 0c 18                lea    (%rax,%rbx,1),%ecx
+   20be3:       89 c9                   mov    %ecx,%ecx
+   20be5:       41 89 9c 0f 20 00 00    mov    %ebx,-0x7fffffe0(%r15,%rcx,1)  ### CRASH
+
+The problem is that at instruction 20be5, a large displacement is added to the address *after* the truncation at instruction 20be3.
+
+This is similar to issue https://code.google.com/p/nativeclient/issues/detail?id=3302 , but for fast-isel rather than DAG-isel.</ns0:content><ns0:updated>2013-06-20T00:41:00.000Z</ns0:updated><ns0:published>2013-06-19T18:31:50.000Z</ns0:published><ns2:status>Fixed</ns2:status><ns2:owner>
+			<ns2:uri>/u/115553580108938459101/</ns2:uri><ns2:username>stich...@chromium.org</ns2:username></ns2:owner><ns2:cc>
+			<ns2:uri>/u/dschuff@chromium.org/</ns2:uri><ns2:username>dschuff@chromium.org</ns2:username></ns2:cc><ns2:state>closed</ns2:state><ns0:title>PNaCl: Fast-isel x86-64 may generate addressing modes that overflow the sandbox</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Mstone-</ns2:label><ns2:label>Pri-2</ns2:label><ns2:label>Component-PNaCl</ns2:label><ns2:label>OS-</ns2:label><ns2:label>Arch-x86-64</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3502/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3502" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3502" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:closedDate>2013-06-19T20:01:25.000Z</ns2:closedDate><ns2:id>3502</ns2:id></ns0:entry>

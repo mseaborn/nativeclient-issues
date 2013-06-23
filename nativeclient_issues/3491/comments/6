@@ -1,0 +1,22 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;Ak8CQX47eCl7ImA9WhFSFkU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3491/comments/full/6</ns0:id><ns0:author>
+			<ns0:name>bugdro...@chromium.org</ns0:name><ns0:uri>/u/101788990881243245974/</ns0:uri></ns0:author><ns0:content type="html">The following revision refers to this bug:
+    http://src.chromium.org/viewvc/native_client?view=rev&amp;revision=11580
+
+------------------------------------------------------------------------
+r11580 | jvoung@google.com | 2013-06-20T00:39:29.338749Z
+
+Changed paths:
+   M http://src.chromium.org/viewvc/native_client/trunk/src/native_client/pnacl/DEPS?r1=11580&amp;r2=11579&amp;pathrev=11580
+
+Update LLVM deps.
+
+73af8c9 Rewrite llvm.flt.rounds to "1" for now, and disallow llvm.flt.rounds.
+bce9cad Fix an x86-64 fast-isel address calculation overflow.
+
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3491
+BUG=https://code.google.com/p/nativeclient/issues/detail?id=3502
+R=mseaborn@chromium.org
+
+Review URL: https://codereview.chromium.org/17229010
+------------------------------------------------------------------------</ns0:content><ns0:updated>2013-06-20T00:41:00.000Z</ns0:updated><ns0:published>2013-06-20T00:41:00.000Z</ns0:published><ns2:updates /><ns0:title>Comment 6 by bugdro...@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3491#c6" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3491/comments/full/6" rel="self" type="application/atom+xml" /></ns0:entry>

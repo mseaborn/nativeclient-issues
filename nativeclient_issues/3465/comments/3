@@ -1,0 +1,31 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;CUQFRX47eCl7ImA9WhFSFEU.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/3465/comments/full/3</ns0:id><ns0:author>
+			<ns0:name>mseaborn@chromium.org</ns0:name><ns0:uri>/u/mseaborn@chromium.org/</ns0:uri></ns0:author><ns0:content type="html">I tried turning on the ABI checker in pnacl-llc, but it failed in Spec2k with the following errors:
+
+Function  is declared but not defined (disallowed)
+Function  is declared but not defined (disallowed)
+Function  is declared but not defined (disallowed)
+Function main is declared but not defined (disallowed)
+Function  is declared but not defined (disallowed)
+Function  is declared but not defined (disallowed)
+...
+(see logs on https://codereview.chromium.org/17190002/)
+
+So the ABI checker no longer works when streaming translation is enabled.  The error happens because if a function's body hasn't been read yet, it has no basic blocks, so Func-&gt;isDeclaration() returns true.
+
+It looks like we will have to turn this ABI check off (preferably conditionally).
+
+Having done that, the ABI checker fails in the ARM sandboxed translator:
+
+Function _start disallowed: operand not InherentPtr:   %19 = bitcast [1 x i8]* getelementptr inbounds ({ [1 x i8], [1 x i8], [1 x i8] }* @_MergedGlobals, i32 0, i32 2) to i1*
+Function _start disallowed: operand not InherentPtr:   %22 = bitcast [1 x i8]* getelementptr inbounds ({ [1 x i8], [1 x i8], [1 x i8] }* @_MergedGlobals, i32 0, i32 0) to i1*
+...
+LLVM ERROR: PNaCl ABI verification failed
+(see logs on https://codereview.chromium.org/17226002/)
+
+This must be because the GlobalMerge pass runs before the ABI checker.
+
+I'm not sure how the GlobalMerge pass can work with streaming translation.  GlobalMerge will delete variables before the functions that reference them are read in.  Could this be causing ARM streaming translation to fail sometimes?  Does streaming translation materialise functions deterministically?
+
+If necessary, we could turn off GlobalMerge.  As it's currently implemented, we're probably not getting much benefit from it, because it won't merge a variable whose alignment is more than its type's default alignment.  With FlattenGlobals applied, this means it will only merge 1-byte variables!  The errors above confirm that.
+</ns0:content><ns0:updated>2013-06-17T15:35:14.000Z</ns0:updated><ns0:published>2013-06-17T15:35:14.000Z</ns0:published><ns2:updates /><ns0:title>Comment 3 by mseaborn@chromium.org</ns0:title><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3465#c3" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/3465/comments/full/3" rel="self" type="application/atom+xml" /></ns0:entry>

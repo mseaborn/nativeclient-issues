@@ -1,0 +1,21 @@
+<ns0:entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:ns1="http://schemas.google.com/g/2005" xmlns:ns2="http://schemas.google.com/projecthosting/issues/2009" ns1:etag="W/&quot;AkcNQH47eCl7ImA9WhFSF0Q.&quot;">
+		<ns0:id>http://code.google.com/feeds/issues/p/nativeclient/issues/full/3509</ns0:id><ns0:author>
+			<ns0:name>mohitban...@gmail.com</ns0:name><ns0:uri>/u/104676579440829278694/</ns0:uri></ns0:author><ns0:content type="html">What version of the SDK are you using? pepper 25
+&lt;b&gt;What version of the runtime are you using?&lt;/b&gt;
+On what operating system? linux
+What browser are you using? chrome version 26.0.1410.63
+&lt;b&gt;Please include version information for both the OS and the browser.&lt;/b&gt;
+
+&lt;b&gt;What steps will reproduce the problem?&lt;/b&gt;
+1. try to use ntohl(-2147483648) or ntohl(-2147483648)
+&lt;b&gt;2.&lt;/b&gt;
+&lt;b&gt;3.&lt;/b&gt;
+
+&lt;b&gt;What is the expected output? What do you see instead?&lt;/b&gt;
+its gives result -128 instead of 128( at linux its gives 128)
+
+
+
+
+&lt;b&gt;Please provide any additional information below and attach any relevant&lt;/b&gt;
+&lt;b&gt;source files.&lt;/b&gt;</ns0:content><ns0:updated>2013-06-21T07:01:31.000Z</ns0:updated><ns0:published>2013-06-21T07:01:31.000Z</ns0:published><ns2:status>New</ns2:status><ns2:state>open</ns2:state><ns0:title>htonl &amp; ntohl are also accepting signed data.</ns0:title><ns2:label>Type-Defect</ns2:label><ns2:label>Pri-2</ns2:label><ns0:link href="http://code.google.com/feeds/issues/p/nativeclient/issues/3509/comments/full" rel="replies" type="application/atom+xml" /><ns0:link href="http://code.google.com/p/nativeclient/issues/detail?id=3509" rel="alternate" type="text/html" /><ns0:link href="https://code.google.com/feeds/issues/p/nativeclient/issues/full/3509" rel="self" type="application/atom+xml" /><ns2:stars>1</ns2:stars><ns2:id>3509</ns2:id></ns0:entry>
